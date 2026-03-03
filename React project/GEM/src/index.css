@@ -1,0 +1,280 @@
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-y: auto;
+}
+
+.relative {
+    overflow: visible;
+}
+
+
+/* Body */
+
+body {
+    font-family: "Space Grotesk", sans-serif;
+    background-color: #f5f5dc;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+html.dark body {
+    background-color: #181611;
+    color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* Layout Helpers */
+
+.relative {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.gap-6 {
+    gap: 1.5rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+
+/* Header */
+
+header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 2.5rem;
+}
+
+html.dark header {
+    border-bottom-color: #393528;
+}
+
+.size-6 {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Text */
+
+.text-primary {
+    color: #ecb613;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.text-base {
+    font-size: 1rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-black {
+    font-weight: 900;
+}
+
+.font-normal {
+    font-weight: 400;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.max-w-3xl {
+    max-width: 48rem;
+}
+
+.max-w-2xl {
+    max-width: 42rem;
+}
+
+
+/* Buttons */
+
+button {
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.bg-primary {
+    background-color: #ecb613;
+    color: #000000;
+}
+
+.bg-secondary {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #000000;
+}
+
+html.dark .bg-secondary {
+    background-color: #393528;
+    color: #ffffff;
+}
+
+.h-10 {
+    height: 2.5rem;
+}
+
+.h-12 {
+    height: 3rem;
+}
+
+.px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+
+/* Hero Section */
+
+.back1 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url("/public/images/55.jpg.webp");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+
+/* Footer */
+
+footer {
+    padding: 2.5rem 1.25rem;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+html.dark footer {
+    color: #b9b29d;
+}
+
+footer a {
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #ecb613;
+}
+
+.min-w-40 {
+    min-width: 10rem;
+}
+
+
+/* Icons */
+
+.material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-size: 24px;
+    line-height: 1;
+}
+
+.theme-btn {
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+html.dark .theme-btn {
+    border-color: #b9b29d;
+    color: #ffffff;
+}

@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutora - About the Grand Egyptian Museum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header" style="background-color: black;">
+            <div class="menu-logo" style="color: #ecb613;" style="background-color: black;">
+                <div class="menu-logo-icon" style="color: #ecb613;">
+                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+                </div>
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+            <span class="material-symbols-outlined" style=" color: #ecb613">close</span>
+        </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                AI Experience
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item" style="color: black;">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item" style="color: black;">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" style="color: black;">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" style="color: black;">AI Voice Storytelling (3D)</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/code.html" class="menu-link">About</a>
+            <a href="../collection/collection.html" class="menu-link">Collection</a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+
+            <button class="menu-icon-link" id="menuLangBtn">
+            <span class="material-symbols-outlined">language</span>
+            Language
+        </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo" style="color: #ecb613;" style="background-color: black;">
+                <div class="menu-logo-icon" style="color: #ecb613;">
+                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+                </div>
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                AI Experience
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item" style="color: black;">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item" style="color: black;">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" style="color: black;">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" style="color: black;">AI Voice Storytelling (3D)</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/code.html" class="menu-link">About</a>
+            <a href="../collection/collection.html" class="menu-link">Collection</a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn">Book now</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+            <button class="menu-icon-link" id="menuThemeBtn">
+            <span class="material-symbols-outlined">dark_mode</span>
+            Theme
+        </button>
+            <button class="menu-icon-link" id="menuLangBtn">
+            <span class="material-symbols-outlined">language</span>
+            Language
+        </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                <span class="material-symbols-outlined" style="color: white;">menu</span>
+            </button>
+                <div class="logo-section" style="background-color: black;">
+                    <div class="logo-icon" style="color: #ecb613;">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                    </div>
+                    <h2 class="logo-text" style="color: white; font-size: 22px;">Tutora</h2>
+                </div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html" style="color: white;">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" style="color: white;">Plan Your Visit</a>
+                <a href="../event/event.html" style="color: white;">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger" style="color: white;">
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link" style="color: black;">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link" style="color: black;">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" style="color: black;">AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" style="color: black;">AI Voice Storytelling (3D)</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html" style="color: white;">Shop</a>
+                <a href="../about/code.html" style="color: white;">About</a>
+                <a href="../collection/collection.html" style="color: white;">Collection</a>
+            </nav>
+
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="material-symbols-outlined" style="color: white;">search</span>
+                    <input type="text" placeholder="Search..." style="color: white;" />
+                </div>
+                <button class="theme-btn" id="themeBtn">
+                <span class="material-symbols-outlined" style="color: white;">dark_mode</span>
+            </button>
+                <a href="../booking/booking.html" class="btn-booking" style="color: black;background-color: #ecb613;">booking</a>
+                <a href="../fav/favourite.html">
+                    <button class="icon-btn">
+                    <span class="material-symbols-outlined" style="color: white;">favorite</span>
+                </button>
+                </a>
+                <button class="icon-btn" id="langBtn">
+                <span class="material-symbols-outlined" style="color: white;">language</span>
+            </button>
+                <a href="../Profile/profile.html">
+                    <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">About the Grand Egyptian Museum</h1>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- History Section -->
+        <section id="history" class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    A Journey Through Time: The Story of the Grand Egyptian Museum
+                </h2>
+                <p class="section-description">
+                    The Grand Egyptian Museum (GEM) is the culmination of a vision to create a world-class institution dedicated to the preservation and display of Egypt's rich Pharaonic heritage.
+                </p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">👁️</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">The Vision</h3>
+                            <p class="timeline-year">Early 2000s</p>
+                            <p class="timeline-text">
+                                The idea for a new, modern museum to house Egypt's vast collection of ancient artifacts was born, aiming to provide a worthy home for treasures like those of Tutankhamun.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">🏗️</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">International Design Competition</h3>
+                            <p class="timeline-year">2003</p>
+                            <p class="timeline-text">
+                                An international competition was held to select an architectural design. The winning entry by Heneghan Peng Architects was chosen for its modern interpretation of ancient Egyptian themes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">⚙️</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Construction Begins</h3>
+                            <p class="timeline-year">2005</p>
+                            <p class="timeline-text">
+                                The monumental task of building the world's largest archaeological museum began on the Giza plateau, overlooking the pyramids.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section id="architecture" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">
+                    A Modern Marvel: The Architectural Splendor of the GEM
+                </h2>
+                <p class="section-description">
+                    The museum's design is a testament to architectural innovation, blending seamlessly with its historic surroundings while making a bold contemporary statement.
+                </p>
+
+                <div class="gallery-grid">
+                    <img src="../122.png" alt="Interior view of the Grand Egyptian Museum's grand staircase" class="gallery-image" />
+                    <img src="../11.jpg" alt="Architectural detail of the museum's geometric ceiling patterns" class="gallery-image" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Commitment to Heritage and Humanity</h2>
+                <p class="section-description">
+                    The GEM's mission extends beyond exhibition. It is a global hub for conservation, research, and education, dedicated to safeguarding Egypt's legacy for future generations.
+                </p>
+
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="mission-icon">🔬</div>
+                        <h3 class="mission-title">Research</h3>
+                        <p class="mission-text">
+                            Fostering new discoveries and understanding of ancient Egyptian civilization through state-of-the-art labs and international collaboration.
+                        </p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">📚</div>
+                        <h3 class="mission-title">Education</h3>
+                        <p class="mission-text">
+                            Inspiring a global audience by making Egypt's history accessible and engaging through innovative exhibitions and educational programs.
+                        </p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">🛡️</div>
+                        <h3 class="mission-title">Conservation</h3>
+                        <p class="mission-text">
+                            Employing cutting-edge techniques to restore and preserve priceless artifacts, ensuring their survival for millennia to come.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="button-center">
+                    <a href="../collection/collection.html">
+                        <button class="btn btn-primary">Explore the Collections</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+
+
+    <!-- Start of Footer Component -->
+    <footer class="gem-footer">
+        <div class="gem-footer-inner">
+            <!-- Footer Header -->
+            <div class="gem-footer-header">
+                <div class="gem-footer-icon">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="gem-footer-heading">Grand Egyptian Museum</h2>
+                <div class="gem-footer-line" style="color: #f2b90d;"></div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="gem-footer-cols">
+                <!-- Explore Column -->
+                <div class="gem-footer-col">
+                    <h3 class="gem-footer-col-title">Explore</h3>
+                    <ul class="gem-footer-links">
+                        <li><a href="../booking/booking.html">Tickets</a></li>
+                        <li><a href="../collection/collection.html">Collection</a></li>
+                        <li><a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a></li>
+                    </ul>
+                </div>
+
+                <!-- About Column -->
+                <div class="gem-footer-col">
+                    <h3 class="gem-footer-col-title">About</h3>
+                    <ul class="gem-footer-links">
+                        <li><a href="../About us/About-us.html">History</a></li>
+                        <li><a href="../event/event.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support Column -->
+                <div class="gem-footer-col">
+                    <h3 class="gem-footer-col-title">Support</h3>
+                    <ul class="gem-footer-links">
+                        <li><a href="../visitor help/help.html">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect Column -->
+                <div class="gem-footer-col gem-footer-connect">
+                    <h3 class="gem-footer-col-title">Connect</h3>
+                    <div class="gem-social-icons">
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <!-- Twitter (X ) -->
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                    <p class="gem-connect-text">
+                        Follow us on social media for the latest updates and exclusive content.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Divider -->
+            <div class="gem-footer-divider"></div>
+
+            <!-- Footer Bottom -->
+            <div class="gem-footer-bottom">
+                <!-- Language Toggle -->
+                <div class="gem-lang-toggle">
+                    <button class="gem-lang-btn active" data-lang="en">
+                English
+              </button>
+                    <button class="gem-lang-btn" data-lang="ar">العربية</button>
+                </div>
+
+                <!-- Legal Section -->
+                <div class="gem-legal-section">
+                    <div class="gem-legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                    <p class="gem-copyright">
+                        &copy; 2024 Grand Egyptian Museum. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      ↑
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

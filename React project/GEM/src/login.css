@@ -1,0 +1,243 @@
+/* ================= Base ================= */
+
+.login-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Space Grotesk", sans-serif;
+    color: #ffffff;
+    padding: 20px;
+    overflow: hidden;
+}
+
+
+/* ================= Background ================= */
+
+.background {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient( rgba(34, 29, 16, 0.55) 0%, rgba(34, 29, 16, 0.9) 60%, rgba(34, 29, 16, 1) 100%), url("/images/image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(2px);
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+
+/* ================= Content ================= */
+
+.login-box {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+}
+
+
+/* ================= Logo ================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 35px;
+}
+
+.logo-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+svg {
+    overflow: visible;
+}
+
+
+/* ================= Headings ================= */
+
+.login-box h1 {
+    font-size: 64px;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.login-box h2 {
+    font-size: 18px;
+    color: #d1d1d1;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+
+/* ================= Labels ================= */
+
+label {
+    display: block;
+    text-align: left;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+
+
+/* ================= Inputs ================= */
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    padding: 0 16px;
+    transition: 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: #ecb613;
+    box-shadow: 0 0 0 2px rgba(236, 182, 19, 0.3);
+}
+
+.input-wrapper input {
+    flex: 1;
+    height: 58px;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-wrapper input::placeholder {
+    color: #9ca3af;
+}
+
+.material-symbols-outlined {
+    font-size: 22px;
+    color: #9ca3af;
+}
+
+.toggle-password {
+    cursor: pointer;
+}
+
+
+/* ================= Forgot ================= */
+
+.forgot-password {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    font-size: 14px;
+    color: #ecb613;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================= Button ================= */
+
+.login-button {
+    width: 100%;
+    height: 58px;
+    margin-top: 25px;
+    background: #ecb613;
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.login-button:hover {
+    opacity: 0.9;
+}
+
+.login-button:active {
+    transform: scale(0.97);
+}
+
+
+/* ================= Signup ================= */
+
+.signup-text {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #d1d1d1;
+}
+
+.signup-text a {
+    color: #ecb613;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signup-text span {
+    color: #ecb613;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================= Tablet ================= */
+
+@media (max-width: 992px) {
+    .login-box h1 {
+        font-size: 48px;
+    }
+    .login-box h2 {
+        font-size: 16px;
+    }
+}
+
+
+/* ================= Mobile ================= */
+
+@media (max-width: 576px) {
+    .login-box {
+        max-width: 100%;
+    }
+    .login-box h1 {
+        font-size: 36px;
+    }
+    .login-box h2 {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    .logo-text {
+        font-size: 16px;
+    }
+    .input-wrapper input {
+        height: 52px;
+        font-size: 14px;
+    }
+    .login-button {
+        height: 52px;
+        font-size: 16px;
+    }
+}

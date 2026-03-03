@@ -1,0 +1,423 @@
+:root {
+    --primary: #D4AF37;
+    --background-light: #F5F5DC;
+    --background-dark: #1E1E1E;
+    --text-light: #1E1E1E;
+    --text-dark: #F5F5DC;
+    --accent: #40E0D0;
+    --input-bg-light: #FFFFFF;
+    --input-bg-dark: #2a2a2a;
+    --input-border-light: #D1D5DB;
+    --input-border-dark: #4B5563;
+    --secondary-light: #E5E7EB;
+    --secondary-dark: #374151;
+    --font-display: 'Inter', sans-serif;
+    --font-serif: 'Cormorant Garamond', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-display);
+    background-color: var(--background-light);
+    color: var(--text-light);
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+html.dark body {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .hero-panel {
+        display: block;
+        height: 200px;
+        /* تحديد ارتفاع لتظهر الصورة فوق الفورم */
+        width: 100%;
+        margin-top: 4rem;
+    }
+}
+
+
+/* Header & Nav */
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 1.5rem;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary);
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.login-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    height: 2.5rem;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--secondary-light);
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 700;
+    transition: opacity 0.2s;
+}
+
+html.dark .login-link {
+    background-color: var(--secondary-dark);
+    color: var(--text-dark);
+}
+
+.login-link:hover {
+    opacity: 0.8;
+}
+
+
+/* Main Layout */
+
+main {
+    display: flex;
+    flex: 1;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    flex: 1;
+}
+
+@media (min-width: 1024px) {
+    .grid-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* Left Panel (Hero) */
+
+.hero-panel {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+@media (min-width: 1024px) {
+    .hero-panel {
+        display: flex;
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+}
+
+.hero-content {
+    position: relative;
+    padding: 3rem;
+    color: white;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    margin-top: 0.5rem;
+    max-width: 28rem;
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* Right Panel (Form) */
+
+.form-panel {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    padding-top: 6rem;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 28rem;
+}
+
+.form-header {
+    margin-bottom: 2rem;
+}
+
+.form-title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .form-title {
+        font-size: 3rem;
+    }
+}
+
+.form-subtitle {
+    margin-top: 0.5rem;
+    color: rgba(30, 30, 30, 0.8);
+}
+
+html.dark .form-subtitle {
+    color: rgba(245, 245, 220, 0.8);
+}
+
+
+/* Social Buttons */
+
+.social-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+    .social-group {
+        flex-direction: row;
+    }
+}
+
+.social-btn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--input-border-light);
+    background-color: var(--input-bg-light);
+    height: 3rem;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+html.dark .social-btn {
+    border-color: var(--input-border-dark);
+    background-color: var(--input-bg-dark);
+    color: var(--text-dark);
+}
+
+.social-btn:hover {
+    background-color: var(--secondary-light);
+}
+
+html.dark .social-btn:hover {
+    background-color: var(--secondary-dark);
+}
+
+.social-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+
+/* Divider */
+
+.divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.divider-line {
+    flex-grow: 1;
+    border-top: 1px solid var(--input-border-light);
+}
+
+html.dark .divider-line {
+    border-color: var(--input-border-dark);
+}
+
+.divider-text {
+    margin: 0 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(30, 30, 30, 0.6);
+}
+
+html.dark .divider-text {
+    color: rgba(245, 245, 220, 0.6);
+}
+
+
+/* Form Fields */
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+}
+
+.input-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    border-radius: 0.5rem;
+    border: 1px solid var(--input-border-light);
+    background-color: var(--input-bg-light);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+html.dark .input-wrapper {
+    border-color: var(--input-border-dark);
+    background-color: var(--input-bg-dark);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.form-input {
+    flex: 1;
+    height: 3rem;
+    padding: 0 1rem;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: rgba(30, 30, 30, 0.5);
+}
+
+html.dark .form-input::placeholder {
+    color: rgba(245, 245, 220, 0.5);
+}
+
+.icon-addon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 1rem;
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: rgba(30, 30, 30, 0.6);
+}
+
+html.dark .material-symbols-outlined {
+    color: rgba(245, 245, 220, 0.6);
+}
+
+
+/* Submit Button */
+
+.submit-btn {
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary);
+    color: #000;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+.footer-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.signup-link {
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: underline;
+}

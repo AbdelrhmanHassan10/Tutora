@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorer User Profile Dashboard | Grand Egyptian Museum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark-mode">
+    <div class="container-wrapper">
+        <!-- Sidebar Navigation (RESTORED) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <!-- Logo -->
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="logo-text">Tutora</h2>
+                    <!-- Mobile Close Button -->
+                    <button class="mobile-close-btn" id="mobileCloseBtn">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+
+                <!-- Navigation Items -->
+                <nav class="nav-menu">
+                    <a href="../Profile/profile.html" class="nav-item active">
+                        <span class="material-symbols-outlined">person</span>
+                        <span>Profile</span>
+                    </a>
+                    <a href="../success/success.html" class="nav-item">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <span>My Tickets</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="material-symbols-outlined">bookmark</span>
+                        <span>Saved Treasures</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="material-symbols-outlined">history_edu</span>
+                        <span>AI History</span>
+                    </a>
+                    <a href="../setting/setting.html" class="nav-item">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Logout Button -->
+            <a href="../1.landing page/code!!!!!!!!!!!!.html" style="text-decoration: none;"><button class="logout-btn">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Logout</span>
+            </button></a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header/Navbar -->
+            <header class="header">
+                <div class="header-left">
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                    <div class="search-container">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" class="search-input" placeholder="Search the collection...">
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="notification-badge"></span>
+                    </button>
+
+                    <div class="divider"></div>
+
+                    <div class="user-info">
+                        <span class="user-level">Explorer Level 5</span>
+                        <div class="user-avatar">
+                            <img src="./unnamed.png" alt="User Profile">
+                        </div>
+                    </div>
+
+                    <button class="theme-toggle" id="themeToggle">
+                        <span class="material-symbols-outlined">light_mode</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <div class="content-wrapper">
+                <!-- Hero Profile Section -->
+                <section class="hero-profile">
+                    <div class="profile-image-wrapper">
+                        <img src="unnamed.png" alt="Profile Picture" class="profile-image">
+                        <span class="verified-badge">Verified</span>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1 class="profile-name">Abdelrhman Hassan</h1>
+                        <div class="profile-meta">
+                            <span class="profile-title">Pharaonic Historian</span>
+                            <span class="meta-divider"></span>
+                            <span class="join-date">Joined December 2022</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-actions">
+                        <button class="btn btn-primary">Edit Profile</button>
+                        <button class="btn btn-secondary">Share Status</button>
+                    </div>
+                </section>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <div class="left-column">
+                        <div class="section-header">
+                            <h2 class="section-title">Upcoming Visits</h2>
+                            <a href="#" class="view-all-link">View All History</a>
+                        </div>
+                        <div class="visit-card">
+                            <div class="visit-image">
+                                <img src="../111.png" alt="GEM">
+                            </div>
+                            <div class="visit-content">
+                                <div class="visit-header">
+                                    <span class="visit-badge">General Admission</span>
+                                    <h3 class="visit-title">Grand Egyptian Museum Entry</h3>
+                                    <p class="visit-subtitle">Main Hall & Tutankhamun Gallery</p>
+                                </div>
+                                <div class="visit-details">
+                                    <div class="detail-item">
+                                        <span class="detail-label">Date</span>
+                                        <span class="detail-value">Dec 14, 2023</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="detail-label">Time</span>
+                                        <span class="detail-value">10:00 AM</span>
+                                    </div>
+                                </div>
+                                <div class="visit-footer">
+                                    <div class="visitor-count">+2</div>
+                                    <a href="../success/success.html"> <button class="btn btn-primary">VIEW TICKET</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-column">
+                        <h2 class="section-title">Explorer Stats</h2>
+                        <div class="stats-card">
+                            <div class="stat-item">
+                                <div class="stat-icon"><span class="material-symbols-outlined">visibility</span></div>
+                                <div class="stat-info">
+                                    <p class="stat-label">Artifacts Viewed</p>
+                                    <p class="stat-value">124</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon"><span class="material-symbols-outlined">map</span></div>
+                                <div class="stat-info">
+                                    <p class="stat-label">Exhibitions Toured</p>
+                                    <p class="stat-value">8</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline">View Leaderboard</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artifacts -->
+                <section class="carousel-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recently Viewed Artifacts</h2>
+                    </div>
+                    <div class="carousel-container">
+                        <div class="artifact-card">
+                            <div class="artifact-image">
+                                <img src="./unnamed (1).png" alt="Artifact">
+                                <button class="wishlist-btn"><span class="material-symbols-outlined">favorite</span></button>
+                            </div>
+                            <h3 class="artifact-name" style=" color: #ecb613; ">Tutankhamun's Mask</h3>
+                            <p class="artifact-period ">New Kingdom, 18th Dynasty</p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (2).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <h3 class="artifact-name" style=" color: #ecb613;">The Rosetta Stone</h3>
+                            <p class="artifact-period ">Ptolemaic Period, 196 BC</p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (3).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <h3 class="artifact-name" style=" color: #ecb613;">Bust of Nefertiti
+                            </h3>
+                            <p class="artifact-period ">Amarna Period, 1345 BC</p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (4).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <h3 class="artifact-name" style=" color: #ecb613;">The Great Sphinx
+                            </h3>
+                            <p class="artifact-period ">Old Kingdom, 4th Dynasty
+
+                            </p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (1).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <h3 class="artifact-name" style=" color: #ecb613;">Golden Canopic Jars
+                            </h3>
+                            <p class="artifact-period ">New Kingdom, 19th Dynasty
+
+                            </p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (2).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <h3 class="artifact-name" style=" color: #ecb613;">The Rosetta Stone</h3>
+                            <p class="artifact-period ">Ptolemaic Period, 196 BC</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer class="site-footer">
+                <div class="footer-container">
+                    <!-- Footer Header -->
+                    <div class="footer-header">
+                        <div class="footer-logo">
+                            <span class="material-symbols-outlined">account_balance</span>
+                        </div>
+                        <h2 class="footer-title">Grand Egyptian Museum</h2>
+                        <div class="footer-divider"></div>
+                    </div>
+
+                    <!-- Footer Grid -->
+                    <div class="footer-grid">
+                        <div class="footer-column">
+                            <h3>Explore</h3>
+                            <ul>
+                                <li><a href="../booking/booking.html">Tickets</a></li>
+                                <li><a href="../collection/collection.html">Collection</a></li>
+                                <li><a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h3>About</h3>
+                            <ul>
+                                <li><a href="../About us/About-us.html">History</a></li>
+                                <li><a href="../event/event.html">Events</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h3>Support</h3>
+                            <ul>
+                                <li><a href="../visitor help/help.html">Help</a></li>
+                                <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column connect-column">
+                            <h3>Connect</h3>
+                            <div class="social-links">
+                                <!-- Facebook -->
+                                <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook" style="color: #ecb613;">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+
+                                <!-- Twitter (X ) -->
+                                <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )" style="color: #ecb613;">
+                                    <i class="fa-brands fa-x-twitter"></i>
+                                </a>
+
+                                <!-- Instagram -->
+                                <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram" style="color: #ecb613;">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+
+                                <!-- YouTube -->
+                                <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube" style="color: #ecb613;">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                            </div>
+
+                            <p>
+                                Follow us on social media for updates and behind-the-scenes content.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer Separator -->
+                    <div class="footer-separator"></div>
+
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <div class="language-toggle">
+                            <button class="active" data-lang="en">English</button>
+                            <button data-lang="ar">العربية</button>
+                        </div>
+                        <div class="legal-section">
+                            <div class="legal-links">
+                                <a href="#privacy" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                                <a href="#terms" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                                <a href="#cookies" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                            </div>
+                            <div class="copyright">
+                                © 2024 Grand Egyptian Museum. All rights reserved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="script.js "></script>
+</body>
+
+</html>

@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TORTARA AI Artifact Scanner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="dark">
+    <!-- Header -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo" style="color: #ecb613;">
+                <div class="menu-logo-icon" style="color: #ecb613;">
+                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+                </div>
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                AI Experience
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item" style="color: black;">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item" style="color: black;">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" style="color: black;">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" style="color: black;">AI Voice Storytelling (3D)</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/code.html" class="menu-link">About</a>
+            <a href="../collection/collection.html" class="menu-link">Collection</a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn" style="background-color: #ecb613;">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link" style="color: black;">
+                <span class="material-symbols-outlined" style="color: black;">favorite</span> Favorites
+            </a>
+
+            <button class="menu-icon-link" id="menuLangBtn" style="color: black;">
+            <span class="material-symbols-outlined" style="color: black;">language</span>
+            Language
+        </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo" style="color: #ecb613;">
+                <div class="menu-logo-icon" style="color: #ecb613;">
+                    <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+                </div>
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                AI Experience
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/code.html" class="menu-link">About</a>
+            <a href="../collection/collection.html" class="menu-link">Collection</a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn">Book now</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+            <button class="menu-icon-link" id="menuThemeBtn">
+            <span class="material-symbols-outlined">dark_mode</span>
+            Theme
+        </button>
+            <button class="menu-icon-link" id="menuLangBtn">
+            <span class="material-symbols-outlined">language</span>
+            Language
+        </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                <span class="material-symbols-outlined" style="color: white;">menu</span>
+            </button>
+                <div class="logo-section">
+                    <div class="logo-icon" style="color: #ecb613;">
+                        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+                    </svg>
+                    </div>
+                    <h2 class="logo-text" style="color: white; font-size: 22px;">Tutora</h2>
+                </div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html" style="color: white;">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" style="color: white;">Plan Your Visit</a>
+                <a href="../event/event.html" style="color: white;">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger" style="color: white;">
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link" style="color: black;">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link" style="color: black;">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" style="color: black;">AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" style="color: black;">AI Voice Storytelling (3D)</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html" style="color: white;">Shop</a>
+                <a href="../about/code.html" style="color: white;">About</a>
+                <a href="../collection/collection.html" style="color: white;">Collection</a>
+            </nav>
+
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="material-symbols-outlined" style="color: white;">search</span>
+                    <input type="text" placeholder="Search..." style="color: white;" />
+                </div>
+                <button class="theme-btn" id="themeBtn">
+                <span class="material-symbols-outlined" style="color: white;">dark_mode</span>
+            </button>
+                <a href="../booking/booking.html" class="btn-booking" style="color: black;background-color: #ecb613;">booking</a>
+                <a href="../fav/favourite.html" style="text-decoration: none;">
+                    <button class="icon-btn">
+                    <span class="material-symbols-outlined" style="color: white;">favorite</span>
+                </button>
+                </a>
+                <button class="icon-btn" id="langBtn">
+                <span class="material-symbols-outlined" style="color: white;">language</span>
+            </button>
+                <a href="../Profile/profile.html">
+                    <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Scanner Section -->
+        <section class="scanner-section">
+            <div class="scanner-container">
+                <img alt="Ancient Egyptian Artifact" class="artifact-img" src="../2.jpg" />
+                <div class="scan-line"></div>
+                <div class="hud-bracket top-left"></div>
+                <div class="hud-bracket top-right"></div>
+                <div class="hud-bracket bottom-left"></div>
+                <div class="hud-bracket bottom-right"></div>
+
+                <div class="info-badge resonance-badge glass-panel">
+                    <p class="badge-label">Ancient Resonance</p>
+                    <p class="badge-value">Sync: 98.4%</p>
+                </div>
+
+                <div class="info-badge identity-badge glass-panel">
+                    <p class="badge-label">Pharaoh Identity</p>
+                    <p class="badge-value">Tortara v2.4 Match</p>
+                </div>
+
+                <div class="hud-center">
+                    <div class="circle-outer">
+                        <div class="circle-inner"></div>
+                    </div>
+                </div>
+
+                <div class="status-bar glass-panel">
+                    <div class="status-indicator">
+                        <div class="dot-pulse"></div>
+                        <div>
+                            <p class="status-text-small">Status</p>
+                            <p class="status-text-main">Matching Database...</p>
+                        </div>
+                    </div>
+                    <div class="status-divider"></div>
+                    <div>
+                        <p class="status-text-small">Object detected</p>
+                        <p class="status-text-main" style="color: var(--primary)">
+                            Granite Royal Statue
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="camera-btn-container">
+                <div class="camera-glow"></div>
+                <button class="camera-btn">
+            <span class="material-icons-outlined" style="font-size: 2.25rem"
+              >camera</span
+            >
+          </button>
+            </div>
+
+            <div class="quick-actions">
+                <a href="../about/code.html">
+                    <button class="pill-btn glass-panel" style="color:black;background-color: rgb(212, 136, 22);">
+              History of the GEM
+            </button>
+                </a>
+                <a href="../collection/collection.html"><button class="pill-btn glass-panel" style="color:black;background-color: rgb(212, 136, 22);">
+            The Golden Mask
+          </button></a>
+            </div>
+        </section>
+
+        <!-- Chat History Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <div class="sidebar-title">
+                    <span class="material-icons-outlined" style="color: var(--primary)">forum</span
+            >
+            <h2>Chat History</h2>
+          </div>
+          <button class="action-btn" style="color: var(--slate-500)">
+            <span class="material-icons-outlined" style="font-size: 18px"
+              >open_in_full</span
+            >
+          </button>
+        </div>
+
+        <div class="chat-history custom-scrollbar">
+          <div class="chat-bubble-container">
+            <div class="user-bubble-wrapper">
+              <div class="user-bubble">
+                <p class="text-sm leading-relaxed">
+                  Tell me about the construction of the Grand Egyptian Museum.
+                </p>
+              </div>
+            </div>
+            <div class="bubble-label user-label">YOU</div>
+          </div>
+
+          <div class="chat-bubble-container">
+            <div class="ai-bubble">
+              <p class="text-sm leading-relaxed">
+                The GEM is a masterpiece of modern engineering. It spans 50
+                hectares and houses over 100,000 artifacts. Its design
+                incorporates the triangular motifs of the Pyramids in a
+                futuristic glass facade.
+              </p>
+            </div>
+            <div class="ai-label-container">
+              <span class="bubble-label ai-label">TORTARA</span>
+                    <div class="ai-dot"></div>
+                </div>
+            </div>
+            </div>
+
+            <div class="chat-input-container">
+                <input class="chat-input" placeholder="Ask Tortara anything..." type="text" />
+                <button class="send-btn">
+            <span class="material-icons-outlined">send</span>
+          </button>
+            </div>
+        </aside>
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Footer Header -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html">Tickets</a></li>
+                        <li><a href="../collection/collection.html">Collection</a></li>
+                        <li><a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html">History</a></li>
+                        <li><a href="../event/event.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <!-- Twitter (X ) -->
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+
+                    <p>
+                        Follow us on social media for updates and behind-the-scenes content.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Separator -->
+            <div class="footer-separator"></div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="language-toggle" style="background-color: transparent;">
+                    <button class="active" data-lang="en" style="background-color:  #ecb613; ">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="#privacy" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="#terms" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="#cookies" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">
+                        © 2024 Grand Egyptian Museum. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

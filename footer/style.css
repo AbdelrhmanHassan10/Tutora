@@ -1,0 +1,391 @@
+/* ============================================
+   REUSABLE FOOTER COMPONENT - CLEAN CSS
+   ============================================ */
+
+
+/* Reset */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Body & Dark Mode */
+
+body {
+    background-color: #f8f8f5;
+    color: #121212;
+    font-family: "Newsreader", serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.gem-dark-mode {
+    background-color: #121212;
+    color: #f8f8f5;
+}
+
+
+/* Main Wrapper */
+
+.gem-main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+/* Hero Section */
+
+.gem-hero-section {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.gem-hero-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .gem-hero-title {
+        font-size: 3.75rem;
+    }
+}
+
+.gem-hero-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.7;
+}
+
+
+/* Footer General */
+
+.gem-footer {
+    width: 100%;
+    padding: 4rem 1.5rem 2rem;
+    border-top: 1px solid rgba(242, 185, 13, 0.3);
+    transition: background-color 0.3s ease;
+    background-color: #f8f8f5;
+}
+
+body.gem-dark-mode .gem-footer {
+    background-color: #121212;
+}
+
+.gem-footer-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .gem-footer-inner {
+        padding: 0 3rem;
+    }
+}
+
+
+/* Footer Header */
+
+.gem-footer-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.gem-footer-icon {
+    margin-bottom: 1rem;
+    color: #f2b90d;
+}
+
+.gem-footer-icon .material-symbols-outlined {
+    font-size: 3.75rem;
+}
+
+.gem-footer-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.gem-footer-line {
+    height: 0.25rem;
+    width: 3rem;
+    background-color: #f2b90d;
+    margin-top: 1rem;
+    border-radius: 9999px;
+}
+
+
+/* Footer Grid */
+
+.gem-footer-cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .gem-footer-cols {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+}
+
+.gem-footer-col-title {
+    color: #f2b90d;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.gem-footer-col:hover .gem-footer-col-title {
+    color: #40e0d0;
+}
+
+.gem-footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    opacity: 0.8;
+}
+
+.gem-footer-links a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.gem-footer-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #f2b90d;
+    transition: width 0.3s ease;
+}
+
+.gem-footer-links a:hover {
+    color: #f2b90d;
+}
+
+.gem-footer-links a:hover::before {
+    width: 100%;
+}
+
+
+/* Social Icons */
+
+.gem-social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.gem-social-link {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid rgba(242, 185, 13, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f2b90d;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.gem-social-link:hover {
+    background-color: #f2b90d;
+    color: #121212;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(242, 185, 13, 0.3);
+}
+
+
+/* Footer Divider */
+
+.gem-footer-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #d1d5db;
+    margin-bottom: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+body.gem-dark-mode .gem-footer-divider {
+    background-color: #374151;
+}
+
+
+/* Footer Bottom */
+
+.gem-footer-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+@media (min-width: 768px) {
+    .gem-footer-bottom {
+        flex-direction: row;
+    }
+}
+
+
+/* Language Toggle */
+
+.gem-lang-toggle {
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+body.gem-dark-mode .gem-lang-toggle {
+    background-color: rgba(31, 41, 55, 0.5);
+    border-color: #374151;
+}
+
+.gem-lang-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.gem-lang-btn.active {
+    background-color: white;
+    color: #121212;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+body.gem-dark-mode .gem-lang-btn.active {
+    background-color: #f2b90d;
+    color: #121212;
+}
+
+.gem-lang-btn:not(.active) {
+    color: #6b7280;
+}
+
+body.gem-dark-mode .gem-lang-btn:not(.active) {
+    color: #9ca3af;
+}
+
+.gem-lang-btn:not(.active):hover {
+    color: #f2b90d;
+}
+
+
+/* Legal Section */
+
+.gem-legal-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .gem-legal-section {
+        align-items: flex-end;
+    }
+}
+
+.gem-legal-links {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0.6;
+}
+
+.gem-legal-links a {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.gem-legal-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #f2b90d;
+    transition: width 0.3s ease;
+}
+
+.gem-legal-links a:hover {
+    color: #f2b90d;
+}
+
+.gem-legal-links a:hover::after {
+    width: 100%;
+}
+
+
+/* Copyright */
+
+.gem-copyright {
+    font-size: 0.75rem;
+    opacity: 0.4;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+
+/* Animations */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
