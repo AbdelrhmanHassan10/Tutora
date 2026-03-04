@@ -1707,3 +1707,40 @@ body.dark .language-toggle button:not(.active) {
         grid-template-cols: repeat(4, 1fr);
     }
 }
+
+
+/* ========================================= */
+
+
+/* FAVORITE BUTTON - ACTIVE (LIKED) STATE    */
+
+
+/* ========================================= */
+
+
+/* This targets the favorite button itself when it has the 'active' class */
+
+.favorite-btn.active {
+    background: rgba(255, 82, 82, 0.1);
+    /* Adds a subtle red glow */
+    backdrop-filter: blur(4px);
+}
+
+
+/* This targets the heart icon INSIDE the active button */
+
+.favorite-btn.active .material-symbols-outlined {
+    /* This is the most important part: It fills the icon */
+    font-variation-settings: 'FILL' 1;
+    /* This makes the filled heart icon red */
+    color: #ff5252;
+    /* Ensures the icon is fully visible */
+    opacity: 1;
+}
+
+
+/* This makes the color change smooth */
+
+.favorite-btn .material-symbols-outlined {
+    transition: all 0.2s ease-in-out;
+}

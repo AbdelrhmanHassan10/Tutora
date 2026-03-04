@@ -1,118 +1,27 @@
-// ============================================
-// START: API INTEGRATION & CORE FUNCTIONALITY
-// ============================================
-
-const BASE_URL = 'https://gem-backend-production.up.railway.app/api';
-
-/**
- * A helper function to make API requests, handling both JSON and FormData.
- * @param {string} endpoint - The API endpoint to call.
- * @param {string} method - The HTTP method (GET, POST, PUT, DELETE ).
- * @param {object | FormData} [body=null] - The request body.
- * @param {boolean} [isFormData=false] - Flag to indicate if the body is FormData.
- * @returns {Promise<object>} - The JSON response from the API.
- */
-async function makeApiRequest(endpoint, method, body = null, isFormData = false) {
-    const token = localStorage.getItem('token');
-    const headers = {};
-
-    // Don't set Content-Type for FormData, the browser does it automatically with the correct boundary.
-    if (!isFormData) {
-        headers['Content-Type'] = 'application/json';
-    }
-
-    if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-    }
-
-    const config = {
-        method,
-        headers,
-    };
-
-    if (body) {
-        config.body = isFormData ? body : JSON.stringify(body);
-    }
-
-    try {
-        const response = await fetch(`${BASE_URL}${endpoint}`, config);
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
-        }
-
-        const contentType = response.headers.get("content-type");
-        if (contentType && contentType.indexOf("application/json") !== -1) {
-            return await response.json();
-        } else {
-            return {}; // Return an empty object for non-JSON responses (e.g., 204 No Content)
-        }
-
-    } catch (error) {
-        console.error('API Request Error:', error);
-        alert(`API Error: ${error.message}`); // Show a user-friendly error
-        throw error;
-    }
-}
-
-// --- API Function Objects ---
-const auth = {
-    getMe: () => makeApiRequest('/auth/me', 'GET'),
-};
-
-const ai = {
-    ask: (formData) => makeApiRequest('/ai/ask', 'POST', formData, true),
-};
-
-/**
- * Handles the process of sending an image file to the AI for identification.
- * @param {File} imageFile - The image file to be analyzed.
- */
-function identifyArtifact(imageFile) {
-    if (!imageFile) {
-        alert("No image was provided.");
-        return;
-    }
-
-    console.log("Preparing to send image to AI:", imageFile.name);
-    alert("Analyzing image... Please wait for the result.");
-
-    const formData = new FormData();
-    // The API documentation implies the image should be sent directly.
-    // If the API expects a specific key like 'image', use: formData.append('image', imageFile);
-    formData.append('image', imageFile);
-
-    ai.ask(formData)
-        .then(response => {
-            console.log('AI Response:', response);
-            // Assuming the response has a property named 'answer' with the artifact info.
-            const result = response.answer || "Could not identify the artifact or no details were returned.";
-            alert(`AI Analysis Complete:\n\n${result}`);
-        })
-        .catch(error => {
-            console.error('AI Ask Error:', error.message);
-            // The error is already displayed in an alert by the makeApiRequest function.
-        });
-}
-
-
-// ============================================
-// ORIGINAL SCRIPT (UI & INTERACTIONS)
-// ============================================
-
-// --- THEME TOGGLE ---
 const themeBtn = document.getElementById('themeBtn');
 const body = document.body;
+
+// Check for saved theme preference
 const savedTheme = localStorage.getItem('theme');
 
-// Default to dark mode if no theme is saved
+// Default is DARK
 if (savedTheme === 'light') {
     body.classList.remove('dark-mode');
 } else {
     body.classList.add('dark-mode');
 }
 
+updateThemeIcon();
+
+// Toggle dark mode
+themeBtn.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateThemeIcon();
+});
+
+// Update theme icon
 function updateThemeIcon() {
     const icon = themeBtn.querySelector('.material-symbols-outlined');
     if (body.classList.contains('dark-mode')) {
@@ -121,35 +30,36 @@ function updateThemeIcon() {
         icon.textContent = 'dark_mode';
     }
 }
-updateThemeIcon(); // Set the correct icon on page load
 
-themeBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    updateThemeIcon();
-});
+// ============================================
+// LANGUAGE TOGGLE
+// ============================================
 
-
-// --- LANGUAGE TOGGLE ---
 document.querySelectorAll('.language-toggle button').forEach(btn => {
     btn.addEventListener('click', () => {
-        document.querySelectorAll('.language-toggle button').forEach(b => b.classList.remove('active'));
+        // Remove active from all buttons
+        document.querySelectorAll('.language-toggle button').forEach(b => {
+            b.classList.remove('active');
+        });
+        // Add active to clicked button
         btn.classList.add('active');
         const lang = btn.getAttribute('data-lang');
         localStorage.setItem('language', lang);
         console.log('Language changed to:', lang);
-        // Add logic here to change page content based on language
     });
 });
 
-// --- SMOOTH SCROLL FOR ANCHOR LINKS ---
+// ============================================
+// SMOOTH SCROLL FOR NAVIGATION
+// ============================================
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (href !== '#' && document.querySelector(href)) {
             e.preventDefault();
-            document.querySelector(href).scrollIntoView({
+            const target = document.querySelector(href);
+            target.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
@@ -157,7 +67,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// --- MOBILE MENU TOGGLE ---
+// ============================================
+// BUTTON INTERACTIONS
+// ============================================
+
+// Learn More buttons
+document.querySelectorAll('.btn-learn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('Learn More clicked');
+        // Add ripple effect
+        addRipple(btn, e);
+    });
+});
+
+// Action buttons
+document.querySelectorAll('.btn-action-gold, .btn-action-turquoise').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('Action button clicked');
+        addRipple(btn, e);
+    });
+});
+
+// Primary and Accent buttons
+document.querySelectorAll('.btn-primary, .btn-accent').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        console.log('Button clicked:', btn.textContent);
+        addRipple(btn, e);
+    });
+});
+// ============================================
+// MOBILE MENU TOGGLE
+// ============================================
+
 const menuBtn = document.getElementById('menuBtn');
 const closeBtn = document.getElementById('closeBtn');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -166,58 +109,236 @@ const menuOverlay = document.querySelector('.menu-overlay');
 if (menuBtn) {
     menuBtn.addEventListener('click', () => {
         mobileMenu.classList.add('active');
-        menuOverlay.classList.add('active');
+        if (menuOverlay) {
+            menuOverlay.classList.add('active');
+        }
         document.body.style.overflow = 'hidden';
     });
 }
 
-function closeMobileMenu() {
-    mobileMenu.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
+if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        if (menuOverlay) {
+            menuOverlay.classList.remove('active');
+        }
+        document.body.style.overflow = 'auto';
+    });
 }
 
-if (closeBtn) closeBtn.addEventListener('click', closeMobileMenu);
-if (menuOverlay) menuOverlay.addEventListener('click', closeMobileMenu);
+// Close menu when clicking overlay
+if (menuOverlay) {
+    menuOverlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+}
 
-document.querySelectorAll('.menu-link, .dropdown-item').forEach(link => {
-    link.addEventListener('click', closeMobileMenu);
+// Close menu when clicking on a link
+const menuLinks = document.querySelectorAll('.menu-link, .dropdown-item');
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        if (menuOverlay) {
+            menuOverlay.classList.remove('active');
+        }
+        document.body.style.overflow = 'auto';
+    });
 });
 
-// --- MOBILE & DESKTOP DROPDOWNS ---
-document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+// ============================================
+// MOBILE DROPDOWN TOGGLE
+// ============================================
+
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
         e.stopPropagation();
+
         const dropdownItems = toggle.nextElementSibling;
         if (dropdownItems && dropdownItems.classList.contains('dropdown-items')) {
+            // Close other dropdowns
+            document.querySelectorAll('.dropdown-items.show').forEach(item => {
+                if (item !== dropdownItems) {
+                    item.classList.remove('show');
+                    item.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            // Toggle current dropdown
             dropdownItems.classList.toggle('show');
             toggle.classList.toggle('active');
         }
     });
 });
 
-document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-    dropdown.addEventListener('mouseenter', () => dropdown.querySelector('.dropdown-menu').style.opacity = '1');
-    dropdown.addEventListener('mouseleave', () => dropdown.querySelector('.dropdown-menu').style.opacity = '0');
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.menu-dropdown') && !e.target.closest('.dropdown-items')) {
+        document.querySelectorAll('.dropdown-items.show').forEach(item => {
+            item.classList.remove('show');
+            item.previousElementSibling.classList.remove('active');
+        });
+    }
 });
 
-// --- FAQ ACCORDION ---
-document.querySelectorAll('.faq-item').forEach(item => {
+// ============================================
+// DESKTOP DROPDOWN HOVER
+// ============================================
+
+const navDropdowns = document.querySelectorAll('.nav-dropdown');
+navDropdowns.forEach(dropdown => {
+    dropdown.addEventListener('mouseenter', () => {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        if (menu) {
+            menu.style.opacity = '1';
+            menu.style.visibility = 'visible';
+        }
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        if (menu) {
+            menu.style.opacity = '0';
+            menu.style.visibility = 'hidden';
+        }
+    });
+});
+
+
+// ============================================
+// ACTIVE NAV LINK HIGHLIGHTING
+// ============================================
+
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section');
+
+function updateActiveLink() {
+    let current = '';
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.clientHeight;
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveLink);
+
+// ============================================
+// BUTTON INTERACTIONS
+// ============================================
+
+const primaryButtons = document.querySelectorAll('.btn-primary, .btn-secondary');
+
+primaryButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+        console.log('Button clicked:', this.textContent.trim());
+
+        // Add click animation
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = 'scale(1)';
+        }, 100);
+    });
+});
+
+// ============================================
+// FAQ ACCORDION
+// ============================================
+
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
     const summary = item.querySelector('.faq-summary');
+
     summary.addEventListener('click', (e) => {
         e.preventDefault();
-        const detail = item.querySelector('.faq-answer');
-        if (item.open) {
+
+        // Close other items
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.hasAttribute('open')) {
+                otherItem.removeAttribute('open');
+            }
+        });
+
+        // Toggle current item
+        if (item.hasAttribute('open')) {
             item.removeAttribute('open');
         } else {
-            // Close other open items first
-            document.querySelectorAll('.faq-item[open]').forEach(openItem => openItem.removeAttribute('open'));
             item.setAttribute('open', '');
         }
     });
 });
 
-// --- SCROLL-BASED ANIMATIONS ---
+// ============================================
+// NAVBAR SCROLL EFFECT
+// ============================================
+
+const navbar = document.querySelector('.navbar');
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+
+    if (scrollTop > 50) {
+        navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.3)';
+    } else {
+        navbar.style.boxShadow = 'none';
+    }
+
+    lastScrollTop = scrollTop;
+});
+
+// ============================================
+// IMAGE LAZY LOADING
+// ============================================
+
+const images = document.querySelectorAll('img');
+
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.style.opacity = '10';
+            img.onload = () => {
+                img.style.transition = 'opacity 0.3s ease';
+                img.style.opacity = '1';
+            };
+            observer.unobserve(img);
+        }
+    });
+});
+
+images.forEach(img => imageObserver.observe(img));
+
+// ============================================
+// CARD HOVER EFFECTS
+// ============================================
+
+const cards = document.querySelectorAll('.card, .example-card');
+
+cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.3s ease';
+    });
+});
+
+// ============================================
+// SCROLL ANIMATIONS
+// ============================================
+
 const animationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -225,110 +346,113 @@ const animationObserver = new IntersectionObserver((entries) => {
             animationObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
 
 document.querySelectorAll('.card, .example-card, .faq-item').forEach(el => {
-    el.style.opacity = '0'; // Start as invisible for the animation
     animationObserver.observe(el);
 });
+
+// ============================================
+// PROFILE IMAGE CLICK
+// ============================================
+
+const profileImg = document.querySelector('.profile-img');
+if (profileImg) {
+    profileImg.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Profile clicked');
+    });
+}
+
+// ============================================
+// SEARCH FUNCTIONALITY (if needed)
+// ============================================
+
+const searchInput = document.querySelector('.search-input');
+if (searchInput) {
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const query = searchInput.value;
+            console.log('Search query:', query);
+        }
+    });
+}
+
+// ============================================
+// RESPONSIVE ADJUSTMENTS
+// ============================================
+
+function handleResponsive() {
+    const width = window.innerWidth;
+
+    // Adjust for different screen sizes
+    if (width <= 768) {
+        // Mobile optimizations
+        document.body.style.fontSize = '16px';
+    } else {
+        // Desktop optimizations
+        document.body.style.fontSize = '16px';
+    }
+}
+
+window.addEventListener('resize', handleResponsive);
+handleResponsive();
+
+// ============================================
+// INITIALIZATION
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('✓ Tutora AI page loaded successfully');
+    console.log('📱 Mobile menu available on small screens');
+    console.log('🎨 Smooth animations enabled');
+    console.log('🔍 FAQ accordion ready');
+
+    // Initial active link update
+    updateActiveLink();
+});
+
+// ============================================
+// KEYBOARD SHORTCUTS
+// ============================================
+
+document.addEventListener('keydown', (e) => {
+    // Press 'M' to toggle mobile menu on mobile screens
+    if (e.key === 'm' || e.key === 'M') {
+        if (window.innerWidth <= 768) {
+            mobileNav.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('.material-symbols-outlined');
+            icon.textContent = mobileNav.classList.contains('active') ? 'close' : 'menu';
+        }
+    }
+
+    // Press 'Home' to scroll to top
+    if (e.key === 'Home') {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+});
+
+// ============================================
+// FADE IN UP ANIMATION
+// ============================================
 
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 `;
 document.head.appendChild(style);
-
-
-// ============================================
-// EVENT LISTENERS & INITIALIZATION
-// ============================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    // --- CAMERA AND UPLOAD FUNCTIONALITY ---
-    const uploadButton = document.querySelector('.hero-buttons .btn-primary');
-    const cameraButton = document.querySelector('.hero-buttons .btn-secondary');
-    const fileInput = document.getElementById('file-input');
-    const cameraModal = document.getElementById('camera-modal');
-    const cameraFeed = document.getElementById('camera-feed');
-    const captureBtn = document.getElementById('capture-btn');
-    const closeCameraBtn = document.getElementById('close-camera-btn');
-    let cameraStream = null;
-
-    // "Upload Photo" button opens file dialog
-    if (uploadButton) {
-        uploadButton.addEventListener('click', () => fileInput.click());
-    }
-
-    // File dialog selection handler
-    fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) identifyArtifact(file);
-    });
-
-    // "Use Camera" button opens camera modal
-    if (cameraButton) {
-        cameraButton.addEventListener('click', async() => {
-            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                return alert("Your browser does not support camera access.");
-            }
-            try {
-                // Prefer the rear camera
-                cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-                cameraFeed.srcObject = cameraStream;
-                cameraModal.style.display = 'flex';
-            } catch (err) {
-                console.error("Error accessing camera:", err);
-                alert("Could not access the camera. Please ensure you have given permission and are on a secure (https ) site.");
-            }
-        });
-    }
-
-    // Function to close and clean up the camera
-    const closeCamera = () => {
-        if (cameraStream) {
-            cameraStream.getTracks().forEach(track => track.stop());
-        }
-        cameraModal.style.display = 'none';
-        cameraFeed.srcObject = null;
-    };
-
-    // "Capture Photo" button
-    captureBtn.addEventListener('click', () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = cameraFeed.videoWidth;
-        canvas.height = cameraFeed.videoHeight;
-        canvas.getContext('2d').drawImage(cameraFeed, 0, 0, canvas.width, canvas.height);
-        canvas.toBlob((blob) => {
-            const imageFile = new File([blob], "capture.jpg", { type: "image/jpeg" });
-            identifyArtifact(imageFile);
-            closeCamera();
-        }, 'image/jpeg');
-    });
-
-    // Close button for camera modal
-    closeCameraBtn.addEventListener('click', closeCamera);
-
-    // --- AUTHENTICATION CHECK ---
-    const token = localStorage.getItem('token');
-    if (token) {
-        auth.getMe()
-            .then(user => {
-                console.log('User authenticated:', user);
-                const profileImg = document.querySelector('.profile-img');
-                // Use a placeholder if profile picture URL is missing
-                if (user.profilePictureUrl && profileImg) {
-                    profileImg.src = user.profilePictureUrl;
-                }
-            })
-            .catch(error => {
-                console.error('Authentication failed:', error.message);
-                localStorage.removeItem('token'); // Clean up invalid token
-            });
-    }
-
-    console.log('✓ Tutora AI page loaded successfully');
-    console.log('📸 Camera and Upload features are active.');
-});
