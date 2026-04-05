@@ -1,111 +1,143 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================
+       MOBILE MENU
+    ===================== */
 
     const menuBtn = document.getElementById("menuBtn");
     const closeBtn = document.getElementById("closeBtn");
-    const mobileMenu = document.querySelector(".mobile-menu");
-
-    if (menuBtn) {
-        menuBtn.addEventListener("click", function() {
-            mobileMenu.classList.add("active");
-        });
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener("click", function() {
-            mobileMenu.classList.remove("active");
-        });
-    }
-
-}); // ============================================
-// COMPLETE CLEAN SCRIPT (Dark + Mobile Menu)
-// ============================================
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    // ============================================
-    // DARK MODE SYSTEM (GLOBAL)
-    // ============================================
-
-    const themeBtn = document.getElementById('themeBtn');
-    const html = document.documentElement;
-
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-
-    if (savedTheme === 'dark') {
-        html.classList.add('dark');
-    } else {
-        html.classList.remove('dark');
-    }
-
-    function updateThemeIcon() {
-        if (!themeBtn) return;
-
-        const icon = themeBtn.querySelector('.material-symbols-outlined');
-        if (!icon) return;
-
-        icon.textContent = html.classList.contains('dark') ?
-            'light_mode' :
-            'dark_mode';
-    }
-
-    updateThemeIcon();
-
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            html.classList.toggle('dark');
-
-            const isDark = html.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-
-            updateThemeIcon();
-        });
-    }
-
-    // ============================================
-    // MOBILE MENU SYSTEM
-    // ============================================
-
-    const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuOverlay = document.getElementById("menuOverlay");
 
     function openMenu() {
-        if (!mobileMenu || !menuOverlay) return;
-
-        mobileMenu.classList.add('open');
-        menuOverlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
+        mobileMenu.classList.add("open");
+        menuOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
     }
 
     function closeMenu() {
-        if (!mobileMenu || !menuOverlay) return;
-
-        mobileMenu.classList.remove('open');
-        menuOverlay.classList.remove('open');
-        document.body.style.overflow = '';
+        mobileMenu.classList.remove("open");
+        menuOverlay.classList.remove("open");
+        document.body.style.overflow = "";
     }
 
-    if (menuBtn) menuBtn.addEventListener('click', openMenu);
-    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+    menuBtn?.addEventListener("click", openMenu);
+    closeBtn?.addEventListener("click", closeMenu);
+    menuOverlay?.addEventListener("click", closeMenu);
 
-    // Close menu when clicking any link
-    document.querySelectorAll('.menu-link').forEach(link => {
-        link.addEventListener('click', closeMenu);
+    document.querySelectorAll(".menu-link").forEach(link => {
+        link.addEventListener("click", closeMenu);
     });
 
-    // ============================================
-    // MOBILE DROPDOWN TOGGLE
-    // ============================================
 
-    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const parent = btn.closest('.menu-dropdown');
-            if (parent) parent.classList.toggle('open');
+    /* =====================
+       RATING SYSTEM
+    ===================== */
+
+    const ratingItems = document.querySelectorAll(".fb-rating-item");
+
+    ratingItems.forEach(item => {
+        item.addEventListener("click", () => {
+
+            ratingItems.forEach(i => {
+                i.classList.remove("active");
+
+                const icon = i.querySelector(".material-symbols-outlined");
+                if (icon) icon.classList.remove("fb-filled-icon");
+
+                const circle = i.querySelector(".fb-rating-circle");
+                if (circle) circle.classList.remove("fb-rating-active");
+            });
+
+            item.classList.add("active");
+
+            const icon = item.querySelector(".material-symbols-outlined");
+            if (icon) icon.classList.add("fb-filled-icon");
+
+            const circle = item.querySelector(".fb-rating-circle");
+            if (circle) circle.classList.add("fb-rating-active");
+
         });
     });
 
-    console.log("✓ Dark mode + Mobile menu working");
+
+    /* =====================
+       CHARACTER COUNT
+    ===================== */
+
+    const textarea = document.querySelector(".fb-textarea");
+    const charCount = document.querySelector(".fb-char-count");
+
+    if (textarea && charCount) {
+
+        textarea.addEventListener("input", () => {
+
+            const length = textarea.value.length;
+            charCount.textContent = `${length} / 1000`;
+
+            if (length > 1000) {
+                charCount.style.color = "#EF4444";
+            } else {
+                charCount.style.color = "";
+            }
+
+        });
+
+    }
+
+
+    /* =====================
+       CATEGORY BUTTONS
+    ===================== */
+
+    const categoryBtns = document.querySelectorAll(".fb-category-btn");
+
+    categoryBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            btn.classList.toggle("active");
+        });
+    });
+
+
+    /* =====================
+       SUBMIT FEEDBACK
+    ===================== */
+
+    const submitBtn = document.querySelector(".fb-submit-btn");
+
+    if (submitBtn) {
+
+        submitBtn.addEventListener("click", () => {
+
+            const rating = document.querySelector(".fb-rating-item.active");
+
+            if (!rating) {
+                alert("Please select a rating before submitting.");
+                return;
+            }
+
+            submitBtn.innerHTML =
+                '<span class="material-symbols-outlined">sync</span> Sending...';
+
+            submitBtn.style.pointerEvents = "none";
+
+            setTimeout(() => {
+
+                alert("Thank you for your feedback!");
+
+                submitBtn.innerHTML = "Submit Feedback";
+                submitBtn.style.pointerEvents = "auto";
+
+                if (textarea) textarea.value = "";
+                if (charCount) charCount.textContent = "0 / 1000";
+
+                ratingItems.forEach(i => i.classList.remove("active"));
+                categoryBtns.forEach(b => b.classList.remove("active"));
+
+            }, 2000);
+
+        });
+
+    }
+
 });

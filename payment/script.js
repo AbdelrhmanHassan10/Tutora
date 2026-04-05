@@ -1,178 +1,192 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production.up.railway.app/api';
 
     // ============================================
-    // 1. API INTEGRATION & STATE MANAGEMENT
+    // 1. LOAD BOOKING DATA FROM LOCAL STORAGE
     // ============================================
 
-    let currentBookingId = null;
-    let currentBookingTotal = 0;
+    function initializeOrderSummary() {
+        // Retrieve the booking data saved by the previous page
+        const bookingDataString = localStorage.getItem('currentBooking');
 
-    // --- API Helper ---
-    async function makeApiRequest(endpoint, method = 'GET', body = null) {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert("Authentication session has expired. Please log in again.");
-            window.location.href = '../2.login/code.html'; // Redirect to login
-            return null;
-        }
-
-        const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
-        const config = { method, headers };
-        if (body) config.body = JSON.stringify(body);
-
-        try {
-            const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
-            }
-            // Handle PUT requests that might not return a body
-            if (response.status === 200 && response.headers.get('content-length') === '0') {
-                return { success: true };
-            }
-            return await response.json();
-        } catch (error) {
-            console.error(`API Request Error on ${endpoint}:`, error);
-            alert(`API Error: ${error.message}`);
-            throw error;
-        }
-    }
-
-    // --- UI Update Function ---
-    function updateOrderSummary(booking) {
-        if (!booking) return;
-
-        const orderItemsContainer = document.querySelector('.order-items');
-        const subtotalEl = document.querySelector('.order-totals .total-row:nth-child(1) span:nth-child(2)');
-        const taxesEl = document.querySelector('.order-totals .total-row:nth-child(2) span:nth-child(2)');
-        const totalEl = document.querySelector('.order-totals .total-row.final span:nth-child(2)');
-        const payBtn = document.querySelector('.btn-pay');
-
-        // Assuming the API returns a simple structure for now
-        // In a real scenario, you'd get detailed items from the booking object
-        const quantity = booking.quantity || 1;
-        const type = booking.type || "Museum Tickets";
-        const date = new Date(booking.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-        const time = booking.time || "";
-
-        // Calculate price based on quantity (example logic)
-        const subtotal = quantity * 25; // Example: $25 per ticket
-        const taxes = subtotal * 0.10; // Example: 10% tax
-        const total = subtotal + taxes;
-        currentBookingTotal = total;
-
-        orderItemsContainer.innerHTML = `
-            <div class="order-item">
-                <img class="item-img" src="./unnamed (5).png" alt="Ticket">
-                <div class="item-info">
-                    <p class="item-name">${type}</p>
-                    <p class="item-details">Qty: ${quantity} | ${date} - ${time}</p>
-                </div>
-            </div>`;
-
-        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-        taxesEl.textContent = `$${taxes.toFixed(2)}`;
-        totalEl.textContent = `$${total.toFixed(2)}`;
-        payBtn.textContent = `Pay $${total.toFixed(2)}`;
-    }
-
-    // --- Page Initialization ---
-    async function initializeCheckout() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const bookingId = urlParams.get('bookingId');
-
-        if (!bookingId) {
-            alert("No booking ID found. Returning to booking page.");
-            window.location.href = '../booking/booking.html';
+        if (!bookingDataString) {
+            console.error("No booking data found in localStorage.");
+            // Display an error message if no data is found
+            document.querySelector('.order-card').innerHTML = '<p style="color: red; padding: 1rem;">Booking details not found. Please go back and try again.</p>';
             return;
         }
 
-        currentBookingId = bookingId;
+        const bookingState = JSON.parse(bookingDataString);
 
-        // In a real scenario, you would fetch the specific booking details
-        // For now, we'll simulate it since there's no GET /bookings/:id endpoint
-        // const bookingDetails = await makeApiRequest(`/bookings/${bookingId}`);
-        // For this demo, we'll use placeholder data based on the ID.
-        const mockBookingDetails = {
-            id: bookingId,
-            quantity: 2,
-            type: "Adult General Admission",
-            date: new Date().toISOString(),
-            time: "10:00 AM"
-        };
-        updateOrderSummary(mockBookingDetails);
+        // --- UI Elements to Update ---
+        const orderItemsContainer = document.querySelector('.order-items');
+        const subtotalEl = document.querySelector('.order-totals .total-row:nth-child(1) span:last-child');
+        const taxesEl = document.querySelector('.order-totals .total-row:nth-child(2) span:last-child');
+        const totalEl = document.querySelector('.order-totals .total-row.final span:last-child');
+        const payBtn = document.querySelector('.btn-pay');
+
+        // --- Calculation Logic ---
+        let subtotal = 0;
+        let itemsHTML = '';
+
+        // Calculate subtotal from tickets
+        Object.values(bookingState.tickets).forEach(ticket => {
+            if (ticket.quantity > 0) {
+                subtotal += ticket.quantity * ticket.price;
+                itemsHTML += `
+                    <div class="order-item">
+                        <img class="item-img" src="./unnamed (5).png" alt="Ticket">
+                        <div class="item-info">
+                            <p class="item-name">${ticket.name}</p>
+                            <p class="item-details">Qty: ${ticket.quantity}</p>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        // Calculate subtotal from addons
+        Object.values(bookingState.addons).forEach(addon => {
+            if (addon.selected) {
+                subtotal += addon.price;
+                itemsHTML += `
+                    <div class="order-item">
+                        <img class="item-img" src="./unnamed (5).png" alt="Add-on">
+                        <div class="item-info">
+                            <p class="item-name">${addon.name}</p>
+                            <p class="item-details">Qty: 1</p>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+
+        const taxes = subtotal * 0.07; // 7% tax rate
+        const total = subtotal + taxes;
+
+        // --- Update the UI with the calculated values ---
+        orderItemsContainer.innerHTML = itemsHTML;
+        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+        taxesEl.textContent = `$${taxes.toFixed(2)}`;
+        totalEl.textContent = `$${total.toFixed(2)}`;
+        if (payBtn) {
+            payBtn.textContent = `Pay $${total.toFixed(2)}`;
+        }
     }
 
-    initializeCheckout();
-
-
     // ============================================
-    // 2. ORIGINAL UI SCRIPT (ADAPTED)
+    // 2. PRESERVED UI SCRIPT (Your Original Code)
     // ============================================
 
     // --- Theme Management ---
     const themeToggle = document.querySelector('.theme-toggle');
-    const themeIcon = themeToggle.querySelector('.material-symbols-outlined');
-    const body = document.body;
-    const savedTheme = localStorage.getItem('site-theme') || 'dark';
-    body.classList.toggle('dark-mode', savedTheme === 'dark');
-    themeIcon.textContent = savedTheme === 'dark' ? 'light_mode' : 'dark_mode';
+    if (themeToggle) {
+        const themeIcon = themeToggle.querySelector('.material-symbols-outlined');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('site-theme') || 'dark'; // Default to dark
 
-    themeToggle.addEventListener('click', () => {
-        const isDarkMode = body.classList.toggle('dark-mode');
-        themeIcon.textContent = isDarkMode ? 'light_mode' : 'dark_mode';
-        localStorage.setItem('site-theme', isDarkMode ? 'dark' : 'light');
-    });
+        body.classList.toggle('dark-mode', savedTheme === 'dark');
+        if(themeIcon) themeIcon.textContent = savedTheme === 'dark' ? 'light_mode' : 'dark_mode';
+
+        themeToggle.addEventListener('click', () => {
+            const isDarkMode = body.classList.toggle('dark-mode');
+            if(themeIcon) themeIcon.textContent = isDarkMode ? 'light_mode' : 'dark_mode';
+            localStorage.setItem('site-theme', isDarkMode ? 'dark' : 'light');
+        });
+    }
 
     // --- Payment Method Switching ---
-    document.querySelectorAll('.method-label').forEach(label => {
+    const methodLabels = document.querySelectorAll('.method-label');
+    const cardForm = document.querySelector('form');
+    methodLabels.forEach(label => {
         label.addEventListener('click', () => {
-            document.querySelectorAll('.method-label').forEach(l => l.classList.remove('active'));
+            methodLabels.forEach(l => l.classList.remove('active'));
             label.classList.add('active');
-            const isCard = label.querySelector('input').value === 'card';
-            document.querySelector('form').style.opacity = isCard ? '1' : '0.3';
-            document.querySelector('form').style.pointerEvents = isCard ? 'auto' : 'none';
+            const method = label.querySelector('input').value;
+            if (cardForm) {
+                cardForm.style.display = (method === 'paypal') ? 'none' : 'block';
+            }
         });
     });
 
-    // --- Input Formatting ---
+    // --- Card Formatting ---
     const cardInput = document.getElementById('card-number');
-    cardInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim().substring(0, 19);
-    });
+    if (cardInput) {
+        cardInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            e.target.value = (value.match(/.{1,4}/g) || []).join(' ').substring(0, 19);
+        });
+    }
+
     const expiryInput = document.getElementById('expiry-date');
-    expiryInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/\D/g, '').replace(/(\d{2})(\d{1,2})/, '$1/$2').substring(0, 5);
-    });
+    if (expiryInput) {
+        expiryInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            e.target.value = value.length > 2 ? `${value.substring(0, 2)}/${value.substring(2, 4)}` : value;
+        });
+    }
 
-    // --- Pay Button Interaction (with API) ---
+    // --- Pay Button Interaction (With API integration) ---
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
     const payBtn = document.querySelector('.btn-pay');
-    payBtn.addEventListener('click', async(e) => {
-        e.preventDefault();
-        if (!currentBookingId) {
-            alert("Booking information is missing. Cannot proceed.");
-            return;
-        }
+    if (payBtn) {
+        payBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            payBtn.innerHTML = '<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span> Processing...';
+            payBtn.disabled = true;
 
-        payBtn.innerHTML = '<span class="material-symbols-outlined">sync</span> Processing...';
-        payBtn.disabled = true;
+            try {
+                const token = localStorage.getItem('token');
+                const bookingDataString = localStorage.getItem('currentBooking');
+                if (!token) {
+                    alert("Authentication token missing. Please log in.");
+                    window.location.href = '../2.login/code.html';
+                    return;
+                }
+                const bookingState = bookingDataString ? JSON.parse(bookingDataString) : {};
+                // Convert currentBooking state to the required payload items array
+                const items = [];
+                Object.values(bookingState.tickets || {}).forEach(t => {
+                   if(t.quantity > 0) items.push({ unitId: t.name, quantity: t.quantity });
+                });
+                Object.values(bookingState.addons || {}).forEach(a => {
+                   if(a.selected) items.push({ unitId: a.name, quantity: 1 });
+                });
 
-        try {
-            const result = await makeApiRequest(`/bookings/${currentBookingId}/pay`, 'PUT');
-            if (result) {
-                alert('Payment Successful! Redirecting to confirmation...');
-                // Redirect to success page, passing the booking ID
-                window.location.href = `../success/success.html?bookingId=${currentBookingId}`;
-            } else {
-                // Handle cases where API call fails but doesn't throw an error
-                payBtn.innerHTML = `Pay $${currentBookingTotal.toFixed(2)}`;
+                // 1. Create booking checkout
+                const bookingResponse = await fetch(`https://gem-backend-production-cb6d.up.railway.app/api/bookings/checkout`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ items })
+                });
+
+                if (!bookingResponse.ok) {
+                    const bookingResult = await bookingResponse.json().catch(()=>({}));
+                    throw new Error(bookingResult.message || 'Failed to checkout booking');
+                }
+
+                // Success
+                window.location.href = '../success/success.html';
+            } catch (error) {
+                console.error("Booking/Payment error:", error);
+                alert("Error: " + error.message);
+                payBtn.innerHTML = 'Pay Again';
                 payBtn.disabled = false;
             }
-        } catch (error) {
-            // Error is already alerted by makeApiRequest
-            payBtn.innerHTML = `Pay $${currentBookingTotal.toFixed(2)}`;
-            payBtn.disabled = false;
-        }
-    });
+        });
+    }
+    
+    // Add spinning animation for the processing icon
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+    document.head.appendChild(styleSheet);
+
+    // ============================================
+    // 3. INITIALIZATION
+    // ============================================
+    initializeOrderSummary();
+    console.log("✓ Payment page initialized and populated from localStorage.");
 });
+

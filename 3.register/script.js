@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://gem-backend-production.up.railway.app/api';
+const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Password Visibility Toggle
@@ -189,3 +189,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial validation
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const registerForm = document.getElementById('registerForm' );
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const registerBtn = document.getElementById('registerBtn');
+
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        registerBtn.disabled = true;
+        registerBtn.innerHTML = 'Creating Account...';
+
+        const payload = {
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            password: passwordInput.value
+        };
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                showNotification('Account created successfully! Please login.', 'success');
+                setTimeout(() => {
+                    window.location.href = '../2.login/code.html';
+                }, 2000);
+            } else {
+                throw new Error(data.message || 'Registration failed.');
+            }
+        } catch (error) {
+            showNotification(error.message, 'error');
+        } finally {
+            registerBtn.disabled = false;
+            registerBtn.innerHTML = 'Create Account';
+        }
+    });
+
+    function showNotification(message, type) {
+        const toast = document.createElement('div');
+        toast.style.cssText = `position:fixed; top:20px; right:20px; padding:15px 25px; border-radius:8px; color:white; z-index:1000; background:${type==='success'?'#10b981':'#ef4444'}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+});
+

@@ -98,15 +98,6 @@ a {
 
 /* Header */
 
-header {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 0.75rem 2.5rem;
-}
-
-html.dark header {
-    border-bottom-color: #393528;
-}
-
 .size-6 {
     width: 24px;
     height: 24px;
@@ -165,7 +156,46 @@ html.dark header {
 
 
 /* Buttons */
+.logo-container {
+    width: 60px;      /* حجم مناسب */
+    height: 48px;
+    border-radius: 50%;   /* يخليه دايرة */
+    overflow: hidden;     /* يقص الصورة جوه الدايرة */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}  
+header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brand-name {
+     font-family: "Cinzel", serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #ECB613;
+    text-transform: uppercase;
+}
+.brand-namee {
+     font-family: "Cinzel", serif;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #ECB613;
+    text-transform: uppercase;
+}
 
+html.dark .brand-name {
+    color: #fff;
+}
 button {
     border: none;
     border-radius: 0.5rem;

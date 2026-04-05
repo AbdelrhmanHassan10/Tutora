@@ -11,7 +11,7 @@
       // CONFIGURATION & STATE
       // ============================================
       const CONFIG = {
-          API_BASE_URL: 'https://gem-backend-production.up.railway.app/api',
+          API_BASE_URL: 'https://gem-backend-production-cb6d.up.railway.app/api',
           ITEMS_PER_PAGE: 12,
           DEFAULT_GRID_VIEW: 'grid-3'
       };
@@ -517,13 +517,13 @@
       });
 
       // Filter Buttons
-      document.getElementById('dynastyFilterBtn') ? .addEventListener('click', () => openFilterModal('dynastyModal'));
-      document.getElementById('materialFilterBtn') ? .addEventListener('click', () => openFilterModal('materialModal'));
-      document.getElementById('siteFilterBtn') ? .addEventListener('click', () => openFilterModal('siteModal'));
-      document.getElementById('galleryFilterBtn') ? .addEventListener('click', () => openFilterModal('galleryModal'));
+      document.getElementById('dynastyFilterBtn') ?.addEventListener('click', () => openFilterModal('dynastyModal'));
+      document.getElementById('materialFilterBtn') ?.addEventListener('click', () => openFilterModal('materialModal'));
+      document.getElementById('siteFilterBtn') ?.addEventListener('click', () => openFilterModal('siteModal'));
+      document.getElementById('galleryFilterBtn') ?.addEventListener('click', () => openFilterModal('galleryModal'));
 
       // Reset Filters
-      document.getElementById('resetFiltersBtn') ? .addEventListener('click', () => {
+      document.getElementById('resetFiltersBtn') ?.addEventListener('click', () => {
           STATE.filters = { dynasty: [], material: [], site: [], gallery: [], search: '' };
           STATE.currentPage = 1;
           if (mainSearch) mainSearch.value = '';
@@ -553,7 +553,7 @@
       });
 
       // Pagination
-      document.getElementById('prevBtn') ? .addEventListener('click', () => {
+      document.getElementById('prevBtn') ?.addEventListener('click', () => {
           if (STATE.currentPage > 1) {
               STATE.currentPage--;
               renderArtifacts();
@@ -561,7 +561,7 @@
           }
       });
 
-      document.getElementById('nextBtn') ? .addEventListener('click', () => {
+      document.getElementById('nextBtn') ?.addEventListener('click', () => {
           const totalPages = Math.ceil(STATE.filteredArtifacts.length / CONFIG.ITEMS_PER_PAGE);
           if (STATE.currentPage < totalPages) {
               STATE.currentPage++;
@@ -584,7 +584,32 @@
       // ============================================
       async function initialize() {
           showLoading(true);
-          STATE.allArtifacts = SAMPLE_ARTIFACTS;
+          try {
+              const res = await fetch('https://gem-backend-production-cb6d.up.railway.app/api/artifacts');
+              if (res.ok) {
+                  const data = await res.json();
+                  STATE.allArtifacts = Array.isArray(data) ? data : (data.artifacts || data.data || []);
+                  
+                  // Map standard fields to match frontend expectations
+                  STATE.allArtifacts = STATE.allArtifacts.map(art => ({
+                      ...art,
+                      id: art._id || art.id,
+                      title: art.title || art.name || 'Unknown',
+                      image: art.image || art.imageUrl || './unnamed (1).png',
+                      dynasty: art.dynasty || 'Unknown',
+                      material: art.material || 'Unknown',
+                      site: art.site || 'Unknown',
+                      gallery: art.gallery || 'Unknown',
+                      description: art.description || '',
+                      date: art.date || ''
+                  }));
+              } else {
+                  STATE.allArtifacts = SAMPLE_ARTIFACTS;
+              }
+          } catch(e) {
+              console.warn("Failed to fetch API artifacts, falling back to mock data.", e);
+              STATE.allArtifacts = SAMPLE_ARTIFACTS;
+          }
           await initializeFavoriteStates();
           populateFilterOptions();
           applyAllFilters();

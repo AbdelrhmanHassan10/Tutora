@@ -75,8 +75,80 @@ button {
     font-family: inherit;
     transition: all 0.3s ease;
 }
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
+.desktop-nav a {
+    position: relative;
+}
 
+.desktop-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ECB613;
+    transition: 0.3s;
+}
+
+.desktop-nav a:hover::after {
+    width: 100%;
+} 
+.logo-circle {
+    width:53px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #ECB613;
+    background-color: #000;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.logo-text,
+.menu-logo-text {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ECB613;
+}.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.desktop-nav a {
+    position: relative;
+}
+
+.desktop-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ECB613;
+    transition: 0.3s;
+}
+
+.desktop-nav a:hover::after {
+    width: 100%;
+}
 /* ============================================
    LAYOUT CONTAINERS
    ============================================ */
@@ -417,14 +489,14 @@ html.dark .header {
 html:not(.dark) .header {
     background-color: black;
 }
-
 .header-container {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 1px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-left: 0rem;
 }
 
 
@@ -458,12 +530,12 @@ html:not(.dark) .header {
 .logo-section {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 .logo-icon {
     width: 32px;
-    height: 32px;
+    height: 31px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -488,10 +560,10 @@ html:not(.dark) .header {
 
 .desktop-nav {
     display: flex;
-    gap: 2.5rem;
+    gap: 2rem;
     align-items: center;
-    flex: 1;
     justify-content: center;
+    flex: 1;
 }
 
 .desktop-nav a,
@@ -627,8 +699,9 @@ html:not(.dark) .dropdown-link:hover {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    justify-content: flex-end;
+    gap: 0.6rem;
+    flex: 0 0 auto;
+    margin-left: auto;
 }
 
 .search-box {
@@ -755,8 +828,11 @@ html:not(.dark) .dropdown-link:hover {
         display: none;
     }
     .header-left {
-        flex: 1;
-    }
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 0 0 auto;
+}
     .header-right {
         flex: 0;
     }

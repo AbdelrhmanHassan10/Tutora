@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHARAOH LAB | Hieroglyphics Translator</title>
+     <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+
+    <!-- Header -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header" style="background-color: black;">
+          <div class="menu-logo">
+    
+    <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+
+    <h3 class="menu-logo-text" style="color: #ecb613; font-size: 20px;">Tutora</h3>
+</div>
+            <button class="close-btn" id="closeBtn">
+            <span class="material-symbols-outlined" style="color:  #ecb613; padding-top: 5px;">close</span>
+        </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+        <a href="../Kids-Museum/kids-museum.html" class="menu-link" style="color:black ">Kids-Museum</a>
+
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                AI Experience
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                              <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item" >Tutora laboratory</a>
+</div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/code.html" class="menu-link">About</a>
+            <a href="../collection/collection.html" class="menu-link">Collection</a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn">Book now</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+             
+            <button class="menu-icon-link" id="menuLangBtn">
+            <span class="material-symbols-outlined">language</span>
+            Language
+        </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                <span class="material-symbols-outlined" style="color: #ecb613;">menu</span>
+            </button>
+                <div class="logo-section">
+    
+    <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+
+    <h2 class="logo-text" style="color: #ecb613;font-size: 20px;" > Tutora</h2>
+</div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html" style="color: white;">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" style="color: white;">Plan Your Visit</a>
+   <a href="../Kids-Museum/kids-museum.html"  style="color:rgb(255, 255, 255) ">Kids-Museum</a>
+                <a href="../event/event.html" style="color: white;">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger" style="color: white;">
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link" style="color: black;">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link" style="color: black;">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" style="color: black;">AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" style="color: black;">AI Voice Storytelling (3D)</a>
+                                 <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link"style="color: black">Tutora laboratory</a>
+ </div>
+                </div>
+                <a href="../shop/shop.html" style="color: white;">Shop</a>
+                <a href="../about/code.html" style="color: white;">About</a>
+                <a href="../collection/collection.html" style="color: white;">Collection</a>
+            </nav>
+
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="material-symbols-outlined" style="color: white;">search</span>
+                    <input type="text" placeholder="Search..." style="color: white;" />
+                </div>
+                <button class="theme-btn" id="themeBtn">
+                <span class="material-symbols-outlined" style="color: white;">dark_mode</span>
+            </button>
+                <a href="../booking/booking.html" class="btn-booking" style="color: black;background-color: #ecb613;">booking</a>
+                <a href="../fav/favourite.html" style="text-decoration: none;">
+                    <button class="icon-btn">
+                    <span class="material-symbols-outlined" style="color: white;">favorite</span>
+                </button>
+                </a>
+                <button class="icon-btn" id="langBtn">
+                <span class="material-symbols-outlined" style="color: white;">language</span>
+            </button>
+                <a href="../Profile/profile.html">
+                    <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" >
+        <!-- Background Decorations -->
+        <div class="background-decoration decoration-1"></div>
+        <div class="background-decoration decoration-2"></div>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-container">
+                <!-- Header -->
+                <div class="hero-header"  style="padding-top: 70px;">
+                    <span class="hero-label">Ancient Scriptorium</span>
+                    <h1 class="hero-title">Inscribe Your Name</h1>
+                    <p class="hero-description">
+                        Translate your modern identity into the sacred symbols of the Old Kingdom. Every character is a vessel of eternal spirit.
+                    </p>
+                </div>
+
+                <!-- Main Card -->
+                <div class="main-card">
+                    <!-- Golden Corner Accents -->
+                    <div class="corner-accent corner-top-left"></div>
+                    <div class="corner-accent corner-top-right"></div>
+                    <div class="corner-accent corner-bottom-left"></div>
+                    <div class="corner-accent corner-bottom-right"></div>
+
+                    <div class="card-content">
+                        <!-- Input Section -->
+                        <div class="input-section">
+                            <div class="input-group">
+                                <label class="input-label">The Subject Name</label>
+                                <input type="text" class="input-field" id="nameInput" placeholder="Enter your name...">
+                            </div>
+
+                            <div class="options-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="cartoucheStyle" name="style" checked>
+                                    <label for="cartoucheStyle" class="radio-label">Royal Cartouche Style</label>
+                                </div>
+                                <div class="radio-option disabled">
+                                    <input type="radio" id="demoticScript" name="style" disabled>
+                                    <label for="demoticScript" class="radio-label">Demotic Script</label>
+                                </div>
+                            </div>
+
+                            <button class="generate-btn" id="generateBtn">Generate Inscription</button>
+                        </div>
+
+                        <!-- Display Section -->
+                        <div class="display-section">
+                            <div class="artifact-ref">Artifact Ref: #4092-A</div>
+                            <div class="hieroglyph-display" id="hieroglyphDisplay">
+                                𓀀 𓃠 𓅓 𓏏
+                            </div>
+                            <div class="phonetic-section">
+                                <div class="divider"></div>
+                                <p class="phonetic-label">Phonetic Rendering</p>
+                                <p class="phonetic-text" id="phoneticText">Amun-Ra-Te</p>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="action-btn" id="downloadBtn">
+                                    <span class="material-symbols-outlined">download</span>
+                                </button>
+                                <button class="action-btn" id="shareBtn">
+                                    <span class="material-symbols-outlined">share</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Context -->
+                <div class="footer-context"  style="padding-bottom: 150px;">
+                    <div class="context-info">
+                        <span class="material-symbols-outlined">info</span>
+                        <p>Translation based on Middle Kingdom grammar conventions.</p>
+                    </div>
+                     
+                </div>
+            </div>
+        </div>
+    </main>
+
+   <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Footer Header -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html">Tickets</a></li>
+                        <li><a href="../collection/collection.html">Collection</a></li>
+                        <li><a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html">History</a></li>
+                        <li><a href="../event/event.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <!-- Twitter (X ) -->
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+
+                    <p>
+                        Follow us on social media for updates and behind-the-scenes content.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Separator -->
+            <div class="footer-separator"></div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="language-toggle">
+                    <button class="active" data-lang="en">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">
+                        © 2026 Tutora. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+<!-- Global Avatar Sync -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const localProfile = localStorage.getItem('localProfileData');
+    if (localProfile) {
+        try {
+            const parsedData = JSON.parse(localProfile);
+            if (parsedData.profileImage) {
+                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
+                profileImages.forEach(img => {
+                    img.src = parsedData.profileImage;
+                });
+            }
+        } catch(e) {}
+    }
+});
+</script>
+</body>
+</html>
+

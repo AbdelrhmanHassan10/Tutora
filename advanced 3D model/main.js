@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('✓ Museum Explorer loaded successfully');
     console.log('🌙 Dark mode available - click the moon icon to toggle');
 });
-const API_BASE = "https://gem-backend-production.up.railway.app/api";
+const API_BASE = "https://gem-backend-production-cb6d.up.railway.app/api";
 
 // ===============================
 // Helper Function
@@ -208,33 +208,11 @@ async function apiFetch(endpoint, options = {}) {
 // ===============================
 // Get Artifact ID from URL
 // ===============================
-const params = new URLSearchParams(window.location.search);
-const artifactId = params.get("id");
-
-if (!artifactId) {
-    alert("Artifact not found");
-    throw new Error("Missing ID");
-}
-
+ 
 // ===============================
 // Load Artifact Details
 // ===============================
-async function loadArtifact() {
-    try {
-        const data = await apiFetch(`/artifacts/${artifactId}`);
-
-        document.querySelector(".artifact-name").textContent = data.name;
-        document.querySelector(".artifact-desc").textContent = data.description;
-        document.querySelector(".viewer-img").src = data.image;
-
-    } catch (error) {
-        console.error(error);
-        alert("Failed to load artifact");
-    }
-}
-
-loadArtifact();
-
+ 
 // ===============================
 // Add to Favorites
 // ===============================

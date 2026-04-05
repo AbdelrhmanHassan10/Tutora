@@ -456,3 +456,73 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ============================================
+// AI ARTIFACT IDENTIFIER INTEGRATION
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const uploadBtn = document.getElementById('upload-photo-btn');
+    const cameraBtn = document.getElementById('use-camera-btn');
+    const fileInput = document.getElementById('scan-upload');
+    const cameraInput = document.getElementById('camera-upload');
+    
+    const resultContainer = document.getElementById('scan-result-container');
+    const resultTitle = document.getElementById('scan-result-title');
+    const resultDesc = document.getElementById('scan-result-desc');
+
+    function handleFile(e) {
+        if (e.target.files && e.target.files[0]) {
+            analyzeImage(e.target.files[0]);
+        }
+    }
+
+    if (uploadBtn && fileInput) {
+        uploadBtn.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFile);
+    }
+    if (cameraBtn && cameraInput) {
+        cameraBtn.addEventListener('click', () => cameraInput.click());
+        cameraInput.addEventListener('change', handleFile);
+    }
+
+    async function analyzeImage(file) {
+        const token = localStorage.getItem('token');
+        
+        resultContainer.style.display = 'block';
+        resultTitle.textContent = 'Analyzing...';
+        resultTitle.style.color = '#ecb613';
+        resultDesc.innerHTML = '<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span> Please wait while Tutora AI analyzes the image.';
+        
+        const formData = new FormData();
+        formData.append('image', file);
+
+        try {
+            const response = await fetch('https://gem-backend-production-cb6d.up.railway.app/api/ai/detect', {
+                method: 'POST',
+                headers: {
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                },
+                body: formData
+            });
+
+            const data = await response.json();
+            
+            if (response.ok && data.predictions && data.predictions.length > 0) {
+                const topMatch = data.predictions[0];
+                resultTitle.textContent = `Match Found: ${topMatch.className}`;
+                resultTitle.style.color = '#34d399';
+                resultDesc.innerHTML = `Probability: ${(topMatch.probability * 100).toFixed(1)}% <br/> Accessing historical records...`;
+            } else {
+                resultTitle.textContent = 'Artifact Not Recognized';
+                resultTitle.style.color = '#f87171';
+                resultDesc.textContent = data.message || 'The AI could not identify this artifact with high confidence.';
+            }
+        } catch (error) {
+            console.error('AI Detection Error:', error);
+            resultTitle.textContent = 'Connection Error';
+            resultTitle.style.color = '#f87171';
+            resultDesc.textContent = 'Failed to connect to Tutora AI. Please check your network and try again.';
+        }
+    }
+});

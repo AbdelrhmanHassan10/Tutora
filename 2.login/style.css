@@ -49,9 +49,29 @@ body {
     cursor: not-allowed;
     opacity: 0.7;
 }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-
-/* ================= Layout ================= */
+/* الدايرة */
+.logo-circle {
+    width: 80px;
+    height: 70px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    overflow: hidden;
+    display: flex;
+    align-items: center;      /* عمودي */
+    justify-content: center;  /* أفقي */
+}.logo-circle img,
+.logo-circle svg {
+    width: 150px;
+    height: 70px;
+    object-fit: contain;
+    display: block;
+}/* ================= Layout ================= */
 
 .login-container {
     position: relative;
@@ -105,10 +125,13 @@ body {
 }
 
 .logo-text {
-    font-size: 18px;
-    font-weight: 600;
+    font-family: "Cinzel", serif;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: white;
+    text-transform: uppercase;
 }
-
 
 /* ================= Headings ================= */
 

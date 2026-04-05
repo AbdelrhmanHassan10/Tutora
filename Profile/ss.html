@@ -293,6 +293,24 @@
     </div>
 
     <script src="script.js"></script>
+
+<!-- Global Avatar Sync -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const localProfile = localStorage.getItem('localProfileData');
+    if (localProfile) {
+        try {
+            const parsedData = JSON.parse(localProfile);
+            if (parsedData.profileImage) {
+                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
+                profileImages.forEach(img => {
+                    img.src = parsedData.profileImage;
+                });
+            }
+        } catch(e) {}
+    }
+});
+</script>
 </body>
 
 </html>

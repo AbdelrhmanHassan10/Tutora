@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorer User Profile Dashboard | Grand Egyptian Museum</title>
+    <title>TUTORA Profile | Manage Your Account</title>
+    <link rel="icon" type="image/png" href="../museum.png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -12,23 +13,21 @@
 </head>
 
 <body class="dark-mode">
+
     <div class="container-wrapper">
         <!-- Sidebar Navigation (RESTORED) -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-content">
                 <!-- Logo -->
                 <div class="logo-section">
-                    <div class="logo-icon">
-                        <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
-                        </svg>
-                    </div>
-                    <h2 class="logo-text">Tutora</h2>
-                    <!-- Mobile Close Button -->
-                    <button class="mobile-close-btn" id="mobileCloseBtn">
-                        <span class="material-symbols-outlined">close</span>
-                    </button>
-                </div>
+    
+    <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+
+    <h2 class="logo-text" style="color: #ecb613;;font-size: 20px; padding-left: 15px;">Tutora</h2>
+<button id="closeSidebar" class="mobile-close-btn">✖</button>
+                  </div>
 
                 <!-- Navigation Items -->
                 <nav class="nav-menu">
@@ -86,7 +85,7 @@
                     <div class="divider"></div>
 
                     <div class="user-info">
-                        <span class="user-level">Explorer Level 5</span>
+                        
                         <div class="user-avatar">
                             <img src="./unnamed.png" alt="User Profile">
                         </div>
@@ -117,7 +116,7 @@
                     </div>
 
                     <div class="profile-actions">
-                        <button class="btn btn-primary">Edit Profile</button>
+                       <a href="../Edit-profile/code.html"> <button class="btn btn-primary">Edit Profile</button></a>
                         <button class="btn btn-secondary">Share Status</button>
                     </div>
                 </section>
@@ -320,13 +319,13 @@
                             <button data-lang="ar">العربية</button>
                         </div>
                         <div class="legal-section">
-                            <div class="legal-links">
-                                <a href="#privacy" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                                <a href="#terms" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                                <a href="#cookies" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                            </div>
+                           <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
                             <div class="copyright">
-                                © 2024 Grand Egyptian Museum. All rights reserved.
+                                © 2026 Tutora. All rights reserved.
                             </div>
                         </div>
                     </div>
@@ -335,6 +334,24 @@
         </main>
     </div>
     <script src="script.js "></script>
+
+<!-- Global Avatar Sync -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const localProfile = localStorage.getItem('localProfileData');
+    if (localProfile) {
+        try {
+            const parsedData = JSON.parse(localProfile);
+            if (parsedData.profileImage) {
+                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
+                profileImages.forEach(img => {
+                    img.src = parsedData.profileImage;
+                });
+            }
+        } catch(e) {}
+    }
+});
+</script>
 </body>
 
 </html>

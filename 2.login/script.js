@@ -1,28 +1,18 @@
-const API_BASE_URL = 'https://gem-backend-production.up.railway.app/api';
-
 document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const loginForm = document.getElementById('loginForm' );
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-    const togglePassword = document.getElementById('togglePassword');
     const loginBtn = document.getElementById('loginBtn');
     const loginError = document.getElementById('loginError');
 
-    // 1. Toggle Password Visibility
-    togglePassword.addEventListener('click', () => {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-        togglePassword.textContent = type === 'password' ? 'visibility' : 'visibility_off';
-    });
-
-    // 2. Handle Login Submission
-    loginForm.addEventListener('submit', async(e) => {
+    loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        // Reset state
-        loginError.classList.remove('show');
-        loginBtn.classList.add('loading');
+        
+        // Reset UI state
+        loginError.style.display = 'none';
         loginBtn.disabled = true;
+        loginBtn.innerHTML = 'Logging in... <div class="loading-spinner" style="display:inline-block"></div>';
 
         const email = emailInput.value.trim();
         const password = passwordInput.value;
@@ -30,35 +20,39 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(`${API_BASE_URL}/auth/login`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
             });
 
             const data = await response.json();
 
             if (response.ok) {
-                // Success! Store token and user data
+                // Save token and user info
                 localStorage.setItem('token', data.token);
-                if (data.user) {
-                    localStorage.setItem('user', JSON.stringify(data.user));
-                }
-
-                // Redirect to home page
-                window.location.href = '../4.home/code.html';
+                if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+                
+                showNotification('Login successful! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = '../4.home/code.html'; // توجه للصفحة الرئيسية
+                }, 1500);
             } else {
-                // Show error message from API or fallback
-                loginError.textContent = data.message || 'Invalid email or password. Please try again.';
-                loginError.classList.add('show');
+                throw new Error(data.message || 'Invalid email or password.');
             }
         } catch (error) {
-            console.error('Login error:', error);
-            loginError.textContent = 'Network error. Please check your connection and try again.';
-            loginError.classList.add('show');
+            loginError.textContent = error.message;
+            loginError.style.display = 'block';
+            showNotification(error.message, 'error');
         } finally {
-            loginBtn.classList.remove('loading');
             loginBtn.disabled = false;
+            loginBtn.innerHTML = 'Log In';
         }
     });
+
+    function showNotification(message, type) {
+        const toast = document.createElement('div');
+        toast.className = `notification ${type}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
 });

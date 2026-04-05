@@ -1,0 +1,709 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TUTORA Kids Museum | Fun Learning for Young Explorers</title>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+        <!-- Header --><div class="mobile-nav-overlay"></div>
+        <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header" style="color: #ecb613; background-color: black">
+            <div class="menu-logo">
+    
+    <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+
+    <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+              <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
+            </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a
+        >
+        <a href="../Kids-Museum/kids-museum.html" class="menu-link" style="color:black ">Kids-Museum</a>
+        <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+            AI Experience
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a
+            >
+            <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a
+            >
+            <a
+              href="../advanced 3D model/advanced-3D.html"
+              class="dropdown-item"
+              >AI Voice Storytelling (3D)</a
+            >
+                       <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item" >Tutora laboratory</a>
+ </div>
+        </div>
+
+        <a href="../shop/shop.html" class="menu-link">Shop</a>
+                    <a href="../about/code.html" class="menu-link">About</a>
+                    <a href="../collection/collection.html" class="menu-link">Collection</a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn" style="background-color: #ecb613;">Book now</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+
+            <button class="menu-icon-link" id="menuLangBtn">
+          <span class="material-symbols-outlined">language</span>
+          Language
+        </button>
+        </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <div class="header-left">
+                    <button class="menu-btn" id="menuBtn">
+            <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span
+            >
+                    </button>
+                  <div class="logo-section">
+    
+    <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+
+    <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
+                  </div>
+                </div>
+
+                <nav class="desktop-nav">
+                    <a href="../4.home/code.html" style="color: white">Home</a>
+                    <a href="../plan-your-visit/plan-your-visit.html" style="color: white">Plan Your Visit</a
+          >
+        <a href="../Kids-Museum/kids-museum.html" style="color: white">Kids-Museum</a>
+          <a href="../event/event.html" style="color: white">Event</a>
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-trigger" style="color: white">
+              AI Experience
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+                        <div class="dropdown-menu">
+                            <a href="../AI Guide/guide.html" class="dropdown-link" style="color: black">AI Tour Guide</a
+              >
+              <a
+                href="../chat bot/chat.html"
+                class="dropdown-link"
+                style="color: black"
+                >AI Chatbot</a
+              >
+              <a
+                href="../artifact_identifier/artifact-identifier.html"
+                class="dropdown-link"
+                style="color: black"
+                >AI Artifact Identifier</a
+              >
+              <a
+                href="../advanced 3D model/advanced-3D.html"
+                class="dropdown-link"
+                style="color: black"
+                >AI Voice Storytelling (3D)</a
+              >
+                         <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link"style="color: black">Tutora laboratory</a>
+ </div>
+          </div>
+          <a href="../shop/shop.html" style="color: white">Shop</a>
+                            <a href="../about/code.html" style="color: white">About</a>
+                            <a href="../collection/collection.html" style="color: white">Collection</a
+          >
+        </nav>
+
+        <div class="header-right">
+          <div class="search-box">
+            <span class="material-symbols-outlined" style="color: white"
+              >search</span
+            >
+            <input type="text" placeholder="Search..." style="color: white" />
+          </div>
+          <button class="theme-btn" id="themeBtn">
+            <span class="material-symbols-outlined" style="color: white"
+              >dark_mode</span
+            >
+          </button>
+          <a
+            href="../booking/booking.html"
+            class="btn-booking"
+            style="color: black; background-color: #ecb613"
+            >booking</a
+          >
+          <a href="../fav/favourite.html" style="text-decoration: none">
+            <button class="icon-btn">
+              <span class="material-symbols-outlined" style="color: white"
+                >favorite</span
+              >
+            </button>
+          </a>
+                            <button class="icon-btn" id="langBtn">
+            <span class="material-symbols-outlined" style="color: white"
+              >language</span
+            >
+          </button>
+                            <a href="../Profile/profile.html">
+                                <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                            </a>
+                        </div>
+                    </div>
+        </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="container hero-section">
+            <div class="hero-card">
+                <div class="hieroglyph-pattern"></div>
+                <div class="hero-glow-1"></div>
+                <div class="hero-glow-2"></div>
+                
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="badge-new">
+                            <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                            <span>New Mystery Available</span>
+                        </div>
+                        <h2 class="hero-title">Welcome, Young <span style="color: #F2D00D;">Explorers!</span></h2>
+                        <p class="hero-subtitle">Unlock the secrets of the Pharaohs through games, puzzles, and ancient mysteries. Are you ready to earn your gold badge?</p>
+                        <div class="hero-btns">
+                            <button class="btn-primary-large">
+                                <span class="material-symbols-outlined">star</span>
+                                Join the Explorer Club
+                            </button>
+                            <button class="btn-secondary-large">View Map</button>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="visual-bg"></div>
+                        <img class="hero-img" src="./unnamed (1).png" alt="Pharaoh Character">
+                        <div class="floating-icon icon-top">
+                            <span class="material-symbols-outlined text-4xl">pets</span>
+                        </div>
+                        <div class="floating-icon icon-bottom">
+                            <span class="material-symbols-outlined text-4xl">cognition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Junior Missions Section -->
+        <section class="container section-padding">
+            <div class="section-header">
+                <div>
+                    <p class="section-tag">Interactive Challenges</p>
+                    <h2 class="section-title">Junior Laboratory</h2>
+                </div>
+                
+            </div>
+
+            <div class="missions-grid">
+                <!-- Mission 1 -->
+                <div class="mission-card">
+                    <div class="mission-img-wrapper">
+                        <img class="mission-img" src="./unnamed (2).png" alt="Pyramid Climb">
+                        <div class="mission-overlay"></div>
+                    </div>
+                    <div class="mission-content">
+                        <div class="mission-meta">
+                            <span class="mission-time">5 MINS</span>
+                        </div>
+                        <h4 class="mission-name">Turn your picture into a pharaoh</h4>
+                        <p class="mission-type">Quiz Adventure</p>
+                    <a href="../Pharaoh Transformer/code.html">                        
+                        <button class="btn-mission">Try it now</button>
+                    </a>                    
+                </div>
+                </div>
+
+                <!-- Mission 2 -->
+                <div class="mission-card alt">
+                    <div class="mission-img-wrapper">
+                        <img class="mission-img" src="./unnamed (3).png" alt="Cat Temple">
+                        <div class="mission-overlay"></div>
+                    </div>
+                    <div class="mission-content">
+                        <div class="mission-meta">
+                            <span class="mission-time">10 MINS</span>
+                        </div>
+                        <h4 class="mission-name">Create from your imagination</h4>
+                        <p class="mission-type">Hidden Objects</p>
+                       <a href="../AI Imagination/AI-Imagination.html">                        
+                        <button class="btn-mission">Try it now</button>
+                    </a> 
+                    </div>
+                </div>
+
+                <!-- Mission 3 -->
+                <div class="mission-card">
+                    <div class="mission-img-wrapper">
+                        <img class="mission-img" src="./unnamed (4).png" alt="Decoder">
+                        <div class="mission-overlay"></div>
+                    </div>
+                    <div class="mission-content">
+                        <div class="mission-meta">
+                            <span class="mission-time">8 MINS</span>
+                        </div>
+                        <h4 class="mission-name">Write your name in hieroglyphics</h4>
+                        <p class="mission-type">Secret Language</p>
+                        <a href="../Name-Translator/Name-Translator.html">                        
+                        <button class="btn-mission">Try it now</button>
+                    </a> 
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Fun Facts Section -->
+           <!-- Fun Facts Section -->
+    <section class="facts-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="material-symbols-outlined">lightbulb</span>
+                Ancient Fun Facts
+            </h2>
+
+            <div class="facts-wrapper">
+                <button class="fact-btn prev" id="prev-btn">&lt;</button>
+                
+                <div class="facts-container" id="facts-container">
+                    <!-- Fact Card 1 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-science">
+                            <span class="material-symbols-outlined">science</span>
+                        </div>
+                        <h4 class="fact-title">Mummification 101</h4>
+                        <p class="fact-text">Did you know? Ancient Egyptians believed the heart was the most important organ, while the brain was often thrown away during mummification!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Science</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 2 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-lang">
+                            <span class="material-symbols-outlined">edit_note</span>
+                        </div>
+                        <h4 class="fact-title">Hieroglyph Power</h4>
+                        <p class="fact-text">There are over 700 different symbols in hieroglyphs. Some symbols represent sounds, while others represent whole words or ideas!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Language</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 3 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-history">
+                            <span class="material-symbols-outlined">history_edu</span>
+                        </div>
+                        <h4 class="fact-title">Pyramids Mystery</h4>
+                        <p class="fact-text">The pyramids were built as tombs for pharaohs and remain one of the greatest architectural feats of all time!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: History</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 4 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-art">
+                            <span class="material-symbols-outlined">palette</span>
+                        </div>
+                        <h4 class="fact-title">Ancient Art</h4>
+                        <p class="fact-text">Egyptians painted vivid murals to honor gods and pharaohs. Colors were symbolic and carefully chosen!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Art</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 5 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-science">
+                            <span class="material-symbols-outlined">science</span>
+                        </div>
+                        <h4 class="fact-title">Papyrus Invention</h4>
+                        <p class="fact-text">Papyrus was the first paper-like material, allowing Egyptians to document laws, stories, and history.</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Science</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 6 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-architecture">
+                            <span class="material-symbols-outlined">account_balance</span>
+                        </div>
+                        <h4 class="fact-title">Obelisks</h4>
+                        <p class="fact-text">Tall, four-sided, narrow tapering monuments called obelisks were placed at temples to honor the sun god Ra.</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Architecture</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 7 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-religion">
+                            <span class="material-symbols-outlined">temple_buddhist</span>
+                        </div>
+                        <h4 class="fact-title">Gods Galore</h4>
+                        <p class="fact-text">Egyptians believed in over 2000 gods and goddesses, each with its own role and stories!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Religion</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 8 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-science">
+                            <span class="material-symbols-outlined">science</span>
+                        </div>
+                        <h4 class="fact-title">Mathematics Magic</h4>
+                        <p class="fact-text">Ancient Egyptians used geometry for building pyramids and surveying land accurately.</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Science</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 9 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-language">
+                            <span class="material-symbols-outlined">menu_book</span>
+                        </div>
+                        <h4 class="fact-title">Writing Systems</h4>
+                        <p class="fact-text">Hieroglyphs, hieratic, and demotic scripts were all used in different contexts in Ancient Egypt!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Language</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 10 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-art">
+                            <span class="material-symbols-outlined">palette</span>
+                        </div>
+                        <h4 class="fact-title">Temple Wonders</h4>
+                        <p class="fact-text">The Temple of Karnak is one of the largest religious complexes ever built, spanning over 4,000 years!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Architecture</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 11 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-history">
+                            <span class="material-symbols-outlined">history_edu</span>
+                        </div>
+                        <h4 class="fact-title">Nile River Magic</h4>
+                        <p class="fact-text">The Nile River was the lifeblood of Egypt, providing water, food, and transportation for thousands of years!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Geography</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 12 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-science">
+                            <span class="material-symbols-outlined">science</span>
+                        </div>
+                        <h4 class="fact-title">Cleopatra's Legacy</h4>
+                        <p class="fact-text">Cleopatra VII was one of the most famous pharaohs, known for her intelligence, beauty, and political power!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: History</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 13 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-lang">
+                            <span class="material-symbols-outlined">edit_note</span>
+                        </div>
+                        <h4 class="fact-title">Rosetta Stone</h4>
+                        <p class="fact-text">The Rosetta Stone helped scholars decode hieroglyphics and unlock the secrets of Ancient Egypt!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Language</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 14 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-architecture">
+                            <span class="material-symbols-outlined">account_balance</span>
+                        </div>
+                        <h4 class="fact-title">Sphinx Mystery</h4>
+                        <p class="fact-text">The Great Sphinx of Giza is a massive limestone statue with a lion's body and a human head, guarding the pyramids!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Architecture</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 15 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-religion">
+                            <span class="material-symbols-outlined">temple_buddhist</span>
+                        </div>
+                        <h4 class="fact-title">Tutankhamun's Tomb</h4>
+                        <p class="fact-text">King Tutankhamun's tomb was discovered in 1922, containing incredible treasures and artifacts!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: History</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 16 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-science">
+                            <span class="material-symbols-outlined">science</span>
+                        </div>
+                        <h4 class="fact-title">Canopic Jars</h4>
+                        <p class="fact-text">During mummification, organs were placed in special jars called canopic jars, each protected by a different god!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Science</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 17 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-art">
+                            <span class="material-symbols-outlined">palette</span>
+                        </div>
+                        <h4 class="fact-title">Egyptian Jewelry</h4>
+                        <p class="fact-text">Ancient Egyptians loved jewelry made from gold, lapis lazuli, and turquoise, believing it had magical powers!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Art</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 18 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-language">
+                            <span class="material-symbols-outlined">menu_book</span>
+                        </div>
+                        <h4 class="fact-title">Book of the Dead</h4>
+                        <p class="fact-text">The Book of the Dead was a collection of spells and instructions to help the deceased in the afterlife!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Religion</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 19 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-history">
+                            <span class="material-symbols-outlined">history_edu</span>
+                        </div>
+                        <h4 class="fact-title">Pharaoh Power</h4>
+                        <p class="fact-text">Pharaohs were considered living gods, believed to have divine power and control over the Nile's floods!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: History</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+
+                    <!-- Fact Card 20 -->
+                    <div class="fact-card">
+                        <div class="fact-icon-box icon-science">
+                            <span class="material-symbols-outlined">science</span>
+                        </div>
+                        <h4 class="fact-title">Ancient Medicine</h4>
+                        <p class="fact-text">Egyptians were skilled doctors who used herbs, surgery, and magic to treat illnesses and injuries!</p>
+                        <div class="fact-footer">
+                            <span class="fact-topic">Topic: Science</span>
+                            <span class="material-symbols-outlined">bookmark</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="fact-btn next" id="next-btn">&gt;</button>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p class="progress-text"><span id="current-card">1</span> / <span id="total-cards">20</span></p>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- CTA Section -->
+        <section class="container cta-section" style="padding-bottom: 70px;">
+            <div class="cta-box" >
+                <div class="cta-inner">
+                    <span class="material-symbols-outlined cta-deco deco-left">shield</span>
+                    <span class="material-symbols-outlined cta-deco deco-right">award_star</span>
+                    <h2 class="cta-title">Ready to earn your <span style="color: #F2D00D;">Golden Sarcophagus</span> badge?</h2>
+                    <p class="cta-desc">Create your explorer profile today and track your progress through all the mysteries of the museum.</p>
+                    <div class="cta-btns">
+                        <button class="btn-cta-primary">Sign Up Now</button>
+                        <button class="btn-cta-secondary">Tell Me More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+            <div class="footer-container">
+                <!-- Footer Header -->
+                <div class="footer-header">
+                    <div class="footer-logo">
+                        <span class="material-symbols-outlined">account_balance</span>
+                    </div>
+                    <h2 class="footer-title">Grand Egyptian Museum</h2>
+                    <div class="footer-divider"></div>
+                </div>
+
+                <!-- Footer Grid -->
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="../booking/booking.html">Tickets</a></li>
+                            <li><a href="../collection/collection.html">Collection</a></li>
+                            <li>
+                                <a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>About</h3>
+            <ul>
+              <li><a href="../About us/About-us.html">History</a></li>
+                            <li><a href="../event/event.html">Events</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="../visitor help/help.html">Help</a></li>
+                            <li>
+                                <a href="../get in touch/get-in-touch.html">Get In Touch</a>
+                            </li>
+                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column connect-column">
+                        <h3>Connect</h3>
+                        <div class="social-links">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+
+                            <!-- Twitter (X ) -->
+                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <!-- YouTube -->
+                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+
+                        <p>
+                            Follow us on social media for updates and behind-the-scenes content.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer Separator -->
+                <div class="footer-separator"></div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="language-toggle">
+                        <button class="active" data-lang="en">English</button>
+                        <button data-lang="ar">العربية</button>
+                    </div>
+                    <div class="legal-section">
+                       <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
+            <div class="copyright">
+              © 2026 Tutora. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+        </footer>
+
+    <!-- Floating Badge -->
+    <!-- <div class="floating-badge">
+        <div class="badge-pill">
+            <div class="token-wrapper">
+                <span class="material-symbols-outlined" style="font-size: 2rem;">token</span>
+                <div class="token-count">3</div>
+            </div>
+            <span class="badge-text">Your Badges</span>
+        </div>
+    </div> -->
+
+    <script src="script.js"></script>
+
+<!-- Global Avatar Sync -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const localProfile = localStorage.getItem('localProfileData');
+    if (localProfile) {
+        try {
+            const parsedData = JSON.parse(localProfile);
+            if (parsedData.profileImage) {
+                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
+                profileImages.forEach(img => {
+                    img.src = parsedData.profileImage;
+                });
+            }
+        } catch(e) {}
+    }
+});
+</script>
+</body>
+</html>
+ 

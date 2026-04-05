@@ -23,7 +23,7 @@ h4,
 
 /* Theme Classes */
 
-body.dark-mode {
+body.dark {
     background-color: #181711;
     color: #ffffff;
 }
@@ -31,6 +31,40 @@ body.dark-mode {
 body.light {
     background-color: #f8f8f5;
     color: #0f172a;
+}
+
+.logo-text,
+.menu-logo-text {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ECB613;
+}.logo-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #ECB613;
+    background-color: #000;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}.logo-text,
+.menu-logo-text {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ECB613;
 }
 
 
@@ -54,7 +88,30 @@ body.light {
     z-index: 0;
 }
 
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
+.desktop-nav a {
+    position: relative;
+}
+
+.desktop-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ECB613;
+    transition: 0.3s;
+}
+
+.desktop-nav a:hover::after {
+    width: 100%;
+}
 /* ============================================
 HEADER & NAVIGATION
 ============================================ */
@@ -353,11 +410,12 @@ html:not(.dark) .header {
 
 .header-container {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 1px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-left: 0rem;
 }
 
 
@@ -421,7 +479,7 @@ html:not(.dark) .header {
 
 .desktop-nav {
     display: flex;
-    gap: 2.5rem;
+    gap: 1.75rem;
     align-items: center;
     flex: 1;
     justify-content: center;
@@ -560,8 +618,9 @@ html:not(.dark) .dropdown-link:hover {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    justify-content: flex-end;
+    gap: 0.6rem;
+    flex: 0 0 auto;
+    margin-left: auto;
 }
 
 .search-box {
@@ -864,7 +923,7 @@ html:not(.dark) .dropdown-link:hover {
     margin-bottom: 1.5rem;
 }
 
-.dark-mode .tabs-container {
+.dark .tabs-container {
     background-color: #181711;
 }
 
@@ -1313,7 +1372,7 @@ html:not(.dark) .dropdown-link:hover {
     transition: background-color 0.3s;
 }
 
-body.dark-mode .site-footer {
+body.dark .site-footer {
     background-color: #121212;
 }
 
@@ -1449,7 +1508,7 @@ body.dark-mode .site-footer {
     margin-bottom: 2rem;
 }
 
-body.dark-mode .footer-separator {
+body.dark .footer-separator {
     background-color: #374151;
 }
 
@@ -1479,7 +1538,7 @@ body.dark-mode .footer-separator {
     border: 1px solid #e5e7eb;
 }
 
-body.dark-mode .language-toggle {
+body.dark .language-toggle {
     background-color: rgba(31, 41, 55, 0.5);
     border-color: #374151;
 }
@@ -1501,7 +1560,7 @@ body.dark-mode .language-toggle {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-mode .language-toggle .active {
+body.dark .language-toggle .active {
     background-color: #f2b90d;
     color: #121212;
 }
@@ -1510,7 +1569,7 @@ body.dark-mode .language-toggle .active {
     color: #6b7280;
 }
 
-body.dark-mode .language-toggle button:not(.active) {
+body.dark .language-toggle button:not(.active) {
     color: #9ca3af;
 }
 

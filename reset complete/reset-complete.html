@@ -5,6 +5,8 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/png" href="../museum.png">
+    <title>TUTORA Reset Complete | Password Updated</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
@@ -84,6 +86,24 @@
         <!-- Footer -->
 
     </div>
+
+<!-- Global Avatar Sync -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const localProfile = localStorage.getItem('localProfileData');
+    if (localProfile) {
+        try {
+            const parsedData = JSON.parse(localProfile);
+            if (parsedData.profileImage) {
+                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
+                profileImages.forEach(img => {
+                    img.src = parsedData.profileImage;
+                });
+            }
+        } catch(e) {}
+    }
+});
+</script>
 </body>
 
 </html>

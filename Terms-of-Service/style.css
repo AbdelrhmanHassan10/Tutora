@@ -1,0 +1,488 @@
+/* ============================================ */
+/* 1. GLOBAL STYLES & VARIABLES               */
+/* ============================================ */
+:root {
+    --primary-color: #f9d406;
+    --background-light: #f8f8f5;
+    --background-dark: #181711;
+    --surface-light: #ffffff;
+    --surface-dark: #221f10;
+    --border-light: #e5e7eb;
+    --border-dark: rgba(249, 212, 6, 0.2 );
+    --text-light: #f0f0f0;
+    --text-dark: #1a1a1a;
+    --text-muted-light: #6b7280;
+    --text-muted-dark: #a1a1aa;
+    --font-display: 'Georgia', serif;
+    --font-body: 'Public Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    min-height: 100vh;
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ECB613;
+    background: black;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: rgba(242, 185, 13, 0.1);
+    transition: 0.3s;
+    color: #ECB613;
+}
+
+.back-btn:hover {
+    background: rgba(204, 184, 123, 0.963);
+    color: white;
+}.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.desktop-nav a {
+    position: relative;
+}
+
+.desktop-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ECB613;
+    transition: 0.3s;
+}
+
+.desktop-nav a:hover::after {
+    width: 100%;
+}
+/* ============================================ */
+/* 2. HEADER & FOOTER                         */
+/* ============================================ */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background-color: rgba(24, 23, 17, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-dark);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-left, .header-right, .logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.logo .logo-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary-color);
+}
+
+.logo .logo-text {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+}
+
+.footer {
+    background-color: rgba(249, 212, 6, 0.05);
+    border-top: 1px solid var(--border-dark);
+    padding: 3rem 5%;
+    margin-top: 5rem;
+}
+
+.footer-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-muted-dark);
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.footer-logo .logo-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.footer-logo span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--text-muted-dark);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ============================================ */
+/* 3. MAIN LAYOUT & HERO                      */
+/* ============================================ */
+.main-layout {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 5%;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    color: var(--primary-color);
+    font-size: 3.75rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.hero-divider {
+    height: 1px;
+    width: 6rem;
+    background-color: var(--primary-color);
+    margin: 0 auto 1.5rem;
+}
+
+.hero-subtitle {
+    color: var(--text-muted-dark);
+    font-size: 0.875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+/* ============================================ */
+/* 4. SIDEBAR NAVIGATION                      */
+/* ============================================ */
+.sidebar-sticky-content {
+    position: sticky;
+    top: 120px; /* Header height + margin */
+}
+
+.sidebar-title {
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 2rem;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.nav-item {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted-dark);
+    border-left: 2px solid transparent;
+    padding-left: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+    font-weight: 700;
+    border-left-color: var(--primary-color);
+}
+
+/* ============================================ */
+/* 5. ARTICLE CONTENT                         */
+/* ============================================ */
+.article-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.content-section {
+    scroll-margin-top: 120px; /* Offset for sticky header */
+}
+
+.section-title {
+    font-family: var(--font-body);
+    font-size: 1.5rem;
+    font-weight: 600;
+color:  #debd04 ;  
+ margin-bottom: 1.5rem;
+}
+
+.section-title + hr, .content-section > hr {
+    border: none;
+    height: 1px;
+    background-color: var(--border-dark);
+    margin-bottom: 2rem;
+}
+
+.article-content p {
+    color: var(--text-muted-dark);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-left: 1.25rem;
+}
+
+.checklist li {
+    position: relative;
+}
+
+.checklist li::before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: -1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.7;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    background-color: rgba(249, 212, 6, 0.05);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-dark);
+}
+
+.rule-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.rule-item .material-symbols-outlined {
+    color: var(--primary-color);
+}
+
+.article-footer {
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-dark);
+}
+
+.contact-box {
+    background-color: #b9c0cfb3;
+    color: var(--background-dark);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-box .material-symbols-outlined {
+    font-size: 2.5rem;
+}
+
+.contact-box h4 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.contact-box p {
+    opacity: 0.8;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.contact-box .btn-outline {
+    margin-left: auto;
+    background-color: var(--background-dark);
+    color: var(--primary-color);
+    border: none;
+}
+
+/* ============================================ */
+/* 6. BUTTONS & THEME TOGGLE                  */
+/* ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--background-dark);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+.btn-back {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: var(--text-muted-dark);
+}
+
+.btn-back:hover {
+    background-color: rgba(249, 212, 6, 0.1);
+    border-color: var(--border-dark);
+    color: var(--primary-color);
+}
+
+.theme-toggle {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: var(--text-light);
+}
+
+.theme-toggle .material-symbols-outlined {
+    position: absolute;
+    transition: transform 0.3s ease-out;
+}
+
+.icon-sun { transform: translateY(-150%); }
+.icon-moon { transform: translateY(0); }
+html.dark .icon-sun { transform: translateY(0); }
+html.dark .icon-moon { transform: translateY(150%); }
+
+/* ============================================ */
+/* 7. RESPONSIVE DESIGN                       */
+/* ============================================ */
+@media (min-width: 768px) {
+    .rules-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .contact-box {
+        flex-direction: row;
+        align-items: center;
+    }
+    .footer-content {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 3fr 9fr; /* 1/4 sidebar, 3/4 content */
+        gap: 4rem;
+    }
+}

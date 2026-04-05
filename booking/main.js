@@ -1,144 +1,102 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production.up.railway.app/api';
-
     // ============================================
-    // 1. API INTEGRATION & STATE MANAGEMENT
+    // 1. STATE MANAGEMENT (No API)
     // ============================================
 
-
-    async function makeApiRequest(endpoint, method = 'POST', body = null) {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert("You must be logged in to make a booking. Please log in and try again.");
-            return null;
+    const bookingState = {
+        date: new Date(),
+        timeSlot: "11:00 - 13:00",
+        tickets: {
+            adult: { quantity: 0, price: 25.00, name: "General Admission - Adult" },
+            student: { quantity: 0, price: 15.00, name: "Student / Child" },
+            resident: { quantity: 0, price: 3.00, name: "Egyptian / Arab Resident" }
+        },
+        addons: {
+            ramses: { selected: false, price: 12.00, name: "Special Exhibition: Ramses II" },
+            audio: { selected: false, price: 8.00, name: "Audio Guide" }
         }
-        const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
-        const config = { method, headers };
-        if (body) config.body = JSON.stringify(body);
+    };
 
-        try {
-            const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error(`API Request Error on ${endpoint}:`, error);
-            alert(`API Error: ${error.message}`);
-            throw error;
-        }
-    }
+    // ============================================
+    // 2. UI LOGIC & EVENT LISTENERS
+    // ============================================
 
     function updateOrderSummary() {
-        const summaryItemsContainer = document.querySelector('.summary-items');
+        const summaryContainer = document.querySelector('.summary-items');
         const subtotalEl = document.querySelector('.summary-totals .summary-row:nth-child(1) span:nth-child(2)');
         const taxesEl = document.querySelector('.summary-totals .summary-row:nth-child(2) span:nth-child(2)');
         const totalEl = document.querySelector('.summary-total .total-price');
-        summaryItemsContainer.innerHTML = '';
+        
+        summaryContainer.innerHTML = '';
         let subtotal = 0;
 
-        for (const key in bookingState.tickets) {
-            const ticket = bookingState.tickets[key];
+        Object.values(bookingState.tickets).forEach(ticket => {
             if (ticket.quantity > 0) {
                 const itemTotal = ticket.quantity * ticket.price;
                 subtotal += itemTotal;
-                summaryItemsContainer.innerHTML += `<div class="summary-item"><span>${ticket.quantity}x ${ticket.name}</span><span>$${itemTotal.toFixed(2)}</span></div>`;
+                summaryContainer.innerHTML += `<div class="summary-item"><span>${ticket.quantity}x ${ticket.name}</span><span>$${itemTotal.toFixed(2)}</span></div>`;
             }
-        }
-        for (const key in bookingState.addons) {
-            const addon = bookingState.addons[key];
+        });
+
+        Object.values(bookingState.addons).forEach(addon => {
             if (addon.selected) {
                 subtotal += addon.price;
-                summaryItemsContainer.innerHTML += `<div class="summary-item"><span>1x ${addon.name}</span><span>$${addon.price.toFixed(2)}</span></div>`;
+                summaryContainer.innerHTML += `<div class="summary-item"><span>1x ${addon.name}</span><span>$${addon.price.toFixed(2)}</span></div>`;
             }
-        }
+        });
+
         const taxes = subtotal * 0.07;
         const total = subtotal + taxes;
+
         subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
         taxesEl.textContent = `$${taxes.toFixed(2)}`;
         totalEl.textContent = `$${total.toFixed(2)}`;
     }
-
-    // ============================================
-    // 2. UI EVENT LISTENERS
-    // ============================================
-
-    // --- DARK MODE TOGGLE (RESTORED) ---
-    const themeBtn = document.getElementById('themeBtn');
-    const body = document.body;
-
-    function updateThemeIcon() {
-        const icon = themeBtn.querySelector('.material-symbols-outlined');
-        if (body.classList.contains('dark-mode')) {
-            icon.textContent = 'light_mode';
-        } else {
-            icon.textContent = 'dark_mode';
-        }
+    
+    function initializeUIFromState() {
+        document.querySelectorAll('.quantity-selector').forEach(selector => {
+            selector.querySelector('.qty-value').textContent = '0';
+        });
+        document.querySelectorAll('.addon-card').forEach(card => {
+            card.classList.remove('addon-selected');
+            const button = card.querySelector('button');
+            button.innerHTML = 'Add';
+            button.classList.remove('btn-added');
+            button.classList.add('btn-add');
+        });
+        updateOrderSummary();
     }
-    const savedTheme = localStorage.getItem('theme');
-    // Default to light mode for this page, or use saved preference
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-    } else {
-        body.classList.remove('dark-mode');
-    }
-    updateThemeIcon();
 
-    themeBtn.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        const isDark = body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        updateThemeIcon();
-    });
+    // --- Event Listeners for UI elements ---
 
-    // --- Mobile Menu ---
-    const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const openMenu = () => {
-        mobileMenu.classList.add('active');
-        menuOverlay.classList.add('active');
-    };
-    const closeMenu = () => {
-        mobileMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-    };
-    menuBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-    menuOverlay.addEventListener('click', closeMenu);
-
-    // --- Calendar ---
     document.querySelectorAll('.calendar-date:not(.disabled)').forEach(dateEl => {
         dateEl.addEventListener('click', function() {
-            document.querySelectorAll('.calendar-date.selected').forEach(d => d.classList.remove('selected'));
+            document.querySelector('.calendar-date.selected')?.classList.remove('selected');
             this.classList.add('selected');
             bookingState.date.setDate(parseInt(this.textContent, 10));
         });
     });
 
-    // --- Time Slots ---
     document.querySelectorAll('.time-slot:not(.disabled)').forEach(slotEl => {
         slotEl.addEventListener('click', function() {
-            document.querySelectorAll('.time-slot.selected').forEach(s => s.classList.remove('selected'));
+            document.querySelector('.time-slot.selected')?.classList.remove('selected');
             this.classList.add('selected');
             bookingState.timeSlot = this.textContent.trim();
         });
     });
 
-    // --- Quantity Selectors ---
-    document.querySelectorAll('.quantity-selector').forEach((selector, index) => {
-        const ticketKey = Object.keys(bookingState.tickets)[index];
+    document.querySelectorAll('.quantity-selector').forEach(selector => {
+        const ticketName = selector.closest('.ticket-card').querySelector('.ticket-name').textContent;
+        const ticketKey = Object.keys(bookingState.tickets).find(key => bookingState.tickets[key].name === ticketName);
+        if (!ticketKey) return;
+
         const qtyValueEl = selector.querySelector('.qty-value');
         selector.querySelectorAll('.qty-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 let currentQty = bookingState.tickets[ticketKey].quantity;
-                if (btn.querySelector('.material-symbols-outlined').textContent === 'remove') {
-                    if (currentQty > 0) currentQty--;
-                } else {
-                    currentQty++;
-                }
+                const action = btn.querySelector('.material-symbols-outlined').textContent;
+                if (action === 'remove' && currentQty > 0) currentQty--;
+                else if (action === 'add') currentQty++;
                 bookingState.tickets[ticketKey].quantity = currentQty;
                 qtyValueEl.textContent = currentQty;
                 updateOrderSummary();
@@ -146,9 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Add-ons ---
-    document.querySelectorAll('.addon-card').forEach((card, index) => {
-        const addonKey = Object.keys(bookingState.addons)[index];
+    document.querySelectorAll('.addon-card').forEach(card => {
+        const addonName = card.querySelector('.addon-name').textContent;
+        const addonKey = Object.keys(bookingState.addons).find(key => bookingState.addons[key].name === addonName);
+        if (!addonKey) return;
+
         const button = card.querySelector('button');
         button.addEventListener('click', function() {
             const isSelected = card.classList.toggle('addon-selected');
@@ -160,52 +120,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Checkout Button ---
-    document.querySelector('.btn-checkout').addEventListener('click', async(e) => {
-        e.preventDefault();
+    // --- Checkout Button (MODIFIED) ---
+    // Now it just navigates directly to the payment page.
+    document.querySelector('.btn-checkout').addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent the default link behavior
+        
         const totalQuantity = Object.values(bookingState.tickets).reduce((sum, t) => sum + t.quantity, 0);
         if (totalQuantity === 0) {
-            alert("Please select at least one ticket before proceeding.");
-            return;
-        }
-        const bookingData = {
-            date: bookingState.date.toISOString().split('T')[0],
-            timeSlot: bookingState.timeSlot,
-            tickets: bookingState.tickets,
-            addons: bookingState.addons,
-            totalQuantity: totalQuantity
-        };
-        const result = await makeApiRequest('/bookings', 'POST', bookingData);
-
-        if (!result) {
-            alert("Booking failed. Please try again.");
+            showNotification("Please select at least one ticket.", 'error');
             return;
         }
 
-        let bookingId = null;
+        // Store booking details in localStorage to be read by the payment page
+        localStorage.setItem('currentBooking', JSON.stringify(bookingState));
 
-        if (result.data && result.data.id) {
-            bookingId = result.data.id;
-        } else if (result.data && result.data._id) {
-            bookingId = result.data._id;
-        } else if (result.id) {
-            bookingId = result.id;
-        } else if (result._id) {
-            bookingId = result._id;
-        }
-
-        if (!bookingId) {
-            console.log("API Response:", result);
-            alert("Booking created but no ID returned from server.");
-            return;
-        }
-
-        alert("Booking successful! Redirecting to payment page...");
-
-        window.location.href = "../checkout/checkout.html?bookingId=" + bookingId;
+        showNotification("Proceeding to checkout...", 'success');
+        
+        // Navigate to the payment page after a short delay
+        setTimeout(() => {
+            window.location.href = '../payment/payment.html';
+        }, 1000);
     });
 
-    // --- Initial UI setup ---
-    updateOrderSummary();
-    console.log('✓ Booking page loaded successfully');
+    // ============================================
+    // 3. PRESERVED UI SCRIPT (Theme, Menu, etc.)
+    // ============================================
+
+    // --- Theme Toggle ---
+    const themeBtn = document.getElementById('themeBtn');
+    if (themeBtn) {
+        const body = document.body;
+        const themeIcon = themeBtn.querySelector('.material-symbols-outlined');
+        const updateIcon = () => {
+            if (themeIcon) themeIcon.textContent = body.classList.contains('dark-mode') ? 'light_mode' : 'dark_mode';
+        };
+        themeBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+            updateIcon();
+        });
+        body.classList.toggle('dark-mode', localStorage.getItem('theme') !== 'light');
+        updateIcon();
+    }
+
+    // --- Mobile Menu ---
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const openMenu = () => { if (mobileMenu) mobileMenu.classList.add('active'); if (menuOverlay) menuOverlay.classList.add('active'); };
+    const closeMenu = () => { if (mobileMenu) mobileMenu.classList.remove('active'); if (menuOverlay) menuOverlay.classList.remove('active'); };
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+    // --- Notification System ---
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease-out forwards';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+    
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+        .notification { position: fixed; top: 20px; right: 20px; color: white; padding: 1rem 1.5rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1001; font-weight: 600; font-family: 'Lato', sans-serif; font-size: 14px; animation: slideIn 0.3s ease-out forwards; }
+        .notification-info { background-color: #3b82f6; }
+        .notification-success { background-color: #10b981; }
+        .notification-error { background-color: #ef4444; }
+        @keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }
+        @keyframes slideOut { from { transform: translateX(0); } to { transform: translateX(120%); } }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // ============================================
+    // 4. INITIALIZATION
+    // ============================================
+    initializeUIFromState();
+    console.log('✓ Booking page initialized (Local Mode - No API).');
 });

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production.up.railway.app/api';
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
 
     // ============================================
     // 1. API & AUTHENTICATION LOGIC (NEW )
