@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Tutora | Discover Our Vision</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Newsreader:opsz,wght@6..72,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../animate.css" />
+	  <link rel="stylesheet" href="../global-theme.css" />
+</head>
+
+<body class="dark">
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="menu-header"  >
+        <div class="menu-logo">
+           <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+
+    <h3 class="menu-logo-text" style="color: #ECB613; display: flex; align-items: center; gap: 8px;">
+        Tutora 
+    </h3>
+        </div>
+        <button class="close-btn" id="closeBtn">
+          <span class="material-symbols-outlined" style="color: #ECB613;">close</span>
+        </button>
+      </div>
+
+      <nav class="menu-nav"  >
+        <a href="../4.home/code.html" class="menu-link">Home</a>
+        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link"
+          >Plan Your Visit</a
+        >        <a href="../Kids-Museum/kids-museum.html" class="menu-link" >Kids-Museum</a>
+
+        <a href="../event/event.html" class="menu-link">Event</a>
+
+        <div class="menu-dropdown">
+          <button class="menu-link dropdown-toggle">
+            AI Experience
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="dropdown-items">
+            <a href="../AI Guide/guide.html" class="dropdown-item"
+              >AI Tour Guide</a
+            >
+            <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+            <a
+              href="../artifact_identifier/artifact-identifier.html"
+              class="dropdown-item"
+              >AI Artifact Identifier</a
+            >
+            <a
+              href="../advanced 3D model/advanced-3D.html"
+              class="dropdown-item"
+              >AI Voice Storytelling (3D)</a
+            >
+            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item"
+              >Tutora laboratory</a
+            >
+          </div>
+        </div>
+
+        <a href="../shop/shop.html" class="menu-link">Shop</a>
+        <a href="../about/About.html" class="menu-link">About</a>
+        <a href="../collection/collection.html" class="menu-link">Collection</a>
+      </nav>
+
+      <div class="menu-footer" >
+        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+        <a href="../fav/favourite.html" class="menu-icon-link">
+          <span class="material-symbols-outlined">favorite</span> Favorites
+        </a>
+
+        <button class="menu-icon-link" id="menuLangBtn">
+          <span class="material-symbols-outlined">language</span>
+          Language
+        </button>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-container">
+        <div class="header-left">
+          <button class="menu-btn" id="menuBtn">
+            <span class="material-symbols-outlined" 
+              >menu</span
+            >
+          </button>
+          <div class="logo-section">
+            <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+            <h2 class="logo-text" style="color: #ECB613;">Tutora  </h2>
+          </div>
+        </div>
+
+        <nav class="desktop-nav">
+          <a href="../4.home/code.html" >Home</a>
+          <a href="../plan-your-visit/plan-your-visit.html" 
+            >Plan Your Visit</a
+          >        <a href="../Kids-Museum/kids-museum.html"  >Kids-Museum</a>
+
+          <a href="../event/event.html" >Event</a>
+          <div class="nav-dropdown">
+            <button class="nav-link dropdown-trigger" >
+              AI Experience
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+            <div class="dropdown-menu">
+              <a href="../AI Guide/guide.html" class="dropdown-link"
+                >AI Tour Guide</a
+              >
+              <a href="../chat bot/chat.html" class="dropdown-link"
+                >AI Chatbot</a
+              >
+              <a
+                href="../artifact_identifier/artifact-identifier.html"
+                class="dropdown-link"
+                >AI Artifact Identifier</a
+              >
+              <a
+                href="../advanced 3D model/advanced-3D.html"
+                class="dropdown-link"
+                >AI Voice Storytelling (3D)</a
+              >              <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link" >Tutora laboratory</a>
+
+            </div>
+          </div>
+          <a href="../shop/shop.html" >Shop</a>
+          <a href="../about/About.html" >About</a>
+          <a href="../collection/collection.html" 
+            >Collection</a
+          >
+        </nav>
+
+        <div class="header-right">
+          <div class="search-box">
+            <span class="material-symbols-outlined" 
+              >search</span
+            >
+            <input type="text" placeholder="Search..."  />
+          </div>
+          <button class="theme-btn" id="themeBtn">
+            <span class="material-symbols-outlined" 
+              >dark_mode</span
+            >
+          </button>
+          <a
+            href="../booking/booking.html"
+            class="btn-booking"
+            style="color: black; background-color: #ecb613"
+            >booking</a
+          >
+          <a href="../fav/favourite.html">
+            <button class="icon-btn">
+              <span class="material-symbols-outlined" 
+                >favorite</span
+              >
+            </button>
+          </a>
+          <button class="icon-btn" id="langBtn">
+            <span class="material-symbols-outlined" 
+              >language</span
+            >
+          </button>
+          <a href="../Profile/profile.html">
+            <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">About the Grand Egyptian Museum</h1>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- History Section -->
+        <section id="history" class="section reveal">
+            <div class="container">
+                <h2 class="section-title">
+                    A Journey Through Time: The Story of the Grand Egyptian Museum
+                </h2>
+                <p class="section-description">
+                    The Grand Egyptian Museum (GEM) is the culmination of a vision to create a world-class institution dedicated to the preservation and display of Egypt's rich Pharaonic heritage.
+                </p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">👁️</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">The Vision</h3>
+                            <p class="timeline-year">Early 2000s</p>
+                            <p class="timeline-text">
+                                The idea for a new, modern museum to house Egypt's vast collection of ancient artifacts was born, aiming to provide a worthy home for treasures like those of Tutankhamun.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">🏗️</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">International Design Competition</h3>
+                            <p class="timeline-year">2003</p>
+                            <p class="timeline-text">
+                                An international competition was held to select an architectural design. The winning entry by Heneghan Peng Architects was chosen for its modern interpretation of ancient Egyptian themes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">⚙️</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Construction Begins</h3>
+                            <p class="timeline-year">2005</p>
+                            <p class="timeline-text">
+                                The monumental task of building the world's largest archaeological museum began on the Giza plateau, overlooking the pyramids.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">🔬</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Conservation Excellence</h3>
+                            <p class="timeline-year">2010</p>
+                            <p class="timeline-text">
+                                The GEM Conservation Center officially opened. It is one of the largest and most advanced in the world, dedicated to the preservation of over 50,000 artifacts.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">👑</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Ramses II's Arrival</h3>
+                            <p class="timeline-year">2018</p>
+                            <p class="timeline-text">
+                                The 3,200-year-old colossus of Ramses II was moved to its permanent home in the museum's grand entrance hall in a spectacular engineering feat.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">🛶</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">The Solar Boat's Journey</h3>
+                            <p class="timeline-year">2021</p>
+                            <p class="timeline-text">
+                                The ancient Khufu Solar Boat was painstakingly transported from its site near the Great Pyramid to its dedicated hall within the GEM.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">🔓</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Trial Operations</h3>
+                            <p class="timeline-year">2024</p>
+                            <p class="timeline-text">
+                                The museum launched limited trial tours, inviting the world to experience the majestic Grand Staircase and the commercial district for the first time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker">✨</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">The Grand Opening</h3>
+                            <p class="timeline-year">2026</p>
+                            <p class="timeline-text">
+                                A historic celebration marks the official inauguration of the world's largest archaeological museum, housing the full collection of King Tutankhamun.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section id="architecture" class="section section-alt reveal">
+            <div class="container">
+                <h2 class="section-title">
+                    A Modern Marvel: The Architectural Splendor of the GEM
+                </h2>
+                <p class="section-description">
+                    The museum's design is a testament to architectural innovation, blending seamlessly with its historic surroundings while making a bold contemporary statement.
+                </p>
+
+                <div class="gallery-grid">
+                    <img src="../122.png" alt="Interior view of the Grand Egyptian Museum's grand staircase" class="gallery-image" />
+                    <img src="../11.jpg" alt="Architectural detail of the museum's geometric ceiling patterns" class="gallery-image" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: The Grand Staircase -->
+        <section id="staircase" class="section staircase-feature reveal">
+            <div class="container staircase-container">
+                <div class="staircase-content">
+                    <h2 class="section-title">The Grand Staircase</h2>
+                    <p class="section-description">
+                        Ascend through the history of ancient Egypt on our monumental Grand Staircase. Spanning four levels, this architectural centerpiece showcases the chronological progression of Pharaonic art, leading you towards the breathtaking view of the Pyramids.
+                    </p>
+                    <ul class="staircase-specs">
+                        <li><strong>64 meters</strong> of panoramic history</li>
+                        <li><strong>87 statues</strong> and architectural fragments</li>
+                        <li><strong>4 distinct eras</strong> from Old Kingdom to Late Period</li>
+                    </ul>
+                </div>
+                <div class="staircase-visual">
+                    <img src="../suzi-kim-AVUvVdVKcSg-unsplash.jpg" alt="The Grand Staircase at the GEM" class="feature-img" />
+                    <div class="visual-overlay"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Meet the Curators -->
+        <section id="team" class="section reveal">
+            <div class="container">
+                <h2 class="section-title text-center">The Guardians of Heritage</h2>
+                <p class="section-description text-center">
+                    Meet the experts dedicated to preserving Egypt's legacy.
+                </p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="./unnamed.png" alt="Dr. Khaled El-Anany" class="team-img" />
+                        </div>
+                        <h3 class="team-name">Dr. Khaled El-Anany</h3>
+                        <p class="team-role">Head of Conservation</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="./unnamed (1).png" alt="Sarah Mohamed" class="team-img" />
+                        </div>
+                        <h3 class="team-name">Sarah Mohamed</h3>
+                        <p class="team-role">Lead Archaeologist</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="./unnamed (5).png" alt="Ahmed Hassan" class="team-img" />
+                        </div>
+                        <h3 class="team-name">Ahmed Hassan</h3>
+                        <p class="team-role">Digital Preservationist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Future Vision (AI) -->
+        <section id="future" class="section section-alt ai-vision reveal">
+            <div class="container">
+                <div class="ai-header">
+                    <h2 class="section-title">The Future is Tutora</h2>
+                    <p class="section-description">
+                        We are redefining the museum experience through digital innovation. Our AI-driven ecosystem bridges the gap between ancient history and modern audiences.
+                    </p>
+                </div>
+                
+                <div class="ai-features">
+                    <div class="ai-feature-card">
+                        <span class="material-symbols-outlined icon">smart_toy</span>
+                        <h3>AI Chatbot</h3>
+                        <p>A 24/7 personal guide that answers any historical question in real-time.</p>
+                    </div>
+                    <div class="ai-feature-card">
+                        <span class="material-symbols-outlined icon">vision_proximity</span>
+                        <h3>Artifact Identifier</h3>
+                        <p>Scan any artifact with your phone to unlock deep-dive historical context.</p>
+                    </div>
+                    <div class="ai-feature-card">
+                        <span class="material-symbols-outlined icon">view_in_ar</span>
+                        <h3>3D Voice Storytelling</h3>
+                        <p>Immersive audio-visual journeys through photorealistic ancient reconstructions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="section reveal">
+            <div class="container">
+                <h2 class="section-title">Our Commitment to Heritage and Humanity</h2>
+                <p class="section-description">
+                    The GEM's mission extends beyond exhibition. It is a global hub for conservation, research, and education, dedicated to safeguarding Egypt's legacy for future generations.
+                </p>
+
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="mission-icon">🔬</div>
+                        <h3 class="mission-title">Research</h3>
+                        <p class="mission-text">
+                            Fostering new discoveries and understanding of ancient Egyptian civilization through state-of-the-art labs and international collaboration.
+                        </p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">📚</div>
+                        <h3 class="mission-title">Education</h3>
+                        <p class="mission-text">
+                            Inspiring a global audience by making Egypt's history accessible and engaging through innovative exhibitions and educational programs.
+                        </p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon">🛡️</div>
+                        <h3 class="mission-title">Conservation</h3>
+                        <p class="mission-text">
+                            Employing cutting-edge techniques to restore and preserve priceless artifacts, ensuring their survival for millennia to come.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="button-center">
+                    <a href="../collection/collection.html" class="btn btn-primary">
+                        Explore the Collections
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+            <div class="footer-container">
+                <!-- Footer Header -->
+                <div class="footer-header">
+                    <div class="footer-logo">
+                        <span class="material-symbols-outlined">account_balance</span>
+                    </div>
+                    <h2 class="footer-title">Grand Egyptian Museum</h2>
+                    <div class="footer-divider"></div>
+                </div>
+
+                <!-- Footer Grid -->
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="../booking/booking.html">Tickets</a></li>
+                            <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../-membership/code.html">Membership</a></li>
+                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="../About us/About-us.html">History</a></li>
+                            <li><a href="../event/event.html">Events</a></li>
+                            <li><a href="../-news_press/code.html">News & Press</a></li>
+                            <li><a href="../-branding/code.html">Branding</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="../visitor help/help.html">Help</a></li>
+                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column connect-column">
+                        <h3>Connect</h3>
+                        <div class="social-links">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+
+                            <!-- Twitter (X ) -->
+                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <!-- YouTube -->
+                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+
+                        <p>
+                            Follow us on social media for updates and behind-the-scenes content.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer Separator -->
+                <div class="footer-separator"></div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="language-toggle">
+                        <button class="active" data-lang="en">English</button>
+                        <button data-lang="ar">العربية</button>
+                    </div>
+                    <div class="legal-section">
+                       <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html">Cookie Settings</a>
+                    </div>
+            <div class="copyright">
+              © 2026 Tutora. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+        </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script src="script.js"></script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
+</body>
+
+</html>

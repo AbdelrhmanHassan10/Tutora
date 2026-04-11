@@ -1,110 +1,93 @@
-/**
- * Terms of Service Page Manager
- * Handles theme switching, back button, and active navigation highlighting on scroll.
- */
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. MOBILE MENU DRAWER ---
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-    // --- DOM Element Selectors ---
-    const backBtn = document.getElementById('back-btn');
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    const htmlElement = document.documentElement;
+    const openMenu = () => {
+        if (mobileMenu && menuOverlay) {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    const closeMenu = () => {
+        if (mobileMenu && menuOverlay) {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    };
+
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+    // --- 2. MOBILE DROPDOWN ---
+    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const dropdown = btn.closest('.menu-dropdown');
+            const items = dropdown?.querySelector('.dropdown-items');
+            if (btn && items) {
+                btn.classList.toggle('active');
+                items.classList.toggle('show');
+            }
+        });
+    });
+
+    // --- 3. SCROLLSPY NAVIGATION ---
     const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
     const contentSections = document.querySelectorAll('.content-section');
 
-    // --- Constants ---
-    const THEME_KEY = 'gem_theme';
+    if (navItems.length > 0 && contentSections.length > 0) {
+        const observerOptions = {
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
 
-    // ============================================
-    // 1. THEME MANAGEMENT
-    // ============================================
-
-    /**
-     * Applies a theme by adding/removing the 'dark' class from the <html> element.
-     * @param {string} theme - The theme to apply ('dark' or 'light').
-     */
-    function applyTheme(theme) {
-        htmlElement.classList.toggle('dark', theme === 'dark');
-        localStorage.setItem(THEME_KEY, theme);
-        console.log(`Theme set to: ${theme}`);
-    }
-
-    /**
-     * Toggles the current theme and saves the preference.
-     */
-    function toggleTheme() {
-        const isDarkMode = htmlElement.classList.contains('dark');
-        applyTheme(isDarkMode ? 'light' : 'dark');
-    }
-
-    // ============================================
-    // 2. NAVIGATION & SCROLLSPY
-    // ============================================
-
-    /**
-     * Implements a "scrollspy" to highlight the active navigation link
-     * based on the current scroll position.
-     */
-    function initializeScrollspy() {
-        if (navItems.length === 0 || contentSections.length === 0) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            let activeSectionId = null;
-
-            // Find the topmost visible section
+        const scrollspyObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    if (!activeSectionId) { // Prioritize the first one that's intersecting
-                        activeSectionId = entry.target.getAttribute('id');
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`.sidebar-nav a[href="#${id}"]`);
+
+                    if (navLink) {
+                        navItems.forEach(link => link.classList.remove('active'));
+                        navLink.classList.add('active');
                     }
                 }
             });
-            
-            // If a section is active, update the nav
-            if (activeSectionId) {
-                navItems.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${activeSectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-
-        }, {
-            rootMargin: '-20% 0px -80% 0px', // A narrow band at the top of the viewport
-            threshold: 0
-        });
+        }, observerOptions);
 
         contentSections.forEach(section => {
-            observer.observe(section);
+            scrollspyObserver.observe(section);
         });
     }
 
-    // ============================================
-    // 3. INITIALIZATION & EVENT LISTENERS
-    // ============================================
+    // --- 4. SMOOTH SCROLL FOR SIDEBAR LINKS ---
+    document.querySelectorAll('.sidebar-nav a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 120,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 
-    function initialize() {
-        // --- Attach Event Listeners ---
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', toggleTheme);
-        }
-
-        if (backBtn) {
-            backBtn.addEventListener('click', () => {
-                history.back(); // Simple and effective way to go back
-            });
-        }
-
-        // --- Load Initial State ---
-        const savedTheme = localStorage.getItem(THEME_KEY) || 'dark'; // Default to dark mode
-        applyTheme(savedTheme);
-
-        // --- Initialize Features ---
-        initializeScrollspy();
-
-        console.log("Terms of Service page initialized successfully.");
+    // --- 5. CONTACT SIMULATION ---
+    const contactBtn = document.querySelector('.sidebar-contact-box button');
+    if (contactBtn) {
+        contactBtn.addEventListener('click', (e) => {
+            console.log('User navigating to contact/feedback.');
+        });
     }
-
-    // Run the initialization function
-    initialize();
 });

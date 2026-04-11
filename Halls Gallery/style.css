@@ -1,0 +1,237 @@
+/* 
+    Tutora Halls Gallery - Cinematic Exhibition Experience
+    Design System: Royal Gold, Obsidian, and Alabaster
+*/
+
+:root {
+    --hall-gold: #ecb613;
+    --hall-gold-rgb: 236, 182, 19;
+    --hall-obsidian: #0a0a0a;
+    --hall-alabaster: #fdfdfb;
+}
+
+body.dark {
+    --hall-bg: #0a0a0a;
+    --hall-bg-alt: #121212;
+    --hall-text: #ffffff;
+    --hall-text-muted: #aaaaaa;
+    --hall-border: rgba(236, 182, 19, 0.1);
+    --hall-glass: rgba(20, 20, 20, 0.8);
+}
+
+body.light {
+    --hall-bg: #fdfdfb;
+    --hall-bg-alt: #f8f8f5;
+    --hall-text: #121212;
+    --hall-text-muted: #555555;
+    --hall-border: rgba(0, 0, 0, 0.08);
+    --hall-glass: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    background-color: var(--hall-bg);
+    color: var(--hall-text);
+    font-family: 'Public Sans', sans-serif;
+    transition: background-color 0.5s, color 0.5s;
+    overflow-x: hidden;
+}
+
+/* --- HERO SECTION --- */
+.hall-hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+}
+
+.hero-video-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, var(--hall-bg));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.gold-accent {
+    color: var(--hall-gold);
+    display: block;
+    font-size: 0.4em;
+    letter-spacing: 12px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+/* --- SECTION HEADERS --- */
+.section-header {
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.section-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: var(--hall-gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin: 0;
+}
+
+/* --- HALL CARDS --- */
+.halls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 3rem;
+    padding: 4rem 0;
+}
+
+.hall-card {
+    position: relative;
+    height: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hall-card:hover {
+    transform: scale(1.02);
+}
+
+.hall-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.hall-card:hover .hall-card-img {
+    transform: scale(1.1);
+}
+
+.hall-card-info {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 10%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+    color: #fff;
+}
+
+.hall-card-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.hall-card-info p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ccc;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s delay 0.2s;
+}
+
+.hall-card:hover .hall-card-info p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- GRAND STAIRCASE SECTION --- */
+.staircase-section {
+    padding: 10rem 0;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.staircase-flex {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+}
+
+.staircase-content {
+    flex: 1;
+}
+
+.staircase-visual {
+    flex: 1.2;
+    position: relative;
+}
+
+.visual-main {
+    width: 100%;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+/* --- ANIMATIONS --- */
+.anim-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.anim-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .halls-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .staircase-flex {
+        flex-direction: column;
+    }
+    
+    .hall-hero {
+        height: 70vh;
+    }
+    
+    .header {
+        padding: 1.25rem 1.5rem !important;
+    }
+}

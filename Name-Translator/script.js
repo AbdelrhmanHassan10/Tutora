@@ -106,16 +106,24 @@ mobileMenuLinks.forEach(link => link.addEventListener('click', closeMenu));
         const name = nameInput.value.trim();
         if (!name) { alert('Please enter a name to translate!'); return; }
 
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('🔐 Authentication required. Please login to use the Royal Cartouche generator.');
+            window.location.href = '../2.login/code.html';
+            return;
+        }
+
         hieroglyphDisplay.style.opacity = '0';
         phoneticText.style.opacity = '0';
+        generateBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Carving...';
+        generateBtn.disabled = true;
 
         try {
-            const token = localStorage.getItem('token');
             const response = await fetch('https://gem-backend-production-cb6d.up.railway.app/api/ai/name-to-cartouche', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ name })
             });
@@ -123,17 +131,24 @@ mobileMenuLinks.forEach(link => link.addEventListener('click', closeMenu));
             const data = await response.json();
 
             setTimeout(() => {
-                if (response.ok && data.hieroglyphics) {
-                    hieroglyphDisplay.textContent = data.hieroglyphics;
+                if (response.ok && (data.hieroglyphics || data.cartouche)) {
+                    hieroglyphDisplay.textContent = data.hieroglyphics || data.cartouche;
                     phoneticText.textContent = data.phonetic || name;
+                } else if (response.status === 401 || response.status === 403) {
+                    alert('🔐 Session expired. Please sign in again.');
+                    localStorage.removeItem('token');
+                    window.location.href = '../2.login/code.html';
                 } else {
-                    const localGeneration = translateToHieroglyphics(name);
-                    hieroglyphDisplay.textContent = data.cartouche || localGeneration.hieroglyphics;
-                    phoneticText.textContent = localGeneration.phonetic || name;
+                    console.warn('API Error, falling back to local translation:', data.message);
+                    const localGen = translateToHieroglyphics(name);
+                    hieroglyphDisplay.textContent = localGen.hieroglyphics;
+                    phoneticText.textContent = localGen.phonetic;
                 }
                 hieroglyphDisplay.style.opacity = '1';
                 phoneticText.style.opacity = '1';
-            }, 150);
+                generateBtn.innerHTML = 'Generate Inscription';
+                generateBtn.disabled = false;
+            }, 500);
         } catch (error) {
             console.error('API Translation Error, failing back to local:', error);
             const { hieroglyphics, phonetic } = translateToHieroglyphics(name);
@@ -142,7 +157,9 @@ mobileMenuLinks.forEach(link => link.addEventListener('click', closeMenu));
                 phoneticText.textContent = phonetic || name;
                 hieroglyphDisplay.style.opacity = '1';
                 phoneticText.style.opacity = '1';
-            }, 150);
+                generateBtn.innerHTML = 'Generate Inscription';
+                generateBtn.disabled = false;
+            }, 500);
         }
     });
 

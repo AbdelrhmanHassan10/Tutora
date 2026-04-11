@@ -13,6 +13,8 @@
     --accent-secondary: #e9c349;
     --border-color: #353534;
     --border-light: rgba(255, 255, 255, 0.1);
+    --card-bg: #1c1b1b;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -926,12 +928,13 @@ html:not(.dark) .dropdown-link:hover {
    ============================================ */
 
 .main-card {
-    background-color: var(--bg-tertiary);
-    border: 1px solid rgba(242, 202, 80, 0.2);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     padding: 2rem;
     position: relative;
     overflow: hidden;
     margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
 }
 
 @media (min-width: 768px) {
@@ -1137,8 +1140,8 @@ body.light .input-field:focus {
    ============================================ */
 
 .display-section {
-    background-color: var(--bg-secondary);
-    border: 1px solid rgba(242, 202, 80, 0.1);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
     padding: 2.5rem;
     min-height: 300px;
     display: flex;
@@ -1147,6 +1150,7 @@ body.light .input-field:focus {
     justify-content: center;
     position: relative;
     text-align: center;
+    box-shadow: var(--card-shadow);
 }
 
 .artifact-ref {

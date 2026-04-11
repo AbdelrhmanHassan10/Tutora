@@ -21,14 +21,14 @@ body {
 
 body {
     font-family: "Space Grotesk", sans-serif;
-    background-color: #f5f5dc;
-    color: #000000;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     transition: background-color 0.3s, color 0.3s;
 }
 
 html.dark body {
     background-color: #181611;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 a {
@@ -111,7 +111,7 @@ a {
 }
 
 .text-white {
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .text-lg {
@@ -169,7 +169,14 @@ a {
     height: 100%;
     object-fit: cover; 
 }  
-header {
+.glass-header {
+    background: rgba(18, 18, 18, 0.5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0.75rem 2.5rem;
     display: flex;
@@ -213,17 +220,17 @@ button:hover {
 
 .bg-primary {
     background-color: #ecb613;
-    color: #000000;
+    color: var(--text-primary);
 }
 
 .bg-secondary {
     background-color: rgba(0, 0, 0, 0.05);
-    color: #000000;
+    color: var(--text-primary);
 }
 
 html.dark .bg-secondary {
     background-color: #393528;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .h-10 {
@@ -248,7 +255,7 @@ html.dark .bg-secondary {
 /* Hero Section */
 
 .back1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url("../111.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url("../100.jpg");
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -280,15 +287,15 @@ html.dark .bg-secondary {
 
 .site-footer {
     width: 100%;
-    background-color: #f8f8f5;
+    background-color: var(--bg-primary);
     border-top: 1px solid rgba(242, 185, 13, 0.3);
     padding-top: 4rem;
     padding-bottom: 2rem;
     transition: background-color 0.3s;
 }
 
-body.dark-mode .site-footer {
-    background-color: #121212;
+body.dark .site-footer {
+    background-color: var(--bg-primary);
 }
 
 .footer-container {
@@ -423,7 +430,7 @@ body.dark-mode .site-footer {
     margin-bottom: 2rem;
 }
 
-body.dark-mode .footer-separator {
+body.dark .footer-separator {
     background-color: #374151;
 }
 
@@ -453,7 +460,7 @@ body.dark-mode .footer-separator {
     border: 1px solid #e5e7eb;
 }
 
-body.dark-mode .language-toggle {
+body.dark .language-toggle {
     background-color: rgba(31, 41, 55, 0.5);
     border-color: #374151;
 }
@@ -475,7 +482,7 @@ body.dark-mode .language-toggle {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-mode .language-toggle .active {
+body.dark .language-toggle .active {
     background-color: #f2b90d;
     color: #121212;
 }
@@ -484,7 +491,7 @@ body.dark-mode .language-toggle .active {
     color: #6b7280;
 }
 
-body.dark-mode .language-toggle button:not(.active) {
+body.dark .language-toggle button:not(.active) {
     color: #9ca3af;
 }
 
@@ -535,3 +542,112 @@ body.dark-mode .language-toggle button:not(.active) {
     letter-spacing: 0.1em;
     margin-top: 0.5rem;
 }
+
+/* ============================================
+   PREMIUM 3D DROPDOWN ANIMATION OVERRIDE
+   ============================================ */
+.nav-dropdown {
+    perspective: 1000px !important;
+}
+.dropdown-menu {
+    transform-origin: top center !important;
+    transform: translateY(15px) rotateX(-15deg) scale(0.95) !important;
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.5s !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(236,182,19,0.2) inset !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    border-radius: 12px !important;
+}
+.nav-dropdown:hover .dropdown-menu,
+.menu-dropdown:hover .dropdown-items {
+    transform: translateY(0) rotateX(0deg) scale(1) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.dropdown-link, .dropdown-item {
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+.dropdown-link:hover, .dropdown-item:hover {
+    transform: translateX(8px) !important;
+}
+
+/* ============================================
+   PREMIUM LANDING PAGE OVERRIDES
+   ============================================ */
+
+.back1 {
+    background-image: linear-gradient(rgba(18, 18, 18, 0.5), rgba(18, 18, 18, 0.8)), url("../55.jpg.webp") !important;
+    padding: 8rem 1rem 1rem 1rem !important; 
+}
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+    align-items: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-logo-box {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 25px rgba(236, 182, 19, 0.5));
+    animation: floatLogo 6s ease-in-out infinite;
+}
+
+.hero-main-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nav-login-btn {
+    border: 1px solid #ecb613 !important;
+    background: transparent !important;
+    color: #ecb613 !important;
+    transition: all 0.3s !important;
+}
+
+.nav-login-btn:hover {
+    background: #ecb613 !important;
+    color: #121212 !important;
+}
+
+.logo-container {
+    display: none !important; /* Hide old tiny logo */
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.glass-header {
+    background: rgba(18, 18, 18, 0.5) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+}
+

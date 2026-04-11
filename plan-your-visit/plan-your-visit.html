@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -10,15 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../animate.css" />
+	<link rel="stylesheet" href="../global-theme.css" />
 </head>
 
-<body class="dark-mode">
+<body class="dark">
     <!-- Overlay for Mobile Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Single Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu" style="color: white;background-color: white;">
-        <div class="menu-header" style="color: #ecb613; background-color: black;">
+    <div class="mobile-menu" id="mobileMenu" >
+        <div class="menu-header">
             <div class="menu-logo">
     
     <div class="logo-circle">
@@ -32,48 +35,48 @@
             </button>
         </div>
         <nav class="menu-nav" >
-            <a href="../4.home/code.html" class="menu-link" style="color: black;">Home</a>
-            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" style="color: black;">Plan Your Visit</a
-        >         <a href="../Kids-Museum/kids-museum.html" class="menu-link" style="color:black ">Kids-Museum</a>
+            <a href="../4.home/code.html" class="menu-link"  >Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" >Plan Your Visit</a
+        >         <a href="../Kids-Museum/kids-museum.html" class="menu-link"  >Kids-Museum</a>
 
-        <a href="../event/event.html" class="menu-link" style="color: black;">Event</a>
+        <a href="../event/event.html" class="menu-link" >Event</a>
             <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle" style="color: black;">
+                <button class="menu-link dropdown-toggle" >
             AI Experience
             <span class="material-symbols-outlined">expand_more</span>
           </button>
                 <div class="dropdown-items">
-                    <a href="../AI Guide/guide.html" class="dropdown-item" style="color: black">AI Tour Guide</a
+                    <a href="../AI Guide/guide.html" class="dropdown-item"  >AI Tour Guide</a
             >
-            <a href="../chat bot/chat.html" class="dropdown-item" style="color: black">AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" style="color: black">AI Artifact Identifier</a
+            <a href="../chat bot/chat.html" class="dropdown-item"  >AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"  >AI Artifact Identifier</a
             >
             <a
               href="../advanced 3D model/advanced-3D.html"
-              class="dropdown-item"style="color: black"
+              class="dropdown-item" 
               >AI Voice Storytelling (3D )</a
             >
-                       <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item"style="color: black">Tutora laboratory</a>
+                       <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item" >Tutora laboratory</a>
  </div>
         </div>
-        <a href="../shop/shop.html" class="menu-link" style="color: black;">Shop</a>
-                    <a href="../about/code.html" class="menu-link" style="color: black;">About</a>
-                    <a href="../collection/collection.html" class="menu-link" style="color: black;">Collection</a>
+        <a href="../shop/shop.html" class="menu-link" >Shop</a>
+                    <a href="../about/code.html" class="menu-link">About</a>
+                    <a href="../collection/collection.html" class="menu-link">Collection</a>
         </nav>
         <div class="menu-footer">
             <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link" style="color: black">
+            <a href="../fav/favourite.html" class="menu-icon-link" >
                 <span class="material-symbols-outlined">favorite</span> Favorites
             </a>
-            <button class="menu-icon-link" id="menuLangBtn" style="color: black">
-          <span class="material-symbols-outlined" style="color: black">language</span> Language
+            <button class="menu-icon-link" id="menuLangBtn" >
+          <span class="material-symbols-outlined" >language</span> Language
         </button>
         </div>
         </div>
 
         <!-- Header -->
-        <header class="header" style="background-color: black;">
-            <div class="header-container" style="background-color: black;">
+        <header class="header" >
+            <div class="header-container" >
                 <div class="header-left">
                     <button class="menu-btn" id="menuBtn">
             <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span
@@ -88,55 +91,50 @@
     <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
                   </div>
                 </div>
-                <nav class="desktop-nav" style="background-color: black;">
-                    <a href="../4.home/code.html" style="color:white">Home</a>
-                    <a href="../plan-your-visit/plan-your-visit.html" style="color:white">Plan Your Visit</a>
-   <a href="../Kids-Museum/kids-museum.html"  style="color:rgb(255, 255, 255) ">Kids-Museum</a>
-                    <a href="../event/event.html" style="color: white">Event</a>
+                <nav class="desktop-nav" >
+                    <a href="../4.home/code.html" >Home</a>
+                    <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a>
+   <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                    <a href="../event/event.html" >Event</a>
                     <div class="nav-dropdown">
-                        <button class="nav-link dropdown-trigger" style="color: white">
+                        <button class="nav-link dropdown-trigger" >
               AI Experience
               <span class="material-symbols-outlined">expand_more</span>
             </button>
                         <div class="dropdown-menu">
-                            <a href="../AI Guide/guide.html" class="dropdown-link" style="color: rgb(0, 0, 0)">AI Tour Guide</a
+                            <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a
               >
-              <a href="../chat bot/chat.html" class="dropdown-link" style="color: black;">AI Chatbot</a
+              <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a
               >
               <a
                 href="../artifact_identifier/artifact-identifier.html"
-                class="dropdown-link"style="color: black;" 
-                >AI Artifact Identifier</a
+                class="dropdown-link "> AI Artifact Identifier</a
               >
-              <a
-                href="../advanced 3D model/advanced-3D.html"
-                class="dropdown-link" style="color: black;"
-                >AI Voice Storytelling (3D )</a
-              >
-                         <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link"style="color: black">Tutora laboratory</a>
+              <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D )</a>
+                <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link">Tutora laboratory</a>
  </div>
           </div>
-          <a href="../shop/shop.html" style="color: white">Shop</a>
-                            <a href="../about/code.html" style="color: white">About</a>
-                            <a href="../collection/collection.html" style="color: white">Collection</a>
+          <a href="../shop/shop.html" >Shop</a>
+                            <a href="../about/code.html" >About</a>
+                            <a href="../collection/collection.html" >Collection</a>
                 </nav>
                 <div class="header-right">
-                    <div class="search-box" style="color: white">
+                    <div class="search-box" >
                         <span class="material-symbols-outlined">search</span>
                         <input type="text" placeholder="Search..." />
                     </div>
                     <button class="theme-btn" id="theme-toggle">
-            <span class="material-symbols-outlined"style="color: white">dark_mode</span>
+            <span class="material-symbols-outlined">dark_mode</span>
           </button>
                     <a href="../booking/booking.html" class="btn-booking">booking</a>
-                    <a href="../fav/favourite.html" class="icon-btn" style="color: white ;text-decoration: none;">
+                    <a href="../fav/favourite.html" class="icon-btn" style="   text-decoration: none;">
                         <span class="material-symbols-outlined">favorite</span>
                     </a>
                     <button class="icon-btn" id="langBtn">
-            <span class="material-symbols-outlined"style="color: white">language</span>
+            <span class="material-symbols-outlined">language</span>
           </button>
                     <a href="../Profile/profile.html">
-                        <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                        <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
                     </a>
                 </div>
                 </div>
@@ -203,6 +201,44 @@
                 </div>
             </section>
 
+            <!-- Recommended Itineraries (New) -->
+            <section class="container section" id="itineraries">
+                <h2 class="section-title">Recommended Itineraries</h2>
+                <p style="color: var(--muted-gold, #94A3B8); margin-bottom: 2rem;">Make the most of your time with our curated guides.</p>
+                <div class="itinerary-grid">
+                    <div class="itinerary-card">
+                        <div class="itinerary-time">2 Hours</div>
+                        <h3>The Highlights Tour</h3>
+                        <p>Perfect for those on a tight schedule. See the essential masterpieces.</p>
+                        <ul class="timeline">
+                            <li><strong>Start:</strong> The Grand Staircase</li>
+                            <li><strong>Middle:</strong> Tutankhamun's Mask</li>
+                            <li><strong>End:</strong> Royal Mummies Hall</li>
+                        </ul>
+                    </div>
+                    <div class="itinerary-card popular-itin">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="itinerary-time">Half Day (4-5 Hours)</div>
+                        <h3>The Explorer Experience</h3>
+                        <p>Dive deeper into the history with time for relaxation.</p>
+                        <ul class="timeline">
+                            <li><strong>Morning:</strong> Main Exhibition Galleries</li>
+                            <li><strong>Lunch:</strong> Pyramid View Restaurant</li>
+                            <li><strong>Afternoon:</strong> Pharaoh Transformer Exhibit</li>
+                        </ul>
+                    </div>
+                    <div class="itinerary-card">
+                        <div class="itinerary-time">Full Day</div>
+                        <h3>The Complete GEM</h3>
+                        <p>Immerse yourself completely. Includes all special exhibitions.</p>
+                        <ul class="timeline">
+                            <li><strong>Morning:</strong> All Main Galleries</li>
+                            <li><strong>Lunch:</strong> Grand Cafe & Gift Shop</li>
+                            <li><strong>Afternoon:</strong> Kids Museum & Interactive 3D Voice</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
             <section class="container section">
                 <div class="ai-planner">
                     <div class="planner-content">
@@ -216,6 +252,7 @@
                     <img class="planner-img" src="../3.jpg" alt="AI Planner">
                 </div>
             </section>
+
 
             <section class="container section">
                 <h2 class="section-title">Visitor Information</h2>
@@ -234,6 +271,104 @@
                         <span class="material-symbols-outlined info-icon">accessible</span>
                         <h3>Accessibility</h3>
                         <p>Fully accessible for all visitors</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Getting Here & Parking -->
+            <section class="container section getting-here">
+                <div class="transit-split">
+                    <div class="transit-content">
+                        <h2 class="section-title">Getting Here & Parking</h2>
+                        <ul class="transit-list">
+                            <li>
+                                <span class="material-symbols-outlined icon" style="color: #ECB613;">directions_bus</span>
+                                <div>
+                                    <h4 style="color: white; margin-bottom: 5px;">Public Transit</h4>
+                                    <p style="color: #94A3B8;">Take Metro Line 3 to the GEM station. Direct shuttle buses available from Tahrir Square.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined icon" style="color: #ECB613;">local_taxi</span>
+                                <div>
+                                    <h4 style="color: white; margin-bottom: 5px;">Taxi & Ride Share</h4>
+                                    <p style="color: #94A3B8;">Uber and taxis have a dedicated drop-off point at the Main Entrance.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="material-symbols-outlined icon" style="color: #ECB613;">local_parking</span>
+                                <div>
+                                    <h4 style="color: white; margin-bottom: 5px;">Parking</h4>
+                                    <p style="color: #94A3B8;">Secure underground parking available. $5 for half-day, $10 for full day. EV charging included.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="transit-image" style="background-image: url('../7.jpg');"></div>
+                </div>
+            </section>
+
+            <!-- Museum Rules & Guidelines -->
+            <section class="container section guidelines-section">
+                <h2 class="section-title" style="text-align: center;">Before You Arrive</h2>
+                <div class="rules-grid">
+                    <div class="rule-item">
+                        <span class="material-symbols-outlined">no_photography</span>
+                        <p>No Flash Photography</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="material-symbols-outlined">no_backpack</span>
+                        <p>No Large Bags</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="material-symbols-outlined">restaurant</span>
+                        <p>Food in Cafes Only</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="material-symbols-outlined">stroller</span>
+                        <p>Strollers Allowed</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive FAQ -->
+            <section class="container section faq-section">
+                <h2 class="section-title" style="text-align: center;">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Can I buy tickets at the door?
+                            <span class="material-symbols-outlined">add</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, but we highly recommend purchasing online to skip the line. General admission tickets are subject to availability on busy days.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Are guided tours available in other languages?
+                            <span class="material-symbols-outlined">add</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! Our expert human guides and the new AI Voice Storytelling Guide support over 12 languages including English, Arabic, French, and Spanish.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Is there a dress code?
+                            <span class="material-symbols-outlined">add</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We recommend comfortable walking shoes as the museum is vast. Modest and comfortable attire is suggested when visiting.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Are wheelchairs available?
+                            <span class="material-symbols-outlined">add</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, complimentary wheelchairs are available on a first-come, first-served basis at the main entrance coat check.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -258,7 +393,8 @@
                         <ul>
                             <li><a href="../booking/booking.html">Tickets</a></li>
                             <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a></li>
+                            <li><a href="../-membership/code.html">Membership</a></li>
+                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -266,6 +402,8 @@
                         <ul>
                             <li><a href="../About us/About-us.html">History</a></li>
                             <li><a href="../event/event.html">Events</a></li>
+                            <li><a href="../-news_press/code.html">News & Press</a></li>
+                            <li><a href="../-branding/code.html">Branding</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -274,6 +412,7 @@
                             <li><a href="../visitor help/help.html">Help</a></li>
                             <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
                             <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
                         </ul>
                     </div>
                     <div class="footer-column connect-column">
@@ -316,38 +455,26 @@
                         <button data-lang="ar">العربية</button>
                     </div>
                     <div class="legal-section">
-                        <div class="legal-links">
+                       <div class="legal-links">
                         <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
                         <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
                         <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
                     </div>
-                        <div class="copyright">
-                            © 2026 Tutora. All rights reserved.
-                        </div>
-                    </div>
-                </div>
+            <div class="copyright">
+              © 2026 Tutora. All rights reserved.
             </div>
+          </div>
+        </div>
+      </div>
         </footer>
 
         <script src="script.js"></script>
-
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+        <script src="../global-core.js"></script>
+        <script src="../animate.js"></script>
 </body>
 
+
 </html>
+
+
+

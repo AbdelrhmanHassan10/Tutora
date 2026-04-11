@@ -9,23 +9,38 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    font-family: 'Manrope', sans-serif;
-     line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-     overflow-x: hidden;
-    background-color: #131313;
-    color: #e5e2e1;
-    transition: background-color 0.3s ease, color 0.3s ease;
-
+body.dark {
+    --bg-primary: #121212;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #FFFFFF;
+    --text-secondary: #999999;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-bg: rgba(28, 28, 28, 0.8);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --primary-color: #f2b90d;
 }
 
 body.light {
-       background-color: #f5f5f5;
-    color: #1a1a1a;
+    --bg-primary: #f8f8f5;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --primary-color: #f2b90d;
+}
 
+body {
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
 }
 
 a {
@@ -964,13 +979,15 @@ main {
 }
 
 .input-card {
-    background-color: #1c1b1b;
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(20px);
 }
 
 body.light .input-card {
@@ -1123,12 +1140,14 @@ body.light .select-box {
 
 /* Display Module */
 .display-module {
-    background-color: #1c1b1b;
-    border: 1px solid #d4af37;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
     min-height: 500px;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(20px);
 }
 
 body.light .display-module {

@@ -2,339 +2,447 @@
 <html lang="en">
 
 <head>
+    <meta name="description" content="Tutora - Book your visit to the Grand Egyptian Museum. Reserve tickets online and skip the line." />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> TOTURA Booking Tickets| Reserve Your Visit </title>
-        <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+    <title>Tutora | Book Your Visit to the Grand Egyptian Museum</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../animate.css" />
+    <link rel="stylesheet" href="../global-theme.css" />
 </head>
 
-<body>
-    <!-- Header -->
+<body class="dark">
+    <!-- Mobile Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <div class="mobile-menu" id="mobileMenu">
-        <div class="menu-header" style="background-color: rgb(0, 0, 0);">
-         <div class="menu-logo">
-    
-    <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h3 class="menu-logo-text" style="color: #ecb613;font-size: 20px;">Tutora</h3>
-        </div>
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
             <button class="close-btn" id="closeBtn">
-            <span class="material-symbols-outlined" style="color: #ecb613; padding-top: 5px;">close</span>
-        </button>
+                <span class="material-symbols-outlined theme-icon">close</span>
+            </button>
         </div>
 
         <nav class="menu-nav">
-            <a href="../4.home/code.html" class="menu-link" style="color: #000000;">Home</a>
-            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" style="color: #000000;" style="color: #000000;">Plan Your Visit</a>
-        <a href="../Kids-Museum/kids-museum.html" class="menu-link" style="color:black ">Kids-Museum</a>
-           
- <a href="../event/event.html" class="menu-link" style="color: #000000;">Event</a>
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+            <a href="../event/event.html" class="menu-link">Event</a>
 
             <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle" style="color: #000000;">
-                AI Experience
-                <span class="material-symbols-outlined">expand_more</span>
-            </button>
+                <button class="menu-link dropdown-toggle theme-text">
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
                 <div class="dropdown-items">
-                    <a href="../AI Guide/guide.html" class="dropdown-item" style="color: black;">AI Tour Guide</a>
-                    <a href="../chat bot/chat.html" class="dropdown-item" style="color: black;">AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" style="color: black;">AI Artifact Identifier</a>
-                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" style="color: black;">AI Voice Storytelling (3D)</a>
-                              <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link"style="color: black">Tutora laboratory</a>
-</div>
+                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                </div>
             </div>
 
-            <a href="../shop/shop.html" class="menu-link" style="color: #000000;">Shop</a>
-            <a href="../about/code.html" class="menu-link" style="color: #000000;">About</a>
-            <a href="../collection/collection.html" class="menu-link" style="color: #000000;">Collection</a>
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/code.html" class="menu-link">About</a>
+            <a href="../collection/collection.html" class="menu-link">Collection</a>
         </nav>
 
         <div class="menu-footer">
-            <a href="../booking/booking.html" class="menu-booking-btn" style="background-color: #ecb613;">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link" style="color: black;">
-                <span class="material-symbols-outlined" style="color: black;">favorite</span> Favorites
+            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined theme-icon">favorite</span> Favorites
             </a>
 
-            <button class="menu-icon-link" id="menuLangBtn" style="color: black;">
-            <span class="material-symbols-outlined" style="color: black;">language</span>
-            Language
-        </button>
+            <button class="menu-icon-link" id="menuLangBtn">
+                <span class="material-symbols-outlined theme-icon">language</span>
+                Language
+            </button>
         </div>
     </div>
-
-
 
     <!-- Header -->
     <header class="header">
         <div class="header-container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn">
-                <span class="material-symbols-outlined" style="color:  #ecb613;">menu</span>
-            </button>
-               <div class="logo-section">
-    
-    <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h2 class="logo-text" style="color: #ecb613;font-size: 20px;" >Tutora</h2>
-</div>
+                    <span class="material-symbols-outlined theme-icon">menu</span>
+                </button>
+                <div class="logo-section">
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
+                    <h2 class="logo-text">Tutora</h2>
+                </div>
             </div>
 
             <nav class="desktop-nav">
-                <a href="../4.home/code.html" style="color: white;">Home</a>
-                <a href="../plan-your-visit/plan-your-visit.html" style="color: white;">Plan Your Visit</a>
-   <a href="../Kids-Museum/kids-museum.html"  style="color:rgb(255, 255, 255) ">Kids-Museum</a>
-                <a href="../event/event.html" style="color: white;">Event</a>
+                <a href="../4.home/code.html" class="nav-item-link">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" class="nav-item-link">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html" class="nav-item-link">Kids-Museum</a>
+                <a href="../event/event.html" class="nav-item-link">Event</a>
+
                 <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger" style="color: white;">
-                    AI Experience
-                    <span class="material-symbols-outlined">expand_more</span>
-                </button>
+                    <button class="nav-link dropdown-trigger theme-text">
+                        AI Experience
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
                     <div class="dropdown-menu">
-                        <a href="../AI Guide/guide.html" class="dropdown-link" style="color: black;">AI Tour Guide</a>
-                        <a href="../chat bot/chat.html" class="dropdown-link" style="color: black;">AI Chatbot</a>
-                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" style="color: black;">AI Artifact Identifier</a>
-                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" style="color: black;">AI Voice Storytelling (3D)</a>
-                                  <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link"style="color: black">Tutora laboratory</a>
-</div>
+                        <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                    </div>
                 </div>
-                <a href="../shop/shop.html" style="color: white;">Shop</a>
-                <a href="../about/code.html" style="color: white;">About</a>
-                <a href="../collection/collection.html" style="color: white;">Collection</a>
+                <a href="../shop/shop.html" class="nav-item-link">Shop</a>
+                <a href="../about/code.html" class="nav-item-link">About</a>
+                <a href="../collection/collection.html" class="nav-item-link">Collection</a>
             </nav>
 
             <div class="header-right">
                 <div class="search-box">
-                    <span class="material-symbols-outlined" style="color: white;">search</span>
-                    <input type="text" placeholder="Search..." style="color: white;" />
+                    <span class="material-symbols-outlined theme-icon">search</span>
+                    <input type="text" placeholder="Search..." class="theme-text" />
                 </div>
                 <button class="theme-btn" id="themeBtn">
-                <span class="material-symbols-outlined" style="color: white;">dark_mode</span>
-            </button>
-                <a href="../booking/booking.html" class="btn-booking" style="color: black;background-color: #ecb613;">booking</a>
-                <a href="../fav/favourite.html" style="text-decoration: none;">
-                    <button class="icon-btn">
-                    <span class="material-symbols-outlined" style="color: white;">favorite</span>
+                    <span class="material-symbols-outlined theme-icon">dark_mode</span>
                 </button>
+                <a href="../booking/booking.html" class="btn-booking">booking</a>
+                <a href="../fav/favourite.html">
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined theme-icon">favorite</span>
+                    </button>
                 </a>
                 <button class="icon-btn" id="langBtn">
-                <span class="material-symbols-outlined" style="color: white;">language</span>
-            </button>
-                <a href="../Profile/profile.html">
-                    <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                    <span class="material-symbols-outlined theme-icon">language</span>
+                </button>
+                <a href="../Profile/profile.html" class="nav-profile-image-link">
+                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
                 </a>
             </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="booking-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="material-symbols-outlined">confirmation_number</span>
+                Online Booking
+            </div>
+            <h1 class="hero-title">Book Your Visit</h1>
+            <p class="hero-subtitle">
+                Experience the wonders of ancient Egypt. Select a date to begin your journey through millennia of history.
+            </p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span class="material-symbols-outlined">bolt</span>
+                    <span>Instant Confirmation</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="material-symbols-outlined">phone_android</span>
+                    <span>Mobile Tickets</span>
+                </div>
+                <div class="hero-feature">
+                    <span class="material-symbols-outlined">event_available</span>
+                    <span>Free Cancellation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Main Content -->
     <main class="main-container">
+
+        <!-- Progress Steps Indicator -->
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1">
+                <div class="step-circle">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                </div>
+                <span class="step-label">Date & Time</span>
+            </div>
+            <div class="progress-line active"></div>
+            <div class="progress-step" data-step="2">
+                <div class="step-circle">
+                    <span class="material-symbols-outlined">confirmation_number</span>
+                </div>
+                <span class="step-label">Tickets</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="3">
+                <div class="step-circle">
+                    <span class="material-symbols-outlined">add_circle</span>
+                </div>
+                <span class="step-label">Add-ons</span>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="4">
+                <div class="step-circle">
+                    <span class="material-symbols-outlined">payments</span>
+                </div>
+                <span class="step-label">Checkout</span>
+            </div>
+        </div>
+
         <div class="content-wrapper">
             <!-- Left Column: Booking Flow -->
             <div class="booking-column">
-                <!-- Hero Section -->
-                <section class="hero-section">
-                    <h1 class="hero-title">Book Your Visit</h1>
-                    <h2 class="hero-subtitle">
-                        Experience the wonders of ancient Egypt. Select a date to begin your journey through millennia of history.
-                    </h2>
+
+                <!-- Step 1: Date & Time -->
+                <section class="booking-card" id="step1">
+                    <div class="card-header">
+                        <div class="card-header-icon">
+                            <span class="material-symbols-outlined">calendar_month</span>
+                        </div>
+                        <div>
+                            <h3 class="card-title">Select Date & Time</h3>
+                            <p class="card-subtitle">Choose your preferred visit date and time slot</p>
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <!-- Calendar -->
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <button class="calendar-nav-btn" id="prevMonth">
+                                    <span class="material-symbols-outlined">chevron_left</span>
+                                </button>
+                                <p class="calendar-month" id="calendarMonth">April 2026</p>
+                                <button class="calendar-nav-btn" id="nextMonth">
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </button>
+                            </div>
+                            <div class="calendar-grid" id="calendarGrid">
+                                <div class="calendar-day-header">Sun</div>
+                                <div class="calendar-day-header">Mon</div>
+                                <div class="calendar-day-header">Tue</div>
+                                <div class="calendar-day-header">Wed</div>
+                                <div class="calendar-day-header">Thu</div>
+                                <div class="calendar-day-header">Fri</div>
+                                <div class="calendar-day-header">Sat</div>
+                                <!-- Days generated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Time Slots -->
+                        <div class="time-slots">
+                            <p class="time-slots-label">
+                                <span class="material-symbols-outlined">schedule</span>
+                                Available Time Slots
+                            </p>
+                            <div class="time-grid">
+                                <button class="time-slot" data-time="09:00 - 11:00">
+                                    <span class="time-slot-time">09:00 - 11:00</span>
+                                    <span class="time-slot-period">Morning</span>
+                                </button>
+                                <button class="time-slot" data-time="11:00 - 13:00">
+                                    <span class="time-slot-time">11:00 - 13:00</span>
+                                    <span class="time-slot-period">Late Morning</span>
+                                </button>
+                                <button class="time-slot" data-time="13:00 - 15:00">
+                                    <span class="time-slot-time">13:00 - 15:00</span>
+                                    <span class="time-slot-period">Afternoon</span>
+                                </button>
+                                <button class="time-slot" data-time="15:00 - 17:00">
+                                    <span class="time-slot-time">15:00 - 17:00</span>
+                                    <span class="time-slot-period">Late Afternoon</span>
+                                </button>
+                                <button class="time-slot disabled" data-time="17:00 - 19:00">
+                                    <span class="time-slot-time">17:00 - 19:00</span>
+                                    <span class="time-slot-period">Sold Out</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
-                <!-- Booking Steps -->
-                <section class="booking-steps">
-                    <h2 class="steps-heading">Plan Your Visit to the Museum</h2>
-                    <p class="steps-description">
-                        Follow these simple steps to secure your tickets for an unforgettable experience.
-                    </p>
-
-                    <!-- Step 1: Date & Time -->
-                    <div class="step-section">
-                        <h3 class="step-title">
-                            <span class="step-number">1.</span> Select Date & Time
-                        </h3>
-                        <div class="step-content">
-                            <!-- Calendar -->
-                            <div class="calendar-container">
-                                <div class="calendar-header">
-                                    <button class="calendar-nav-btn">
-                      <span class="material-symbols-outlined"
-                        >chevron_left</span
-                      >
-                    </button>
-                                    <p class="calendar-month">April 2026</p>
-                                    <button class="calendar-nav-btn">
-                      <span class="material-symbols-outlined"
-                        >chevron_right</span
-                      >
-                    </button>
-                                </div>
-                                <div class="calendar-grid">
-                                    <div class="calendar-day-header">S</div>
-                                    <div class="calendar-day-header">M</div>
-                                    <div class="calendar-day-header">T</div>
-                                    <div class="calendar-day-header">W</div>
-                                    <div class="calendar-day-header">T</div>
-                                    <div class="calendar-day-header">F</div>
-                                    <div class="calendar-day-header">S</div>
-                                    <button class="calendar-date" style="grid-column: 3">
-                      1
-                    </button>
-                                    <button class="calendar-date">2</button>
-                                    <button class="calendar-date">3</button>
-                                    <button class="calendar-date">4</button>
-                                    <button class="calendar-date selected">5</button>
-                                    <button class="calendar-date">6</button>
-                                    <button class="calendar-date">7</button>
-                                    <button class="calendar-date">8</button>
-                                    <button class="calendar-date">9</button>
-                                    <button class="calendar-date disabled">10</button>
-                                    <button class="calendar-date">11</button>
-                                    <button class="calendar-date">12</button>
-                                    <button class="calendar-date">13</button>
-                                    <button class="calendar-date">14</button>
-                                    <button class="calendar-date">15</button>
-                                    <button class="calendar-date">16</button>
-                                    <button class="calendar-date">17</button>
-                                    <button class="calendar-date">18</button>
-                                    <button class="calendar-date">19</button>
-                                    <button class="calendar-date">20</button>
-                                    <button class="calendar-date">21</button>
-                                    <button class="calendar-date">22</button>
-                                    <button class="calendar-date">23</button>
-                                    <button class="calendar-date">24</button>
-                                    <button class="calendar-date">25</button>
-                                    <button class="calendar-date">26</button>
-                                    <button class="calendar-date">27</button>
-                                    <button class="calendar-date">28</button>
-                                    <button class="calendar-date">29</button>
-                                    <button class="calendar-date">30</button>
-                                    <button class="calendar-date">31</button>
-                                </div>
-                            </div>
-
-                            <!-- Time Slots -->
-                            <div class="time-slots">
-                                <p class="time-slots-label">Available Time Slots</p>
-                                <div class="time-grid">
-                                    <button class="time-slot">09:00 - 11:00</button>
-                                    <button class="time-slot selected">11:00 - 13:00</button>
-                                    <button class="time-slot">13:00 - 15:00</button>
-                                    <button class="time-slot">15:00 - 17:00</button>
-                                    <button class="time-slot disabled">17:00 - 19:00</button>
-                                </div>
-                            </div>
+                <!-- Step 2: Choose Tickets -->
+                <section class="booking-card" id="step2">
+                    <div class="card-header">
+                        <div class="card-header-icon">
+                            <span class="material-symbols-outlined">confirmation_number</span>
+                        </div>
+                        <div>
+                            <h3 class="card-title">Choose Your Tickets</h3>
+                            <p class="card-subtitle">Select the number of tickets for each category</p>
                         </div>
                     </div>
-
-                    <!-- Step 2: Choose Tickets -->
-                    <div class="step-section">
-                        <h3 class="step-title">
-                            <span class="step-number">2.</span> Choose Your Tickets
-                        </h3>
-                        <div class="tickets-list">
-                            <div class="ticket-card">
+                    <div class="tickets-list">
+                        <div class="ticket-card">
+                            <div class="ticket-left">
+                                <div class="ticket-icon-badge adult">
+                                    <span class="material-symbols-outlined">person</span>
+                                </div>
                                 <div class="ticket-info">
                                     <h4 class="ticket-name">General Admission - Adult</h4>
-                                    <p class="ticket-desc">
-                                        Ages 18-60. Access to all permanent exhibitions.
-                                    </p>
-                                </div>
-                                <div class="ticket-actions">
-                                    <p class="ticket-price">$25.00</p>
-                                    <div class="quantity-selector">
-                                        <button class="qty-btn">
-                        <span class="material-symbols-outlined">remove</span>
-                      </button>
-                                        <span class="qty-value">2</span>
-                                        <button class="qty-btn">
-                        <span class="material-symbols-outlined">add</span>
-                      </button>
-                                    </div>
+                                    <p class="ticket-desc">Ages 18-60. Access to all permanent exhibitions.</p>
                                 </div>
                             </div>
+                            <div class="ticket-actions">
+                                <p class="ticket-price">$25.00</p>
+                                <div class="quantity-selector">
+                                    <button class="qty-btn">
+                                        <span class="material-symbols-outlined">remove</span>
+                                    </button>
+                                    <span class="qty-value">0</span>
+                                    <button class="qty-btn">
+                                        <span class="material-symbols-outlined">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
-                            <div class="ticket-card">
+                        <div class="ticket-card">
+                            <div class="ticket-left">
+                                <div class="ticket-icon-badge student">
+                                    <span class="material-symbols-outlined">school</span>
+                                </div>
                                 <div class="ticket-info">
                                     <h4 class="ticket-name">Student / Child</h4>
-                                    <p class="ticket-desc">
-                                        Ages 6-17 or with valid student ID.
-                                    </p>
-                                </div>
-                                <div class="ticket-actions">
-                                    <p class="ticket-price">$15.00</p>
-                                    <div class="quantity-selector">
-                                        <button class="qty-btn">
-                        <span class="material-symbols-outlined">remove</span>
-                      </button>
-                                        <span class="qty-value">1</span>
-                                        <button class="qty-btn">
-                        <span class="material-symbols-outlined">add</span>
-                      </button>
-                                    </div>
+                                    <p class="ticket-desc">Ages 6-17 or with valid student ID.</p>
                                 </div>
                             </div>
+                            <div class="ticket-actions">
+                                <p class="ticket-price">$15.00</p>
+                                <div class="quantity-selector">
+                                    <button class="qty-btn">
+                                        <span class="material-symbols-outlined">remove</span>
+                                    </button>
+                                    <span class="qty-value">0</span>
+                                    <button class="qty-btn">
+                                        <span class="material-symbols-outlined">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
-                            <div class="ticket-card">
+                        <div class="ticket-card">
+                            <div class="ticket-left">
+                                <div class="ticket-icon-badge resident">
+                                    <span class="material-symbols-outlined">flag</span>
+                                </div>
                                 <div class="ticket-info">
                                     <h4 class="ticket-name">Egyptian / Arab Resident</h4>
-                                    <p class="ticket-desc">
-                                        Requires valid national ID or passport.
-                                    </p>
+                                    <p class="ticket-desc">Requires valid national ID or passport.</p>
                                 </div>
-                                <div class="ticket-actions">
-                                    <p class="ticket-price">EGP 60</p>
-                                    <div class="quantity-selector">
-                                        <button class="qty-btn">
-                        <span class="material-symbols-outlined">remove</span>
-                      </button>
-                                        <span class="qty-value">0</span>
-                                        <button class="qty-btn">
-                        <span class="material-symbols-outlined">add</span>
-                      </button>
-                                    </div>
+                            </div>
+                            <div class="ticket-actions">
+                                <p class="ticket-price">EGP 60</p>
+                                <div class="quantity-selector">
+                                    <button class="qty-btn">
+                                        <span class="material-symbols-outlined">remove</span>
+                                    </button>
+                                    <span class="qty-value">0</span>
+                                    <button class="qty-btn">
+                                        <span class="material-symbols-outlined">add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ticket-card">
+                            <div class="ticket-left">
+                                <div class="ticket-icon-badge senior">
+                                    <span class="material-symbols-outlined">elderly</span>
+                                </div>
+                                <div class="ticket-info">
+                                    <h4 class="ticket-name">Senior Citizen</h4>
+                                    <p class="ticket-desc">Ages 60+. Valid ID required at entry.</p>
+                                </div>
+                            </div>
+                            <div class="ticket-actions">
+                                <p class="ticket-price">$18.00</p>
+                                <div class="quantity-selector">
+                                    <button class="qty-btn">
+                                        <span class="material-symbols-outlined">remove</span>
+                                    </button>
+                                    <span class="qty-value">0</span>
+                                    <button class="qty-btn">
+                                        <span class="material-symbols-outlined">add</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </section>
 
-                    <!-- Add-ons Section -->
-                    <div class="step-section">
-                        <h3 class="step-title">Enhance Your Visit</h3>
-                        <div class="addons-list">
-                            <div class="addon-card">
-                                <div class="addon-info">
-                                    <h4 class="addon-name">Audio Guide</h4>
-                                    <p class="addon-desc">Available in 8 languages.</p>
-                                </div>
-                                <div class="addon-actions">
-                                    <p class="addon-price">$8.00</p>
-                                    <button class="btn-add">Add</button>
-                                </div>
+                <!-- Step 3: Add-ons -->
+                <section class="booking-card" id="step3">
+                    <div class="card-header">
+                        <div class="card-header-icon">
+                            <span class="material-symbols-outlined">auto_awesome</span>
+                        </div>
+                        <div>
+                            <h3 class="card-title">Enhance Your Visit</h3>
+                            <p class="card-subtitle">Add extras to make your experience unforgettable</p>
+                        </div>
+                    </div>
+                    <div class="addons-grid">
+                        <div class="addon-card" data-addon="audio">
+                            <div class="addon-image">
+                                <span class="material-symbols-outlined">headphones</span>
                             </div>
+                            <div class="addon-info">
+                                <h4 class="addon-name">Audio Guide</h4>
+                                <p class="addon-desc">Available in 8 languages. Expert narration.</p>
+                            </div>
+                            <div class="addon-actions">
+                                <p class="addon-price">$8.00</p>
+                                <button class="btn-add">Add</button>
+                            </div>
+                        </div>
 
-                            <div class="addon-card addon-selected">
-                                <div class="addon-info">
-                                    <h4 class="addon-name">Special Exhibition: Ramses II</h4>
-                                    <p class="addon-desc">
-                                        Limited time access to the royal collection.
-                                    </p>
-                                </div>
-                                <div class="addon-actions">check
-                                    <p class="addon-price">$12.00</p>
-                                    <button class="btn-added">
-                      <span class="material-symbols-outlined"></span>
-                      Added
-                    </button>
-                                </div>
+                        <div class="addon-card" data-addon="ramses">
+                            <div class="addon-image">
+                                <span class="material-symbols-outlined">museum</span>
+                            </div>
+                            <div class="addon-info">
+                                <h4 class="addon-name">Special Exhibition: Ramses II</h4>
+                                <p class="addon-desc">Limited time access to the royal collection.</p>
+                            </div>
+                            <div class="addon-actions">
+                                <p class="addon-price">$12.00</p>
+                                <button class="btn-add">Add</button>
+                            </div>
+                        </div>
+
+                        <div class="addon-card" data-addon="photo">
+                            <div class="addon-image">
+                                <span class="material-symbols-outlined">photo_camera</span>
+                            </div>
+                            <div class="addon-info">
+                                <h4 class="addon-name">Photography Pass</h4>
+                                <p class="addon-desc">Professional photography allowed in all halls.</p>
+                            </div>
+                            <div class="addon-actions">
+                                <p class="addon-price">$5.00</p>
+                                <button class="btn-add">Add</button>
+                            </div>
+                        </div>
+
+                        <div class="addon-card" data-addon="vip">
+                            <div class="addon-image vip">
+                                <span class="material-symbols-outlined">diamond</span>
+                            </div>
+                            <div class="addon-info">
+                                <h4 class="addon-name">VIP Fast-Track Entry</h4>
+                                <p class="addon-desc">Skip the queue with priority access.</p>
+                            </div>
+                            <div class="addon-actions">
+                                <p class="addon-price">$15.00</p>
+                                <button class="btn-add">Add</button>
                             </div>
                         </div>
                     </div>
@@ -344,54 +452,80 @@
             <!-- Right Column: Order Summary -->
             <div class="summary-column">
                 <div class="order-summary">
-                    <h3 class="summary-title">Order Summary</h3>
+                    <div class="summary-header">
+                        <span class="material-symbols-outlined">receipt_long</span>
+                        <h3 class="summary-title">Order Summary</h3>
+                    </div>
+
+                    <div class="summary-date" id="summaryDate">
+                        <span class="material-symbols-outlined">calendar_today</span>
+                        <span>Select a date</span>
+                    </div>
+                    <div class="summary-time" id="summaryTime">
+                        <span class="material-symbols-outlined">schedule</span>
+                        <span>Select a time</span>
+                    </div>
+
                     <div class="summary-divider"></div>
-                    <div class="summary-items">
-                        <div class="summary-item">
-                            <span>2x Adult Admission</span>
-                            <span>$50.00</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>1x Student/Child</span>
-                            <span>$15.00</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>1x Special Exhibition</span>
-                            <span>$12.00</span>
+
+                    <div class="summary-items" id="summaryItems">
+                        <div class="summary-empty">
+                            <span class="material-symbols-outlined">shopping_cart</span>
+                            <p>No tickets selected yet</p>
                         </div>
                     </div>
+
                     <div class="summary-divider"></div>
+
                     <div class="summary-totals">
                         <div class="summary-row">
                             <span>Subtotal</span>
-                            <span>$77.00</span>
+                            <span id="subtotalAmount">$0.00</span>
                         </div>
                         <div class="summary-row">
-                            <span>Taxes & Fees</span>
-                            <span>$5.39</span>
+                            <span>Taxes & Fees (7%)</span>
+                            <span id="taxAmount">$0.00</span>
                         </div>
                     </div>
+
                     <div class="summary-divider"></div>
+
                     <div class="summary-total">
                         <span class="total-label">Total</span>
-                        <span class="total-price">$82.39</span>
+                        <span class="total-price" id="totalAmount">$0.00</span>
                     </div>
-                    <a href="../payment/payment.html">
-                        <button class="btn-checkout">Proceed to Checkout</button>
-                    </a>
+
+                    <button class="btn-checkout" id="checkoutBtn">
+                        <span class="material-symbols-outlined">lock</span>
+                        Proceed to Checkout
+                    </button>
+
+                    <div class="summary-trust">
+                        <div class="trust-item">
+                            <span class="material-symbols-outlined">verified_user</span>
+                            <span>Secure Payment</span>
+                        </div>
+                        <div class="trust-item">
+                            <span class="material-symbols-outlined">replay</span>
+                            <span>Free Cancellation</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Visitor Information -->
-        <!-- Visitor Information -->
+        <!-- Visitor Information Section -->
         <section class="visitor-info">
-            <h2 class="visitor-title">Visitor Information</h2>
+            <h2 class="section-heading">
+                <span class="material-symbols-outlined">info</span>
+                Visitor Information
+            </h2>
 
             <div class="visitor-grid">
-
                 <div class="info-card">
-                    <span class="material-symbols-outlined info-icon">schedule</span>
+                    <div class="info-card-icon">
+                        <span class="material-symbols-outlined">schedule</span>
+                    </div>
                     <h4 class="info-title">Opening Hours</h4>
                     <p class="info-text">
                         Daily: 9:00 AM - 7:00 PM<br> Last entry at 5:30 PM.
@@ -399,7 +533,9 @@
                 </div>
 
                 <div class="info-card">
-                    <span class="material-symbols-outlined info-icon">location_on</span>
+                    <div class="info-card-icon">
+                        <span class="material-symbols-outlined">location_on</span>
+                    </div>
                     <h4 class="info-title">Getting Here</h4>
                     <p class="info-text">
                         El Remaya Square, Giza, Egypt.<br> Accessible by car, bus, and metro.
@@ -407,128 +543,162 @@
                 </div>
 
                 <div class="info-card">
-                    <span class="material-symbols-outlined info-icon">policy</span>
+                    <div class="info-card-icon">
+                        <span class="material-symbols-outlined">policy</span>
+                    </div>
                     <h4 class="info-title">Museum Rules</h4>
                     <p class="info-text">
                         No flash photography. No large bags.<br> Food and drink in designated areas only.
                     </p>
                 </div>
 
+                <div class="info-card">
+                    <div class="info-card-icon">
+                        <span class="material-symbols-outlined">accessible</span>
+                    </div>
+                    <h4 class="info-title">Accessibility</h4>
+                    <p class="info-text">
+                        Wheelchair & stroller accessible.<br> Elevators and ramps available.
+                    </p>
+                </div>
             </div>
         </section>
 
-
-        <!-- Footer -->
-
-        <footer class="site-footer">
-            <div class="footer-container">
-                <!-- Footer Header -->
-                <div class="footer-header">
-                    <div class="footer-logo">
-                        <span class="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <h2 class="footer-title">Grand Egyptian Museum</h2>
-                    <div class="footer-divider"></div>
-                </div>
-
-                <!-- Footer Grid -->
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="../booking/booking.html">Tickets</a></li>
-                            <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="../About us/About-us.html">History</a></li>
-                            <li><a href="../event/event.html">Events</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="../visitor help/help.html">Help</a></li>
-                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column connect-column">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <!-- Facebook -->
-                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-
-                            <!-- Twitter (X ) -->
-                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-
-                            <!-- YouTube -->
-                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </div>
-
-                        <p>
-                            Follow us on social media for updates and behind-the-scenes content.
-                        </p>
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-heading">
+                <span class="material-symbols-outlined">help</span>
+                Frequently Asked Questions
+            </h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I reschedule my booking?</span>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! You can reschedule your booking up to 24 hours before your visit at no extra cost. Simply visit your booking confirmation page or contact our support team.</p>
                     </div>
                 </div>
-
-                <!-- Footer Separator -->
-                <div class="footer-separator"></div>
-
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <div class="language-toggle">
-                        <button class="active" data-lang="en">English</button>
-                        <button data-lang="ar">العربية</button>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Are children under 6 allowed free entry?</span>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, children under the age of 6 enter free of charge. They do not need a ticket but must be accompanied by a ticketed adult.</p>
                     </div>
-                    <div class="legal-section">
-                        <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is parking available at the museum?</span>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, the Grand Egyptian Museum has a large parking area available for visitors. Parking fees may apply. The museum is also accessible by public transportation.</p>
                     </div>
-                        <div class="copyright">
-                            © 2026 Tutora. All rights reserved.
-                        </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What payment methods are accepted?</span>
+                        <span class="material-symbols-outlined faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We accept all major credit and debit cards (Visa, Mastercard, American Express), as well as mobile payments. Cash payments are available at the ticket counter on-site.</p>
                     </div>
                 </div>
             </div>
-        </footer>
+        </section>
 
     </main>
 
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Footer Header -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html">Tickets</a></li>
+                        <li><a href="../collection/collection.html">Collection</a></li>
+                        <li><a href="../-membership/code.html">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html">History</a></li>
+                        <li><a href="../event/event.html">Events</a></li>
+                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                        <li><a href="../-branding/code.html">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter)">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                    <p>Follow us on social media for updates and behind-the-scenes content.</p>
+                </div>
+            </div>
+
+            <!-- Footer Separator -->
+            <div class="footer-separator"></div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="language-toggle">
+                    <button class="active" data-lang="en">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">
+                        © 2026 Tutora. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
+    <script src="main.js"></script>
 </body>
-<script src="main.js"></script>
 
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>GEM Comprehensive Site Footer</title>
@@ -314,6 +315,7 @@
             margin-top: 0.5rem;
         }
     </style>
+	<link rel="stylesheet" href="../global-theme.css" />
 </head>
 
 <body>
@@ -441,23 +443,16 @@
         });
     </script>
 
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+
+
+
+
+
+<link rel="stylesheet" href="../animate.css" />
+<script src="../global-core.js"></script>
+<script src="../animate.js"></script>
 </body>
 
+
 </html>
+

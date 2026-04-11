@@ -139,3 +139,28 @@ document.querySelectorAll('.ticket-card').forEach(card => {
         card.style.boxShadow = 'none';
     });
 });
+
+// 8. FAQ Accordion Functionality
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        // Close all other open answers
+        faqQuestions.forEach(q => {
+            if (q !== question) {
+                q.classList.remove('active');
+                q.nextElementSibling.style.maxHeight = null;
+            }
+        });
+
+        // Toggle the clicked answer
+        question.classList.toggle('active');
+        const answer = question.nextElementSibling;
+        
+        if (question.classList.contains('active')) {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+            answer.style.maxHeight = null;
+        }
+    });
+});

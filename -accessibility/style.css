@@ -1,0 +1,395 @@
+/* 
+    Tutora Accessibility - Inclusive Excellence
+    Design System: Gold, Obsidian, and Alabaster
+*/
+
+@import url('../event/style.css');
+
+:root {
+    --gold: #ecb613;
+    --gold-rgb: 236, 182, 19;
+}
+a{
+text-decoration: none;}
+body.dark {
+    --acc-bg: #0a0a0a;
+    --acc-bg-alt: #121212;
+    --acc-card-bg: #161616;
+    --acc-text-primary: #ffffff;
+    --acc-text-secondary: #aaaaaa;
+    --acc-border: rgba(236, 182, 19, 0.1);
+    --acc-glass: rgba(20, 20, 20, 0.8);
+}
+
+body.light {
+    --acc-bg: #fdfdfb;
+    --acc-bg-alt: #f8f8f5;
+    --acc-card-bg: #ffffff;
+    --acc-text-primary: #121212;
+    --acc-text-secondary: #555555;
+    --acc-border: rgba(0, 0, 0, 0.08);
+    --acc-glass: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    background-color: var(--acc-bg);
+    color: var(--acc-text-primary);
+    font-family: 'Work Sans', sans-serif;
+    transition: background-color 0.5s, color 0.5s;
+    font-size: 16px; /* Base size */
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.gold-text { color: var(--gold); }
+
+/* --- HERO SECTION --- */
+.acc-hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    padding: 2rem 0;
+}
+
+.acc-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('./Screenshot\ 2026-04-10\ 015859.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    height: 85vh;
+}
+
+.acc-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--acc-bg) 0%, rgba(0,0,0,0.3) 10%);
+    z-index: 1;
+    height: 85vh;
+}
+
+.acc-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    text-align: center;
+}
+
+.acc-hero-icon {
+    font-size: 4rem;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.acc-hero-content h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 4rem;
+    line-height: 1.1;
+    margin: 0;
+    color: #fff;
+    letter-spacing: -1px;
+}
+
+/* --- ESCALATOR / MOBILITY SECTION --- */
+.acc-mobility-featured {
+    padding: 10rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.acc-mobility-img {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+}
+
+.acc-mobility-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.acc-mobility-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 3rem;
+}
+
+.acc-mobility-badge {
+    background: var(--gold);
+    color: #000;
+    padding: 0.8rem 1.5rem;
+    border-radius: 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+}
+
+.acc-mobility-text h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 2rem;
+}
+
+.acc-mobility-text p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.8;
+    color: var(--acc-text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.acc-feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.acc-feature-item { display: flex; align-items: center; gap: 1rem; color: var(--acc-text-primary); font-weight: 600; }
+.acc-feature-item .material-symbols-outlined { color: var(--gold); }
+
+/* --- SETTINGS CARDS --- */
+.acc-settings-row {
+    padding: 8rem 4rem;
+    background: var(--acc-bg-alt);
+}
+
+.acc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.acc-card {
+    background: var(--acc-card-bg);
+    border: 1px solid var(--acc-border);
+    padding: 3rem;
+    border-radius: 24px;
+    transition: all 0.4s;
+}
+
+.acc-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+
+.acc-card-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+.acc-card-header h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; margin: 0; }
+.acc-icon-box { color: var(--gold); font-size: 2rem; }
+
+/* Control Group UI */
+.acc-control { margin-bottom: 2rem; }
+.acc-control label { display: block; margin-bottom: 1rem; font-size: 0.9rem; color: var(--acc-text-secondary); }
+
+.acc-switch-row { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1.5rem 2rem; 
+    background: var(--acc-bg); 
+    border-radius: 16px; 
+    margin-bottom: 1.25rem; 
+    transition: all 0.3s;
+    border: 1px solid var(--acc-border);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.acc-switch-row:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.acc-switch-row strong { 
+    display: block; 
+    color: var(--gold); 
+    font-family: 'Cinzel', serif; 
+    font-size: 1.1rem; 
+    letter-spacing: 1.5px;
+    margin-bottom: 0.25rem;
+}
+
+.acc-switch-row p {
+    font-size: 0.85rem;
+    color: var(--acc-text-secondary);
+    margin: 0;
+}
+
+/* Switch Style */
+.acc-switch { position: relative; width: 50px; height: 26px; }
+.acc-switch input { opacity: 0; width: 0; height: 0; }
+.acc-slider { position: absolute; inset: 0; background: #444; border-radius: 30px; cursor: pointer; transition: 0.4s; }
+.acc-slider::before { content: ""; position: absolute; height: 18px; width: 18px; left: 4px; bottom: 4px; background: white; border-radius: 50%; transition: 0.4s; }
+.acc-switch input:checked + .acc-slider { background: var(--gold); }
+.acc-switch input:checked + .acc-slider::before { 
+    transform: translateX(24px); 
+    background: #000;
+}
+
+.acc-size-labels { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 1rem; 
+    background: var(--acc-bg); 
+    border-radius: 12px; 
+    margin-bottom: 1.5rem; 
+    border: 1px solid var(--acc-border);
+}
+
+.acc-size-labels span { 
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--acc-text-secondary); 
+    width: 40px; 
+    height: 40px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.acc-size-labels span.active { 
+    background: var(--gold); 
+    color: #000; 
+    box-shadow: 0 4px 15px rgba(var(--gold-rgb), 0.3);
+}
+
+.acc-range {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 6px;
+    background: #333;
+    border-radius: 10px;
+    outline: none;
+    margin: 1rem 0;
+}
+
+.acc-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid var(--acc-card-bg);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.acc-range::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* --- SERVICES GRID --- */
+.acc-services { padding: 10rem 4rem; max-width: 1400px; margin: 0 auto; }
+.acc-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+.acc-service-box { text-align: center; padding: 4rem 2rem; background: var(--acc-card-bg); border: 1px solid var(--acc-border); border-radius: 20px; transition: 0.4s; }
+.acc-service-box:hover { border-color: var(--gold); transform: translateY(-10px); }
+.service-icon { font-size: 3rem; color: var(--gold); margin-bottom: 2rem; display: block; }
+.acc-service-box h4 { font-family: 'Cinzel', serif; font-size: 1.25rem; margin-bottom: 1rem; }
+.acc-service-box p { color: var(--acc-text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+/* --- ANIMATIONS --- */
+.anim-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+.anim-on-scroll.appear { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 1100px) {
+    .acc-mobility-featured { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+    .acc-feature-list { justify-content: center; }
+    .acc-grid { grid-template-columns: 1fr; }
+    .acc-services-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .acc-services-grid { grid-template-columns: 1fr; }
+    .acc-hero-content h1 { font-size: 2.5rem; }
+    .acc-mobility-text h2 { font-size: 2.5rem; }
+}
+
+/* --- ACCESSIBILITY STATES --- */
+body.high-contrast {
+    --acc-text-primary: #fff;
+    --acc-text-secondary: #eee;
+    --acc-border: rgba(255, 255, 255, 0.5);
+    filter: contrast(1.2);
+}
+
+body.high-contrast .acc-card {
+    border: 2px solid #fff;
+}
+
+body.reduce-motion * {
+    transition: none !important;
+    animation: none !important;
+}
+
+body.reduce-motion .anim-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* ============================================
+   MOBILE HEADER & NAVIGATION STANDARDIZATION
+   ============================================ */
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1.25rem 1.5rem !important;
+    }
+    
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--acc-bg);
+        color: var(--acc-text-primary);
+        z-index: 1000;
+        transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .mobile-menu.active {
+        left: 0;
+    }
+
+    .menu-header {
+        background-color: var(--acc-bg);
+        border-bottom: 1px solid var(--acc-border);
+        padding: 1rem;
+    }
+
+    .menu-link {
+        color: var(--acc-text-primary);
+        padding: 1.25rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    body.dark .menu-link:hover {
+        background-color: rgba(236, 182, 19, 0.1);
+        color: var(--gold);
+    }
+
+    body.light .menu-link:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: #121212;
+    }
+
+    /* Hero impact on mobile */
+    .acc-hero { min-height: 70vh; padding: 2rem 0; }
+    .acc-hero-bg, .acc-hero-overlay { height: 70vh; }
+    .acc-hero-content h1 { font-size: 2.8rem; }
+}

@@ -1,152 +1,89 @@
-/**
- * Cookie Preference Manager
- * Handles loading, saving, and applying user cookie settings.
- * Also manages the theme (dark/light mode).
- */
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. MOBILE MENU DRAWER ---
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-    // --- DOM Element Selectors ---
-    const analyticalToggle = document.getElementById('analytical');
-    const marketingToggle = document.getElementById('marketing');
+    const openMenu = () => {
+        if (mobileMenu && menuOverlay) {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    const closeMenu = () => {
+        if (mobileMenu && menuOverlay) {
+            mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    };
+
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+    // --- 2. MOBILE DROPDOWN ---
+    document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const dropdown = btn.closest('.menu-dropdown');
+            const items = dropdown?.querySelector('.dropdown-items');
+            if (btn && items) {
+                btn.classList.toggle('active');
+                items.classList.toggle('show');
+            }
+        });
+    });
+
+    // --- 3. COOKIE PREFERENCE MANAGEMENT ---
     const saveBtn = document.getElementById('save-btn');
     const rejectBtn = document.getElementById('reject-btn');
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    const htmlElement = document.documentElement;
+    const analyticalToggle = document.getElementById('analytical');
+    const marketingToggle = document.getElementById('marketing');
 
-    // --- Constants ---
-    const COOKIE_PREFERENCES_KEY = 'gem_cookie_preferences';
-    const THEME_KEY = 'gem_theme';
+    // Load saved preferences
+    const loadPreferences = () => {
+        const savedPrefs = JSON.parse(localStorage.getItem('tutora_cookie_prefs') || '{}');
+        if (analyticalToggle) analyticalToggle.checked = savedPrefs.analytical ?? false;
+        if (marketingToggle) marketingToggle.checked = savedPrefs.marketing ?? false;
+    };
 
-    // ============================================
-    // 1. THEME MANAGEMENT
-    // ============================================
-
-    /**
-     * Applies a theme by adding/removing the 'dark' class from the <html> element.
-     * @param {string} theme - The theme to apply ('dark' or 'light').
-     */
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            htmlElement.classList.add('dark');
-        } else {
-            htmlElement.classList.remove('dark');
-        }
-        localStorage.setItem(THEME_KEY, theme);
-        console.log(`Theme set to: ${theme}`);
-    }
-
-    /**
-     * Toggles the current theme and saves the preference.
-     */
-    function toggleTheme() {
-        const isDarkMode = htmlElement.classList.contains('dark');
-        applyTheme(isDarkMode ? 'light' : 'dark');
-    }
-
-    // ============================================
-    // 2. COOKIE PREFERENCE MANAGEMENT
-    // ============================================
-
-    /**
-     * Loads saved cookie preferences from localStorage and updates the UI.
-     * Defaults to 'analytical' enabled if no settings are found.
-     */
-    function loadPreferences() {
-        const savedPrefsString = localStorage.getItem(COOKIE_PREFERENCES_KEY);
-        let prefs = {
-            necessary: true,
-            analytical: true, // Default to true
-            marketing: false  // Default to false
+    const savePreferences = (analytical, marketing) => {
+        const prefs = {
+            analytical,
+            marketing,
+            timestamp: new Date().toISOString()
         };
-
-        if (savedPrefsString) {
-            try {
-                prefs = JSON.parse(savedPrefsString);
-            } catch (e) {
-                console.error("Could not parse saved cookie preferences.", e);
-            }
-        }
-
-        analyticalToggle.checked = prefs.analytical;
-        marketingToggle.checked = prefs.marketing;
-        console.log('Loaded cookie preferences:', prefs);
-    }
-
-    /**
-     * Saves the current state of the toggles to localStorage.
-     */
-    function savePreferences() {
-        const currentPrefs = {
-            necessary: true,
-            analytical: analyticalToggle.checked,
-            marketing: marketingToggle.checked,
-        };
-
-        localStorage.setItem(COOKIE_PREFERENCES_KEY, JSON.stringify(currentPrefs));
-        console.log('Saved cookie preferences:', currentPrefs);
-
-        // Provide visual feedback to the user
+        localStorage.setItem('tutora_cookie_prefs', JSON.stringify(prefs));
+        
+        // Visual feedback
         const originalText = saveBtn.textContent;
-        saveBtn.textContent = 'Preferences Saved!';
-        saveBtn.style.backgroundColor = 'var(--success-color)'; // Use a success color
+        saveBtn.textContent = 'Settings Saved!';
         saveBtn.disabled = true;
-
+        
         setTimeout(() => {
             saveBtn.textContent = originalText;
-            saveBtn.style.backgroundColor = ''; // Revert to original color
             saveBtn.disabled = false;
         }, 2000);
-    }
+    };
 
-    /**
-     * Handles the "Reject All" button click by unchecking optional cookies and saving.
-     */
-    function rejectAllOptional() {
-        analyticalToggle.checked = false;
-        marketingToggle.checked = false;
-        savePreferences(); // Save the new "rejected" state
-    }
-
-    // ============================================
-    // 3. INITIALIZATION & EVENT LISTENERS
-    // ============================================
-
-    function initialize() {
-        // --- Attach Event Listeners ---
-        if (saveBtn) saveBtn.addEventListener('click', savePreferences);
-        if (rejectBtn) rejectBtn.addEventListener('click', rejectAllOptional);
-        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-
-        // --- Load Initial State ---
-        const savedTheme = localStorage.getItem(THEME_KEY) || 'dark'; // Default to dark mode
-        applyTheme(savedTheme);
-        loadPreferences();
-
-        console.log("Cookie Preference page initialized successfully.");
-    }
-
-    // Run the initialization function
-    initialize();
-});
-function initialize() {
-    // --- Attach Event Listeners ---
-    if (saveBtn) saveBtn.addEventListener('click', savePreferences);
-    if (rejectBtn) rejectBtn.addEventListener('click', rejectAllOptional);
-    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-
-    // /// الكود الجديد الذي ستضيفه ///
-    const backBtn = document.getElementById('back-btn');
-    if (backBtn) {
-        backBtn.addEventListener('click', () => {
-            history.back(); // هذا هو الأمر الذي يقوم بالرجوع
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            savePreferences(analyticalToggle.checked, marketingToggle.checked);
         });
     }
-    // /// نهاية الكود الجديد ///
 
-    // --- Load Initial State ---
-    const savedTheme = localStorage.getItem(THEME_KEY) || 'dark';
-    applyTheme(savedTheme);
+    if (rejectBtn) {
+        rejectBtn.addEventListener('click', () => {
+            if (analyticalToggle) analyticalToggle.checked = false;
+            if (marketingToggle) marketingToggle.checked = false;
+            savePreferences(false, false);
+        });
+    }
+
+    // Initialize
     loadPreferences();
-
-    console.log("Cookie Preference page initialized successfully.");
-}
+});

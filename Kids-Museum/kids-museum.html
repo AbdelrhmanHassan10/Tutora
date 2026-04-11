@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>TUTORA Kids Museum | Fun Learning for Young Explorers</title>
@@ -9,11 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../animate.css" />
+	<link rel="stylesheet" href="../global-theme.css" />
 </head>
-<body class="dark-mode">
+<body class="dark">
         <!-- Header --><div class="mobile-nav-overlay"></div>
         <div class="mobile-menu" id="mobileMenu">
-        <div class="menu-header" style="color: #ecb613; background-color: black">
+        <div class="menu-header" >
             <div class="menu-logo">
     
     <div class="logo-circle">
@@ -31,7 +34,7 @@
             <a href="../4.home/code.html" class="menu-link">Home</a>
             <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a
         >
-        <a href="../Kids-Museum/kids-museum.html" class="menu-link" style="color:black ">Kids-Museum</a>
+        <a href="../Kids-Museum/kids-museum.html" class="menu-link" >Kids-Museum</a>
         <a href="../event/event.html" class="menu-link">Event</a>
 
             <div class="menu-dropdown">
@@ -91,55 +94,55 @@
                 </div>
 
                 <nav class="desktop-nav">
-                    <a href="../4.home/code.html" style="color: white">Home</a>
-                    <a href="../plan-your-visit/plan-your-visit.html" style="color: white">Plan Your Visit</a
+                    <a href="../4.home/code.html" >Home</a>
+                    <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a
           >
-        <a href="../Kids-Museum/kids-museum.html" style="color: white">Kids-Museum</a>
-          <a href="../event/event.html" style="color: white">Event</a>
+        <a href="../Kids-Museum/kids-museum.html" >Kids-Museum</a>
+          <a href="../event/event.html" >Event</a>
                     <div class="nav-dropdown">
-                        <button class="nav-link dropdown-trigger" style="color: white">
+                        <button class="nav-link dropdown-trigger" >
               AI Experience
               <span class="material-symbols-outlined">expand_more</span>
             </button>
                         <div class="dropdown-menu">
-                            <a href="../AI Guide/guide.html" class="dropdown-link" style="color: black">AI Tour Guide</a
+                            <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a
               >
               <a
                 href="../chat bot/chat.html"
                 class="dropdown-link"
-                style="color: black"
+                
                 >AI Chatbot</a
               >
               <a
                 href="../artifact_identifier/artifact-identifier.html"
                 class="dropdown-link"
-                style="color: black"
+                
                 >AI Artifact Identifier</a
               >
               <a
                 href="../advanced 3D model/advanced-3D.html"
                 class="dropdown-link"
-                style="color: black"
+                
                 >AI Voice Storytelling (3D)</a
               >
-                         <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link"style="color: black">Tutora laboratory</a>
+                         <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link">Tutora laboratory</a>
  </div>
           </div>
-          <a href="../shop/shop.html" style="color: white">Shop</a>
-                            <a href="../about/code.html" style="color: white">About</a>
-                            <a href="../collection/collection.html" style="color: white">Collection</a
+          <a href="../shop/shop.html" >Shop</a>
+                            <a href="../about/code.html" >About</a>
+                            <a href="../collection/collection.html" >Collection</a
           >
         </nav>
 
         <div class="header-right">
           <div class="search-box">
-            <span class="material-symbols-outlined" style="color: white"
+            <span class="material-symbols-outlined" 
               >search</span
             >
-            <input type="text" placeholder="Search..." style="color: white" />
+            <input type="text" placeholder="Search..."  />
           </div>
           <button class="theme-btn" id="themeBtn">
-            <span class="material-symbols-outlined" style="color: white"
+            <span class="material-symbols-outlined" 
               >dark_mode</span
             >
           </button>
@@ -151,18 +154,18 @@
           >
           <a href="../fav/favourite.html" style="text-decoration: none">
             <button class="icon-btn">
-              <span class="material-symbols-outlined" style="color: white"
+              <span class="material-symbols-outlined" 
                 >favorite</span
               >
             </button>
           </a>
                             <button class="icon-btn" id="langBtn">
-            <span class="material-symbols-outlined" style="color: white"
+            <span class="material-symbols-outlined" 
               >language</span
             >
           </button>
                             <a href="../Profile/profile.html">
-                                <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                                <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
                             </a>
                         </div>
                     </div>
@@ -563,6 +566,112 @@
     </section>
 
 
+        <!-- 1. Flip Cards Quiz Section -->
+        <section class="container section-padding">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title" style="justify-content: center; display: flex; gap: 10px;">
+                    <span class="material-symbols-outlined" style="color: #ecb613; font-size: 2.5rem;">quiz</span>
+                    Pharaoh's Quiz
+                </h2>
+                <p style="color: #94A3B8; margin-top: 10px;">Hover over the cards to reveal the ancient answers!</p>
+            </div>
+            <div class="flip-grid">
+                <!-- Card 1 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="material-symbols-outlined flip-icon">pets</span>
+                            <h3>Which animal was sacred?</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>The Cat!</h3>
+                            <p>Cats were deeply respected and even mummified like humans!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="material-symbols-outlined flip-icon">account_balance</span>
+                            <h3>What is the biggest pyramid?</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Great Pyramid of Giza</h3>
+                            <p>It was the tallest man-made structure in the world for over 3,800 years!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="material-symbols-outlined flip-icon">directions_boat</span>
+                            <h3>Which river flows through Egypt?</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>The Nile River</h3>
+                            <p>It's the longest river in the world, stretching over 6,600 kilometers!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Virtual Sandpit (Dig for Antiquities) -->
+        <section class="container section-padding">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title" style="justify-content: center; display: flex; gap: 10px;">
+                    <span class="material-symbols-outlined" style="color: #ecb613; font-size: 2.5rem;">hardware</span>
+                    Virtual Sandpit
+                </h2>
+                <p style="color: #94A3B8; margin-top: 10px;">Hover over the sand to "dig" and uncover hidden artifacts!</p>
+            </div>
+            <div class="sandpit-wrapper">
+                <div class="sandpit-layer">
+                    <div class="dig-spot spot-1">
+                        <div class="sand-cover"></div>
+                        <div class="hidden-treasure" style="background-image: url('../3.jpg');"></div>
+                    </div>
+                    <div class="dig-spot spot-2">
+                        <div class="sand-cover"></div>
+                        <div class="hidden-treasure" style="background-image: url('../8.jpg');"></div>
+                    </div>
+                    <div class="dig-spot spot-3">
+                        <div class="sand-cover"></div>
+                        <div class="hidden-treasure" style="background-image: url('../13.jpg');"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Kids' Workshop Board -->
+        <section class="container section-padding">
+            <div class="board-container">
+                <h2 class="board-title">Today's Awesome Activities!</h2>
+                <div class="board-grid">
+                    <div class="board-note note-yellow">
+                        <div class="pin"></div>
+                        <h4>Lego Pyramids</h4>
+                        <p>10:00 AM - 12:00 PM</p>
+                        <p style="font-size: 0.8rem; margin-top: 10px; color: #333;">Build your own tomb!</p>
+                    </div>
+                    <div class="board-note note-pink">
+                        <div class="pin"></div>
+                        <h4>Papyrus Art</h4>
+                        <p>1:00 PM - 3:00 PM</p>
+                        <p style="font-size: 0.8rem; margin-top: 10px; color: #333;">Draw ancient gods.</p>
+                    </div>
+                    <div class="board-note note-blue">
+                        <div class="pin"></div>
+                        <h4>Mummy Wrapping</h4>
+                        <p>4:00 PM - 5:00 PM</p>
+                        <p style="font-size: 0.8rem; margin-top: 10px; color: #333;">Wrap a toy mummy safely!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
         <section class="container cta-section" style="padding-bottom: 70px;">
             <div class="cta-box" >
@@ -598,27 +707,26 @@
                         <ul>
                             <li><a href="../booking/booking.html">Tickets</a></li>
                             <li><a href="../collection/collection.html">Collection</a></li>
-                            <li>
-                                <a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>About</h3>
-            <ul>
-              <li><a href="../About us/About-us.html">History</a></li>
+                            <li><a href="../-membership/code.html">Membership</a></li>
+                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="../About us/About-us.html">History</a></li>
                             <li><a href="../event/event.html">Events</a></li>
+                            <li><a href="../-news_press/code.html">News & Press</a></li>
+                            <li><a href="../-branding/code.html">Branding</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h3>Support</h3>
                         <ul>
                             <li><a href="../visitor help/help.html">Help</a></li>
-                            <li>
-                                <a href="../get in touch/get-in-touch.html">Get In Touch</a>
-                            </li>
+                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
                             <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
                         </ul>
                     </div>
                     <div class="footer-column connect-column">
@@ -686,24 +794,12 @@
     </div> -->
 
     <script src="script.js"></script>
-
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+<script src="../global-core.js"></script>
+<script src="../animate.js"></script>
 </body>
+
 </html>
  
+
+
+

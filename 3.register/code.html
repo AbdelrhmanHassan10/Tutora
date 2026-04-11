@@ -2,6 +2,7 @@
 <html class="dark" lang="en">
 
 <head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <title>Create Account on Tutora | GEM AI Guide</title>
@@ -10,16 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="../animate.css" />
+	<link rel="stylesheet" href="../global-theme.css" />
 </head>
 
 <body>
     <div class="container">
-        <header style="background-color: black;">
+        <header style="background-color: transparent; position: absolute; z-index: 10; width: 100%;">
             <nav>
                 <div class="logo-container">
                     <div class="logo-circle">
-                        <img src="../logo.png" alt="">
+                        <img src="../logo.png" alt="Tutora Logo">
                     </div>
                     <h2 class="logo-text">Tutora</h2>
                 </div>
@@ -32,18 +34,13 @@
 
         <main>
             <div class="grid-layout">
-                <!-- Left Column: Hero Image Panel -->
-                <div class="hero-panel" style="background-image: url('../69.jpg');">
-                    <div class="hero-overlay"></div>
-                    <div class="hero-content">
-                        <h3 class="hero-title">Unlock the secrets of the pharaohs.</h3>
-                        <p class="hero-subtitle">Your personal AI guide, <span class="brand-namee"> Tutora</span>, awaits.</p>
-                    </div>
-                </div>
-
-                <!-- Right Column: Registration Form -->
-                <div class="form-panel">
-                    <div class="form-container">
+                <!-- Left Column: Registration Form (Swapped) -->
+                <div class="form-panel" style="background-color: black; color: white;">
+                    <div class="form-container" >
+                        <!-- Premium Logo prominently placed -->
+                        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                            <img src="../logo.png" alt="Tutora Logo - Grand Egyptian Museum Guide" style="width: 150px; height: auto; filter: drop-shadow(0 0 10px rgba(236,182,19,0.3));">
+                        </div>
                         <div class="form-header">
                             <h1 class="form-title">Create Your Account</h1>
                             <p class="form-subtitle">Begin your journey into 5,000 years of history.</p>
@@ -108,13 +105,21 @@
                                 </div>
                                 <div class="error-message" id="confirmPasswordError"></div>
                             </div>
-                            <!-- <div class="success-message" id="successMessage">Account created successfully! Redirecting to login...</div> -->
                             <button type="submit" class="submit-btn" id="submitBtn">Create Account</button>
                         </form>
 
-                        <p class="footer-text">
+                        <p class="footer-text" style="margin-top: 1.5rem;">
                             By signing up, you agree to our <a href="../Terms-of-Service/term-of-service.html" class="signup-link"style="text-decoration: none;"> <br>Terms of Service</a> and <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none;" class="signup-link">Privacy Policy</a>.
                         </p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Hero Image Panel (Swapped) -->
+                <div class="hero-panel" style="background-image: url('../69.jpg');">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h3 class="hero-title">Unlock the secrets of the pharaohs.</h3>
+                        <p class="hero-subtitle">Your personal AI guide, <span class="brand-namee"> Tutora</span>, awaits.</p>
                     </div>
                 </div>
             </div>
@@ -122,24 +127,7 @@
     </div>
 
     <script src="script.js"></script>
-
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
 </body>
-
 </html>

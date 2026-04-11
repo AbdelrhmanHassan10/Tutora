@@ -1,136 +1,120 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="en">
 
 <head>
+    <meta name="description" content="Tutora Verification - Secure authentication." />
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Verify Code | GEM AI Guide</title>
     <link rel="icon" type="image/png" href="../museum.png">
-    <title> TUTORA Code Send | Verification in Progress</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#f2d00d",
-                        "background-light": "#f8f8f5",
-                        "background-dark": "#181711",
-                    },
-                    fontFamily: {
-                        "display": ["Noto Serif", "serif"],
-                        "sans": ["Noto Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                },
-            },
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../3.register/style.css"> 
+    <link rel="stylesheet" href="../2.login/style.css">
+    <style>
+        .otp-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 2rem 0;
         }
-    </script>
-    <title>Secure Verification Code Entry - Grand Egyptian Museum</title>
+        .otp-input {
+            width: 45px;
+            height: 55px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 8px;
+            background: #1e1b15;
+            border: 1px solid #3d362a;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+        .otp-input:focus {
+            border-color: #ecb613;
+            box-shadow: 0 0 0 2px rgba(236,182,19,0.2);
+        }
+        .resend-link {
+            color: #b3b3b3;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .resend-link:hover {
+            color: #ecb613;
+        }
+    </style>
+    <link rel="stylesheet" href="../animate.css" />
+	<link rel="stylesheet" href="../global-theme.css" />
 </head>
 
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
-    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-        <!-- Navigation -->
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/20 px-6 md:px-20 py-4 bg-background-dark/50 backdrop-blur-md sticky top-0 z-50">
-            <div class="flex items-center gap-4 text-primary">
-                <div class="size-8">
-                    <svg class="logo-icon" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                    <path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="#ECB613" fill-rule="evenodd"></path>
-                </svg>
+<body>
+    <div class="container">
+        <!-- Transparent Absolute Header -->
+        <header style="background-color: transparent; position: absolute; z-index: 10; width: 100%; padding: 2rem;">
+            <nav style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div></div>
+                <div class="nav-actions">
+                    <a class="login-link" href="../2.login/code.html" style="color: #ecb613;">Cancel</a>
                 </div>
-                <h2 class="text-slate-100 text-xl font-bold leading-tight tracking-tight uppercase">Tutora</h2>
-            </div>
-            <div class="hidden md:flex flex-1 justify-end gap-8">
-
-                <div class="bg-primary/10 border border-primary/20 p-1 rounded-full flex items-center">
-                    <div class="bg-cover bg-center rounded-full size-8" data-alt="User profile placeholder showing a person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDM_A1a6eiPUyXNnB_bY5yGXILaBQ7ElhVMKXdOmihAOTFiT87kIq5LwmZZpR6XPakkRaoDLGe9XALJNOP2qpNq8617xzMz-uWx7rzN5bGpBAqPnqqml2vUMkqZeYZqsGw26Kv1IwIfSHftANfJ-IH3_FUuKyrV8nt1VcBXnMP7lbE3xGUEJ4Ht9PSABDYI-6QU56_wPlY2g-SeWzUZ0ROZObnf1F5viqXYXx3TXlNfaxeeNTTtFdTn7_jQYke2APw5_fQ19yKz7bNZ");'></div>
-                </div>
-            </div>
+            </nav>
         </header>
-        <!-- Main Content -->
-        <main class="flex-1 flex items-center justify-center p-6 bg-background-dark">
-            <div class="max-w-[520px] w-full bg-background-dark border-2 border-primary/40 rounded-xl p-8 md:p-12 shadow-2xl flex flex-col items-center">
-                <!-- Museum Logo Icon -->
-                <div class="mb-8 text-primary">
-                    <span class="material-symbols-outlined text-6xl">verified_user</span>
+
+        <main>
+            <div class="grid-layout">
+                <!-- Left Column: Hero Image Panel -->
+                <div class="hero-panel" style="background-image: url('../pexels-felix-2154264868-35430906.jpg');">
+                    <div class="hero-overlay" style="background: linear-gradient(to right, rgba(18,18,18,0.3), rgba(18,18,18,0.9));"></div>
+                    <div class="hero-content">
+                        <h3 class="hero-title" style="font-family: 'Cormorant Garamond';font-size:3rem;text-shadow: 2px 2px 4px #000;">Verify your identity.</h3>
+                        <p class="hero-subtitle" style="font-size:1.2rem;text-shadow: 2px 2px 4px #000;">Check your email for the secret 6-digit key.</p>
+                    </div>
                 </div>
-                <h1 class="text-slate-100 text-3xl md:text-4xl font-bold text-center mb-4 tracking-tight">Verify Your Journey</h1>
-                <p class="text-primary/70 text-base font-normal leading-relaxed text-center mb-10 max-w-sm">
-                    A 6-digit code has been sent to your email. Please enter it below to confirm.
-                </p>
-                <!-- Verification Input Fields -->
-                <div class="flex justify-center gap-2 md:gap-4 mb-10">
-                    <input class="w-12 h-16 md:w-14 md:h-20 text-center text-2xl font-bold bg-transparent border-2 border-primary/30 rounded-lg text-primary focus:border-primary focus:ring-0 transition-all uppercase" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text"
-                    />
-                    <input class="w-12 h-16 md:w-14 md:h-20 text-center text-2xl font-bold bg-transparent border-2 border-primary/30 rounded-lg text-primary focus:border-primary focus:ring-0 transition-all uppercase" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text"
-                    />
-                    <input class="w-12 h-16 md:w-14 md:h-20 text-center text-2xl font-bold bg-transparent border-2 border-primary/30 rounded-lg text-primary focus:border-primary focus:ring-0 transition-all uppercase" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text"
-                    />
-                    <input class="w-12 h-16 md:w-14 md:h-20 text-center text-2xl font-bold bg-transparent border-2 border-primary/30 rounded-lg text-primary focus:border-primary focus:ring-0 transition-all uppercase" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text"
-                    />
-                    <input class="w-12 h-16 md:w-14 md:h-20 text-center text-2xl font-bold bg-transparent border-2 border-primary/30 rounded-lg text-primary focus:border-primary focus:ring-0 transition-all uppercase" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text"
-                    />
-                    <input class="w-12 h-16 md:w-14 md:h-20 text-center text-2xl font-bold bg-transparent border-2 border-primary/30 rounded-lg text-primary focus:border-primary focus:ring-0 transition-all uppercase" inputmode="numeric" maxlength="1" pattern="[0-9]*" type="text"
-                    />
-                </div>
-                <!-- Confirm Button -->
-                <a href="../change password/change-password.html"><button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-bold py-4 rounded-lg text-lg transition-transform active:scale-[0.98] mb-8 uppercase tracking-widest">
-                Confirm Code
-            </button></a>
-                <!-- Secondary Links -->
-                <div class="flex flex-col items-center gap-4">
-                    <button class="text-primary/80 hover:text-primary text-sm font-medium transition-colors border-b border-primary/20 pb-0.5">
-                    Resend Code
-                </button>
-                    <button class="text-slate-400 hover:text-slate-200 text-sm font-medium transition-colors">
-                    Try another method
-                </button>
+
+                <!-- Right Column: Form -->
+                <div class="form-panel" style="display: flex; align-items: center; justify-content: center;">
+                    <div class="form-container" style="width: 100%; max-width: 480px;">
+                        
+                        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                            <img src="../logo.png" alt="Tutora Logo" style="width: 150px; height: auto; filter: drop-shadow(0 0 10px rgba(236,182,19,0.3));">
+                        </div>
+
+                        <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
+                            <span class="material-symbols-outlined" style="font-size: 3rem; color: #ecb613; margin-bottom: 1rem;">mark_email_read</span>
+                            <h1 class="form-title" style="font-size: 2.2rem; font-weight: 800;">Verify Code</h1>
+                            <p class="form-subtitle" style="margin-top: 0.5rem; color: #b3b3b3;">We sent a 6-digit code to your email.</p>
+                        </div>
+
+                        <form class="registration-form" id="verifyForm">
+                            <div class="otp-container">
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                            </div>
+
+                            <button type="submit" class="submit-btn" id="verifyBtn" style="width: 100%; padding: 1rem; background: #ecb613; color: #121212; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 1rem;">
+                                Confirm Code
+                            </button>
+                            
+                            <div style="margin-top: 2rem; text-align: center;">
+                                <a href="#" id="resendBtn" class="resend-link">Didn't receive it? Resend Code</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>
-        <!-- Footer -->
-        <footer class="bg-background-dark border-t border-primary/10 py-8 px-6 md:px-20">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-2 text-primary/60">
-                    <span class="material-symbols-outlined text-lg">language</span>
-                    <span class="text-xs uppercase tracking-widest font-sans">© 2026 Tutora</span>
-                </div>
-                <div class="flex gap-6">
-                    <a class="text-primary/60 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
-                    <a class="text-primary/60 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
-                    <a class="text-primary/60 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
-                </div>
-            </div>
-        </footer>
     </div>
 
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
 </body>
-
 </html>

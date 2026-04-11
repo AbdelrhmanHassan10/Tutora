@@ -1,24 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Management (Dark/Light Mode)
-const themeToggle = document.querySelector('.theme-btn'); // صححت الاسم
-const themeIcon = themeToggle?.querySelector('.material-symbols-outlined'); 
-   const body = document.body;
-
-    // Check for saved theme
-    const savedTheme = localStorage.getItem('kids-theme');
-    if (savedTheme === 'light') {
-        body.classList.add('light-mode');
-        if (themeIcon) themeIcon.textContent = 'dark_mode';
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const isLightMode = body.classList.toggle('light-mode');
-            if (themeIcon) themeIcon.textContent = isLightMode ? 'dark_mode' : 'light_mode';
-            localStorage.setItem('kids-theme', isLightMode ? 'light' : 'dark');
-        });
-    }
-
+    // 1. Theme Management (Handled by global-core.js)
+    
     // 2. Professional Mobile Menu Logic
     const menuTrigger = document.querySelector('.menu-btn');
     const navOverlay = document.querySelector('.mobile-nav-overlay');
@@ -294,23 +276,6 @@ document.querySelectorAll('.fact-footer .material-symbols-outlined').forEach((bo
         }, 10);
     });
 });
-
-// ========== THEME TOGGLE SUPPORT ==========
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        document.body.classList.toggle('light-mode');
-        
-        // Save preference
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDarkMode ? 'dark-mode' : 'light-mode');
-    });
-}
-
-// ========== LOAD SAVED THEME ==========
-const savedTheme = localStorage.getItem('theme') || 'light-mode';
-document.body.classList.add(savedTheme);
 
 // ========== SMOOTH SCROLL INITIALIZATION ==========
 window.addEventListener('load', () => {

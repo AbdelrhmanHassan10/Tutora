@@ -1,45 +1,6 @@
-// ============================================
-// COLLECTION PAGE - COMPLETE JAVASCRIPT
-// ============================================
-
-// Apply dark mode immediately before DOM renders
-(function() {
-    const savedTheme = localStorage.getItem('theme') || 'dark_mode';
-    if (savedTheme === 'dark_mode') {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
-    }
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
-    const body = document.body;
-
-    // ============================================
-    // DARK MODE / LIGHT MODE TOGGLE
-    // ============================================
-
-    const themeBtn = document.getElementById('themeBtn');
-
-    function updateThemeIcon() {
-        const icon = themeBtn.querySelector('.material-symbols-outlined');
-        if (body.classList.contains('dark-mode')) {
-            icon.textContent = 'light_mode';
-        } else {
-            icon.textContent = 'dark_mode';
-        }
-    }
-
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark_mode' : 'light');
-            updateThemeIcon();
-        });
-    }
-
-    updateThemeIcon();
+    // Note: Global Auth and Theme is handled by global-core.js
+    // If you need to add event-specific logic, do it here.
 
     // ============================================
     // MOBILE MENU FUNCTIONALITY
@@ -47,27 +8,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // ======== Mobile Menu Toggle ========
 
     // جلب العناصر
-    const menuBtn = document.querySelector(".menu-btn"); // زرار الهامبرجر
-    const mobileMenu = document.querySelector(".mobile-menu"); // المنيو نفسه
-    const closeBtn = document.querySelector(".close-btn"); // زرار الغلق في الهيدر أو المنيو
+    const menuBtn = document.getElementById("menuBtn"); 
+    const mobileMenu = document.getElementById("mobileMenu"); 
+    const closeBtn = document.getElementById("closeBtn");
+    const menuOverlay = document.getElementById("menuOverlay");
 
-    // فتح المينيو
-    menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.add("active");
-    });
+    const openMenu = () => {
+        if (mobileMenu) mobileMenu.classList.add("open");
+        if (menuOverlay) menuOverlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+    };
 
-    // غلق المينيو بالزرار
-    closeBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
-    });
+    const closeMenu = () => {
+        if (mobileMenu) mobileMenu.classList.remove("open");
+        if (menuOverlay) menuOverlay.classList.remove("open");
+        document.body.style.overflow = "";
+    };
 
-    // غلق المينيو بالضغط على أي رابط جوه المنيو (اختياري)
-    const menuLinks = mobileMenu.querySelectorAll(".menu-link, .dropdown-item");
-    menuLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            mobileMenu.classList.remove("active");
+    if (menuBtn) menuBtn.addEventListener("click", openMenu);
+    if (closeBtn) closeBtn.addEventListener("click", closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener("click", closeMenu);
+
+    // غلق المينيو بالضغط على أي رابط جوه المنيو
+    if (mobileMenu) {
+        const menuLinks = mobileMenu.querySelectorAll(".menu-link, .dropdown-item");
+        menuLinks.forEach(link => {
+            link.addEventListener("click", closeMenu);
         });
-    });
+    }
 
     // ============================================
     // SEARCH FUNCTIONALITY
@@ -89,9 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterArtifacts(query) {
         artifactCards.forEach(card => {
-            const title = card.querySelector('.artifact-title').textContent.toLowerCase();
-            const location = card.querySelector('.location-text').textContent.toLowerCase();
-            const dynasty = card.querySelector('.dynasty-label').textContent.toLowerCase();
+            const titleBlock = card.querySelector('.artifact-title');
+            const locBlock = card.querySelector('.location-text');
+            const dynBlock = card.querySelector('.dynasty-label');
+
+            const title = titleBlock ? titleBlock.textContent.toLowerCase() : '';
+            const location = locBlock ? locBlock.textContent.toLowerCase() : '';
+            const dynasty = dynBlock ? dynBlock.textContent.toLowerCase() : '';
 
             card.style.display = (title.includes(query) || location.includes(query) || dynasty.includes(query)) ? '' : 'none';
         });
@@ -110,9 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
             const icon = this.querySelector('.material-symbols-outlined');
-            const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
-            icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
-            this.style.color = isFilled ? 'white' : '#f2d00d';
+            if (icon) {
+                const isFilled = icon.style.fontVariationSettings ? icon.style.fontVariationSettings.includes("'FILL' 1") : false;
+                icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+                this.style.color = isFilled ? 'white' : '#f2d00d';
+            }
         });
     });
 
@@ -177,16 +151,39 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.btn-learn, .btn-action-gold, .btn-action-turquoise, .btn-primary, .btn-accent')
         .forEach(btn => {
             btn.addEventListener('click', e => {
-                e.preventDefault();
+                const href = btn.getAttribute('href');
+                if (href === '#' || !href) e.preventDefault();
                 addRipple(btn, e);
             });
         });
 
     // ============================================
-    // INITIALIZATION LOGS
+    // NEWSLETTER FORM HANDLER
     // ============================================
 
-    console.log('✓ Collection page loaded successfully');
-    console.log('🌙 Dark mode toggle: Press theme button');
-    console.log('📱 Mobile menu toggle: Press menu button');
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            const button = newsletterForm.querySelector('button');
+            const originalText = button.textContent;
+
+            button.disabled = true;
+            button.innerHTML = '<span class="material-symbols-outlined" style="animation: spin 1s linear infinite">sync</span> Subscribing...';
+
+            setTimeout(() => {
+                button.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Subscribed!';
+                newsletterForm.querySelector('input').value = '';
+                alert(`Thank you for joining our community! A confirmation has been sent to ${email}.`);
+                
+                setTimeout(() => {
+                    button.disabled = false;
+                    button.textContent = originalText;
+                }, 3000);
+            }, 1500);
+        });
+    }
+
+    console.log('✓ Event page logic initialized');
 });

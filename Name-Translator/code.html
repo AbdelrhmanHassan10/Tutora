@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html class="dark" lang="en"><head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>PHARAOH LAB | Hieroglyphics Translator</title>
@@ -89,6 +90,7 @@
             backdrop-filter: blur(20px);
         }
     </style>
+	<link rel="stylesheet" href="../global-theme.css" />
 </head>
 <body class="bg-background text-on-surface font-body selection:bg-primary/30">
 <!-- TopNavBar -->
@@ -196,39 +198,107 @@
 </div>
 </main>
 <!-- Footer -->
-<footer class="w-full px-8 py-12 flex flex-col items-center gap-6 bg-zinc-950 dark:bg-zinc-950 border-t border-yellow-600/10">
-<div class="text-lg font-serif tracking-widest text-yellow-600 uppercase">
-            THE ETERNAL CURATOR
-        </div>
-<div class="flex flex-wrap justify-center gap-8">
-<a class="font-label uppercase text-[11px] tracking-widest text-zinc-500 hover:text-yellow-400 transition-colors" href="#">Privacy Policy</a>
-<a class="font-label uppercase text-[11px] tracking-widest text-zinc-500 hover:text-yellow-400 transition-colors" href="#">Terms of Service</a>
-<a class="font-label uppercase text-[11px] tracking-widest text-zinc-500 hover:text-yellow-400 transition-colors" href="#">Museum Archives</a>
-<a class="font-label uppercase text-[11px] tracking-widest text-zinc-500 hover:text-yellow-400 transition-colors" href="#">Social Feed</a>
-</div>
-<div class="font-body text-xs font-light tracking-wide text-zinc-600">
-            © 2024 THE ETERNAL CURATOR. ALL RIGHTS RESERVED.
-        </div>
-<button class="mt-4 p-2 border border-yellow-600/20 rounded-full hover:bg-yellow-600/5 transition-colors" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-<span class="material-symbols-outlined text-yellow-600" data-icon="expand_less">expand_less</span>
-</button>
-</footer>
+<footer class="site-footer">
+            <div class="footer-container">
+                <!-- Footer Header -->
+                <div class="footer-header">
+                    <div class="footer-logo">
+                        <span class="material-symbols-outlined">account_balance</span>
+                    </div>
+                    <h2 class="footer-title">Grand Egyptian Museum</h2>
+                    <div class="footer-divider"></div>
+                </div>
 
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
-</body></html>
+                <!-- Footer Grid -->
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="../booking/booking.html">Tickets</a></li>
+                            <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../-membership/code.html">Membership</a></li>
+                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="../About us/About-us.html">History</a></li>
+                            <li><a href="../event/event.html">Events</a></li>
+                            <li><a href="../-news_press/code.html">News & Press</a></li>
+                            <li><a href="../-branding/code.html">Branding</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="../visitor help/help.html">Help</a></li>
+                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column connect-column">
+                        <h3>Connect</h3>
+                        <div class="social-links">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+
+                            <!-- Twitter (X ) -->
+                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <!-- YouTube -->
+                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+
+                        <p>
+                            Follow us on social media for updates and behind-the-scenes content.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer Separator -->
+                <div class="footer-separator"></div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="language-toggle">
+                        <button class="active" data-lang="en">English</button>
+                        <button data-lang="ar">العربية</button>
+                    </div>
+                    <div class="legal-section">
+                       <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
+            <div class="copyright">
+              © 2026 Tutora. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+        </footer>
+
+
+
+
+
+
+<link rel="stylesheet" href="../animate.css" />
+<script src="../global-core.js"></script>
+<script src="../animate.js"></script>
+</body>
+</html>
+

@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../animate.css" />
+    <link rel="stylesheet" href="../global-theme.css" />
 </head>
 
-<body class="dark-mode">
+<body class="dark">
 
 
     <header>
@@ -24,11 +26,11 @@
         <img src="../logo.png" alt="Tutora Logo">
     </div>
 
-    <h2 class="logo-text" style="color: #ecb613;font-size: 20px;">Tutora</h2>
+    <h2 class="logo-text" style="color: #ecb613; font-size: 20px;">Tutora</h2>
 </div>
 
                 <div class="nav-actions">
-                    <button class="theme-toggle">
+                    <button class="theme-toggle" id="themeTwo">
                         <span class="material-symbols-outlined">light_mode</span>
                     </button>
                     <a class="back-link" href="../booking/booking.html">
@@ -45,12 +47,43 @@
             <div class="checkout-header">
                 <h2 class="page-title">Secure Checkout</h2>
                 <nav class="breadcrumb">
-                    <a href="../shop/shop.html">SHOP</a>
+                    <a href="../booking/booking.html">BOOKING</a>
                     <span>/</span>
                     <a href="../payment/payment.html"> <span class="breadcrumb-active">Payment</span>
                     </a> <span>/</span>
-                    <a href="">Confirmation</a>
+                    <a href="../Profile/profile.html">My Tickets</a>
                 </nav>
+            </div>
+
+            <!-- Progress Steps Indicator for consistency -->
+            <div class="progress-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; position: relative;">
+                <div class="progress-step" style="text-align: center; color: #94A3B8;">
+                    <div class="step-circle" style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); display: flex; justify-content: center; align-items: center; margin: 0 auto 0.5rem;">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                    </div>
+                    <span class="step-label" style="font-size: 0.875rem;">Date & Time</span>
+                </div>
+                <div class="progress-line" style="flex-grow: 1; height: 2px; background-color: var(--border-color); margin: 0 1rem;"></div>
+                <div class="progress-step" style="text-align: center; color: #94A3B8;">
+                    <div class="step-circle" style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); display: flex; justify-content: center; align-items: center; margin: 0 auto 0.5rem;">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                    </div>
+                    <span class="step-label" style="font-size: 0.875rem;">Tickets</span>
+                </div>
+                <div class="progress-line" style="flex-grow: 1; height: 2px; background-color: var(--border-color); margin: 0 1rem;"></div>
+                <div class="progress-step" style="text-align: center; color: #94A3B8;">
+                    <div class="step-circle" style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); display: flex; justify-content: center; align-items: center; margin: 0 auto 0.5rem;">
+                        <span class="material-symbols-outlined">add_circle</span>
+                    </div>
+                    <span class="step-label" style="font-size: 0.875rem;">Add-ons</span>
+                </div>
+                <div class="progress-line" style="flex-grow: 1; height: 2px; background-color: var(--border-color); margin: 0 1rem;"></div>
+                <div class="progress-step active" style="text-align: center; color: #D4AF37;">
+                    <div class="step-circle" style="width: 40px; height: 40px; border-radius: 50%; background-color: #D4AF37; color: #1a1a1a; display: flex; justify-content: center; align-items: center; margin: 0 auto 0.5rem;">
+                        <span class="material-symbols-outlined">payments</span>
+                    </div>
+                    <span class="step-label" style="font-size: 0.875rem; font-weight: bold;">Checkout</span>
+                </div>
             </div>
 
             <div class="checkout-grid">
@@ -144,6 +177,63 @@
                     </div>
                 </aside>
             </div>
+
+            <!-- Additional Sections referring to Payment Context -->
+            <section class="payment-info-section" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h2 class="section-title" style="font-size: 2rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <span class="material-symbols-outlined" style="font-size: 2.2rem; color: #ECB613;">shield_lock</span>
+                        Secure Payment Guarantees
+                    </h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Your payment information is encrypted and securely processed. We maintain the highest standards of security for your peace of mind.</p>
+                </div>
+
+                <div class="guarantees-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                    <div class="guarantee-card" style="background-color: var(--card-bg); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--card-shadow);">
+                        <span class="material-symbols-outlined" style="font-size: 2.5rem; color: #10b981; margin-bottom: 1rem;">verified</span>
+                        <h3 style="margin-bottom: 0.5rem;">100% Secure</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">We use state-of-the-art 256-bit SSL encryption to ensure your data is always protected.</p>
+                    </div>
+                    <div class="guarantee-card" style="background-color: var(--card-bg); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--card-shadow);">
+                        <span class="material-symbols-outlined" style="font-size: 2.5rem; color: #3b82f6; margin-bottom: 1rem;">account_balance</span>
+                        <h3 style="margin-bottom: 0.5rem;">Trusted Gateways</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Partnerships with major international payment networks to guarantee safe transactions.</p>
+                    </div>
+                    <div class="guarantee-card" style="background-color: var(--card-bg); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--border-color); text-align: center; box-shadow: var(--card-shadow);">
+                        <span class="material-symbols-outlined" style="font-size: 2.5rem; color: #D4AF37; margin-bottom: 1rem;">receipt_long</span>
+                        <h3 style="margin-bottom: 0.5rem;">Instant Tickets</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Your tickets will be available instantly in your profile after successful payment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-container" style="max-width: 800px; margin: 0 auto; background-color: var(--card-bg); border-radius: 1rem; border: 1px solid var(--border-color); padding: 2rem; box-shadow: var(--card-shadow);">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Payment FAQ</h3>
+                    
+                    <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+                        <h4 style="font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="material-symbols-outlined" style="color: #ECB613;">help</span>
+                            What payment methods do you accept?
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-left: 2rem;">We accept all major credit and debit cards including Visa, Mastercard, American Express. Additionally, you can easily pay via PayPal.</p>
+                    </div>
+
+                    <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+                        <h4 style="font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="material-symbols-outlined" style="color: #ECB613;">help</span>
+                            Where can I find my tickets after paying?
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-left: 2rem;">Once your payment is processed, you will be redirected to the success page. You can also find your digital pass in the <a href="../Profile/profile.html" style="color: #D4AF37; text-decoration: underline;">My Tickets</a> section of your profile.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4 style="font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="material-symbols-outlined" style="color: #ECB613;">help</span>
+                            Is my ticket refundable?
+                        </h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-left: 2rem;">Yes, tickets can be cancelled and fully refunded up to 24 hours prior to your visit. For assistance, contact our support team.</p>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -238,24 +328,8 @@
     </footer>
 
     <script src="script.js"></script>
-
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
 </body>
 
 </html>

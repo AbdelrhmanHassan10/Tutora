@@ -1,0 +1,116 @@
+<!-- Mobile Menu Overlay -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="menu-header">
+    <div class="menu-logo">
+      <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+      </div>
+      <h3 class="menu-logo-text">Tutora</h3>
+    </div>
+    <button class="close-btn" id="closeBtn">
+      <span class="material-symbols-outlined theme-icon">close</span>
+    </button>
+  </div>
+
+  <nav class="menu-nav">
+    <a href="../4.home/code.html" class="menu-link">Home</a>
+    <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+    <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+    <a href="../event/event.html" class="menu-link">Event</a>
+
+    <div class="menu-dropdown">
+      <button class="menu-link dropdown-toggle theme-text">
+        AI Experience
+        <span class="material-symbols-outlined">expand_more</span>
+      </button>
+      <div class="dropdown-items">
+        <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+        <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+      </div>
+    </div>
+
+    <a href="../shop/shop.html" class="menu-link">Shop</a>
+    <a href="../about/code.html" class="menu-link">About</a>
+    <a href="../collection/collection.html" class="menu-link">Collection</a>
+  </nav>
+
+  <div class="menu-footer">
+    <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+    <a href="../fav/favourite.html" class="menu-icon-link">
+      <span class="material-symbols-outlined theme-icon">favorite</span> Favorites
+    </a>
+
+    <button class="menu-icon-link" id="menuLangBtn">
+      <span class="material-symbols-outlined theme-icon">language</span>
+      Language
+    </button>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-container">
+    <div class="header-left">
+      <button class="menu-btn" id="menuBtn">
+        <span class="material-symbols-outlined theme-icon">menu</span>
+      </button>
+      <div class="logo-section">
+        <div class="logo-circle">
+          <img src="../logo.png" alt="Tutora Logo">
+        </div>
+        <h2 class="logo-text">Tutora</h2>
+      </div>
+    </div>
+
+    <nav class="desktop-nav">
+      <a href="../4.home/code.html" class="nav-item-link">Home</a>
+      <a href="../plan-your-visit/plan-your-visit.html" class="nav-item-link">Plan Your Visit</a>
+      <a href="../Kids-Museum/kids-museum.html" class="nav-item-link">Kids-Museum</a>
+      <a href="../event/event.html" class="nav-item-link">Event</a>
+      
+      <div class="nav-dropdown">
+        <button class="nav-link dropdown-trigger theme-text">
+          AI Experience
+          <span class="material-symbols-outlined">expand_more</span>
+        </button>
+        <div class="dropdown-menu">
+          <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+          <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+        </div>
+      </div>
+      <a href="../shop/shop.html" class="nav-item-link">Shop</a>
+      <a href="../about/code.html" class="nav-item-link">About</a>
+      <a href="../collection/collection.html" class="nav-item-link">Collection</a>
+    </nav>
+
+    <div class="header-right">
+      <div class="search-box">
+        <span class="material-symbols-outlined theme-icon">search</span>
+        <input type="text" placeholder="Search..." class="theme-text" />
+      </div>
+      <button class="theme-btn" id="themeTwo">
+        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+      </button>
+      <a href="../booking/booking.html" class="btn-booking">booking</a>
+      <a href="../fav/favourite.html">
+        <button class="icon-btn">
+          <span class="material-symbols-outlined theme-icon">favorite</span>
+        </button>
+      </a>
+      <button class="icon-btn" id="langBtn">
+        <span class="material-symbols-outlined theme-icon">language</span>
+      </button>
+      <a href="../Profile/profile.html" class="nav-profile-image-link">
+        <img src="./unnamed.png" alt="Profile" class="profile-img" />
+      </a>
+    </div>
+  </div>
+</header>

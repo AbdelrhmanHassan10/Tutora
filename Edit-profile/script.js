@@ -1,92 +1,19 @@
+// ============================================
+// EDIT PROFILE SCRIPT - TUTORA
+// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
-    // ============================================
-    // THEME MANAGEMENT
-    // ============================================
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    let isDark = localStorage.getItem('theme') !== 'light';
-
-    function updateTheme() {
-        if (isDark) {
-            body.classList.add('dark-mode');
-            themeToggle.innerHTML = '<span class="material-symbols-outlined">light_mode</span>';
-        } else {
-            body.classList.remove('dark-mode');
-            themeToggle.innerHTML = '<span class="material-symbols-outlined">dark_mode</span>';
-        }
-    }
-
-    themeToggle.addEventListener('click', () => {
-        isDark = !isDark;
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        updateTheme();
-    });
-
-    updateTheme(); // Init theme
-
-    // ============================================
-    // SIDEBAR MANAGEMENT
-    // ============================================
-    const sidebar = document.getElementById('sidebar');
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const closeSidebarBtn = document.getElementById('closeSidebar');
-
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-            sidebar.classList.add('active');
-        });
-    }
-
-    if (closeSidebarBtn) {
-        closeSidebarBtn.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-        });
-    }
-
-    // ============================================
-    // NOTIFICATION COMPONENT
-    // ============================================
-    function showNotification(message, type = 'success') {
-        const existing = document.querySelector('.notification');
-        if (existing) existing.remove();
-
-        const notif = document.createElement('div');
-        notif.className = `notification ${type}`;
-        
-        let icon = 'check_circle';
-        if (type === 'error') icon = 'error';
-
-        notif.innerHTML = `
-            <span class="material-symbols-outlined">${icon}</span>
-            <span>${message}</span>
-        `;
-        document.body.appendChild(notif);
-
-        // trigger animation
-        setTimeout(() => notif.classList.add('show'), 10);
-
-        setTimeout(() => {
-            notif.classList.remove('show');
-            setTimeout(() => notif.remove(), 400);
-        }, 3000);
-    }
-
-    // ============================================
-    // API CONFIGURATION
-    // ============================================
     const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const token = localStorage.getItem('token');
 
-    // ============================================
-    // FETCH USER DATA (GET /api/auth/me)
-    // ============================================
+    // 1. Auth Check
+    if (!token) {
+        if (window.handleLogout) window.handleLogout();
+        return;
+    }
+
+    // 2. Load User Data
     async function loadUserData() {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            showNotification('Please login to edit your profile', 'error');
-            setTimeout(() => { window.location.href = '../2.login/code.html'; }, 2000);
-            return;
-        }
-
         try {
             const response = await fetch(`${API_BASE_URL}/auth/me`, {
                 headers: { 'Authorization': `Bearer ${token}` }
@@ -96,132 +23,102 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
                 let user = result.data || result.user || result;
                 
-                // --- MOCK FRONTEND LOCALSTORAGE ---
-                const localProfile = localStorage.getItem('localProfileData');
-                if (localProfile) {
+                // MOCK DATA SYNC
+                const localData = localStorage.getItem(`localProfileData_${user.email}`);
+                if (localData) {
                     try {
-                        const parsedMock = JSON.parse(localProfile);
-                        user = { ...user, ...parsedMock };
+                        const parsed = JSON.parse(localData);
+                        user = { ...user, ...parsed };
                     } catch(e) {}
                 }
                 
-                // Assuming user has 'name' which is full name, split into first/last
-                const nameParts = (user.name || '').split(' ');
-                const firstName = nameParts[0] || '';
-                const lastName = nameParts.slice(1).join(' ') || '';
-
                 // Populate Fields
-                document.getElementById('first_name').value = firstName;
-                document.getElementById('last_name').value = lastName;
-                if (user.email) {
-                    document.getElementById('email').value = user.email;
+                const nameParts = (user.name || '').split(' ');
+                document.getElementById('first_name').value = nameParts[0] || '';
+                document.getElementById('last_name').value = nameParts.slice(1).join(' ') || '';
+                document.getElementById('email').value = user.email || '';
+                
+                if (user.bio) document.getElementById('bio').value = user.bio;
+                
+                // Sync Image
+                const avatar = user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar');
+                if (avatar) {
+                    document.getElementById('profileImagePreview').src = avatar;
+                    localStorage.setItem('currentAvatar', avatar);
+                    if (window.syncGlobalAvatar) window.syncGlobalAvatar();
                 }
-                if (user.profileImage) {
-                    document.getElementById('profileImagePreview').src = user.profileImage;
-                }
-            } else {
-                showNotification('Failed to load user profile.', 'error');
+            } else if (response.status === 401) {
+                if (window.handleLogout) window.handleLogout();
             }
         } catch (error) {
-            console.error('Error fetching user data:', error);
-            showNotification('An error occurred while loading profile', 'error');
+            console.error('Error loading user data:', error);
         }
     }
 
-    // Execute load
     loadUserData();
 
-    // ============================================
-    // PROFILE AVATAR PREVIEW HANDLER
-    // ============================================
+    // 3. Avatar Preview Handler
     const avatarUpload = document.getElementById('avatarUpload');
     const profileImagePreview = document.getElementById('profileImagePreview');
 
-    avatarUpload.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                profileImagePreview.src = e.target.result;
+    if (avatarUpload && profileImagePreview) {
+        avatarUpload.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => profileImagePreview.src = e.target.result;
+                reader.readAsDataURL(file);
             }
-            reader.readAsDataURL(file);
-        }
-    });
+        });
+    }
 
-    // ============================================
-    // FORM SUBMIT INTERCEPTOR (Simulate Update)
-    // ============================================
+    // 4. Form Submit Handler
     const editProfileForm = document.getElementById('editProfileForm');
-
-    editProfileForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const token = localStorage.getItem('token');
-        if (!token) return;
-
-        const firstName = document.getElementById('first_name').value;
-        const lastName = document.getElementById('last_name').value;
-        const email = document.getElementById('email').value;
-        const bio = document.getElementById('bio').value;
-
-        const fullName = `${firstName} ${lastName}`.trim();
-
-        // Construct update payload
-        const payload = {
-            name: fullName,
-            email: email,
-            bio: bio
-        };
-
-        // Save locally for frontend simulation until API is ready
-        if (profileImagePreview.src && !profileImagePreview.src.includes('unnamed.png')) {
-            payload.profileImage = profileImagePreview.src;
-        }
-        localStorage.setItem('localProfileData', JSON.stringify(payload));
-
-        // NOTE: The update API (PUT) does not exist yet. 
-        // We will mock the behavior for now.
-        console.log('Sending Profile Update:', payload);
-        
-        // Mock successful save
-        const btnSave = document.querySelector('.btn-save');
-        const originalText = btnSave.textContent;
-        btnSave.textContent = 'Saving...';
-        btnSave.disabled = true;
-
-        setTimeout(() => {
-            showNotification('Profile updated successfully!', 'success');
-            btnSave.textContent = originalText;
-            btnSave.disabled = false;
+    if (editProfileForm) {
+        editProfileForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
             
-            // Redirect back to profile page after 1.5 seconds
-            setTimeout(() => {
-                window.location.href = '../Profile/profile.html';
-            }, 1500);
-        }, 1200);
+            const firstName = document.getElementById('first_name').value;
+            const lastName = document.getElementById('last_name').value;
+            const email = document.getElementById('email').value;
+            const bio = document.getElementById('bio').value;
 
-        // IF THE API IS READY, UNCOMMENT THIS SECTION:
-        /*
-        try {
-            const response = await fetch(`${API_BASE_URL}/auth/me`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(payload)
-            });
+            const fullName = `${firstName} ${lastName}`.trim();
+            const payload = { name: fullName, email: email, bio: bio };
 
-            if (response.ok) {
-                showNotification('Profile updated successfully!', 'success');
-            } else {
-                const data = await response.json();
-                showNotification(data.message || 'Failed to update profile', 'error');
+            // Handle Avatar in payload
+            if (profileImagePreview.src && !profileImagePreview.src.includes('unnamed.png')) {
+                payload.profileImage = profileImagePreview.src;
+                localStorage.setItem('currentAvatar', profileImagePreview.src);
             }
-        } catch (error) {
-            console.error('Update Error:', error);
-            showNotification('An error occurred during update', 'error');
-        }
-        */
-    });
+
+            // SIMULATION: Save to LocalStorage
+            localStorage.setItem(`localProfileData_${email}`, JSON.stringify(payload));
+            
+            // Show Success UI
+            const btnSave = document.querySelector('.btn-save');
+            const originalText = btnSave.textContent;
+            btnSave.textContent = 'Saving...';
+            btnSave.disabled = true;
+
+            setTimeout(() => {
+                alert('Profile updated successfully!');
+                btnSave.textContent = originalText;
+                btnSave.disabled = false;
+                
+                if (window.syncGlobalAvatar) window.syncGlobalAvatar();
+                window.location.href = '../Profile/profile.html';
+            }, 1000);
+        });
+    }
+
+    // 5. Shared UI Interactions (Sidebar, Theme)
+    // Theme and Sidebar are handled centrally in global-core.js if IDs match.
+    // If not, we can keep simple sidebar toggle here.
+    const sidebarElement = document.getElementById('sidebar');
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const closeBtn = document.getElementById('closeSidebar');
+
+    if (mobileBtn && sidebarElement) mobileBtn.onclick = () => sidebarElement.classList.add('active');
+    if (closeBtn && sidebarElement) closeBtn.onclick = () => sidebarElement.classList.remove('active');
 });

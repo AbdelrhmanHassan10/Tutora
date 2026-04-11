@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="description" content="Tutora Membership - Join the Circle of the Sun. Exclusive access to the Grand Egyptian Museum." />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TUTORA | Membership</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../animate.css" />
+	<link rel="stylesheet" href="../global-theme.css" />
+</head>
+<body class="dark">
+     <!-- Header -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header"  >
+            <div class="menu-logo" >
+    
+    <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+
+    <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+</div>
+            <button class="close-btn" id="closeBtn">
+            <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
+        </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+        <a href="../Kids-Museum/kids-museum.html" class="menu-link" >Kids-Museum</a>
+
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                AI Experience
+                <span class="material-symbols-outlined">expand_more</span>
+            </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item" >AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item" >AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" >AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" >AI Voice Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item" >Tutora laboratory</a>
+</div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/code.html" class="menu-link">About</a>
+            <a href="../collection/collection.html" class="menu-link">Collection</a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn" style="background-color: #ecb613;">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link" >
+                <span class="material-symbols-outlined" >favorite</span> Favorites
+            </a>
+
+            <button class="menu-icon-link" id="menuLangBtn" >
+            <span class="material-symbols-outlined" >language</span>
+            Language
+        </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                <span class="material-symbols-outlined" style="color: #ecb613; padding-top: 5px;">menu</span>
+            </button>
+                <div class="logo-section">
+    
+    <div class="logo-circle">
+        <img src="../logo.png" alt="Tutora Logo">
+    </div>
+
+    <h2 class="logo-text" style="color: #ecb613;font-size: 20px;">Tutora</h2>
+</div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html" >Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a>
+   <a href="../Kids-Museum/kids-museum.html"  >Kids-Museum</a>
+                <a href="../event/event.html" >Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger" >
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link" >AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" >AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" >AI Voice Storytelling (3D)</a>
+                                  <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link" >Tutora laboratory</a>
+</div>
+                </div>
+                <a href="../shop/shop.html" >Shop</a>
+                <a href="../about/code.html" >About</a>
+                <a href="../collection/collection.html" >Collection</a>
+            </nav>
+
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="material-symbols-outlined" >search</span>
+                    <input type="text" placeholder="Search..."  />
+                </div>
+                <button class="theme-btn" id="themeBtn">
+                <span class="material-symbols-outlined" >dark_mode</span>
+            </button>
+                <a href="../booking/booking.html" class="btn-booking" style="background-color: #ecb613;">booking</a>
+                <a href="../fav/favourite.html" style="text-decoration: none;">
+                    <button class="icon-btn">
+                    <span class="material-symbols-outlined" >favorite</span>
+                </button>
+                </a>
+                <button class="icon-btn" id="langBtn">
+                <span class="material-symbols-outlined" >language</span>
+            </button>
+                <a href="../Profile/profile.html">
+                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <!-- Hero Section -->
+        <section class="mem-hero">
+            <div class="mem-hero-bg" style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg');"></div>
+            <div class="mem-hero-overlay"></div>
+            <div class="mem-hero-content animate__animated animate__fadeInUp">
+                <span class="mem-label">The Official Gateway</span>
+                <h1>LEGACY <br><span class="gold-text">PATRONAGE</span></h1>
+                <p>Support the Grand Egyptian Museum's mission to preserve 5,000 years of history. join our community of supporters and enjoy unique access to the world's largest archaeological institution.</p>
+                <div class="mem-hero-actions">
+                    <a href="#tiers" class="mem-btn mem-btn-gold">Explore Tiers</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Membership Tiers -->
+        <section class="mem-tiers" id="tiers">
+            <!-- Young Explorer (Student) -->
+            <div class="mem-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                <div class="mem-card-top">
+                    <h3>Young Explorer</h3>
+                    <span class="mem-tier-label">Student & Youth</span>
+                </div>
+                <div class="mem-price"><span class="mem-amount">$75</span><span class="mem-period">/ Year</span></div>
+                <ul class="mem-features">
+                    <li><span class="material-symbols-outlined">check_circle</span> Unlimited Entry to GEM Complex and Grand Staircase.</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> 20% Discount on Educational Workshops.</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Digital Membership Card & Interactive Site Map.</li>
+                </ul>
+                <button class="mem-btn mem-btn-outline" id="joinYoungExplorer">Join Now</button>
+            </div>
+
+            <!-- Heritage Resident (Professional) -->
+            <div class="mem-card mem-card-featured animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="mem-badge">Preferred Choice</div>
+                <div class="mem-card-top">
+                    <h3>Heritage Resident</h3>
+                    <span class="mem-tier-label gold-text">Individual Patron</span>
+                </div>
+                <div class="mem-price"><span class="mem-amount">$250</span><span class="mem-period">/ Year</span></div>
+                <ul class="mem-features">
+                    <li><span class="material-symbols-outlined">check_circle</span> All Access (Main Galleries + Tutankhamun Gallery).</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> 2 Guest Passes per year for family/friends.</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> 15% discount at Museums Shop & Dining.</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Priority booking for Curatorial tours.</li>
+                </ul>
+                <button class="mem-btn mem-btn-gold" id="joinHeritageResident">Become a Resident</button>
+            </div>
+
+            <!-- Legacy Founder (Elite) -->
+            <div class="mem-card mem-card-elite animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                <div class="mem-card-top">
+                    <h3>Legacy Founder</h3>
+                    <span class="mem-tier-label gold-text">Philanthropic Member</span>
+                </div>
+                <div class="mem-price"><span class="mem-amount">$1,500</span><span class="mem-period">/ Year</span></div>
+                <ul class="mem-features">
+                    <li><span class="material-symbols-outlined">check_circle</span> VIP Gala invites & exclusive donor events.</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Behind-the-scenes access to Restoration Labs.</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Name recognition on the Digital Patron Wall.</li>
+                    <li><span class="material-symbols-outlined">check_circle</span> Personal Museum Concierge for all visits.</li>
+                </ul>
+                <button class="mem-btn mem-btn-gold" id="joinLegacyFounder">Join Foundation</button>
+            </div>
+        </section>
+
+        <!-- Why Join Section -->
+        <section class="mem-why">
+            <div class="mem-why-header"><h2>Why Become a <span class="gold-text">Member?</span></h2><div class="mem-divider"></div></div>
+            <div class="mem-why-grid">
+                <div class="mem-why-item"><span class="material-symbols-outlined">local_activity</span><h3>Skip the Line</h3><p>Members enjoy priority entrance at all times — no queues, no waiting. Walk straight into 5,000 years of history.</p></div>
+                <div class="mem-why-item"><span class="material-symbols-outlined">celebration</span><h3>Exclusive Events</h3><p>Attend members-only exhibition openings, curator-led tours, and seasonal galas set among the artifacts.</p></div>
+                <div class="mem-why-item"><span class="material-symbols-outlined">restaurant</span><h3>Dining Privileges</h3><p>Enjoy 15% off at Pharaoh's Feast and priority reservations at all museum dining venues.</p></div>
+                <div class="mem-why-item"><span class="material-symbols-outlined">redeem</span><h3>Gift Shop Perks</h3><p>Receive 10-25% discounts on all museum merchandise, publications, and limited-edition collectibles.</p></div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="mem-testimonials">
+            <h2>Voices from the <span class="gold-text">Circle</span></h2>
+            <div class="mem-test-grid">
+                <div class="mem-test-card">
+                    <p class="mem-test-quote">"Being a Guardian member has transformed my relationship with Egyptian art. The private previews feel like stepping into history before anyone else."</p>
+                    <div class="mem-test-author"><strong>Dr. Helena Roth</strong><span>Guardian Member · 3 Years</span></div>
+                </div>
+                <div class="mem-test-card">
+                    <p class="mem-test-quote">"The conservation lab tours alone are worth the High Priest membership. Watching restorers work on 3,000-year-old artifacts is absolutely mesmerizing."</p>
+                    <div class="mem-test-author"><strong>Ahmed Mansour</strong><span>High Priest Member · 2 Years</span></div>
+                </div>
+                <div class="mem-test-card">
+                    <p class="mem-test-quote">"As a Scribe member, unlimited visits have made the GEM my second home. My children now know the pharaohs by name!"</p>
+                    <div class="mem-test-author"><strong>Sarah El-Bayoumi</strong><span>Scribe Member · 1 Year</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="mem-faq">
+            <h2>Membership <span class="gold-text">FAQ</span></h2>
+            <div class="mem-faq-list">
+                <details class="mem-faq-item"><summary><span>Can I upgrade my membership tier mid-year?</span><span class="material-symbols-outlined">expand_more</span></summary><p>Yes! You can upgrade at any time. The remaining balance of your current tier will be applied toward the higher tier's annual fee.</p></details>
+                <details class="mem-faq-item"><summary><span>Are memberships transferable or refundable?</span><span class="material-symbols-outlined">expand_more</span></summary><p>Memberships are non-transferable but may be refunded within 30 days of purchase if no benefits have been used.</p></details>
+                <details class="mem-faq-item"><summary><span>Do children need their own membership?</span><span class="material-symbols-outlined">expand_more</span></summary><p>Children under 12 are admitted free with any active member. A Family Add-On ($75/year) covers up to 3 children aged 12-17.</p></details>
+                <details class="mem-faq-item"><summary><span>What happens when my membership expires?</span><span class="material-symbols-outlined">expand_more</span></summary><p>You'll receive renewal reminders 30 and 7 days before expiration. Early renewal within 60 days of expiry preserves your membership anniversary date.</p></details>
+            </div>
+        </section>
+    </main>
+
+    <hr />
+    <footer class="site-footer">
+            <div class="footer-container">
+                <!-- Footer Header -->
+                <div class="footer-header">
+                    <div class="footer-logo">
+                        <span class="material-symbols-outlined">account_balance</span>
+                    </div>
+                    <h2 class="footer-title">Grand Egyptian Museum</h2>
+                    <div class="footer-divider"></div>
+                </div>
+
+                <!-- Footer Grid -->
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="../booking/booking.html">Tickets</a></li>
+                            <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../-membership/code.html">Membership</a></li>
+                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="../About us/About-us.html">History</a></li>
+                            <li><a href="../event/event.html">Events</a></li>
+                            <li><a href="../-news_press/code.html">News & Press</a></li>
+                            <li><a href="../-branding/code.html">Branding</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="../visitor help/help.html">Help</a></li>
+                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column connect-column">
+                        <h3>Connect</h3>
+                        <div class="social-links">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+
+                            <!-- Twitter (X ) -->
+                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <!-- YouTube -->
+                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+
+                        <p>
+                            Follow us on social media for updates and behind-the-scenes content.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer Separator -->
+                <div class="footer-separator"></div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="language-toggle">
+                        <button class="active" data-lang="en">English</button>
+                        <button data-lang="ar">العربية</button>
+                    </div>
+                    <div class="legal-section">
+                       <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
+            <div class="copyright">
+              © 2026 Tutora. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+        </footer>
+    <script src="script.js"></script>
+    <!-- <script src="../global-core.js"></script> -->
+    <!-- <script src="../animate.js"></script> -->
+</body>
+</html>

@@ -1,32 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. THEME TOGGLE SYSTEM ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    const applyTheme = (theme) => {
-        body.classList.remove('dark', 'light');
-        body.classList.add(theme);
-        localStorage.setItem('gem-theme', theme);
-
-        if (themeToggle) {
-            const icon = themeToggle.querySelector('.material-symbols-outlined');
-            if (icon) {
-                icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
-            }
-        }
-    };
-
-    const savedTheme = localStorage.getItem('gem-theme') || 'dark';
-    applyTheme(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
-            applyTheme(newTheme);
-        });
-    }
-
-    // --- 2. MOBILE MENU SYSTEM ---
+    // --- 1. MOBILE MENU SYSTEM ---
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -56,10 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', closeMenu);
     });
 
-    // --- 3. MOBILE DROPDOWN TOGGLE ---
+    // --- 2. MOBILE DROPDOWN TOGGLE ---
     document.querySelectorAll('.dropdown-toggle').forEach(btn => {
         btn.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent menu from closing
+            event.stopPropagation();
             const dropdown = btn.closest('.menu-dropdown');
             const content = dropdown.querySelector('.dropdown-items');
 
@@ -68,25 +41,68 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 4. FORM & SCROLL EFFECTS (Your existing code) ---
+    // --- 3. FORM SUBMISSION ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn.textContent;
-            btn.textContent = 'Sending...';
+            
+            // Premium feedback
+            btn.style.width = btn.offsetWidth + 'px';
+            btn.innerHTML = '<span class="material-symbols-outlined rotating">sync</span> Sending...';
             btn.disabled = true;
+            btn.style.opacity = '0.8';
+
             setTimeout(() => {
-                btn.textContent = 'Message Sent!';
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Message Sent!';
+                btn.style.background = '#10b981'; // Green success
+                btn.style.color = '#fff';
+
                 setTimeout(() => {
                     btn.textContent = originalText;
                     btn.disabled = false;
+                    btn.style.background = ''; // Back to gold
+                    btn.style.color = '';
+                    btn.style.width = '';
+                    btn.style.opacity = '';
                     contactForm.reset();
+                }, 3000);
+            }, 2000);
+        });
+    }
+
+    // --- 4. NEWSLETTER SUBMISSION ---
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = newsletterForm.querySelector('button');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Joining...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">done</span> Welcome!';
+                btn.style.background = '#10b981';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    btn.style.background = '';
+                    newsletterForm.reset();
                 }, 3000);
             }, 1500);
         });
     }
+
+    // --- 5. SCROLL ANIMATIONS ---
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -95,12 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('.contact-item, .form-container, .map-container').forEach(el => {
+    const animatedElements = document.querySelectorAll(
+        '.contact-item, .form-container, .map-section, .department-card, .faq-item, .newsletter-card'
+    );
+    
+    animatedElements.forEach(el => {
         el.style.opacity = '0';
         observer.observe(el);
     });
-
-    console.log("✓ All systems are running correctly.");
 });

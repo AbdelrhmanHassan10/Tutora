@@ -131,55 +131,34 @@ function updateThemeIcon() {
  document.addEventListener('DOMContentLoaded', () => {
      console.log('✓ Tortara Navbar Loaded');
  });
- // ============================================
- // MOBILE MENU TOGGLE
- // ============================================
+  // ============================================
+  // MOBILE MENU TOGGLE
+  // ============================================
 
- const menuBtn = document.getElementById('menuBtn');
- const closeBtn = document.getElementById('closeBtn');
- const mobileMenu = document.getElementById('mobileMenu');
- const menuOverlay = document.querySelector('.menu-overlay');
+  const menuBtn = document.getElementById('menuBtn');
+  const closeBtn = document.getElementById('closeBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuOverlay = document.querySelector('.menu-overlay');
 
- if (menuBtn) {
-     menuBtn.addEventListener('click', () => {
-         mobileMenu.classList.add('active');
-         if (menuOverlay) {
-             menuOverlay.classList.add('active');
-         }
-         document.body.style.overflow = 'hidden';
-     });
- }
+  const openMenu = () => {
+      if (mobileMenu) mobileMenu.classList.add('open');
+      if (menuOverlay) menuOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+  };
 
- if (closeBtn) {
-     closeBtn.addEventListener('click', () => {
-         mobileMenu.classList.remove('active');
-         if (menuOverlay) {
-             menuOverlay.classList.remove('active');
-         }
-         document.body.style.overflow = 'auto';
-     });
- }
+  const closeMenu = () => {
+      if (mobileMenu) mobileMenu.classList.remove('open');
+      if (menuOverlay) menuOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+  };
 
- // Close menu when clicking overlay
- if (menuOverlay) {
-     menuOverlay.addEventListener('click', () => {
-         mobileMenu.classList.remove('active');
-         menuOverlay.classList.remove('active');
-         document.body.style.overflow = 'auto';
-     });
- }
+  if (menuBtn) menuBtn.addEventListener('click', openMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
- // Close menu when clicking on a link
- const menuLinks = document.querySelectorAll('.menu-link, .dropdown-item');
- menuLinks.forEach(link => {
-     link.addEventListener('click', () => {
-         mobileMenu.classList.remove('active');
-         if (menuOverlay) {
-             menuOverlay.classList.remove('active');
-         }
-         document.body.style.overflow = 'auto';
-     });
- });
+  document.querySelectorAll('.menu-link:not(.dropdown-toggle), .dropdown-item').forEach(link => {
+      link.addEventListener('click', closeMenu);
+  });
 
  // ============================================
  // MOBILE DROPDOWN TOGGLE

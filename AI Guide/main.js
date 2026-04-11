@@ -1,243 +1,180 @@
- const body = document.body;
- const mobileMenuClose = document.getElementById('mobileMenuClose');
- const header = document.querySelector('.main-nav');
+// ============================================
+// AI GUIDE SCRIPT - TORTARA
+// ============================================
 
- // ============================================
- // DARK MODE TOGGLE
- // ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const token = localStorage.getItem('token');
+    const talkBtn = document.querySelector('.talk-button');
+    const transcriptionContent = document.querySelector('.transcription-content');
+    const hologramAura = document.querySelector('.hologram-aura');
+    const welcomeTitle = document.querySelector('.welcome-title');
 
- const themeBtn = document.getElementById('themeBtn');
+    // 1. Audio Logic (Speech Recognition)
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+    let isListening = false;
 
- // Check for saved theme preference
- const savedTheme = localStorage.getItem('theme');
- if (savedTheme === 'dark') {
-     body.classList.add('dark-mode');
-     updateThemeIcon();
- }
+    if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = localStorage.getItem('language') === 'ar' ? 'ar-EG' : 'en-US';
 
- // Toggle dark mode
- themeBtn.addEventListener('click', () => {
-     body.classList.toggle('dark-mode');
-     const isDark = body.classList.contains('dark-mode');
-     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-     updateThemeIcon();
- });
+        recognition.onstart = () => {
+            isListening = true;
+            if (talkBtn) talkBtn.innerHTML = '<span class="material-icons-outlined">stop</span><span>Listening...</span>';
+            if (hologramAura) hologramAura.classList.add('listening-pulse');
+        };
 
- // Update theme icon
- function updateThemeIcon() {
-     const icon = themeBtn.querySelector('.material-symbols-outlined');
-     if (body.classList.contains('dark-mode')) {
-         icon.textContent = 'light_mode';
-     } else {
-         icon.textContent = 'dark_mode';
-     }
- }
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            addMessage('User', transcript);
+            processAIQuery(transcript);
+        };
 
- // ============================================
- // LANGUAGE TOGGLE
- // ============================================
+        recognition.onerror = (event) => {
+            console.error('Speech Recognition Error:', event.error);
+            stopListening();
+        };
 
- document.querySelectorAll('.language-toggle button').forEach(btn => {
-     btn.addEventListener('click', () => {
-         // Remove active from all buttons
-         document.querySelectorAll('.language-toggle button').forEach(b => {
-             b.classList.remove('active');
-         });
-         // Add active to clicked button
-         btn.classList.add('active');
-         const lang = btn.getAttribute('data-lang');
-         localStorage.setItem('language', lang);
-         console.log('Language changed to:', lang);
-     });
- });
+        recognition.onend = () => {
+            stopListening();
+        };
+    }
 
- // ============================================
- // SMOOTH SCROLL FOR NAVIGATION
- // ============================================
+    function stopListening() {
+        isListening = false;
+        if (talkBtn) talkBtn.innerHTML = '<span class="material-icons-outlined">mic</span><span>Talk to me</span>';
+        if (hologramAura) hologramAura.classList.remove('listening-pulse');
+    }
 
- document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-     anchor.addEventListener('click', function(e) {
-         const href = this.getAttribute('href');
-         if (href !== '#' && document.querySelector(href)) {
-             e.preventDefault();
-             const target = document.querySelector(href);
-             target.scrollIntoView({
-                 behavior: 'smooth',
-                 block: 'start'
-             });
-         }
-     });
- });
+    // 2. Interaction Logic
+    if (talkBtn) {
+        talkBtn.addEventListener('click', () => {
+            if (!token) {
+                alert('🔐 Please login to sync with Tortara\'s neural link.');
+                window.location.href = '../2.login/code.html';
+                return;
+            }
 
+            if (!recognition) {
+                alert('⚠️ Speech recognition is not supported in this browser.');
+                const query = prompt('Enter your question for Tortara:');
+                if (query) {
+                    addMessage('User', query);
+                    processAIQuery(query);
+                }
+                return;
+            }
 
- // Action buttons
- document.querySelectorAll('.btn-action-gold, .btn-action-turquoise').forEach(btn => {
-     btn.addEventListener('click', (e) => {
-         e.preventDefault();
-         console.log('Action button clicked');
-         addRipple(btn, e);
-     });
- });
+            if (isListening) {
+                recognition.stop();
+            } else {
+                recognition.start();
+            }
+        });
+    }
 
- // Primary and Accent buttons
- document.querySelectorAll('.btn-primary, .btn-accent').forEach(btn => {
-     btn.addEventListener('click', (e) => {
-         console.log('Button clicked:', btn.textContent);
-         addRipple(btn, e);
-     });
- });
+    // 3. AI Query Processing
+    async function processAIQuery(query) {
+        if (!query.trim()) return;
+        
+        // Visual Thinking State
+        if (welcomeTitle) welcomeTitle.textContent = '"Analyzing neural patterns..."';
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}/ai/ask`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ question: query })
+            });
 
+            if (response.ok) {
+                const data = await response.json();
+                const aiText = data.answer || data.response || "I found some data, but couldn't decode it.";
+                handleTortaraResponse(aiText);
+            } else {
+                handleTortaraResponse("Connection to the central archive failed. Please try again.");
+            }
+        } catch (error) {
+            console.error('AI Query Error:', error);
+            handleTortaraResponse("My neural link is currently unstable. Please check your connection.");
+        }
+    }
 
+    function handleTortaraResponse(text) {
+        if (welcomeTitle) welcomeTitle.textContent = `"${text}"`;
+        addMessage('Tortara', text);
+        speakText(text);
+    }
 
+    function addMessage(sender, text) {
+        if (!transcriptionContent) return;
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${sender.toLowerCase()}-message`;
+        msgDiv.innerHTML = `
+            <p class="message-sender">${sender}</p>
+            <p class="message-text">"${text}"</p>
+        `;
+        transcriptionContent.appendChild(msgDiv);
+        transcriptionContent.scrollTop = transcriptionContent.scrollHeight;
+    }
 
- // ============================================
- // SEARCH INPUT UX
- // ============================================
+    // 4. Text-to-Speech (TTS)
+    function speakText(text) {
+        if (!window.speechSynthesis) return;
+        
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        const lang = localStorage.getItem('language') || 'en';
+        utterance.lang = lang === 'ar' ? 'ar-EG' : 'en-US';
+        utterance.rate = 0.9; // Friendly guide speed
+        utterance.pitch = 1.0;
+        
+        window.speechSynthesis.speak(utterance);
+    }
 
- const searchInput = document.querySelector('.search-input');
+    // 5. Quick Actions
+    document.querySelectorAll('.quick-action-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const query = btn.textContent.trim();
+            addMessage('User', query);
+            processAIQuery(query);
+        });
+    });
 
- if (searchInput) {
-     searchInput.addEventListener('focus', () => {
-         searchInput.parentElement.style.boxShadow =
-             '0 0 12px rgba(242, 204, 13, 0.3)';
-     });
+    // 6. Navigation and Sidebar Toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-     searchInput.addEventListener('blur', () => {
-         searchInput.parentElement.style.boxShadow = 'none';
-     });
+    const openMenu = () => {
+        if (mobileMenu) mobileMenu.classList.add('open');
+        if (menuOverlay) menuOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    };
 
-     searchInput.addEventListener('keydown', (e) => {
-         if (e.key === 'Enter') {
-             console.log('Search:', searchInput.value);
-         }
-     });
- }
+    const closeMenu = () => {
+        if (mobileMenu) mobileMenu.classList.remove('open');
+        if (menuOverlay) menuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    };
 
- // ============================================
- // OPTIONAL: CLICK ANIMATION FOR ICON BUTTONS
- // ============================================
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
- document.querySelectorAll('.icon-btn').forEach(btn => {
-     btn.addEventListener('click', () => {
-         btn.style.transform = 'scale(0.9)';
-         setTimeout(() => {
-             btn.style.transform = 'scale(1)';
-         }, 100);
-     });
- });
-
- // ============================================
- // INIT
- // ============================================
-
- document.addEventListener('DOMContentLoaded', () => {
-     console.log('✓ Tortara Navbar Loaded');
- });
- // ============================================
- // MOBILE MENU TOGGLE
- // ============================================
-
- const menuBtn = document.getElementById('menuBtn');
- const closeBtn = document.getElementById('closeBtn');
- const mobileMenu = document.getElementById('mobileMenu');
- const menuOverlay = document.querySelector('.menu-overlay');
-
- if (menuBtn) {
-     menuBtn.addEventListener('click', () => {
-         mobileMenu.classList.add('active');
-         if (menuOverlay) {
-             menuOverlay.classList.add('active');
-         }
-         document.body.style.overflow = 'hidden';
-     });
- }
-
- if (closeBtn) {
-     closeBtn.addEventListener('click', () => {
-         mobileMenu.classList.remove('active');
-         if (menuOverlay) {
-             menuOverlay.classList.remove('active');
-         }
-         document.body.style.overflow = 'auto';
-     });
- }
-
- // Close menu when clicking overlay
- if (menuOverlay) {
-     menuOverlay.addEventListener('click', () => {
-         mobileMenu.classList.remove('active');
-         menuOverlay.classList.remove('active');
-         document.body.style.overflow = 'auto';
-     });
- }
-
- // Close menu when clicking on a link
- const menuLinks = document.querySelectorAll('.menu-link, .dropdown-item');
- menuLinks.forEach(link => {
-     link.addEventListener('click', () => {
-         mobileMenu.classList.remove('active');
-         if (menuOverlay) {
-             menuOverlay.classList.remove('active');
-         }
-         document.body.style.overflow = 'auto';
-     });
- });
-
- // ============================================
- // MOBILE DROPDOWN TOGGLE
- // ============================================
-
- const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
- dropdownToggles.forEach(toggle => {
-     toggle.addEventListener('click', (e) => {
-         e.stopPropagation();
-
-         const dropdownItems = toggle.nextElementSibling;
-         if (dropdownItems && dropdownItems.classList.contains('dropdown-items')) {
-             // Close other dropdowns
-             document.querySelectorAll('.dropdown-items.show').forEach(item => {
-                 if (item !== dropdownItems) {
-                     item.classList.remove('show');
-                     item.previousElementSibling.classList.remove('active');
-                 }
-             });
-
-             // Toggle current dropdown
-             dropdownItems.classList.toggle('show');
-             toggle.classList.toggle('active');
-         }
-     });
- });
-
- // Close dropdown when clicking outside
- document.addEventListener('click', (e) => {
-     if (!e.target.closest('.menu-dropdown') && !e.target.closest('.dropdown-items')) {
-         document.querySelectorAll('.dropdown-items.show').forEach(item => {
-             item.classList.remove('show');
-             item.previousElementSibling.classList.remove('active');
-         });
-     }
- });
-
- // ============================================
- // DESKTOP DROPDOWN HOVER
- // ============================================
-
- const navDropdowns = document.querySelectorAll('.nav-dropdown');
- navDropdowns.forEach(dropdown => {
-     dropdown.addEventListener('mouseenter', () => {
-         const menu = dropdown.querySelector('.dropdown-menu');
-         if (menu) {
-             menu.style.opacity = '1';
-             menu.style.visibility = 'visible';
-         }
-     });
-
-     dropdown.addEventListener('mouseleave', () => {
-         const menu = dropdown.querySelector('.dropdown-menu');
-         if (menu) {
-             menu.style.opacity = '0';
-             menu.style.visibility = 'hidden';
-         }
-     });
- });
+    // Close menu when clicking links
+    if (mobileMenu) {
+        mobileMenu.querySelectorAll('.menu-link, .dropdown-item').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
+});

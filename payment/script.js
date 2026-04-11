@@ -1,6 +1,24 @@
+(function() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+
+    document.body.classList.remove('dark', 'light');
+    document.body.classList.add(savedTheme);
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ============================================
+    const themeBtn = document.querySelector('.theme-toggle'); // 🔥 مهم
+
+    themeBtn?.addEventListener('click', () => {
+        const isDark = document.body.classList.contains('dark');
+
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(isDark ? 'light' : 'dark');
+
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+
+});  // ============================================
     // 1. LOAD BOOKING DATA FROM LOCAL STORAGE
     // ============================================
 
@@ -77,22 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. PRESERVED UI SCRIPT (Your Original Code)
     // ============================================
 
-    // --- Theme Management ---
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-        const themeIcon = themeToggle.querySelector('.material-symbols-outlined');
-        const body = document.body;
-        const savedTheme = localStorage.getItem('site-theme') || 'dark'; // Default to dark
 
-        body.classList.toggle('dark-mode', savedTheme === 'dark');
-        if(themeIcon) themeIcon.textContent = savedTheme === 'dark' ? 'light_mode' : 'dark_mode';
-
-        themeToggle.addEventListener('click', () => {
-            const isDarkMode = body.classList.toggle('dark-mode');
-            if(themeIcon) themeIcon.textContent = isDarkMode ? 'light_mode' : 'dark_mode';
-            localStorage.setItem('site-theme', isDarkMode ? 'dark' : 'light');
-        });
-    }
 
     // --- Payment Method Switching ---
     const methodLabels = document.querySelectorAll('.method-label');
@@ -126,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Pay Button Interaction (With API integration) ---
-    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api';
     const payBtn = document.querySelector('.btn-pay');
     if (payBtn) {
         payBtn.addEventListener('click', async (e) => {
@@ -153,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // 1. Create booking checkout
-                const bookingResponse = await fetch(`https://gem-backend-production-cb6d.up.railway.app/api/bookings/checkout`, {
+                const bookingResponse = await fetch(`https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api/bookings/checkout`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -188,5 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     initializeOrderSummary();
     console.log("✓ Payment page initialized and populated from localStorage.");
-});
+ 
+
 

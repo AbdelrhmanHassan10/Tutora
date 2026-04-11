@@ -169,8 +169,11 @@ main {
     display: flex;
     height: 100%;
     width: 100%;
-    background-size: cover;
-    background-position: center;
+
+    background-size: cover; /* أهم تعديل */
+    background-repeat: no-repeat;
+    background-position: bottom; /* أفضل من bottom */
+
     flex-direction: column;
     justify-content: flex-end;
 }
@@ -441,4 +444,170 @@ html.dark .material-symbols-outlined {
     font-weight: 700;
     color: var(--primary);
     text-decoration: underline;
+}
+
+.logo-circle {
+    display: none !important;
+}
+
+.logo-text {
+    display: none !important; /* Opt for completely clean nav, just sign in links */
+}
+/* ============================================
+   PREMIUM 3D DROPDOWN ANIMATION OVERRIDE
+   ============================================ */
+.nav-dropdown {
+    perspective: 1000px !important;
+}
+.dropdown-menu {
+    transform-origin: top center !important;
+    transform: translateY(15px) rotateX(-15deg) scale(0.95) !important;
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.5s !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(236,182,19,0.2) inset !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    border-radius: 12px !important;
+}
+.nav-dropdown:hover .dropdown-menu,
+.menu-dropdown:hover .dropdown-items {
+    transform: translateY(0) rotateX(0deg) scale(1) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.dropdown-link, .dropdown-item {
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+.dropdown-link:hover, .dropdown-item:hover {
+    transform: translateX(8px) !important;
+}
+
+/* ============================================
+   PREMIUM TOAST NOTIFICATIONS & UX OVERRIDES
+   ============================================ */
+
+.premium-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(18, 18, 18, 0.95);
+    border: 1px solid #333;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transform: translateX(120%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    max-width: 400px;
+    font-family: var(--font-display);
+}
+
+.premium-toast.show-toast {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-success {
+    border-left: 4px solid #10b981;
+}
+
+.toast-error {
+    border-left: 4px solid #ef4444;
+}
+
+.toast-icon {
+    font-size: 24px;
+}
+
+.toast-success .toast-icon {
+    color: #10b981;
+}
+
+.toast-error .toast-icon {
+    color: #ef4444;
+}
+
+.toast-msg {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: inherit;
+}
+
+.toast-success .toast-progress {
+    background: #10b981;
+    animation: shrinkProgress 3.5s linear forwards;
+}
+
+.toast-error .toast-progress {
+    background: #ef4444;
+    animation: shrinkProgress 3.5s linear forwards;
+}
+
+@keyframes shrinkProgress {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+/* Loading Spinner for Buttons */
+.loader-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-left-color: #000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Password Strength Meter */
+.pwd-strength-container {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pwd-strength-bar {
+    height: 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    flex-grow: 1;
+    background-color: transparent;
+}
+
+.pwd-strength-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    min-width: 45px;
+    text-align: right;
+}
+
+/* Shake Animation for Invalid State */
+.shake-anim {
+    animation: shakeX 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shakeX {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
 }

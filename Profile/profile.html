@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUTORA Profile | Manage Your Account</title>
@@ -10,26 +11,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../animate.css" />
+	<link rel="stylesheet" href="../global-theme.css" />
 </head>
 
-<body class="dark-mode">
+<body class="dark">
 
     <div class="container-wrapper">
         <!-- Sidebar Navigation (RESTORED) -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-content">
-                <!-- Logo -->
-                <div class="logo-section">
+<div class="logo-section">
     
-    <div class="logo-circle">
+    <a href="../4.home/code.html"><div class="logo-circle">
         <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h2 class="logo-text" style="color: #ecb613;;font-size: 20px; padding-left: 15px;">Tutora</h2>
+    </div></a>
+<a href="../4.home/code.html" style="text-decoration: none;">  
+  <h2 class="logo-text" style="color: #ecb613;;font-size: 20px; padding-left: 15px;">Tutora</h2>
+</a>
 <button id="closeSidebar" class="mobile-close-btn">✖</button>
                   </div>
-
-                <!-- Navigation Items -->
+                <!-- Logo -->
                 <nav class="nav-menu">
                     <a href="../Profile/profile.html" class="nav-item active">
                         <span class="material-symbols-outlined">person</span>
@@ -54,11 +56,13 @@
                 </nav>
             </div>
 
-            <!-- Logout Button -->
-            <a href="../1.landing page/code!!!!!!!!!!!!.html" style="text-decoration: none;"><button class="logout-btn">
-                <span class="material-symbols-outlined">logout</span>
-                <span>Logout</span>
-            </button></a>
+            <!-- Logout Button (Restored) -->
+            <a href="../1.landing page/code!!!!!!!!!!!!.html" style="text-decoration: none;">
+                <button class="logout-btn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Logout</span>
+                </button>
+            </a>
         </aside>
 
         <!-- Main Content -->
@@ -87,7 +91,7 @@
                     <div class="user-info">
                         
                         <div class="user-avatar">
-                            <img src="./unnamed.png" alt="User Profile">
+                            <img src="./profile-placeholder.svg" class="profile-img" alt="User Profile">
                         </div>
                     </div>
 
@@ -102,7 +106,7 @@
                 <!-- Hero Profile Section -->
                 <section class="hero-profile">
                     <div class="profile-image-wrapper">
-                        <img src="unnamed.png" alt="Profile Picture" class="profile-image">
+                        <img src="./profile-placeholder.svg" class="profile-image" alt="Profile Picture">
                         <span class="verified-badge">Verified</span>
                     </div>
 
@@ -118,6 +122,36 @@
                     <div class="profile-actions">
                        <a href="../Edit-profile/code.html"> <button class="btn btn-primary">Edit Profile</button></a>
                         <button class="btn btn-secondary">Share Status</button>
+                    </div>
+                </section>
+                
+                <!-- Pharaonic Avatar Collection -->
+                <section class="avatar-collection-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Guardian Avatars</h2>
+                        <p class="section-subtitle">Choose your pharaonic identity to represent you in the Tutora universe.</p>
+                    </div>
+                    <div class="avatar-grid">
+                        <div class="avatar-option active" data-avatar="./unnamed.png">
+                            <img src="./unnamed.png" alt="Anubis Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
+                        </div>
+                        <div class="avatar-option" data-avatar="./unnamed (1).png">
+                            <img src="./unnamed (1).png" alt="Tutankhamun Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
+                        </div>
+                        <div class="avatar-option" data-avatar="./unnamed (2).png">
+                            <img src="./unnamed (2).png" alt="Nefertiti Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
+                        </div>
+                        <div class="avatar-option" data-avatar="./unnamed (3).png">
+                            <img src="./unnamed (3).png" alt="Horus Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
+                        </div>
+                        <div class="avatar-option" data-avatar="./unnamed (4).png">
+                            <img src="./unnamed (4).png" alt="Bastet Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
+                        </div>
                     </div>
                 </section>
 
@@ -190,7 +224,7 @@
                                 <img src="./unnamed (1).png" alt="Artifact">
                                 <button class="wishlist-btn"><span class="material-symbols-outlined">favorite</span></button>
                             </div>
-                            <h3 class="artifact-name" style=" color: #ecb613; ">Tutankhamun's Mask</h3>
+                            <h3 class="artifact-name">Tutankhamun's Mask</h3>
                             <p class="artifact-period ">New Kingdom, 18th Dynasty</p>
                         </div>
                         <div class="artifact-card ">
@@ -237,121 +271,112 @@
                                 <img src="./unnamed (2).png " alt="Artifact ">
                                 <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
                             </div>
-                            <h3 class="artifact-name" style=" color: #ecb613;">The Rosetta Stone</h3>
+                            <h3 class="artifact-name">The Rosetta Stone</h3>
                             <p class="artifact-period ">Ptolemaic Period, 196 BC</p>
                         </div>
                     </div>
                 </section>
             </div>
             <footer class="site-footer">
-                <div class="footer-container">
-                    <!-- Footer Header -->
-                    <div class="footer-header">
-                        <div class="footer-logo">
-                            <span class="material-symbols-outlined">account_balance</span>
-                        </div>
-                        <h2 class="footer-title">Grand Egyptian Museum</h2>
-                        <div class="footer-divider"></div>
+            <div class="footer-container">
+                <!-- Footer Header -->
+                <div class="footer-header">
+                    <div class="footer-logo">
+                        <span class="material-symbols-outlined">account_balance</span>
                     </div>
+                    <h2 class="footer-title">Grand Egyptian Museum</h2>
+                    <div class="footer-divider"></div>
+                </div>
 
-                    <!-- Footer Grid -->
-                    <div class="footer-grid">
-                        <div class="footer-column">
-                            <h3>Explore</h3>
-                            <ul>
-                                <li><a href="../booking/booking.html">Tickets</a></li>
-                                <li><a href="../collection/collection.html">Collection</a></li>
-                                <li><a href="../artifact_identifier/artifact-identifier.html">Artifact Identifier</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-column">
-                            <h3>About</h3>
-                            <ul>
-                                <li><a href="../About us/About-us.html">History</a></li>
-                                <li><a href="../event/event.html">Events</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-column">
-                            <h3>Support</h3>
-                            <ul>
-                                <li><a href="../visitor help/help.html">Help</a></li>
-                                <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                                <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-column connect-column">
-                            <h3>Connect</h3>
-                            <div class="social-links">
-                                <!-- Facebook -->
-                                <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook" style="color: #ecb613;">
-                                    <i class="fa-brands fa-facebook"></i>
-                                </a>
-
-                                <!-- Twitter (X ) -->
-                                <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )" style="color: #ecb613;">
-                                    <i class="fa-brands fa-x-twitter"></i>
-                                </a>
-
-                                <!-- Instagram -->
-                                <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram" style="color: #ecb613;">
-                                    <i class="fa-brands fa-instagram"></i>
-                                </a>
-
-                                <!-- YouTube -->
-                                <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube" style="color: #ecb613;">
-                                    <i class="fa-brands fa-youtube"></i>
-                                </a>
-                            </div>
-
-                            <p>
-                                Follow us on social media for updates and behind-the-scenes content.
-                            </p>
-                        </div>
+                <!-- Footer Grid -->
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Explore</h3>
+                        <ul>
+                            <li><a href="../booking/booking.html">Tickets</a></li>
+                            <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../-membership/code.html">Membership</a></li>
+                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                        </ul>
                     </div>
+                    <div class="footer-column">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="../About us/About-us.html">History</a></li>
+                            <li><a href="../event/event.html">Events</a></li>
+                            <li><a href="../-news_press/code.html">News & Press</a></li>
+                            <li><a href="../-branding/code.html">Branding</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="../visitor help/help.html">Help</a></li>
+                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column connect-column">
+                        <h3>Connect</h3>
+                        <div class="social-links">
+                            <!-- Facebook -->
+                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
 
-                    <!-- Footer Separator -->
-                    <div class="footer-separator"></div>
+                            <!-- Twitter (X ) -->
+                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </a>
 
-                    <!-- Footer Bottom -->
-                    <div class="footer-bottom">
-                        <div class="language-toggle">
-                            <button class="active" data-lang="en">English</button>
-                            <button data-lang="ar">العربية</button>
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <!-- YouTube -->
+                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
                         </div>
-                        <div class="legal-section">
-                           <div class="legal-links">
+
+                        <p>
+                            Follow us on social media for updates and behind-the-scenes content.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Footer Separator -->
+                <div class="footer-separator"></div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="language-toggle">
+                        <button class="active" data-lang="en">English</button>
+                        <button data-lang="ar">العربية</button>
+                    </div>
+                    <div class="legal-section">
+                       <div class="legal-links">
                         <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
                         <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
                         <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
                     </div>
-                            <div class="copyright">
-                                © 2026 Tutora. All rights reserved.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <div class="copyright">
+              © 2026 Tutora. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+        </footer>
         </main>
     </div>
     <script src="script.js "></script>
-
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
 </body>
 
 </html>
+
+
+

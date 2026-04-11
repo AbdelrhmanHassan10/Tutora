@@ -1,243 +1,182 @@
 // ============================================
-// DARK MODE TOGGLE
-// ============================================
-
-const themeBtn = document.getElementById('themeBtn');
-const body = document.body;
-
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'dark') {
-    body.classList.add('dark-mode');
-    updateThemeIcon();
-}
-
-// Toggle dark mode
-themeBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    updateThemeIcon();
-});
-
-// Update theme icon
-function updateThemeIcon() {
-    const icon = themeBtn.querySelector('.material-symbols-outlined');
-    if (body.classList.contains('dark-mode')) {
-        icon.textContent = 'light_mode';
-    } else {
-        icon.textContent = 'dark_mode';
-    }
-}
-
-// ============================================
-// LANGUAGE TOGGLE
-// ============================================
-
-document.querySelectorAll('.language-toggle button').forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remove active from all buttons
-        document.querySelectorAll('.language-toggle button').forEach(b => {
-            b.classList.remove('active');
-        });
-        // Add active to clicked button
-        btn.classList.add('active');
-        const lang = btn.getAttribute('data-lang');
-        localStorage.setItem('language', lang);
-        console.log('Language changed to:', lang);
-    });
-});
-// ============================================
-// MOBILE MENU TOGGLE
-// ============================================
-
-const menuBtn = document.getElementById('menuBtn');
-const closeBtn = document.getElementById('closeBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-const menuOverlay = document.querySelector('.menu-overlay');
-
-if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('active');
-        if (menuOverlay) {
-            menuOverlay.classList.add('active');
-        }
-        document.body.style.overflow = 'hidden';
-    });
-}
-
-if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        if (menuOverlay) {
-            menuOverlay.classList.remove('active');
-        }
-        document.body.style.overflow = 'auto';
-    });
-}
-
-// Close menu when clicking overlay
-if (menuOverlay) {
-    menuOverlay.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-}
-
-// Close menu when clicking on a link
-const menuLinks = document.querySelectorAll('.menu-link, .dropdown-item');
-menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        if (menuOverlay) {
-            menuOverlay.classList.remove('active');
-        }
-        document.body.style.overflow = 'auto';
-    });
-});
-
-// ============================================
-// MOBILE DROPDOWN TOGGLE
-// ============================================
-
-const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        const dropdownItems = toggle.nextElementSibling;
-        if (dropdownItems && dropdownItems.classList.contains('dropdown-items')) {
-            // Close other dropdowns
-            document.querySelectorAll('.dropdown-items.show').forEach(item => {
-                if (item !== dropdownItems) {
-                    item.classList.remove('show');
-                    item.previousElementSibling.classList.remove('active');
-                }
-            });
-
-            // Toggle current dropdown
-            dropdownItems.classList.toggle('show');
-            toggle.classList.toggle('active');
-        }
-    });
-});
-
-// Close dropdown when clicking outside
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.menu-dropdown') && !e.target.closest('.dropdown-items')) {
-        document.querySelectorAll('.dropdown-items.show').forEach(item => {
-            item.classList.remove('show');
-            item.previousElementSibling.classList.remove('active');
-        });
-    }
-});
-
-// ============================================
-// DESKTOP DROPDOWN HOVER
-// ============================================
-
-const navDropdowns = document.querySelectorAll('.nav-dropdown');
-navDropdowns.forEach(dropdown => {
-    dropdown.addEventListener('mouseenter', () => {
-        const menu = dropdown.querySelector('.dropdown-menu');
-        if (menu) {
-            menu.style.opacity = '1';
-            menu.style.visibility = 'visible';
-        }
-    });
-
-    dropdown.addEventListener('mouseleave', () => {
-        const menu = dropdown.querySelector('.dropdown-menu');
-        if (menu) {
-            menu.style.opacity = '0';
-            menu.style.visibility = 'hidden';
-        }
-    });
-});
-
-// ============================================
-// SMOOTH SCROLL FOR NAVIGATION
-// ============================================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && document.querySelector(href)) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// ============================================
-// INITIALIZATION
+// ADVANCED 3D MODEL SCRIPT - interactive explorer
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('✓ Museum Explorer loaded successfully');
-    console.log('🌙 Dark mode available - click the moon icon to toggle');
-});
-const API_BASE = "https://gem-backend-production-cb6d.up.railway.app/api";
+    const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api';
+    const playBtn = document.querySelector(".play-btn");
+    const favBtn = document.querySelector(".btn-collection");
+    const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+    
+    // MOBILE MENU LOGIC
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const dropdownToggles = document.querySelectorAll('.mobile-menu .dropdown-toggle');
 
-// ===============================
-// Helper Function
-// ===============================
-async function apiFetch(endpoint, options = {}) {
-    const token = localStorage.getItem("token");
+    const openMenu = () => {
+        if (mobileMenu) mobileMenu.classList.add('open');
+        if (menuOverlay) menuOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    };
 
-    const res = await fetch(API_BASE + endpoint, {
-        headers: {
-            "Content-Type": "application/json",
-            ...(token && { Authorization: "Bearer " + token }),
-        },
-        ...options,
+    const closeMenu = () => {
+        if (mobileMenu) mobileMenu.classList.remove('open');
+        if (menuOverlay) menuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+    };
+
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const items = toggle.nextElementSibling;
+            if (items) {
+                items.classList.toggle('show');
+                toggle.classList.toggle('active');
+            }
+        });
     });
 
-    if (!res.ok) {
-        throw new Error("API Error");
-    }
+    let currentAudio = null;
 
-    return res.json();
-}
+    // 1. URL Parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const artifactId = urlParams.get('id') || "4"; // Default to 4 (Golden Mask)
 
-// ===============================
-// Get Artifact ID from URL
-// ===============================
- 
-// ===============================
-// Load Artifact Details
-// ===============================
- 
-// ===============================
-// Add to Favorites
-// ===============================
-const favBtn = document.querySelector(".btn-collection");
+    // 2. AI Voice Narration (TTS)
+    if (playBtn) {
+        playBtn.addEventListener("click", async () => {
+            const token = localStorage.getItem("token");
+            const lang = localStorage.getItem("language") || "en";
 
-favBtn.addEventListener("click", async() => {
-    const token = localStorage.getItem("token");
+            if (!token) {
+                alert("🔐 Please login to experience the AI storyteller.");
+                window.location.href = "../2.login/code.html";
+                return;
+            }
 
-    if (!token) {
-        alert("Please login first");
-        window.location.href = "../auth/login.html";
-        return;
-    }
+            const icon = playBtn.querySelector(".material-icons-outlined");
 
-    try {
-        await apiFetch("/favorites", {
-            method: "POST",
-            body: JSON.stringify({ artifactId }),
+            if (currentAudio && !currentAudio.paused) {
+                currentAudio.pause();
+                currentAudio = null;
+                icon.textContent = "play_arrow";
+                playBtn.classList.remove("playing");
+                return;
+            }
+
+            // Visual feedback
+            icon.textContent = "sync";
+            playBtn.classList.add("loading");
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/ai/text-to-speech`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ statueId: parseInt(artifactId), language: lang })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && (data.audioUrl || data.url)) {
+                    currentAudio = new Audio(data.audioUrl || data.url);
+                    currentAudio.play();
+                    icon.textContent = "stop";
+                    playBtn.classList.add("playing");
+                    
+                    currentAudio.onended = () => {
+                        icon.textContent = "play_arrow";
+                        playBtn.classList.remove("playing");
+                        currentAudio = null;
+                    };
+                } else {
+                    alert(data.message || "Tortara is gathering more history. Please try again soon.");
+                    icon.textContent = "play_arrow";
+                }
+            } catch (error) {
+                console.error("TTS Error:", error);
+                alert("⚠️ Connection to the neural storyteller failed.");
+                icon.textContent = "play_arrow";
+            } finally {
+                playBtn.classList.remove("loading");
+            }
         });
-
-        favBtn.textContent = "✓ Added to Collection";
-        favBtn.disabled = true;
-
-    } catch (error) {
-        console.error(error);
-        alert("Failed to add to favorites");
     }
+
+    // 3. Favorites Logic
+    if (favBtn) {
+        favBtn.addEventListener("click", async () => {
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+                alert("Please login first");
+                window.location.href = "../2.login/code.html";
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/favorites`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + token
+                    },
+                    body: JSON.stringify({ artifactId: parseInt(artifactId) }),
+                });
+
+                if (res.ok) {
+                    favBtn.innerHTML = '<span class="material-icons-outlined">check</span> Added to Collection';
+                    favBtn.disabled = true;
+                    favBtn.style.opacity = '0.7';
+                } else {
+                    const data = await res.json();
+                    alert(data.message || "Failed to add to favorites");
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Connection failed");
+            }
+        });
+    }
+
+    // 4. Accordion Logic
+    accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const item = trigger.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+            
+            // Toggle current
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // 5. Scroll Animations
+    const animElements = document.querySelectorAll('.artifact-card, .model-step, .model-feat-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    animElements.forEach(el => {
+        el.classList.add('anim-on-scroll'); // Ensure base class for animation
+        observer.observe(el);
+    });
+
+    console.log('✓ Advanced 3D Explorer Initialized');
 });

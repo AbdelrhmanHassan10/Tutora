@@ -1,11 +1,3 @@
-  // ============================================
-  // THEME MANAGEMENT
-  // ============================================
-  (function() {
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      document.body.classList.toggle('dark', savedTheme === 'dark');
-  })();
-
   document.addEventListener('DOMContentLoaded', () => {
       // ============================================
       // CONFIGURATION & STATE
@@ -123,6 +115,39 @@
               image: "./unnamed (8).png",
               description: "A replica of the famous Rosetta Stone.",
               date: "196 BCE"
+          },
+          {
+              id: "daily-1",
+              title: "Inlaid Wooden Chair",
+              dynasty: "New Kingdom",
+              material: "Wood & Ivory",
+              site: "Deir el-Medina",
+              gallery: "Daily Life",
+              image: "./daily_life_chair.png",
+              description: "A remarkably preserved chair with ebony and ivory inlays, showcasing the luxury of Egyptian furniture.",
+              date: "1350 BCE"
+          },
+          {
+              id: "statue-1",
+              title: "The Seated Scribe",
+              dynasty: "5th Dynasty",
+              material: "Limestone",
+              site: "Saqqara",
+              gallery: "Statuary",
+              image: "./statue_scribe.png",
+              description: "A world-renowned masterpiece of painted limestone, capturing the lifelike focus of a royal scribe.",
+              date: "2450 BCE"
+          },
+          {
+              id: "jewel-1",
+              title: "Golden Pectoral",
+              dynasty: "Middle Kingdom",
+              material: "Gold & Lapis",
+              site: "Dahshur",
+              gallery: "Jewelry",
+              image: "./jewelry_pectoral.png",
+              description: "A stunning ceremonial breastplate with a winged scarab, symbolizing eternal life and protection.",
+              date: "1850 BCE"
           }
       ];
 
@@ -294,6 +319,35 @@
       // FILTERING & SEARCHING
       // ============================================
       function applyAllFilters() {
+          const hasActiveFilters = Object.values(STATE.filters).some(f => 
+              (Array.isArray(f) && f.length > 0) || (typeof f === 'string' && f !== '')
+          );
+
+          const sections = document.querySelectorAll('.collection-section');
+          const dynamicGallery = document.getElementById('dynamicGallery');
+          const loadMoreSection = document.querySelector('.load-more-section');
+          const noResultsMsg = document.getElementById('noResults');
+
+          if (hasActiveFilters) {
+              sections.forEach(s => s.style.display = 'none');
+              if (dynamicGallery) dynamicGallery.style.display = 'block';
+              
+              // Only show 'Load More' if there are more results than currently showing
+              const totalItems = STATE.filteredArtifacts.length;
+              const showingItems = Math.min(STATE.currentPage * CONFIG.ITEMS_PER_PAGE, totalItems);
+              if (loadMoreSection) {
+                  loadMoreSection.style.display = (showingItems < totalItems) ? 'flex' : 'none';
+              }
+          } else {
+              sections.forEach(s => s.style.display = 'block');
+              if (dynamicGallery) dynamicGallery.style.display = 'none';
+              
+              // In thematic mode, we can either hide the button or make it show more items
+              // For now, let's show it to allow transitioning to a full view
+              if (loadMoreSection) loadMoreSection.style.display = 'flex';
+              if (noResultsMsg) noResultsMsg.style.display = 'none';
+          }
+
           STATE.filteredArtifacts = STATE.allArtifacts.filter(artifact => {
               const matchesDynasty = STATE.filters.dynasty.length === 0 ||
                   STATE.filters.dynasty.includes(artifact.dynasty);
@@ -313,6 +367,16 @@
           sortArtifacts();
           updateActiveFiltersDisplay();
           renderArtifacts();
+          
+          // Update details for dynamic view
+          const countText = document.getElementById('totalResultsText');
+          if (countText) countText.textContent = `Found ${STATE.filteredArtifacts.length} items`;
+          
+          if (hasActiveFilters && STATE.filteredArtifacts.length === 0) {
+              if (noResultsMsg) noResultsMsg.style.display = 'block';
+          } else if (noResultsMsg) {
+              noResultsMsg.style.display = 'none';
+          }
       }
 
       function sortArtifacts() {
@@ -389,21 +453,42 @@
       function renderArtifacts() {
           const grid = document.getElementById('artifactGrid');
           const noResults = document.getElementById('noResults');
-          const startIdx = (STATE.currentPage - 1) * CONFIG.ITEMS_PER_PAGE;
-          const endIdx = startIdx + CONFIG.ITEMS_PER_PAGE;
-          const paginatedArtifacts = STATE.filteredArtifacts.slice(startIdx, endIdx);
+          const endIdx = STATE.currentPage * CONFIG.ITEMS_PER_PAGE;
+          const displayArtifacts = STATE.filteredArtifacts.slice(0, endIdx);
+          
+          // Total items count text
+          const countLabel = document.getElementById('totalResultsText');
+          const heroCountLabel = document.querySelector('.count-text');
+          
+          const totalCount = STATE.filteredArtifacts.length;
+          const displayCount = displayArtifacts.length;
+
+          const hasActiveFilters = Object.values(STATE.filters).some(f => 
+              (Array.isArray(f) && f.length > 0) || (typeof f === 'string' && f !== '')
+          );
+
+          if (countLabel) countLabel.textContent = `Showing ${displayCount} of ${totalCount} results`;
+          if (heroCountLabel) {
+              if (hasActiveFilters) {
+                  heroCountLabel.textContent = `Showing ${displayCount} of ${totalCount} artifacts`;
+              } else {
+                  // In thematic mode, count the static HTML cards
+                  const staticCards = document.querySelectorAll('.collection-section .artifact-card');
+                  heroCountLabel.textContent = `Showing ${staticCards.length} of 42,000 artifacts`;
+              }
+          }
 
           grid.className = `artifact-grid ${STATE.viewMode}`;
-          grid.innerHTML = '';
+          grid.innerHTML = ''; // This will be optimized to append only in a real app, but works for the current scale
 
-          if (paginatedArtifacts.length === 0) {
+          if (displayArtifacts.length === 0) {
               noResults.style.display = 'block';
               return;
           }
 
-          noResults.style.display = 'none';
+          if (noResults) noResults.style.display = 'none';
 
-          paginatedArtifacts.forEach(artifact => {
+          displayArtifacts.forEach(artifact => {
               const card = document.createElement('div');
               card.className = 'artifact-card';
               card.dataset.id = artifact.id;
@@ -427,7 +512,14 @@
                         </div>
                     `;
 
-              card.querySelector('.favorite-btn').addEventListener('click', handleFavoriteClick);
+                            card.querySelector('.favorite-btn').addEventListener('click', handleFavoriteClick);
+
+              // Click outside heart opens the modal
+              card.addEventListener('click', (e) => {
+                  if(!e.target.closest('.favorite-btn')) {
+                      if (window.openArtifactModal) window.openArtifactModal(artifact);
+                  }
+              });
               grid.appendChild(card);
           });
 
@@ -460,45 +552,10 @@
       // EVENT LISTENERS
       // ============================================
 
-      // Theme Toggle
-      const themeBtn = document.getElementById('themeBtn');
-      if (themeBtn) {
-          const themeIcon = themeBtn.querySelector('.material-symbols-outlined');
-          const updateIcon = () => {
-              if (themeIcon) themeIcon.textContent = document.body.classList.contains('dark') ? 'light_mode' : 'dark_mode';
-          };
-          themeBtn.addEventListener('click', () => {
-              document.body.classList.toggle('dark');
-              localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-              updateIcon();
-          });
-          updateIcon();
-      }
 
-      // Mobile Menu
-      const menuBtn = document.getElementById('menuBtn');
-      const closeBtn = document.getElementById('closeBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const menuOverlay = document.getElementById('menuOverlay');
-
-      const openMenu = () => {
-          if (mobileMenu) mobileMenu.classList.add('active');
-          if (menuOverlay) menuOverlay.classList.add('active');
-          document.body.style.overflow = 'hidden';
-      };
-
-      const closeMenu = () => {
-          if (mobileMenu) mobileMenu.classList.remove('active');
-          if (menuOverlay) menuOverlay.classList.remove('active');
-          document.body.style.overflow = '';
-      };
-
-      if (menuBtn) menuBtn.addEventListener('click', openMenu);
-      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-      if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
-      document.querySelectorAll('.menu-link, .dropdown-item').forEach(link =>
-          link.addEventListener('click', closeMenu)
-      );
+      // ============================================
+      // NAVIGATION & THEME (Handled by global-core.js)
+      // ============================================
 
       // Search
       const mainSearch = document.getElementById('mainSearch');
@@ -514,7 +571,8 @@
       if (headerSearch) headerSearch.addEventListener('input', (e) => {
           handleSearch(e.target.value);
           if (mainSearch) mainSearch.value = e.target.value;
-      });
+      
+});
 
       // Filter Buttons
       document.getElementById('dynastyFilterBtn') ?.addEventListener('click', () => openFilterModal('dynastyModal'));
@@ -532,15 +590,49 @@
           showNotification('Filters reset.', 'info');
       });
 
-      // Sort
-      const sortSelect = document.getElementById('sortSelect');
-      if (sortSelect) {
-          sortSelect.addEventListener('change', (e) => {
-              STATE.sortBy = e.target.value;
-              STATE.currentPage = 1;
-              applyAllFilters();
-          });
+      // ============================================
+      // MOBILE NAVIGATION
+      // ============================================
+      const menuBtn = document.getElementById('menuBtn');
+      const closeBtn = document.getElementById('closeBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+
+      function openMenu() {
+          if (mobileMenu) mobileMenu.classList.add('active');
+          if (menuOverlay) menuOverlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
       }
+
+      function closeMenu() {
+          if (mobileMenu) mobileMenu.classList.remove('active');
+          if (menuOverlay) menuOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+      }
+
+      if (menuBtn) menuBtn.addEventListener('click', openMenu);
+      if (closeBtn) closeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeMenu();
+      });
+      if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+      // Mobile Dropdowns
+      document.querySelectorAll('.mobile-menu .dropdown-toggle').forEach(toggle => {
+          toggle.addEventListener('click', (e) => {
+              e.stopPropagation();
+              const items = toggle.nextElementSibling;
+              if (items && items.classList.contains('dropdown-items')) {
+                  items.classList.toggle('show');
+                  toggle.classList.toggle('active');
+              }
+          });
+      });
+
+      // Close menu when clicking links
+      document.querySelectorAll('.menu-link:not(.dropdown-toggle), .dropdown-item').forEach(link => {
+          link.addEventListener('click', closeMenu);
+      });
 
       // View Toggle
       document.querySelectorAll('.view-btn').forEach(btn => {
@@ -552,23 +644,35 @@
           });
       });
 
-      // Pagination
-      document.getElementById('prevBtn') ?.addEventListener('click', () => {
-          if (STATE.currentPage > 1) {
-              STATE.currentPage--;
-              renderArtifacts();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-      });
+      // Load More Button
+      const loadMoreBtn = document.querySelector('.load-more-btn');
+      if (loadMoreBtn) {
+          loadMoreBtn.addEventListener('click', () => {
+              // If in thematic mode, clicking 'Load More' transitions to the full catalog
+              const hasActiveFilters = Object.values(STATE.filters).some(f => 
+                  (Array.isArray(f) && f.length > 0) || (typeof f === 'string' && f !== '')
+              );
+              
+              if (!hasActiveFilters) {
+                  // Fake a 'generic' filter to trigger the full grid view
+                  // Or just force-hide the sections
+                  const sections = document.querySelectorAll('.collection-section');
+                  const dynamicGallery = document.getElementById('dynamicGallery');
+                  sections.forEach(s => s.style.display = 'none');
+                  if (dynamicGallery) dynamicGallery.style.display = 'block';
+              }
 
-      document.getElementById('nextBtn') ?.addEventListener('click', () => {
-          const totalPages = Math.ceil(STATE.filteredArtifacts.length / CONFIG.ITEMS_PER_PAGE);
-          if (STATE.currentPage < totalPages) {
               STATE.currentPage++;
               renderArtifacts();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-      });
+              
+              // Only hide the button if we've reached the end
+              const totalItems = STATE.filteredArtifacts.length;
+              if (STATE.currentPage * CONFIG.ITEMS_PER_PAGE >= totalItems) {
+                  const loadMoreSection = document.querySelector('.load-more-section');
+                  if (loadMoreSection) loadMoreSection.style.display = 'none';
+              }
+          });
+      }
 
       // Close modals on outside click
       document.querySelectorAll('.filter-modal').forEach(modal => {
@@ -617,23 +721,111 @@
           console.log('✓ Collection Page Initialized Successfully');
       }
 
-      initialize();
+            // ============================================
+      // ARTIFACT MODAL LOGIC
+      // ============================================
+     // ============================================
+// ARTIFACT MODAL LOGIC (UPDATED)
+// ============================================
 
-      // Dynamic notification styles
-      const styleSheet = document.createElement('style');
-      styleSheet.textContent = `
-                .notification { 
-                    position: fixed; top: 20px; right: 20px; color: white; 
-                    padding: 1rem 1.5rem; border-radius: 8px; 
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1001; 
-                    font-weight: 600; font-family: 'Manrope', sans-serif; 
-                    font-size: 14px; animation: slideIn 0.3s ease-out forwards; 
-                }
-                .notification-info { background-color: #3b82f6; }
-                .notification-success { background-color: #10b981; }
-                .notification-error { background-color: #ef4444; }
-                @keyframes slideIn { from { transform: translateX(120%); } to { transform: translateX(0); } }
-                @keyframes slideOut { from { transform: translateX(0); } to { transform: translateX(120%); } }
-            `;
-      document.head.appendChild(styleSheet);
-  });
+window.openArtifactModal = function(artifact) {
+    const modal = document.getElementById('artifactModal');
+    if (!modal) return;
+
+    // Fill Data
+    document.getElementById('modalImg').src = artifact.image || '';
+    document.getElementById('modalTitle').textContent = artifact.title || 'Unknown';
+    document.getElementById('modalDesc').textContent = artifact.description || 'No description available';
+
+    document.getElementById('modalDynasty').textContent = artifact.dynasty || '';
+    document.getElementById('modalPeriod').textContent = artifact.date || '';
+
+    document.getElementById('modalDate').textContent = artifact.date || 'Unknown';
+    document.getElementById('modalMaterial').textContent = artifact.material || 'Unknown';
+    document.getElementById('modalSite').textContent = artifact.site || 'Unknown';
+    document.getElementById('modalGallery').textContent = artifact.gallery || 'Unknown';
+
+    // Significance (اختياري)
+    const sigBlock = document.getElementById('modalSignificanceBlock');
+    const sigText = document.getElementById('modalSignificance');
+
+    if (artifact.significance) {
+        sigText.textContent = artifact.significance;
+        sigBlock.style.display = 'block';
+    } else {
+        sigBlock.style.display = 'none';
+    }
+
+    // Favorite Button
+    const favBtn = document.getElementById('modalFavBtn');
+
+    if (STATE.favorites.has(artifact.id)) {
+        favBtn.classList.add('active');
+    } else {
+        favBtn.classList.remove('active');
+    }
+
+    favBtn.onclick = async () => {
+        if (!localStorage.getItem('token')) {
+            showNotification('Please log in first', 'info');
+            return;
+        }
+
+        const isFav = favBtn.classList.contains('active');
+
+        try {
+            if (isFav) {
+                await api.removeFavorite(artifact.id);
+                favBtn.classList.remove('active');
+                STATE.favorites.delete(artifact.id);
+                showNotification('Removed from favorites', 'info');
+            } else {
+                await api.addFavorite(artifact.id);
+                favBtn.classList.add('active');
+                STATE.favorites.add(artifact.id);
+                showNotification('Added to favorites', 'success');
+            }
+
+            renderArtifacts();
+
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    // View Button
+    const viewBtn = document.getElementById('modalViewBtn');
+    viewBtn.onclick = () => {
+        window.location.href = `../Artifact-show/code.html?id=${artifact.id}`;
+    };
+
+    // Share Button (NEW)
+    const shareBtn = document.getElementById('modalShareBtn');
+    shareBtn.onclick = () => {
+        navigator.clipboard.writeText(window.location.href + `?artifact=${artifact.id}`);
+        showNotification('Link copied!', 'success');
+    };
+
+    // Open modal
+    modal.classList.add('active');
+    };
+
+    // CLOSE MODAL
+    function closeArtifactModal() {
+        const modal = document.getElementById('artifactModal');
+        if (modal) modal.classList.remove('active');
+    }
+
+    // Close button
+    document.getElementById('closeArtifactModal')?.addEventListener('click', closeArtifactModal);
+
+    // Click outside
+    document.getElementById('artifactModal')?.addEventListener('click', (e) => {
+        if (e.target.id === 'artifactModal') {
+            closeArtifactModal();
+        }
+    });
+
+    // START
+    initialize();
+});

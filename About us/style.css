@@ -22,7 +22,7 @@
 
 /* Light Mode Colors (Alternative Selector) */
 
-body.light-mode {
+body.light {
     --bg-primary: #ffffff;
     --bg-secondary: #f5f5f5;
     --bg-tertiary: #f0f0f0;
@@ -651,7 +651,7 @@ html.dark .dropdown-menu {
 }
 
 html:not(.dark) .dropdown-menu {
-    background-color: #ffffff;
+    background-color: var(--text-primary);
 }
 
 .nav-dropdown:hover .dropdown-menu {
@@ -1075,6 +1075,7 @@ html:not(.dark) .dropdown-link:hover {
     border: 1px solid var(--border-color);
     background-color: var(--card-bg);
     transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
 }
 
 .stat-card:hover {
@@ -1390,7 +1391,7 @@ body.light .gem-social-icons:hover {
 body.dark .gem-social-link a,
 body.dark .gem-social-icons {
     background-color: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 body.dark .gem-social-link a:hover,
@@ -1624,4 +1625,30 @@ body.dark .gem-social-icons:hover {
 :focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
+}
+/* ============================================
+   PREMIUM 3D DROPDOWN ANIMATION OVERRIDE
+   ============================================ */
+.nav-dropdown {
+    perspective: 1000px !important;
+}
+.dropdown-menu {
+    transform-origin: top center !important;
+    transform: translateY(15px) rotateX(-15deg) scale(0.95) !important;
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.5s !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(236,182,19,0.2) inset !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    border-radius: 12px !important;
+}
+.nav-dropdown:hover .dropdown-menu,
+.menu-dropdown:hover .dropdown-items {
+    transform: translateY(0) rotateX(0deg) scale(1) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.dropdown-link, .dropdown-item {
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+.dropdown-link:hover, .dropdown-item:hover {
+    transform: translateX(8px) !important;
 }

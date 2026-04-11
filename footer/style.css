@@ -15,14 +15,14 @@
 /* Body & Dark Mode */
 
 body {
-    background-color: #f8f8f5;
+    background-color: var(--bg-primary);
     color: #121212;
     font-family: "Newsreader", serif;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.gem-dark-mode {
-    background-color: #121212;
+    background-color: var(--bg-primary);
     color: #f8f8f5;
 }
 
@@ -73,11 +73,11 @@ body.gem-dark-mode {
     padding: 4rem 1.5rem 2rem;
     border-top: 1px solid rgba(242, 185, 13, 0.3);
     transition: background-color 0.3s ease;
-    background-color: #f8f8f5;
+    background-color: var(--bg-primary);
 }
 
 body.gem-dark-mode .gem-footer {
-    background-color: #121212;
+    background-color: var(--bg-primary);
 }
 
 .gem-footer-inner {
@@ -388,4 +388,30 @@ body.gem-dark-mode .gem-lang-btn:not(.active) {
         opacity: 1;
         transform: translateY(0);
     }
+}
+/* ============================================
+   PREMIUM 3D DROPDOWN ANIMATION OVERRIDE
+   ============================================ */
+.nav-dropdown {
+    perspective: 1000px !important;
+}
+.dropdown-menu {
+    transform-origin: top center !important;
+    transform: translateY(15px) rotateX(-15deg) scale(0.95) !important;
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.5s !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(236,182,19,0.2) inset !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    border-radius: 12px !important;
+}
+.nav-dropdown:hover .dropdown-menu,
+.menu-dropdown:hover .dropdown-items {
+    transform: translateY(0) rotateX(0deg) scale(1) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.dropdown-link, .dropdown-item {
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+.dropdown-link:hover, .dropdown-item:hover {
+    transform: translateX(8px) !important;
 }

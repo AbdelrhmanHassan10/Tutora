@@ -257,6 +257,13 @@ if (savedLanguage) {
             return;
         }
 
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('🔐 Authentication required. Please login to manifest your imagination.');
+            window.location.href = '../2.login/code.html';
+            return;
+        }
+
         // Visual feedback
         const originalContent = visualizeBtn.innerHTML;
         visualizeBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Manifesting...';
@@ -265,12 +272,11 @@ if (savedLanguage) {
         mainImg.style.transition = 'all 2s ease';
 
         try {
-            const token = localStorage.getItem('token');
             const response = await fetch('https://gem-backend-production-cb6d.up.railway.app/api/ai/story-to-image', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ story: prompt })
             });
@@ -278,14 +284,18 @@ if (savedLanguage) {
             const data = await response.json();
             
             if(response.ok && (data.imageUrl || data.image)) {
-                mainImg.src = data.imageUrl || data.image; // Handle either format
+                mainImg.src = data.imageUrl || data.image; 
                 console.log('Manifestation complete for: ' + prompt);
+            } else if (response.status === 401 || response.status === 403) {
+                alert('🔐 Session expired. Please sign in again.');
+                localStorage.removeItem('token');
+                window.location.href = '../2.login/code.html';
             } else {
-                alert(data.message || 'Manifestation failed to conjure image. Please try again.');
+                alert(data.message || 'Manifestation failed to conjure image. The AI realm is currently unstable.');
             }
         } catch (error) {
             console.error('AI Manifestation Error:', error);
-            alert('Network connection to the AI realm failed.');
+            alert('⚠️ Network connection to the AI realm failed.');
         } finally {
             // Reset button
             visualizeBtn.innerHTML = originalContent;

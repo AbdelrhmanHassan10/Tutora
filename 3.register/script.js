@@ -1,245 +1,183 @@
 const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Password Visibility Toggle
-    const passwordToggle = document.getElementById('passwordToggle');
-    const confirmPasswordToggle = document.getElementById('confirmPasswordToggle');
+    // UI Elements
+    const form = document.getElementById('registrationForm') || document.getElementById('registerForm');
+    const fullNameInput = document.getElementById('fullName') || document.getElementById('name');
+    const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirmPassword');
+    const submitBtn = document.getElementById('submitBtn') || document.getElementById('registerBtn');
+    
+    // Fallback if elements somehow missing due to strict HTML requirements
+    if (!form || !emailInput || !passwordInput) return;
 
-    if (passwordToggle) {
-        passwordToggle.addEventListener('click', () => {
-            const isPassword = passwordInput.type === 'password';
-            passwordInput.type = isPassword ? 'text' : 'password';
-            passwordToggle.querySelector('.material-symbols-outlined').textContent = isPassword ? 'visibility_off' : 'visibility';
-        });
-    }
+    // 1. Password Visibility Toggles
+    const toggleButtons = [
+        { btn: document.getElementById('passwordToggle'), input: passwordInput },
+        { btn: document.getElementById('confirmPasswordToggle'), input: confirmPasswordInput }
+    ];
 
-    if (confirmPasswordToggle) {
-        confirmPasswordToggle.addEventListener('click', () => {
-            const isPassword = confirmPasswordInput.type === 'password';
-            confirmPasswordInput.type = isPassword ? 'text' : 'password';
-            confirmPasswordToggle.querySelector('.material-symbols-outlined').textContent = isPassword ? 'visibility_off' : 'visibility';
-        });
-    }
-
-    // 2. Form Validation
-    const form = document.getElementById('registrationForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const fullNameInput = document.getElementById('fullName');
-    const emailInput = document.getElementById('email');
-    const inputs = form.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
-
-    const clearErrors = () => {
-        document.querySelectorAll('.error-message').forEach(el => {
-            el.classList.remove('show');
-            el.textContent = '';
-        });
-    };
-
-    const showError = (fieldId, message) => {
-        const errorElement = document.getElementById(fieldId + 'Error');
-        if (errorElement) {
-            errorElement.textContent = message;
-            errorElement.classList.add('show');
+    toggleButtons.forEach(({btn, input}) => {
+        if (btn && input) {
+            btn.addEventListener('click', () => {
+                const isPassword = input.type === 'password';
+                input.type = isPassword ? 'text' : 'password';
+                const icon = btn.querySelector('.material-symbols-outlined');
+                if (icon) icon.textContent = isPassword ? 'visibility_off' : 'visibility';
+            });
         }
-    };
+    });
 
-    const validateForm = () => {
-        clearErrors();
-        let isValid = true;
+    // 2. Premium Live Validation & UX Feedback
+    const validateField = (input, validatorFn, errorMsgElementId) => {
+        const errorEl = document.getElementById(errorMsgElementId);
+        if (!input) return true;
 
-        // Full Name validation
-        if (!fullNameInput.value.trim()) {
-            showError('fullName', 'Full name is required');
-            isValid = false;
-        } else if (fullNameInput.value.trim().length < 3) {
-            showError('fullName', 'Full name must be at least 3 characters');
-            isValid = false;
-        }
-
-        // Email validation
-        if (!emailInput.value.trim()) {
-            showError('email', 'Email is required');
-            isValid = false;
-        } else {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(emailInput.value)) {
-                showError('email', 'Please enter a valid email address');
-                isValid = false;
+        const value = input.value.trim();
+        const isValid = validatorFn(value);
+        
+        if (value.length > 0) { // Only show colors if they typed something
+            if (isValid) {
+                input.style.borderColor = '#10b981'; // Success Green
+                input.style.boxShadow = '0 0 0 2px rgba(16,185,129,0.1)';
+                if (errorEl) { errorEl.textContent = ''; errorEl.classList.remove('show'); }
+            } else {
+                input.style.borderColor = '#ef4444'; // Error Red
+                input.style.boxShadow = '0 0 0 2px rgba(239,68,68,0.1)';
             }
+        } else {
+            // Reset if empty
+            input.style.borderColor = '';
+            input.style.boxShadow = '';
+            if (errorEl) { errorEl.textContent = ''; errorEl.classList.remove('show'); }
         }
-
-        // Password validation
-        if (!passwordInput.value) {
-            showError('password', 'Password is required');
-            isValid = false;
-        } else if (passwordInput.value.length < 6) {
-            showError('password', 'Password must be at least 6 characters');
-            isValid = false;
-        }
-
-        // Confirm Password validation
-        if (!confirmPasswordInput.value) {
-            showError('confirmPassword', 'Please confirm your password');
-            isValid = false;
-        } else if (passwordInput.value !== confirmPasswordInput.value) {
-            showError('confirmPassword', 'Passwords do not match');
-            isValid = false;
-        }
-
-        submitBtn.style.opacity = isValid ? '1' : '0.7';
-        submitBtn.disabled = !isValid;
         return isValid;
     };
 
-    inputs.forEach(input => {
-        input.addEventListener('input', validateForm);
-        input.addEventListener('blur', validateForm);
-    });
+    // Validators
+    const isValidName = (val) => val.length >= 3;
+    const isValidEmail = (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    const isValidPassword = (val) => val.length >= 8;
+    const isValidConfirmPassword = (val) => val === passwordInput.value && val.length > 0;
 
-    // 3. Handle form submission with API call
-    form.addEventListener('submit', async(e) => {
+    // Attach Live Listeners
+    if (fullNameInput) fullNameInput.addEventListener('input', () => validateField(fullNameInput, isValidName, 'fullNameError'));
+    if (emailInput) emailInput.addEventListener('input', () => validateField(emailInput, isValidEmail, 'emailError'));
+    
+    if (passwordInput) {
+        passwordInput.addEventListener('input', () => {
+            validateField(passwordInput, isValidPassword, 'passwordError');
+             // Revalidate confirm password if it's already filled
+            if (confirmPasswordInput && confirmPasswordInput.value) {
+                validateField(confirmPasswordInput, isValidConfirmPassword, 'confirmPasswordError');
+            }
+        });
+    }
+
+    if (confirmPasswordInput) {
+        confirmPasswordInput.addEventListener('input', () => validateField(confirmPasswordInput, isValidConfirmPassword, 'confirmPasswordError'));
+    }
+
+   
+
+    // 3. API Form Submission Handling
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        if (!validateForm()) {
+        // Final full validation check before network
+        const isNameOk = fullNameInput ? isValidName(fullNameInput.value) : true;
+        const isEmailOk = isValidEmail(emailInput.value);
+        const isPwdOk = isValidPassword(passwordInput.value);
+        const isConfirmOk = confirmPasswordInput ? isValidConfirmPassword(confirmPasswordInput.value) : true;
+
+        if (!isNameOk || !isEmailOk || !isPwdOk || !isConfirmOk) {
+            showPremiumToast('Please fix the errors in the form before submitting.', 'error');
+            // Shake the form slightly to indicate rejection
+            form.classList.add('shake-anim');
+            setTimeout(() => form.classList.remove('shake-anim'), 500);
             return;
         }
 
-        // Show loading state
-        submitBtn.disabled = true;
-        submitBtn.classList.add('loading');
-        clearErrors();
-
-        try {
-            const response = await fetch(`${API_BASE_URL}/auth/register`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: fullNameInput.value.trim(),
-                    email: emailInput.value.trim(),
-                    password: passwordInput.value,
-                }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                // Handle specific error messages from backend
-                if (data.message) {
-                    if (data.message.includes('email')) {
-                        showError('email', data.message);
-                    } else {
-                        showError('fullName', data.message);
-                    }
-                } else if (data.error) {
-                    showError('fullName', data.error);
-                } else {
-                    showError('fullName', `Registration failed: ${response.status}`);
-                }
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('loading');
-                return;
-            }
-
-            // Success - show success message and redirect
-            const successMessage = document.getElementById('successMessage');
-            successMessage.classList.add('show');
-
-            // Store user data if needed
-            if (data.token) {
-                localStorage.setItem('token', data.token);
-            }
-            if (data.user) {
-                localStorage.setItem('user', JSON.stringify(data.user));
-            }
-
-            // Redirect to login page after 2 seconds
-            setTimeout(() => {
-                window.location.href = '../2.login/code.html';
-            }, 2000);
-
-        } catch (error) {
-            console.error('Registration error:', error);
-            showError('fullName', 'Network error. Please check your connection and try again.');
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('loading');
-        }
-    });
-
-    // 4. Theme Toggle Support (if needed by parent)
-    const htmlElement = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        htmlElement.classList.add('dark');
-    }
-
-    // 5. Entrance Animation
-    const formPanel = document.querySelector('.form-container');
-    formPanel.style.opacity = '0';
-    formPanel.style.transform = 'translateY(20px)';
-    formPanel.style.transition = 'all 0.8s ease-out';
-
-    setTimeout(() => {
-        formPanel.style.opacity = '1';
-        formPanel.style.transform = 'translateY(0)';
-    }, 100);
-
-    // Initial validation
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-    const registerForm = document.getElementById('registerForm' );
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const registerBtn = document.getElementById('registerBtn');
-
-    registerForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        registerBtn.disabled = true;
-        registerBtn.innerHTML = 'Creating Account...';
-
+        // Prepare payload dynamically based on HTML layout
         const payload = {
-            name: nameInput.value.trim(),
+            name: fullNameInput ? fullNameInput.value.trim() : 'User',
             email: emailInput.value.trim(),
             password: passwordInput.value
         };
 
+        // Loading state
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<div class="loader-spinner"></div> Processing...';
+        submitBtn.style.opacity = '0.7';
+
         try {
-            const response = await fetch(`${API_BASE_URL}/auth/register`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                showNotification('Account created successfully! Please login.', 'success');
-                setTimeout(() => {
-                    window.location.href = '../2.login/code.html';
-                }, 2000);
-            } else {
-                throw new Error(data.message || 'Registration failed.');
-            }
-        } catch (error) {
-            showNotification(error.message, 'error');
-        } finally {
-            registerBtn.disabled = false;
-            registerBtn.innerHTML = 'Create Account';
-        }
+             const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                 method: 'POST',
+                 headers: { 'Content-Type': 'application/json' },
+                 body: JSON.stringify(payload)
+             });
+ 
+             const data = await response.json();
+ 
+             if (response.ok) {
+                 showPremiumToast('Account created majestically! Redirecting to login...', 'success');
+                 
+                 // Store tokens if backend sends them on register
+                 if (data.token) localStorage.setItem('token', data.token);
+                 if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+ 
+                 setTimeout(() => {
+                     document.body.style.opacity = '0';
+                     document.body.style.transition = 'opacity 0.5s ease';
+                     setTimeout(() => window.location.href = '../2.login/code.html', 500);
+                 }, 2000);
+             } else {
+                 // Handle specific error fields from backend
+                 const errorMsg = data.error || data.message || 'Registration failed due to server logic.';
+                 throw new Error(errorMsg);
+             }
+         } catch (error) {
+             let finalMsg = error.message;
+             
+             // Detect CORS/Network failure which usually throws TypeError
+             if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                 finalMsg = '📡 Connection Blocked: Your browser prevented the request. This is likely a CORS issue from your local environment. Please check the backend configuration.';
+             }
+ 
+             showPremiumToast(finalMsg, 'error');
+             submitBtn.classList.add('shake-anim');
+             setTimeout(() => submitBtn.classList.remove('shake-anim'), 500);
+         } finally {
+             submitBtn.disabled = false;
+             submitBtn.innerHTML = originalBtnText;
+             submitBtn.style.opacity = '1';
+         }
     });
 
-    function showNotification(message, type) {
+    // Premium Toast Notification System (Global Logic)
+    function showPremiumToast(message, type) {
+        document.querySelectorAll('.premium-toast').forEach(t => t.remove());
         const toast = document.createElement('div');
-        toast.style.cssText = `position:fixed; top:20px; right:20px; padding:15px 25px; border-radius:8px; color:white; z-index:1000; background:${type==='success'?'#10b981':'#ef4444'}`;
-        toast.textContent = message;
+        toast.className = `premium-toast toast-${type}`;
+        
+        const icon = type === 'success' ? 'check_circle' : 'error';
+        
+        toast.innerHTML = `
+            <span class="material-symbols-outlined toast-icon">${icon}</span>
+            <span class="toast-msg">${message}</span>
+            <div class="toast-progress"></div>
+        `;
+        
         document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
+        void toast.offsetWidth; // Reflow
+        toast.classList.add('show-toast');
+
+        setTimeout(() => {
+            toast.classList.remove('show-toast');
+            setTimeout(() => toast.remove(), 400);
+        }, 3500);
     }
 });
-
+ 

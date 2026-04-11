@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUTORA Success | Booking Confirmed</title>
+    <meta name="description" content="Your booking at the Grand Egyptian Museum has been confirmed. View your ticket details and booking summary.">
     <link rel="icon" type="image/png" href="../museum.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../global-theme.css">
 </head>
 
 <body>
@@ -19,12 +22,15 @@
     <!-- Navigation -->
     <nav class="navbar">
       <div class="navbar-logo">
-    <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-    <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
-</div>
+        <div class="logo-circle">
+            <img src="../logo.png" alt="Tutora Logo">
+        </div>
+        <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+      </div>
         <div class="navbar-actions">
+            <button class="theme-toggle" id="themeBtn" title="Toggle Theme">
+                <span class="material-symbols-outlined">dark_mode</span>
+            </button>
             <div class="user-profile">
                 <a href="../Profile/profile.html"> <img src="./unnamed.png" alt="User" class="profile-img"></a>
             </div>
@@ -53,7 +59,7 @@
                     <span class="summary-label">Booking Reference</span>
                     <div class="summary-value-with-copy">
                         <span class="summary-value" data-field="booking-ref">GEM-2024-889</span>
-                        <button class="copy-btn" data-copy="GEM-2024-889">
+                        <button class="copy-btn" data-copy="GEM-2024-889" aria-label="Copy booking reference">
                             <span class="material-symbols-outlined">content_copy</span>
                         </button>
                     </div>
@@ -64,7 +70,7 @@
                 </div>
                 <div class="summary-row">
                     <span class="summary-label">Ticket Type</span>
-                    <span class="summary-value" data-field="ticket">Grand Tour - Adult (x1 )</span>
+                    <span class="summary-value" data-field="ticket">Grand Tour - Adult (x1)</span>
                 </div>
                 <div class="summary-row">
                     <span class="summary-label">Date & Time</span>
@@ -78,11 +84,15 @@
         </div>
 
         <div class="action-buttons">
-            <button class="btn btn-primary" onclick="window.print();">
+            <a href="../Profile/profile.html" class="btn btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none;">
+                <span class="material-symbols-outlined">local_activity</span>
+                View My Tickets
+            </a>
+            <button class="btn btn-secondary" onclick="window.print();" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                 <span class="material-symbols-outlined">download</span>
-                Download Ticket
+                Download Receipt
             </button>
-            <a href="../4.home/code.html" class="btn btn-secondary">
+            <a href="../4.home/code.html" class="btn btn-secondary" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none;">
                 Return to Home
                 <span class="material-symbols-outlined">arrow_forward</span>
             </a>
@@ -90,31 +100,14 @@
     </main>
 
     <footer class="footer">
-        <p>© 2026 Tutora - Giza Plateau</p>
+        <p>&copy; 2026 Tutora - Giza Plateau</p>
     </footer>
 
     <div class="blur-decoration blur-bottom-left"></div>
     <div class="blur-decoration blur-top-right"></div>
 
     <script src="script.js"></script>
-
-<!-- Global Avatar Sync -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const localProfile = localStorage.getItem('localProfileData');
-    if (localProfile) {
-        try {
-            const parsedData = JSON.parse(localProfile);
-            if (parsedData.profileImage) {
-                const profileImages = document.querySelectorAll('.profile-img, .profile-image, .user-avatar img, img[alt="Profile"]');
-                profileImages.forEach(img => {
-                    img.src = parsedData.profileImage;
-                });
-            }
-        } catch(e) {}
-    }
-});
-</script>
+    <script src="../global-core.js"></script>
 </body>
 
 </html>
