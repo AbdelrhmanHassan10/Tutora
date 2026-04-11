@@ -1,480 +1,482 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <title>TUTORA Plan Your Visit | Organize Your Museum Trip</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../animate.css" />
-	<link rel="stylesheet" href="../global-theme.css" />
-</head>
-
-<body class="dark">
-    <!-- Overlay for Mobile Menu -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-
-    <!-- Single Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu" >
-        <div class="menu-header">
-            <div class="menu-logo">
-    
-    <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
-            </div>
-            <button class="close-btn" id="closeBtn">
-              <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
-            </button>
-        </div>
-        <nav class="menu-nav" >
-            <a href="../4.home/code.html" class="menu-link"  >Home</a>
-            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" >Plan Your Visit</a
-        >         <a href="../Kids-Museum/kids-museum.html" class="menu-link"  >Kids-Museum</a>
-
-        <a href="../event/event.html" class="menu-link" >Event</a>
-            <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle" >
-            AI Experience
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-                <div class="dropdown-items">
-                    <a href="../AI Guide/guide.html" class="dropdown-item"  >AI Tour Guide</a
-            >
-            <a href="../chat bot/chat.html" class="dropdown-item"  >AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"  >AI Artifact Identifier</a
-            >
-            <a
-              href="../advanced 3D model/advanced-3D.html"
-              class="dropdown-item" 
-              >AI Voice Storytelling (3D )</a
-            >
-                       <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item" >Tutora laboratory</a>
- </div>
-        </div>
-        <a href="../shop/shop.html" class="menu-link" >Shop</a>
-                    <a href="../about/code.html" class="menu-link">About</a>
-                    <a href="../collection/collection.html" class="menu-link">Collection</a>
-        </nav>
-        <div class="menu-footer">
-            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link" >
-                <span class="material-symbols-outlined">favorite</span> Favorites
-            </a>
-            <button class="menu-icon-link" id="menuLangBtn" >
-          <span class="material-symbols-outlined" >language</span> Language
-        </button>
-        </div>
-        </div>
-
-        <!-- Header -->
-        <header class="header" >
-            <div class="header-container" >
-                <div class="header-left">
-                    <button class="menu-btn" id="menuBtn">
-            <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span
-            >
-                    </button>
-                  <div class="logo-section">
-    
-    <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
-                  </div>
-                </div>
-                <nav class="desktop-nav" >
-                    <a href="../4.home/code.html" >Home</a>
-                    <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a>
-   <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-                    <a href="../event/event.html" >Event</a>
-                    <div class="nav-dropdown">
-                        <button class="nav-link dropdown-trigger" >
-              AI Experience
-              <span class="material-symbols-outlined">expand_more</span>
-            </button>
-                        <div class="dropdown-menu">
-                            <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a
-              >
-              <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a
-              >
-              <a
-                href="../artifact_identifier/artifact-identifier.html"
-                class="dropdown-link "> AI Artifact Identifier</a
-              >
-              <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D )</a>
-                <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link">Tutora laboratory</a>
- </div>
-          </div>
-          <a href="../shop/shop.html" >Shop</a>
-                            <a href="../about/code.html" >About</a>
-                            <a href="../collection/collection.html" >Collection</a>
-                </nav>
-                <div class="header-right">
-                    <div class="search-box" >
-                        <span class="material-symbols-outlined">search</span>
-                        <input type="text" placeholder="Search..." />
-                    </div>
-                    <button class="theme-btn" id="theme-toggle">
-            <span class="material-symbols-outlined">dark_mode</span>
-          </button>
-                    <a href="../booking/booking.html" class="btn-booking">booking</a>
-                    <a href="../fav/favourite.html" class="icon-btn" style="   text-decoration: none;">
-                        <span class="material-symbols-outlined">favorite</span>
-                    </a>
-                    <button class="icon-btn" id="langBtn">
-            <span class="material-symbols-outlined">language</span>
-          </button>
-                    <a href="../Profile/profile.html">
-                        <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
-                    </a>
-                </div>
-                </div>
-        </header>
-
-        <main>
-            <section class="hero" style="background-image: url('../13.jpg');">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <h1 class="hero-title" style=" color: white;">Your Journey Through Time Begins Here.</h1>
-                    <p class="hero-subtitle" style="color: white;">The Grand Egyptian Museum: An unparalleled collection of ancient wonders.</p>
-                    <a href="../booking/booking.html"> <button class="btn-primary" style="padding: 1rem 2rem; font-size: 1.125rem;">Book Your Ticket Now</button>
-                    </a>
-                </div>
-            </section>
-
-            <section class="container section">
-                <h2 class="section-title">Purchase Your Tickets</h2>
-                <div class="ticket-grid">
-                    <div class="ticket-card">
-                        <h3 class="ticket-name">General Admission</h3>
-                        <div class="price-tag">
-                            <span class="price-value">$25</span>
-                            <span class="price-unit">per person</span>
-                        </div>
-                        <a href="../booking/booking.html"> <button class="btn-secondary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
-                        </a>
-                        <ul class="feature-list">
-                            <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Access to all permanent exhibits</li>
-                            <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Valid for one full day</li>
-                        </ul>
-                    </div>
-
-                    <div class="ticket-card popular">
-                        <div class="popular-badge">Most Popular</div>
-                        <h3 class="ticket-name">Guided Tour</h3>
-                        <div class="price-tag">
-                            <span class="price-value">$50</span>
-                            <span class="price-unit">per person</span>
-                        </div>
-                        <a href="../booking/booking.html"> <button class="btn-primary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
-                        </a>
-                        <ul class="feature-list">
-                            <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> 2-hour guided tour</li>
-                            <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Includes General Admission</li>
-                            <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Expert insights and stories</li>
-                        </ul>
-                    </div>
-
-                    <div class="ticket-card">
-                        <h3 class="ticket-name">Special Exhibitions</h3>
-                        <div class="price-tag">
-                            <span class="price-value">$40</span>
-                            <span class="price-unit">per person</span>
-                        </div>
-                        <a href="../booking/booking.html"> <button class="btn-secondary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
-                        </a>
-                        <ul class="feature-list">
-                            <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Access to 'Treasures of Tutankhamun'</li>
-                            <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Limited time only</li>
-                            <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Includes General Admission</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Recommended Itineraries (New) -->
-            <section class="container section" id="itineraries">
-                <h2 class="section-title">Recommended Itineraries</h2>
-                <p style="color: var(--muted-gold, #94A3B8); margin-bottom: 2rem;">Make the most of your time with our curated guides.</p>
-                <div class="itinerary-grid">
-                    <div class="itinerary-card">
-                        <div class="itinerary-time">2 Hours</div>
-                        <h3>The Highlights Tour</h3>
-                        <p>Perfect for those on a tight schedule. See the essential masterpieces.</p>
-                        <ul class="timeline">
-                            <li><strong>Start:</strong> The Grand Staircase</li>
-                            <li><strong>Middle:</strong> Tutankhamun's Mask</li>
-                            <li><strong>End:</strong> Royal Mummies Hall</li>
-                        </ul>
-                    </div>
-                    <div class="itinerary-card popular-itin">
-                        <div class="popular-badge">Most Popular</div>
-                        <div class="itinerary-time">Half Day (4-5 Hours)</div>
-                        <h3>The Explorer Experience</h3>
-                        <p>Dive deeper into the history with time for relaxation.</p>
-                        <ul class="timeline">
-                            <li><strong>Morning:</strong> Main Exhibition Galleries</li>
-                            <li><strong>Lunch:</strong> Pyramid View Restaurant</li>
-                            <li><strong>Afternoon:</strong> Pharaoh Transformer Exhibit</li>
-                        </ul>
-                    </div>
-                    <div class="itinerary-card">
-                        <div class="itinerary-time">Full Day</div>
-                        <h3>The Complete GEM</h3>
-                        <p>Immerse yourself completely. Includes all special exhibitions.</p>
-                        <ul class="timeline">
-                            <li><strong>Morning:</strong> All Main Galleries</li>
-                            <li><strong>Lunch:</strong> Grand Cafe & Gift Shop</li>
-                            <li><strong>Afternoon:</strong> Kids Museum & Interactive 3D Voice</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            <section class="container section">
-                <div class="ai-planner">
-                    <div class="planner-content">
-                        <h3>AI-Powered Route Planner</h3>
-                        <p>Tell us what you're interested in, and our AI will craft the perfect route through the museum for you. Discover hidden gems and make the most of your visit.</p>
-                        <div class="planner-form">
-                            <input class="planner-input" placeholder="e.g., Pharaohs, Mummies, Jewelry" type="text">
-                            <button class="btn-primary">Generate My Route</button>
-                        </div>
-                    </div>
-                    <img class="planner-img" src="../3.jpg" alt="AI Planner">
-                </div>
-            </section>
-
-
-            <section class="container section">
-                <h2 class="section-title">Visitor Information</h2>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <span class="material-symbols-outlined info-icon">schedule</span>
-                        <h3>Opening Hours</h3>
-                        <p>Daily: 9:00 AM - 5:00 PM</p>
-                    </div>
-                    <div class="info-card">
-                        <span class="material-symbols-outlined info-icon">location_on</span>
-                        <h3>Location</h3>
-                        <p>Giza, Egypt</p>
-                    </div>
-                    <div class="info-card">
-                        <span class="material-symbols-outlined info-icon">accessible</span>
-                        <h3>Accessibility</h3>
-                        <p>Fully accessible for all visitors</p>
-                    </div>
-                </div>
-            </section>
-            <!-- Getting Here & Parking -->
-            <section class="container section getting-here">
-                <div class="transit-split">
-                    <div class="transit-content">
-                        <h2 class="section-title">Getting Here & Parking</h2>
-                        <ul class="transit-list">
-                            <li>
-                                <span class="material-symbols-outlined icon" style="color: #ECB613;">directions_bus</span>
-                                <div>
-                                    <h4 style="color: white; margin-bottom: 5px;">Public Transit</h4>
-                                    <p style="color: #94A3B8;">Take Metro Line 3 to the GEM station. Direct shuttle buses available from Tahrir Square.</p>
+﻿<!DOCTYPE html>
+                            <html lang="en">
+                            
+                            <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <title>TUTORA Plan Your Visit | Organize Your Museum Trip</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+                                <link rel="stylesheet" href="style.css">
+                                <link rel="stylesheet" href="../animate.css" />
+                            	<link rel="stylesheet" href="../global-theme.css" />
+                            </head>
+                            
+                            <body class="dark">
+                                <!-- Overlay for Mobile Menu -->
+                                <div class="menu-overlay" id="menuOverlay"></div>
+                            
+                                <!-- Single Mobile Menu -->
+                                <div class="mobile-menu" id="mobileMenu" >
+                                    <div class="menu-header">
+                                        <div class="menu-logo">
+                                
+                                <div class="logo-circle">
+                                    <img src="../logo.png" alt="Tutora Logo">
                                 </div>
-                            </li>
-                            <li>
-                                <span class="material-symbols-outlined icon" style="color: #ECB613;">local_taxi</span>
-                                <div>
-                                    <h4 style="color: white; margin-bottom: 5px;">Taxi & Ride Share</h4>
-                                    <p style="color: #94A3B8;">Uber and taxis have a dedicated drop-off point at the Main Entrance.</p>
+                            
+                                <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+                                        </div>
+                                        <button class="close-btn" id="closeBtn">
+                                          <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
+                                        </button>
+                                    </div>
+                                    <nav class="menu-nav" >
+                                        <a href="../4.home/code.html" class="menu-link"  >Home</a>
+                                        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" >Plan Your Visit</a
+                                    >         <a href="../Kids-Museum/kids-museum.html" class="menu-link"  >Kids-Museum</a>
+                            
+                                    <a href="../event/event.html" class="menu-link" >Event</a>
+                                        <div class="menu-dropdown">
+                                            <button class="menu-link dropdown-toggle" >
+                                        AI Experience
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                      </button>
+                                            <div class="dropdown-items">
+                                                <a href="../AI Guide/guide.html" class="dropdown-item"  >AI Tour Guide</a
+                                        >
+                                        <a href="../chat bot/chat.html" class="dropdown-item"  >AI Chatbot</a>
+                                                <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"  >AI Artifact Identifier</a
+                                        >
+                                        <a
+                                          href="../advanced 3D model/advanced-3D.html"
+                                          class="dropdown-item" 
+                                          >AI Voice Storytelling (3D )</a
+                                        >
+                                                   <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item" >Tutora laboratory</a>
+                             </div>
+                                    </div>
+                                    <a href="../shop/shop.html" class="menu-link" >Shop</a>
+                                                <a href="../about/code.html" class="menu-link">About</a>
+                                                <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
+                                    </nav>
+                                    <div class="menu-footer">
+                                        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+                                        <a href="../fav/favourite.html" class="menu-icon-link" >
+                                            <span class="material-symbols-outlined">favorite</span> Favorites
+                                        </a>
+                                        <button class="menu-icon-link" id="menuLangBtn" >
+                                      <span class="material-symbols-outlined" >language</span> Language
+                                    </button>
+                                    </div>
+                                    </div>
+                            
+                                    <!-- Header -->
+                                    <header class="header" >
+                                        <div class="header-container" >
+                                            <div class="header-left">
+                                                <button class="menu-btn" id="menuBtn">
+                                        <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span
+                                        >
+                                                </button>
+                                              <div class="logo-section">
+                                
+                                <div class="logo-circle">
+                                    <img src="../logo.png" alt="Tutora Logo">
                                 </div>
-                            </li>
-                            <li>
-                                <span class="material-symbols-outlined icon" style="color: #ECB613;">local_parking</span>
-                                <div>
-                                    <h4 style="color: white; margin-bottom: 5px;">Parking</h4>
-                                    <p style="color: #94A3B8;">Secure underground parking available. $5 for half-day, $10 for full day. EV charging included.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="transit-image" style="background-image: url('../7.jpg');"></div>
-                </div>
-            </section>
-
-            <!-- Museum Rules & Guidelines -->
-            <section class="container section guidelines-section">
-                <h2 class="section-title" style="text-align: center;">Before You Arrive</h2>
-                <div class="rules-grid">
-                    <div class="rule-item">
-                        <span class="material-symbols-outlined">no_photography</span>
-                        <p>No Flash Photography</p>
-                    </div>
-                    <div class="rule-item">
-                        <span class="material-symbols-outlined">no_backpack</span>
-                        <p>No Large Bags</p>
-                    </div>
-                    <div class="rule-item">
-                        <span class="material-symbols-outlined">restaurant</span>
-                        <p>Food in Cafes Only</p>
-                    </div>
-                    <div class="rule-item">
-                        <span class="material-symbols-outlined">stroller</span>
-                        <p>Strollers Allowed</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Interactive FAQ -->
-            <section class="container section faq-section">
-                <h2 class="section-title" style="text-align: center;">Frequently Asked Questions</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            Can I buy tickets at the door?
-                            <span class="material-symbols-outlined">add</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes, but we highly recommend purchasing online to skip the line. General admission tickets are subject to availability on busy days.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            Are guided tours available in other languages?
-                            <span class="material-symbols-outlined">add</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes! Our expert human guides and the new AI Voice Storytelling Guide support over 12 languages including English, Arabic, French, and Spanish.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            Is there a dress code?
-                            <span class="material-symbols-outlined">add</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We recommend comfortable walking shoes as the museum is vast. Modest and comfortable attire is suggested when visiting.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            Are wheelchairs available?
-                            <span class="material-symbols-outlined">add</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes, complimentary wheelchairs are available on a first-come, first-served basis at the main entrance coat check.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-
-        <footer class="site-footer">
-            <div class="footer-container">
-                <!-- Footer Header -->
-                <div class="footer-header">
-                    <div class="footer-logo">
-                        <span class="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <h2 class="footer-title">Grand Egyptian Museum</h2>
-                    <div class="footer-divider"></div>
-                </div>
-
-                <!-- Footer Grid -->
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="../booking/booking.html">Tickets</a></li>
-                            <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../-membership/code.html">Membership</a></li>
-                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="../About us/About-us.html">History</a></li>
-                            <li><a href="../event/event.html">Events</a></li>
-                            <li><a href="../-news_press/code.html">News & Press</a></li>
-                            <li><a href="../-branding/code.html">Branding</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="../visitor help/help.html">Help</a></li>
-                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column connect-column">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <!-- Facebook -->
-                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-
-                            <!-- Twitter (X ) -->
-                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-
-                            <!-- YouTube -->
-                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </div>
-
-                        <p>
-                            Follow us on social media for updates and behind-the-scenes content.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Footer Separator -->
-                <div class="footer-separator"></div>
-
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <div class="language-toggle">
-                        <button class="active" data-lang="en">English</button>
-                        <button data-lang="ar">العربية</button>
-                    </div>
-                    <div class="legal-section">
-                       <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                    </div>
-            <div class="copyright">
-              © 2026 Tutora. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </div>
-        </footer>
-
-        <script src="script.js"></script>
-        <script src="../global-core.js"></script>
-        <script src="../animate.js"></script>
-</body>
-
-
-</html>
-
-
-
+                            
+                                <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
+                                              </div>
+                                            </div>
+                                            <nav class="desktop-nav" >
+                                                <a href="../4.home/code.html" >Home</a>
+                                                <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a>
+                               <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                                                <a href="../event/event.html" >Event</a>
+                                                <div class="nav-dropdown">
+                                                    <button class="nav-link dropdown-trigger" >
+                                          AI Experience
+                                          <span class="material-symbols-outlined">expand_more</span>
+                                        </button>
+                                                    <div class="dropdown-menu">
+                                                        <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a
+                                          >
+                                          <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a
+                                          >
+                                          <a
+                                            href="../artifact_identifier/artifact-identifier.html"
+                                            class="dropdown-link "> AI Artifact Identifier</a
+                                          >
+                                          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D )</a>
+                                            <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link">Tutora laboratory</a>
+                             </div>
+                                      </div>
+                                      <a href="../shop/shop.html" >Shop</a>
+                                                        <a href="../about/code.html" >About</a>
+                                                        <a href="../Exhibition-Halls/exhibition-halls.html" >Collection</a>
+                                            </nav>
+                                            <div class="header-right">
+                                                <div class="search-box" >
+                                                    <span class="material-symbols-outlined">search</span>
+                                                    <input type="text" placeholder="Search..." />
+                                                </div>
+                                                <button class="theme-btn" id="theme-toggle">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                      </button>
+                                                <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                                <a href="../fav/favourite.html" class="icon-btn" style="   text-decoration: none;">
+                                                    <span class="material-symbols-outlined">favorite</span>
+                                                </a>
+                                                <button class="icon-btn" id="langBtn">
+                                        <span class="material-symbols-outlined">language</span>
+                                      </button>
+                                                <a href="../Profile/profile.html">
+                                                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                                                </a>
+                                            </div>
+                                            </div>
+                                    </header>
+                            
+                                    <main>
+                                        <section class="hero" style="background-image: url('../13.jpg');">
+                                            <div class="hero-overlay"></div>
+                                            <div class="hero-content">
+                                                <h1 class="hero-title" style=" color: white;">Your Journey Through Time Begins Here.</h1>
+                                                <p class="hero-subtitle" style="color: white;">The Grand Egyptian Museum: An unparalleled collection of ancient wonders.</p>
+                                                <a href="../booking/booking.html"> <button class="btn-primary" style="padding: 1rem 2rem; font-size: 1.125rem;">Book Your Ticket Now</button>
+                                                </a>
+                                            </div>
+                                        </section>
+                            
+                                        <section class="container section">
+                                            <h2 class="section-title">Purchase Your Tickets</h2>
+                                            <div class="ticket-grid">
+                                                <div class="ticket-card">
+                                                    <h3 class="ticket-name">General Admission</h3>
+                                                    <div class="price-tag">
+                                                        <span class="price-value">$25</span>
+                                                        <span class="price-unit">per person</span>
+                                                    </div>
+                                                    <a href="../booking/booking.html"> <button class="btn-secondary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
+                                                    </a>
+                                                    <ul class="feature-list">
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Access to all permanent exhibits</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Valid for one full day</li>
+                                                    </ul>
+                                                </div>
+                            
+                                                <div class="ticket-card popular">
+                                                    <div class="popular-badge">Most Popular</div>
+                                                    <h3 class="ticket-name">Guided Tour</h3>
+                                                    <div class="price-tag">
+                                                        <span class="price-value">$50</span>
+                                                        <span class="price-unit">per person</span>
+                                                    </div>
+                                                    <a href="../booking/booking.html"> <button class="btn-primary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
+                                                    </a>
+                                                    <ul class="feature-list">
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> 2-hour guided tour</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Includes General Admission</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Expert insights and stories</li>
+                                                    </ul>
+                                                </div>
+                            
+                                                <div class="ticket-card">
+                                                    <h3 class="ticket-name">Special Exhibitions</h3>
+                                                    <div class="price-tag">
+                                                        <span class="price-value">$40</span>
+                                                        <span class="price-unit">per person</span>
+                                                    </div>
+                                                    <a href="../booking/booking.html"> <button class="btn-secondary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
+                                                    </a>
+                                                    <ul class="feature-list">
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Access to 'Treasures of Tutankhamun'</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Limited time only</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Includes General Admission</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </section>
+                            
+                                        <!-- Recommended Itineraries (New) -->
+                                        <section class="container section" id="itineraries">
+                                            <h2 class="section-title">Recommended Itineraries</h2>
+                                            <p style="color: var(--muted-gold, #94A3B8); margin-bottom: 2rem;">Make the most of your time with our curated guides.</p>
+                                            <div class="itinerary-grid">
+                                                <div class="itinerary-card">
+                                                    <div class="itinerary-time">2 Hours</div>
+                                                    <h3>The Highlights Tour</h3>
+                                                    <p>Perfect for those on a tight schedule. See the essential masterpieces.</p>
+                                                    <ul class="timeline">
+                                                        <li><strong>Start:</strong> The Grand Staircase</li>
+                                                        <li><strong>Middle:</strong> Tutankhamun's Mask</li>
+                                                        <li><strong>End:</strong> Royal Mummies Hall</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="itinerary-card popular-itin">
+                                                    <div class="popular-badge">Most Popular</div>
+                                                    <div class="itinerary-time">Half Day (4-5 Hours)</div>
+                                                    <h3>The Explorer Experience</h3>
+                                                    <p>Dive deeper into the history with time for relaxation.</p>
+                                                    <ul class="timeline">
+                                                        <li><strong>Morning:</strong> Main Exhibition Galleries</li>
+                                                        <li><strong>Lunch:</strong> Pyramid View Restaurant</li>
+                                                        <li><strong>Afternoon:</strong> Pharaoh Transformer Exhibit</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="itinerary-card">
+                                                    <div class="itinerary-time">Full Day</div>
+                                                    <h3>The Complete GEM</h3>
+                                                    <p>Immerse yourself completely. Includes all special exhibitions.</p>
+                                                    <ul class="timeline">
+                                                        <li><strong>Morning:</strong> All Main Galleries</li>
+                                                        <li><strong>Lunch:</strong> Grand Cafe & Gift Shop</li>
+                                                        <li><strong>Afternoon:</strong> Kids Museum & Interactive 3D Voice</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section class="container section">
+                                            <div class="ai-planner">
+                                                <div class="planner-content">
+                                                    <h3>AI-Powered Route Planner</h3>
+                                                    <p>Tell us what you're interested in, and our AI will craft the perfect route through the museum for you. Discover hidden gems and make the most of your visit.</p>
+                                                    <div class="planner-form">
+                                                        <input class="planner-input" placeholder="e.g., Pharaohs, Mummies, Jewelry" type="text">
+                                                        <button class="btn-primary">Generate My Route</button>
+                                                    </div>
+                                                </div>
+                                                <img class="planner-img" src="../3.jpg" alt="AI Planner">
+                                            </div>
+                                        </section>
+                            
+                            
+                                        <section class="container section">
+                                            <h2 class="section-title">Visitor Information</h2>
+                                            <div class="info-grid">
+                                                <div class="info-card">
+                                                    <span class="material-symbols-outlined info-icon">schedule</span>
+                                                    <h3>Opening Hours</h3>
+                                                    <p>Daily: 9:00 AM - 5:00 PM</p>
+                                                </div>
+                                                <div class="info-card">
+                                                    <span class="material-symbols-outlined info-icon">location_on</span>
+                                                    <h3>Location</h3>
+                                                    <p>Giza, Egypt</p>
+                                                </div>
+                                                <div class="info-card">
+                                                    <span class="material-symbols-outlined info-icon">accessible</span>
+                                                    <h3>Accessibility</h3>
+                                                    <p>Fully accessible for all visitors</p>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <!-- Getting Here & Parking -->
+                                        <section class="container section getting-here">
+                                            <div class="transit-split">
+                                                <div class="transit-content">
+                                                    <h2 class="section-title">Getting Here & Parking</h2>
+                                                    <ul class="transit-list">
+                                                        <li>
+                                                            <span class="material-symbols-outlined icon" style="color: #ECB613;">directions_bus</span>
+                                                            <div>
+                                                                <h4 style="color: white; margin-bottom: 5px;">Public Transit</h4>
+                                                                <p style="color: #94A3B8;">Take Metro Line 3 to the GEM station. Direct shuttle buses available from Tahrir Square.</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <span class="material-symbols-outlined icon" style="color: #ECB613;">local_taxi</span>
+                                                            <div>
+                                                                <h4 style="color: white; margin-bottom: 5px;">Taxi & Ride Share</h4>
+                                                                <p style="color: #94A3B8;">Uber and taxis have a dedicated drop-off point at the Main Entrance.</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <span class="material-symbols-outlined icon" style="color: #ECB613;">local_parking</span>
+                                                            <div>
+                                                                <h4 style="color: white; margin-bottom: 5px;">Parking</h4>
+                                                                <p style="color: #94A3B8;">Secure underground parking available. $5 for half-day, $10 for full day. EV charging included.</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="transit-image" style="background-image: url('../7.jpg');"></div>
+                                            </div>
+                                        </section>
+                            
+                                        <!-- Museum Rules & Guidelines -->
+                                        <section class="container section guidelines-section">
+                                            <h2 class="section-title" style="text-align: center;">Before You Arrive</h2>
+                                            <div class="rules-grid">
+                                                <div class="rule-item">
+                                                    <span class="material-symbols-outlined">no_photography</span>
+                                                    <p>No Flash Photography</p>
+                                                </div>
+                                                <div class="rule-item">
+                                                    <span class="material-symbols-outlined">no_backpack</span>
+                                                    <p>No Large Bags</p>
+                                                </div>
+                                                <div class="rule-item">
+                                                    <span class="material-symbols-outlined">restaurant</span>
+                                                    <p>Food in Cafes Only</p>
+                                                </div>
+                                                <div class="rule-item">
+                                                    <span class="material-symbols-outlined">stroller</span>
+                                                    <p>Strollers Allowed</p>
+                                                </div>
+                                            </div>
+                                        </section>
+                            
+                                        <!-- Interactive FAQ -->
+                                        <section class="container section faq-section">
+                                            <h2 class="section-title" style="text-align: center;">Frequently Asked Questions</h2>
+                                            <div class="faq-container">
+                                                <div class="faq-item">
+                                                    <button class="faq-question">
+                                                        Can I buy tickets at the door?
+                                                        <span class="material-symbols-outlined">add</span>
+                                                    </button>
+                                                    <div class="faq-answer">
+                                                        <p>Yes, but we highly recommend purchasing online to skip the line. General admission tickets are subject to availability on busy days.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="faq-item">
+                                                    <button class="faq-question">
+                                                        Are guided tours available in other languages?
+                                                        <span class="material-symbols-outlined">add</span>
+                                                    </button>
+                                                    <div class="faq-answer">
+                                                        <p>Yes! Our expert human guides and the new AI Voice Storytelling Guide support over 12 languages including English, Arabic, French, and Spanish.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="faq-item">
+                                                    <button class="faq-question">
+                                                        Is there a dress code?
+                                                        <span class="material-symbols-outlined">add</span>
+                                                    </button>
+                                                    <div class="faq-answer">
+                                                        <p>We recommend comfortable walking shoes as the museum is vast. Modest and comfortable attire is suggested when visiting.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="faq-item">
+                                                    <button class="faq-question">
+                                                        Are wheelchairs available?
+                                                        <span class="material-symbols-outlined">add</span>
+                                                    </button>
+                                                    <div class="faq-answer">
+                                                        <p>Yes, complimentary wheelchairs are available on a first-come, first-served basis at the main entrance coat check.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </main>
+                            
+                            
+                                    <footer class="site-footer">
+                                        <div class="footer-container">
+                                            <!-- Footer Header -->
+                                            <div class="footer-header">
+                                                <div class="footer-logo">
+                                                    <span class="material-symbols-outlined">account_balance</span>
+                                                </div>
+                                                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                                <div class="footer-divider"></div>
+                                            </div>
+                            
+                                            <!-- Footer Grid -->
+                                            <div class="footer-grid">
+                                                <div class="footer-column">
+                                                    <h3>Explore</h3>
+                                                    <ul>
+                                                        <li><a href="../booking/booking.html">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                        <li><a href="../-membership/code.html">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>About</h3>
+                                                    <ul>
+                                                        <li><a href="../About us/About-us.html">History</a></li>
+                                                        <li><a href="../event/event.html">Events</a></li>
+                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>Support</h3>
+                                                    <ul>
+                                                        <li><a href="../visitor help/help.html">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column connect-column">
+                                                    <h3>Connect</h3>
+                                                    <div class="social-links">
+                                                        <!-- Facebook -->
+                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                                            <i class="fa-brands fa-facebook"></i>
+                                                        </a>
+                            
+                                                        <!-- Twitter (X ) -->
+                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                                            <i class="fa-brands fa-x-twitter"></i>
+                                                        </a>
+                            
+                                                        <!-- Instagram -->
+                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                                            <i class="fa-brands fa-instagram"></i>
+                                                        </a>
+                            
+                                                        <!-- YouTube -->
+                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                                            <i class="fa-brands fa-youtube"></i>
+                                                        </a>
+                                                    </div>
+                            
+                                                    <p>
+                                                        Follow us on social media for updates and behind-the-scenes content.
+                                                    </p>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Footer Separator -->
+                                            <div class="footer-separator"></div>
+                            
+                                            <!-- Footer Bottom -->
+                                            <div class="footer-bottom">
+                                                <div class="language-toggle">
+                                                    <button class="active" data-lang="en">English</button>
+                                                    <button data-lang="ar">العربية</button>
+                                                </div>
+                                                <div class="legal-section">
+                                                   <div class="legal-links">
+                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                                                </div>
+                                        <div class="copyright">
+                                          © 2026 Tutora. All rights reserved.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    </footer>
+                            
+                                    <script src="script.js"></script>
+                                    <script src="../global-core.js"></script>
+                                    <script src="../animate.js"></script>
+                            </body>
+                            
+                            
+                            </html>
+                            
+                            
+                            
+                            

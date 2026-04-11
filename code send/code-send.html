@@ -1,120 +1,121 @@
-<!DOCTYPE html>
-<html class="dark" lang="en">
-
-<head>
-    <meta name="description" content="Tutora Verification - Secure authentication." />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Verify Code | GEM AI Guide</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="../3.register/style.css"> 
-    <link rel="stylesheet" href="../2.login/style.css">
-    <style>
-        .otp-container {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-        .otp-input {
-            width: 45px;
-            height: 55px;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            border-radius: 8px;
-            background: #1e1b15;
-            border: 1px solid #3d362a;
-            color: white;
-            outline: none;
-            transition: 0.3s;
-        }
-        .otp-input:focus {
-            border-color: #ecb613;
-            box-shadow: 0 0 0 2px rgba(236,182,19,0.2);
-        }
-        .resend-link {
-            color: #b3b3b3;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-        .resend-link:hover {
-            color: #ecb613;
-        }
-    </style>
-    <link rel="stylesheet" href="../animate.css" />
-	<link rel="stylesheet" href="../global-theme.css" />
-</head>
-
-<body>
-    <div class="container">
-        <!-- Transparent Absolute Header -->
-        <header style="background-color: transparent; position: absolute; z-index: 10; width: 100%; padding: 2rem;">
-            <nav style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                <div></div>
-                <div class="nav-actions" >
-                    <a class="login-link" href="../2.login/code.html" style="color: #ecb613;">Cancel</a>
-                </div>
-            </nav>
-        </header>
-
-        <main>
-            <div class="grid-layout" style="background-color: #000;">
-                <!-- Left Column: Hero Image Panel -->
-                <div class="hero-panel" style="background-image: url('../pexels-felix-2154264868-35430906.jpg');">
-                    <div class="hero-overlay" style="background: linear-gradient(to right, rgba(18,18,18,0.3), rgba(18,18,18,0.9));"></div>
-                    <div class="hero-content">
-                        <h3 class="hero-title" style="font-family: 'Cormorant Garamond';font-size:3rem;text-shadow: 2px 2px 4px #000;">Verify your identity.</h3>
-                        <p class="hero-subtitle" style="font-size:1.2rem;text-shadow: 2px 2px 4px #000;">Check your email for the secret 6-digit key.</p>
-                    </div>
-                </div>
-
-                <!-- Right Column: Form -->
-                <div class="form-panel" style="display: flex; align-items: center; justify-content: center;">
-                    <div class="form-container" style="width: 100%; max-width: 480px;">
-                        
-                        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
-                            <img src="../logo.png" alt="Tutora Logo" style="width: 150px; height: auto; filter: drop-shadow(0 0 10px rgba(236,182,19,0.3));">
-                        </div>
-
-                        <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
-                            <span class="material-symbols-outlined" style="font-size: 3rem; color: #ecb613; margin-bottom: 1rem;">mark_email_read</span>
-                            <h1 class="form-title" style="font-size: 2.2rem; font-weight: 800;">Verify Code</h1>
-                            <p class="form-subtitle" style="margin-top: 0.5rem; color: #b3b3b3;">We sent a 6-digit code to your email.</p>
-                        </div>
-
-                        <form class="registration-form" id="verifyForm">
-                            <div class="otp-container">
-                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                            </div>
-
-                            <button type="submit" class="submit-btn" id="verifyBtn" style="width: 100%; padding: 1rem; background: #ecb613; color: #121212; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 1rem;">
-                                Confirm Code
-                            </button>
+﻿<!DOCTYPE html>
+                            <html class="dark" lang="en">
                             
-                            <div style="margin-top: 2rem; text-align: center;">
-                                <a href="#" id="resendBtn" class="resend-link">Didn't receive it? Resend Code</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-</body>
-</html>
+                            <head>
+                                <meta name="description" content="Tutora Verification - Secure authentication." />
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <title>Verify Code | GEM AI Guide</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+                                <link rel="stylesheet" href="../3.register/style.css"> 
+                                <link rel="stylesheet" href="../2.login/style.css">
+                                <style>
+                                    .otp-container {
+                                        display: flex;
+                                        gap: 10px;
+                                        justify-content: center;
+                                        margin: 2rem 0;
+                                    }
+                                    .otp-input {
+                                        width: 45px;
+                                        height: 55px;
+                                        text-align: center;
+                                        font-size: 1.5rem;
+                                        font-weight: bold;
+                                        border-radius: 8px;
+                                        background: #1e1b15;
+                                        border: 1px solid #3d362a;
+                                        color: white;
+                                        outline: none;
+                                        transition: 0.3s;
+                                    }
+                                    .otp-input:focus {
+                                        border-color: #ecb613;
+                                        box-shadow: 0 0 0 2px rgba(236,182,19,0.2);
+                                    }
+                                    .resend-link {
+                                        color: #b3b3b3;
+                                        font-size: 0.9rem;
+                                        cursor: pointer;
+                                        transition: 0.3s;
+                                        text-decoration: none;
+                                    }
+                                    .resend-link:hover {
+                                        color: #ecb613;
+                                    }
+                                </style>
+                                <link rel="stylesheet" href="../animate.css" />
+                            	<link rel="stylesheet" href="../global-theme.css" />
+                            </head>
+                            
+                            <body>
+                                <div class="container">
+                                    <!-- Transparent Absolute Header -->
+                                    <header style="background-color: transparent; position: absolute; z-index: 10; width: 100%; padding: 2rem;">
+                                        <nav style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                            <div></div>
+                                            <div class="nav-actions" >
+                                                <a class="login-link" href="../2.login/code.html" style="color: #ecb613;">Cancel</a>
+                                            </div>
+                                        </nav>
+                                    </header>
+                            
+                                    <main>
+                                        <div class="grid-layout" style="background-color: #000;">
+                                            <!-- Left Column: Hero Image Panel -->
+                                            <div class="hero-panel" style="background-image: url('../pexels-felix-2154264868-35430906.jpg');">
+                                                <div class="hero-overlay" style="background: linear-gradient(to right, rgba(18,18,18,0.3), rgba(18,18,18,0.9));"></div>
+                                                <div class="hero-content">
+                                                    <h3 class="hero-title" style="font-family: 'Cormorant Garamond';font-size:3rem;text-shadow: 2px 2px 4px #000;">Verify your identity.</h3>
+                                                    <p class="hero-subtitle" style="font-size:1.2rem;text-shadow: 2px 2px 4px #000;">Check your email for the secret 6-digit key.</p>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Right Column: Form -->
+                                            <div class="form-panel" style="display: flex; align-items: center; justify-content: center;">
+                                                <div class="form-container" style="width: 100%; max-width: 480px;">
+                                                    
+                                                    <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                                                        <img src="../logo.png" alt="Tutora Logo" style="width: 150px; height: auto; filter: drop-shadow(0 0 10px rgba(236,182,19,0.3));">
+                                                    </div>
+                            
+                                                    <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
+                                                        <span class="material-symbols-outlined" style="font-size: 3rem; color: #ecb613; margin-bottom: 1rem;">mark_email_read</span>
+                                                        <h1 class="form-title" style="font-size: 2.2rem; font-weight: 800;">Verify Code</h1>
+                                                        <p class="form-subtitle" style="margin-top: 0.5rem; color: #b3b3b3;">We sent a 6-digit code to your email.</p>
+                                                    </div>
+                            
+                                                    <form class="registration-form" id="verifyForm">
+                                                        <div class="otp-container">
+                                                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                                            <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                                        </div>
+                            
+                                                        <button type="submit" class="submit-btn" id="verifyBtn" style="width: 100%; padding: 1rem; background: #ecb613; color: #121212; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 1rem;">
+                                                            Confirm Code
+                                                        </button>
+                                                        
+                                                        <div style="margin-top: 2rem; text-align: center;">
+                                                            <a href="#" id="resendBtn" class="resend-link">Didn't receive it? Resend Code</a>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </main>
+                                </div>
+                            
+                                <!-- Scripts -->
+                                <script src="script.js"></script>
+                                <script src="../global-core.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            </html>
+                            

@@ -1,330 +1,333 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Explore the exhibition halls of the Grand Egyptian Museum. A journey through 5,000 years of civilization." />
-    <title>TUTORA | Exhibition Halls Gallery</title>
-    
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    
-    <link rel="stylesheet" href="../global-theme.css" />
-    <link rel="stylesheet" href="../animate.css" />
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body class="dark transition-theme">
-    <!-- Overlay for Mobile Menu -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-
-    <!-- Standard Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="menu-header">
-            <div class="menu-logo">
-                <div class="logo-circle">
-                    <img src="../logo.png" alt="Tutora Logo">
-                </div>
-                <h3 class="menu-logo-text">Tutora</h3>
-            </div>
-            <button class="close-btn" id="closeBtn">
-                <span class="material-symbols-outlined">close</span>
-            </button>
-        </div>
-        <nav class="menu-nav">
-            <a href="../4.home/code.html" class="menu-link">Home</a>
-            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
-            <a href="../event/event.html" class="menu-link">Event</a>
-            <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle">
-                    AI Experience
-                    <span class="material-symbols-outlined">expand_more</span>
-                </button>
-                <div class="dropdown-items">
-                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
-                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
-                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
-                </div>
-            </div>
-            <a href="../shop/shop.html" class="menu-link">Shop</a>
-            <a href="../about/code.html" class="menu-link">About</a>
-            <a href="../collection/collection.html" class="menu-link">Collection</a>
-        </nav>
-        <div class="menu-footer">
-            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link">
-                <span class="material-symbols-outlined">favorite</span> Favorites
-            </a>
-            <button class="menu-icon-link" id="menuLangBtn">
-                <span class="material-symbols-outlined">language</span> Language
-            </button>
-        </div>
-    </div>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="header-left">
-                <button class="menu-btn" id="menuBtn">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-                <div class="logo-section">
-                    <div class="logo-circle">
-                        <img src="../logo.png" alt="Tutora Logo">
-                    </div>
-                    <h2 class="logo-text">Tutora</h2>
-                </div>
-            </div>
-
-            <nav class="desktop-nav">
-                <a href="../4.home/code.html">Home</a>
-                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-                <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-                <a href="../event/event.html">Event</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger">
-                        AI Experience
-                        <span class="material-symbols-outlined">expand_more</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
-                        <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
-                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
-                    </div>
-                </div>
-                <a href="../shop/shop.html">Shop</a>
-                <a href="../about/code.html">About</a>
-                <a href="../collection/collection.html">Collection</a>
-            </nav>
-
-            <div class="header-right">
-                <button class="theme-btn" id="themeBtn">
-                    <span class="material-symbols-outlined">dark_mode</span>
-                </button>
-                <a href="../booking/booking.html" class="btn-booking">booking</a>
-                <a href="../fav/favourite.html">
-                    <button class="icon-btn">
-                        <span class="material-symbols-outlined">favorite</span>
-                    </button>
-                </a>
-                <button class="icon-btn" id="langBtn">
-                    <span class="material-symbols-outlined">language</span>
-                </button>
-                <a href="../Profile/profile.html">
-                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- Cinematic Hero -->
-        <section class="hall-hero">
-            <div class="hero-video-bg">
-                <img src="../egypt-cairo-giza-plateau-grand-egyptian-museum-gem-3E46TJX.jpg" alt="Grand Egyptian Museum Central Hall">
-            </div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content anim-reveal">
-                <span class="gold-accent">The Gateway to Eternity</span>
-                <h1 class="hero-title">Exhibition <br>Halls</h1>
-                <p style="max-width: 600px; margin: 0 auto; opacity: 0.8; font-size: 1.1rem;">Where the echoes of five millennia resonate through glass and stone. Experience the world's largest archaeological treasury.</p>
-            </div>
-        </section>
-
-        <!-- The Grand Staircase -->
-        <section class="staircase-section container-fluid" style="padding: 10rem 4rem;">
-            <div class="staircase-flex container mx-auto">
-                <div class="staircase-content anim-reveal">
-                    <span class="section-label">Vertical History</span>
-                    <h2 class="section-title">The Grand <span class="gold-accent" style="display:inline; font-size: 1em; letter-spacing: 2px;">Staircase</span></h2>
-                    <p style="margin-top: 2rem; line-height: 1.8; color: var(--hall-text-muted);">Ascend through time on a monumental staircase featuring over 60 colossal statues, architectural remnants, and stelae. This vertical gallery tells the story of kingship and the divine in ancient Egypt, leading you to an unparalleled view of the Great Pyramids.</p>
-                    <div style="margin-top: 3rem;">
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span class="material-symbols-outlined" style="color: var(--hall-gold);">temple_hindu</span>
-                            <span>Royal Statues from the Old Kingdom</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                            <span class="material-symbols-outlined" style="color: var(--hall-gold);">rebase</span>
-                            <span>A Chronological Ascension</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="staircase-visual anim-reveal">
-                    <img src="../Grand_Staircase_(GEM).jpg" alt="Grand Staircase Statues" class="visual-main">
-                    <div style="position: absolute; bottom: -20px; right: -20px; background: var(--hall-gold); color: #000; padding: 2rem; border-radius: 12px; font-weight: 900;">
-                        60+ MONUMENTS
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tutankhamun's Legacy -->
-        <section style="background-color: var(--hall-bg-alt); padding: 10rem 4rem;">
-            <div class="container mx-auto">
-                <div class="section-header anim-reveal">
-                    <span class="section-label">Masterpiece Gallery</span>
-                    <h2 class="section-title">Tutankhamun's <span class="gold-accent" style="display:inline; font-size: 1em; letter-spacing: 2px;">Treasure</span></h2>
-                    <p style="max-width: 800px; margin: 2rem auto; color: var(--hall-text-muted);">For the first time since their discovery in 1922, the complete collection of King Tutankhamun—over 5,000 artifacts—is displayed in one immersive space. Spanning two massive galleries, the collection reveals the life, death, and divinity of the Boy King.</p>
-                </div>
-
-                <div class="halls-grid container mx-auto">
-                    <div class="hall-card anim-reveal">
-                        <img src="../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg" alt="The Gold Mask" class="hall-card-img">
-                        <div class="hall-card-info">
-                            <h3>The Golden Mask</h3>
-                            <p>The eternal face of the king, crafted from 11kg of solid gold and lapis lazuli.</p>
-                        </div>
-                    </div>
-                    <div class="hall-card anim-reveal">
-                        <img src="../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_7.jpg" alt="The Throne" class="hall-card-img">
-                        <div class="hall-card-info">
-                            <h3>Celestial Throne</h3>
-                            <p>An intricate masterpiece of wood, gold, and semi-precious stones symbolizing royal power.</p>
-                        </div>
-                    </div>
-                    <div class="hall-card anim-reveal">
-                        <img src="../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg" alt="Childhood Sarcophagus" class="hall-card-img">
-                        <div class="hall-card-info">
-                            <h3>Royal Chariots</h3>
-                            <p>The state carriages used by the king for ritual processions and hunting.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- The 12 Chronological Halls -->
-        <section class="container mx-auto" style="padding: 10rem 4rem;">
-            <div class="section-header anim-reveal">
-                <span class="section-label">Sequential Discovery</span>
-                <h2 class="section-title">The Main <span class="gold-accent" style="display:inline; font-size: 1em; letter-spacing: 2px;">Galleries</span></h2>
-            </div>
-
-            <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 4rem; overflow-x: auto; padding-bottom: 1rem;" class="anim-reveal">
-                <button class="filter-btn active" data-filter="all">All Halls</button>
-                <button class="filter-btn" data-filter="old">Old Kingdom</button>
-                <button class="filter-btn" data-filter="middle">Middle Kingdom</button>
-                <button class="filter-btn" data-filter="new">New Kingdom</button>
-                <button class="filter-btn" data-filter="late">Greco-Roman</button>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;" class="halls-container">
-                <!-- Hall 1 -->
-                <div class="hall-box anim-reveal" data-category="old" style="background: var(--hall-bg-alt); border: 1px solid var(--hall-border); border-radius: 16px; padding: 2.5rem; transition: 0.3s;">
-                    <span style="color: var(--hall-gold); font-weight: 900; opacity: 0.3; font-size: 3rem;">01</span>
-                    <h4 style="font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 1rem 0;">Birth of Architecture</h4>
-                    <p style="font-size: 0.9rem; color: var(--hall-text-muted);">The Step Pyramid and early dynastic evolution of monumental stone structures.</p>
-                </div>
-                <!-- Hall 2 -->
-                <div class="hall-box anim-reveal" data-category="old" style="background: var(--hall-bg-alt); border: 1px solid var(--hall-border); border-radius: 16px; padding: 2.5rem; transition: 0.3s;">
-                    <span style="color: var(--hall-gold); font-weight: 900; opacity: 0.3; font-size: 3rem;">02</span>
-                    <h4 style="font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 1rem 0;">The Pyramid Age</h4>
-                    <p style="font-size: 0.9rem; color: var(--hall-text-muted);">Dedicated to the builders of Giza, featuring Khufu, Khafre, and Menkaure collections.</p>
-                </div>
-                <!-- Hall 3 -->
-                <div class="hall-box anim-reveal" data-category="new" style="background: var(--hall-bg-alt); border: 1px solid var(--hall-border); border-radius: 16px; padding: 2.5rem; transition: 0.3s;">
-                    <span style="color: var(--hall-gold); font-weight: 900; opacity: 0.3; font-size: 3rem;">08</span>
-                    <h4 style="font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 1rem 0;">Imperial Majesty</h4>
-                    <p style="font-size: 0.9rem; color: var(--hall-text-muted);">The peak of the New Kingdom's power, featuring Thutmose and Hatshepsut.</p>
-                </div>
-                <!-- Hall 4 -->
-                <div class="hall-box anim-reveal" data-category="late" style="background: var(--hall-bg-alt); border: 1px solid var(--hall-border); border-radius: 16px; padding: 2.5rem; transition: 0.3s;">
-                    <span style="color: var(--hall-gold); font-weight: 900; opacity: 0.3; font-size: 3rem;">12</span>
-                    <h4 style="font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 1rem 0;">Ptolemaic Echoes</h4>
-                    <p style="font-size: 0.9rem; color: var(--hall-text-muted);">The synthesis of Egyptian and Greek culture during the reign of the Ptolemies.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Colossus of Ramses II -->
-        <section style="background-color: #000; color: #fff; padding: 12rem 4rem; text-align: center; position: relative; overflow: hidden;">
-            <div style="position: absolute; inset: 0; opacity: 0.3;">
-                <img src="../statue-of-ramesses-ii-in-the-entrance-hall-of-the-grand-egyptian-museum-3BNPFMK.jpg" alt="Ramses Colossus" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div class="container mx-auto anim-reveal" style="position: relative; z-index: 2;">
-                <span class="gold-accent">The Living Sun King</span>
-                <h2 class="section-title" style="color: #fff; font-size: 4rem;">Colossus of <br>Ramses II</h2>
-                <p style="max-width: 700px; margin: 3rem auto; font-size: 1.25rem; opacity: 0.9;">Standing 11 meters tall and weighing 83 tons, the 3,200-year-old red granite statue of Ramses II welcomes every visitor. It is the heartbeat of the Grand Hall, standing exactly where the sun rays illuminate it twice a year.</p>
-                <div style="display: inline-block; padding: 1rem 3rem; border: 2px solid var(--hall-gold); color: var(--hall-gold); font-weight: 700; letter-spacing: 4px; text-transform: uppercase;">The Great Atrium</div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-header">
-                <div class="footer-logo">
-                    <span class="material-symbols-outlined">account_balance</span>
-                </div>
-                <h2 class="footer-title">Grand Egyptian Museum</h2>
-                <div class="footer-divider"></div>
-            </div>
-
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>Explore</h3>
-                    <ul>
-                        <li><a href="../booking/booking.html">Tickets</a></li>
-                        <li><a href="../collection/collection.html">Collection</a></li>
-                        <li><a href="../-membership/code.html">Membership</a></li>
-                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="../About us/About-us.html">History</a></li>
-                        <li><a href="../event/event.html">Events</a></li>
-                        <li><a href="../-news_press/code.html">News & Press</a></li>
-                        <li><a href="../-branding/code.html">Branding</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="../visitor help/help.html">Help</a></li>
-                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column connect-column">
-                    <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-separator"></div>
-            <div class="footer-bottom">
-                <div class="language-toggle">
-                    <button class="active" data-lang="en">English</button>
-                    <button data-lang="ar">العربية</button>
-                </div>
-                <div class="legal-section">
-                    <div class="legal-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
-                    <div class="copyright">© 2026 Tutora. All rights reserved.</div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-</body>
-</html>
+﻿<!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <meta name="description" content="Explore the exhibition halls of the Grand Egyptian Museum. A journey through 5,000 years of civilization." />
+                                <title>TUTORA | Exhibition Halls Gallery</title>
+                                
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+                                
+                                <link rel="stylesheet" href="../global-theme.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                                <link rel="stylesheet" href="style.css" />
+                            </head>
+                            <body class="dark transition-theme">
+                                <!-- Overlay for Mobile Menu -->
+                                <div class="menu-overlay" id="menuOverlay"></div>
+                            
+                                <!-- Standard Mobile Menu -->
+                                <div class="mobile-menu" id="mobileMenu">
+                                    <div class="menu-header">
+                                        <div class="menu-logo">
+                                            <div class="logo-circle">
+                                                <img src="../logo.png" alt="Tutora Logo">
+                                            </div>
+                                            <h3 class="menu-logo-text">Tutora</h3>
+                                        </div>
+                                        <button class="close-btn" id="closeBtn">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                    <nav class="menu-nav">
+                                        <a href="../4.home/code.html" class="menu-link">Home</a>
+                                        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition-Halls</a>
+                                        <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+                                        <a href="../event/event.html" class="menu-link">Event</a>
+                                        <div class="menu-dropdown">
+                                            <button class="menu-link dropdown-toggle">
+                                                AI Experience
+                                                <span class="material-symbols-outlined">expand_more</span>
+                                            </button>
+                                            <div class="dropdown-items">
+                                                <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                                                <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                                                <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                                                <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                                                <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                                            </div>
+                                        </div>
+                                        <a href="../shop/shop.html" class="menu-link">Shop</a>
+                                        <a href="../about/code.html" class="menu-link">About</a>
+                                        <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
+                                    </nav>
+                                    <div class="menu-footer">
+                                        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+                                        <a href="../fav/favourite.html" class="menu-icon-link">
+                                            <span class="material-symbols-outlined">favorite</span> Favorites
+                                        </a>
+                                        <button class="menu-icon-link" id="menuLangBtn">
+                                            <span class="material-symbols-outlined">language</span> Language
+                                        </button>
+                                    </div>
+                                </div>
+                            
+                                <!-- Header -->
+                                <header class="header">
+                                    <div class="header-container">
+                                        <div class="header-left">
+                                            <button class="menu-btn" id="menuBtn">
+                                                <span class="material-symbols-outlined">menu</span>
+                                            </button>
+                                            <div class="logo-section">
+                                                <div class="logo-circle">
+                                                    <img src="../logo.png" alt="Tutora Logo">
+                                                </div>
+                                                <h2 class="logo-text">Tutora</h2>
+                                            </div>
+                                        </div>
+                            
+                                        <nav class="desktop-nav">
+                                            <a href="../4.home/code.html">Home</a>
+                                            <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                                            <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                                            <a href="../event/event.html">Event</a>
+                                            <div class="nav-dropdown">
+                                                <button class="nav-link dropdown-trigger">
+                                                    AI Experience
+                                                    <span class="material-symbols-outlined">expand_more</span>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                                                    <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                                                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+                                                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                                                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                                                </div>
+                                            </div>
+                                            <a href="../shop/shop.html">Shop</a>
+                                            <a href="../about/code.html">About</a>
+                                            <a href="../Exhibition-Halls/exhibition-halls.html">Collection</a>
+                                        </nav>
+                            
+                                        <div class="header-right">
+                                            <button class="theme-btn" id="themeBtn">
+                                                <span class="material-symbols-outlined">dark_mode</span>
+                                            </button>
+                                            <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                            <a href="../fav/favourite.html">
+                                                <button class="icon-btn">
+                                                    <span class="material-symbols-outlined">favorite</span>
+                                                </button>
+                                            </a>
+                                            <button class="icon-btn" id="langBtn">
+                                                <span class="material-symbols-outlined">language</span>
+                                            </button>
+                                            <a href="../Profile/profile.html">
+                                                <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </header>
+                            
+                                <main>
+                                    <!-- Cinematic Hero -->
+                                    <section class="hall-hero">
+                                        <div class="hero-video-bg">
+                                            <img src="../egypt-cairo-giza-plateau-grand-egyptian-museum-gem-3E46TJX.jpg" alt="Grand Egyptian Museum Central Hall">
+                                        </div>
+                                        <div class="hero-overlay"></div>
+                                        <div class="hero-content anim-reveal">
+                                            <span class="gold-accent">The Gateway to Eternity</span>
+                                            <h1 class="hero-title">Exhibition <br>Halls</h1>
+                                            <p style="max-width: 600px; margin: 0 auto; opacity: 0.8; font-size: 1.1rem;">Where the echoes of five millennia resonate through glass and stone. Experience the world's largest archaeological treasury.</p>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- The Grand Staircase -->
+                                    <section class="staircase-section container-fluid" style="padding: 10rem 4rem;">
+                                        <div class="staircase-flex container mx-auto">
+                                            <div class="staircase-content anim-reveal">
+                                                <span class="section-label">Vertical History</span>
+                                                <h2 class="section-title">The Grand <span class="gold-accent" style="display:inline; font-size: 1em; letter-spacing: 2px;">Staircase</span></h2>
+                                                <p style="margin-top: 2rem; line-height: 1.8; color: var(--hall-text-muted);">Ascend through time on a monumental staircase featuring over 60 colossal statues, architectural remnants, and stelae. This vertical gallery tells the story of kingship and the divine in ancient Egypt, leading you to an unparalleled view of the Great Pyramids.</p>
+                                                <div style="margin-top: 3rem;">
+                                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                                        <span class="material-symbols-outlined" style="color: var(--hall-gold);">temple_hindu</span>
+                                                        <span>Royal Statues from the Old Kingdom</span>
+                                                    </div>
+                                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                                        <span class="material-symbols-outlined" style="color: var(--hall-gold);">rebase</span>
+                                                        <span>A Chronological Ascension</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="staircase-visual anim-reveal">
+                                                <img src="../Grand_Staircase_(GEM).jpg" alt="Grand Staircase Statues" class="visual-main">
+                                                <div style="position: absolute; bottom: -20px; right: -20px; background: var(--hall-gold); color: #000; padding: 2rem; border-radius: 12px; font-weight: 900;">
+                                                    60+ MONUMENTS
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Tutankhamun's Legacy -->
+                                    <section style="background-color: var(--hall-bg-alt); padding: 10rem 4rem;">
+                                        <div class="container mx-auto">
+                                            <div class="section-header anim-reveal">
+                                                <span class="section-label">Masterpiece Gallery</span>
+                                                <h2 class="section-title">Tutankhamun's <span class="gold-accent" style="display:inline; font-size: 1em; letter-spacing: 2px;">Treasure</span></h2>
+                                                <p style="max-width: 800px; margin: 2rem auto; color: var(--hall-text-muted);">For the first time since their discovery in 1922, the complete collection of King Tutankhamunâ€”over 5,000 artifactsâ€”is displayed in one immersive space. Spanning two massive galleries, the collection reveals the life, death, and divinity of the Boy King.</p>
+                                            </div>
+                            
+                                            <div class="halls-grid container mx-auto">
+                                                <div class="hall-card anim-reveal">
+                                                    <img src="../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg" alt="The Gold Mask" class="hall-card-img">
+                                                    <div class="hall-card-info">
+                                                        <h3>The Golden Mask</h3>
+                                                        <p>The eternal face of the king, crafted from 11kg of solid gold and lapis lazuli.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="hall-card anim-reveal">
+                                                    <img src="../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_7.jpg" alt="The Throne" class="hall-card-img">
+                                                    <div class="hall-card-info">
+                                                        <h3>Celestial Throne</h3>
+                                                        <p>An intricate masterpiece of wood, gold, and semi-precious stones symbolizing royal power.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="hall-card anim-reveal">
+                                                    <img src="../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg" alt="Childhood Sarcophagus" class="hall-card-img">
+                                                    <div class="hall-card-info">
+                                                        <h3>Royal Chariots</h3>
+                                                        <p>The state carriages used by the king for ritual processions and hunting.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- The 12 Chronological Halls -->
+                                    <section class="container mx-auto" style="padding: 10rem 4rem;">
+                                        <div class="section-header anim-reveal">
+                                            <span class="section-label">Sequential Discovery</span>
+                                            <h2 class="section-title">The Main <span class="gold-accent" style="display:inline; font-size: 1em; letter-spacing: 2px;">Galleries</span></h2>
+                                        </div>
+                            
+                                        <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 4rem; overflow-x: auto; padding-bottom: 1rem;" class="anim-reveal">
+                                            <button class="filter-btn active" data-filter="all">All Halls</button>
+                                            <button class="filter-btn" data-filter="old">Old Kingdom</button>
+                                            <button class="filter-btn" data-filter="middle">Middle Kingdom</button>
+                                            <button class="filter-btn" data-filter="new">New Kingdom</button>
+                                            <button class="filter-btn" data-filter="late">Greco-Roman</button>
+                                        </div>
+                            
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;" class="halls-container">
+                                            <!-- Hall 1 -->
+                                            <div class="hall-box anim-reveal" data-category="old" style="background: var(--hall-bg-alt); border: 1px solid var(--hall-border); border-radius: 16px; padding: 2.5rem; transition: 0.3s;">
+                                                <span style="color: var(--hall-gold); font-weight: 900; opacity: 0.3; font-size: 3rem;">01</span>
+                                                <h4 style="font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 1rem 0;">Birth of Architecture</h4>
+                                                <p style="font-size: 0.9rem; color: var(--hall-text-muted);">The Step Pyramid and early dynastic evolution of monumental stone structures.</p>
+                                            </div>
+                                            <!-- Hall 2 -->
+                                            <div class="hall-box anim-reveal" data-category="old" style="background: var(--hall-bg-alt); border: 1px solid var(--hall-border); border-radius: 16px; padding: 2.5rem; transition: 0.3s;">
+                                                <span style="color: var(--hall-gold); font-weight: 900; opacity: 0.3; font-size: 3rem;">02</span>
+                                                <h4 style="font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 1rem 0;">The Pyramid Age</h4>
+                                                <p style="font-size: 0.9rem; color: var(--hall-text-muted);">Dedicated to the builders of Giza, featuring Khufu, Khafre, and Menkaure collections.</p>
+                                            </div>
+                                            <!-- Hall 3 -->
+                                            <div class="hall-box anim-reveal" data-category="new" style="background: var(--hall-bg-alt); border: 1px solid var(--hall-border); border-radius: 16px; padding: 2.5rem; transition: 0.3s;">
+                                                <span style="color: var(--hall-gold); font-weight: 900; opacity: 0.3; font-size: 3rem;">08</span>
+                                                <h4 style="font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 1rem 0;">Imperial Majesty</h4>
+                                                <p style="font-size: 0.9rem; color: var(--hall-text-muted);">The peak of the New Kingdom's power, featuring Thutmose and Hatshepsut.</p>
+                                            </div>
+                                            <!-- Hall 4 -->
+                                            <div class="hall-box anim-reveal" data-category="late" style="background: var(--hall-bg-alt); border: 1px solid var(--hall-border); border-radius: 16px; padding: 2.5rem; transition: 0.3s;">
+                                                <span style="color: var(--hall-gold); font-weight: 900; opacity: 0.3; font-size: 3rem;">12</span>
+                                                <h4 style="font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 1rem 0;">Ptolemaic Echoes</h4>
+                                                <p style="font-size: 0.9rem; color: var(--hall-text-muted);">The synthesis of Egyptian and Greek culture during the reign of the Ptolemies.</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Colossus of Ramses II -->
+                                    <section style="background-color: #000; color: #fff; padding: 12rem 4rem; text-align: center; position: relative; overflow: hidden;">
+                                        <div style="position: absolute; inset: 0; opacity: 0.3;">
+                                            <img src="../statue-of-ramesses-ii-in-the-entrance-hall-of-the-grand-egyptian-museum-3BNPFMK.jpg" alt="Ramses Colossus" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <div class="container mx-auto anim-reveal" style="position: relative; z-index: 2;">
+                                            <span class="gold-accent">The Living Sun King</span>
+                                            <h2 class="section-title" style="color: #fff; font-size: 4rem;">Colossus of <br>Ramses II</h2>
+                                            <p style="max-width: 700px; margin: 3rem auto; font-size: 1.25rem; opacity: 0.9;">Standing 11 meters tall and weighing 83 tons, the 3,200-year-old red granite statue of Ramses II welcomes every visitor. It is the heartbeat of the Grand Hall, standing exactly where the sun rays illuminate it twice a year.</p>
+                                            <div style="display: inline-block; padding: 1rem 3rem; border: 2px solid var(--hall-gold); color: var(--hall-gold); font-weight: 700; letter-spacing: 4px; text-transform: uppercase;">The Great Atrium</div>
+                                        </div>
+                                    </section>
+                                </main>
+                            
+                                <footer class="site-footer">
+                                    <div class="footer-container">
+                                        <div class="footer-header">
+                                            <div class="footer-logo">
+                                                <span class="material-symbols-outlined">account_balance</span>
+                                            </div>
+                                            <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                            <div class="footer-divider"></div>
+                                        </div>
+                            
+                                        <div class="footer-grid">
+                                            <div class="footer-column">
+                                                <h3>Explore</h3>
+                                                <ul>
+                                                    <li><a href="../booking/booking.html">Tickets</a></li>
+                                                    <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                    <li><a href="../-membership/code.html">Membership</a></li>
+                                                    <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column">
+                                                <h3>About</h3>
+                                                <ul>
+                                                    <li><a href="../About us/About-us.html">History</a></li>
+                                                    <li><a href="../event/event.html">Events</a></li>
+                                                    <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                    <li><a href="../-branding/code.html">Branding</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column">
+                                                <h3>Support</h3>
+                                                <ul>
+                                                    <li><a href="../visitor help/help.html">Help</a></li>
+                                                    <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                    <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                    <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column connect-column">
+                                                <h3>Connect</h3>
+                                                <div class="social-links">
+                                                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                                                    <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                                                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                                    <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="footer-separator"></div>
+                                        <div class="footer-bottom">
+                                            <div class="language-toggle">
+                                                <button class="active" data-lang="en">English</button>
+                                                <button data-lang="ar">العربية</button>
+                                            </div>
+                                            <div class="legal-section">
+                                                <div class="legal-links">
+                                                    <a href="#">Privacy Policy</a>
+                                                    <a href="#">Terms of Service</a>
+                                                </div>
+                                                <div class="copyright">© 2026 Tutora. All rights reserved.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </footer>
+                            
+                                <script src="script.js"></script>
+                                <script src="../global-core.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            </html>
+                            

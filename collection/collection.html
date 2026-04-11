@@ -1,824 +1,827 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>TUTORA Collection | Explore Museum Artifacts</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../animate.css" />
-    <link rel="stylesheet" href="../global-theme.css" />
-</head>
-
-<body class="dark">
-     <!-- Mobile Menu Overlay -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="menu-header">
-        <div class="menu-logo">
-           <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h3 class="menu-logo-text">Tutora</h3>
-        </div>
-        <button class="close-btn" id="closeBtn">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-
-      <nav class="menu-nav">
-        <a href="../4.home/code.html" class="menu-link">Home</a>
-        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-        <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
-
-        <a href="../event/event.html" class="menu-link">Event</a>
-
-        <div class="menu-dropdown">
-          <button class="menu-link dropdown-toggle">
-            AI Experience
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-items">
-            <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
-            <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
-            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
-          </div>
-        </div>
-
-        <a href="../shop/shop.html" class="menu-link">Shop</a>
-        <a href="../about/code.html" class="menu-link">About</a>
-        <a href="../collection/collection.html" class="menu-link">Collection</a>
-      </nav>
-
-      <div class="menu-footer">
-        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-        <a href="../fav/favourite.html" class="menu-icon-link">
-          <span class="material-symbols-outlined">favorite</span> Favorites
-        </a>
-
-        <button class="menu-icon-link" id="menuLangBtn">
-          <span class="material-symbols-outlined">language</span>
-          Language
-        </button>
-      </div>
-    </div>
-
-    <!-- Header -->
-    <header class="header">
-      <div class="header-container">
-        <div class="header-left">
-          <button class="menu-btn" id="menuBtn">
-            <span class="material-symbols-outlined">menu</span>
-          </button>
-          <div class="logo-section">
-            <div class="logo-circle">
-                <img src="../logo.png" alt="Tutora Logo">
-             </div>
-            <h2 class="logo-text">Tutora</h2>
-          </div>
-        </div>
-
-        <nav class="desktop-nav">
-          <a href="../4.home/code.html">Home</a>
-          <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-          <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-
-          <a href="../event/event.html">Event</a>
-          <div class="nav-dropdown">
-            <button class="nav-link dropdown-trigger">
-              AI Experience
-              <span class="material-symbols-outlined" >expand_more</span>
-            </button>
-            <div class="dropdown-menu" >
-              <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
-              <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-              <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
-              <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-              <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
-            </div>
-          </div>
-          <a href="../shop/shop.html">Shop</a>
-          <a href="../about/code.html">About</a>
-          <a href="../collection/collection.html">Collection</a>
-        </nav>
-
-        <div class="header-right">
-          <div class="search-box">
-            <span class="material-symbols-outlined">search</span>
-            <input type="text" placeholder="Search..." />
-          </div>
-          <button class="theme-btn" id="themeBtn">
-            <span class="material-symbols-outlined">dark_mode</span>
-          </button>
-          <a href="../booking/booking.html" class="btn-booking">booking</a>
-          <a href="../fav/favourite.html">
-            <button class="icon-btn">
-              <span class="material-symbols-outlined" style="text-decoration: none;">favorite</span>
-            </button>
-          </a>
-          <button class="icon-btn" id="langBtn">
-            <span class="material-symbols-outlined">language</span>
-          </button>
-          <a href="../Profile/profile.html">
-            <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-badge">
-                <span class="material-symbols-outlined">museum</span>
-                <span>Grand Egyptian Museum</span>
-            </div>
-            <p class="section-subtitle">Explore the Legacy</p>
-            <h1 class="hero-title">Digital Collection</h1>
-            <p class="hero-description">Discover over 42,000 artifacts spanning five millennia of ancient Egyptian civilization. From golden masks of pharaohs to sacred papyri, explore humanity's most remarkable cultural heritage.</p>
-
-            <div class="search-container">
-                <div class="hero-search-box">
-                    <div class="search-icon">
-                        <span class="material-symbols-outlined">search</span>
-                    </div>
-                    <input id="mainSearch" class="search-input" placeholder="Search artifacts, dynasties, or galleries..." type="text" />
-                </div>
-            </div>
-
-            <!-- Stats Row -->
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="stat-number">42,000+</span>
-                    <span class="stat-label-text">Artifacts</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="stat-number">5,000</span>
-                    <span class="stat-label-text">Years of History</span>
-                </div>
-                <div class="hero-stat-divider"></div>
-                <div class="hero-stat">
-                    <span class="stat-number">12</span>
-                    <span class="stat-label-text">Galleries</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Filters Section -->
-        <section class="filters-section">
-            <div class="filters-container">
-                <button class="filter-btn" id="dynastyFilterBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">crown</span>
-                    <span>Dynasty</span>
-                    <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
-                </button>
-                <button class="filter-btn" id="materialFilterBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">diamond</span>
-                    <span>Material</span>
-                    <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
-                </button>
-                <button class="filter-btn" id="siteFilterBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>
-                    <span>Discovery Site</span>
-                    <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
-                </button>
-                <button class="filter-btn" id="galleryFilterBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">photo_library</span>
-                    <span>Gallery</span>
-                    <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
-                </button>
-                <div class="filter-divider"></div>
-                <button class="reset-btn" id="resetFiltersBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">restart_alt</span>
-                    Reset Filters
-                </button>
-            </div>
-            <!-- Active Filters -->
-            <div id="activeFiltersContainer" class="active-filters-container" style="display:none;">
-                <div id="activeFiltersList" class="active-filters-list"></div>
-            </div>
-        </section>
-
-        <!-- ============================================ -->
-        <!--  SECTION 1: PHARAOHS & ROYALTY              -->
-        <!-- ============================================ -->
-        <section class="collection-section" id="sectionPharaohs">
-            <div class="section-header-block">
-                <div class="section-icon-wrapper">
-                    <span class="material-symbols-outlined">verified</span>
-                </div>
-                <div class="section-header-text">
-                    <h2 class="section-title">Pharaohs & Royalty</h2>
-                    <p class="section-desc">Discover the golden treasures of Egypt's rulers—masks, chariots, and royal regalia that defined divine kingship.</p>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="artifact-grid" data-section="pharaohs">
-                <!-- Card 1 -->
-                <div class="artifact-card" data-id="pharaoh-1">
-                    <div class="image-container">
-                        <img alt="The Golden Mask" class="artifact-image" src="./unnamed (1).png" />
-                        <div class="image-overlay"></div>
-                        <div class="card-badge">Featured</div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">18th Dynasty</p>
-                        <h3 class="artifact-title">The Golden Mask</h3>
-                        <p class="card-description">The iconic funerary mask of Tutankhamun, crafted from 11kg of solid gold with lapis lazuli inlays.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Valley of the Kings</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="artifact-card" data-id="pharaoh-2">
-                    <div class="image-container">
-                        <img alt="Royal Chariot" class="artifact-image" src="./unnamed (3).png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">New Kingdom</p>
-                        <h3 class="artifact-title">Royal Chariot</h3>
-                        <p class="card-description">An ornate ceremonial chariot made from wood and gold leaf, used during royal processions and rituals.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Grand Hall Gallery</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="artifact-card" data-id="pharaoh-3">
-                    <div class="image-container">
-                        <img alt="Painted Sarcophagus" class="artifact-image" src="./unnamed (2).png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">Middle Kingdom</p>
-                        <h3 class="artifact-title">Painted Sarcophagus</h3>
-                        <p class="card-description">Beautifully decorated with intricate hieroglyphics and scenes from the Book of the Dead.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Saqqara</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================ -->
-        <!--  SECTION 2: SACRED ARTIFACTS                -->
-        <!-- ============================================ -->
-        <section class="collection-section" id="sectionSacred">
-            <div class="section-header-block">
-                <div class="section-icon-wrapper">
-                    <span class="material-symbols-outlined">auto_awesome</span>
-                </div>
-                <div class="section-header-text">
-                    <h2 class="section-title">Sacred Artifacts</h2>
-                    <p class="section-desc">Objects of spiritual power and funerary traditions—canopic jars, amulets, and ritual implements from the afterlife.</p>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="artifact-grid" data-section="sacred">
-                <!-- Card 4 -->
-                <div class="artifact-card" data-id="sacred-1">
-                    <div class="image-container">
-                        <img alt="Canopic Jars" class="artifact-image" src="./unnamed (5).png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">Ramesside Period</p>
-                        <h3 class="artifact-title">Canopic Jars</h3>
-                        <p class="card-description">Four limestone jars used to store mummified organs, guarded by the four sons of Horus.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Funerary Gallery</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="artifact-card" data-id="sacred-2">
-                    <div class="image-container">
-                        <img alt="Sphinx Model" class="artifact-image" src="./unnamed (7).png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">Old Kingdom</p>
-                        <h3 class="artifact-title">Sphinx Model</h3>
-                        <p class="card-description">A miniature guardian figure modeled after the Great Sphinx, symbolizing divine protection of sacred sites.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Giza Plateau</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================ -->
-        <!--  SECTION 3: ANCIENT TEXTS & KNOWLEDGE       -->
-        <!-- ============================================ -->
-        <section class="collection-section" id="sectionTexts">
-            <div class="section-header-block">
-                <div class="section-icon-wrapper">
-                    <span class="material-symbols-outlined">menu_book</span>
-                </div>
-                <div class="section-header-text">
-                    <h2 class="section-title">Ancient Texts & Knowledge</h2>
-                    <p class="section-desc">Papyrus scrolls, stone tablets, and inscriptions that unlocked the secrets of Egyptian civilization.</p>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="artifact-grid" data-section="texts">
-                <!-- Card 6 -->
-                <div class="artifact-card" data-id="text-1">
-                    <div class="image-container">
-                        <img alt="Rosetta Stone" class="artifact-image" src="./unnamed (4).png" />
-                        <div class="image-overlay"></div>
-                        <div class="card-badge">Iconic</div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">Ptolemaic Period</p>
-                        <h3 class="artifact-title">Rosetta Stone</h3>
-                        <p class="card-description">The legendary trilingual stele that became the key to deciphering Egyptian hieroglyphics in 1822.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Rashid (Rosetta)</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 7 -->
-                <div class="artifact-card" data-id="text-2">
-                    <div class="image-container">
-                        <img alt="Hunefer Papyrus" class="artifact-image" src="./unnamed (6).png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">19th Dynasty</p>
-                        <h3 class="artifact-title">Hunefer Papyrus</h3>
-                        <p class="card-description">A beautifully illustrated segment from the Book of the Dead, guiding souls through the underworld.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Theban Necropolis</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 8 -->
-                <div class="artifact-card" data-id="text-3">
-                    <div class="image-container">
-                        <img alt="Rosetta Stone Replica" class="artifact-image" src="./unnamed (8).png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">Ptolemaic Period</p>
-                        <h3 class="artifact-title">Rosetta Stone Replica</h3>
-                        <p class="card-description">An exact replica preserving the three scripts—Hieroglyphic, Demotic, and Greek—for study.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Rashid (Rosetta)</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================ -->
-        <!--  SECTION 4: DAILY LIFE & HOUSEHOLD          -->
-        <!-- ============================================ -->
-        <section class="collection-section" id="sectionDailyLife">
-            <div class="section-header-block">
-                <div class="section-icon-wrapper">
-                    <span class="material-symbols-outlined">cottage</span>
-                </div>
-                <div class="section-header-text">
-                    <h2 class="section-title">Daily Life & Household</h2>
-                    <p class="section-desc">Explore the tools, pottery, and personal items that tell the story of ancient Egyptians' everyday lives.</p>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="artifact-grid" data-section="daily-life">
-                <!-- Card 9 -->
-                <div class="artifact-card" data-id="daily-1">
-                    <div class="image-container">
-                        <img alt="Inlaid Wooden Chair" class="artifact-image" src="./daily_life_chair.png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">New Kingdom</p>
-                        <h3 class="artifact-title">Inlaid Wooden Chair</h3>
-                        <p class="card-description">A remarkably preserved chair with ebony and ivory inlays, showcasing the luxury of Egyptian furniture.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Deir el-Medina</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================ -->
-        <!--  SECTION 5: STATUARY & SCULPTURE            -->
-        <!-- ============================================ -->
-        <section class="collection-section" id="sectionStatuary">
-            <div class="section-header-block">
-                <div class="section-icon-wrapper">
-                    <span class="material-symbols-outlined">recent_actors</span>
-                </div>
-                <div class="section-header-text">
-                    <h2 class="section-title">Statuary & Sculpture</h2>
-                    <p class="section-desc">Masterpieces of stone and bronze—eternal representations of gods, kings, and commoners from the Old Kingdom to the Late Period.</p>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="artifact-grid" data-section="statuary">
-                <!-- Card 10 -->
-                <div class="artifact-card" data-id="statue-1">
-                    <div class="image-container">
-                        <img alt="The Seated Scribe" class="artifact-image" src="./statue_scribe.png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">5th Dynasty</p>
-                        <h3 class="artifact-title">The Seated Scribe</h3>
-                        <p class="card-description">A world-renowned masterpiece of painted limestone, capturing the lifelike focus of a royal scribe.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Saqqara</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================ -->
-        <!--  SECTION 6: JEWELRY & ADORNMENT             -->
-        <!-- ============================================ -->
-        <section class="collection-section" id="sectionJewelry">
-            <div class="section-header-block">
-                <div class="section-icon-wrapper">
-                    <span class="material-symbols-outlined">diamond</span>
-                </div>
-                <div class="section-header-text">
-                    <h2 class="section-title">Jewelry & Adornment</h2>
-                    <p class="section-desc">Exquisite necklaces, rings, and amulets crafted from gold, lapis lazuli, and carnelian for both protection and prestige.</p>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div class="artifact-grid" data-section="jewelry">
-                <!-- Card 11 -->
-                <div class="artifact-card" data-id="jewel-1">
-                    <div class="image-container">
-                        <img alt="Golden Pectoral" class="artifact-image" src="./jewelry_pectoral.png" />
-                        <div class="image-overlay"></div>
-                        <button class="favorite-btn">
-                            <span class="material-symbols-outlined">favorite</span>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <p class="dynasty-label">Middle Kingdom</p>
-                        <h3 class="artifact-title">Golden Pectoral</h3>
-                        <p class="card-description">A stunning ceremonial breastplate with a winged scarab, symbolizing eternal life and protection.</p>
-                        <div class="card-footer">
-                            <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Dahshur</span>
-                            <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic Results Container (Active when filtering) -->
-        <div id="dynamicGallery" style="display:none;">
-            <div class="section-header-block">
-                <div class="section-icon-wrapper">
-                    <span class="material-symbols-outlined">search</span>
-                </div>
-                <div class="section-header-text">
-                    <h2 class="section-title">Gallery Search Results</h2>
-                    <p id="totalResultsText" class="section-desc">Found 0 items</p>
-                </div>
-                <div class="section-line"></div>
-            </div>
-            <div id="artifactGrid" class="artifact-grid"></div>
-        </div>
-
-        <div id="noResults" style="display:none;" class="no-results-message">
-            <p>No artifacts found matching your criteria.</p>
-            <button class="reset-btn" onclick="clearSearch()">Clear Filters</button>
-        </div>
-
-        <!-- Load More Section -->
-        <div class="load-more-section">
-            <p class="count-text">Showing 11 of 42,000 artifacts</p>
-            <button class="load-more-btn">
-                <span class="load-more-text">Load More</span>
-                <div class="load-more-line"></div>
-            </button>
-        </div>
-    </main>
-
-    <!-- ============================================ -->
-    <!--  ARTIFACT DETAIL PANEL (In-Page modal)   -->
-    <!-- ============================================ -->
-    <!-- <div id="artifactModal" class="artifact-modal-overlay"> -->
-    <!-- <div class="artifact-modal-container"> -->
-
-        <!-- FIX 1 -->
-        <!-- <button id="closeArtifactModal" class="close-modal-btn">
-            <span class="material-symbols-outlined">close</span>
-        </button> -->
-
-        <!-- FIX 2 -->
-        <!-- <div class="modal-content"> -->
-
-            <!-- Image -->
-            <!-- <div class="modal-image-col"> -->
-                <!-- <img id="modalImg" src="" alt="Artifact" class="modal-image" />
-                <div class="modal-image-overlay"></div>
-                <div class="modal-image-badge" id="modalBadge" style="display:none;"></div> -->
-            <!-- </div> -->
-
-            <!-- Info -->
-            <!-- <div class="modal-info-col"> -->
-
-                <!-- <div class="modal-breadcrumbs">
-                    <span id="modalDynasty" class="modal-dynasty"></span>
-                    <span class="breadcrumb-dot">•</span>
-                    <span id="modalPeriod" class="modal-period"></span>
-                </div>
-
-                <h2 id="modalTitle" class="modal-title"></h2> -->
-
-                <!-- FIX 3 -->
-                <!-- <p id="modalDesc" class="modal-description"></p> -->
-
-                <!-- FIX 4 -->
-                <!-- <div class="modal-meta-grid">
-
-                    <div class="modal-meta-item">
-                        <span class="material-symbols-outlined">calendar_today</span>
-                        <div>
-                            <span class="meta-label">Date</span>
-                            <span id="modalDate" class="meta-value"></span>
-                        </div>
-                    </div>
-
-                    <div class="modal-meta-item">
-                        <span class="material-symbols-outlined">diamond</span>
-                        <div>
-                            <span class="meta-label">Material</span>
-                            <span id="modalMaterial" class="meta-value"></span>
-                        </div>
-                    </div>
-
-                    <div class="modal-meta-item">
-                        <span class="material-symbols-outlined">location_on</span>
-                        <div>
-                            <span class="meta-label">Discovery Site</span>
-                            <span id="modalSite" class="meta-value"></span>
-                        </div>
-                    </div>
-
-                    <div class="modal-meta-item">
-                        <span class="material-symbols-outlined">photo_library</span>
-                        <div>
-                            <span class="meta-label">Gallery</span>
-                            <span id="modalGallery" class="meta-value"></span>
-                        </div>
-                    </div>
-
-                </div> -->
-
-                <!-- Significance -->
-                <!-- <div class="modal-significance" id="modalSignificanceBlock">
-                    <h3 class="significance-title">
-                        <span class="material-symbols-outlined">history_edu</span>
-                        Historical Significance
-                    </h3>
-                    <p id="modalSignificance" class="significance-text"></p>
-                </div> -->
-
-                <!-- Actions -->
-                <!-- <div class="modal-actions">
-                    <button class="btn-action-view" id="modalViewBtn">
-                        <span class="material-symbols-outlined">visibility</span>
-                        Interactive View
-                    </button>
-
-                    <button class="btn-action-fav" id="modalFavBtn">
-                        <span class="material-symbols-outlined">favorite</span>
-                        Add to Favorites
-                    </button>
-
-                    <button class="btn-action-fav" id="modalShareBtn">
-                        <span class="material-symbols-outlined">share</span>
-                    </button>
-                </div> -->
-
-            <!-- </div> -->
-        <!-- </div> -->
-    <!-- </div> -->
-    <!-- </div> -->
-
-    <!-- Filter Modals -->
-    <!-- <div id="dynastyModal" class="filter-modal">
-        <div class="filter-modal-content">
-            <div class="modal-header">
-                <h3>Select Dynasty</h3>
-                <button type="button" onclick="closeFilterModal('dynastyModal')"><span class="material-symbols-outlined">close</span></button>
-            </div>
-            <div id="dynastyFilterOptions" class="filter-options-grid"></div>
-            <div class="modal-footer">
-                <button class="btn-apply" onclick="applyFilter('dynasty')">Apply</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="materialModal" class="filter-modal">
-        <div class="filter-modal-content">
-            <div class="modal-header">
-                <h3>Select Material</h3>
-                <button type="button" onclick="closeFilterModal('materialModal')"><span class="material-symbols-outlined">close</span></button>
-            </div>
-            <div id="materialFilterOptions" class="filter-options-grid"></div>
-            <div class="modal-footer">
-                <button class="btn-apply" onclick="applyFilter('material')">Apply</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="siteModal" class="filter-modal">
-        <div class="filter-modal-content">
-            <div class="modal-header">
-                <h3>Select Discovery Site</h3>
-                <button type="button" onclick="closeFilterModal('siteModal')"><span class="material-symbols-outlined">close</span></button>
-            </div>
-            <div id="siteFilterOptions" class="filter-options-grid"></div>
-            <div class="modal-footer">
-                <button class="btn-apply" onclick="applyFilter('site')">Apply</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="galleryModal" class="filter-modal">
-        <div class="filter-modal-content">
-            <div class="modal-header">
-                <h3>Select Gallery</h3>
-                <button type="button" onclick="closeFilterModal('galleryModal')"><span class="material-symbols-outlined">close</span></button>
-            </div>
-            <div id="galleryFilterOptions" class="filter-options-grid"></div>
-            <div class="modal-footer">
-                <button class="btn-apply" onclick="applyFilter('gallery')">Apply</button>
-            </div>
-        </div>
-    </div> -->
-
-    <!-- Footer -->
-    <footer class="site-footer">
-            <div class="footer-container">
-                <!-- Footer Header -->
-                <div class="footer-header">
-                    <div class="footer-logo">
-                        <span class="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <h2 class="footer-title">Grand Egyptian Museum</h2>
-                    <div class="footer-divider"></div>
-                </div>
-
-                <!-- Footer Grid -->
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="../booking/booking.html">Tickets</a></li>
-                            <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../-membership/code.html">Membership</a></li>
-                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="../About us/About-us.html">History</a></li>
-                            <li><a href="../event/event.html">Events</a></li>
-                            <li><a href="../-news_press/code.html">News & Press</a></li>
-                            <li><a href="../-branding/code.html">Branding</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="../visitor help/help.html">Help</a></li>
-                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column connect-column">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <!-- Facebook -->
-                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-
-                            <!-- Twitter (X ) -->
-                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-
-                            <!-- YouTube -->
-                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </div>
-
-                        <p>
-                            Follow us on social media for updates and behind-the-scenes content.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Footer Separator -->
-                <div class="footer-separator"></div>
-
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <div class="language-toggle">
-                        <button class="active" data-lang="en">English</button>
-                        <button data-lang="ar">العربية</button>
-                    </div>
-                    <div class="legal-section">
-                       <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                    </div>
-            <div class="copyright">
-              © 2026 Tutora. All rights reserved.
-            </div>
-          </div>
-        </div>
-    <!-- Floating Action Button -->
-    <a href="../chat bot/chat.html" class="fab">
-        <span class="material-symbols-outlined">smart_toy</span>
-        <span class="fab-text">Ask Tutora</span>
-    </a>
-    
-    <script src="main.js"></script>
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-</body>
-</html>
+﻿<!DOCTYPE html>
+                            <html lang="en">
+                            
+                            <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <title>TUTORA Collection | Explore Museum Artifacts</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="style.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                                <link rel="stylesheet" href="../global-theme.css" />
+                            </head>
+                            
+                            <body class="dark">
+                                 <!-- Mobile Menu Overlay -->
+                                <div class="menu-overlay" id="menuOverlay"></div>
+                            
+                                <div class="mobile-menu" id="mobileMenu">
+                                  <div class="menu-header">
+                                    <div class="menu-logo">
+                                       <div class="logo-circle">
+                                    <img src="../logo.png" alt="Tutora Logo">
+                                </div>
+                            
+                                <h3 class="menu-logo-text">Tutora</h3>
+                                    </div>
+                                    <button class="close-btn" id="closeBtn">
+                                      <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                  </div>
+                            
+                                  <nav class="menu-nav">
+                                    <a href="../4.home/code.html" class="menu-link">Home</a>
+                                    <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition-Halls</a>
+                                    <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+                            
+                                    <a href="../event/event.html" class="menu-link">Event</a>
+                            
+                                    <div class="menu-dropdown">
+                                      <button class="menu-link dropdown-toggle">
+                                        AI Experience
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                      </button>
+                                      <div class="dropdown-items">
+                                        <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                                        <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                                      </div>
+                                    </div>
+                            
+                                    <a href="../shop/shop.html" class="menu-link">Shop</a>
+                                    <a href="../about/code.html" class="menu-link">About</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
+                                  </nav>
+                            
+                                  <div class="menu-footer">
+                                    <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+                                    <a href="../fav/favourite.html" class="menu-icon-link">
+                                      <span class="material-symbols-outlined">favorite</span> Favorites
+                                    </a>
+                            
+                                    <button class="menu-icon-link" id="menuLangBtn">
+                                      <span class="material-symbols-outlined">language</span>
+                                      Language
+                                    </button>
+                                  </div>
+                                </div>
+                            
+                                <!-- Header -->
+                                <header class="header">
+                                  <div class="header-container">
+                                    <div class="header-left">
+                                      <button class="menu-btn" id="menuBtn">
+                                        <span class="material-symbols-outlined">menu</span>
+                                      </button>
+                                      <div class="logo-section">
+                                        <div class="logo-circle">
+                                            <img src="../logo.png" alt="Tutora Logo">
+                                         </div>
+                                        <h2 class="logo-text">Tutora</h2>
+                                      </div>
+                                    </div>
+                            
+                                    <nav class="desktop-nav">
+                                      <a href="../4.home/code.html">Home</a>
+                                      <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                                      <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                            
+                                      <a href="../event/event.html">Event</a>
+                                      <div class="nav-dropdown">
+                                        <button class="nav-link dropdown-trigger">
+                                          AI Experience
+                                          <span class="material-symbols-outlined" >expand_more</span>
+                                        </button>
+                                        <div class="dropdown-menu" >
+                                          <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                                          <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                                          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+                                          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                                          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                                        </div>
+                                      </div>
+                                      <a href="../shop/shop.html">Shop</a>
+                                      <a href="../about/code.html">About</a>
+                                      <a href="../Exhibition-Halls/exhibition-halls.html">Collection</a>
+                                    </nav>
+                            
+                                    <div class="header-right">
+                                      <div class="search-box">
+                                        <span class="material-symbols-outlined">search</span>
+                                        <input type="text" placeholder="Search..." />
+                                      </div>
+                                      <button class="theme-btn" id="themeBtn">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                      </button>
+                                      <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                      <a href="../fav/favourite.html">
+                                        <button class="icon-btn">
+                                          <span class="material-symbols-outlined" style="text-decoration: none;">favorite</span>
+                                        </button>
+                                      </a>
+                                      <button class="icon-btn" id="langBtn">
+                                        <span class="material-symbols-outlined">language</span>
+                                      </button>
+                                      <a href="../Profile/profile.html">
+                                        <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                                      </a>
+                                    </div>
+                                  </div>
+                                </header>
+                            
+                                <main class="main-content">
+                                    <!-- Hero Section -->
+                                    <section class="hero-section">
+                                        <div class="hero-badge">
+                                            <span class="material-symbols-outlined">museum</span>
+                                            <span>Grand Egyptian Museum</span>
+                                        </div>
+                                        <p class="section-subtitle">Explore the Legacy</p>
+                                        <h1 class="hero-title">Digital Collection</h1>
+                                        <p class="hero-description">Discover over 42,000 artifacts spanning five millennia of ancient Egyptian civilization. From golden masks of pharaohs to sacred papyri, explore humanity's most remarkable cultural heritage.</p>
+                            
+                                        <div class="search-container">
+                                            <div class="hero-search-box">
+                                                <div class="search-icon">
+                                                    <span class="material-symbols-outlined">search</span>
+                                                </div>
+                                                <input id="mainSearch" class="search-input" placeholder="Search artifacts, dynasties, or galleries..." type="text" />
+                                            </div>
+                                        </div>
+                            
+                                        <!-- Stats Row -->
+                                        <div class="hero-stats">
+                                            <div class="hero-stat">
+                                                <span class="stat-number">42,000+</span>
+                                                <span class="stat-label-text">Artifacts</span>
+                                            </div>
+                                            <div class="hero-stat-divider"></div>
+                                            <div class="hero-stat">
+                                                <span class="stat-number">5,000</span>
+                                                <span class="stat-label-text">Years of History</span>
+                                            </div>
+                                            <div class="hero-stat-divider"></div>
+                                            <div class="hero-stat">
+                                                <span class="stat-number">12</span>
+                                                <span class="stat-label-text">Galleries</span>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Filters Section -->
+                                    <section class="filters-section">
+                                        <div class="filters-container">
+                                            <button class="filter-btn" id="dynastyFilterBtn">
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">crown</span>
+                                                <span>Dynasty</span>
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
+                                            </button>
+                                            <button class="filter-btn" id="materialFilterBtn">
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">diamond</span>
+                                                <span>Material</span>
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
+                                            </button>
+                                            <button class="filter-btn" id="siteFilterBtn">
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>
+                                                <span>Discovery Site</span>
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
+                                            </button>
+                                            <button class="filter-btn" id="galleryFilterBtn">
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">photo_library</span>
+                                                <span>Gallery</span>
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
+                                            </button>
+                                            <div class="filter-divider"></div>
+                                            <button class="reset-btn" id="resetFiltersBtn">
+                                                <span class="material-symbols-outlined" style="font-size: 1rem">restart_alt</span>
+                                                Reset Filters
+                                            </button>
+                                        </div>
+                                        <!-- Active Filters -->
+                                        <div id="activeFiltersContainer" class="active-filters-container" style="display:none;">
+                                            <div id="activeFiltersList" class="active-filters-list"></div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- ============================================ -->
+                                    <!--  SECTION 1: PHARAOHS & ROYALTY              -->
+                                    <!-- ============================================ -->
+                                    <section class="collection-section" id="sectionPharaohs">
+                                        <div class="section-header-block">
+                                            <div class="section-icon-wrapper">
+                                                <span class="material-symbols-outlined">verified</span>
+                                            </div>
+                                            <div class="section-header-text">
+                                                <h2 class="section-title">Pharaohs & Royalty</h2>
+                                                <p class="section-desc">Discover the golden treasures of Egypt's rulersâ€”masks, chariots, and royal regalia that defined divine kingship.</p>
+                                            </div>
+                                            <div class="section-line"></div>
+                                        </div>
+                                        <div class="artifact-grid" data-section="pharaohs">
+                                            <!-- Card 1 -->
+                                            <div class="artifact-card" data-id="pharaoh-1">
+                                                <div class="image-container">
+                                                    <img alt="The Golden Mask" class="artifact-image" src="./unnamed (1).png" />
+                                                    <div class="image-overlay"></div>
+                                                    <div class="card-badge">Featured</div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">18th Dynasty</p>
+                                                    <h3 class="artifact-title">The Golden Mask</h3>
+                                                    <p class="card-description">The iconic funerary mask of Tutankhamun, crafted from 11kg of solid gold with lapis lazuli inlays.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Valley of the Kings</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Card 2 -->
+                                            <div class="artifact-card" data-id="pharaoh-2">
+                                                <div class="image-container">
+                                                    <img alt="Royal Chariot" class="artifact-image" src="./unnamed (3).png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">New Kingdom</p>
+                                                    <h3 class="artifact-title">Royal Chariot</h3>
+                                                    <p class="card-description">An ornate ceremonial chariot made from wood and gold leaf, used during royal processions and rituals.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Grand Hall Gallery</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Card 3 -->
+                                            <div class="artifact-card" data-id="pharaoh-3">
+                                                <div class="image-container">
+                                                    <img alt="Painted Sarcophagus" class="artifact-image" src="./unnamed (2).png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">Middle Kingdom</p>
+                                                    <h3 class="artifact-title">Painted Sarcophagus</h3>
+                                                    <p class="card-description">Beautifully decorated with intricate hieroglyphics and scenes from the Book of the Dead.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Saqqara</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- ============================================ -->
+                                    <!--  SECTION 2: SACRED ARTIFACTS                -->
+                                    <!-- ============================================ -->
+                                    <section class="collection-section" id="sectionSacred">
+                                        <div class="section-header-block">
+                                            <div class="section-icon-wrapper">
+                                                <span class="material-symbols-outlined">auto_awesome</span>
+                                            </div>
+                                            <div class="section-header-text">
+                                                <h2 class="section-title">Sacred Artifacts</h2>
+                                                <p class="section-desc">Objects of spiritual power and funerary traditionsâ€”canopic jars, amulets, and ritual implements from the afterlife.</p>
+                                            </div>
+                                            <div class="section-line"></div>
+                                        </div>
+                                        <div class="artifact-grid" data-section="sacred">
+                                            <!-- Card 4 -->
+                                            <div class="artifact-card" data-id="sacred-1">
+                                                <div class="image-container">
+                                                    <img alt="Canopic Jars" class="artifact-image" src="./unnamed (5).png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">Ramesside Period</p>
+                                                    <h3 class="artifact-title">Canopic Jars</h3>
+                                                    <p class="card-description">Four limestone jars used to store mummified organs, guarded by the four sons of Horus.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Funerary Gallery</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Card 5 -->
+                                            <div class="artifact-card" data-id="sacred-2">
+                                                <div class="image-container">
+                                                    <img alt="Sphinx Model" class="artifact-image" src="./unnamed (7).png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">Old Kingdom</p>
+                                                    <h3 class="artifact-title">Sphinx Model</h3>
+                                                    <p class="card-description">A miniature guardian figure modeled after the Great Sphinx, symbolizing divine protection of sacred sites.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Giza Plateau</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- ============================================ -->
+                                    <!--  SECTION 3: ANCIENT TEXTS & KNOWLEDGE       -->
+                                    <!-- ============================================ -->
+                                    <section class="collection-section" id="sectionTexts">
+                                        <div class="section-header-block">
+                                            <div class="section-icon-wrapper">
+                                                <span class="material-symbols-outlined">menu_book</span>
+                                            </div>
+                                            <div class="section-header-text">
+                                                <h2 class="section-title">Ancient Texts & Knowledge</h2>
+                                                <p class="section-desc">Papyrus scrolls, stone tablets, and inscriptions that unlocked the secrets of Egyptian civilization.</p>
+                                            </div>
+                                            <div class="section-line"></div>
+                                        </div>
+                                        <div class="artifact-grid" data-section="texts">
+                                            <!-- Card 6 -->
+                                            <div class="artifact-card" data-id="text-1">
+                                                <div class="image-container">
+                                                    <img alt="Rosetta Stone" class="artifact-image" src="./unnamed (4).png" />
+                                                    <div class="image-overlay"></div>
+                                                    <div class="card-badge">Iconic</div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">Ptolemaic Period</p>
+                                                    <h3 class="artifact-title">Rosetta Stone</h3>
+                                                    <p class="card-description">The legendary trilingual stele that became the key to deciphering Egyptian hieroglyphics in 1822.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Rashid (Rosetta)</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Card 7 -->
+                                            <div class="artifact-card" data-id="text-2">
+                                                <div class="image-container">
+                                                    <img alt="Hunefer Papyrus" class="artifact-image" src="./unnamed (6).png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">19th Dynasty</p>
+                                                    <h3 class="artifact-title">Hunefer Papyrus</h3>
+                                                    <p class="card-description">A beautifully illustrated segment from the Book of the Dead, guiding souls through the underworld.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Theban Necropolis</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Card 8 -->
+                                            <div class="artifact-card" data-id="text-3">
+                                                <div class="image-container">
+                                                    <img alt="Rosetta Stone Replica" class="artifact-image" src="./unnamed (8).png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">Ptolemaic Period</p>
+                                                    <h3 class="artifact-title">Rosetta Stone Replica</h3>
+                                                    <p class="card-description">An exact replica preserving the three scriptsâ€”Hieroglyphic, Demotic, and Greekâ€”for study.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Rashid (Rosetta)</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- ============================================ -->
+                                    <!--  SECTION 4: DAILY LIFE & HOUSEHOLD          -->
+                                    <!-- ============================================ -->
+                                    <section class="collection-section" id="sectionDailyLife">
+                                        <div class="section-header-block">
+                                            <div class="section-icon-wrapper">
+                                                <span class="material-symbols-outlined">cottage</span>
+                                            </div>
+                                            <div class="section-header-text">
+                                                <h2 class="section-title">Daily Life & Household</h2>
+                                                <p class="section-desc">Explore the tools, pottery, and personal items that tell the story of ancient Egyptians' everyday lives.</p>
+                                            </div>
+                                            <div class="section-line"></div>
+                                        </div>
+                                        <div class="artifact-grid" data-section="daily-life">
+                                            <!-- Card 9 -->
+                                            <div class="artifact-card" data-id="daily-1">
+                                                <div class="image-container">
+                                                    <img alt="Inlaid Wooden Chair" class="artifact-image" src="./daily_life_chair.png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">New Kingdom</p>
+                                                    <h3 class="artifact-title">Inlaid Wooden Chair</h3>
+                                                    <p class="card-description">A remarkably preserved chair with ebony and ivory inlays, showcasing the luxury of Egyptian furniture.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Deir el-Medina</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- ============================================ -->
+                                    <!--  SECTION 5: STATUARY & SCULPTURE            -->
+                                    <!-- ============================================ -->
+                                    <section class="collection-section" id="sectionStatuary">
+                                        <div class="section-header-block">
+                                            <div class="section-icon-wrapper">
+                                                <span class="material-symbols-outlined">recent_actors</span>
+                                            </div>
+                                            <div class="section-header-text">
+                                                <h2 class="section-title">Statuary & Sculpture</h2>
+                                                <p class="section-desc">Masterpieces of stone and bronzeâ€”eternal representations of gods, kings, and commoners from the Old Kingdom to the Late Period.</p>
+                                            </div>
+                                            <div class="section-line"></div>
+                                        </div>
+                                        <div class="artifact-grid" data-section="statuary">
+                                            <!-- Card 10 -->
+                                            <div class="artifact-card" data-id="statue-1">
+                                                <div class="image-container">
+                                                    <img alt="The Seated Scribe" class="artifact-image" src="./statue_scribe.png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">5th Dynasty</p>
+                                                    <h3 class="artifact-title">The Seated Scribe</h3>
+                                                    <p class="card-description">A world-renowned masterpiece of painted limestone, capturing the lifelike focus of a royal scribe.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Saqqara</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- ============================================ -->
+                                    <!--  SECTION 6: JEWELRY & ADORNMENT             -->
+                                    <!-- ============================================ -->
+                                    <section class="collection-section" id="sectionJewelry">
+                                        <div class="section-header-block">
+                                            <div class="section-icon-wrapper">
+                                                <span class="material-symbols-outlined">diamond</span>
+                                            </div>
+                                            <div class="section-header-text">
+                                                <h2 class="section-title">Jewelry & Adornment</h2>
+                                                <p class="section-desc">Exquisite necklaces, rings, and amulets crafted from gold, lapis lazuli, and carnelian for both protection and prestige.</p>
+                                            </div>
+                                            <div class="section-line"></div>
+                                        </div>
+                                        <div class="artifact-grid" data-section="jewelry">
+                                            <!-- Card 11 -->
+                                            <div class="artifact-card" data-id="jewel-1">
+                                                <div class="image-container">
+                                                    <img alt="Golden Pectoral" class="artifact-image" src="./jewelry_pectoral.png" />
+                                                    <div class="image-overlay"></div>
+                                                    <button class="favorite-btn">
+                                                        <span class="material-symbols-outlined">favorite</span>
+                                                    </button>
+                                                </div>
+                                                <div class="card-content">
+                                                    <p class="dynasty-label">Middle Kingdom</p>
+                                                    <h3 class="artifact-title">Golden Pectoral</h3>
+                                                    <p class="card-description">A stunning ceremonial breastplate with a winged scarab, symbolizing eternal life and protection.</p>
+                                                    <div class="card-footer">
+                                                        <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> Dahshur</span>
+                                                        <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Dynamic Results Container (Active when filtering) -->
+                                    <div id="dynamicGallery" style="display:none;">
+                                        <div class="section-header-block">
+                                            <div class="section-icon-wrapper">
+                                                <span class="material-symbols-outlined">search</span>
+                                            </div>
+                                            <div class="section-header-text">
+                                                <h2 class="section-title">Gallery Search Results</h2>
+                                                <p id="totalResultsText" class="section-desc">Found 0 items</p>
+                                            </div>
+                                            <div class="section-line"></div>
+                                        </div>
+                                        <div id="artifactGrid" class="artifact-grid"></div>
+                                    </div>
+                            
+                                    <div id="noResults" style="display:none;" class="no-results-message">
+                                        <p>No artifacts found matching your criteria.</p>
+                                        <button class="reset-btn" onclick="clearSearch()">Clear Filters</button>
+                                    </div>
+                            
+                                    <!-- Load More Section -->
+                                    <div class="load-more-section">
+                                        <p class="count-text">Showing 11 of 42,000 artifacts</p>
+                                        <button class="load-more-btn">
+                                            <span class="load-more-text">Load More</span>
+                                            <div class="load-more-line"></div>
+                                        </button>
+                                    </div>
+                                </main>
+                            
+                                <!-- ============================================ -->
+                                <!--  ARTIFACT DETAIL PANEL (In-Page modal)   -->
+                                <!-- ============================================ -->
+                                <!-- <div id="artifactModal" class="artifact-modal-overlay"> -->
+                                <!-- <div class="artifact-modal-container"> -->
+                            
+                                    <!-- FIX 1 -->
+                                    <!-- <button id="closeArtifactModal" class="close-modal-btn">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button> -->
+                            
+                                    <!-- FIX 2 -->
+                                    <!-- <div class="modal-content"> -->
+                            
+                                        <!-- Image -->
+                                        <!-- <div class="modal-image-col"> -->
+                                            <!-- <img id="modalImg" src="" alt="Artifact" class="modal-image" />
+                                            <div class="modal-image-overlay"></div>
+                                            <div class="modal-image-badge" id="modalBadge" style="display:none;"></div> -->
+                                        <!-- </div> -->
+                            
+                                        <!-- Info -->
+                                        <!-- <div class="modal-info-col"> -->
+                            
+                                            <!-- <div class="modal-breadcrumbs">
+                                                <span id="modalDynasty" class="modal-dynasty"></span>
+                                                <span class="breadcrumb-dot">â€¢</span>
+                                                <span id="modalPeriod" class="modal-period"></span>
+                                            </div>
+                            
+                                            <h2 id="modalTitle" class="modal-title"></h2> -->
+                            
+                                            <!-- FIX 3 -->
+                                            <!-- <p id="modalDesc" class="modal-description"></p> -->
+                            
+                                            <!-- FIX 4 -->
+                                            <!-- <div class="modal-meta-grid">
+                            
+                                                <div class="modal-meta-item">
+                                                    <span class="material-symbols-outlined">calendar_today</span>
+                                                    <div>
+                                                        <span class="meta-label">Date</span>
+                                                        <span id="modalDate" class="meta-value"></span>
+                                                    </div>
+                                                </div>
+                            
+                                                <div class="modal-meta-item">
+                                                    <span class="material-symbols-outlined">diamond</span>
+                                                    <div>
+                                                        <span class="meta-label">Material</span>
+                                                        <span id="modalMaterial" class="meta-value"></span>
+                                                    </div>
+                                                </div>
+                            
+                                                <div class="modal-meta-item">
+                                                    <span class="material-symbols-outlined">location_on</span>
+                                                    <div>
+                                                        <span class="meta-label">Discovery Site</span>
+                                                        <span id="modalSite" class="meta-value"></span>
+                                                    </div>
+                                                </div>
+                            
+                                                <div class="modal-meta-item">
+                                                    <span class="material-symbols-outlined">photo_library</span>
+                                                    <div>
+                                                        <span class="meta-label">Gallery</span>
+                                                        <span id="modalGallery" class="meta-value"></span>
+                                                    </div>
+                                                </div>
+                            
+                                            </div> -->
+                            
+                                            <!-- Significance -->
+                                            <!-- <div class="modal-significance" id="modalSignificanceBlock">
+                                                <h3 class="significance-title">
+                                                    <span class="material-symbols-outlined">history_edu</span>
+                                                    Historical Significance
+                                                </h3>
+                                                <p id="modalSignificance" class="significance-text"></p>
+                                            </div> -->
+                            
+                                            <!-- Actions -->
+                                            <!-- <div class="modal-actions">
+                                                <button class="btn-action-view" id="modalViewBtn">
+                                                    <span class="material-symbols-outlined">visibility</span>
+                                                    Interactive View
+                                                </button>
+                            
+                                                <button class="btn-action-fav" id="modalFavBtn">
+                                                    <span class="material-symbols-outlined">favorite</span>
+                                                    Add to Favorites
+                                                </button>
+                            
+                                                <button class="btn-action-fav" id="modalShareBtn">
+                                                    <span class="material-symbols-outlined">share</span>
+                                                </button>
+                                            </div> -->
+                            
+                                        <!-- </div> -->
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                                <!-- </div> -->
+                            
+                                <!-- Filter Modals -->
+                                <!-- <div id="dynastyModal" class="filter-modal">
+                                    <div class="filter-modal-content">
+                                        <div class="modal-header">
+                                            <h3>Select Dynasty</h3>
+                                            <button type="button" onclick="closeFilterModal('dynastyModal')"><span class="material-symbols-outlined">close</span></button>
+                                        </div>
+                                        <div id="dynastyFilterOptions" class="filter-options-grid"></div>
+                                        <div class="modal-footer">
+                                            <button class="btn-apply" onclick="applyFilter('dynasty')">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="materialModal" class="filter-modal">
+                                    <div class="filter-modal-content">
+                                        <div class="modal-header">
+                                            <h3>Select Material</h3>
+                                            <button type="button" onclick="closeFilterModal('materialModal')"><span class="material-symbols-outlined">close</span></button>
+                                        </div>
+                                        <div id="materialFilterOptions" class="filter-options-grid"></div>
+                                        <div class="modal-footer">
+                                            <button class="btn-apply" onclick="applyFilter('material')">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="siteModal" class="filter-modal">
+                                    <div class="filter-modal-content">
+                                        <div class="modal-header">
+                                            <h3>Select Discovery Site</h3>
+                                            <button type="button" onclick="closeFilterModal('siteModal')"><span class="material-symbols-outlined">close</span></button>
+                                        </div>
+                                        <div id="siteFilterOptions" class="filter-options-grid"></div>
+                                        <div class="modal-footer">
+                                            <button class="btn-apply" onclick="applyFilter('site')">Apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="galleryModal" class="filter-modal">
+                                    <div class="filter-modal-content">
+                                        <div class="modal-header">
+                                            <h3>Select Gallery</h3>
+                                            <button type="button" onclick="closeFilterModal('galleryModal')"><span class="material-symbols-outlined">close</span></button>
+                                        </div>
+                                        <div id="galleryFilterOptions" class="filter-options-grid"></div>
+                                        <div class="modal-footer">
+                                            <button class="btn-apply" onclick="applyFilter('gallery')">Apply</button>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            
+                                <!-- Footer -->
+                                <footer class="site-footer">
+                                        <div class="footer-container">
+                                            <!-- Footer Header -->
+                                            <div class="footer-header">
+                                                <div class="footer-logo">
+                                                    <span class="material-symbols-outlined">account_balance</span>
+                                                </div>
+                                                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                                <div class="footer-divider"></div>
+                                            </div>
+                            
+                                            <!-- Footer Grid -->
+                                            <div class="footer-grid">
+                                                <div class="footer-column">
+                                                    <h3>Explore</h3>
+                                                    <ul>
+                                                        <li><a href="../booking/booking.html">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                        <li><a href="../-membership/code.html">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>About</h3>
+                                                    <ul>
+                                                        <li><a href="../About us/About-us.html">History</a></li>
+                                                        <li><a href="../event/event.html">Events</a></li>
+                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>Support</h3>
+                                                    <ul>
+                                                        <li><a href="../visitor help/help.html">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column connect-column">
+                                                    <h3>Connect</h3>
+                                                    <div class="social-links">
+                                                        <!-- Facebook -->
+                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                                            <i class="fa-brands fa-facebook"></i>
+                                                        </a>
+                            
+                                                        <!-- Twitter (X ) -->
+                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                                            <i class="fa-brands fa-x-twitter"></i>
+                                                        </a>
+                            
+                                                        <!-- Instagram -->
+                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                                            <i class="fa-brands fa-instagram"></i>
+                                                        </a>
+                            
+                                                        <!-- YouTube -->
+                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                                            <i class="fa-brands fa-youtube"></i>
+                                                        </a>
+                                                    </div>
+                            
+                                                    <p>
+                                                        Follow us on social media for updates and behind-the-scenes content.
+                                                    </p>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Footer Separator -->
+                                            <div class="footer-separator"></div>
+                            
+                                            <!-- Footer Bottom -->
+                                            <div class="footer-bottom">
+                                                <div class="language-toggle">
+                                                    <button class="active" data-lang="en">English</button>
+                                                    <button data-lang="ar">العربية</button>
+                                                </div>
+                                                <div class="legal-section">
+                                                   <div class="legal-links">
+                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                                                </div>
+                                        <div class="copyright">
+                                          © 2026 Tutora. All rights reserved.
+                                        </div>
+                                      </div>
+                                    </div>
+                                <!-- Floating Action Button -->
+                                <a href="../chat bot/chat.html" class="fab">
+                                    <span class="material-symbols-outlined">smart_toy</span>
+                                    <span class="fab-text">Ask Tutora</span>
+                                </a>
+                                
+                                <script src="main.js"></script>
+                                <script src="../global-core.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            </html>
+                            

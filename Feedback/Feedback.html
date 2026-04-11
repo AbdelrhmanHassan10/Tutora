@@ -1,345 +1,348 @@
-<!DOCTYPE html>
-<html class="dark" lang="en">
-
-<head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, share your experience, and help us preserve the heritage." />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>TUTORA | Feedback & Insights</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../animate.css" />
-    <link rel="stylesheet" href="../global-theme.css" />
-</head>
-
-<body class="dark fb-body">
-    <!-- Navigation -->
-    <div class="menu-overlay" id="menuOverlay"></div>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="menu-header">
-            <div class="menu-logo">
-                <div class="logo-circle">
-                    <img src="../logo.png" alt="Tutora Logo">
-                </div>
-                <h3 class="menu-logo-text">Tutora</h3>
-            </div>
-            <button class="close-btn" id="closeBtn">
-                <span class="material-symbols-outlined theme-icon">close</span>
-            </button>
-        </div>
-
-        <nav class="menu-nav">
-            <a href="../4.home/code.html" class="menu-link">Home</a>
-            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
-            <a href="../event/event.html" class="menu-link">Event</a>
-            <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle">
-                    AI Experience
-                    <span class="material-symbols-outlined">expand_more</span>
-                </button>
-                <div class="dropdown-items">
-                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
-                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
-                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
-                </div>
-            </div>
-            <a href="../shop/shop.html" class="menu-link">Shop</a>
-            <a href="../about/code.html" class="menu-link">About</a>
-            <a href="../collection/collection.html" class="menu-link">Collection</a>
-        </nav>
-
-        <div class="menu-footer">
-            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link">
-                <span class="material-symbols-outlined theme-icon">favorite</span> Favorites
-            </a>
-            <button class="menu-icon-link" id="menuLangBtn">
-                <span class="material-symbols-outlined theme-icon">language</span>
-                Language
-            </button>
-        </div>
-    </div>
-
-    <header class="header">
-        <div class="header-container">
-            <div class="header-left">
-                <button class="menu-btn" id="menuBtn">
-                    <span class="material-symbols-outlined theme-icon">menu</span>
-                </button>
-                <div class="logo-section">
-                    <div class="logo-circle">
-                        <img src="../logo.png" alt="Tutora Logo">
-                    </div>
-                </div>
-                <h2 class="logo-text">Tutora</h2>
-            </div>
-
-            <nav class="desktop-nav">
-                <a href="../4.home/code.html">Home</a>
-                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-                <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-                <a href="../event/event.html">Event</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger">
-                        AI Experience
-                        <span class="material-symbols-outlined">expand_more</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
-                        <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
-                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
-                    </div>
-                </div>
-                <a href="../shop/shop.html">Shop</a>
-                <a href="../about/code.html">About</a>
-                <a href="../collection/collection.html">Collection</a>
-            </nav>
-
-            <div class="header-right">
-                <div class="search-box">
-                    <span class="material-symbols-outlined theme-icon">search</span>
-                    <input type="text" placeholder="Search..." class="theme-text" />
-                </div>
-                <button class="theme-btn" id="themeBtn">
-                    <span class="material-symbols-outlined theme-icon">dark_mode</span>
-                </button>
-                <a href="../booking/booking.html" class="btn-booking">booking</a>
-                <a href="../fav/favourite.html" class="icon-btn">
-                    <span class="material-symbols-outlined theme-icon">favorite</span>
-                </a>
-                <button class="icon-btn" id="langBtn">
-                    <span class="material-symbols-outlined theme-icon">language</span>
-                </button>
-                <a href="../Profile/profile.html">
-                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="fb-main">
-        <div class="fb-container">
-            <!-- Hero Header -->
-            <div class="fb-hero animate__animated animate__fadeIn">
-                <h1 class="fb-hero-title">Share Your Journey</h1>
-                <p class="fb-hero-subtitle">
-                    Your insights help us preserve and perfect the legacy of the Pharaohs. We value every detail of your experience at the Grand Egyptian Museum.
-                </p>
-                <div class="hero-divider"></div>
-            </div>
-
-            <!-- Feedback Form -->
-            <div class="fb-form-wrapper animate__animated animate__fadeInUp">
-                <!-- Step 1: Rating -->
-                <section class="fb-step" id="step1">
-                    <div class="fb-step-header">
-                        <div class="fb-step-badge">01</div>
-                        <h2 class="fb-step-title">How would you rate your visit?</h2>
-                    </div>
-
-                    <div class="fb-rating-container">
-                        <div class="fb-rating-item" data-rating="1">
-                            <div class="fb-rating-icon">
-                                <span class="material-symbols-outlined">star</span>
-                            </div>
-                            <span class="fb-rating-label">Poor</span>
-                        </div>
-
-                        <div class="fb-rating-item" data-rating="2">
-                            <div class="fb-rating-icon">
-                                <span class="material-symbols-outlined">star</span>
-                            </div>
-                            <span class="fb-rating-label">Fair</span>
-                        </div>
-
-                        <div class="fb-rating-item" data-rating="3">
-                            <div class="fb-rating-icon">
-                                <span class="material-symbols-outlined">star</span>
-                            </div>
-                            <span class="fb-rating-label">Good</span>
-                        </div>
-
-                        <div class="fb-rating-item active" data-rating="4">
-                            <div class="fb-rating-icon">
-                                <span class="material-symbols-outlined fb-filled-icon">star</span>
-                            </div>
-                            <span class="fb-rating-label">Great</span>
-                        </div>
-
-                        <div class="fb-rating-item" data-rating="5">
-                            <div class="fb-rating-icon">
-                                <span class="material-symbols-outlined">star</span>
-                            </div>
-                            <span class="fb-rating-label">Excellent</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Step 2: Written Feedback -->
-                <section class="fb-step" id="step2">
-                    <div class="fb-step-header">
-                        <div class="fb-step-badge">02</div>
-                        <h2 class="fb-step-title">Tell us more about your experience</h2>
-                    </div>
-
-                    <div class="fb-input-group">
-                        <textarea class="fb-textarea" id="feedbackText" placeholder="Share the highlights of your journey or areas where we can improve..."></textarea>
-                        <div class="fb-textarea-footer">
-                            <span class="fb-char-count" id="charCount">0 / 1000</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Step 3: categories -->
-                <section class="fb-step" id="step3">
-                    <div class="fb-step-header">
-                        <div class="fb-step-badge">03</div>
-                        <h2 class="fb-step-title">What stood out to you?</h2>
-                    </div>
-
-                    <div class="fb-categories">
-                        <button class="fb-category-btn" data-category="exhibitions">
-                            <span class="material-symbols-outlined">museum</span>
-                            <span>Exhibitions</span>
-                        </button>
-
-                        <button class="fb-category-btn active" data-category="staff">
-                            <span class="material-symbols-outlined">groups</span>
-                            <span>Staff</span>
-                        </button>
-
-                        <button class="fb-category-btn" data-category="facilities">
-                            <span class="material-symbols-outlined">restaurant</span>
-                            <span>Facilities</span>
-                        </button>
-
-                        <button class="fb-category-btn" data-category="ai">
-                            <span class="material-symbols-outlined">smart_toy</span>
-                            <span>AI Services</span>
-                        </button>
-                    </div>
-                </section>
-
-                <!-- Final Action -->
-                <div class="fb-action">
-                    <button class="fb-submit-btn" id="submitFeedback">
-                        <span>Submit Feedback</span>
-                        <span class="material-symbols-outlined">send</span>
-                    </button>
-                    <p class="fb-security-note">
-                        <span class="material-symbols-outlined">verified_user</span> 
-                        Your feedback is stored securely and processed anonymously to improve the museum experience.
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Success Message (Hidden) -->
-            <div class="fb-success-state" id="successState" style="display: none;">
-                <div class="success-icon-wrapper">
-                    <span class="material-symbols-outlined">check_circle</span>
-                </div>
-                <h2 class="success-title">Thank You, Traveler</h2>
-                <p class="success-message">Your insights have been woven into the legacy of the Grand Egyptian Museum.</p>
-                <button class="btn-return" onclick="window.location.href='../4.home/code.html'">Back to Home</button>
-            </div>
-        </div>
-    </main>
-
-    <!-- Decorative Elements -->
-    <div class="fb-background-accents">
-        <div class="accent-blur blur-1"></div>
-        <div class="accent-blur blur-2"></div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-header">
-                <div class="footer-logo">
-                    <span class="material-symbols-outlined">account_balance</span>
-                </div>
-                <h2 class="footer-title">Grand Egyptian Museum</h2>
-                <div class="footer-divider"></div>
-            </div>
-
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>Explore</h3>
-                    <ul>
-                        <li><a href="../booking/booking.html">Tickets</a></li>
-                        <li><a href="../collection/collection.html">Collection</a></li>
-                        <li><a href="../-membership/code.html">Membership</a></li>
-                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="../About us/About-us.html">History</a></li>
-                        <li><a href="../event/event.html">Events</a></li>
-                        <li><a href="../-news_press/code.html">News & Press</a></li>
-                        <li><a href="../-branding/code.html">Branding</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="../visitor help/help.html">Help</a></li>
-                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                        <li><a href="Feedback.html">Feedback</a></li>
-                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column connect-column">
-                    <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                    <p>Follow us on social media for updates and behind-the-scenes content.</p>
-                </div>
-            </div>
-
-            <div class="footer-separator"></div>
-
-            <div class="footer-bottom">
-                <div class="language-toggle">
-                    <button class="active" data-lang="en">English</button>
-                    <button data-lang="ar">العربية</button>
-                </div>
-                <div class="legal-section">
-                    <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html">Cookie Settings</a>
-                    </div>
-                    <div class="copyright">© 2026 Tutora. All rights reserved.</div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-</body>
-
-</html>
+﻿<!DOCTYPE html>
+                            <html class="dark" lang="en">
+                            
+                            <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, share your experience, and help us preserve the heritage." />
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <title>TUTORA | Feedback & Insights</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                
+                                <!-- Fonts -->
+                                <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+                                
+                                <!-- Styles -->
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="style.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                                <link rel="stylesheet" href="../global-theme.css" />
+                            </head>
+                            
+                            <body class="dark fb-body">
+                                <!-- Navigation -->
+                                <div class="menu-overlay" id="menuOverlay"></div>
+                            
+                                <div class="mobile-menu" id="mobileMenu">
+                                    <div class="menu-header">
+                                        <div class="menu-logo">
+                                            <div class="logo-circle">
+                                                <img src="../logo.png" alt="Tutora Logo">
+                                            </div>
+                                            <h3 class="menu-logo-text">Tutora</h3>
+                                        </div>
+                                        <button class="close-btn" id="closeBtn">
+                                            <span class="material-symbols-outlined theme-icon">close</span>
+                                        </button>
+                                    </div>
+                            
+                                    <nav class="menu-nav">
+                                        <a href="../4.home/code.html" class="menu-link">Home</a>
+                                        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition-Halls</a>
+                                        <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+                                        <a href="../event/event.html" class="menu-link">Event</a>
+                                        <div class="menu-dropdown">
+                                            <button class="menu-link dropdown-toggle">
+                                                AI Experience
+                                                <span class="material-symbols-outlined">expand_more</span>
+                                            </button>
+                                            <div class="dropdown-items">
+                                                <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                                                <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                                                <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                                                <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                                                <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                                            </div>
+                                        </div>
+                                        <a href="../shop/shop.html" class="menu-link">Shop</a>
+                                        <a href="../about/code.html" class="menu-link">About</a>
+                                        <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
+                                    </nav>
+                            
+                                    <div class="menu-footer">
+                                        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+                                        <a href="../fav/favourite.html" class="menu-icon-link">
+                                            <span class="material-symbols-outlined theme-icon">favorite</span> Favorites
+                                        </a>
+                                        <button class="menu-icon-link" id="menuLangBtn">
+                                            <span class="material-symbols-outlined theme-icon">language</span>
+                                            Language
+                                        </button>
+                                    </div>
+                                </div>
+                            
+                                <header class="header">
+                                    <div class="header-container">
+                                        <div class="header-left">
+                                            <button class="menu-btn" id="menuBtn">
+                                                <span class="material-symbols-outlined theme-icon">menu</span>
+                                            </button>
+                                            <div class="logo-section">
+                                                <div class="logo-circle">
+                                                    <img src="../logo.png" alt="Tutora Logo">
+                                                </div>
+                                            </div>
+                                            <h2 class="logo-text">Tutora</h2>
+                                        </div>
+                            
+                                        <nav class="desktop-nav">
+                                            <a href="../4.home/code.html">Home</a>
+                                            <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                                            <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                                            <a href="../event/event.html">Event</a>
+                                            <div class="nav-dropdown">
+                                                <button class="nav-link dropdown-trigger">
+                                                    AI Experience
+                                                    <span class="material-symbols-outlined">expand_more</span>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                                                    <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                                                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+                                                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                                                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                                                </div>
+                                            </div>
+                                            <a href="../shop/shop.html">Shop</a>
+                                            <a href="../about/code.html">About</a>
+                                            <a href="../Exhibition-Halls/exhibition-halls.html">Collection</a>
+                                        </nav>
+                            
+                                        <div class="header-right">
+                                            <div class="search-box">
+                                                <span class="material-symbols-outlined theme-icon">search</span>
+                                                <input type="text" placeholder="Search..." class="theme-text" />
+                                            </div>
+                                            <button class="theme-btn" id="themeBtn">
+                                                <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                                            </button>
+                                            <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                            <a href="../fav/favourite.html" class="icon-btn">
+                                                <span class="material-symbols-outlined theme-icon">favorite</span>
+                                            </a>
+                                            <button class="icon-btn" id="langBtn">
+                                                <span class="material-symbols-outlined theme-icon">language</span>
+                                            </button>
+                                            <a href="../Profile/profile.html">
+                                                <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </header>
+                            
+                                <!-- Main Content -->
+                                <main class="fb-main">
+                                    <div class="fb-container">
+                                        <!-- Hero Header -->
+                                        <div class="fb-hero animate__animated animate__fadeIn">
+                                            <h1 class="fb-hero-title">Share Your Journey</h1>
+                                            <p class="fb-hero-subtitle">
+                                                Your insights help us preserve and perfect the legacy of the Pharaohs. We value every detail of your experience at the Grand Egyptian Museum.
+                                            </p>
+                                            <div class="hero-divider"></div>
+                                        </div>
+                            
+                                        <!-- Feedback Form -->
+                                        <div class="fb-form-wrapper animate__animated animate__fadeInUp">
+                                            <!-- Step 1: Rating -->
+                                            <section class="fb-step" id="step1">
+                                                <div class="fb-step-header">
+                                                    <div class="fb-step-badge">01</div>
+                                                    <h2 class="fb-step-title">How would you rate your visit?</h2>
+                                                </div>
+                            
+                                                <div class="fb-rating-container">
+                                                    <div class="fb-rating-item" data-rating="1">
+                                                        <div class="fb-rating-icon">
+                                                            <span class="material-symbols-outlined">star</span>
+                                                        </div>
+                                                        <span class="fb-rating-label">Poor</span>
+                                                    </div>
+                            
+                                                    <div class="fb-rating-item" data-rating="2">
+                                                        <div class="fb-rating-icon">
+                                                            <span class="material-symbols-outlined">star</span>
+                                                        </div>
+                                                        <span class="fb-rating-label">Fair</span>
+                                                    </div>
+                            
+                                                    <div class="fb-rating-item" data-rating="3">
+                                                        <div class="fb-rating-icon">
+                                                            <span class="material-symbols-outlined">star</span>
+                                                        </div>
+                                                        <span class="fb-rating-label">Good</span>
+                                                    </div>
+                            
+                                                    <div class="fb-rating-item active" data-rating="4">
+                                                        <div class="fb-rating-icon">
+                                                            <span class="material-symbols-outlined fb-filled-icon">star</span>
+                                                        </div>
+                                                        <span class="fb-rating-label">Great</span>
+                                                    </div>
+                            
+                                                    <div class="fb-rating-item" data-rating="5">
+                                                        <div class="fb-rating-icon">
+                                                            <span class="material-symbols-outlined">star</span>
+                                                        </div>
+                                                        <span class="fb-rating-label">Excellent</span>
+                                                    </div>
+                                                </div>
+                                            </section>
+                            
+                                            <!-- Step 2: Written Feedback -->
+                                            <section class="fb-step" id="step2">
+                                                <div class="fb-step-header">
+                                                    <div class="fb-step-badge">02</div>
+                                                    <h2 class="fb-step-title">Tell us more about your experience</h2>
+                                                </div>
+                            
+                                                <div class="fb-input-group">
+                                                    <textarea class="fb-textarea" id="feedbackText" placeholder="Share the highlights of your journey or areas where we can improve..."></textarea>
+                                                    <div class="fb-textarea-footer">
+                                                        <span class="fb-char-count" id="charCount">0 / 1000</span>
+                                                    </div>
+                                                </div>
+                                            </section>
+                            
+                                            <!-- Step 3: categories -->
+                                            <section class="fb-step" id="step3">
+                                                <div class="fb-step-header">
+                                                    <div class="fb-step-badge">03</div>
+                                                    <h2 class="fb-step-title">What stood out to you?</h2>
+                                                </div>
+                            
+                                                <div class="fb-categories">
+                                                    <button class="fb-category-btn" data-category="exhibitions">
+                                                        <span class="material-symbols-outlined">museum</span>
+                                                        <span>Exhibitions</span>
+                                                    </button>
+                            
+                                                    <button class="fb-category-btn active" data-category="staff">
+                                                        <span class="material-symbols-outlined">groups</span>
+                                                        <span>Staff</span>
+                                                    </button>
+                            
+                                                    <button class="fb-category-btn" data-category="facilities">
+                                                        <span class="material-symbols-outlined">restaurant</span>
+                                                        <span>Facilities</span>
+                                                    </button>
+                            
+                                                    <button class="fb-category-btn" data-category="ai">
+                                                        <span class="material-symbols-outlined">smart_toy</span>
+                                                        <span>AI Services</span>
+                                                    </button>
+                                                </div>
+                                            </section>
+                            
+                                            <!-- Final Action -->
+                                            <div class="fb-action">
+                                                <button class="fb-submit-btn" id="submitFeedback">
+                                                    <span>Submit Feedback</span>
+                                                    <span class="material-symbols-outlined">send</span>
+                                                </button>
+                                                <p class="fb-security-note">
+                                                    <span class="material-symbols-outlined">verified_user</span> 
+                                                    Your feedback is stored securely and processed anonymously to improve the museum experience.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Success Message (Hidden) -->
+                                        <div class="fb-success-state" id="successState" style="display: none;">
+                                            <div class="success-icon-wrapper">
+                                                <span class="material-symbols-outlined">check_circle</span>
+                                            </div>
+                                            <h2 class="success-title">Thank You, Traveler</h2>
+                                            <p class="success-message">Your insights have been woven into the legacy of the Grand Egyptian Museum.</p>
+                                            <button class="btn-return" onclick="window.location.href='../4.home/code.html'">Back to Home</button>
+                                        </div>
+                                    </div>
+                                </main>
+                            
+                                <!-- Decorative Elements -->
+                                <div class="fb-background-accents">
+                                    <div class="accent-blur blur-1"></div>
+                                    <div class="accent-blur blur-2"></div>
+                                </div>
+                            
+                                <!-- Footer -->
+                                <footer class="site-footer">
+                                    <div class="footer-container">
+                                        <div class="footer-header">
+                                            <div class="footer-logo">
+                                                <span class="material-symbols-outlined">account_balance</span>
+                                            </div>
+                                            <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                            <div class="footer-divider"></div>
+                                        </div>
+                            
+                                        <div class="footer-grid">
+                                            <div class="footer-column">
+                                                <h3>Explore</h3>
+                                                <ul>
+                                                    <li><a href="../booking/booking.html">Tickets</a></li>
+                                                    <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                    <li><a href="../-membership/code.html">Membership</a></li>
+                                                    <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column">
+                                                <h3>About</h3>
+                                                <ul>
+                                                    <li><a href="../About us/About-us.html">History</a></li>
+                                                    <li><a href="../event/event.html">Events</a></li>
+                                                    <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                    <li><a href="../-branding/code.html">Branding</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column">
+                                                <h3>Support</h3>
+                                                <ul>
+                                                    <li><a href="../visitor help/help.html">Help</a></li>
+                                                    <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                    <li><a href="Feedback.html">Feedback</a></li>
+                                                    <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column connect-column">
+                                                <h3>Connect</h3>
+                                                <div class="social-links">
+                                                    <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                                                    <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                                                    <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                                    <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                                                </div>
+                                                <p>Follow us on social media for updates and behind-the-scenes content.</p>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="footer-separator"></div>
+                            
+                                        <div class="footer-bottom">
+                                            <div class="language-toggle">
+                                                <button class="active" data-lang="en">English</button>
+                                                <button data-lang="ar">العربية</button>
+                                            </div>
+                                            <div class="legal-section">
+                                                <div class="legal-links">
+                                                    <a href="../Privacy-policy/Privacy-Policy.html">Privacy Policy</a>
+                                                    <a href="../Terms-of-Service/term-of-service.html">Terms of Service</a>
+                                                    <a href="../Cookie-Settings/Cookie-Settings.html">Cookie Settings</a>
+                                                </div>
+                                                <div class="copyright">© 2026 Tutora. All rights reserved.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </footer>
+                            
+                                <!-- Scripts -->
+                                <script src="script.js"></script>
+                                <script src="../global-core.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            
+                            </html>
+                            

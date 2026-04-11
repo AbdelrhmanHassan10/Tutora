@@ -1,476 +1,478 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>TUTORA Get in Touch | Contact Tutora Team</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../animate.css" />
-	<link rel="stylesheet" href="../global-theme.css" />
-</head>
-
-<body class="dark">
-   
-  <div class="menu-overlay" id="menuOverlay"></div>
-
-    <!-- Single Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="menu-header" >
-            <div class="menu-logo">
-    
-    <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
-            </div>
-            <button class="close-btn" id="closeBtn">
-              <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
-            </button>
-        </div>
-        <nav class="menu-nav" >
-            <a href="../4.home/code.html" class="menu-link" >Home</a>
-            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" >Plan Your Visit</a
-        >         <a href="../Kids-Museum/kids-museum.html" class="menu-link" >Kids-Museum</a>
-
-        <a href="../event/event.html" class="menu-link" >Event</a>
-            <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle" >
-            AI Experience
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-                <div class="dropdown-items">
-                    <a href="../AI Guide/guide.html" class="dropdown-item" >AI Tour Guide</a
-            >
-            <a href="../chat bot/chat.html" class="dropdown-item" >AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" >AI Artifact Identifier</a
-            >
-            <a
-              href="../advanced 3D model/advanced-3D.html"
-              class="dropdown-item"
-              >AI Voice Storytelling (3D )</a
-            >
-                       <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item">Tutora laboratory</a>
- </div>
-        </div>
-        <a href="../shop/shop.html" class="menu-link" >Shop</a>
-                    <a href="../about/code.html" class="menu-link" >About</a>
-                    <a href="../collection/collection.html" class="menu-link" >Collection</a>
-        </nav>
-        <div class="menu-footer">
-            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link" >
-                <span class="material-symbols-outlined">favorite</span> Favorites
-            </a>
-            <button class="menu-icon-link" id="menuLangBtn" >
-          <span class="material-symbols-outlined" >language</span> Language
-        </button>
-        </div>
-        </div>
-
-        <!-- Header -->
-        <header class="header" >
-            <div class="header-container" >
-                <div class="header-left">
-                    <button class="menu-btn" id="menuBtn">
-            <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span
-            >
-                    </button>
-                  <div class="logo-section">
-    
-    <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
-                  </div>
-                </div>
-                <nav class="desktop-nav" >
-                    <a href="../4.home/code.html" >Home</a>
-                    <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a>
-   <a href="../Kids-Museum/kids-museum.html" >Kids-Museum</a>
-                    <a href="../event/event.html" >Event</a>
-                    <div class="nav-dropdown">
-                        <button class="nav-link dropdown-trigger" >
-              AI Experience
-              <span class="material-symbols-outlined">expand_more</span>
-            </button>
-                        <div class="dropdown-menu" >
-                            <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a
-              >
-              <a href="../chat bot/chat.html" class="dropdown-link" >AI Chatbot</a
-              >
-              <a
-                href="../artifact_identifier/artifact-identifier.html"
-                class="dropdown-link" 
-                >AI Artifact Identifier</a
-              >
-              <a
-                href="../advanced 3D model/advanced-3D.html"
-                class="dropdown-link" 
-                >AI Voice Storytelling (3D )</a
-              >
-                         <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link">Tutora laboratory</a>
- </div>
-          </div>
-          <a href="../shop/shop.html" >Shop</a>
-                            <a href="../about/code.html" >About</a>
-                            <a href="../collection/collection.html" >Collection</a>
-                </nav>
-                <div class="header-right">
-                    <div class="search-box" >
-                        <span class="material-symbols-outlined">search</span>
-                        <input type="text" placeholder="Search..." />
-                    </div>
-                    <button class="theme-btn" id="theme-toggle">
-            <span class="material-symbols-outlined">dark_mode</span>
-          </button>
-                    <a href="../booking/booking.html" class="btn-booking">booking</a>
-                    <a href="../fav/favourite.html" class="icon-btn" >
-                        <span class="material-symbols-outlined">favorite</span>
-                    </a>
-                    <button class="icon-btn" id="langBtn">
-            <span class="material-symbols-outlined">language</span>
-          </button>
-                    <a href="../Profile/profile.html">
-                        <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
-                    </a>
-                </div>
-                </div>
-        </header>
-        <main class="main-content">
-            <div class="contact-grid">
-                <!-- Left Side: Info -->
-                <section class="info-section">
-                    <div>
-                        <p class="section-label">Communication</p>
-                        <h1 class="hero-title">Get in Touch with GEM</h1>
-                        <p class="hero-desc">
-                            Experience the timeless majesty of Egypt. Our team is here to help you plan your journey through history.
-                        </p>
-                    </div>
-
-                    <div class="contact-methods">
-                        <div class="contact-item">
-                            <div class="icon-box">
-                                <span class="material-symbols-outlined">location_on</span>
-                            </div>
-                            <div>
-                                <h4 class="item-title">Our Location</h4>
-                                <p class="item-detail">
-                                    Giza Plateau, Cairo, Egypt<br />Near the Great Pyramids
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="icon-box">
-                                <span class="material-symbols-outlined">call</span>
-                            </div>
-                            <div>
-                                <h4 class="item-title">Phone Support</h4>
-                                <p class="item-detail">
-                                    +20 2 123 4567 (International)<br />19000 (Local Hotline)
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="icon-box">
-                                <span class="material-symbols-outlined">mail</span>
-                            </div>
-                            <div>
-                                <h4 class="item-title">Email Inquiries</h4>
-                                <p class="item-detail">
-                                    info@gem.gov.eg<br />ticketing@gem.gov.eg
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="social-links-grid">
-                        <a href="#" class="social-btn"><span
-                class="material-symbols-outlined"
-                style="font-size: 1.25rem"
-                >public</span
-              ></a
-            >
-            <a href="#" class="social-btn"
-              ><span
-                class="material-symbols-outlined"
-                style="font-size: 1.25rem"
-                >share</span
-              ></a
-            >
-            <a href="#" class="social-btn"
-              ><span
-                class="material-symbols-outlined"
-                style="font-size: 1.25rem"
-                >group</span
-              ></a
-            >
-                    </div>
-        </section>
-
-        <!-- Right Side: Form -->
-        <section class="form-container">
-          <form class="contact-form" id="contact-form">
-            <div class="form-group">
-              <label class="form-label">Full Name</label>
-              <input
-                type="text"
-                class="form-input"
-                placeholder="Ramses II"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input
-                type="email"
-                class="form-input"
-                placeholder="visitor@example.com"
-                required
-              />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Inquiry Type</label>
-              <select class="form-select">
-                <option>General Information</option>
-                <option>Ticketing Support</option>
-                <option>Guided Tours</option>
-                <option>School Visits</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea
-                class="form-textarea"
-                rows="5"
-                placeholder="Tell us how we can assist you..."
-                required
-              ></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Send Message</button>
-            <p class="form-note">Response time is typically within 24 hours.</p>
-          </form>
-        </section>
-      </div>
-
-      <!-- Department Directory -->
-      <section class="departments-section">
-        <div class="section-header">
-          <span class="section-label">Department Directory</span>
-          <h2 class="section-title">Specialized Assistance</h2>
-        </div>
-        <div class="departments-grid">
-          <div class="department-card">
-            <div class="dept-icon"><span class="material-symbols-outlined">event_seat</span></div>
-            <h3 class="dept-name">Private Events</h3>
-            <p class="dept-desc">Enquire about hosting weddings, corporate galas, or private ceremonies at GEM.</p>
-            <a href="mailto:events@gem.gov.eg" class="dept-link">events@gem.gov.eg</a>
-          </div>
-          <div class="department-card">
-            <div class="dept-icon"><span class="material-symbols-outlined">history_edu</span></div>
-            <h3 class="dept-name">Educational Tours</h3>
-            <p class="dept-desc">Group bookings for schools, universities, and research institutions.</p>
-            <a href="mailto:edu@gem.gov.eg" class="dept-link">edu@gem.gov.eg</a>
-          </div>
-          <div class="department-card">
-            <div class="dept-icon"><span class="material-symbols-outlined">camera_roll</span></div>
-            <h3 class="dept-name">Media & Press</h3>
-            <p class="dept-desc">Filming permits, press kits, and official media inquiries.</p>
-            <a href="mailto:press@gem.gov.eg" class="dept-link">press@gem.gov.eg</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Top FAQs Section -->
-      <section class="top-faqs-section">
-        <div class="section-header centered">
-            <span class="section-label">Quick Answers</span>
-            <h2 class="section-title">Frequently Asked Questions</h2>
-        </div>
-        <div class="faq-accordion-container">
-            <div class="faq-item">
-                <details>
-                    <summary class="faq-summary">
-                        <span>Can I change my ticket date?</span>
-                        <span class="material-symbols-outlined">add</span>
-                    </summary>
-                    <div class="faq-content">
-                        <p>Yes, date changes are possible up to 48 hours before your visit, subject to availability. Please contact ticketing@gem.gov.eg with your order number.</p>
-                    </div>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary class="faq-summary">
-                        <span>Is there a dress code for the museum?</span>
-                        <span class="material-symbols-outlined">add</span>
-                    </summary>
-                    <div class="faq-content">
-                        <p>We recommend comfortable walking shoes and respectful attire. As a cultural site, modest clothing is appreciated.</p>
-                    </div>
-                </details>
-            </div>
-            <div class="faq-item">
-                <details>
-                    <summary class="faq-summary">
-                        <span>Are there lockers for large bags?</span>
-                        <span class="material-symbols-outlined">add</span>
-                    </summary>
-                    <div class="faq-content">
-                        <p>Yes, secure lockers are available at the Visitor Center for a small fee. Large backpacks and suitcases are not allowed inside the galleries.</p>
-                    </div>
-                </details>
-            </div>
-        </div>
-      </section>
-
-      <!-- Map Section -->
-      <section class="map-section">
-        <div class="map-header">
-          <h2 class="map-title font-serif">Visit the Horizon of Khufu</h2>
-          <div class="map-line"></div>
-          <span class="section-label" style="font-size: 0.625rem"
-            >Map of Giza Plateau</span
-          >
-        </div>
-        <div class="map-container">
-          <img src="../10.jpg" alt="Giza Map" class="map-image" />
-          <div class="map-overlay"></div>
-          <div class="map-marker">
-            <div class="marker-ping"></div>
-            <div class="marker-dot">
-              <span class="material-symbols-outlined">museum</span>
-            </div>
-            <div class="marker-label">GEM COMPLEX</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Newsletter Section -->
-      <section class="newsletter-section">
-        <div class="newsletter-card">
-            <div class="newsletter-content">
-                <h2 class="newsletter-title font-serif">Subscribe to Eternity</h2>
-                <p class="newsletter-desc">Join our exclusive circle to receive updates on new discoveries and upcoming events at the Grand Egyptian Museum.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address" required />
-                    <button type="submit" class="btn-subscribe">Subscribe Now</button>
-                </form>
-            </div>
-            <div class="newsletter-bg-icon">
-                <span class="material-symbols-outlined">auto_awesome</span>
-            </div>
-        </div>
-      </section>
-
-      <footer class="site-footer">
-            <div class="footer-container">
-                <!-- Footer Header -->
-                <div class="footer-header">
-                    <div class="footer-logo">
-                        <span class="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <h2 class="footer-title">Grand Egyptian Museum</h2>
-                    <div class="footer-divider"></div>
-                </div>
-
-                <!-- Footer Grid -->
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="../booking/booking.html">Tickets</a></li>
-                            <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../-membership/code.html">Membership</a></li>
-                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="../About us/About-us.html">History</a></li>
-                            <li><a href="../event/event.html">Events</a></li>
-                            <li><a href="../-news_press/code.html">News & Press</a></li>
-                            <li><a href="../-branding/code.html">Branding</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="../visitor help/help.html">Help</a></li>
-                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column connect-column">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <!-- Facebook -->
-                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-
-                            <!-- Twitter (X ) -->
-                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-
-                            <!-- YouTube -->
-                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </div>
-
-                        <p>
-                            Follow us on social media for updates and behind-the-scenes content.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Footer Separator -->
-                <div class="footer-separator"></div>
-
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <div class="language-toggle">
-                        <button class="active" data-lang="en">English</button>
-                        <button data-lang="ar">العربية</button>
-                    </div>
-                    <div class="legal-section">
-                       <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                    </div>
-            <div class="copyright">
-              © 2026 Tutora. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </div>
-        </footer>
-        </main>
-
-        <script src="script.js"></script>
-        <script src="../global-core.js"></script>
-        <script src="../animate.js"></script>
-</body>
-
-
-</html>
+﻿<!doctype html>
+                            <html lang="en">
+                            
+                            <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <title>TUTORA Get in Touch | Contact Tutora Team</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="style.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                            	<link rel="stylesheet" href="../global-theme.css" />
+                            </head>
+                            
+                            <body class="dark">
+                               
+                              <div class="menu-overlay" id="menuOverlay"></div>
+                            
+                                <!-- Single Mobile Menu -->
+                                <div class="mobile-menu" id="mobileMenu">
+                                    <div class="menu-header" >
+                                        <div class="menu-logo">
+                                
+                                <div class="logo-circle">
+                                    <img src="../logo.png" alt="Tutora Logo">
+                                </div>
+                            
+                                <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+                                        </div>
+                                        <button class="close-btn" id="closeBtn">
+                                          <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
+                                        </button>
+                                    </div>
+                                    <nav class="menu-nav" >
+                                        <a href="../4.home/code.html" class="menu-link" >Home</a>
+                                        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" >Plan Your Visit</a
+                                    >         <a href="../Kids-Museum/kids-museum.html" class="menu-link" >Kids-Museum</a>
+                            
+                                    <a href="../event/event.html" class="menu-link" >Event</a>
+                                        <div class="menu-dropdown">
+                                            <button class="menu-link dropdown-toggle" >
+                                        AI Experience
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                      </button>
+                                            <div class="dropdown-items">
+                                                <a href="../AI Guide/guide.html" class="dropdown-item" >AI Tour Guide</a
+                                        >
+                                        <a href="../chat bot/chat.html" class="dropdown-item" >AI Chatbot</a>
+                                                <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" >AI Artifact Identifier</a
+                                        >
+                                        <a
+                                          href="../advanced 3D model/advanced-3D.html"
+                                          class="dropdown-item"
+                                          >AI Voice Storytelling (3D )</a
+                                        >
+                                                   <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item">Tutora laboratory</a>
+                             </div>
+                                    </div>
+                                    <a href="../shop/shop.html" class="menu-link" >Shop</a>
+                                                <a href="../about/code.html" class="menu-link" >About</a>
+                                                <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link" >Collection</a>
+                                    </nav>
+                                    <div class="menu-footer">
+                                        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+                                        <a href="../fav/favourite.html" class="menu-icon-link" >
+                                            <span class="material-symbols-outlined">favorite</span> Favorites
+                                        </a>
+                                        <button class="menu-icon-link" id="menuLangBtn" >
+                                      <span class="material-symbols-outlined" >language</span> Language
+                                    </button>
+                                    </div>
+                                    </div>
+                            
+                                    <!-- Header -->
+                                    <header class="header" >
+                                        <div class="header-container" >
+                                            <div class="header-left">
+                                                <button class="menu-btn" id="menuBtn">
+                                        <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span
+                                        >
+                                                </button>
+                                              <div class="logo-section">
+                                
+                                <div class="logo-circle">
+                                    <img src="../logo.png" alt="Tutora Logo">
+                                </div>
+                            
+                                <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
+                                              </div>
+                                            </div>
+                                            <nav class="desktop-nav" >
+                                                <a href="../4.home/code.html" >Home</a>
+                                                <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a>
+                               <a href="../Kids-Museum/kids-museum.html" >Kids-Museum</a>
+                                                <a href="../event/event.html" >Event</a>
+                                                <div class="nav-dropdown">
+                                                    <button class="nav-link dropdown-trigger" >
+                                          AI Experience
+                                          <span class="material-symbols-outlined">expand_more</span>
+                                        </button>
+                                                    <div class="dropdown-menu" >
+                                                        <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a
+                                          >
+                                          <a href="../chat bot/chat.html" class="dropdown-link" >AI Chatbot</a
+                                          >
+                                          <a
+                                            href="../artifact_identifier/artifact-identifier.html"
+                                            class="dropdown-link" 
+                                            >AI Artifact Identifier</a
+                                          >
+                                          <a
+                                            href="../advanced 3D model/advanced-3D.html"
+                                            class="dropdown-link" 
+                                            >AI Voice Storytelling (3D )</a
+                                          >
+                                                     <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link">Tutora laboratory</a>
+                             </div>
+                                      </div>
+                                      <a href="../shop/shop.html" >Shop</a>
+                                                        <a href="../about/code.html" >About</a>
+                                                        <a href="../Exhibition-Halls/exhibition-halls.html" >Collection</a>
+                                            </nav>
+                                            <div class="header-right">
+                                                <div class="search-box" >
+                                                    <span class="material-symbols-outlined">search</span>
+                                                    <input type="text" placeholder="Search..." />
+                                                </div>
+                                                <button class="theme-btn" id="theme-toggle">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                      </button>
+                                                <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                                <a href="../fav/favourite.html" class="icon-btn" >
+                                                    <span class="material-symbols-outlined">favorite</span>
+                                                </a>
+                                                <button class="icon-btn" id="langBtn">
+                                        <span class="material-symbols-outlined">language</span>
+                                      </button>
+                                                <a href="../Profile/profile.html">
+                                                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                                                </a>
+                                            </div>
+                                            </div>
+                                    </header>
+                                    <main class="main-content">
+                                        <div class="contact-grid">
+                                            <!-- Left Side: Info -->
+                                            <section class="info-section">
+                                                <div>
+                                                    <p class="section-label">Communication</p>
+                                                    <h1 class="hero-title">Get in Touch with GEM</h1>
+                                                    <p class="hero-desc">
+                                                        Experience the timeless majesty of Egypt. Our team is here to help you plan your journey through history.
+                                                    </p>
+                                                </div>
+                            
+                                                <div class="contact-methods">
+                                                    <div class="contact-item">
+                                                        <div class="icon-box">
+                                                            <span class="material-symbols-outlined">location_on</span>
+                                                        </div>
+                                                        <div>
+                                                            <h4 class="item-title">Our Location</h4>
+                                                            <p class="item-detail">
+                                                                Giza Plateau, Cairo, Egypt<br />Near the Great Pyramids
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                            
+                                                    <div class="contact-item">
+                                                        <div class="icon-box">
+                                                            <span class="material-symbols-outlined">call</span>
+                                                        </div>
+                                                        <div>
+                                                            <h4 class="item-title">Phone Support</h4>
+                                                            <p class="item-detail">
+                                                                +20 2 123 4567 (International)<br />19000 (Local Hotline)
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                            
+                                                    <div class="contact-item">
+                                                        <div class="icon-box">
+                                                            <span class="material-symbols-outlined">mail</span>
+                                                        </div>
+                                                        <div>
+                                                            <h4 class="item-title">Email Inquiries</h4>
+                                                            <p class="item-detail">
+                                                                info@gem.gov.eg<br />ticketing@gem.gov.eg
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                            
+                                                <div class="social-links-grid">
+                                                    <a href="#" class="social-btn"><span
+                                            class="material-symbols-outlined"
+                                            style="font-size: 1.25rem"
+                                            >public</span
+                                          ></a
+                                        >
+                                        <a href="#" class="social-btn"
+                                          ><span
+                                            class="material-symbols-outlined"
+                                            style="font-size: 1.25rem"
+                                            >share</span
+                                          ></a
+                                        >
+                                        <a href="#" class="social-btn"
+                                          ><span
+                                            class="material-symbols-outlined"
+                                            style="font-size: 1.25rem"
+                                            >group</span
+                                          ></a
+                                        >
+                                                </div>
+                                    </section>
+                            
+                                    <!-- Right Side: Form -->
+                                    <section class="form-container">
+                                      <form class="contact-form" id="contact-form">
+                                        <div class="form-group">
+                                          <label class="form-label">Full Name</label>
+                                          <input
+                                            type="text"
+                                            class="form-input"
+                                            placeholder="Ramses II"
+                                            required
+                                          />
+                                        </div>
+                                        <div class="form-group">
+                                          <label class="form-label">Email Address</label>
+                                          <input
+                                            type="email"
+                                            class="form-input"
+                                            placeholder="visitor@example.com"
+                                            required
+                                          />
+                                        </div>
+                                        <div class="form-group">
+                                          <label class="form-label">Inquiry Type</label>
+                                          <select class="form-select">
+                                            <option>General Information</option>
+                                            <option>Ticketing Support</option>
+                                            <option>Guided Tours</option>
+                                            <option>School Visits</option>
+                                          </select>
+                                        </div>
+                                        <div class="form-group">
+                                          <label class="form-label">Message</label>
+                                          <textarea
+                                            class="form-textarea"
+                                            rows="5"
+                                            placeholder="Tell us how we can assist you..."
+                                            required
+                                          ></textarea>
+                                        </div>
+                                        <button type="submit" class="btn-submit">Send Message</button>
+                                        <p class="form-note">Response time is typically within 24 hours.</p>
+                                      </form>
+                                    </section>
+                                  </div>
+                            
+                                  <!-- Department Directory -->
+                                  <section class="departments-section">
+                                    <div class="section-header">
+                                      <span class="section-label">Department Directory</span>
+                                      <h2 class="section-title">Specialized Assistance</h2>
+                                    </div>
+                                    <div class="departments-grid">
+                                      <div class="department-card">
+                                        <div class="dept-icon"><span class="material-symbols-outlined">event_seat</span></div>
+                                        <h3 class="dept-name">Private Events</h3>
+                                        <p class="dept-desc">Enquire about hosting weddings, corporate galas, or private ceremonies at GEM.</p>
+                                        <a href="mailto:events@gem.gov.eg" class="dept-link">events@gem.gov.eg</a>
+                                      </div>
+                                      <div class="department-card">
+                                        <div class="dept-icon"><span class="material-symbols-outlined">history_edu</span></div>
+                                        <h3 class="dept-name">Educational Tours</h3>
+                                        <p class="dept-desc">Group bookings for schools, universities, and research institutions.</p>
+                                        <a href="mailto:edu@gem.gov.eg" class="dept-link">edu@gem.gov.eg</a>
+                                      </div>
+                                      <div class="department-card">
+                                        <div class="dept-icon"><span class="material-symbols-outlined">camera_roll</span></div>
+                                        <h3 class="dept-name">Media & Press</h3>
+                                        <p class="dept-desc">Filming permits, press kits, and official media inquiries.</p>
+                                        <a href="mailto:press@gem.gov.eg" class="dept-link">press@gem.gov.eg</a>
+                                      </div>
+                                    </div>
+                                  </section>
+                            
+                                  <!-- Top FAQs Section -->
+                                  <section class="top-faqs-section">
+                                    <div class="section-header centered">
+                                        <span class="section-label">Quick Answers</span>
+                                        <h2 class="section-title">Frequently Asked Questions</h2>
+                                    </div>
+                                    <div class="faq-accordion-container">
+                                        <div class="faq-item">
+                                            <details>
+                                                <summary class="faq-summary">
+                                                    <span>Can I change my ticket date?</span>
+                                                    <span class="material-symbols-outlined">add</span>
+                                                </summary>
+                                                <div class="faq-content">
+                                                    <p>Yes, date changes are possible up to 48 hours before your visit, subject to availability. Please contact ticketing@gem.gov.eg with your order number.</p>
+                                                </div>
+                                            </details>
+                                        </div>
+                                        <div class="faq-item">
+                                            <details>
+                                                <summary class="faq-summary">
+                                                    <span>Is there a dress code for the museum?</span>
+                                                    <span class="material-symbols-outlined">add</span>
+                                                </summary>
+                                                <div class="faq-content">
+                                                    <p>We recommend comfortable walking shoes and respectful attire. As a cultural site, modest clothing is appreciated.</p>
+                                                </div>
+                                            </details>
+                                        </div>
+                                        <div class="faq-item">
+                                            <details>
+                                                <summary class="faq-summary">
+                                                    <span>Are there lockers for large bags?</span>
+                                                    <span class="material-symbols-outlined">add</span>
+                                                </summary>
+                                                <div class="faq-content">
+                                                    <p>Yes, secure lockers are available at the Visitor Center for a small fee. Large backpacks and suitcases are not allowed inside the galleries.</p>
+                                                </div>
+                                            </details>
+                                        </div>
+                                    </div>
+                                  </section>
+                            
+                                  <!-- Map Section -->
+                                  <section class="map-section">
+                                    <div class="map-header">
+                                      <h2 class="map-title font-serif">Visit the Horizon of Khufu</h2>
+                                      <div class="map-line"></div>
+                                      <span class="section-label" style="font-size: 0.625rem"
+                                        >Map of Giza Plateau</span
+                                      >
+                                    </div>
+                                    <div class="map-container">
+                                      <img src="../10.jpg" alt="Giza Map" class="map-image" />
+                                      <div class="map-overlay"></div>
+                                      <div class="map-marker">
+                                        <div class="marker-ping"></div>
+                                        <div class="marker-dot">
+                                          <span class="material-symbols-outlined">museum</span>
+                                        </div>
+                                        <div class="marker-label">GEM COMPLEX</div>
+                                      </div>
+                                    </div>
+                                  </section>
+                            
+                                  <!-- Newsletter Section -->
+                                  <section class="newsletter-section">
+                                    <div class="newsletter-card">
+                                        <div class="newsletter-content">
+                                            <h2 class="newsletter-title font-serif">Subscribe to Eternity</h2>
+                                            <p class="newsletter-desc">Join our exclusive circle to receive updates on new discoveries and upcoming events at the Grand Egyptian Museum.</p>
+                                            <form class="newsletter-form">
+                                                <input type="email" placeholder="Enter your email address" required />
+                                                <button type="submit" class="btn-subscribe">Subscribe Now</button>
+                                            </form>
+                                        </div>
+                                        <div class="newsletter-bg-icon">
+                                            <span class="material-symbols-outlined">auto_awesome</span>
+                                        </div>
+                                    </div>
+                                  </section>
+                            
+                                  <footer class="site-footer">
+                                        <div class="footer-container">
+                                            <!-- Footer Header -->
+                                            <div class="footer-header">
+                                                <div class="footer-logo">
+                                                    <span class="material-symbols-outlined">account_balance</span>
+                                                </div>
+                                                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                                <div class="footer-divider"></div>
+                                            </div>
+                            
+                                            <!-- Footer Grid -->
+                                            <div class="footer-grid">
+                                                <div class="footer-column">
+                                                    <h3>Explore</h3>
+                                                    <ul>
+                                                        <li><a href="../booking/booking.html">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                        <li><a href="../-membership/code.html">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>About</h3>
+                                                    <ul>
+                                                        <li><a href="../About us/About-us.html">History</a></li>
+                                                        <li><a href="../event/event.html">Events</a></li>
+                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>Support</h3>
+                                                    <ul>
+                                                        <li><a href="../visitor help/help.html">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column connect-column">
+                                                    <h3>Connect</h3>
+                                                    <div class="social-links">
+                                                        <!-- Facebook -->
+                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                                            <i class="fa-brands fa-facebook"></i>
+                                                        </a>
+                            
+                                                        <!-- Twitter (X ) -->
+                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                                            <i class="fa-brands fa-x-twitter"></i>
+                                                        </a>
+                            
+                                                        <!-- Instagram -->
+                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                                            <i class="fa-brands fa-instagram"></i>
+                                                        </a>
+                            
+                                                        <!-- YouTube -->
+                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                                            <i class="fa-brands fa-youtube"></i>
+                                                        </a>
+                                                    </div>
+                            
+                                                    <p>
+                                                        Follow us on social media for updates and behind-the-scenes content.
+                                                    </p>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Footer Separator -->
+                                            <div class="footer-separator"></div>
+                            
+                                            <!-- Footer Bottom -->
+                                            <div class="footer-bottom">
+                                                <div class="language-toggle">
+                                                    <button class="active" data-lang="en">English</button>
+                                                    <button data-lang="ar">العربية</button>
+                                                </div>
+                                                <div class="legal-section">
+                                                   <div class="legal-links">
+                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                                                </div>
+                                        <div class="copyright">
+                                          © 2026 Tutora. All rights reserved.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    </footer>
+                                    </main>
+                            
+                                    <script src="script.js"></script>
+                                    <script src="../global-core.js"></script>
+                                    <script src="../animate.js"></script>
+                            </body>
+                            
+                            
+                            </html>
+                            

@@ -1,389 +1,392 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Tutora News & Press - The Eternal Chronicle. Official press room of the Grand Egyptian Museum." />
-    <title>TUTORA | News & Press</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../museum.png">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    
-    <!-- CSS Dependencies -->
-    <link rel="stylesheet" href="../global-theme.css" />
-    <link rel="stylesheet" href="../animate.css" />
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body class="dark transition-theme">
-   <div class="menu-overlay" id="menuOverlay"></div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="menu-header">
-        <div class="menu-logo">
-           <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h3 class="menu-logo-text">Tutora</h3>
-        </div>
-        <button class="close-btn" id="closeBtn">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-
-      <nav class="menu-nav">
-        <a href="../4.home/code.html" class="menu-link">Home</a>
-        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-        <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
-
-        <a href="../event/event.html" class="menu-link">Event</a>
-
-        <div class="menu-dropdown">
-          <button class="menu-link dropdown-toggle">
-            AI Experience
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-items">
-            <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
-            <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
-            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
-          </div>
-        </div>
-
-        <a href="../shop/shop.html" class="menu-link">Shop</a>
-        <a href="../about/code.html" class="menu-link">About</a>
-        <a href="../collection/collection.html" class="menu-link">Collection</a>
-      </nav>
-
-      <div class="menu-footer">
-        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-        <a href="../fav/favourite.html" class="menu-icon-link">
-          <span class="material-symbols-outlined">favorite</span> Favorites
-        </a>
-
-        <button class="menu-icon-link" id="menuLangBtn">
-          <span class="material-symbols-outlined">language</span>
-          Language
-        </button>
-      </div>
-    </div>
-
-    <!-- Header -->
-    <header class="header">
-      <div class="header-container">
-        <div class="header-left">
-          <button class="menu-btn" id="menuBtn">
-            <span class="material-symbols-outlined">menu</span>
-          </button>
-          <div class="logo-section">
-            <div class="logo-circle">
-                <img src="../logo.png" alt="Tutora Logo">
-             </div>
-            <h2 class="logo-text">Tutora</h2>
-          </div>
-        </div>
-
-        <nav class="desktop-nav">
-          <a href="../4.home/code.html">Home</a>
-          <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-          <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-
-          <a href="../event/event.html">Event</a>
-          <div class="nav-dropdown">
-            <button class="nav-link dropdown-trigger">
-              AI Experience
-              <span class="material-symbols-outlined" >expand_more</span>
-            </button>
-            <div class="dropdown-menu" >
-              <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
-              <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-              <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
-              <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-              <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
-            </div>
-          </div>
-          <a href="../shop/shop.html">Shop</a>
-          <a href="../about/code.html">About</a>
-          <a href="../collection/collection.html">Collection</a>
-        </nav>
-
-        <div class="header-right">
-          <div class="search-box">
-            <span class="material-symbols-outlined">search</span>
-            <input type="text" placeholder="Search..." />
-          </div>
-          <button class="theme-btn" id="themeBtn">
-            <span class="material-symbols-outlined">dark_mode</span>
-          </button>
-          <a href="../booking/booking.html" class="btn-booking">booking</a>
-          <a href="../fav/favourite.html">
-            <button class="icon-btn">
-              <span class="material-symbols-outlined">favorite</span>
-            </button>
-          </a>
-          <button class="icon-btn" id="langBtn">
-            <span class="material-symbols-outlined">language</span>
-          </button>
-          <a href="../Profile/profile.html">
-            <img src="./unnamed.png" alt="Profile" class="profile-img" />
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <main class="news-page-wrapper">
-        <!-- Cinematic Hero Section -->
-        <section class="news-hero">
-            <div class="news-hero-bg"></div>
-            <div class="news-hero-overlay"></div>
-            <div class="news-hero-content anim-on-scroll">
-                <div class="hero-main-title">
-                    <span class="news-label">The Eternal Chronicle</span>
-                    <h1>HISTORY <br><span class="gold-text">UNFOLDING</span></h1>
-                </div>
-                <div class="news-hero-desc">
-                    <p>Documenting the ongoing legacy of Egyptian heritage and the modern evolution of the Grand Egyptian Museum through a digital lens.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Media Hub -->
-        <section class="news-content">
-            <div class="news-feed">
-                <div class="news-section-header anim-on-scroll">
-                    <h2>Latest News</h2>
-                    <div class="news-line"></div>
-                </div>
-
-                <div class="news-grid">
-                    <article class="news-card anim-on-scroll">
-                        <div class="news-card-img">
-                            <img src="../11.jpg" alt="Pharaoh Discovery">
-                        </div>
-                        <div class="news-card-body">
-                            <span class="news-date"><i class="far fa-calendar"></i> Dec 14, 2026</span>
-                            <h3>Unveiling the Hidden Chambers of the Khufu Dynasty</h3>
-                            <p>Recent geophysical surveys have revealed previously undocumented structural anomalies beneath the Giza plateau, promising a new era of discovery.</p>
-                            <a href="#" class="news-read-more">Read Full Release <span class="material-symbols-outlined">arrow_right_alt</span></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card anim-on-scroll">
-                        <div class="news-card-img">
-                            <img src="../100.jpg" alt="GEM Architecture">
-                        </div>
-                        <div class="news-card-body">
-                            <span class="news-date"><i class="far fa-calendar"></i> Nov 28, 2026</span>
-                            <h3>Grand Egyptian Museum Wins International Architecture Award</h3>
-                            <p>The GEM's innovative design has been recognized globally for its seamless integration of ancient stone motifs with modern glass engineering.</p>
-                            <a href="#" class="news-read-more">Read Full Release <span class="material-symbols-outlined">arrow_right_alt</span></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card anim-on-scroll">
-                        <div class="news-card-img">
-                            <img src="../122.png" alt="Digital Restoration">
-                        </div>
-                        <div class="news-card-body">
-                            <span class="news-date"><i class="far fa-calendar"></i> Nov 10, 2026</span>
-                            <h3>Pioneering Digital Restoration of the Tulli Papyrus</h3>
-                            <p>Utilizing multispectral imaging and AI-driven reconstruction, museum researchers have recovered lost inscriptions from the Third Intermediate Period.</p>
-                            <a href="#" class="news-read-more">Read Full Release <span class="material-symbols-outlined">arrow_right_alt</span></a>
-                        </div>
-                    </article>
-
-                    <article class="news-card anim-on-scroll">
-                        <div class="news-card-img">
-                            <img src="https://gem.museum/images/w780-c1170:780/storage/app/public/repository/r/n/rnk4g23e.jpg" alt="Dining Experience">
-                        </div>
-                        <div class="news-card-body">
-                            <span class="news-date"><i class="far fa-calendar"></i> Oct 22, 2026</span>
-                            <h3>The Gastronomy Collection: A New Era of Museum Dining</h3>
-                            <p>Experience the silent majesty of the pyramids under the stars as the GEM launches its signature curatorial dining series across 10 global venues.</p>
-                            <a href="#" class="news-read-more">Read Full Release <span class="material-symbols-outlined">arrow_right_alt</span></a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-
-            <!-- Sticky Sidebar -->
-            <aside class="news-sidebar">
-                <div class="sidebar-box anim-on-scroll">
-                    <h2><span class="material-symbols-outlined">folder_zip</span> Press Assets</h2>
-                    <div class="news-kit-item">
-                        <a href="#">
-                            <span>Visual Archives 2026</span>
-                            <p>High-resolution imagery of the Great Staircase and RAMSES II (240MB).</p>
-                        </a>
-                    </div>
-                    <div class="news-kit-item">
-                        <a href="#">
-                            <span>Media Style Guide</span>
-                            <p>Official museum brand guidelines, iconography, and editorial standards.</p>
-                        </a>
-                    </div>
-                    <button class="news-interview-btn">Request Accreditation</button>
-                </div>
-
-                <div class="sidebar-box anim-on-scroll">
-                    <h2>Media Relations</h2>
-                    <div class="news-contact-item" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin-bottom: 2rem;">
-                        <span style="font-size: 0.7rem; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; display: block; margin-bottom: 0.5rem;">Comm Director</span>
-                        <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.3rem;">Amara Vance</strong>
-                        <a href="mailto:press@gem.eg" style="color: var(--news-text-secondary); text-decoration: none; font-size: 0.9rem;">press@gem.eg</a>
-                    </div>
-                    <div class="news-contact-item" style="border-left: 2px solid var(--news-border-strong); padding-left: 1.5rem;">
-                        <span style="font-size: 0.7rem; text-transform: uppercase; color: var(--news-text-secondary); letter-spacing: 2px; display: block; margin-bottom: 0.5rem;">Archival Liaison</span>
-                        <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.3rem;">Dr. Samir Kassab</strong>
-                        <a href="mailto:archives@gem.eg" style="color: var(--news-text-secondary); text-decoration: none; font-size: 0.9rem;">archives@gem.eg</a>
-                    </div>
-                </div>
-            </aside>
-        </section>
-
-        <!-- Museum Heritage Timeline -->
-        <section class="news-timeline">
-            <h2 class="anim-on-scroll">Museum <span class="gold-text">Milestones</span></h2>
-            <div class="news-timeline-list">
-                <div class="news-tl-item anim-on-scroll">
-                    <div class="news-tl-year">2002</div>
-                    <div class="news-tl-content">
-                        <h3>Vision Announced</h3>
-                        <p>The Egyptian government officially initiates the Grand Egyptian Museum mission to create a global monument for archaeology.</p>
-                    </div>
-                </div>
-                <div class="news-tl-item anim-on-scroll">
-                    <div class="news-tl-year">2012</div>
-                    <div class="news-tl-content">
-                        <h3>Foundation Laid</h3>
-                        <p>Construction commences on the Giza plateau, marking the start of a multi-billion dollar masterplan for human heritage.</p>
-                    </div>
-                </div>
-                <div class="news-tl-item anim-on-scroll">
-                    <div class="news-tl-year">2021</div>
-                    <div class="news-tl-content">
-                        <h3>The Golden Parade</h3>
-                        <p>Centerpiece galleries are completed, housing the full collection of King Tutankhamun for the first time in history.</p>
-                    </div>
-                </div>
-                <div class="news-tl-item anim-on-scroll">
-                    <div class="news-tl-year">2026</div>
-                    <div class="news-tl-content">
-                        <h3>Tutora AI Launch</h3>
-                        <p>The museum enters the digital frontier with the Tutora AI platform, bridging the gap between ancient stone and modern silicon.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recognition & Honors -->
-        <section class="news-awards">
-            <h2 class="anim-on-scroll">Awards & <span class="gold-text">Recognition</span></h2>
-            <div class="news-awards-grid">
-                <div class="news-award-card anim-on-scroll">
-                    <span class="material-symbols-outlined">emoji_events</span>
-                    <h3>UNESCO Heritage</h3>
-                    <p>Recognition for outstanding cultural preservation and research, 2025</p>
-                </div>
-                <div class="news-award-card anim-on-scroll">
-                    <span class="material-symbols-outlined">architecture</span>
-                    <h3>Architectural Prize</h3>
-                    <p>Best Cultural Monument — International Design Grand Prix, 2024</p>
-                </div>
-                <div class="news-award-card anim-on-scroll">
-                    <span class="material-symbols-outlined">workspace_premium</span>
-                    <h3>AI Innovation</h3>
-                    <p>Tutora AI named Tech Innovation of the Year — MuseHub Global, 2026</p>
-                </div>
-                <div class="news-award-card anim-on-scroll">
-                    <span class="material-symbols-outlined">public</span>
-                    <h3>Tourism Excellence</h3>
-                    <p>World's Leading Cultural Destination — World Travel Awards, 2025</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-header">
-                <div class="footer-logo">
-                    <span class="material-symbols-outlined">account_balance</span>
-                </div>
-                <h2 class="footer-title">Grand Egyptian Museum</h2>
-                <div class="footer-divider"></div>
-            </div>
-
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h3>Explore</h3>
-                    <ul>
-                        <li><a href="../booking/booking.html">Tickets</a></li>
-                        <li><a href="../collection/collection.html">Collection</a></li>
-                        <li><a href="../-membership/code.html">Membership</a></li>
-                        <li><a href="../-museum_dining/code.html">Dining</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="../About us/About-us.html">History</a></li>
-                        <li><a href="../event/event.html">Events</a></li>
-                        <li><a href="../-news_press/code.html">News Room</a></li>
-                        <li><a href="../-branding/code.html">Branding</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="../visitor help/help.html">Help</a></li>
-                        <li><a href="../get in touch/get-in-touch.html">Contact</a></li>
-                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column connect-column">
-                    <h3>Connect</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                    <p>Follow us for the latest archival releases and GEM updates.</p>
-                </div>
-            </div>
-
-            <div class="footer-separator"></div>
-
-            <div class="footer-bottom">
-                <div class="language-toggle">
-                    <button class="active">English</button>
-                    <button>العربية</button>
-                </div>
-                <div class="legal-section">
-                    <div class="legal-links">
-                        <a href="#">Privacy</a>
-                        <a href="#">Terms</a>
-                        <a href="#">Cookies</a>
-                    </div>
-                    <div class="copyright">© 2026 Tutora. All rights reserved.</div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <!-- <script src="../global-core.js"></script> -->
-    <script src="script.js"></script>
-    <script src="../animate.js"></script>
-</body>
-</html>
+﻿<!doctype html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <meta name="description" content="Tutora News & Press - The Eternal Chronicle. Official press room of the Grand Egyptian Museum." />
+                                <title>TUTORA | News & Press</title>
+                                
+                                <!-- Favicon -->
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                
+                                <!-- Fonts -->
+                                <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+                                
+                                <!-- CSS Dependencies -->
+                                <link rel="stylesheet" href="../global-theme.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                                <link rel="stylesheet" href="style.css" />
+                            </head>
+                            <body class="dark transition-theme">
+                               <div class="menu-overlay" id="menuOverlay"></div>
+                            
+                                <div class="mobile-menu" id="mobileMenu">
+                                  <div class="menu-header">
+                                    <div class="menu-logo">
+                                       <div class="logo-circle">
+                                    <img src="../logo.png" alt="Tutora Logo">
+                                </div>
+                            
+                                <h3 class="menu-logo-text">Tutora</h3>
+                                    </div>
+                                    <button class="close-btn" id="closeBtn">
+                                      <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                  </div>
+                            
+                                  <nav class="menu-nav">
+                                    <a href="../4.home/code.html" class="menu-link">Home</a>
+                                    <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition-Halls</a>
+                                    <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+                            
+                                    <a href="../event/event.html" class="menu-link">Event</a>
+                            
+                                    <div class="menu-dropdown">
+                                      <button class="menu-link dropdown-toggle">
+                                        AI Experience
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                      </button>
+                                      <div class="dropdown-items">
+                                        <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                                        <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                                      </div>
+                                    </div>
+                            
+                                    <a href="../shop/shop.html" class="menu-link">Shop</a>
+                                    <a href="../about/code.html" class="menu-link">About</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
+                                  </nav>
+                            
+                                  <div class="menu-footer">
+                                    <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+                                    <a href="../fav/favourite.html" class="menu-icon-link">
+                                      <span class="material-symbols-outlined">favorite</span> Favorites
+                                    </a>
+                            
+                                    <button class="menu-icon-link" id="menuLangBtn">
+                                      <span class="material-symbols-outlined">language</span>
+                                      Language
+                                    </button>
+                                  </div>
+                                </div>
+                            
+                                <!-- Header -->
+                                <header class="header">
+                                  <div class="header-container">
+                                    <div class="header-left">
+                                      <button class="menu-btn" id="menuBtn">
+                                        <span class="material-symbols-outlined">menu</span>
+                                      </button>
+                                      <div class="logo-section">
+                                        <div class="logo-circle">
+                                            <img src="../logo.png" alt="Tutora Logo">
+                                         </div>
+                                        <h2 class="logo-text">Tutora</h2>
+                                      </div>
+                                    </div>
+                            
+                                    <nav class="desktop-nav">
+                                      <a href="../4.home/code.html">Home</a>
+                                      <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                                      <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                            
+                                      <a href="../event/event.html">Event</a>
+                                      <div class="nav-dropdown">
+                                        <button class="nav-link dropdown-trigger">
+                                          AI Experience
+                                          <span class="material-symbols-outlined" >expand_more</span>
+                                        </button>
+                                        <div class="dropdown-menu" >
+                                          <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                                          <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                                          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+                                          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                                          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                                        </div>
+                                      </div>
+                                      <a href="../shop/shop.html">Shop</a>
+                                      <a href="../about/code.html">About</a>
+                                      <a href="../Exhibition-Halls/exhibition-halls.html">Collection</a>
+                                    </nav>
+                            
+                                    <div class="header-right">
+                                      <div class="search-box">
+                                        <span class="material-symbols-outlined">search</span>
+                                        <input type="text" placeholder="Search..." />
+                                      </div>
+                                      <button class="theme-btn" id="themeBtn">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                      </button>
+                                      <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                      <a href="../fav/favourite.html">
+                                        <button class="icon-btn">
+                                          <span class="material-symbols-outlined">favorite</span>
+                                        </button>
+                                      </a>
+                                      <button class="icon-btn" id="langBtn">
+                                        <span class="material-symbols-outlined">language</span>
+                                      </button>
+                                      <a href="../Profile/profile.html">
+                                        <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                                      </a>
+                                    </div>
+                                  </div>
+                                </header>
+                            
+                                <main class="news-page-wrapper">
+                                    <!-- Cinematic Hero Section -->
+                                    <section class="news-hero">
+                                        <div class="news-hero-bg"></div>
+                                        <div class="news-hero-overlay"></div>
+                                        <div class="news-hero-content anim-on-scroll">
+                                            <div class="hero-main-title">
+                                                <span class="news-label">The Eternal Chronicle</span>
+                                                <h1>HISTORY <br><span class="gold-text">UNFOLDING</span></h1>
+                                            </div>
+                                            <div class="news-hero-desc">
+                                                <p>Documenting the ongoing legacy of Egyptian heritage and the modern evolution of the Grand Egyptian Museum through a digital lens.</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Main Media Hub -->
+                                    <section class="news-content">
+                                        <div class="news-feed">
+                                            <div class="news-section-header anim-on-scroll">
+                                                <h2>Latest News</h2>
+                                                <div class="news-line"></div>
+                                            </div>
+                            
+                                            <div class="news-grid">
+                                                <article class="news-card anim-on-scroll">
+                                                    <div class="news-card-img">
+                                                        <img src="../11.jpg" alt="Pharaoh Discovery">
+                                                    </div>
+                                                    <div class="news-card-body">
+                                                        <span class="news-date"><i class="far fa-calendar"></i> Dec 14, 2026</span>
+                                                        <h3>Unveiling the Hidden Chambers of the Khufu Dynasty</h3>
+                                                        <p>Recent geophysical surveys have revealed previously undocumented structural anomalies beneath the Giza plateau, promising a new era of discovery.</p>
+                                                        <a href="#" class="news-read-more">Read Full Release <span class="material-symbols-outlined">arrow_right_alt</span></a>
+                                                    </div>
+                                                </article>
+                            
+                                                <article class="news-card anim-on-scroll">
+                                                    <div class="news-card-img">
+                                                        <img src="../100.jpg" alt="GEM Architecture">
+                                                    </div>
+                                                    <div class="news-card-body">
+                                                        <span class="news-date"><i class="far fa-calendar"></i> Nov 28, 2026</span>
+                                                        <h3>Grand Egyptian Museum Wins International Architecture Award</h3>
+                                                        <p>The GEM's innovative design has been recognized globally for its seamless integration of ancient stone motifs with modern glass engineering.</p>
+                                                        <a href="#" class="news-read-more">Read Full Release <span class="material-symbols-outlined">arrow_right_alt</span></a>
+                                                    </div>
+                                                </article>
+                            
+                                                <article class="news-card anim-on-scroll">
+                                                    <div class="news-card-img">
+                                                        <img src="../122.png" alt="Digital Restoration">
+                                                    </div>
+                                                    <div class="news-card-body">
+                                                        <span class="news-date"><i class="far fa-calendar"></i> Nov 10, 2026</span>
+                                                        <h3>Pioneering Digital Restoration of the Tulli Papyrus</h3>
+                                                        <p>Utilizing multispectral imaging and AI-driven reconstruction, museum researchers have recovered lost inscriptions from the Third Intermediate Period.</p>
+                                                        <a href="#" class="news-read-more">Read Full Release <span class="material-symbols-outlined">arrow_right_alt</span></a>
+                                                    </div>
+                                                </article>
+                            
+                                                <article class="news-card anim-on-scroll">
+                                                    <div class="news-card-img">
+                                                        <img src="https://gem.museum/images/w780-c1170:780/storage/app/public/repository/r/n/rnk4g23e.jpg" alt="Dining Experience">
+                                                    </div>
+                                                    <div class="news-card-body">
+                                                        <span class="news-date"><i class="far fa-calendar"></i> Oct 22, 2026</span>
+                                                        <h3>The Gastronomy Collection: A New Era of Museum Dining</h3>
+                                                        <p>Experience the silent majesty of the pyramids under the stars as the GEM launches its signature curatorial dining series across 10 global venues.</p>
+                                                        <a href="#" class="news-read-more">Read Full Release <span class="material-symbols-outlined">arrow_right_alt</span></a>
+                                                    </div>
+                                                </article>
+                                            </div>
+                                        </div>
+                            
+                                        <!-- Sticky Sidebar -->
+                                        <aside class="news-sidebar">
+                                            <div class="sidebar-box anim-on-scroll">
+                                                <h2><span class="material-symbols-outlined">folder_zip</span> Press Assets</h2>
+                                                <div class="news-kit-item">
+                                                    <a href="#">
+                                                        <span>Visual Archives 2026</span>
+                                                        <p>High-resolution imagery of the Great Staircase and RAMSES II (240MB).</p>
+                                                    </a>
+                                                </div>
+                                                <div class="news-kit-item">
+                                                    <a href="#">
+                                                        <span>Media Style Guide</span>
+                                                        <p>Official museum brand guidelines, iconography, and editorial standards.</p>
+                                                    </a>
+                                                </div>
+                                                <button class="news-interview-btn">Request Accreditation</button>
+                                            </div>
+                            
+                                            <div class="sidebar-box anim-on-scroll">
+                                                <h2>Media Relations</h2>
+                                                <div class="news-contact-item" style="border-left: 2px solid var(--gold); padding-left: 1.5rem; margin-bottom: 2rem;">
+                                                    <span style="font-size: 0.7rem; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; display: block; margin-bottom: 0.5rem;">Comm Director</span>
+                                                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.3rem;">Amara Vance</strong>
+                                                    <a href="mailto:press@gem.eg" style="color: var(--news-text-secondary); text-decoration: none; font-size: 0.9rem;">press@gem.eg</a>
+                                                </div>
+                                                <div class="news-contact-item" style="border-left: 2px solid var(--news-border-strong); padding-left: 1.5rem;">
+                                                    <span style="font-size: 0.7rem; text-transform: uppercase; color: var(--news-text-secondary); letter-spacing: 2px; display: block; margin-bottom: 0.5rem;">Archival Liaison</span>
+                                                    <strong style="display: block; font-size: 1.1rem; margin-bottom: 0.3rem;">Dr. Samir Kassab</strong>
+                                                    <a href="mailto:archives@gem.eg" style="color: var(--news-text-secondary); text-decoration: none; font-size: 0.9rem;">archives@gem.eg</a>
+                                                </div>
+                                            </div>
+                                        </aside>
+                                    </section>
+                            
+                                    <!-- Museum Heritage Timeline -->
+                                    <section class="news-timeline">
+                                        <h2 class="anim-on-scroll">Museum <span class="gold-text">Milestones</span></h2>
+                                        <div class="news-timeline-list">
+                                            <div class="news-tl-item anim-on-scroll">
+                                                <div class="news-tl-year">2002</div>
+                                                <div class="news-tl-content">
+                                                    <h3>Vision Announced</h3>
+                                                    <p>The Egyptian government officially initiates the Grand Egyptian Museum mission to create a global monument for archaeology.</p>
+                                                </div>
+                                            </div>
+                                            <div class="news-tl-item anim-on-scroll">
+                                                <div class="news-tl-year">2012</div>
+                                                <div class="news-tl-content">
+                                                    <h3>Foundation Laid</h3>
+                                                    <p>Construction commences on the Giza plateau, marking the start of a multi-billion dollar masterplan for human heritage.</p>
+                                                </div>
+                                            </div>
+                                            <div class="news-tl-item anim-on-scroll">
+                                                <div class="news-tl-year">2021</div>
+                                                <div class="news-tl-content">
+                                                    <h3>The Golden Parade</h3>
+                                                    <p>Centerpiece galleries are completed, housing the full collection of King Tutankhamun for the first time in history.</p>
+                                                </div>
+                                            </div>
+                                            <div class="news-tl-item anim-on-scroll">
+                                                <div class="news-tl-year">2026</div>
+                                                <div class="news-tl-content">
+                                                    <h3>Tutora AI Launch</h3>
+                                                    <p>The museum enters the digital frontier with the Tutora AI platform, bridging the gap between ancient stone and modern silicon.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Recognition & Honors -->
+                                    <section class="news-awards">
+                                        <h2 class="anim-on-scroll">Awards & <span class="gold-text">Recognition</span></h2>
+                                        <div class="news-awards-grid">
+                                            <div class="news-award-card anim-on-scroll">
+                                                <span class="material-symbols-outlined">emoji_events</span>
+                                                <h3>UNESCO Heritage</h3>
+                                                <p>Recognition for outstanding cultural preservation and research, 2025</p>
+                                            </div>
+                                            <div class="news-award-card anim-on-scroll">
+                                                <span class="material-symbols-outlined">architecture</span>
+                                                <h3>Architectural Prize</h3>
+                                                <p>Best Cultural Monument â€” International Design Grand Prix, 2024</p>
+                                            </div>
+                                            <div class="news-award-card anim-on-scroll">
+                                                <span class="material-symbols-outlined">workspace_premium</span>
+                                                <h3>AI Innovation</h3>
+                                                <p>Tutora AI named Tech Innovation of the Year â€” MuseHub Global, 2026</p>
+                                            </div>
+                                            <div class="news-award-card anim-on-scroll">
+                                                <span class="material-symbols-outlined">public</span>
+                                                <h3>Tourism Excellence</h3>
+                                                <p>World's Leading Cultural Destination â€” World Travel Awards, 2025</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </main>
+                            
+                                <footer class="site-footer">
+                                    <div class="footer-container">
+                                        <div class="footer-header">
+                                            <div class="footer-logo">
+                                                <span class="material-symbols-outlined">account_balance</span>
+                                            </div>
+                                            <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                            <div class="footer-divider"></div>
+                                        </div>
+                            
+                                        <div class="footer-grid">
+                                            <div class="footer-column">
+                                                <h3>Explore</h3>
+                                                <ul>
+                                                    <li><a href="../booking/booking.html">Tickets</a></li>
+                                                    <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                    <li><a href="../-membership/code.html">Membership</a></li>
+                                                    <li><a href="../-museum_dining/code.html">Dining</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column">
+                                                <h3>About</h3>
+                                                <ul>
+                                                    <li><a href="../About us/About-us.html">History</a></li>
+                                                    <li><a href="../event/event.html">Events</a></li>
+                                                    <li><a href="../-news_press/code.html">News Room</a></li>
+                                                    <li><a href="../-branding/code.html">Branding</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column">
+                                                <h3>Support</h3>
+                                                <ul>
+                                                    <li><a href="../visitor help/help.html">Help</a></li>
+                                                    <li><a href="../get in touch/get-in-touch.html">Contact</a></li>
+                                                    <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                    <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="footer-column connect-column">
+                                                <h3>Connect</h3>
+                                                <div class="social-links">
+                                                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                                                </div>
+                                                <p>Follow us for the latest archival releases and GEM updates.</p>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="footer-separator"></div>
+                            
+                                        <div class="footer-bottom">
+                                            <div class="language-toggle">
+                                                <button class="active">English</button>
+                                                <button>العربية</button>
+                                            </div>
+                                            <div class="legal-section">
+                                                <div class="legal-links">
+                                                    <a href="#">Privacy</a>
+                                                    <a href="#">Terms</a>
+                                                    <a href="#">Cookies</a>
+                                                </div>
+                                                <div class="copyright">© 2026 Tutora. All rights reserved.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </footer>
+                            
+                                <!-- Scripts -->
+                                <!-- <script src="../global-core.js"></script> -->
+                                <script src="script.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            </html>
+                            

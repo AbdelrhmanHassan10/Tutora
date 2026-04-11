@@ -1,351 +1,353 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Tutora Accessibility - Inclusive Excellence at the Grand Egyptian Museum. Explore effortlessly." />
-    <title>TUTORA | Inclusive Excellence</title>
-    
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    
-    <link rel="stylesheet" href="../global-theme.css" />
-    <link rel="stylesheet" href="../animate.css" />
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body class="dark transition-theme">
-   <div class="menu-overlay" id="menuOverlay"></div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="menu-header">
-        <div class="menu-logo">
-           <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h3 class="menu-logo-text">Tutora</h3>
-        </div>
-        <button class="close-btn" id="closeBtn">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-
-      <nav class="menu-nav">
-        <a href="../4.home/code.html" class="menu-link">Home</a>
-        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-        <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
-
-        <a href="../event/event.html" class="menu-link">Event</a>
-
-        <div class="menu-dropdown">
-          <button class="menu-link dropdown-toggle">
-            AI Experience
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-items">
-            <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
-            <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
-            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
-          </div>
-        </div>
-
-        <a href="../shop/shop.html" class="menu-link">Shop</a>
-        <a href="../about/code.html" class="menu-link">About</a>
-        <a href="../collection/collection.html" class="menu-link">Collection</a>
-      </nav>
-
-      <div class="menu-footer">
-        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-        <a href="../fav/favourite.html" class="menu-icon-link">
-          <span class="material-symbols-outlined">favorite</span> Favorites
-        </a>
-
-        <button class="menu-icon-link" id="menuLangBtn">
-          <span class="material-symbols-outlined">language</span>
-          Language
-        </button>
-      </div>
-    </div>
-
-    <!-- Header -->
-    <header class="header">
-      <div class="header-container">
-        <div class="header-left">
-          <button class="menu-btn" id="menuBtn">
-            <span class="material-symbols-outlined">menu</span>
-          </button>
-          <div class="logo-section">
-            <div class="logo-circle">
-                <img src="../logo.png" alt="Tutora Logo">
-             </div>
-            <h2 class="logo-text">Tutora</h2>
-          </div>
-        </div>
-
-        <nav class="desktop-nav">
-          <a href="../4.home/code.html">Home</a>
-          <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-          <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-
-          <a href="../event/event.html">Event</a>
-          <div class="nav-dropdown">
-            <button class="nav-link dropdown-trigger">
-              AI Experience
-              <span class="material-symbols-outlined" >expand_more</span>
-            </button>
-            <div class="dropdown-menu" >
-              <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
-              <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-              <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
-              <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-              <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
-            </div>
-          </div>
-          <a href="../shop/shop.html">Shop</a>
-          <a href="../about/code.html">About</a>
-          <a href="../collection/collection.html">Collection</a>
-        </nav>
-
-        <div class="header-right">
-          <div class="search-box">
-            <span class="material-symbols-outlined">search</span>
-            <input type="text" placeholder="Search..." />
-          </div>
-          <button class="theme-btn" id="themeBtn">
-            <span class="material-symbols-outlined">dark_mode</span>
-          </button>
-          <a href="../booking/booking.html" class="btn-booking">booking</a>
-          <a href="../fav/favourite.html">
-            <button class="icon-btn">
-              <span class="material-symbols-outlined">favorite</span>
-            </button>
-          </a>
-          <button class="icon-btn" id="langBtn">
-            <span class="material-symbols-outlined">language</span>
-          </button>
-          <a href="../Profile/profile.html">
-            <img src="./unnamed.png" alt="Profile" class="profile-img" />
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <main class="acc-page-wrapper">
-        <!-- Cinematic Hero -->
-        <section class="acc-hero">
-            <div class="acc-hero-bg"></div>
-            <div class="acc-hero-overlay"></div>
-            <div class="acc-hero-content anim-on-scroll">
-                <span class="material-symbols-outlined acc-hero-icon">accessibility_new</span>
-                <h1>INCLUSIVE <br><span class="gold-text">EXCELLENCE</span></h1>
-                <p style="text-transform: uppercase; letter-spacing: 4px; color: var(--acc-text-secondary); margin-top: 2rem;">A Sanctuary of Heritage, Accessible to All Souls</p>
-            </div>
-        </section>
-
-        <!-- The Grand Escalators Section -->
-        <section class="acc-mobility-featured">
-            <div class="acc-mobility-img anim-on-scroll">
-                <img src="../Grand_Staircase_(GEM).jpg" alt="Grand Staircase Escalators">
-                <div class="acc-mobility-overlay">
-                    <span class="acc-mobility-badge">Seamless Elevation</span>
-                </div>
-            </div>
-            <div class="acc-mobility-text anim-on-scroll">
-                <span class="gold-text" style="text-transform: uppercase; letter-spacing: 5px; font-weight: 800; font-size: 0.8rem;">Physical Ease</span>
-                <h2>Effortless <br><span class="gold-text">Ascension</span></h2>
-                <p>Scaling the heights of Egyptian history shouldn't be a challenge. Our **Grand Escalators** <em>(السلالم الكهربائية)</em> run alongside the famous Grand Staircase, offering a smooth, safe, and panoramic journey for those who prefer to avoid the stairs.</p>
-                <div class="acc-feature-list">
-                    <div class="acc-feature-item"><span class="material-symbols-outlined">check_circle</span> 24/7 Monitoring</div>
-                    <div class="acc-feature-item"><span class="material-symbols-outlined">check_circle</span> Wide-Step Design</div>
-                    <div class="acc-feature-item"><span class="material-symbols-outlined">check_circle</span> Anti-Slip Surface</div>
-                    <div class="acc-feature-item"><span class="material-symbols-outlined">check_circle</span> Staff Assistance</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Settings Cards -->
-        <section class="acc-settings-row">
-            <div class="acc-grid">
-                <!-- Visual & Motion -->
-                <div class="acc-card anim-on-scroll">
-                    <div class="acc-card-header">
-                        <span class="material-symbols-outlined acc-icon-box">visibility</span>
-                        <h3>Interface <span class="gold-text">Design</span></h3>
-                    </div>
-                    <div class="acc-control">
-                        <div class="acc-switch-row">
-                            <div><strong>High Contrast Mode</strong><p>Enhanced legibility for artifact details.</p></div>
-                            <label class="acc-switch"><input type="checkbox"><span class="acc-slider"></span></label>
-                        </div>
-                        <div class="acc-switch-row">
-                            <div><strong>Reduce Motion</strong><p>Minimize UI animations and shifts.</p></div>
-                            <label class="acc-switch"><input type="checkbox"><span class="acc-slider"></span></label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text & Audio -->
-                <div class="acc-card anim-on-scroll">
-                    <div class="acc-card-header">
-                        <span class="material-symbols-outlined acc-icon-box">format_size</span>
-                        <h3>Reading & <span class="gold-text">Sound</span></h3>
-                    </div>
-                    <div class="acc-control">
-                        <label>Preferred Text Size</label>
-                        <div class="acc-size-labels">
-                            <span>S</span><span class="active">M</span><span>L</span><span>XL</span>
-                        </div>
-                        <input type="range" class="acc-range" min="1" max="4" value="2" id="textSizeRange">
-                    </div>
-                    <div class="acc-switch-row" style="margin-top: 2rem;">
-                        <div><strong>Audio Guides</strong><p>Spatial audio descriptions.</p></div>
-                        <label class="acc-switch"><input type="checkbox" checked><span class="acc-slider"></span></label>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- On-Site Services Grid -->
-        <section class="acc-services">
-            <div class="brand-section-header anim-on-scroll" style="text-align: center; margin-bottom: 6rem;">
-                <h2 style="font-family: 'Cinzel', serif; font-size: 3.5rem;">The Sanctuary <span class="gold-text">Service</span></h2>
-                <p style="max-width: 800px; margin: 2rem auto; color: var(--acc-text-secondary);">The GEM is more than a museum; it is a supportive environment designed for the safety and comfort of every visitor.</p>
-            </div>
-
-            <div class="acc-services-grid">
-                <div class="acc-service-box anim-on-scroll">
-                    <span class="material-symbols-outlined service-icon">accessible</span>
-                    <h4>Wheelchair Fleet</h4>
-                    <p>Complimentary manual and electric wheelchairs are available at every entrance for a seamless journey.</p>
-                </div>
-                <div class="acc-service-box anim-on-scroll">
-                    <span class="material-symbols-outlined service-icon">support_agent</span>
-                    <h4>Personal Guidance</h4>
-                    <p>Our dedicated accessibility officers are stationed at every level to assist with navigation and safety.</p>
-                </div>
-                <div class="acc-service-box anim-on-scroll">
-                    <span class="material-symbols-outlined service-icon">elevator</span>
-                    <h4>Express Elevators</h4>
-                    <p>Strategic elevators provide direct access to the Tutankhamun galleries from the main atrium.</p>
-                </div>
-                <div class="acc-service-box anim-on-scroll">
-                    <span class="material-symbols-outlined service-icon">medical_services</span>
-                    <h4>Medical Sanctuary</h4>
-                    <p>Full-service medical stations are available on-site, ensuring immediate care and peace of mind.</p>
-                </div>
-                <div class="acc-service-box anim-on-scroll">
-                    <span class="material-symbols-outlined service-icon">hearing</span>
-                    <h4>Induction Loops</h4>
-                    <p>Enhanced audio support for hearing aids is integrated into all cinema and lecture halls.</p>
-                </div>
-                <div class="acc-service-box anim-on-scroll">
-                    <span class="material-symbols-outlined service-icon">family_restroom</span>
-                    <h4>Quiet Zones</h4>
-                    <p>Sensory-friendly rest areas with acoustic insulation and soft lighting for tranquility.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-      <footer class="site-footer">
-            <div class="footer-container">
-                <!-- Footer Header -->
-                <div class="footer-header">
-                    <div class="footer-logo">
-                        <span class="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <h2 class="footer-title">Grand Egyptian Museum</h2>
-                    <div class="footer-divider"></div>
-                </div>
-
-                <!-- Footer Grid -->
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="../booking/booking.html">Tickets</a></li>
-                            <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../-membership/code.html">Membership</a></li>
-                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="../About us/About-us.html">History</a></li>
-                            <li><a href="../event/event.html">Events</a></li>
-                            <li><a href="../-news_press/code.html">News & Press</a></li>
-                            <li><a href="../-branding/code.html">Branding</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="../visitor help/help.html">Help</a></li>
-                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column connect-column">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <!-- Facebook -->
-                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-
-                            <!-- Twitter (X ) -->
-                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-
-                            <!-- YouTube -->
-                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </div>
-
-                        <p>
-                            Follow us on social media for updates and behind-the-scenes content.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Footer Separator -->
-                <div class="footer-separator"></div>
-
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <div class="language-toggle">
-                        <button class="active" data-lang="en">English</button>
-                        <button data-lang="ar">العربية</button>
-                    </div>
-                    <div class="legal-section">
-                       <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                    </div>
-            <div class="copyright">
-              © 2026 Tutora. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </div>
-        </footer>
-
-    <script src="script.js"></script>
-    <script src="../animate.js"></script>
-</body>
-</html>
+﻿<!doctype html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <meta name="description" content="Tutora Accessibility - Inclusive Excellence at the Grand Egyptian Museum. Explore effortlessly." />
+                                <title>TUTORA | Inclusive Excellence</title>
+                                
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+                                
+                                <link rel="stylesheet" href="../global-theme.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                                <link rel="stylesheet" href="style.css" />
+                            </head>
+                            <body class="dark transition-theme">
+                               <div class="menu-overlay" id="menuOverlay"></div>
+                            
+                                <div class="mobile-menu" id="mobileMenu">
+                                  <div class="menu-header">
+                                    <div class="menu-logo">
+                                       <div class="logo-circle">
+                                    <img src="../logo.png" alt="Tutora Logo">
+                                </div>
+                            
+                                <h3 class="menu-logo-text">Tutora</h3>
+                                    </div>
+                                    <button class="close-btn" id="closeBtn">
+                                      <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                  </div>
+                            
+                                  <nav class="menu-nav">
+                                    <a href="../4.home/code.html" class="menu-link">Home</a>
+                                    <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition-Halls</a>
+                                    <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+                            
+                                    <a href="../event/event.html" class="menu-link">Event</a>
+                            
+                                    <div class="menu-dropdown">
+                                      <button class="menu-link dropdown-toggle">
+                                        AI Experience
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                      </button>
+                                      <div class="dropdown-items">
+                                        <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                                        <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                                      </div>
+                                    </div>
+                            
+                                    <a href="../shop/shop.html" class="menu-link">Shop</a>
+                                    <a href="../about/code.html" class="menu-link">About</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
+                                  </nav>
+                            
+                                  <div class="menu-footer">
+                                    <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+                                    <a href="../fav/favourite.html" class="menu-icon-link">
+                                      <span class="material-symbols-outlined">favorite</span> Favorites
+                                    </a>
+                            
+                                    <button class="menu-icon-link" id="menuLangBtn">
+                                      <span class="material-symbols-outlined">language</span>
+                                      Language
+                                    </button>
+                                  </div>
+                                </div>
+                            
+                                <!-- Header -->
+                                <header class="header">
+                                  <div class="header-container">
+                                    <div class="header-left">
+                                      <button class="menu-btn" id="menuBtn">
+                                        <span class="material-symbols-outlined">menu</span>
+                                      </button>
+                                      <div class="logo-section">
+                                        <div class="logo-circle">
+                                            <img src="../logo.png" alt="Tutora Logo">
+                                         </div>
+                                        <h2 class="logo-text">Tutora</h2>
+                                      </div>
+                                    </div>
+                            
+                                    <nav class="desktop-nav">
+                                      <a href="../4.home/code.html">Home</a>
+                                      <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                                      <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                            
+                                      <a href="../event/event.html">Event</a>
+                                      <div class="nav-dropdown">
+                                        <button class="nav-link dropdown-trigger">
+                                          AI Experience
+                                          <span class="material-symbols-outlined" >expand_more</span>
+                                        </button>
+                                        <div class="dropdown-menu" >
+                                          <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                                          <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                                          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+                                          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                                          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                                        </div>
+                                      </div>
+                                      <a href="../shop/shop.html">Shop</a>
+                                      <a href="../about/code.html">About</a>
+                                      <a href="../Exhibition-Halls/exhibition-halls.html">Collection</a>
+                                    </nav>
+                            
+                                    <div class="header-right">
+                                      <div class="search-box">
+                                        <span class="material-symbols-outlined">search</span>
+                                        <input type="text" placeholder="Search..." />
+                                      </div>
+                                      <button class="theme-btn" id="themeBtn">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                      </button>
+                                      <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                      <a href="../fav/favourite.html">
+                                        <button class="icon-btn">
+                                          <span class="material-symbols-outlined">favorite</span>
+                                        </button>
+                                      </a>
+                                      <button class="icon-btn" id="langBtn">
+                                        <span class="material-symbols-outlined">language</span>
+                                      </button>
+                                      <a href="../Profile/profile.html">
+                                        <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                                      </a>
+                                    </div>
+                                  </div>
+                                </header>
+                            
+                                <main class="acc-page-wrapper">
+                                    <!-- Cinematic Hero -->
+                                    <section class="acc-hero">
+                                        <div class="acc-hero-bg"></div>
+                                        <div class="acc-hero-overlay"></div>
+                                        <div class="acc-hero-content anim-on-scroll">
+                                            <span class="material-symbols-outlined acc-hero-icon">accessibility_new</span>
+                                            <h1>INCLUSIVE <br><span class="gold-text">EXCELLENCE</span></h1>
+                                            <p style="text-transform: uppercase; letter-spacing: 4px; color: var(--acc-text-secondary); margin-top: 2rem;">A Sanctuary of Heritage, Accessible to All Souls</p>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- The Grand Escalators Section -->
+                                    <section class="acc-mobility-featured">
+                                        <div class="acc-mobility-img anim-on-scroll">
+                                            <img src="../Grand_Staircase_(GEM).jpg" alt="Grand Staircase Escalators">
+                                            <div class="acc-mobility-overlay">
+                                                <span class="acc-mobility-badge">Seamless Elevation</span>
+                                            </div>
+                                        </div>
+                                        <div class="acc-mobility-text anim-on-scroll">
+                                            <span class="gold-text" style="text-transform: uppercase; letter-spacing: 5px; font-weight: 800; font-size: 0.8rem;">Physical Ease</span>
+                                            <h2>Effortless <br><span class="gold-text">Ascension</span></h2>
+                                            <p>Scaling the heights of Egyptian history shouldn't be a challenge. Our **Grand Escalators** <em>(ط§ظ„ط³ظ„ط§ظ„ظ… ط§ظ„ظƒظ‡ط±ط¨ط§ط¦ظٹط©)</em> run alongside the famous Grand Staircase, offering a smooth, safe, and panoramic journey for those who prefer to avoid the stairs.</p>
+                                            <div class="acc-feature-list">
+                                                <div class="acc-feature-item"><span class="material-symbols-outlined">check_circle</span> 24/7 Monitoring</div>
+                                                <div class="acc-feature-item"><span class="material-symbols-outlined">check_circle</span> Wide-Step Design</div>
+                                                <div class="acc-feature-item"><span class="material-symbols-outlined">check_circle</span> Anti-Slip Surface</div>
+                                                <div class="acc-feature-item"><span class="material-symbols-outlined">check_circle</span> Staff Assistance</div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Settings Cards -->
+                                    <section class="acc-settings-row">
+                                        <div class="acc-grid">
+                                            <!-- Visual & Motion -->
+                                            <div class="acc-card anim-on-scroll">
+                                                <div class="acc-card-header">
+                                                    <span class="material-symbols-outlined acc-icon-box">visibility</span>
+                                                    <h3>Interface <span class="gold-text">Design</span></h3>
+                                                </div>
+                                                <div class="acc-control">
+                                                    <div class="acc-switch-row">
+                                                        <div><strong>High Contrast Mode</strong><p>Enhanced legibility for artifact details.</p></div>
+                                                        <label class="acc-switch"><input type="checkbox"><span class="acc-slider"></span></label>
+                                                    </div>
+                                                    <div class="acc-switch-row">
+                                                        <div><strong>Reduce Motion</strong><p>Minimize UI animations and shifts.</p></div>
+                                                        <label class="acc-switch"><input type="checkbox"><span class="acc-slider"></span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Text & Audio -->
+                                            <div class="acc-card anim-on-scroll">
+                                                <div class="acc-card-header">
+                                                    <span class="material-symbols-outlined acc-icon-box">format_size</span>
+                                                    <h3>Reading & <span class="gold-text">Sound</span></h3>
+                                                </div>
+                                                <div class="acc-control">
+                                                    <label>Preferred Text Size</label>
+                                                    <div class="acc-size-labels">
+                                                        <span>S</span><span class="active">M</span><span>L</span><span>XL</span>
+                                                    </div>
+                                                    <input type="range" class="acc-range" min="1" max="4" value="2" id="textSizeRange">
+                                                </div>
+                                                <div class="acc-switch-row" style="margin-top: 2rem;">
+                                                    <div><strong>Audio Guides</strong><p>Spatial audio descriptions.</p></div>
+                                                    <label class="acc-switch"><input type="checkbox" checked><span class="acc-slider"></span></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- On-Site Services Grid -->
+                                    <section class="acc-services">
+                                        <div class="brand-section-header anim-on-scroll" style="text-align: center; margin-bottom: 6rem;">
+                                            <h2 style="font-family: 'Cinzel', serif; font-size: 3.5rem;">The Sanctuary <span class="gold-text">Service</span></h2>
+                                            <p style="max-width: 800px; margin: 2rem auto; color: var(--acc-text-secondary);">The GEM is more than a museum; it is a supportive environment designed for the safety and comfort of every visitor.</p>
+                                        </div>
+                            
+                                        <div class="acc-services-grid">
+                                            <div class="acc-service-box anim-on-scroll">
+                                                <span class="material-symbols-outlined service-icon">accessible</span>
+                                                <h4>Wheelchair Fleet</h4>
+                                                <p>Complimentary manual and electric wheelchairs are available at every entrance for a seamless journey.</p>
+                                            </div>
+                                            <div class="acc-service-box anim-on-scroll">
+                                                <span class="material-symbols-outlined service-icon">support_agent</span>
+                                                <h4>Personal Guidance</h4>
+                                                <p>Our dedicated accessibility officers are stationed at every level to assist with navigation and safety.</p>
+                                            </div>
+                                            <div class="acc-service-box anim-on-scroll">
+                                                <span class="material-symbols-outlined service-icon">elevator</span>
+                                                <h4>Express Elevators</h4>
+                                                <p>Strategic elevators provide direct access to the Tutankhamun galleries from the main atrium.</p>
+                                            </div>
+                                            <div class="acc-service-box anim-on-scroll">
+                                                <span class="material-symbols-outlined service-icon">medical_services</span>
+                                                <h4>Medical Sanctuary</h4>
+                                                <p>Full-service medical stations are available on-site, ensuring immediate care and peace of mind.</p>
+                                            </div>
+                                            <div class="acc-service-box anim-on-scroll">
+                                                <span class="material-symbols-outlined service-icon">hearing</span>
+                                                <h4>Induction Loops</h4>
+                                                <p>Enhanced audio support for hearing aids is integrated into all cinema and lecture halls.</p>
+                                            </div>
+                                            <div class="acc-service-box anim-on-scroll">
+                                                <span class="material-symbols-outlined service-icon">family_restroom</span>
+                                                <h4>Quiet Zones</h4>
+                                                <p>Sensory-friendly rest areas with acoustic insulation and soft lighting for tranquility.</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </main>
+                            
+                                  <footer class="site-footer">
+                                        <div class="footer-container">
+                                            <!-- Footer Header -->
+                                            <div class="footer-header">
+                                                <div class="footer-logo">
+                                                    <span class="material-symbols-outlined">account_balance</span>
+                                                </div>
+                                                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                                <div class="footer-divider"></div>
+                                            </div>
+                            
+                                            <!-- Footer Grid -->
+                                            <div class="footer-grid">
+                                                <div class="footer-column">
+                                                    <h3>Explore</h3>
+                                                    <ul>
+                                                        <li><a href="../booking/booking.html">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html">Collection</a></li>                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                        <li><a href="../-membership/code.html">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>About</h3>
+                                                    <ul>
+                                                        <li><a href="../About us/About-us.html">History</a></li>
+                                                        <li><a href="../event/event.html">Events</a></li>
+                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>Support</h3>
+                                                    <ul>
+                                                        <li><a href="../visitor help/help.html">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column connect-column">
+                                                    <h3>Connect</h3>
+                                                    <div class="social-links">
+                                                        <!-- Facebook -->
+                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                                            <i class="fa-brands fa-facebook"></i>
+                                                        </a>
+                            
+                                                        <!-- Twitter (X ) -->
+                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                                            <i class="fa-brands fa-x-twitter"></i>
+                                                        </a>
+                            
+                                                        <!-- Instagram -->
+                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                                            <i class="fa-brands fa-instagram"></i>
+                                                        </a>
+                            
+                                                        <!-- YouTube -->
+                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                                            <i class="fa-brands fa-youtube"></i>
+                                                        </a>
+                                                    </div>
+                            
+                                                    <p>
+                                                        Follow us on social media for updates and behind-the-scenes content.
+                                                    </p>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Footer Separator -->
+                                            <div class="footer-separator"></div>
+                            
+                                            <!-- Footer Bottom -->
+                                            <div class="footer-bottom">
+                                                <div class="language-toggle">
+                                                    <button class="active" data-lang="en">English</button>
+                                                    <button data-lang="ar">العربية</button>
+                                                </div>
+                                                <div class="legal-section">
+                                                   <div class="legal-links">
+                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                                                </div>
+                                        <div class="copyright">
+                                          © 2026 Tutora. All rights reserved.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    </footer>
+                            
+                                <script src="script.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            </html>
+                            

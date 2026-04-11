@@ -1,92 +1,93 @@
-<!DOCTYPE html>
-<html class="dark" lang="en">
-
-<head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Login to Tutora | GEM AI Guide</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="../3.register/style.css"> <!-- We will share the register CSS! -->
-    <link rel="stylesheet" href="style.css">
-
-	<link rel="stylesheet" href="../global-theme.css" />
-    <link rel="stylesheet" href="../animate.css" />
-</head>
-
-<body>
-    <div class="container">
-        <header style="background-color: transparent; position: absolute; z-index: 10; width: 100%; padding: 2rem;">
-            <nav style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                <div class="nav-actions">
-                    <span class="hidden-mobile" style="padding-left:40px; color: #fff;">New to the museum?</span>
-                    <a class="login-link" href="../3.register/code.html" style="color: #ecb613;">Sign Up</a>
-                </div>
-            </nav>
-        </header>
-
-        <main>
-            <div class="grid-layout">
-                <!-- Left Column: Hero Image Panel -->
-                <div class="hero-panel" style="background-image: url('../1212.jpg');">
-                    <div class="hero-overlay" style="background: linear-gradient(to right, rgba(18,18,18,0.3), rgba(18,18,18,0.9));"></div>
-                    <div class="hero-content">
-                        <h3 class="hero-title" style="font-family: 'Cormorant Garamond';font-size:3rem;text-shadow: 2px 2px 4px #000;">Welcome back to eternity.</h3>
-                        <p class="hero-subtitle" style="font-size:1.2rem;text-shadow: 2px 2px 4px #000;">Your personal AI guide, <span class="brand-namee" style="color: #ecb613; font-weight: bold;"> Tutora</span>, is waiting for you.</p>
-                    </div>
-                </div>
-
-                <!-- Right Column: Registration Form (Login adapted) -->
-                <div class="form-panel" style="display: flex; align-items: center; justify-content: center;">
-                    <div class="form-container" style="width: 100%; max-width: 480px;">
-                        
-                        <!-- Premium Logo prominently placed -->
-                        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
-                            <img src="../logo.png" alt="Tutora Logo" style="width: 150px; height: auto; filter: drop-shadow(0 0 10px rgba(236,182,19,0.3));">
-                        </div>
-
-                        <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
-                            <h1 class="form-title" style="font-size: 2.2rem; font-weight: 800;">Log In</h1>
-                        </div>
-
-                        <form class="registration-form" id="loginForm">
-                            <div class="field-group">
-                                <p class="field-label">Email Address</p>
-                                <div class="input-wrapper">
-                                    <input class="form-input" id="email" placeholder="Enter your email" type="email" required aria-label="Email address" />
-                                </div>
-                            </div>
-
-                            <div class="field-group">
-                                <div style="display: flex; justify-content: space-between;">
-                                    <p class="field-label">Password</p>
-                                    <a href="../reset the password/reset-password.html" style="color: #ecb613; font-size: 0.85rem; text-decoration: none;">Forgot Password?</a>
-                                </div>
-                                <div class="input-wrapper">
-                                    <input class="form-input" id="password" placeholder="Enter your password" type="password" required aria-label="Password" />
-                                    <div class="icon-addon" id="togglePassword">
-                                        <span class="material-symbols-outlined">visibility</span>
-                                    </div>
-                                </div>
-                            </div>
+﻿<!DOCTYPE html>
+                            <html class="dark" lang="en">
                             
-                            <div id="loginError" class="error-message" style="color: #ff3b30; font-size: 0.85rem; display: none; margin-bottom: 1rem;">Invalid email or password. Please try again.</div>
-
-                            <button type="submit" class="submit-btn" id="loginBtn" style="width: 100%; padding: 1rem; background: #ecb613; color: #121212; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 1rem;">
-                                Log In
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <script src="script.js"></script>
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-</body>
-</html>
+                            <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <title>Login to Tutora | GEM AI Guide</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+                                <link rel="stylesheet" href="../3.register/style.css"> <!-- We will share the register CSS! -->
+                                <link rel="stylesheet" href="style.css">
+                            
+                            	<link rel="stylesheet" href="../global-theme.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                            </head>
+                            
+                            <body>
+                                <div class="container">
+                                    <header style="background-color: transparent; position: absolute; z-index: 10; width: 100%; padding: 2rem;">
+                                        <nav style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                                            <div class="nav-actions">
+                                                <span class="hidden-mobile" style="padding-left:40px; color: #fff;">New to the museum?</span>
+                                                <a class="login-link" href="../3.register/code.html" style="color: #ecb613;">Sign Up</a>
+                                            </div>
+                                        </nav>
+                                    </header>
+                            
+                                    <main>
+                                        <div class="grid-layout">
+                                            <!-- Left Column: Hero Image Panel -->
+                                            <div class="hero-panel" style="background-image: url('../1212.jpg');">
+                                                <div class="hero-overlay" style="background: linear-gradient(to right, rgba(18,18,18,0.3), rgba(18,18,18,0.9));"></div>
+                                                <div class="hero-content">
+                                                    <h3 class="hero-title" style="font-family: 'Cormorant Garamond';font-size:3rem;text-shadow: 2px 2px 4px #000;">Welcome back to eternity.</h3>
+                                                    <p class="hero-subtitle" style="font-size:1.2rem;text-shadow: 2px 2px 4px #000;">Your personal AI guide, <span class="brand-namee" style="color: #ecb613; font-weight: bold;"> Tutora</span>, is waiting for you.</p>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Right Column: Registration Form (Login adapted) -->
+                                            <div class="form-panel" style="display: flex; align-items: center; justify-content: center;">
+                                                <div class="form-container" style="width: 100%; max-width: 480px;">
+                                                    
+                                                    <!-- Premium Logo prominently placed -->
+                                                    <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                                                        <img src="../logo.png" alt="Tutora Logo" style="width: 150px; height: auto; filter: drop-shadow(0 0 10px rgba(236,182,19,0.3));">
+                                                    </div>
+                            
+                                                    <div class="form-header" style="text-align: center; margin-bottom: 2rem;">
+                                                        <h1 class="form-title" style="font-size: 2.2rem; font-weight: 800;">Log In</h1>
+                                                    </div>
+                            
+                                                    <form class="registration-form" id="loginForm">
+                                                        <div class="field-group">
+                                                            <p class="field-label">Email Address</p>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-input" id="email" placeholder="Enter your email" type="email" required aria-label="Email address" />
+                                                            </div>
+                                                        </div>
+                            
+                                                        <div class="field-group">
+                                                            <div style="display: flex; justify-content: space-between;">
+                                                                <p class="field-label">Password</p>
+                                                                <a href="../reset the password/reset-password.html" style="color: #ecb613; font-size: 0.85rem; text-decoration: none;">Forgot Password?</a>
+                                                            </div>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-input" id="password" placeholder="Enter your password" type="password" required aria-label="Password" />
+                                                                <div class="icon-addon" id="togglePassword">
+                                                                    <span class="material-symbols-outlined">visibility</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div id="loginError" class="error-message" style="color: #ff3b30; font-size: 0.85rem; display: none; margin-bottom: 1rem;">Invalid email or password. Please try again.</div>
+                            
+                                                        <button type="submit" class="submit-btn" id="loginBtn" style="width: 100%; padding: 1rem; background: #ecb613; color: #121212; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 1rem;">
+                                                            Log In
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </main>
+                                </div>
+                            
+                                <script src="script.js"></script>
+                                <script src="../global-core.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            </html>
+                            

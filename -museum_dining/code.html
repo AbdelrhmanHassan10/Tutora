@@ -1,607 +1,610 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta name="description" content="Tutora Museum Dining - Savor the legacy of the Nile at the Grand Egyptian Museum." />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>TUTORA | Museum Dining</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../animate.css" />
-	<link rel="stylesheet" href="../global-theme.css" />
-</head>
-<body class="dark">
-   <div class="menu-overlay" id="menuOverlay"></div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="menu-header">
-        <div class="menu-logo">
-           <div class="logo-circle">
-        <img src="../logo.png" alt="Tutora Logo">
-    </div>
-
-    <h3 class="menu-logo-text">Tutora</h3>
-        </div>
-        <button class="close-btn" id="closeBtn">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-
-      <nav class="menu-nav">
-        <a href="../4.home/code.html" class="menu-link">Home</a>
-        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-        <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
-
-        <a href="../event/event.html" class="menu-link">Event</a>
-
-        <div class="menu-dropdown">
-          <button class="menu-link dropdown-toggle">
-            AI Experience
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-items">
-            <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
-            <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
-            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
-          </div>
-        </div>
-
-        <a href="../shop/shop.html" class="menu-link">Shop</a>
-        <a href="../about/code.html" class="menu-link">About</a>
-        <a href="../collection/collection.html" class="menu-link">Collection</a>
-      </nav>
-
-      <div class="menu-footer">
-        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-        <a href="../fav/favourite.html" class="menu-icon-link">
-          <span class="material-symbols-outlined">favorite</span> Favorites
-        </a>
-
-        <button class="menu-icon-link" id="menuLangBtn">
-          <span class="material-symbols-outlined">language</span>
-          Language
-        </button>
-      </div>
-    </div>
-
-    <!-- Header -->
-    <header class="header">
-      <div class="header-container">
-        <div class="header-left">
-          <button class="menu-btn" id="menuBtn">
-            <span class="material-symbols-outlined">menu</span>
-          </button>
-          <div class="logo-section">
-            <div class="logo-circle">
-                <img src="../logo.png" alt="Tutora Logo">
-             </div>
-            <h2 class="logo-text">Tutora</h2>
-          </div>
-        </div>
-
-        <nav class="desktop-nav">
-          <a href="../4.home/code.html">Home</a>
-          <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-          <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-
-          <a href="../event/event.html">Event</a>
-          <div class="nav-dropdown">
-            <button class="nav-link dropdown-trigger">
-              AI Experience
-              <span class="material-symbols-outlined" >expand_more</span>
-            </button>
-            <div class="dropdown-menu" >
-              <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
-              <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-              <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
-              <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-              <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
-            </div>
-          </div>
-          <a href="../shop/shop.html">Shop</a>
-          <a href="../about/code.html">About</a>
-          <a href="../collection/collection.html">Collection</a>
-        </nav>
-
-        <div class="header-right">
-          <div class="search-box">
-            <span class="material-symbols-outlined">search</span>
-            <input type="text" placeholder="Search..." />
-          </div>
-          <button class="theme-btn" id="themeBtn">
-            <span class="material-symbols-outlined">dark_mode</span>
-          </button>
-          <a href="../booking/booking.html" class="btn-booking">booking</a>
-          <a href="../fav/favourite.html">
-            <button class="icon-btn">
-              <span class="material-symbols-outlined">favorite</span>
-            </button>
-          </a>
-          <button class="icon-btn" id="langBtn">
-            <span class="material-symbols-outlined">language</span>
-          </button>
-          <a href="../Profile/profile.html">
-            <img src="./unnamed.png" alt="Profile" class="profile-img" />
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <main class="page-content">
-        <!-- Hero Section -->
-        <section class="din-hero">
-            <div class="din-hero-bg" style="background-image: url('../445.jpg');"></div>
-            <div class="din-hero-overlay"></div>
-            <div class="din-hero-content animate__animated animate__fadeInDown">
-                <span class="din-label">A Culinary Expedition</span>
-                <h1>SAVOR THE <br><span class="gold-text">LEGACY</span></h1>
-                <p>From artisanal Egyptian street food to luxury French pâtisserie, experience the diverse flavors of the Nile within the world's most architectural dining destination.</p>
-                <div class="din-hero-actions">
-                    <a href="#restaurants" class="din-cta-btn">Explore Venues</a>
-                    <a href="#reservations" class="din-cta-btn btn-outline">Reservations</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Signature Experience -->
-        <section class="featured-experience anim-on-scroll">
-            <div class="exp-container">
-                <div class="exp-image">
-                    <img src="./unnamed (2).png" alt="Signature GEM Dish">
-                </div>
-                <div class="exp-content">
-                    <span class="din-label">The Chef's Selection</span>
-                    <h2>Signature <span class="gold-text">Masterpiece</span></h2>
-                    <p>Our executive chefs have curated a menu that honors ancient Egyptian ingredients—date honey, emmer wheat, and Nilotic spices—transformed into modern culinary art.</p>
-                    <ul class="exp-features">
-                        <li><i class="fas fa-check-circle"></i> Private curatorial dining rooms</li>
-                        <li><i class="fas fa-check-circle"></i> Pyramid-view terrace seating</li>
-                        <li><i class="fas fa-check-circle"></i> Bespoke historical tasting menus</li>
-                    </ul>
-                    <a href="#reservations" class="din-cta-btn">Book an Experience</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Culinary Highlights (Top 3 Signature Dishes) -->
-        <section class="din-highlights anim-on-scroll">
-            <div class="section-header text-center">
-                <span class="din-label">Culinary Excellence</span>
-                <h2>Signature <span class="gold-text">Highlights</span></h2>
-                <div class="din-divider"></div>
-            </div>
-            <div class="highlights-grid">
-                <!-- Zooba -->
-                <div class="highlight-item">
-                    <div class="high-img">
-                        <img src="./unnamed (1).png" alt="Zooba Signature Mezze">
-                        <div class="high-overlay">
-                            <span class="venue-name">By Zooba</span>
-                        </div>
-                    </div>
-                    <div class="high-details">
-                        <h3>Sacred Starters</h3>
-                        <p>Heirloom broad bean mousse with desert spices and stone-baked emmer bread.</p>
-                        <span class="high-price">EGP 450</span>
-                    </div>
-                </div>
-
-                <!-- 30 NORTH -->
-                <div class="highlight-item">
-                    <div class="high-img">
-                        <img src="./unnamed.png" alt="30 NORTH Signature Steak">
-                        <div class="high-overlay">
-                            <span class="venue-name">By 30 NORTH</span>
-                        </div>
-                    </div>
-                    <div class="high-details">
-                        <h3>The Gilded Main</h3>
-                        <p>Slow-roasted lamb shoulder glazed with wild honey and pomegranate reduction.</p>
-                        <span class="high-price">EGP 1,200</span>
-                    </div>
-                </div>
-
-                <!-- Ladurée -->
-                <div class="highlight-item">
-                    <div class="high-img">
-                        <img src="./unnamed (3).png" alt="Ladurée Signature Macarons">
-                        <div class="high-overlay">
-                            <span class="venue-name">By Ladurée</span>
-                        </div>
-                    </div>
-                    <div class="high-details">
-                        <h3>Lapis Dessert</h3>
-                        <p>Hibiscus-infused sponge cake with date compote and pistachio cream.</p>
-                        <span class="high-price">EGP 380</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Restaurant Showcase -->
-        <section class="din-restaurants" id="restaurants">
-            <div class="section-header text-center">
-                <h2>The Gastronomy <span class="gold-text">Collection</span></h2>
-                <div class="din-divider"></div>
-            </div>
-            
-            <div class="restaurant-grid">
-                <!-- The Pyramids Restaurant -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="1.jpg" alt="The Pyramids Restaurant">
-                        <span class="res-tag">Coming soon!</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>The Pyramids Restaurant</h3>
-                        <p>Ignite your appetite with world-class signature dishes overlooking the Pyramids. A pinnacle of fine dining at the GEM.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> Opening Soon</span>
-                            <span><i class="fas fa-utensils"></i> Signature Fine Dining</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 30 North -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="2.jpg" alt="30 North">
-                        <span class="res-tag">Award Winning</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>30 North</h3>
-                        <p>Named after Cairo’s geocoordinates, 30 NORTH reinvented the local specialty coffee experience with global recognition.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 12:00 AM - 12:00 AM (Sat & Wed until 10PM)</span>
-                            <span><i class="fas fa-coffee"></i> Specialty Coffee</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Zooba -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="3.jpg" alt="Zooba Restaurant">
-                        <span class="res-tag">GEM Exclusive Menu</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>Zooba</h3>
-                        <p>Famous Egyptian street food in colorful spaces, offering a special menu tailored exclusively to GEM visitors.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 AM (Sat & Wed until 10PM)</span>
-                            <span><i class="fas fa-hamburger"></i> Contemporary Street Food</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bitter Sweet -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="4.jpg" alt="Bitter Sweet Restaurant">
-                        <span class="res-tag">Homegrown Favorite</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>Bitter Sweet</h3>
-                        <p>Life from sip to bite at the homegrown Egyptian favorite, now serving a refined selection at the GEM.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
-                            <span><i class="fas fa-cookie"></i> Gourmet Cafe</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Beano's Café -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="5.jpg" alt="Beano's Café">
-                        <span class="res-tag">Heritage Spirit</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>Beano's Café</h3>
-                        <p>Blends its cozy identity with the spirit of Egyptian civilization using local alabaster and Aswan granite materials.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
-                            <span><i class="fas fa-mug-hot"></i> Cultural Cafe</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ladurée -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="6jpg.jpg" alt="Laduree Restaurant">
-                        <span class="res-tag">Parisian Origin</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>Laduree</h3>
-                        <p>Upscale bakery with Parisian origins, serving a unique collection of world-famous macarons and sweets at the GEM.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
-                            <span><i class="fas fa-ice-cream"></i> Luxury Pâtisserie</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dolato -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="7.jpg" alt="Dolato Ice Cream">
-                        <span class="res-tag">100% Italian Gelato</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>Dolato</h3>
-                        <p>A treat shop where your comfort cone takes you on an emotional roller-coaster with authentic Italian Gelato.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
-                            <span><i class="fas fa-cone"></i> Gelato Shop</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mandarine Koueider -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="8jpg.jpg" alt="Mandarine Koueider">
-                        <span class="res-tag">Legend Since 1928</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>Mandarine Koueider</h3>
-                        <p>Exceptional quality and timeless craftsmanship in oriental sweets, from artisanal ice cream to signature pastries.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM</span>
-                            <span><i class="fas fa-stroopwafel"></i> Oriental Sweets</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Starbucks -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="9.jpg" alt="Starbucks">
-                        <span class="res-tag">Historical Twist</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>Starbucks</h3>
-                        <p>The famous international roast with a new historical twist only at the heart of the Grand Egyptian Museum.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
-                            <span><i class="fas fa-coffee"></i> Coffee House</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premium Mart -->
-                <div class="restaurant-card anim-on-scroll">
-                    <div class="res-img-box">
-                        <img src="10.jpg" alt="Premium Mart">
-                        <span class="res-tag">Everyday Needs</span>
-                    </div>
-                    <div class="res-info">
-                        <h3>Premium Mart</h3>
-                        <p>A convenience store for your everyday items, covering all your essentials while exploring the GEM complex.</p>
-                        <div class="res-meta">
-                            <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
-                            <span><i class="fas fa-shopping-basket"></i> Convenience Mart</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Reservation & Hours: Split Panel -->
-        <section class="din-logistics-premium anim-on-scroll" id="reservations">
-            <div class="logistics-split">
-                <!-- Left Panel: Visual & Story -->
-                <div class="logistics-visual" style="background-image: url('./unnamed (4).png');">
-                    <div class="visual-overlay"></div>
-                    <div class="visual-content">
-                        <span class="din-label">Exclusivity</span>
-                        <h2>DINING BEYOND <br><span class="gold-text">HISTORY</span></h2>
-                        <p>Secure your place at the heart of the Grand Egyptian Museum. Experience a culinary odyssey where ancient heritage meets modern fine dining.</p>
-                        
-                        <div class="luxury-badges">
-                            <div class="badge-item">
-                                <span class="material-symbols-outlined">stars</span>
-                                <div><strong>World Class</strong><span>Chef Curated</span></div>
-                            </div>
-                            <div class="badge-item">
-                                <span class="material-symbols-outlined">landscape</span>
-                                <div><strong>Pyramid View</strong><span>Private Terrace</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Panel: The Form & Schedule -->
-                <div class="logistics-form-area">
-                    <div class="res-form-wrapper">
-                        <div class="res-header">
-                            <span class="material-symbols-outlined">restaurant_menu</span>
-                            <h2>Reserve Your <span class="gold-text">Table</span></h2>
-                        </div>
-                        
-                        <form class="din-form">
-                            <div class="din-field">
-                                <label><i class="fas fa-utensils"></i> Preferred Venue</label>
-                                <div class="select-wrapper">
-                                    <select>
-                                        <option>The Pyramids Restaurant (Fine Dining)</option>
-                                        <option>30 NORTH</option>
-                                        <option>Zooba</option>
-                                        <option>Ladurée Paris</option>
-                                        <option>Mandarine Koueider</option>
-                                    </select>
-                                    <span class="material-symbols-outlined select-icon">expand_more</span>
-                                </div>
-                            </div>
+﻿<!doctype html>
+                            <html lang="en">
+                            <head>
+                                <meta name="description" content="Tutora Museum Dining - Savor the legacy of the Nile at the Grand Egyptian Museum." />
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <title>TUTORA | Museum Dining</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="style.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                            	<link rel="stylesheet" href="../global-theme.css" />
+                            </head>
+                            <body class="dark">
+                               <div class="menu-overlay" id="menuOverlay"></div>
                             
-                            <div class="din-row">
-                                <div class="din-field">
-                                    <label><i class="fas fa-calendar-alt"></i> Date</label>
-                                    <input type="date">
+                                <div class="mobile-menu" id="mobileMenu">
+                                  <div class="menu-header">
+                                    <div class="menu-logo">
+                                       <div class="logo-circle">
+                                    <img src="../logo.png" alt="Tutora Logo">
                                 </div>
-                                <div class="din-field">
-                                    <label><i class="fas fa-clock"></i> Time</label>
-                                    <input type="time">
-                                </div>
-                            </div>
                             
-                            <div class="din-field">
-                                <label><i class="fas fa-users"></i> Number of Guests</label>
-                                <input type="number" placeholder="2 Guests" min="1" max="12">
-                            </div>
-
-                            <button type="submit" class="din-submit-btn">
-                                <span>Verify Availability</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </form>
-
-                        <!-- Subtle Hours Sub-section -->
-                        <div class="mini-schedule">
-                            <div class="sched-header">
-                                <span class="material-symbols-outlined">schedule</span>
-                                <h4>Dining Schedule</h4>
-                            </div>
-                            <div class="sched-grid">
-                                <div class="sched-item">
-                                    <div class="sched-info">
-                                        <span class="material-symbols-outlined sched-icon">restaurant</span>
-                                        <div class="sched-texts">
-                                            <span>Fine Dining</span>
-                                            <strong>12:00 PM – 11:30 PM</strong>
-                                        </div>
+                                <h3 class="menu-logo-text">Tutora</h3>
                                     </div>
-                                </div>
-                                <div class="sched-item">
-                                    <div class="sched-info">
-                                        <span class="material-symbols-outlined sched-icon">lunch_dining</span>
-                                        <div class="sched-texts">
-                                            <span>Food Court</span>
-                                            <strong>09:00 AM – 10:00 PM</strong>
-                                        </div>
+                                    <button class="close-btn" id="closeBtn">
+                                      <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                  </div>
+                            
+                                  <nav class="menu-nav">
+                                    <a href="../4.home/code.html" class="menu-link">Home</a>
+                                    <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition-Halls</a>
+                                    <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+                            
+                                    <a href="../event/event.html" class="menu-link">Event</a>
+                            
+                                    <div class="menu-dropdown">
+                                      <button class="menu-link dropdown-toggle">
+                                        AI Experience
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                      </button>
+                                      <div class="dropdown-items">
+                                        <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                                        <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                                      </div>
                                     </div>
+                            
+                                    <a href="../shop/shop.html" class="menu-link">Shop</a>
+                                    <a href="../about/code.html" class="menu-link">About</a>
+                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
+                                  </nav>
+                            
+                                  <div class="menu-footer">
+                                    <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+                                    <a href="../fav/favourite.html" class="menu-icon-link">
+                                      <span class="material-symbols-outlined">favorite</span> Favorites
+                                    </a>
+                            
+                                    <button class="menu-icon-link" id="menuLangBtn">
+                                      <span class="material-symbols-outlined">language</span>
+                                      Language
+                                    </button>
+                                  </div>
                                 </div>
-                                <div class="sched-item">
-                                    <div class="sched-info">
-                                        <span class="material-symbols-outlined sched-icon">coffee</span>
-                                        <div class="sched-texts">
-                                            <span>The Cafe</span>
-                                            <strong>09:00 AM – 06:00 PM</strong>
-                                        </div>
+                            
+                                <!-- Header -->
+                                <header class="header">
+                                  <div class="header-container">
+                                    <div class="header-left">
+                                      <button class="menu-btn" id="menuBtn">
+                                        <span class="material-symbols-outlined">menu</span>
+                                      </button>
+                                      <div class="logo-section">
+                                        <div class="logo-circle">
+                                            <img src="../logo.png" alt="Tutora Logo">
+                                         </div>
+                                        <h2 class="logo-text">Tutora</h2>
+                                      </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <hr />
-    <footer class="site-footer">
-            <div class="footer-container">
-                <!-- Footer Header -->
-                <div class="footer-header">
-                    <div class="footer-logo">
-                        <span class="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <h2 class="footer-title">Grand Egyptian Museum</h2>
-                    <div class="footer-divider"></div>
-                </div>
-
-                <!-- Footer Grid -->
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="../booking/booking.html">Tickets</a></li>
-                            <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../-membership/code.html">Membership</a></li>
-                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="../About us/About-us.html">History</a></li>
-                            <li><a href="../event/event.html">Events</a></li>
-                            <li><a href="../-news_press/code.html">News & Press</a></li>
-                            <li><a href="../-branding/code.html">Branding</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="../visitor help/help.html">Help</a></li>
-                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column connect-column">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <!-- Facebook -->
-                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-
-                            <!-- Twitter (X ) -->
-                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-
-                            <!-- YouTube -->
-                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </div>
-
-                        <p>
-                            Follow us on social media for updates and behind-the-scenes content.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Footer Separator -->
-                <div class="footer-separator"></div>
-
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <div class="language-toggle">
-                        <button class="active" data-lang="en">English</button>
-                        <button data-lang="ar">العربية</button>
-                    </div>
-                    <div class="legal-section">
-                       <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                    </div>
-            <div class="copyright">
-              © 2026 Tutora. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </div>
-        </footer>
-    <script src="script.js"></script>
-    <!-- <script src="../global-core.js"></script> -->
-    <script src="../animate.js"></script>
-</body>
-</html>
+                            
+                                    <nav class="desktop-nav">
+                                      <a href="../4.home/code.html">Home</a>
+                                      <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                                      <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                            
+                                      <a href="../event/event.html">Event</a>
+                                      <div class="nav-dropdown">
+                                        <button class="nav-link dropdown-trigger">
+                                          AI Experience
+                                          <span class="material-symbols-outlined" >expand_more</span>
+                                        </button>
+                                        <div class="dropdown-menu" >
+                                          <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                                          <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                                          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+                                          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                                          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                                        </div>
+                                      </div>
+                                      <a href="../shop/shop.html">Shop</a>
+                                      <a href="../about/code.html">About</a>
+                                      <a href="../Exhibition-Halls/exhibition-halls.html">Collection</a>
+                                    </nav>
+                            
+                                    <div class="header-right">
+                                      <div class="search-box">
+                                        <span class="material-symbols-outlined">search</span>
+                                        <input type="text" placeholder="Search..." />
+                                      </div>
+                                      <button class="theme-btn" id="themeBtn">
+                                        <span class="material-symbols-outlined">dark_mode</span>
+                                      </button>
+                                      <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                      <a href="../fav/favourite.html">
+                                        <button class="icon-btn">
+                                          <span class="material-symbols-outlined">favorite</span>
+                                        </button>
+                                      </a>
+                                      <button class="icon-btn" id="langBtn">
+                                        <span class="material-symbols-outlined">language</span>
+                                      </button>
+                                      <a href="../Profile/profile.html">
+                                        <img src="./unnamed.png" alt="Profile" class="profile-img" />
+                                      </a>
+                                    </div>
+                                  </div>
+                                </header>
+                            
+                                <main class="page-content">
+                                    <!-- Hero Section -->
+                                    <section class="din-hero">
+                                        <div class="din-hero-bg" style="background-image: url('../445.jpg');"></div>
+                                        <div class="din-hero-overlay"></div>
+                                        <div class="din-hero-content animate__animated animate__fadeInDown">
+                                            <span class="din-label">A Culinary Expedition</span>
+                                            <h1>SAVOR THE <br><span class="gold-text">LEGACY</span></h1>
+                                            <p>From artisanal Egyptian street food to luxury French pأ¢tisserie, experience the diverse flavors of the Nile within the world's most architectural dining destination.</p>
+                                            <div class="din-hero-actions">
+                                                <a href="#restaurants" class="din-cta-btn">Explore Venues</a>
+                                                <a href="#reservations" class="din-cta-btn btn-outline">Reservations</a>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Featured Signature Experience -->
+                                    <section class="featured-experience anim-on-scroll">
+                                        <div class="exp-container">
+                                            <div class="exp-image">
+                                                <img src="./unnamed (2).png" alt="Signature GEM Dish">
+                                            </div>
+                                            <div class="exp-content">
+                                                <span class="din-label">The Chef's Selection</span>
+                                                <h2>Signature <span class="gold-text">Masterpiece</span></h2>
+                                                <p>Our executive chefs have curated a menu that honors ancient Egyptian ingredientsâ€”date honey, emmer wheat, and Nilotic spicesâ€”transformed into modern culinary art.</p>
+                                                <ul class="exp-features">
+                                                    <li><i class="fas fa-check-circle"></i> Private curatorial dining rooms</li>
+                                                    <li><i class="fas fa-check-circle"></i> Pyramid-view terrace seating</li>
+                                                    <li><i class="fas fa-check-circle"></i> Bespoke historical tasting menus</li>
+                                                </ul>
+                                                <a href="#reservations" class="din-cta-btn">Book an Experience</a>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Culinary Highlights (Top 3 Signature Dishes) -->
+                                    <section class="din-highlights anim-on-scroll">
+                                        <div class="section-header text-center">
+                                            <span class="din-label">Culinary Excellence</span>
+                                            <h2>Signature <span class="gold-text">Highlights</span></h2>
+                                            <div class="din-divider"></div>
+                                        </div>
+                                        <div class="highlights-grid">
+                                            <!-- Zooba -->
+                                            <div class="highlight-item">
+                                                <div class="high-img">
+                                                    <img src="./unnamed (1).png" alt="Zooba Signature Mezze">
+                                                    <div class="high-overlay">
+                                                        <span class="venue-name">By Zooba</span>
+                                                    </div>
+                                                </div>
+                                                <div class="high-details">
+                                                    <h3>Sacred Starters</h3>
+                                                    <p>Heirloom broad bean mousse with desert spices and stone-baked emmer bread.</p>
+                                                    <span class="high-price">EGP 450</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 30 NORTH -->
+                                            <div class="highlight-item">
+                                                <div class="high-img">
+                                                    <img src="./unnamed.png" alt="30 NORTH Signature Steak">
+                                                    <div class="high-overlay">
+                                                        <span class="venue-name">By 30 NORTH</span>
+                                                    </div>
+                                                </div>
+                                                <div class="high-details">
+                                                    <h3>The Gilded Main</h3>
+                                                    <p>Slow-roasted lamb shoulder glazed with wild honey and pomegranate reduction.</p>
+                                                    <span class="high-price">EGP 1,200</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Ladurأ©e -->
+                                            <div class="highlight-item">
+                                                <div class="high-img">
+                                                    <img src="./unnamed (3).png" alt="Ladurأ©e Signature Macarons">
+                                                    <div class="high-overlay">
+                                                        <span class="venue-name">By Ladurأ©e</span>
+                                                    </div>
+                                                </div>
+                                                <div class="high-details">
+                                                    <h3>Lapis Dessert</h3>
+                                                    <p>Hibiscus-infused sponge cake with date compote and pistachio cream.</p>
+                                                    <span class="high-price">EGP 380</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                            
+                                    <!-- Restaurant Showcase -->
+                                    <section class="din-restaurants" id="restaurants">
+                                        <div class="section-header text-center">
+                                            <h2>The Gastronomy <span class="gold-text">Collection</span></h2>
+                                            <div class="din-divider"></div>
+                                        </div>
+                                        
+                                        <div class="restaurant-grid">
+                                            <!-- The Pyramids Restaurant -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="1.jpg" alt="The Pyramids Restaurant">
+                                                    <span class="res-tag">Coming soon!</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>The Pyramids Restaurant</h3>
+                                                    <p>Ignite your appetite with world-class signature dishes overlooking the Pyramids. A pinnacle of fine dining at the GEM.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> Opening Soon</span>
+                                                        <span><i class="fas fa-utensils"></i> Signature Fine Dining</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 30 North -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="2.jpg" alt="30 North">
+                                                    <span class="res-tag">Award Winning</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>30 North</h3>
+                                                    <p>Named after Cairoâ€™s geocoordinates, 30 NORTH reinvented the local specialty coffee experience with global recognition.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 12:00 AM - 12:00 AM (Sat & Wed until 10PM)</span>
+                                                        <span><i class="fas fa-coffee"></i> Specialty Coffee</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Zooba -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="3.jpg" alt="Zooba Restaurant">
+                                                    <span class="res-tag">GEM Exclusive Menu</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>Zooba</h3>
+                                                    <p>Famous Egyptian street food in colorful spaces, offering a special menu tailored exclusively to GEM visitors.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 AM (Sat & Wed until 10PM)</span>
+                                                        <span><i class="fas fa-hamburger"></i> Contemporary Street Food</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Bitter Sweet -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="4.jpg" alt="Bitter Sweet Restaurant">
+                                                    <span class="res-tag">Homegrown Favorite</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>Bitter Sweet</h3>
+                                                    <p>Life from sip to bite at the homegrown Egyptian favorite, now serving a refined selection at the GEM.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
+                                                        <span><i class="fas fa-cookie"></i> Gourmet Cafe</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Beano's Cafأ© -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="5.jpg" alt="Beano's Cafأ©">
+                                                    <span class="res-tag">Heritage Spirit</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>Beano's Cafأ©</h3>
+                                                    <p>Blends its cozy identity with the spirit of Egyptian civilization using local alabaster and Aswan granite materials.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
+                                                        <span><i class="fas fa-mug-hot"></i> Cultural Cafe</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Ladurأ©e -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="6jpg.jpg" alt="Laduree Restaurant">
+                                                    <span class="res-tag">Parisian Origin</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>Laduree</h3>
+                                                    <p>Upscale bakery with Parisian origins, serving a unique collection of world-famous macarons and sweets at the GEM.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
+                                                        <span><i class="fas fa-ice-cream"></i> Luxury Pأ¢tisserie</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Dolato -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="7.jpg" alt="Dolato Ice Cream">
+                                                    <span class="res-tag">100% Italian Gelato</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>Dolato</h3>
+                                                    <p>A treat shop where your comfort cone takes you on an emotional roller-coaster with authentic Italian Gelato.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
+                                                        <span><i class="fas fa-cone"></i> Gelato Shop</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Mandarine Koueider -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="8jpg.jpg" alt="Mandarine Koueider">
+                                                    <span class="res-tag">Legend Since 1928</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>Mandarine Koueider</h3>
+                                                    <p>Exceptional quality and timeless craftsmanship in oriental sweets, from artisanal ice cream to signature pastries.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM</span>
+                                                        <span><i class="fas fa-stroopwafel"></i> Oriental Sweets</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Starbucks -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="9.jpg" alt="Starbucks">
+                                                    <span class="res-tag">Historical Twist</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>Starbucks</h3>
+                                                    <p>The famous international roast with a new historical twist only at the heart of the Grand Egyptian Museum.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
+                                                        <span><i class="fas fa-coffee"></i> Coffee House</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Premium Mart -->
+                                            <div class="restaurant-card anim-on-scroll">
+                                                <div class="res-img-box">
+                                                    <img src="10.jpg" alt="Premium Mart">
+                                                    <span class="res-tag">Everyday Needs</span>
+                                                </div>
+                                                <div class="res-info">
+                                                    <h3>Premium Mart</h3>
+                                                    <p>A convenience store for your everyday items, covering all your essentials while exploring the GEM complex.</p>
+                                                    <div class="res-meta">
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 06:00 PM (Sat & Wed until 10PM)</span>
+                                                        <span><i class="fas fa-shopping-basket"></i> Convenience Mart</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                            
+                            
+                                    <!-- Reservation & Hours: Split Panel -->
+                                    <section class="din-logistics-premium anim-on-scroll" id="reservations">
+                                        <div class="logistics-split">
+                                            <!-- Left Panel: Visual & Story -->
+                                            <div class="logistics-visual" style="background-image: url('./unnamed (4).png');">
+                                                <div class="visual-overlay"></div>
+                                                <div class="visual-content">
+                                                    <span class="din-label">Exclusivity</span>
+                                                    <h2>DINING BEYOND <br><span class="gold-text">HISTORY</span></h2>
+                                                    <p>Secure your place at the heart of the Grand Egyptian Museum. Experience a culinary odyssey where ancient heritage meets modern fine dining.</p>
+                                                    
+                                                    <div class="luxury-badges">
+                                                        <div class="badge-item">
+                                                            <span class="material-symbols-outlined">stars</span>
+                                                            <div><strong>World Class</strong><span>Chef Curated</span></div>
+                                                        </div>
+                                                        <div class="badge-item">
+                                                            <span class="material-symbols-outlined">landscape</span>
+                                                            <div><strong>Pyramid View</strong><span>Private Terrace</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Right Panel: The Form & Schedule -->
+                                            <div class="logistics-form-area">
+                                                <div class="res-form-wrapper">
+                                                    <div class="res-header">
+                                                        <span class="material-symbols-outlined">restaurant_menu</span>
+                                                        <h2>Reserve Your <span class="gold-text">Table</span></h2>
+                                                    </div>
+                                                    
+                                                    <form class="din-form">
+                                                        <div class="din-field">
+                                                            <label><i class="fas fa-utensils"></i> Preferred Venue</label>
+                                                            <div class="select-wrapper">
+                                                                <select>
+                                                                    <option>The Pyramids Restaurant (Fine Dining)</option>
+                                                                    <option>30 NORTH</option>
+                                                                    <option>Zooba</option>
+                                                                    <option>Ladurأ©e Paris</option>
+                                                                    <option>Mandarine Koueider</option>
+                                                                </select>
+                                                                <span class="material-symbols-outlined select-icon">expand_more</span>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="din-row">
+                                                            <div class="din-field">
+                                                                <label><i class="fas fa-calendar-alt"></i> Date</label>
+                                                                <input type="date">
+                                                            </div>
+                                                            <div class="din-field">
+                                                                <label><i class="fas fa-clock"></i> Time</label>
+                                                                <input type="time">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="din-field">
+                                                            <label><i class="fas fa-users"></i> Number of Guests</label>
+                                                            <input type="number" placeholder="2 Guests" min="1" max="12">
+                                                        </div>
+                            
+                                                        <button type="submit" class="din-submit-btn">
+                                                            <span>Verify Availability</span>
+                                                            <i class="fas fa-chevron-right"></i>
+                                                        </button>
+                                                    </form>
+                            
+                                                    <!-- Subtle Hours Sub-section -->
+                                                    <div class="mini-schedule">
+                                                        <div class="sched-header">
+                                                            <span class="material-symbols-outlined">schedule</span>
+                                                            <h4>Dining Schedule</h4>
+                                                        </div>
+                                                        <div class="sched-grid">
+                                                            <div class="sched-item">
+                                                                <div class="sched-info">
+                                                                    <span class="material-symbols-outlined sched-icon">restaurant</span>
+                                                                    <div class="sched-texts">
+                                                                        <span>Fine Dining</span>
+                                                                        <strong>12:00 PM â€“ 11:30 PM</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="sched-item">
+                                                                <div class="sched-info">
+                                                                    <span class="material-symbols-outlined sched-icon">lunch_dining</span>
+                                                                    <div class="sched-texts">
+                                                                        <span>Food Court</span>
+                                                                        <strong>09:00 AM â€“ 10:00 PM</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="sched-item">
+                                                                <div class="sched-info">
+                                                                    <span class="material-symbols-outlined sched-icon">coffee</span>
+                                                                    <div class="sched-texts">
+                                                                        <span>The Cafe</span>
+                                                                        <strong>09:00 AM â€“ 06:00 PM</strong>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </main>
+                            
+                                <hr />
+                                <footer class="site-footer">
+                                        <div class="footer-container">
+                                            <!-- Footer Header -->
+                                            <div class="footer-header">
+                                                <div class="footer-logo">
+                                                    <span class="material-symbols-outlined">account_balance</span>
+                                                </div>
+                                                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                                <div class="footer-divider"></div>
+                                            </div>
+                            
+                                            <!-- Footer Grid -->
+                                            <div class="footer-grid">
+                                                <div class="footer-column">
+                                                    <h3>Explore</h3>
+                                                    <ul>
+                                                        <li><a href="../booking/booking.html">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                        <li><a href="../-membership/code.html">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>About</h3>
+                                                    <ul>
+                                                        <li><a href="../About us/About-us.html">History</a></li>
+                                                        <li><a href="../event/event.html">Events</a></li>
+                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>Support</h3>
+                                                    <ul>
+                                                        <li><a href="../visitor help/help.html">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column connect-column">
+                                                    <h3>Connect</h3>
+                                                    <div class="social-links">
+                                                        <!-- Facebook -->
+                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                                            <i class="fa-brands fa-facebook"></i>
+                                                        </a>
+                            
+                                                        <!-- Twitter (X ) -->
+                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                                            <i class="fa-brands fa-x-twitter"></i>
+                                                        </a>
+                            
+                                                        <!-- Instagram -->
+                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                                            <i class="fa-brands fa-instagram"></i>
+                                                        </a>
+                            
+                                                        <!-- YouTube -->
+                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                                            <i class="fa-brands fa-youtube"></i>
+                                                        </a>
+                                                    </div>
+                            
+                                                    <p>
+                                                        Follow us on social media for updates and behind-the-scenes content.
+                                                    </p>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Footer Separator -->
+                                            <div class="footer-separator"></div>
+                            
+                                            <!-- Footer Bottom -->
+                                            <div class="footer-bottom">
+                                                <div class="language-toggle">
+                                                    <button class="active" data-lang="en">English</button>
+                                                    <button data-lang="ar">العربية</button>
+                                                </div>
+                                                <div class="legal-section">
+                                                   <div class="legal-links">
+                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                                                </div>
+                                        <div class="copyright">
+                                          © 2026 Tutora. All rights reserved.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    </footer>
+                                <script src="script.js"></script>
+                                <!-- <script src="../global-core.js"></script> -->
+                                <script src="../animate.js"></script>
+                            </body>
+                            </html>
+                            

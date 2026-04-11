@@ -1,272 +1,274 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Manage your cookie preferences for a tailored museum experience." />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tutora | Cookie Preferences</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    
-    <!-- Standardized Typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
-    
-    <!-- Icons & Animation -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../animate.css" />
-    <link rel="stylesheet" href="../global-theme.css" />
-    
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body class="dark">
-   
-    <!-- Simplified Legal Header -->
-    <header class="header legal-header">
-        <div class="header-container">
-            <div class="header-left">
-                <div class="logo-section">
-                    <div class="logo-circle">
-                        <img src="../logo.png" alt="Tutora Logo">
-                    </div>
-                </div>
-                <h2 class="logo-text">Tutora</h2>
-            </div>
-            <div class="header-right">
-                <button onclick="window.history.back()" class="btn-back">
-                    <span class="material-symbols-outlined theme-icon">arrow_back</span>
-                    <span>Back</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <main class="container">
-        <!-- Breadcrumbs -->
-        <nav class="breadcrumbs">
-            <a href="../4.home/code.html" class="breadcrumb-link">Home</a>
-            <span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span>
-            <span>Cookie Settings</span>
-        </nav>
-
-        <section class="settings-hero">
-            <div class="privacy-label">
-                <span class="material-symbols-outlined">verified_user</span>
-                <span>Privacy Center</span>
-            </div>
-            <h1 class="article-title">Cookie Preferences</h1>
-            <p class="hero-description">Manage how Tutora uses cookies and similar technologies to enhance your journey through history.</p>
-        </section>
-
-        <div class="settings-grid">
-            <!-- Left Column: Preference Card -->
-            <div class="main-settings">
-                <div class="cookie-card">
-                    <div class="card-body">
-                        <!-- Strictly Necessary Cookies -->
-                        <div class="cookie-option">
-                            <div class="option-details">
-                                <h3 class="option-title">
-                                    <span class="material-symbols-outlined">gavel</span>
-                                    <span>Strictly Necessary Cookies</span>
-                                </h3>
-                                <p class="option-description">These essential cookies are required for the website to function. They facilitate security, network management, and accessibility.</p>
-                            </div>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="necessary" checked disabled />
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-
-                        <!-- Analytical Cookies -->
-                        <div class="cookie-option">
-                            <div class="option-details">
-                                <h3 class="option-title">
-                                    <span class="material-symbols-outlined">analytics</span>
-                                    <span>Analytical Cookies</span>
-                                </h3>
-                                <p class="option-description">These allow us to measure traffic and see which parts of our collection are most popular. This data helps us improve the digital museum experience.</p>
-                            </div>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="analytical" data-cookie-type="analytical" />
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-
-                        <!-- Marketing Cookies -->
-                        <div class="cookie-option">
-                            <div class="option-details">
-                                <h3 class="option-title">
-                                    <span class="material-symbols-outlined">campaign</span>
-                                    <span>Marketing Cookies</span>
-                                </h3>
-                                <p class="option-description">Used by our trusted partners to deliver relevant announcements about upcoming exhibitions and special events at the museum.</p>
-                            </div>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="marketing" data-cookie-type="marketing" />
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <button class="btn btn-secondary" id="reject-btn">Reject Optional</button>
-                        <button class="btn btn-primary" id="save-btn">Save My Preferences</button>
-                    </div>
-                </div>
-
-                <!-- New Section: Third-Party Partners -->
-                <section class="info-section">
-                    <h2 class="section-title">Our Partners</h2>
-                    <p>We work with a limited set of trusted partners to improve our service and reach visitors effectively.</p>
-                    <div class="partners-list">
-                        <div class="partner-item">
-                            <span class="partner-name">Google Analytics</span>
-                            <span class="partner-purpose">Performance & Usage</span>
-                        </div>
-                        <div class="partner-item">
-                            <span class="partner-name">Meta Pixel</span>
-                            <span class="partner-purpose">Marketing & Events</span>
-                        </div>
-                        <div class="partner-item">
-                            <span class="partner-name">Cloudflare</span>
-                            <span class="partner-purpose">Security & Delivery</span>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- Right Column: Info Sidebar -->
-            <aside class="sidebar">
-                <div class="sidebar-box">
-                    <h3 class="sidebar-title">
-                        <span class="material-symbols-outlined">history</span>
-                        Cookie Lifecycle
-                    </h3>
-                    <div class="lifecycle-item">
-                        <strong>Session Cookies</strong>
-                        <p>Deleted automatically when you close your browser.</p>
-                    </div>
-                    <div class="lifecycle-item">
-                        <strong>Persistent Cookies</strong>
-                        <p>Remain on your device for a set period (usually 30 days to 1 year).</p>
-                    </div>
-                </div>
-
-                <div class="sidebar-box mt-2">
-                    <h3 class="sidebar-title">
-                        <span class="material-symbols-outlined">settings_suggest</span>
-                        Browser Management
-                    </h3>
-                    <p class="sidebar-text">You can also manage cookies through your browser settings. Each browser handles this differently:</p>
-                    <ul class="sidebar-links">
-                        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
-                        <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank">Mozilla Firefox</a></li>
-                        <li><a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" target="_blank">Apple Safari</a></li>
-                    </ul>
-                </div>
-            </aside>
-        </div>
-    </main>
-
-   <footer class="site-footer">
-            <div class="footer-container">
-                <!-- Footer Header -->
-                <div class="footer-header">
-                    <div class="footer-logo">
-                        <span class="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <h2 class="footer-title">Grand Egyptian Museum</h2>
-                    <div class="footer-divider"></div>
-                </div>
-
-                <!-- Footer Grid -->
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3>Explore</h3>
-                        <ul>
-                            <li><a href="../booking/booking.html">Tickets</a></li>
-                            <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../-membership/code.html">Membership</a></li>
-                            <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>About</h3>
-                        <ul>
-                            <li><a href="../About us/About-us.html">History</a></li>
-                            <li><a href="../event/event.html">Events</a></li>
-                            <li><a href="../-news_press/code.html">News & Press</a></li>
-                            <li><a href="../-branding/code.html">Branding</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="../visitor help/help.html">Help</a></li>
-                            <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                            <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                            <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column connect-column">
-                        <h3>Connect</h3>
-                        <div class="social-links">
-                            <!-- Facebook -->
-                            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-
-                            <!-- Twitter (X ) -->
-                            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                <i class="fa-brands fa-x-twitter"></i>
-                            </a>
-
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-
-                            <!-- YouTube -->
-                            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                        </div>
-
-                        <p>
-                            Follow us on social media for updates and behind-the-scenes content.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Footer Separator -->
-                <div class="footer-separator"></div>
-
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <div class="language-toggle">
-                        <button class="active" data-lang="en">English</button>
-                        <button data-lang="ar">العربية</button>
-                    </div>
-                    <div class="legal-section">
-                       <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                    </div>
-            <div class="copyright">
-              © 2026 Tutora. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </div>
-        </footer>
-
-    <!-- Scripts -->
-    <script src="main.js"></script>
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-</body>
-</html>
+﻿<!DOCTYPE html>
+                            <html lang="en">
+                            
+                            <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Manage your cookie preferences for a tailored museum experience." />
+                                <meta charset="UTF-8" />
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                                <title>Tutora | Cookie Preferences</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                
+                                <!-- Standardized Typography -->
+                                <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+                                
+                                <!-- Icons & Animation -->
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="../animate.css" />
+                                <link rel="stylesheet" href="../global-theme.css" />
+                                
+                                <!-- Custom Stylesheet -->
+                                <link rel="stylesheet" href="style.css">
+                            </head>
+                            
+                            <body class="dark">
+                               
+                                <!-- Simplified Legal Header -->
+                                <header class="header legal-header">
+                                    <div class="header-container">
+                                        <div class="header-left">
+                                            <div class="logo-section">
+                                                <div class="logo-circle">
+                                                    <img src="../logo.png" alt="Tutora Logo">
+                                                </div>
+                                            </div>
+                                            <h2 class="logo-text">Tutora</h2>
+                                        </div>
+                                        <div class="header-right">
+                                            <button onclick="window.history.back()" class="btn-back">
+                                                <span class="material-symbols-outlined theme-icon">arrow_back</span>
+                                                <span>Back</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </header>
+                            
+                                <main class="container">
+                                    <!-- Breadcrumbs -->
+                                    <nav class="breadcrumbs">
+                                        <a href="../4.home/code.html" class="breadcrumb-link">Home</a>
+                                        <span class="material-symbols-outlined" style="font-size: 1rem;">chevron_right</span>
+                                        <span>Cookie Settings</span>
+                                    </nav>
+                            
+                                    <section class="settings-hero">
+                                        <div class="privacy-label">
+                                            <span class="material-symbols-outlined">verified_user</span>
+                                            <span>Privacy Center</span>
+                                        </div>
+                                        <h1 class="article-title">Cookie Preferences</h1>
+                                        <p class="hero-description">Manage how Tutora uses cookies and similar technologies to enhance your journey through history.</p>
+                                    </section>
+                            
+                                    <div class="settings-grid">
+                                        <!-- Left Column: Preference Card -->
+                                        <div class="main-settings">
+                                            <div class="cookie-card">
+                                                <div class="card-body">
+                                                    <!-- Strictly Necessary Cookies -->
+                                                    <div class="cookie-option">
+                                                        <div class="option-details">
+                                                            <h3 class="option-title">
+                                                                <span class="material-symbols-outlined">gavel</span>
+                                                                <span>Strictly Necessary Cookies</span>
+                                                            </h3>
+                                                            <p class="option-description">These essential cookies are required for the website to function. They facilitate security, network management, and accessibility.</p>
+                                                        </div>
+                                                        <label class="toggle-switch">
+                                                            <input type="checkbox" id="necessary" checked disabled />
+                                                            <span class="slider"></span>
+                                                        </label>
+                                                    </div>
+                            
+                                                    <!-- Analytical Cookies -->
+                                                    <div class="cookie-option">
+                                                        <div class="option-details">
+                                                            <h3 class="option-title">
+                                                                <span class="material-symbols-outlined">analytics</span>
+                                                                <span>Analytical Cookies</span>
+                                                            </h3>
+                                                            <p class="option-description">These allow us to measure traffic and see which parts of our collection are most popular. This data helps us improve the digital museum experience.</p>
+                                                        </div>
+                                                        <label class="toggle-switch">
+                                                            <input type="checkbox" id="analytical" data-cookie-type="analytical" />
+                                                            <span class="slider"></span>
+                                                        </label>
+                                                    </div>
+                            
+                                                    <!-- Marketing Cookies -->
+                                                    <div class="cookie-option">
+                                                        <div class="option-details">
+                                                            <h3 class="option-title">
+                                                                <span class="material-symbols-outlined">campaign</span>
+                                                                <span>Marketing Cookies</span>
+                                                            </h3>
+                                                            <p class="option-description">Used by our trusted partners to deliver relevant announcements about upcoming exhibitions and special events at the museum.</p>
+                                                        </div>
+                                                        <label class="toggle-switch">
+                                                            <input type="checkbox" id="marketing" data-cookie-type="marketing" />
+                                                            <span class="slider"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                            
+                                                <div class="card-footer">
+                                                    <button class="btn btn-secondary" id="reject-btn">Reject Optional</button>
+                                                    <button class="btn btn-primary" id="save-btn">Save My Preferences</button>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- New Section: Third-Party Partners -->
+                                            <section class="info-section">
+                                                <h2 class="section-title">Our Partners</h2>
+                                                <p>We work with a limited set of trusted partners to improve our service and reach visitors effectively.</p>
+                                                <div class="partners-list">
+                                                    <div class="partner-item">
+                                                        <span class="partner-name">Google Analytics</span>
+                                                        <span class="partner-purpose">Performance & Usage</span>
+                                                    </div>
+                                                    <div class="partner-item">
+                                                        <span class="partner-name">Meta Pixel</span>
+                                                        <span class="partner-purpose">Marketing & Events</span>
+                                                    </div>
+                                                    <div class="partner-item">
+                                                        <span class="partner-name">Cloudflare</span>
+                                                        <span class="partner-purpose">Security & Delivery</span>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                            
+                                        <!-- Right Column: Info Sidebar -->
+                                        <aside class="sidebar">
+                                            <div class="sidebar-box">
+                                                <h3 class="sidebar-title">
+                                                    <span class="material-symbols-outlined">history</span>
+                                                    Cookie Lifecycle
+                                                </h3>
+                                                <div class="lifecycle-item">
+                                                    <strong>Session Cookies</strong>
+                                                    <p>Deleted automatically when you close your browser.</p>
+                                                </div>
+                                                <div class="lifecycle-item">
+                                                    <strong>Persistent Cookies</strong>
+                                                    <p>Remain on your device for a set period (usually 30 days to 1 year).</p>
+                                                </div>
+                                            </div>
+                            
+                                            <div class="sidebar-box mt-2">
+                                                <h3 class="sidebar-title">
+                                                    <span class="material-symbols-outlined">settings_suggest</span>
+                                                    Browser Management
+                                                </h3>
+                                                <p class="sidebar-text">You can also manage cookies through your browser settings. Each browser handles this differently:</p>
+                                                <ul class="sidebar-links">
+                                                    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
+                                                    <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank">Mozilla Firefox</a></li>
+                                                    <li><a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" target="_blank">Apple Safari</a></li>
+                                                </ul>
+                                            </div>
+                                        </aside>
+                                    </div>
+                                </main>
+                            
+                               <footer class="site-footer">
+                                        <div class="footer-container">
+                                            <!-- Footer Header -->
+                                            <div class="footer-header">
+                                                <div class="footer-logo">
+                                                    <span class="material-symbols-outlined">account_balance</span>
+                                                </div>
+                                                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                                <div class="footer-divider"></div>
+                                            </div>
+                            
+                                            <!-- Footer Grid -->
+                                            <div class="footer-grid">
+                                                <div class="footer-column">
+                                                    <h3>Explore</h3>
+                                                    <ul>
+                                                        <li><a href="../booking/booking.html">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                        <li><a href="../-membership/code.html">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>About</h3>
+                                                    <ul>
+                                                        <li><a href="../About us/About-us.html">History</a></li>
+                                                        <li><a href="../event/event.html">Events</a></li>
+                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>Support</h3>
+                                                    <ul>
+                                                        <li><a href="../visitor help/help.html">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column connect-column">
+                                                    <h3>Connect</h3>
+                                                    <div class="social-links">
+                                                        <!-- Facebook -->
+                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                                            <i class="fa-brands fa-facebook"></i>
+                                                        </a>
+                            
+                                                        <!-- Twitter (X ) -->
+                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                                            <i class="fa-brands fa-x-twitter"></i>
+                                                        </a>
+                            
+                                                        <!-- Instagram -->
+                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                                            <i class="fa-brands fa-instagram"></i>
+                                                        </a>
+                            
+                                                        <!-- YouTube -->
+                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                                            <i class="fa-brands fa-youtube"></i>
+                                                        </a>
+                                                    </div>
+                            
+                                                    <p>
+                                                        Follow us on social media for updates and behind-the-scenes content.
+                                                    </p>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- Footer Separator -->
+                                            <div class="footer-separator"></div>
+                            
+                                            <!-- Footer Bottom -->
+                                            <div class="footer-bottom">
+                                                <div class="language-toggle">
+                                                    <button class="active" data-lang="en">English</button>
+                                                    <button data-lang="ar">العربية</button>
+                                                </div>
+                                                <div class="legal-section">
+                                                   <div class="legal-links">
+                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                                                </div>
+                                        <div class="copyright">
+                                          © 2026 Tutora. All rights reserved.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                    </footer>
+                            
+                                <!-- Scripts -->
+                                <script src="main.js"></script>
+                                <script src="../global-core.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            </html>
+                            

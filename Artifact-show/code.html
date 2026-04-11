@@ -1,208 +1,209 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-    <meta charset="utf-8" />
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Golden Mask of Tutankhamun | Tutora</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../animate.css" />
-  	<link rel="stylesheet" href="../global-theme.css" />
-</head>
-  <body class="dark">
-
-    <header class="fixed top-0 z-50 w-full border-b border-white/5 bg-charcoal/90 backdrop-blur-xl px-6 py-4">
-<div class="max-w-7xl mx-auto flex items-center justify-between">
-<div class="flex items-center gap-12">
-<div class="flex items-center gap-3">
-<div class="size-7 text-primary">
-<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
-</svg>
-</div>
-<h2 class="text-white text-base font-bold leading-tight tracking-[0.15em] uppercase">Grand Egyptian Museum</h2>
-</div>
-<nav class="hidden lg:flex items-center gap-8">
-<a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Collections</a>
-<a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Exhibitions</a>
-<a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Visit</a>
-</nav>
-</div>
-<div class="flex items-center gap-6">
-<button class="p-2 text-white/70 hover:text-white transition-colors">
-<span class="material-symbols-outlined text-[22px]">search</span>
-</button>
-<button class="flex items-center gap-2 group">
-<span class="material-symbols-outlined text-primary fill-current">favorite</span>
-<span class="text-[11px] text-white/50 uppercase tracking-widest font-bold group-hover:text-white transition-colors">Journey</span>
-</button>
-<button class="bg-primary hover:bg-white hover:text-charcoal text-charcoal px-6 py-2 rounded-none text-[11px] uppercase tracking-widest font-bold transition-all">
-                Book Tickets
-            </button>
-</div>
-</div>
-</header>
-<!-- ARTIFACT CONTENT (Re-architected to Vanilla CSS) -->
-    <main class="artifact-layout">
-        
-        <!-- Left: Image & Hotspots -->
-        <section class="artifact-image-panel">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk30V1D4BWOG-AsEk0u6gKN4VTeSfzs-pjB5LUcjRRJW7eaTzNAelN_cyMbZW7G_FqfShzPO4nOKQdu3ivNK1NMnZl0nSNS0fEQ_a0bpF7O6wwIuXItwo4dLgo6gyljXazgElDMx2GDfY8EEkXq3t3qEFTIWofpcs_HZHlnzO6H8o37mavAI-i9atT2jrk1Z4zWRLf2fvI6gCS8FYiH3VtHsKkAKO8PQR6ISuSOXLNdSonPpSGdw8He1K2qdflWBkX3Qh47GyaGMYg" alt="Golden Mask of Tutankhamun" class="artifact-image">
-            
-            <div class="hotspot" style="top: 38%; left: 48%;">
-                <div class="hotspot-tooltip">
-                    <h4 class="tooltip-title">Lapis Lazuli Inlays</h4>
-                    <p class="tooltip-desc">Genuine semi-precious stones symbolizing the celestial night sky and the rebirth of the soul.</p>
-                </div>
-            </div>
-
-            <div class="hotspot" style="top: 48%; left: 58%;">
-                <div class="hotspot-tooltip">
-                    <h4 class="tooltip-title">Protective Deities</h4>
-                    <p class="tooltip-desc">The vulture and cobra representing the unified powers of Upper and Lower Egypt.</p>
-                </div>
-            </div>
-
-            <div class="artifact-toolbar">
-                <button class="toolbar-btn">
-                    <span class="material-symbols-outlined">rotate_90_degrees_ccw</span>
-                    <span>Rotate</span>
-                </button>
-                <div class="toolbar-divider"></div>
-                <button class="toolbar-btn">
-                    <span class="material-symbols-outlined">zoom_in</span>
-                    <span>Zoom</span>
-                </button>
-                <div class="toolbar-divider"></div>
-                <button class="toolbar-btn">
-                    <span class="material-symbols-outlined">open_in_full</span>
-                    <span>Expand</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- Right: Content & Stats -->
-        <section class="artifact-info-panel custom-scrollbar">
-            <div class="info-breadcrumbs">
-                <span>18th Dynasty</span>
-                <span style="opacity: 0.3">•</span>
-                <span>New Kingdom</span>
-            </div>
-
-            <h1 class="artifact-title">Golden Mask of Tutankhamun</h1>
-            
-            <div class="action-buttons">
-                <button class="btn-ar">
-                    <span class="material-symbols-outlined">view_in_ar</span>
-                    View in Your Room (AR)
-                </button>
-                <button class="btn-listen">
-                    <span class="material-symbols-outlined" style="color: var(--primary-color);">graphic_eq</span>
-                    Listen to Story
-                </button>
-            </div>
-
-            <div class="info-section">
-                <h2 class="info-heading">The Boy King</h2>
-                <p class="info-text">Sealed within the Valley of the Kings for over three millennia, this funerary mask belonged to the boy king Tutankhamun. Discovered in 1922, it remains the ultimate symbol of ancient Egyptian artistry and the quest for immortality.</p>
-            </div>
-
-            <div class="info-section">
-                <h2 class="info-heading">Symbolism & Mastery</h2>
-                <p class="info-text">The mask consists of two sheets of gold that were hammered together and weigh over 10 kilograms. The obsidian and quartz eyes were designed to catch the light, ensuring the Pharaoh could see through the darkness of the afterlife.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <span class="stat-label">Height</span>
-                        <span class="stat-value">54 cm</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-label">Gold Purity</span>
-                        <span class="stat-value">22.5 Karat</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-section" style="margin-bottom: 80px;">
-                <h2 class="info-heading">The Discovery</h2>
-                <p class="info-text">"As my eyes grew accustomed to the light, details of the room within emerged slowly from the mist... gold—everywhere the glint of gold." — Howard Carter, November 1922.</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Floating Action Panel -->
-    <div class="floating-actions">
-        <button class="float-btn" title="Share">
-            <span class="material-symbols-outlined">share</span>
-        </button>
-        <button class="float-btn" id="favoriteBtn" title="Save to Favorites">
-            <span class="material-symbols-outlined" style="color: var(--primary-color);">favorite</span>
-        </button>
-        <a href="../chat bot/chat.html" class="float-btn-primary">
-            Ask Museum AI
-        </a>
-    </div>
-
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const favoriteBtn = document.getElementById('favoriteBtn');
-            const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-            const urlParams = new URLSearchParams(window.location.search);
-            let ARTIFACT_ID = urlParams.get('id') || "660000000000000000000001";
-            
-            if (urlParams.has('id')) {
-                fetch(`${API_BASE_URL}/artifacts/${ARTIFACT_ID}`).then(res => res.json()).then(data => {
-                    const art = data.data || data;
-                    if(art && art.title) document.querySelector('.artifact-title').textContent = art.title;
-                }).catch(e => console.error("Artifact load error: ", e));
-            }
-            
-            if (favoriteBtn) {
-                favoriteBtn.addEventListener('click', async () => {
-                    const token = localStorage.getItem('token');
-                    if (!token) {
-                        alert("Please log in to save to favorites.");
-                        return;
-                    }
-                    try {
-                        const response = await fetch(`${API_BASE_URL}/favorites/${ARTIFACT_ID}`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Authorization': `Bearer ${token}`
-                            }
-                        });
-                        if (response.ok) {
-                            alert("Added to favorites successfully!");
-                        } else {
-                            const data = await response.json();
-                            if (data.message && data.message.toLowerCase().includes('already')) {
-                                alert("This item is already in your favorites.");
-                            } else {
-                                throw new Error('Failed to add to favorites');
-                            }
-                        }
-                    } catch (error) {
-                        alert("Unable to save to favorites: " + error.message);
-                    }
-                });
-            }
-        });
-    </script>
-    
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-</body>
-
-</html>
+﻿<!doctype html>
+                            <html lang="en">
+                              <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+                                <meta charset="utf-8" />
+                            <!doctype html>
+                            <html lang="en">
+                              <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+                                <meta charset="utf-8" />
+                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+                                <title>Golden Mask of Tutankhamun | Tutora</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+                                <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+                                <link rel="stylesheet" href="style.css" />
+                                <link rel="stylesheet" href="../animate.css" />
+                              	<link rel="stylesheet" href="../global-theme.css" />
+                            </head>
+                              <body class="dark">
+                            
+                                <header class="fixed top-0 z-50 w-full border-b border-white/5 bg-charcoal/90 backdrop-blur-xl px-6 py-4">
+                            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                            <div class="flex items-center gap-12">
+                            <div class="flex items-center gap-3">
+                            <div class="size-7 text-primary">
+                            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
+                            </svg>
+                            </div>
+                            <h2 class="text-white text-base font-bold leading-tight tracking-[0.15em] uppercase">Grand Egyptian Museum</h2>
+                            </div>
+                            <nav class="hidden lg:flex items-center gap-8">
+                            <a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Collections</a>
+                            <a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Exhibitions</a>
+                            <a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Visit</a>
+                            </nav>
+                            </div>
+                            <div class="flex items-center gap-6">
+                            <button class="p-2 text-white/70 hover:text-white transition-colors">
+                            <span class="material-symbols-outlined text-[22px]">search</span>
+                            </button>
+                            <button class="flex items-center gap-2 group">
+                            <span class="material-symbols-outlined text-primary fill-current">favorite</span>
+                            <span class="text-[11px] text-white/50 uppercase tracking-widest font-bold group-hover:text-white transition-colors">Journey</span>
+                            </button>
+                            <button class="bg-primary hover:bg-white hover:text-charcoal text-charcoal px-6 py-2 rounded-none text-[11px] uppercase tracking-widest font-bold transition-all">
+                                            Book Tickets
+                                        </button>
+                            </div>
+                            </div>
+                            </header>
+                            <!-- ARTIFACT CONTENT (Re-architected to Vanilla CSS) -->
+                                <main class="artifact-layout">
+                                    
+                                    <!-- Left: Image & Hotspots -->
+                                    <section class="artifact-image-panel">
+                                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk30V1D4BWOG-AsEk0u6gKN4VTeSfzs-pjB5LUcjRRJW7eaTzNAelN_cyMbZW7G_FqfShzPO4nOKQdu3ivNK1NMnZl0nSNS0fEQ_a0bpF7O6wwIuXItwo4dLgo6gyljXazgElDMx2GDfY8EEkXq3t3qEFTIWofpcs_HZHlnzO6H8o37mavAI-i9atT2jrk1Z4zWRLf2fvI6gCS8FYiH3VtHsKkAKO8PQR6ISuSOXLNdSonPpSGdw8He1K2qdflWBkX3Qh47GyaGMYg" alt="Golden Mask of Tutankhamun" class="artifact-image">
+                                        
+                                        <div class="hotspot" style="top: 38%; left: 48%;">
+                                            <div class="hotspot-tooltip">
+                                                <h4 class="tooltip-title">Lapis Lazuli Inlays</h4>
+                                                <p class="tooltip-desc">Genuine semi-precious stones symbolizing the celestial night sky and the rebirth of the soul.</p>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="hotspot" style="top: 48%; left: 58%;">
+                                            <div class="hotspot-tooltip">
+                                                <h4 class="tooltip-title">Protective Deities</h4>
+                                                <p class="tooltip-desc">The vulture and cobra representing the unified powers of Upper and Lower Egypt.</p>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="artifact-toolbar">
+                                            <button class="toolbar-btn">
+                                                <span class="material-symbols-outlined">rotate_90_degrees_ccw</span>
+                                                <span>Rotate</span>
+                                            </button>
+                                            <div class="toolbar-divider"></div>
+                                            <button class="toolbar-btn">
+                                                <span class="material-symbols-outlined">zoom_in</span>
+                                                <span>Zoom</span>
+                                            </button>
+                                            <div class="toolbar-divider"></div>
+                                            <button class="toolbar-btn">
+                                                <span class="material-symbols-outlined">open_in_full</span>
+                                                <span>Expand</span>
+                                            </button>
+                                        </div>
+                                    </section>
+                            
+                                    <!-- Right: Content & Stats -->
+                                    <section class="artifact-info-panel custom-scrollbar">
+                                        <div class="info-breadcrumbs">
+                                            <span>18th Dynasty</span>
+                                            <span style="opacity: 0.3">•</span>
+                                            <span>New Kingdom</span>
+                                        </div>
+                            
+                                        <h1 class="artifact-title">Golden Mask of Tutankhamun</h1>
+                                        
+                                        <div class="action-buttons">
+                                            <button class="btn-ar">
+                                                <span class="material-symbols-outlined">view_in_ar</span>
+                                                View in Your Room (AR)
+                                            </button>
+                                            <button class="btn-listen">
+                                                <span class="material-symbols-outlined" style="color: var(--primary-color);">graphic_eq</span>
+                                                Listen to Story
+                                            </button>
+                                        </div>
+                            
+                                        <div class="info-section">
+                                            <h2 class="info-heading">The Boy King</h2>
+                                            <p class="info-text">Sealed within the Valley of the Kings for over three millennia, this funerary mask belonged to the boy king Tutankhamun. Discovered in 1922, it remains the ultimate symbol of ancient Egyptian artistry and the quest for immortality.</p>
+                                        </div>
+                            
+                                        <div class="info-section">
+                                            <h2 class="info-heading">Symbolism & Mastery</h2>
+                                            <p class="info-text">The mask consists of two sheets of gold that were hammered together and weigh over 10 kilograms. The obsidian and quartz eyes were designed to catch the light, ensuring the Pharaoh could see through the darkness of the afterlife.</p>
+                                            
+                                            <div class="stats-grid">
+                                                <div class="stat-box">
+                                                    <span class="stat-label">Height</span>
+                                                    <span class="stat-value">54 cm</span>
+                                                </div>
+                                                <div class="stat-box">
+                                                    <span class="stat-label">Gold Purity</span>
+                                                    <span class="stat-value">22.5 Karat</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                        <div class="info-section" style="margin-bottom: 80px;">
+                                            <h2 class="info-heading">The Discovery</h2>
+                                            <p class="info-text">"As my eyes grew accustomed to the light, details of the room within emerged slowly from the mist... gold—everywhere the glint of gold." — Howard Carter, November 1922.</p>
+                                        </div>
+                                    </section>
+                                </main>
+                            
+                                <!-- Floating Action Panel -->
+                                <div class="floating-actions">
+                                    <button class="float-btn" title="Share">
+                                        <span class="material-symbols-outlined">share</span>
+                                    </button>
+                                    <button class="float-btn" id="favoriteBtn" title="Save to Favorites">
+                                        <span class="material-symbols-outlined" style="color: var(--primary-color);">favorite</span>
+                                    </button>
+                                    <a href="../chat bot/chat.html" class="float-btn-primary">
+                                        Ask Museum AI
+                                    </a>
+                                </div>
+                            
+                                <!-- Scripts -->
+                                <script src="script.js"></script>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', () => {
+                                        const favoriteBtn = document.getElementById('favoriteBtn');
+                                        const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+                                        const urlParams = new URLSearchParams(window.location.search);
+                                        let ARTIFACT_ID = urlParams.get('id') || "660000000000000000000001";
+                                        
+                                        if (urlParams.has('id')) {
+                                            fetch(`${API_BASE_URL}/artifacts/${ARTIFACT_ID}`).then(res => res.json()).then(data => {
+                                                const art = data.data || data;
+                                                if(art && art.title) document.querySelector('.artifact-title').textContent = art.title;
+                                            }).catch(e => console.error("Artifact load error: ", e));
+                                        }
+                                        
+                                        if (favoriteBtn) {
+                                            favoriteBtn.addEventListener('click', async () => {
+                                                const token = localStorage.getItem('token');
+                                                if (!token) {
+                                                    alert("Please log in to save to favorites.");
+                                                    return;
+                                                }
+                                                try {
+                                                    const response = await fetch(`${API_BASE_URL}/favorites/${ARTIFACT_ID}`, {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            'Content-Type': 'application/json',
+                                                            'Authorization': `Bearer ${token}`
+                                                        }
+                                                    });
+                                                    if (response.ok) {
+                                                        alert("Added to favorites successfully!");
+                                                    } else {
+                                                        const data = await response.json();
+                                                        if (data.message && data.message.toLowerCase().includes('already')) {
+                                                            alert("This item is already in your favorites.");
+                                                        } else {
+                                                            throw new Error('Failed to add to favorites');
+                                                        }
+                                                    }
+                                                } catch (error) {
+                                                    alert("Unable to save to favorites: " + error.message);
+                                                }
+                                            });
+                                        }
+                                    });
+                                </script>
+                                
+                                <script src="../global-core.js"></script>
+                                <script src="../animate.js"></script>
+                            </body>
+                            
+                            </html>
+                            

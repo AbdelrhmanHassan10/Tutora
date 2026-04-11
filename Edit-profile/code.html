@@ -1,184 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUTORA Profile | Edit Profile</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../Profile/style.css">
-    <link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="../global-theme.css" />
-</head>
-
-<body class="dark-mode">
-
-    <div class="container-wrapper">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-content">
-                <!-- Logo -->
-                <div class="logo-section">
-                    <div class="logo-circle">
-                        <img src="../logo.png" alt="Tutora Logo">
-                    </div>
-                    <h2 class="logo-text" style="color: #ecb613; font-size: 20px; padding-left: 15px;">Tutora</h2>
-                    <button id="closeSidebar" class="mobile-close-btn">٣�</button>
-                </div>
-
-                <!-- Navigation Items -->
-                <nav class="nav-menu">
-                    <a href="../Profile/profile.html" class="nav-item active">
-                        <span class="material-symbols-outlined">person</span>
-                        <span>Profile</span>
-                    </a>
-                    <a href="../success/success.html" class="nav-item">
-                        <span class="material-symbols-outlined">confirmation_number</span>
-                        <span>My Tickets</span>
-                    </a>
-                    <a href="#" class="nav-item">
-                        <span class="material-symbols-outlined">bookmark</span>
-                        <span>Saved Treasures</span>
-                    </a>
-                    <a href="#" class="nav-item">
-                        <span class="material-symbols-outlined">history_edu</span>
-                        <span>AI History</span>
-                    </a>
-                    <a href="../setting/setting.html" class="nav-item">
-                        <span class="material-symbols-outlined">settings</span>
-                        <span>Settings</span>
-                    </a>
-                </nav>
-            </div>
-
-            <!-- Logout Button -->
-            <a href="../1.landing page/code!!!!!!!!!!!!.html" style="text-decoration: none;">
-                <button class="logout-btn">
-                    <span class="material-symbols-outlined">logout</span>
-                    <span>Logout</span>
-                </button>
-            </a>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Header/Navbar -->
-            <header class="header">
-                <div class="header-left">
-                    <button class="mobile-menu-btn" id="mobileMenuBtn">
-                        <span class="material-symbols-outlined">menu</span>
-                    </button>
-                    <div class="search-container">
-                        <span class="material-symbols-outlined search-icon">search</span>
-                        <input type="text" class="search-input" placeholder="Search the collection...">
-                    </div>
-                </div>
-
-                <div class="header-actions">
-                    <button class="notification-btn">
-                        <span class="material-symbols-outlined">notifications</span>
-                        <span class="notification-badge"></span>
-                    </button>
-
-                    <div class="divider"></div>
-
-                    <div class="user-info">
-                        <div class="user-avatar">
-                            <img src="../Profile/unnamed.png" alt="User Profile">
-                        </div>
-                    </div>
-
-                    <button class="theme-toggle" id="themeToggle">
-                        <span class="material-symbols-outlined">light_mode</span>
-                    </button>
-                </div>
-            </header>
-
-            <!-- Main Content Area: Edit Profile -->
-            <div class="content-wrapper">
-                <header class="page-header">
-                    <span class="header-subtitle">Account Management</span>
-                    <h1 class="header-title">Edit Profile</h1>
-                </header>
-
-                <div class="edit-profile-layout">
-                    <!-- Profile Picture Section -->
-                    <section class="avatar-section">
-                        <div class="avatar-wrapper" id="avatarWrapper">
-                            <img src="../Profile/unnamed.png" alt="Profile" class="avatar-image" id="profileImagePreview">
-                            <div class="avatar-overlay">
-                                <span class="material-symbols-outlined">photo_camera</span>
-                            </div>
-                            <input type="file" id="avatarUpload" accept="image/*" class="hidden-input">
-                        </div>
-                        <div class="avatar-info">
-                            <p class="avatar-hint">Recommended size: 400x400px</p>
-                            <button type="button" class="btn-text-primary" onclick="document.getElementById('avatarUpload').click()">Change Artifact Image</button>
-                        </div>
-                    </section>
-
-                    <!-- Form Section -->
-                    <section class="form-section">
-                        <form id="editProfileForm" class="edit-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="first_name">First Name</label>
-                                    <input type="text" id="first_name" placeholder="Enter first name" required>
+﻿<!DOCTYPE html>
+                            <html lang="en">
+                            
+                            <head>
+                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>TUTORA Profile | Edit Profile</title>
+                                <link rel="icon" type="image/png" href="../museum.png">
+                                <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+                                <link rel="stylesheet" href="../Profile/style.css">
+                                <link rel="stylesheet" href="style.css">
+                            	<link rel="stylesheet" href="../global-theme.css" />
+                            </head>
+                            
+                            <body class="dark-mode">
+                            
+                                <div class="container-wrapper">
+                                    <!-- Sidebar Navigation -->
+                                    <aside class="sidebar" id="sidebar">
+                                        <div class="sidebar-content">
+                                            <!-- Logo -->
+                                            <div class="logo-section">
+                                                <div class="logo-circle">
+                                                    <img src="../logo.png" alt="Tutora Logo">
+                                                </div>
+                                                <h2 class="logo-text" style="color: #ecb613; font-size: 20px; padding-left: 15px;">Tutora</h2>
+                                                <button id="closeSidebar" class="mobile-close-btn">٣�</button>
+                                            </div>
+                            
+                                            <!-- Navigation Items -->
+                                            <nav class="nav-menu">
+                                                <a href="../Profile/profile.html" class="nav-item active">
+                                                    <span class="material-symbols-outlined">person</span>
+                                                    <span>Profile</span>
+                                                </a>
+                                                <a href="../success/success.html" class="nav-item">
+                                                    <span class="material-symbols-outlined">confirmation_number</span>
+                                                    <span>My Tickets</span>
+                                                </a>
+                                                <a href="#" class="nav-item">
+                                                    <span class="material-symbols-outlined">bookmark</span>
+                                                    <span>Saved Treasures</span>
+                                                </a>
+                                                <a href="#" class="nav-item">
+                                                    <span class="material-symbols-outlined">history_edu</span>
+                                                    <span>AI History</span>
+                                                </a>
+                                                <a href="../setting/setting.html" class="nav-item">
+                                                    <span class="material-symbols-outlined">settings</span>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </nav>
+                                        </div>
+                            
+                                        <!-- Logout Button -->
+                                        <a href="../1.landing page/code!!!!!!!!!!!!.html" style="text-decoration: none;">
+                                            <button class="logout-btn">
+                                                <span class="material-symbols-outlined">logout</span>
+                                                <span>Logout</span>
+                                            </button>
+                                        </a>
+                                    </aside>
+                            
+                                    <!-- Main Content -->
+                                    <main class="main-content">
+                                        <!-- Header/Navbar -->
+                                        <header class="header">
+                                            <div class="header-left">
+                                                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                                                    <span class="material-symbols-outlined">menu</span>
+                                                </button>
+                                                <div class="search-container">
+                                                    <span class="material-symbols-outlined search-icon">search</span>
+                                                    <input type="text" class="search-input" placeholder="Search the collection...">
+                                                </div>
+                                            </div>
+                            
+                                            <div class="header-actions">
+                                                <button class="notification-btn">
+                                                    <span class="material-symbols-outlined">notifications</span>
+                                                    <span class="notification-badge"></span>
+                                                </button>
+                            
+                                                <div class="divider"></div>
+                            
+                                                <div class="user-info">
+                                                    <div class="user-avatar">
+                                                        <img src="../Profile/unnamed.png" alt="User Profile">
+                                                    </div>
+                                                </div>
+                            
+                                                <button class="theme-toggle" id="themeToggle">
+                                                    <span class="material-symbols-outlined">light_mode</span>
+                                                </button>
+                                            </div>
+                                        </header>
+                            
+                                        <!-- Main Content Area: Edit Profile -->
+                                        <div class="content-wrapper">
+                                            <header class="page-header">
+                                                <span class="header-subtitle">Account Management</span>
+                                                <h1 class="header-title">Edit Profile</h1>
+                                            </header>
+                            
+                                            <div class="edit-profile-layout">
+                                                <!-- Profile Picture Section -->
+                                                <section class="avatar-section">
+                                                    <div class="avatar-wrapper" id="avatarWrapper">
+                                                        <img src="../Profile/unnamed.png" alt="Profile" class="avatar-image" id="profileImagePreview">
+                                                        <div class="avatar-overlay">
+                                                            <span class="material-symbols-outlined">photo_camera</span>
+                                                        </div>
+                                                        <input type="file" id="avatarUpload" accept="image/*" class="hidden-input">
+                                                    </div>
+                                                    <div class="avatar-info">
+                                                        <p class="avatar-hint">Recommended size: 400x400px</p>
+                                                        <button type="button" class="btn-text-primary" onclick="document.getElementById('avatarUpload').click()">Change Artifact Image</button>
+                                                    </div>
+                                                </section>
+                            
+                                                <!-- Form Section -->
+                                                <section class="form-section">
+                                                    <form id="editProfileForm" class="edit-form">
+                                                        <div class="form-row">
+                                                            <div class="form-group">
+                                                                <label for="first_name">First Name</label>
+                                                                <input type="text" id="first_name" placeholder="Enter first name" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="last_name">Last Name</label>
+                                                                <input type="text" id="last_name" placeholder="Enter last name" required>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label for="email">Email Address</label>
+                                                            <input type="email" id="email" placeholder="example@gemuseum.eg" readonly title="Email cannot be changed">
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label for="bio">Professional Bio</label>
+                                                            <textarea id="bio" rows="5" placeholder="Specializing in Ptolemaic period artifacts..."></textarea>
+                                                        </div>
+                                                        
+                                                        <div class="form-actions">
+                                                            <button type="button" class="btn-discard" onclick="window.location.href='../Profile/profile.html'">Discard Changes</button>
+                                                            <button type="submit" class="btn-save">Save Changes</button>
+                                                        </div>
+                                                    </form>
+                            
+                                                    <!-- Subtle Card for Secondary Info -->
+                                                    <div class="membership-card">
+                                                        <div class="membership-icon">
+                                                            <span class="material-symbols-outlined">auto_awesome</span>
+                                                        </div>
+                                                        <h4 class="membership-title">Membership Status</h4>
+                                                        <p class="membership-desc">Your 'Premium Curator' status provides access to high-resolution 3D scans of the Tutankhamun collection and priority invitations to private gallery previews.</p>
+                                                        <a href="#" class="membership-link">Review Membership Details</a>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </main>
                                 </div>
-                                <div class="form-group">
-                                    <label for="last_name">Last Name</label>
-                                    <input type="text" id="last_name" placeholder="Enter last name" required>
-                                </div>
-                            </div>
                             
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" placeholder="example@gemuseum.eg" readonly title="Email cannot be changed">
-                            </div>
+                                <script src="script.js"></script>
                             
-                            <div class="form-group">
-                                <label for="bio">Professional Bio</label>
-                                <textarea id="bio" rows="5" placeholder="Specializing in Ptolemaic period artifacts..."></textarea>
-                            </div>
                             
-                            <div class="form-actions">
-                                <button type="button" class="btn-discard" onclick="window.location.href='../Profile/profile.html'">Discard Changes</button>
-                                <button type="submit" class="btn-save">Save Changes</button>
-                            </div>
-                        </form>
-
-                        <!-- Subtle Card for Secondary Info -->
-                        <div class="membership-card">
-                            <div class="membership-icon">
-                                <span class="material-symbols-outlined">auto_awesome</span>
-                            </div>
-                            <h4 class="membership-title">Membership Status</h4>
-                            <p class="membership-desc">Your 'Premium Curator' status provides access to high-resolution 3D scans of the Tutankhamun collection and priority invitations to private gallery previews.</p>
-                            <a href="#" class="membership-link">Review Membership Details</a>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <script src="script.js"></script>
-
-
-
-
-
-
-<link rel="stylesheet" href="../animate.css" />
-<script src="../global-core.js"></script>
-<script src="../animate.js"></script>
-</body>
-
-</html>
-
-
-
+                            
+                            
+                            
+                            
+                            <link rel="stylesheet" href="../animate.css" />
+                            <script src="../global-core.js"></script>
+                            <script src="../animate.js"></script>
+                            </body>
+                            
+                            </html>
+                            
+                            
+                            
+                            
