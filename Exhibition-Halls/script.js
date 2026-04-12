@@ -249,14 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    const controlsSection = document.querySelector('.controls-section');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            controlsSection.classList.add('scrolled');
-        } else {
-            controlsSection.classList.remove('scrolled');
-        }
-    });
 
     // --- DOM ELEMENTS ---
     const hallsGrid = document.getElementById('hallsGrid');

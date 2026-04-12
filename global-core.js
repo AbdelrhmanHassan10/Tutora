@@ -152,4 +152,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // 5. GLOBAL NAVIGATION HANDLERS (MOBILE MENU & DROPDOWNS)
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    if (menuBtn && mobileMenu && menuOverlay) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+    }
+
+    // Global Dropdown Toggles (Mobile)
+    document.addEventListener('click', (e) => {
+        const toggle = e.target.closest('.dropdown-toggle');
+        if (toggle) {
+            e.preventDefault();
+            const dropdownItems = toggle.nextElementSibling;
+            if (dropdownItems && dropdownItems.classList.contains('dropdown-items')) {
+                toggle.classList.toggle('active');
+                dropdownItems.classList.toggle('show');
+            }
+        }
+    });
 });

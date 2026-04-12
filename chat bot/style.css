@@ -406,7 +406,7 @@ body.light .dropdown-item:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.4rem;
+    gap: 1.3rem;
  }
  
 
@@ -470,7 +470,7 @@ body.light .dropdown-item:hover {
 
 .desktop-nav {
     display: flex;
-    gap: 1.75rem;
+    gap: 1.5rem;
     align-items: center;
     flex: 1;
     justify-content: center;

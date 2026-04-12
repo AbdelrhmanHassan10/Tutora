@@ -774,7 +774,7 @@ html:not(.dark) .dropdown-link:hover {
 
 .desktop-nav {
     display: flex;
-    gap: 1.6rem;
+    gap: 1.3rem;
     align-items: center;
     justify-content: center;
     flex: 1; /* يخلي الناف في النص */

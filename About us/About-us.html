@@ -1,310 +1,488 @@
-﻿<!doctype html>
-                            <html lang="en">
-                            
-                            <head>
-                                <meta charset="utf-8" />
-                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-                                <title>About Us | The Story Behind Tutora</title>
-                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-                                
-                                <!-- Favicon -->
-                                <link rel="icon" type="image/png" href="../museum.png">
-                                
-                                <!-- Fonts & Icons -->
-                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Serif:wght@400;700;900&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-                                
-                                <!-- Project Styles -->
-                                <link rel="stylesheet" href="style.css" />
-                                <link rel="stylesheet" href="../animate.css" />
-                                <link rel="stylesheet" href="../global-theme.css" />
-                            </head>
-                            
-                            <body class="dark">
-                                <!-- Menu Overlay -->
-                                <div class="menu-overlay" id="menuOverlay"></div>
-                            
-                                <!-- Mobile Menu -->
-                                <div class="mobile-menu" id="mobileMenu">
-                                    <div class="menu-header">
-                                        <div class="menu-logo">
-                                            <div class="logo-circle">
-                                                <img src="../logo.png" alt="Tutora Logo">
-                                            </div>
-                                            <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
-                                        </div>
-                                        <button class="close-btn" id="closeBtn">
-                                            <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
-                                        </button>
-                                    </div>
-                            
-                                    <nav class="menu-nav">
-                                        <a href="../4.home/code.html" class="menu-link">Home</a>
-                                        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition-Halls</a>
-                                        <a href="../Kids-Museum/kids-museum.html" class="menu-link" style="color: #ecb613;">Kids-Museum</a>
-                                        <a href="../event/event.html" class="menu-link">Event</a>
-                            
-                                        <div class="menu-dropdown">
-                                            <button class="menu-link dropdown-toggle" style="color: #000;">
-                                                AI Experience
-                                                <span class="material-symbols-outlined">expand_more</span>
-                                            </button>
-                                            <div class="dropdown-items">
-                                                <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
-                                                <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
-                                                <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
-                                                <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-                                                <a href="../Pharaoh Transformer/code.html" class="dropdown-item">Tutora Laboratory</a>
-                                            </div>
-                                        </div>
-                            
-                                        <a href="../shop/shop.html" class="menu-link">Shop</a>
-                                        <a href="../About us/About-us.html" class="menu-link">About</a>
-                                        <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
-                                    </nav>
-                            
-                                    <div class="menu-footer">
-                                        <a href="../booking/booking.html" class="menu-booking-btn" style="background-color: #ecb613;">Booking</a>
-                                        <a href="../fav/favourite.html" class="menu-icon-link">
-                                            <span class="material-symbols-outlined">favorite</span> Favorites
-                                        </a>
-                                        <button class="menu-icon-link" id="menuLangBtn">
-                                            <span class="material-symbols-outlined">language</span> Language
-                                        </button>
-                                    </div>
-                                </div>
-                            
-                                <!-- Header -->
-                                <header class="header">
-                                    <div class="header-container">
-                                        <div class="header-left">
-                                            <button class="menu-btn" id="menuBtn">
-                                                <span class="material-symbols-outlined" style="color: #ecb613; font-size: 32px;">menu</span>
-                                            </button>
-                                            <div class="logo-section">
-                                                <div class="logo-circle">
-                                                    <img src="../logo.png" alt="Tutora Logo">
-                                                </div>
-                                                <h2 class="logo-text" style="color: #ecb613; font-size: 20px;">Tutora</h2>
-                                            </div>
-                                        </div>
-                            
-                                        <nav class="desktop-nav">
-                                            <a href="../4.home/code.html">Home</a>
-                                            <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-                                            <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-                                            <a href="../event/event.html">Event</a>
-                                            <div class="nav-dropdown">
-                                                <button class="nav-link dropdown-trigger">
-                                                    AI Experience
-                                                    <span class="material-symbols-outlined">expand_more</span>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
-                                                    <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-                                                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
-                                                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-                                                    <a href="../Pharaoh Transformer/code.html" class="dropdown-link">Tutora Laboratory</a>
-                                                </div>
-                                            </div>
-                                            <a href="../shop/shop.html">Shop</a>
-                                            <a href="../About us/About-us.html">About</a>
-                                            <a href="../Exhibition-Halls/exhibition-halls.html">Collection</a>
-                                        </nav>
-                            
-                                        <div class="header-right">
-                                            <div class="search-box">
-                                                <span class="material-symbols-outlined">search</span>
-                                                <input type="text" placeholder="Search..." />
-                                            </div>
-                                            <button class="theme-btn" id="themeBtn">
-                                                <span class="material-symbols-outlined">dark_mode</span>
-                                            </button>
-                                            <a href="../booking/booking.html" class="btn-booking" style="background-color: #ecb613; color: black;">booking</a>
-                                            <a href="../fav/favourite.html">
-                                                <button class="icon-btn">
-                                                    <span class="material-symbols-outlined">favorite</span>
-                                                </button>
-                                            </a>
-                                            <button class="icon-btn" id="langBtn">
-                                                <span class="material-symbols-outlined">language</span>
-                                            </button>
-                                            <a href="../Profile/Profile_page.html">
-                                                <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </header>
-                            
-                                <main>
-                                    <!-- Hero Section -->
-                                    <section class="hero-text">
-                                        <div class="container">
-                                            <h1 class="hero-title">
-                                                The Grand Egyptian Museum:<br /> A Legacy <span class="gold-text">Reborn</span>
-                                            </h1>
-                                            <p class="hero-subtitle">
-                                                A monumental tribute to 7,000 years of history, rising from the sands of Giza. The world's largest archaeological institution, bridging ancient wonders and modern innovation.
-                                            </p>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Hero Image Section -->
-                                    <section class="hero-image-section">
-                                        <div class="hero-image"></div>
-                                    </section>
-                            
-                                    <!-- Narrative Split Section -->
-                                    <section class="container narrative">
-                                        <div class="narrative-content">
-                                            <h2 class="narrative-title">The Vision of the Century</h2>
-                                            <div class="narrative-text">
-                                                <p>
-                                                    Designed by the renowned Heneghan Peng Architects, the GEM stands as a beacon of cultural preservation. Located on the edge of the Giza Plateau, the museum's architecture is a dialogue with the Great Pyramids themselves.
-                                                </p>
-                                                <p>
-                                                    The site covers approximately 500,000 square meters, making it the largest museum in the world dedicated to a single civilization. It serves not only as a vault for the treasures of King Tutankhamun but as a state-of-the-art research center and conservation laboratory.
-                                                </p>
-                                                <p>
-                                                    Our mission is to inspire, educate, and preserve the legacy of Ancient Egypt for generations to come, utilizing immersive digital technologies alongside authentic physical artifacts.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="narrative-visual">
-                                            <div class="visual-glow"></div>
-                                            <div class="visual-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('../13.jpg');"></div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Global Impact Stats Section -->
-                                    <section class="stats-section">
-                                        <div class="container" style="text-align: center;">
-                                            <h2 class="stats-title" style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
-                                                <span class="material-symbols-outlined" style="font-size: 40px; color: #ecb613;">public</span> Global Impact
-                                            </h2>
-                                            <div class="stats-grid">
-                                                <div class="stat-card">
-                                                    <span class="material-symbols-outlined stat-icon">architecture</span>
-                                                    <p class="stat-number" data-count="100000">0</p>
-                                                    <p class="stat-label">Square Meters</p>
-                                                    <p class="stat-desc">The total gallery space housing over 100,000 artifacts from across the ages.</p>
-                                                </div>
-                                                <div class="stat-card">
-                                                    <span class="material-symbols-outlined stat-icon">history_edu</span>
-                                                    <p class="stat-number" data-count="7000">0</p>
-                                                    <p class="stat-label">Years of History</p>
-                                                    <p class="stat-desc">A comprehensive journey through Predynastic times to the Greco-Roman period.</p>
-                                                </div>
-                                                <div class="stat-card">
-                                                    <span class="material-symbols-outlined stat-icon">group</span>
-                                                    <p class="stat-number" data-count="5000000">0</p>
-                                                    <p class="stat-label">Annual Visitors</p>
-                                                    <p class="stat-desc">Welcoming a global audience to experience the heart of human civilization.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Location Section -->
-                                    <section class="container location-section">
-                                        <div class="location-header">
-                                            <div>
-                                                <h2 class="location-title">Our Location</h2>
-                                                <p class="location-subtitle">Giza Plateau, Cairo, Egypt. Just minutes from the Great Pyramids.</p>
-                                            </div>
-                                            <button class="btn-directions">
-                                                Get Directions
-                                                <span class="material-symbols-outlined">arrow_forward</span>
-                                            </button>
-                                        </div>
-                                        <div class="map-container" style="background-image: url('./unnamed 1.png')">
-                                            <div class="map-overlay"></div>
-                                            <div class="map-marker">
-                                                <div class="marker-pulse"></div>
-                                                <span class="material-symbols-outlined marker-icon">location_on</span>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </main>
-                            
-                                <!-- Footer Component -->
-                                <footer class="site-footer">
-                                    <div class="footer-container">
-                                        <div class="footer-header">
-                                            <div class="footer-logo">
-                                                <span class="material-symbols-outlined text-primary">account_balance</span>
-                                            </div>
-                                            <h2 class="footer-title">Grand Egyptian Museum</h2>
-                                            <div class="footer-divider"></div>
-                                        </div>
-                            
-                                        <div class="footer-grid">
-                                            <div class="footer-column">
-                                                <h3>Explore</h3>
-                                                <ul>
-                                                    <li><a href="../booking/booking.html">Tickets</a></li>
-                                                    <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
-                                                    <li><a href="../-membership/code.html">Membership</a></li>
-                                                    <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="footer-column">
-                                                <h3>About</h3>
-                                                <ul>
-                                                    <li><a href="../About us/About-us.html">History</a></li>
-                                                    <li><a href="../event/event.html">Events</a></li>
-                                                    <li><a href="../-news_press/code.html">News & Press</a></li>
-                                                    <li><a href="../-branding/code.html">Branding</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="footer-column">
-                                                <h3>Support</h3>
-                                                <ul>
-                                                    <li><a href="../visitor help/help.html">Help</a></li>
-                                                    <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                                                    <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                                                    <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="footer-column connect-column">
-                                                <h3>Connect</h3>
-                                                <div class="social-links">
-                                                    <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                                                    <a href="https://x.com/GrandEGMuseum" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                                                    <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                                                    <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                            
-                                        <div class="footer-separator"></div>
-                            
-                                        <div class="footer-bottom">
-                                            <div class="language-toggle">
-                                                <button class="active" data-lang="en">English</button>
-                                                <button data-lang="ar">العربية</button>
-                                            </div>
-                                            <div class="legal-section">
-                                                <div class="legal-links">
-                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                                                </div>
-                                                <div class="copyright">© 2026 Tutora. All rights reserved.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </footer>
-                            
-                                <!-- Scripts -->
-                                <script src="main.js"></script>
-                                <script src="../global-core.js"></script>
-                                <script src="../animate.js"></script>
-                                <script src="../standardize_theme.js"></script>
-                            </body>
-                            
-                            </html>
-                            
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us | The Story Behind Tutora</title>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../museum.png">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Serif:wght@400;700;900&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <!-- Project Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../animate.css" />
+    <link rel="stylesheet" href="../global-theme.css" />
+</head>
+
+<body class="dark">
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+                <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
+            </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition Halls</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link" style="color: #ecb613;">Kids-Museum</a>
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle" style="color: #000;">
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../About us/About-us.html" class="menu-link">About</a>
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">Collection <span class="material-symbols-outlined">expand_more</span></button>
+                <div class="dropdown-items">
+                    <a href="../collection/collection.html" class="dropdown-item">Main Gallery</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn" style="background-color: #ecb613;">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+            <button class="menu-icon-link" id="menuLangBtn">
+                <span class="material-symbols-outlined">language</span> Language
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <span class="material-symbols-outlined" style="color: #ecb613; font-size: 32px;">menu</span>
+                </button>
+                <div class="logo-section">
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
+                    <h2 class="logo-text" style="color: #ecb613; font-size: 20px;">Tutora</h2>
+                </div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                <a href="../event/event.html">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        AI Experience
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html">Shop</a>
+                <a href="../About us/About-us.html" class="active">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">Collection <span class="material-symbols-outlined">expand_more</span></button>
+                    <div class="dropdown-menu">
+                        <a href="../collection/collection.html" class="dropdown-link">Main Gallery</a>
+                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search..." />
+                </div>
+                <button class="theme-btn" id="themeBtn">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <a href="../booking/booking.html" class="btn-booking" style="background-color: #ecb613; color: black;">booking</a>
+                <a href="../fav/favourite.html">
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined">favorite</span>
+                    </button>
+                </a>
+                <button class="icon-btn" id="langBtn">
+                    <span class="material-symbols-outlined">language</span>
+                </button>
+                <a href="../Profile/Profile_page.html">
+                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-text animate-on-scroll">
+            <div class="container">
+                <h1 class="hero-title">
+                    The Grand Egyptian Museum:<br /> A Legacy <span class="gold-text">Reborn</span>
+                </h1>
+                <p class="hero-subtitle">
+                    A monumental tribute to 7,000 years of history, rising from the sands of Giza. The world's largest archaeological institution, bridging ancient wonders and modern innovation.
+                </p>
+            </div>
+        </section>
+
+        <!-- Hero Image Section -->
+        <section class="hero-image-section animate-on-scroll">
+            <div class="hero-image"></div>
+        </section>
+
+        <!-- Narrative Split Section -->
+        <section class="container narrative animate-on-scroll">
+            <div class="narrative-content">
+                <h2 class="narrative-title">The Vision of the Century</h2>
+                <div class="narrative-text">
+                    <p>
+                        Designed by the renowned Heneghan Peng Architects, the GEM stands as a beacon of cultural preservation. Located on the edge of the Giza Plateau, the museum's architecture is a dialogue with the Great Pyramids themselves.
+                    </p>
+                    <p>
+                        The site covers approximately 500,000 square meters, making it the largest museum in the world dedicated to a single civilization. It serves not only as a vault for the treasures of King Tutankhamun but as a state-of-the-art research center and conservation laboratory.
+                    </p>
+                </div>
+            </div>
+            <div class="narrative-visual">
+                <div class="visual-glow"></div>
+                <div class="visual-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%), url('../stair2.jpg');"></div>
+            </div>
+        </section>
+
+        <!-- Architectural Excellence Section -->
+        <section class="architecture-section animate-on-scroll">
+            <div class="arch-blueprint-motif"></div>
+            <div class="arch-axis-line"></div>
+            <div class="container">
+                <div class="arch-grid">
+                    <div class="arch-content">
+                        <h2>Architectural Equilibrium</h2>
+                        <p class="arch-description">
+                            The museum's design is dictated by a set of visual axes from the site to the three pyramids of Giza. This mathematical precision creates a physical link between the ancient monuments and the modern museum.
+                        </p>
+                        <div class="arch-highlight">
+                            The building is not a mere container; it is a landscape, a monumental fold in the desert.
+                        </div>
+                        <p class="alabaster-p">
+                            Utilizing translucent alabaster for the main facade, the building transforms at night, glowing with a warmth that symbols the eternal spirit of Egypt.
+                        </p>
+                    </div>
+                    <div class="arch-image-stack">
+                        <img src="../11.jpg" alt="Architecture Main" class="arch-img-main">
+                        <img src="../13.jpg" alt="Architecture Detail" class="arch-img-sub">
+                        <img src="../stairs.avif" alt="Architectural Stairs" class="arch-img-small">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Future Vision (AI Ecosystem) -->
+        <section id="future" class="section ai-vision animate-on-scroll">
+            <div class="container">
+                <div class="ai-header">
+                    <h2 class="section-title">The Future is Tutora</h2>
+                    <div class="header-line"></div>
+                    <p class="section-description">
+                        We are redefining the heritage experience through digital innovation. Our AI-driven ecosystem bridges the gap between ancient history and modern audiences.
+                    </p>
+                </div>
+                
+                <div class="ai-features">
+                    <a href="../chat bot/chat.html" class="ai-link">
+                        <div class="ai-feature-card frosted-card">
+                            <span class="material-symbols-outlined icon">smart_toy</span>
+                            <h3>AI Chatbot</h3>
+                            <p>A 24/7 personal guide that answers any historical question in real-time.</p>
+                        </div>
+                    </a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="ai-link">
+                        <div class="ai-feature-card frosted-card">
+                            <span class="material-symbols-outlined icon">center_focus_strong</span>
+                            <h3>Artifact Identifier</h3>
+                            <p>Scan any artifact with your phone to unlock deep-dive historical context.</p>
+                        </div>
+                    </a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="ai-link">
+                        <div class="ai-feature-card frosted-card">
+                            <span class="material-symbols-outlined icon">view_in_ar</span>
+                            <h3>3D Voice Storytelling</h3>
+                            <p>Immersive audio-visual journeys through photorealistic ancient reconstructions.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section animate-on-scroll">
+            <div class="container">
+                <h2 class="timeline-main-title">Journey Through Time</h2>
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2002</div>
+                            <h3>The Foundation</h3>
+                            <p>Presidential decree establishes the Grand Egyptian Museum project on the Giza plateau.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2012</div>
+                            <h3>Ramses Returns</h3>
+                            <p>The 3,200-year-old statue of Ramses II is moved to its permanent home in the Grand Atrium.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2021</div>
+                            <h3>Conservation Peak</h3>
+                            <p>Tutankhamun's full collection is moved to the conservation center for final restoration.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item animate-on-scroll">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2024</div>
+                            <h3>The Grand Opening</h3>
+                            <p>The largest museum in the world opens its doors to the global community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Impact Stats Section -->
+        <section class="stats-section animate-on-scroll">
+            <div class="container" style="text-align: center;">
+                <h2 class="stats-title" style="display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--accent-color); font-size: 2.5rem; margin-bottom: 4rem;">
+                    <span class="material-symbols-outlined" style="font-size: 50px; color: #ecb613;">public</span> Global Impact
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="material-symbols-outlined stat-icon">architecture</span>
+                        <p class="stat-number" data-count="100000">0</p>
+                        <p class="stat-label">Square Meters</p>
+                        <p class="stat-desc">The total gallery space housing over 100,000 artifacts from across the ages.</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-symbols-outlined stat-icon">history_edu</span>
+                        <p class="stat-number" data-count="7000">0</p>
+                        <p class="stat-label">Years of History</p>
+                        <p class="stat-desc">A comprehensive journey through Predynastic times to the Greco-Roman period.</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="material-symbols-outlined stat-icon">group</span>
+                        <p class="stat-number" data-count="5000000">0</p>
+                        <p class="stat-label">Annual Visitors</p>
+                        <p class="stat-desc">Welcoming a global audience to experience the heart of human civilization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainability Section -->
+        <section id="sustainability" class="sustainability-section animate-on-scroll">
+            <div class="container">
+                <div class="sust-grid">
+                    <div class="sust-content">
+                        <h2 class="section-title" style="color: var(--accent-color); font-size: 2.8rem; margin-bottom: 2rem;">Sustainability & Future-Proofing</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 3rem;">The Grand Egyptian Museum is a leader in environmental stewardship, integrating ancient wisdom with modern technology to ensure a lasting legacy.</p>
+                        
+                        <div class="sust-item">
+                            <div class="sust-icon-box"><span class="material-symbols-outlined" style="font-size: 2rem;">eco</span></div>
+                            <div>
+                                <h4 style="color: var(--accent-color); margin-bottom: 0.5rem; font-size: 1.3rem;">Solar Energy Integration</h4>
+                                <p>Our expansive roof utilizes photovoltaic panels to generate clean energy for climate control.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="sust-item">
+                            <div class="sust-icon-box"><span class="material-symbols-outlined" style="font-size: 2rem;">water_drop</span></div>
+                            <div>
+                                <h4 style="color: var(--accent-color); margin-bottom: 0.5rem; font-size: 1.3rem;">Water Conservation</h4>
+                                <p>Innovative recycling systems manage resources in the arid Giza landscape.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sust-visual">
+                        <img src="../11.jpg" alt="Sustainability" style="width: 100%; border-radius: 2rem; box-shadow: 0 40px 80px rgba(0,0,0,0.5); transform: perspective(1000px) rotateY(-5deg);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Partners Section -->
+        <section id="partners" class="partners-section animate-on-scroll">
+            <div class="container">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 5rem; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 4px;">Institutional Network</h2>
+                <div class="partners-track" style="color: brown;">
+                    <div class="partner-logo" style="color: brown;">UNESCO</div>
+                    <div class="partner-logo" style="color: brown;">British Museum</div>
+                    <div class="partner-logo" style="color: brown;">Louvre</div>
+                    <div class="partner-logo" style="color: brown;">Met Museum</div>
+                    <div class="partner-logo" style="color: brown;">Cairo University</div>
+                    <!-- Repeated for smooth scroll -->
+                    <div class="partner-logo">UNESCO</div>
+                    <div class="partner-logo" style="color: brown;">British Museum</div>
+                    <div class="partner-logo" style="color: brown;">Louvre</div>
+                    <div class="partner-logo" style="color: brown;">Met Museum</div>
+                    <div class="partner-logo" style="color: brown;">Cairo University</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="container location-section animate-on-scroll">
+            <div class="location-header">
+                <div style="flex: 1;">
+                    <h2 class="location-title" style="color: var(--accent-color); font-size: 3rem; margin-bottom: 1rem;">Experience the Dawn of History</h2>
+                    <p class="location-subtitle" style="font-size: 1.2rem; opacity: 0.8;">Giza Plateau, Cairo, Egypt. A timeless dialogue between ancient and modern.</p>
+                </div>
+                <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" class="btn-directions" style="text-decoration: none; padding: 1.5rem 3rem; font-size: 1.1rem; border-radius: 99px;">
+                    Get Directions
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+            <div class="map-container" style="background-image: url('./unnamed 1.png'); height: 500px; border-radius: 2rem; box-shadow: 0 50px 100px rgba(0,0,0,0.5);">
+                <div class="map-overlay" style="background: rgba(0,0,0,0.2);"></div>
+                <div class="map-marker">
+                    <div class="marker-pulse"></div>
+                    <span class="material-symbols-outlined marker-icon" style="font-size: 5rem;">location_on</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="contact-cta animate-on-scroll">
+            <div class="container">
+                <h2 class="cta-title">Ready to <span style="background: var(--premium-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Journey</span> Through Time?</h2>
+                <p style="color: #fff; opacity: 0.9; margin-bottom: 4rem; font-size: 1.4rem; max-width: 700px; margin-left: auto; margin-right: auto;">Step into the world's largest museum and witness the resurrection of a civilization.</p>
+                <a href="../booking/booking.html" class="btn-booking premium" style="text-decoration: none;">Book Your Experience Now</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined" style="color: #ecb613; font-size: 40px;">account_balance</span>
+                </div>
+                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html">Tickets</a></li>
+                        <li><a href="../collection/collection.html">Collection</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                        <li><a href="../-membership/code.html">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html">History</a></li>
+                        <li><a href="../event/event.html">Events</a></li>
+                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                        <li><a href="../-branding/code.html">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com/GrandEGMuseum" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-separator"></div>
+
+            <div class="footer-bottom">
+                <div class="language-toggle">
+                    <button class="active" data-lang="en">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">&copy; 2026 Tutora. All rights reserved.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
+    <script src="../standardize_theme.js"></script>
+</body>
+
+</html>

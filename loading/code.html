@@ -1,0 +1,112 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;family=Noto+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#C5A059",
+                "background-light": "#f8f6f6",
+                "background-dark": "#000000", /* Deep black as requested */
+                "celestial-gold": "#C5A059",
+                "celestial-silver": "#808080", /* Dimmed to keep gold primary */
+                "celestial-blue": "#0a0a0a",
+              },
+              fontFamily: {
+                "display": ["Public Sans", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .starfield {
+            background-image: radial-gradient(circle at 50% 50%, rgba(197, 160, 89, 0.2) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        .sparkle-gold {
+            background-image: radial-gradient(circle at center, rgba(197, 160, 89, 0.4) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-white overflow-hidden">
+<!-- Starfield & Constellation Layer -->
+<div class="fixed inset-0 starfield pointer-events-none opacity-40"></div>
+<div class="fixed inset-0 sparkle-gold pointer-events-none opacity-30"></div>
+<div class="relative flex h-screen w-full flex-col items-center justify-center p-6 text-center">
+<!-- Celestial Logo Container -->
+<div class="relative mb-12 group">
+<!-- Glow Effect -->
+<div class="absolute inset-0 bg-celestial-gold blur-3xl opacity-20 rounded-full scale-125"></div>
+<!-- Logo in Circular Frame -->
+<div class="relative w-48 h-48 md:w-64 md:h-64 rounded-full flex items-center justify-center bg-black overflow-hidden border-4 border-celestial-gold shadow-[0_0_40px_rgba(197,160,89,0.5)]">
+<img alt="Tutora Logo" class="w-full h-full object-cover relative z-10" src="https://lh3.googleusercontent.com/aida/ADBb0ujzqZfE9L6vwMWuM23iFbXranS9l3_MrxMy96xIc_NKz23Rhp7IQz7gTHfQwK_nzY7PocGf5-u87-ByI7ISr5NI2uYDycQMK08sPOBCztvEeq0zb4m9zuWL5psaNDnpI85AdW0ZgM1r2ml_iO4isQiTRl7gzfu8x1ue1RU1ooOqSOHpxqTnjZH0iSy3zyaFsZAR_GnokckG9uSjdr2l16yUohBDLmbgRDMyqetA6_X9OX6uiOUJyqxDElKeHgo3lcTvbASHPIxYlQ"/>
+</div>
+</div>
+<!-- Branding -->
+<div class="mb-8">
+<h1 class="text-4xl md:text-6xl font-bold tracking-[0.2em] uppercase text-transparent bg-clip-text bg-gradient-to-b from-celestial-gold via-white to-celestial-gold drop-shadow-sm">
+                Tortara
+            </h1>
+<div class="flex items-center justify-center gap-4 mt-2">
+<div class="h-px w-12 bg-gradient-to-r from-transparent to-celestial-gold"></div>
+<p class="text-celestial-gold text-sm tracking-[0.4em] uppercase font-light">Celestial Alignments</p>
+<div class="h-px w-12 bg-gradient-to-l from-transparent to-celestial-gold"></div>
+</div>
+</div>
+<!-- Progress Section -->
+<div class="w-full max-w-md space-y-6">
+<div class="flex flex-col gap-3">
+<div class="flex gap-6 justify-between items-end">
+<p class="text-celestial-gold text-lg font-medium leading-normal italic">Aligning the heavens...</p>
+<p class="text-celestial-gold/60 text-xs font-mono">CYCLE VII</p>
+</div>
+<!-- Custom Progress Bar -->
+<div class="h-1.5 w-full bg-black rounded-full overflow-hidden border border-celestial-gold/30">
+<div class="h-full bg-gradient-to-r from-celestial-gold via-[#e8d2a6] to-celestial-gold shadow-[0_0_15px_#C5A059]" style="width: 62%;"></div>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2 text-celestial-gold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<p class="text-sm font-normal leading-normal">Cosmic energy loading</p>
+</div>
+<p class="text-celestial-gold text-sm font-mono opacity-80">62%</p>
+</div>
+</div>
+</div>
+<!-- Egyptian Inspired Footer Decoration -->
+<div class="mt-20 flex gap-8">
+<div class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined text-celestial-gold" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[8px] tracking-widest uppercase text-celestial-gold">Sirius</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-100">
+<span class="material-symbols-outlined text-celestial-gold" style="font-variation-settings: 'FILL' 1;">brightness_high</span>
+<span class="text-[8px] tracking-widest uppercase text-celestial-gold">Ra</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined text-celestial-gold" style="font-variation-settings: 'FILL' 1;">nights_stay</span>
+<span class="text-[8px] tracking-widest uppercase text-celestial-gold">Nut</span>
+</div>
+</div>
+<!-- Ambient Bottom Gradient -->
+<div class="fixed bottom-0 left-0 w-full h-64 bg-gradient-to-t from-celestial-gold/5 to-transparent pointer-events-none"></div>
+</div>
+</body></html>

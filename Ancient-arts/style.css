@@ -189,9 +189,9 @@ HEADER & NAVIGATION
     width: 100%;
     max-width: 320px;
     height: 100vh;
-    background-color: white;
-    color: black;
-    border-right: 1px solid rgba(57, 55, 40, 0.2);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border-right: 1px solid var(--border-color);
     z-index: 1000;
     transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: flex;
@@ -200,11 +200,11 @@ HEADER & NAVIGATION
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.mobile-menu.open {
+.mobile-menu.active {
     left: 0;
 }
 
-.menu-overlay.open {
+.menu-overlay.active {
     opacity: 1;
     visibility: visible;
 }
@@ -217,8 +217,8 @@ HEADER & NAVIGATION
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid rgba(236, 182, 19, 0.3);
-    background-color: #121212; /* Solid obsidian */
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -293,7 +293,7 @@ body.light .menu-header {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    color: black;
+    color: var(--text-primary);
     text-decoration: none;
     border: none;
     background-color: transparent;
@@ -329,7 +329,7 @@ html:not(.dark) .menu-link:hover {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    color: black;
+    color: var(--text-primary);
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -497,7 +497,7 @@ html:not(.dark) .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 1.7rem;
     padding-left: .5rem;
 }
 
@@ -561,7 +561,7 @@ html:not(.dark) .header {
 
 .desktop-nav {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
     flex: 1;
     justify-content: center;

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
                             <html lang="en">
                               <head>
                                 <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
@@ -37,7 +37,6 @@
                                   <nav class="menu-nav">
                                     <a href="../4.home/code.html" class="menu-link">Home</a>
                                     <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition-Halls</a>
                                     <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
                             
                                     <a href="../event/event.html" class="menu-link">Event</a>
@@ -58,7 +57,16 @@
                             
                                     <a href="../shop/shop.html" class="menu-link">Shop</a>
                                     <a href="../about/About.html" class="menu-link">About</a>
-                                    <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Collection</a>
+                                    <div class="menu-dropdown">
+                                      <button class="menu-link dropdown-toggle">
+                                        Collection
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                      </button>
+                                      <div class="dropdown-items">
+                                        <a href="../collection/collection.html" class="dropdown-item">Main Gallery</a>
+                                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a>
+                                      </div>
+                                    </div>
                                   </nav>
                             
                                   <div class="menu-footer">
@@ -110,7 +118,16 @@
                                       </div>
                                       <a href="../shop/shop.html">Shop</a>
                                       <a href="../about/About.html">About</a>
-                                      <a href="../Exhibition-Halls/exhibition-halls.html">Collection</a>
+                                      <div class="nav-dropdown">
+                                        <button class="nav-link dropdown-trigger">
+                                          Collection
+                                          <span class="material-symbols-outlined" >expand_more</span>
+                                        </button>
+                                        <div class="dropdown-menu" >
+                                          <a href="../collection/collection.html" class="dropdown-link">Main Gallery</a>
+                                          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a>
+                                        </div>
+                                      </div>
                                     </nav>
                             
                                     <div class="header-right">
@@ -140,9 +157,22 @@
                                 <main>
                                   <!-- Hero Section -->
                                   <section class="hero">
+                                    <div class="hero-slider">
+                                      <div class="slide active" style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg')"></div>
+                                      <div class="slide" style="background-image: url('../heroo.jpg')"></div>
+                                      <div class="slide" style="background-image: url('../122.png')"></div>
+                                    </div>
+                                    
+                                    <!-- Slider Controls -->
+                                    <button class="slider-control prev" id="prevSlide" aria-label="Previous Slide">
+                                        <span class="material-symbols-outlined">chevron_left</span>
+                                    </button>
+                                    <button class="slider-control next" id="nextSlide" aria-label="Next Slide">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </button>
                                     <div class="hero-overlay"></div>
                                     <div class="hero-content">
-                                      <h1 class="hero-title" style="color: var(--text-primary);">
+                                      <h1 class="hero-title" style="color:white;">
                                         Discover the Grand Egyptian Museum
                                       </h1>
                                       <p class="hero-subtitle" style="color:white;">
@@ -189,57 +219,74 @@
                                   </section>
                             
                             
-                                  <!-- Featured Tours Section -->
+                                  <!-- Featured Experiences Section -->
                                   <section class="section-container" id="tours">
-                                    <h2 class="section-title">Featured Tours</h2>
+                                    <h2 class="section-title">Featured Experiences</h2>
                                     <div class="tours-scroll">
+                                      <!-- AI Tour Guide -->
                                       <div class="tour-card">
-                                        <div class="tour-image" style="background-image: url(&quot;../4.jpg&quot;)"></div>
+                                        <div class="tour-image" style="background-image: url('../ai-tour-guide.png')"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">Tutankhamun Galleries</p>
+                                          <p class="tour-name">AI Tour Guide</p>
                                           <p class="tour-desc">
-                                            Experience the complete collection of King Tutankhamun’s
-                                            treasures, displayed together for the first time in history.
+                                            Your personal interactive curator. Experience the museum with an AI that knows every secret of the pharaohs.
                                           </p>
-                                          <a href="../Exhibition-Halls/exhibition-halls.html">
-                                            <button class="btn-learn">Explore Collection</button>
+                                          <a href="../AI Guide/guide.html">
+                                            <button class="btn-learn">Start Tour</button>
                                           </a>
                                         </div>
                                       </div>
+                                      
+                                      <!-- Pharaoh Transformer -->
                                       <div class="tour-card">
-                                        <div class="tour-image" style="background-image: url(&quot;../2.jpg&quot;)"></div>
+                                        <div class="tour-image" style="background-image: url('../pharaoh-transformer.png')"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">The Grand Staircase</p>
+                                          <p class="tour-name">Pharaoh Transformer</p>
                                           <p class="tour-desc">
-                                            Walk through monumental statues of ancient Egyptian kings
-                                            displayed along the iconic Grand Staircase.
+                                            Ever wondered how you'd look as a King or Queen? Transform your image into an ancient Egyptian masterpiece.
                                           </p>
-                                          <a href="../Exhibition-Halls/exhibition-halls.html">
-                                            <button class="btn-learn">Discover More</button>
+                                          <a href="../Pharaoh Transformer/Pharaoh-Transformer.html">
+                                            <button class="btn-learn">Transform Me</button>
                                           </a>
                                         </div>
                                       </div>
+                                      <!-- AI Knowledge Chatbot -->
                                       <div class="tour-card">
-                                        <div class="tour-image" style="background-image: url(&quot;../11.jpg&quot;)"></div>
+                                        <div class="tour-image" style="background-image: url('../ai-chatbot.png')"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">Main Exhibition Galleries</p>
+                                          <p class="tour-name">Knowledge Chatbot</p>
                                           <p class="tour-desc">
-                                            Explore thousands of artifacts that narrate 7,000 years of
-                                            Egyptian civilization in a modern immersive setting.
+                                            Have a specific question? Our AI chatbot is available 24/7 to provide in-depth answers about the GEM.
                                           </p>
-                                          <a href="../Exhibition-Halls/exhibition-halls.html">
-                                            <button class="btn-learn">View Highlights</button>
+                                          <a href="../chat bot/chat.html">
+                                            <button class="btn-learn">Ask Tutora</button>
                                           </a>
                                         </div>
                                       </div>
+                                      <!-- AI Art Imagination -->
                                       <div class="tour-card">
-                                        <div class="tour-image" style="background-image: url(../3.jpg)"></div>
+                                        <div class="tour-image" style="background-image: url('../122.png')"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">The Royal Mummies Hall</p>
+                                          <p class="tour-name">AI Art Imagination</p>
                                           <p class="tour-desc">
-                                            Come face-to-face with the legendary rulers of ancient Egypt.
+                                            Manifest your own ancient visions. Generate stunning artwork inspired by Egyptian mythology and aesthetics.
                                           </p>
-                                          <button class="btn-learn">Learn More</button>
+                                          <a href="../AI Imagination/AI-Imagination.html">
+                                            <button class="btn-learn">Manifest Art</button>
+                                          </a>
+                                        </div>
+                                      </div>
+                                      <!-- Tutora Laboratory -->
+                                      <div class="tour-card">
+                                        <div class="tour-image" style="background-image: url('../tutora-lab.png')"></div>
+                                        <div class="tour-info">
+                                          <p class="tour-name">Tutora Laboratory</p>
+                                          <p class="tour-desc">
+                                            Step into our digital lab. Use advanced AI tools to analyze, restore, and study ancient artworks in detail.
+                                          </p>
+                                          <a href="../Ancient-arts/Ancient-art.html">
+                                            <button class="btn-learn">Enter Lab</button>
+                                          </a>
                                         </div>
                                       </div>
                                     </div>
@@ -257,7 +304,7 @@
                                         <p class="artifact-desc">
                                           Discover the intricate details and history behind one of the most iconic artifacts in human history. Learn how ancient artisans crafted this masterpiece using solid gold and precious stones over 3000 years ago.
                                         </p>
-                                        <a href="../Exhibition-Halls/exhibition-halls.html">
+                                        <a href="../advanced 3D model/advanced-3D.html">
                                           <button class="btn-action-gold mt-4">
                                             Explore in 3D
                                             <span class="material-symbols-outlined">view_in_ar</span>
@@ -344,7 +391,7 @@
                                           artifacts of ancient Egypt, including the complete Tutankhamun
                                           collection.
                                         </p>
-                                        <a href="../About us/About-us.html">
+                                        <a href="../about/About.html">
                                           <button class="btn-action-gold" style="background-color: rgba(236, 182, 19, 0.2); color: #ecb613; width: fit-content;">
                                             Learn More
                                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -412,6 +459,47 @@
                                         <input type="email" placeholder="Enter your email address" required>
                                         <button type="submit" class="btn-accent">Subscribe</button>
                                       </form>
+                                    </div>
+                                  </section>
+                                  <!-- Location Section (Premium Upgrade) -->
+                                  <section class="section-container location-section">
+                                    <div class="location-header">
+                                      <div>
+                                        <h2 class="location-title">Visit the GEM</h2>
+                                        <p class="location-subtitle">Experience the dawn of history at the foot of the Giza Pyramids.</p>
+                                      </div>
+                                      <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" class="btn-directions" style="text-decoration: none;">
+                                        Plan Your Route
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                      </a>
+                                    </div>
+                                    <div class="map-container" style="background-image: url('../About us/unnamed 1.png')">
+                                      <div class="map-overlay"></div>
+                                      
+                                      <div class="visit-card">
+                                        <h3>Visitor Info</h3>
+                                        <div class="visit-info">
+                                          <div class="info-item">
+                                            <span class="material-symbols-outlined">location_on</span>
+                                            <div class="info-content">
+                                              <p>Our Location</p>
+                                              <p>Alexandria Desert Road, Giza Plateau, Cairo, Egypt</p>
+                                            </div>
+                                          </div>
+                                          <div class="info-item">
+                                            <span class="material-symbols-outlined">schedule</span>
+                                            <div class="info-content">
+                                              <p>Visiting Hours</p>
+                                              <p>Open Daily: 9:00 AM – 6:00 PM</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="map-marker">
+                                        <div class="marker-pulse"></div>
+                                        <span class="material-symbols-outlined marker-icon">location_on</span>
+                                      </div>
                                     </div>
                                   </section>
                                 </main>

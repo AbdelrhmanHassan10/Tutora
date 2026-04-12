@@ -1,71 +1,5 @@
- const body = document.body;
- const mobileMenuClose = document.getElementById('mobileMenuClose');
- const header = document.querySelector('.main-nav');
-
- // ============================================
- // DARK MODE TOGGLE
- // ============================================
-const themeBtn = document.getElementById('themeBtn');
-
-// Load saved theme
-if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light-mode');
-    updateThemeIcon();
-}
-
-themeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-
-    const isLight = document.body.classList.contains('light-mode');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
-    updateThemeIcon();
-});
-
-function updateThemeIcon() {
-    const icon = themeBtn.querySelector('.material-symbols-outlined');
-
-    if (document.body.classList.contains('light-mode')) {
-        icon.textContent = 'dark_mode';
-    } else {
-        icon.textContent = 'light_mode';
-    }
-}
- // ============================================
- // LANGUAGE TOGGLE
- // ============================================
-
- document.querySelectorAll('.language-toggle button').forEach(btn => {
-     btn.addEventListener('click', () => {
-         // Remove active from all buttons
-         document.querySelectorAll('.language-toggle button').forEach(b => {
-             b.classList.remove('active');
-         });
-         // Add active to clicked button
-         btn.classList.add('active');
-         const lang = btn.getAttribute('data-lang');
-         localStorage.setItem('language', lang);
-         console.log('Language changed to:', lang);
-     });
- });
-
- // ============================================
- // SMOOTH SCROLL FOR NAVIGATION
- // ============================================
-
- document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-     anchor.addEventListener('click', function(e) {
-         const href = this.getAttribute('href');
-         if (href !== '#' && document.querySelector(href)) {
-             e.preventDefault();
-             const target = document.querySelector(href);
-             target.scrollIntoView({
-                 behavior: 'smooth',
-                 block: 'start'
-             });
-         }
-     });
- });
+﻿document.addEventListener('DOMContentLoaded', () => {
+    // Redundant theme and navigation logic removed. Handled by global-core.js.
 
 
  // Action buttons
@@ -125,99 +59,6 @@ function updateThemeIcon() {
  });
 
  // ============================================
- // INIT
- // ============================================
-
- document.addEventListener('DOMContentLoaded', () => {
-     console.log('✓ Tortara Navbar Loaded');
- });
-  // ============================================
-  // MOBILE MENU TOGGLE
-  // ============================================
-
-  const menuBtn = document.getElementById('menuBtn');
-  const closeBtn = document.getElementById('closeBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const menuOverlay = document.querySelector('.menu-overlay');
-
-  const openMenu = () => {
-      if (mobileMenu) mobileMenu.classList.add('open');
-      if (menuOverlay) menuOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-  };
-
-  const closeMenu = () => {
-      if (mobileMenu) mobileMenu.classList.remove('open');
-      if (menuOverlay) menuOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-  };
-
-  if (menuBtn) menuBtn.addEventListener('click', openMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-  if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
-
-  document.querySelectorAll('.menu-link:not(.dropdown-toggle), .dropdown-item').forEach(link => {
-      link.addEventListener('click', closeMenu);
-  });
-
- // ============================================
- // MOBILE DROPDOWN TOGGLE
- // ============================================
-
- const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
- dropdownToggles.forEach(toggle => {
-     toggle.addEventListener('click', (e) => {
-         e.stopPropagation();
-
-         const dropdownItems = toggle.nextElementSibling;
-         if (dropdownItems && dropdownItems.classList.contains('dropdown-items')) {
-             // Close other dropdowns
-             document.querySelectorAll('.dropdown-items.show').forEach(item => {
-                 if (item !== dropdownItems) {
-                     item.classList.remove('show');
-                     item.previousElementSibling.classList.remove('active');
-                 }
-             });
-
-             // Toggle current dropdown
-             dropdownItems.classList.toggle('show');
-             toggle.classList.toggle('active');
-         }
-     });
- });
-
- // Close dropdown when clicking outside
- document.addEventListener('click', (e) => {
-     if (!e.target.closest('.menu-dropdown') && !e.target.closest('.dropdown-items')) {
-         document.querySelectorAll('.dropdown-items.show').forEach(item => {
-             item.classList.remove('show');
-             item.previousElementSibling.classList.remove('active');
-         });
-     }
- });
-
- // ============================================
- // DESKTOP DROPDOWN HOVER
- // ============================================
-
- const navDropdowns = document.querySelectorAll('.nav-dropdown');
- navDropdowns.forEach(dropdown => {
-     dropdown.addEventListener('mouseenter', () => {
-         const menu = dropdown.querySelector('.dropdown-menu');
-         if (menu) {
-             menu.style.opacity = '1';
-             menu.style.visibility = 'visible';
-         }
-     });
-
-     dropdown.addEventListener('mouseleave', () => {
-         const menu = dropdown.querySelector('.dropdown-menu');
-         if (menu) {
-             menu.style.opacity = '0';
-             menu.style.visibility = 'hidden';
-         }
-     });
- });
     // 5. Button Interaction Feedback
     document.querySelectorAll('.gold-button').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -231,4 +72,4 @@ function updateThemeIcon() {
              }, 1500);
         });
     });
- 
+ });

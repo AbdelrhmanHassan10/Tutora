@@ -384,7 +384,7 @@ html:not(.dark) .dropdown-item:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1.3rem;
     padding-left: 0rem;
     width: 100%;
 }

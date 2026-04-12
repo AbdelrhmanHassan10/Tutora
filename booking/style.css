@@ -348,7 +348,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1.3rem;
 }
 
 .header-left {
@@ -378,7 +378,7 @@ body {
 /* Desktop Navigation */
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: .9rem;
     align-items: center;
 }
 

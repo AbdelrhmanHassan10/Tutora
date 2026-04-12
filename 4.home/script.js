@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             const dropdownItems = toggle.nextElementSibling;
             if (dropdownItems) {
+                toggle.classList.toggle('active'); // Rotates arrow and changes color
                 dropdownItems.classList.toggle('show');
             }
         });
@@ -48,5 +49,53 @@ document.addEventListener('DOMContentLoaded', () => {
             if (menu) menu.style.opacity = '0';
         });
     });
+    
+    const directionsBtn = document.querySelector('.btn-directions');
+    if (directionsBtn) {
+        directionsBtn.addEventListener('click', () => {
+            window.open('https://www.google.com/maps/search/Grand+Egyptian+Museum', '_blank');
+        });
+    }
+
+    // --- Hero Background Slider with Manual Controls ---
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        let slideInterval;
+
+        const showSlide = (index) => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        };
+
+        const startSlider = () => {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000); // 5s cycle for a cinematic feel
+        };
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+                startSlider(); // Restart interval on interaction
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+                startSlider(); // Restart interval on interaction
+            });
+        }
+
+        startSlider(); // Initial start
+    }
+
+    console.log('✓ Home Logic Loaded');
 });
 
