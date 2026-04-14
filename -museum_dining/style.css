@@ -1,16 +1,18 @@
 /* === Dining Theme Variables === */
 body.dark {
-    --din-bg: #0a0a0a;
-    --din-card-bg: #141414;
+    --din-bg: #000000;
+    --din-card-bg: #0a0a0a;
     --din-text-primary: #ffffff;
     --din-text-secondary: #a0a0a0;
     --din-border: rgba(236, 182, 19, 0.15);
-    --din-card-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-    --din-overlay: rgba(10, 10, 10, 0.6);
+    --din-card-shadow: 0 20px 80px rgba(0, 0, 0, 1);
+    --din-overlay: rgba(0, 0, 0, 0.8);
 }
 
+
+
 body.light {
-    --din-bg: #fdfdfb;
+    --din-bg: #f0f0e1;
     --din-card-bg: #ffffff;
     --din-text-primary: #121212;
     --din-text-secondary: #555555;
