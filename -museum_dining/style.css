@@ -1001,42 +1001,78 @@ body.light .exp-content p { color: #555; }
 .exp-features li { display: flex; align-items: center; gap: 1.25rem; color: #ecb613; font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600; }
 
 /* Culinary Highlights */
-.din-highlights { padding: 8rem 2rem; max-width: 1400px; margin: 0 auto; }
-.highlights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; }
+.din-highlights { padding: 10rem 2rem; max-width: 1400px; margin: 0 auto; }
+.highlights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
 
 .highlight-item { 
-    background: var(--din-card-bg); 
-    border-radius: 20px; 
+    background: rgba(20, 20, 20, 0.6); 
+    border-radius: 24px; 
     overflow: hidden; 
-    border: 1px solid var(--din-border);
-    transition: all 0.5s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
 }
 
-.highlight-item:hover { transform: translateY(-10px); border-color: #ecb613; }
+.highlight-item:hover { 
+    transform: translateY(-20px); 
+    border-color: #ecb613; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 20px rgba(236,182,19,0.1);
+}
 
-.high-img { position: relative; height: 350px; overflow: hidden; }
+.high-img { position: relative; height: 320px; overflow: hidden; }
 .high-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
 .highlight-item:hover .high-img img { transform: scale(1.1); }
 
-.high-overlay { 
+.high-tag { 
     position: absolute; 
-    inset: 0; 
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); 
-    display: flex; 
-    align-items: flex-end; 
-    padding: 1.5rem; 
-    opacity: 0.9;
+    top: 20px; 
+    left: 20px; 
+    background: rgba(0,0,0,0.7); 
+    backdrop-filter: blur(10px);
+    color: #ecb613; 
+    padding: 6px 15px; 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    letter-spacing: 2px;
+    border: 1px solid rgba(236,182,19,0.3);
+    border-radius: 4px;
+    z-index: 2;
 }
 
-.venue-name { 
-    color: #ecb613; 
-    text-transform: uppercase; 
-    letter-spacing: 3px; 
-    font-size: 0.8rem; 
-    font-weight: 800; 
-    background: rgba(0,0,0,0.7);
-    padding: 5px 12px;
-    border: 1px solid rgba(236,182,19,0.3);
+.high-content { 
+    padding: 2.5rem; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.high-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.high-content h3 { 
+    font-family: "Cinzel", serif; 
+    font-size: 1.6rem; 
+    color: #fff; 
+    margin: 0;
+}
+
+.high-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ecb613;
+}
+
+.high-content p { 
+    color: #aaa; 
+    line-height: 1.8; 
+    font-size: 0.95rem; 
+    margin-bottom: 0; 
 }
 
 

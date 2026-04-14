@@ -107,34 +107,12 @@ function initDiningBooking() {
             const cardRestaurant = card.dataset.restaurant;
             
             btn.classList.remove('added');
-            btn.textContent = 'Add to Order';
+            btn.innerHTML = '<span class="material-symbols-outlined">add_shopping_cart</span> Add to Order';
             
             if (cardRestaurant === selectedVenue) {
                 btn.disabled = false;
             } else {
                 btn.disabled = true;
-            }
-        });
-    });
-
-    // Handle Pre-order Button Clicks
-    preorderBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const name = btn.dataset.name;
-            const price = parseFloat(btn.dataset.price);
-
-            const index = selectedItems.findIndex(item => item.name === name);
-            if (index > -1) {
-                // Remove
-                selectedItems.splice(index, 1);
-                btn.classList.remove('added');
-                btn.textContent = 'Add to Order';
-            } else {
-                // Add
-                selectedItems.push({ name, price });
-                btn.classList.add('added');
-                btn.textContent = 'Added';
             }
         });
     });
@@ -194,19 +172,8 @@ function showNotification(message, type = 'info') {
 // Inject notification styles
 const notifyStyles = document.createElement('style');
 notifyStyles.textContent = `
-    .notification {
-        position: fixed; top: 20px; right: 20px; color: white; padding: 1rem 1.5rem;
-        border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); z-index: 10001;
-        font-weight: 600; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
-        animation: slideIn 0.3s ease-out forwards; display: flex; align-items: center; gap: 0.5rem;
-        backdrop-filter: blur(10px);
-    }
-    .notification-info { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-    .notification-success { background: linear-gradient(135deg, #10b981, #059669); }
-    .notification-error { background: linear-gradient(135deg, #ef4444, #dc2626); }
     @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
     @keyframes slideOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }
 `;
 document.head.appendChild(notifyStyles);
-
 
