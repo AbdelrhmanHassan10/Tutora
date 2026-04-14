@@ -1,6 +1,6 @@
-const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-
 document.addEventListener('DOMContentLoaded', () => {
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    
     // UI Elements
     const form = document.getElementById('registrationForm') || document.getElementById('registerForm');
     const fullNameInput = document.getElementById('fullName') || document.getElementById('name');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmPasswordInput = document.getElementById('confirmPassword');
     const submitBtn = document.getElementById('submitBtn') || document.getElementById('registerBtn');
     
-    // Fallback if elements somehow missing due to strict HTML requirements
+    // Fallback
     if (!form || !emailInput || !passwordInput) return;
 
     // 1. Password Visibility Toggles
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Premium Live Validation & UX Feedback
+    // 2. Premium Live Validation
     const validateField = (input, validatorFn, errorMsgElementId) => {
         const errorEl = document.getElementById(errorMsgElementId);
         if (!input) return true;
@@ -37,17 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const value = input.value.trim();
         const isValid = validatorFn(value);
         
-        if (value.length > 0) { // Only show colors if they typed something
+        if (value.length > 0) {
             if (isValid) {
-                input.style.borderColor = '#10b981'; // Success Green
+                input.style.borderColor = '#10b981';
                 input.style.boxShadow = '0 0 0 2px rgba(16,185,129,0.1)';
                 if (errorEl) { errorEl.textContent = ''; errorEl.classList.remove('show'); }
             } else {
-                input.style.borderColor = '#ef4444'; // Error Red
+                input.style.borderColor = '#ef4444';
                 input.style.boxShadow = '0 0 0 2px rgba(239,68,68,0.1)';
             }
         } else {
-            // Reset if empty
             input.style.borderColor = '';
             input.style.boxShadow = '';
             if (errorEl) { errorEl.textContent = ''; errorEl.classList.remove('show'); }
@@ -55,37 +54,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     };
 
-    // Validators
     const isValidName = (val) => val.length >= 3;
     const isValidEmail = (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
     const isValidPassword = (val) => val.length >= 8;
     const isValidConfirmPassword = (val) => val === passwordInput.value && val.length > 0;
 
-    // Attach Live Listeners
     if (fullNameInput) fullNameInput.addEventListener('input', () => validateField(fullNameInput, isValidName, 'fullNameError'));
     if (emailInput) emailInput.addEventListener('input', () => validateField(emailInput, isValidEmail, 'emailError'));
-    
     if (passwordInput) {
         passwordInput.addEventListener('input', () => {
             validateField(passwordInput, isValidPassword, 'passwordError');
-             // Revalidate confirm password if it's already filled
             if (confirmPasswordInput && confirmPasswordInput.value) {
                 validateField(confirmPasswordInput, isValidConfirmPassword, 'confirmPasswordError');
             }
         });
     }
-
-    if (confirmPasswordInput) {
-        confirmPasswordInput.addEventListener('input', () => validateField(confirmPasswordInput, isValidConfirmPassword, 'confirmPasswordError'));
-    }
-
-   
+    if (confirmPasswordInput) confirmPasswordInput.addEventListener('input', () => validateField(confirmPasswordInput, isValidConfirmPassword, 'confirmPasswordError'));
 
     // 3. API Form Submission Handling
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Final full validation check before network
         const isNameOk = fullNameInput ? isValidName(fullNameInput.value) : true;
         const isEmailOk = isValidEmail(emailInput.value);
         const isPwdOk = isValidPassword(passwordInput.value);
@@ -93,72 +82,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!isNameOk || !isEmailOk || !isPwdOk || !isConfirmOk) {
             showPremiumToast('Please fix the errors in the form before submitting.', 'error');
-            // Shake the form slightly to indicate rejection
             form.classList.add('shake-anim');
             setTimeout(() => form.classList.remove('shake-anim'), 500);
             return;
         }
 
-        // Prepare payload dynamically based on HTML layout
         const payload = {
             name: fullNameInput ? fullNameInput.value.trim() : 'User',
             email: emailInput.value.trim(),
             password: passwordInput.value
         };
 
-        // Loading state
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<div class="loader-spinner"></div> Processing...';
         submitBtn.style.opacity = '0.7';
 
         try {
-             const response = await fetch(`${API_BASE_URL}/auth/register`, {
-                 method: 'POST',
-                 headers: { 'Content-Type': 'application/json' },
-                 body: JSON.stringify(payload)
-             });
- 
-             const data = await response.json();
- 
-             if (response.ok) {
-                 showPremiumToast('Account created majestically! Redirecting to login...', 'success');
-                 
-                 // Store tokens if backend sends them on register
-                 if (data.token) localStorage.setItem('token', data.token);
-                 if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
- 
-                 setTimeout(() => {
-                     document.body.style.opacity = '0';
-                     document.body.style.transition = 'opacity 0.5s ease';
-                     setTimeout(() => window.location.href = '../2.login/code.html', 500);
-                 }, 2000);
-             } else {
-                 // Handle specific error fields from backend
-                 const errorMsg = data.error || data.message || 'Registration failed due to server logic.';
-                 throw new Error(errorMsg);
-             }
-         } catch (error) {
-             let finalMsg = error.message;
-             
-             // Detect CORS/Network failure which usually throws TypeError
-             if (error.name === 'TypeError' && error.message.includes('fetch')) {
-                 finalMsg = '📡 Connection Blocked: Your browser prevented the request. This is likely a CORS issue from your local environment. Please check the backend configuration.';
-             }
- 
-             showPremiumToast(finalMsg, 'error');
-             submitBtn.classList.add('shake-anim');
-             setTimeout(() => submitBtn.classList.remove('shake-anim'), 500);
-         } finally {
-             submitBtn.disabled = false;
-             submitBtn.innerHTML = originalBtnText;
-             submitBtn.style.opacity = '1';
-         }
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const text = await response.text();
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch {
+                throw new Error('🚫 Backend did not return valid JSON:\n' + text);
+            }
+            
+            if (response.ok) {
+                showPremiumToast('Account created majestically! Redirecting to login...', 'success');
+                
+                if (data.token) localStorage.setItem('token', data.token);
+                if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+
+                setTimeout(() => {
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => window.location.href = '../2.login/code.html', 500);
+                }, 2000);
+            } else {
+                const errorMsg = data.error || data.message || 'Registration failed. Please attempt again.';
+                throw new Error(errorMsg);
+            }
+        } catch (error) {
+            let finalMsg = error.message;
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                finalMsg = '📡 Connection Blocked: Your browser prevented the request. This is likely a CORS issue from your local environment. Please check the backend configuration.';
+            }
+            showPremiumToast(finalMsg, 'error');
+            submitBtn.classList.add('shake-anim');
+            setTimeout(() => submitBtn.classList.remove('shake-anim'), 500);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.style.opacity = '1';
+        }
     });
 
-    // Premium Toast Notification System (Global Logic)
+    // Premium Toast Notification System
     function showPremiumToast(message, type) {
-        document.querySelectorAll('.premium-toast').forEach(t => t.remove());
+        // Remove existing toasts to prevent spam
+        const existingToasts = document.querySelectorAll('.premium-toast');
+        existingToasts.forEach(t => t.remove());
+
         const toast = document.createElement('div');
         toast.className = `premium-toast toast-${type}`;
         
@@ -171,13 +161,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         
         document.body.appendChild(toast);
-        void toast.offsetWidth; // Reflow
+        
+        // Trigger reflow for animation
+        void toast.offsetWidth;
         toast.classList.add('show-toast');
 
         setTimeout(() => {
             toast.classList.remove('show-toast');
-            setTimeout(() => toast.remove(), 400);
-        }, 3500);
+            setTimeout(() => toast.remove(), 400); // match transition out
+        }, 3000);
     }
 });
- 

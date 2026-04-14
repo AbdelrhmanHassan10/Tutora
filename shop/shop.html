@@ -152,14 +152,165 @@
                                     <div class="hero-content anim-on-scroll">
                                         <h1 class="hero-title">Royal <span class="hero-highlight">Bazaar</span></h1>
                                         <p class="hero-description">Discover luxury Egyptian craftsmanship, from sacred statues to fine linens, curated for modern royalty.</p>
-                                        <button class="btn btn-primary" onclick="document.querySelector('.collections-section').scrollIntoView({behavior:'smooth'})">Explore All Items</button>
+                                        <div class="hero-actions">
+                                            <button class="btn btn-primary" onclick="document.getElementById('boutique-showcase').scrollIntoView({behavior:'smooth'})">Visit Boutiques</button>
+                                            <button class="btn btn-outline" onclick="document.querySelector('.collections-section').scrollIntoView({behavior:'smooth'})">Shop Products</button>
+                                        </div>
+                                    </div>
+                                </section>
+                            
+                                <!-- New: The Boutique Collection Section -->
+                                <section class="boutique-showcase section-padding anim-on-scroll" id="boutique-showcase">
+                                    <div class="container">
+                                        <div class="section-header text-center">
+                                            <span class="gold-badge">Official GEM Commercial Area</span>
+                                            <h2 class="section-title">The Boutique <span class="gold-text">Collection</span></h2>
+                                            <p class="section-subtitle">Experience luxury Egyptian brands in our exclusive commercial district.</p>
+                                            <div class="luxury-divider"></div>
+                                        </div>
+                            
+                                        <div class="boutique-grid">
+                                            <!-- 1. The GEM Shop -->
+                                            <div class="boutique-card">
+                                                <div class="boutique-img-wrapper">
+                                                    <img src="./gem_shop.png" alt="The GEM Shop">
+                                                    <span class="boutique-tag">Official Store</span>
+                                                </div>
+                                                <div class="boutique-info">
+                                                    <h3>The GEM Shop</h3>
+                                                    <p class="boutique-specialty">Official museum gifts, books, and high-quality reproductions.</p>
+                                                    <div class="boutique-meta">
+                                                        <span><i class="fas fa-location-dot"></i> Central Atrium</span>
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 10:00 PM</span>
+                                                    </div>
+                                                    <span class="partner-badge">Certified Museum Partner</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 2. Azza Fahmy -->
+                                            <div class="boutique-card">
+                                                <div class="boutique-img-wrapper">
+                                                    <img src="./azza_fahmy.png" alt="Azza Fahmy Jewellery">
+                                                    <span class="boutique-tag">Luxury Jewelry</span>
+                                                </div>
+                                                <div class="boutique-info">
+                                                    <h3>Azza Fahmy</h3>
+                                                    <p class="boutique-specialty">Renowned luxury jewelry blending Arabic poetry and Pharaonic symbols.</p>
+                                                    <div class="boutique-meta">
+                                                        <span><i class="fas fa-location-dot"></i> Commercial District</span>
+                                                        <span><i class="fas fa-clock"></i> 10:00 AM - 11:00 PM</span>
+                                                    </div>
+                                                    <span class="partner-badge">Global Luxury Brand</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 3. Okhtein -->
+                                            <div class="boutique-card">
+                                                <div class="boutique-img-wrapper">
+                                                    <img src="./okhtein.png" alt="Okhtein">
+                                                    <span class="boutique-tag">Heritage Fashion</span>
+                                                </div>
+                                                <div class="boutique-info">
+                                                    <h3>Okhtein</h3>
+                                                    <p class="boutique-specialty">Luxury handbags blending Egyptian heritage with contemporary brass art.</p>
+                                                    <div class="boutique-meta">
+                                                        <span><i class="fas fa-location-dot"></i> Luxury Wing</span>
+                                                        <span><i class="fas fa-clock"></i> 10:00 AM - 11:00 PM</span>
+                                                    </div>
+                                                    <span class="partner-badge">Premier Egyptian Label</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 4. Kahhal Looms -->
+                                            <div class="boutique-card">
+                                                <div class="boutique-img-wrapper">
+                                                    <img src="./kahhal.png" alt="Kahhal Looms">
+                                                    <span class="boutique-tag">Fine Textiles</span>
+                                                </div>
+                                                <div class="boutique-info">
+                                                    <h3>Kahhal Looms</h3>
+                                                    <p class="boutique-specialty">Historic textile brand showcasing handcrafted rugs as Nilotic art.</p>
+                                                    <div class="boutique-meta">
+                                                        <span><i class="fas fa-location-dot"></i> Artisans Alley</span>
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 09:00 PM</span>
+                                                    </div>
+                                                    <span class="partner-badge">Heritage Craftsmanship</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 5. Nefertari -->
+                                            <div class="boutique-card">
+                                                <div class="boutique-img-wrapper">
+                                                    <img src="./nefertari.png" alt="Nefertari">
+                                                    <span class="boutique-tag">Natural Beauty</span>
+                                                </div>
+                                                <div class="boutique-info">
+                                                    <h3>Nefertari</h3>
+                                                    <p class="boutique-specialty">100% natural, handmade Egyptian body-care inspired by ancient secrets.</p>
+                                                    <div class="boutique-meta">
+                                                        <span><i class="fas fa-location-dot"></i> Wellness Corner</span>
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 10:00 PM</span>
+                                                    </div>
+                                                    <span class="partner-badge">Authentic Organic</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 6. Nuniz Cairo -->
+                                            <div class="boutique-card">
+                                                <div class="boutique-img-wrapper">
+                                                    <img src="./nuniz.png" alt="Nuniz Cairo">
+                                                    <span class="boutique-tag">Leather Art</span>
+                                                </div>
+                                                <div class="boutique-info">
+                                                    <h3>Nuniz Cairo</h3>
+                                                    <p class="boutique-specialty">Contemporary handcrafted bags and accessories with heritage motifs.</p>
+                                                    <div class="boutique-meta">
+                                                        <span><i class="fas fa-location-dot"></i> Commercial District</span>
+                                                        <span><i class="fas fa-clock"></i> 10:00 AM - 10:00 PM</span>
+                                                    </div>
+                                                    <span class="partner-badge">Boutique Leather</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 7. Dima Jewellery -->
+                                            <div class="boutique-card">
+                                                <div class="boutique-img-wrapper">
+                                                    <img src="./dima.png" alt="Dima Jewellery">
+                                                    <span class="boutique-tag">Fine Gems</span>
+                                                </div>
+                                                <div class="boutique-info">
+                                                    <h3>Dima Jewellery</h3>
+                                                    <p class="boutique-specialty">Fine jewelry featuring organic forms and emotional storytelling.</p>
+                                                    <div class="boutique-meta">
+                                                        <span><i class="fas fa-location-dot"></i> Luxury Wing</span>
+                                                        <span><i class="fas fa-clock"></i> 10:00 AM - 11:00 PM</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- 8. Atef Wassef Silver -->
+                                            <div class="boutique-card">
+                                                <div class="boutique-img-wrapper">
+                                                    <img src="./atef_wassef.png" alt="Atef Wassef Silver">
+                                                    <span class="boutique-tag">Handcrafted Silver</span>
+                                                </div>
+                                                <div class="boutique-info">
+                                                    <h3>Atef Wassef</h3>
+                                                    <p class="boutique-specialty">Legacy Egyptian silverwork and intricate handcrafted jewelry.</p>
+                                                    <div class="boutique-meta">
+                                                        <span><i class="fas fa-location-dot"></i> Heritage Row</span>
+                                                        <span><i class="fas fa-clock"></i> 09:00 AM - 09:00 PM</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </section>
                             
                                 <!-- Collections Section -->
                                 <section class="collections-section anim-on-scroll">
                                     <div class="section-header">
-                                        <h2 class="section-title">Exclusive Collections</h2>
+                                        <h2 class="section-title">Online <span class="gold-text">Catalog</span></h2>
                                         <div class="filter-controls">
                                             <div class="filter-pills">
                                                 <button class="pill active" data-category="all">All Items</button>

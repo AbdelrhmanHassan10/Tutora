@@ -38,70 +38,98 @@
                                 </nav>
                             
                                 <!-- Main Content -->
-                                <main class="main-content">
-                                    <div class="success-icon-wrapper">
-                                        <div class="success-icon"><span class="material-symbols-outlined">check</span></div>
-                                        <div class="success-pulse"></div>
-                                    </div>
-                            
-                                    <h1 class="success-title">Your Journey Awaits</h1>
-                                    <p class="success-description">
-                                        A confirmation has been sent to your email address. Please present your digital ticket at the entrance of the Giza Plateau.
-                                    </p>
-                            
-                                    <div class="booking-card">
-                                        <div class="card-header">
-                                            <h2 class="card-title">Booking Summary</h2>
-                                            <span class="status-badge">Confirmed</span>
-                                        </div>
-                                        <div class="card-content">
-                                            <div class="summary-row">
-                                                <span class="summary-label">Booking Reference</span>
-                                                <div class="summary-value-with-copy">
-                                                    <span class="summary-value" data-field="booking-ref">GEM-2024-889</span>
-                                                    <button class="copy-btn" data-copy="GEM-2024-889" aria-label="Copy booking reference">
-                                                        <span class="material-symbols-outlined">content_copy</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="summary-row">
-                                                <span class="summary-label">Name</span>
-                                                <span class="summary-value" data-field="name">Amelia Clarke</span>
-                                            </div>
-                                            <div class="summary-row">
-                                                <span class="summary-label">Ticket Type</span>
-                                                <span class="summary-value" data-field="ticket">Grand Tour - Adult (x1)</span>
-                                            </div>
-                                            <div class="summary-row">
-                                                <span class="summary-label">Date & Time</span>
-                                                <span class="summary-value" data-field="date">October 26, 2024 at 10:00 AM</span>
-                                            </div>
-                                            <div class="summary-row total-row">
-                                                <span class="summary-label">Total Paid</span>
-                                                <span class="total-price" data-field="price">$35.00 <span class="currency">USD</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                            
-                                    <div class="action-buttons">
-                                        <a href="../Profile/profile.html" class="btn btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none;">
-                                            <span class="material-symbols-outlined">local_activity</span>
-                                            View My Tickets
-                                        </a>
-                                        <button class="btn btn-secondary" onclick="window.print();" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                                            <span class="material-symbols-outlined">download</span>
-                                            Download Receipt
-                                        </button>
-                                        <a href="../4.home/code.html" class="btn btn-secondary" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none;">
-                                            Return to Home
-                                            <span class="material-symbols-outlined">arrow_forward</span>
-                                        </a>
-                                    </div>
-                                </main>
-                            
-                                <footer class="footer">
-                                    <p>&copy; 2026 Tutora - Giza Plateau</p>
-                                </footer>
+    <main class="main-content">
+        <div class="success-icon-wrapper">
+            <div class="success-icon"><span class="material-symbols-outlined">verified</span></div>
+            <div class="success-pulse"></div>
+        </div>
+
+        <h1 class="success-title">Your Journey Awaits</h1>
+        <p class="success-description">
+            Your booking at the Grand Egyptian Museum is confirmed. A digital pass and receipt have been sent to your primary email.
+        </p>
+
+        <div class="booking-card">
+            <div class="card-header">
+                <div class="header-left">
+                    <h2 class="card-title">Reservation Summary</h2>
+                    <p class="card-date" id="displayDate">Loading date...</p>
+                </div>
+                <span class="status-badge">Confirmed</span>
+            </div>
+            
+            <div class="card-content">
+                <!-- Data will be injected here by script.js -->
+                <div id="dynamicSummaryItems">
+                    <div class="summary-section">
+                        <h3 class="section-title">Visitor Information</h3>
+                        <div class="summary-row">
+                            <span class="summary-label">Reference ID</span>
+                            <div class="summary-value-with-copy">
+                                <span class="summary-value highlight" data-field="booking-ref">GEM-loading...</span>
+                                <button class="copy-btn" id="copyBtn">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Guest Name</span>
+                            <span class="summary-value" data-field="name">Authenticating...</span>
+                        </div>
+                    </div>
+
+                    <div class="summary-section" id="ticketsSection">
+                        <h3 class="section-title">Admission Tickets</h3>
+                        <div id="ticketListContainer">
+                             <!-- Tickets injected here -->
+                        </div>
+                    </div>
+
+                    <div class="summary-section" id="diningSection" style="display: none;">
+                        <h3 class="section-title">Dining Reservation</h3>
+                        <div class="summary-row">
+                            <span class="summary-label">Venue</span>
+                            <span class="summary-value" id="diningVenue">-</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Time</span>
+                            <span class="summary-value" id="diningTime">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-footer">
+                    <div class="total-paid">
+                        <span class="total-label">Total Paid (Incl. Fees)</span>
+                        <div class="total-value-container">
+                            <span class="total-amount" id="totalPaid">0.00</span>
+                            <span class="currency-label" id="currencyCode">USD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="../Profile/profile.html" class="btn btn-primary">
+                <span class="material-symbols-outlined">local_activity</span>
+                View My Tickets
+            </a>
+            <button class="btn btn-secondary" onclick="window.print();">
+                <span class="material-symbols-outlined">download</span>
+                Download Receipt
+            </button>
+            <a href="../4.home/code.html" class="btn btn-secondary">
+                Return to Home
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Tutora | The Grand Egyptian Museum Digital Portal</p>
+    </footer>
+
                             
                                 <div class="blur-decoration blur-bottom-left"></div>
                                 <div class="blur-decoration blur-top-right"></div>

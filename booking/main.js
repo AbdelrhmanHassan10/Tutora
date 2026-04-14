@@ -8,19 +8,24 @@ document.addEventListener('DOMContentLoaded', () => {
         month: new Date().getMonth(),
         year: new Date().getFullYear(),
         timeSlot: null,
+        visitorType: 'international', // 'international' or 'egyptian'
         tickets: {
-            adult: { quantity: 0, price: 25.00, name: "General Admission - Adult" },
-            student: { quantity: 0, price: 15.00, name: "Student / Child" },
-            resident: { quantity: 0, price: 3.00, name: "Egyptian / Arab Resident" },
-            senior: { quantity: 0, price: 18.00, name: "Senior Citizen" }
+            general_adult: { quantity: 0, price: { intl: 25.00, local: 200 }, name: "General Admission - Adult" },
+            general_student: { quantity: 0, price: { intl: 15.00, local: 100 }, name: "General Admission - Student/Child" },
+            guided_adult: { quantity: 0, price: { intl: 38.00, local: 350 }, name: "Guided Experience - Adult" },
+            guided_student: { quantity: 0, price: { intl: 20.00, local: 175 }, name: "Guided Experience - Student/Child" },
+            tut_adult: { quantity: 0, price: { intl: 42.00, local: 450 }, name: "Tutankhamun Pass - Adult" },
+            tut_student: { quantity: 0, price: { intl: 22.00, local: 225 }, name: "Tutankhamun Pass - Student/Child" }
         },
         addons: {
             audio: { selected: false, price: 8.00, name: "Audio Guide" },
             ramses: { selected: false, price: 12.00, name: "Special Exhibition: Ramses II" },
             photo: { selected: false, price: 5.00, name: "Photography Pass" },
             vip: { selected: false, price: 15.00, name: "VIP Fast-Track Entry" }
-        }
+        },
+        dining: null
     };
+
 
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
@@ -130,22 +135,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. TICKET QUANTITY
     // ============================================
 
-    document.querySelectorAll('.quantity-selector').forEach(selector => {
-        const ticketName = selector.closest('.ticket-card').querySelector('.ticket-name').textContent;
-        const ticketKey = Object.keys(bookingState.tickets).find(key => bookingState.tickets[key].name === ticketName);
-        if (!ticketKey) return;
+    function initTicketSelectors() {
+        document.querySelectorAll('.qty-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const selector = btn.closest('.quantity-selector');
+                const ticketKey = selector.dataset.ticket;
+                const qtyValueEl = selector.querySelector('.qty-value');
+                
+                if (!ticketKey || !bookingState.tickets[ticketKey]) return;
 
-        const qtyValueEl = selector.querySelector('.qty-value');
-        selector.querySelectorAll('.qty-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
                 let currentQty = bookingState.tickets[ticketKey].quantity;
                 const action = btn.querySelector('.material-symbols-outlined').textContent;
+
                 if (action === 'remove' && currentQty > 0) currentQty--;
                 else if (action === 'add' && currentQty < 20) currentQty++;
+
                 bookingState.tickets[ticketKey].quantity = currentQty;
                 qtyValueEl.textContent = currentQty;
 
-                // Visual feedback
                 if (currentQty > 0) {
                     qtyValueEl.style.color = '#ECB613';
                 } else {
@@ -156,7 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateProgressSteps();
             });
         });
-    });
+    }
+
+    // Call it initially
+    initTicketSelectors();
+
 
     // ============================================
     // 5. ADD-ONS
@@ -234,21 +246,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let items = '';
         let subtotal = 0;
+        const isIntl = bookingState.visitorType === 'international';
+        const currencySymbol = isIntl ? '$' : 'EGP ';
 
         Object.values(bookingState.tickets).forEach(ticket => {
             if (ticket.quantity > 0) {
-                const itemTotal = ticket.quantity * ticket.price;
+                const price = isIntl ? ticket.price.intl : ticket.price.local;
+                const itemTotal = ticket.quantity * price;
                 subtotal += itemTotal;
-                items += `<div class="summary-item"><span>${ticket.quantity}x ${ticket.name}</span><span>$${itemTotal.toFixed(2)}</span></div>`;
+                items += `<div class="summary-item"><span>${ticket.quantity}x ${ticket.name}</span><span>${currencySymbol}${itemTotal.toLocaleString()}</span></div>`;
             }
         });
 
         Object.values(bookingState.addons).forEach(addon => {
             if (addon.selected) {
-                subtotal += addon.price;
-                items += `<div class="summary-item"><span>1x ${addon.name}</span><span>$${addon.price.toFixed(2)}</span></div>`;
+                // For simplicity, we convert the USD price to EGP if local (approx 50 EGP per $1)
+                const price = isIntl ? addon.price : addon.price * 50;
+                subtotal += price;
+                items += `<div class="summary-item"><span>1x ${addon.name}</span><span>${currencySymbol}${price.toLocaleString()}</span></div>`;
             }
         });
+
+        // Add Dining Logic
+        if (bookingState.dining) {
+            const d = bookingState.dining;
+            
+            // 1. Fixed Table Deposit (200 EGP or ~$4)
+            const deposit = isIntl ? 4.00 : 200;
+            subtotal += deposit;
+            items += `
+                <div class="summary-item dining-header">
+                    <span><i class="fas fa-utensils"></i> ${d.venue} Reservation</span>
+                    <span>${currencySymbol}${deposit.toLocaleString()}</span>
+                </div>
+                <div class="summary-details">${d.guests} Guests | ${d.time}</div>
+            `;
+
+            // 2. Pre-ordered Items
+            d.items.forEach(item => {
+                // Convert EGP prices from dining page to USD if Intl
+                const itemPrice = isIntl ? (item.price / 50) : item.price;
+                subtotal += itemPrice;
+                items += `<div class="summary-item dish-item"><span>+ ${item.name}</span><span>${currencySymbol}${itemPrice.toFixed(2)}</span></div>`;
+            });
+        }
+
 
         if (items === '') {
             summaryContainer.innerHTML = `
@@ -261,13 +303,54 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryContainer.innerHTML = items;
         }
 
-        const taxes = subtotal * 0.07;
+        const taxes = subtotal * 0.05; // 5% Admin Fee
         const total = subtotal + taxes;
 
-        if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-        if (taxesEl) taxesEl.textContent = `$${taxes.toFixed(2)}`;
-        if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+        if (subtotalEl) subtotalEl.textContent = `${currencySymbol}${subtotal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        if (taxesEl) taxesEl.textContent = `${currencySymbol}${taxes.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+        if (totalEl) totalEl.textContent = `${currencySymbol}${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
     }
+
+    // Visitor Type Switcher Logic
+    function initVisitorToggle() {
+        document.querySelectorAll('.switch-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.type; // 'international' or 'egyptian'
+                bookingState.visitorType = type;
+                
+                // Update UI state
+                document.querySelectorAll('.switch-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update Prices in Cards
+                updateTicketCardPrices();
+                
+                // Refresh Summary
+                updateOrderSummary();
+            });
+        });
+    }
+
+    function updateTicketCardPrices() {
+        const isIntl = bookingState.visitorType === 'international';
+        const currency = isIntl ? '$' : 'EGP ';
+        const cards = document.querySelectorAll('.ticket-card');
+        
+        cards.forEach(card => {
+            card.querySelectorAll('.ticket-row').forEach(row => {
+                const ticketKey = row.querySelector('.quantity-selector').dataset.ticket;
+                const ticket = bookingState.tickets[ticketKey];
+                if (ticket) {
+                    const priceVal = isIntl ? ticket.price.intl : ticket.price.local;
+                    row.querySelector('.ticket-price').textContent = `${currency}${priceVal}`;
+                }
+            });
+        });
+    }
+
+    // Call it
+    initVisitorToggle();
+
 
     // ============================================
     // 7. PROGRESS BAR
@@ -279,11 +362,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Step 1: Date & Time selected
         const step1Done = bookingState.date !== null && bookingState.timeSlot !== null;
-        // Step 2: At least one ticket
+        // Step 2: At least one ticket OR dining reservation
         const totalTickets = Object.values(bookingState.tickets).reduce((s, t) => s + t.quantity, 0);
-        const step2Done = totalTickets > 0;
-        // Step 3: Any addon (optional, mark as active if user has interacted)
+        const step2Done = totalTickets > 0 || bookingState.dining !== null;
+        // Step 3: Any addon
         const step3Done = Object.values(bookingState.addons).some(a => a.selected);
+        
+        // Final Checkout Active
+        const canCheckout = step1Done && step2Done;
 
         if (steps[0]) {
             steps[0].classList.toggle('active', true);
@@ -329,20 +415,57 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (totalQuantity === 0) {
-            showNotification("Please select at least one ticket.", 'error');
+        // Allow checkout if tickets > 0 OR dining is present
+        if (totalQuantity === 0 && !bookingState.dining) {
+            showNotification("Please select at least one ticket or a dining reservation.", 'error');
             document.getElementById('step2')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             return;
         }
 
+
         // Store booking details
         localStorage.setItem('currentBooking', JSON.stringify(bookingState));
 
-        showNotification("Proceeding to checkout...", 'success');
+        // Trigger Transition Overlay
+        const overlay = document.getElementById('verifyOverlay');
+        const statusEl = document.getElementById('verifyStatus');
+        const venueEl = document.getElementById('verifyVenue');
+        
+        if (overlay) {
+            overlay.classList.add('active');
+            
+            const statuses = [
+                "Validating request...",
+                "Checking availability...",
+                "Securing slots...",
+                "Preparing checkout..."
+            ];
+            
+            if (bookingState.dining) {
+                venueEl.textContent = `Reservation at ${bookingState.dining.venue}`;
+                venueEl.style.opacity = '1';
+            }
 
-        setTimeout(() => {
+            let current = 0;
+            const interval = setInterval(() => {
+                if (current < statuses.length) {
+                    statusEl.style.opacity = '0';
+                    setTimeout(() => {
+                        statusEl.textContent = statuses[current];
+                        statusEl.style.opacity = '1';
+                        current++;
+                    }, 300);
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        window.location.href = '../payment/payment.html';
+                    }, 500);
+                }
+            }, 1000);
+        } else {
+            // Fallback if overlay not found
             window.location.href = '../payment/payment.html';
-        }, 1000);
+        }
     });
 
     // ============================================
@@ -480,12 +603,40 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(styleSheet);
 
     // ============================================
-    // 12. INITIALIZATION
+    // 12. INITIALIZATION & DATA HYDRATION
     // ============================================
 
+    function hydrateDiningData() {
+        const diningData = localStorage.getItem('diningBooking');
+        if (diningData) {
+            try {
+                bookingState.dining = JSON.parse(diningData);
+                
+                // If dining date exists, set it as the main booking date too
+                if (bookingState.dining.date) {
+                    bookingState.date = new Date(bookingState.dining.date);
+                    bookingState.timeSlot = bookingState.dining.time;
+                }
+                
+                updateSummaryDate();
+                updateSummaryTime();
+                
+                // Optional: Show notification
+                showNotification(`Dining at ${bookingState.dining.venue} added to your booking!`, 'success');
+                
+                // Clear to prevent repeat on refresh
+                localStorage.removeItem('diningBooking');
+            } catch (e) {
+                console.error('Error hydrating dining data:', e);
+            }
+        }
+    }
+
+    hydrateDiningData();
     renderCalendar();
     updateOrderSummary();
     updateProgressSteps();
 
     console.log('✓ Booking page initialized successfully.');
 });
+

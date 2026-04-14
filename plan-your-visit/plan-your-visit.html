@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
                             <html lang="en">
                             
                             <head>
@@ -141,7 +141,7 @@
                                     </header>
                             
                                     <main>
-                                        <section class="hero" style="background-image: url('../13.jpg');">
+                                        <section class="hero" style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg');">
                                             <div class="hero-overlay"></div>
                                             <div class="hero-content">
                                                 <h1 class="hero-title" style=" color: white;">Your Journey Through Time Begins Here.</h1>
@@ -153,49 +153,60 @@
                             
                                         <section class="container section">
                                             <h2 class="section-title">Purchase Your Tickets</h2>
+                                            
+                                            <!-- Pricing Switcher -->
+                                            <div class="pricing-switcher">
+                                                <button class="switch-btn active" data-type="international">International Visitors</button>
+                                                <button class="switch-btn" data-type="egyptian">Egyptian / Arab Nationals</button>
+                                            </div>
+
                                             <div class="ticket-grid">
-                                                <div class="ticket-card">
+                                                <div class="ticket-card" id="ticket-general">
                                                     <h3 class="ticket-name">General Admission</h3>
+                                                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;">Access to Grand Staircase & Main Galleries</p>
                                                     <div class="price-tag">
-                                                        <span class="price-value">$25</span>
-                                                        <span class="price-unit">per person</span>
+                                                        <span class="price-value" data-intl="$25" data-local="200 EGP">$25</span>
+                                                        <span class="price-unit">per adult</span>
                                                     </div>
                                                     <a href="../booking/booking.html"> <button class="btn-secondary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
                                                     </a>
                                                     <ul class="feature-list">
-                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Access to all permanent exhibits</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Grand Staircase & Statues</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Main Exhibition Halls</li>
                                                         <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Valid for one full day</li>
                                                     </ul>
                                                 </div>
                             
-                                                <div class="ticket-card popular">
-                                                    <div class="popular-badge">Most Popular</div>
-                                                    <h3 class="ticket-name">Guided Tour</h3>
+                                                <div class="ticket-card popular" id="ticket-guided">
+                                                    <div class="popular-badge">Recommended for Explorers</div>
+                                                    <h3 class="ticket-name">Guided Experience</h3>
+                                                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;">Expert-led journey through the ages</p>
                                                     <div class="price-tag">
-                                                        <span class="price-value">$50</span>
-                                                        <span class="price-unit">per person</span>
+                                                        <span class="price-value" data-intl="$38" data-local="350 EGP">$38</span>
+                                                        <span class="price-unit">per adult</span>
                                                     </div>
                                                     <a href="../booking/booking.html"> <button class="btn-primary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
                                                     </a>
                                                     <ul class="feature-list">
-                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> 2-hour guided tour</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> 2-hour expert human guide</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Priority Access to Galleries</li>
                                                         <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Includes General Admission</li>
-                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Expert insights and stories</li>
                                                     </ul>
                                                 </div>
                             
-                                                <div class="ticket-card">
-                                                    <h3 class="ticket-name">Special Exhibitions</h3>
+                                                <div class="ticket-card" id="ticket-special">
+                                                    <h3 class="ticket-name">Tutankhamun Pass</h3>
+                                                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;">The ultimate historical immersion</p>
                                                     <div class="price-tag">
-                                                        <span class="price-value">$40</span>
-                                                        <span class="price-unit">per person</span>
+                                                        <span class="price-value" data-intl="$42" data-local="450 EGP">$42</span>
+                                                        <span class="price-unit">per adult</span>
                                                     </div>
                                                     <a href="../booking/booking.html"> <button class="btn-secondary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button>
                                                     </a>
                                                     <ul class="feature-list">
-                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Access to 'Treasures of Tutankhamun'</li>
-                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Limited time only</li>
-                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Includes General Admission</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Tutankhamun Immersive Gallery</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> All Main Halls & Staircase</li>
+                                                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Access to Kids Museum</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -215,6 +226,7 @@
                                                         <li><strong>Middle:</strong> Tutankhamun's Mask</li>
                                                         <li><strong>End:</strong> Royal Mummies Hall</li>
                                                     </ul>
+                                                    <a href="#ticket-general" class="itin-link">Choose General Admission</a>
                                                 </div>
                                                 <div class="itinerary-card popular-itin">
                                                     <div class="popular-badge">Most Popular</div>
@@ -226,6 +238,7 @@
                                                         <li><strong>Lunch:</strong> Pyramid View Restaurant</li>
                                                         <li><strong>Afternoon:</strong> Pharaoh Transformer Exhibit</li>
                                                     </ul>
+                                                    <a href="#ticket-guided" class="itin-link">Choose Guided Experience</a>
                                                 </div>
                                                 <div class="itinerary-card">
                                                     <div class="itinerary-time">Full Day</div>
@@ -236,6 +249,7 @@
                                                         <li><strong>Lunch:</strong> Grand Cafe & Gift Shop</li>
                                                         <li><strong>Afternoon:</strong> Kids Museum & Interactive 3D Voice</li>
                                                     </ul>
+                                                    <a href="#ticket-special" class="itin-link">Choose Tutankhamun Pass</a>
                                                 </div>
                                             </div>
                                         </section>
@@ -246,10 +260,21 @@
                                                     <p>Tell us what you're interested in, and our AI will craft the perfect route through the museum for you. Discover hidden gems and make the most of your visit.</p>
                                                     <div class="planner-form">
                                                         <input class="planner-input" placeholder="e.g., Pharaohs, Mummies, Jewelry" type="text">
-                                                        <button class="btn-primary">Generate My Route</button>
+                                                        <button class="btn-primary" id="generateRouteBtn">Generate My Route</button>
                                                     </div>
                                                 </div>
-                                                <img class="planner-img" src="../3.jpg" alt="AI Planner">
+                                                <img class="planner-img" src="planner-visual.png" alt="AI Planner">
+                                            </div>
+                                            
+                                            <!-- Route Results (Dynamic) -->
+                                            <div id="routeResults" class="route-results-container" style="display: none;">
+                                                <div class="route-header">
+                                                    <span class="material-symbols-outlined">explore</span>
+                                                    <h4>Your Personalized Museum Path</h4>
+                                                </div>
+                                                <div id="routeContent" class="route-steps">
+                                                    <!-- Injected by JS -->
+                                                </div>
                                             </div>
                                         </section>
                             
@@ -303,7 +328,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="transit-image" style="background-image: url('../7.jpg');"></div>
+                                                <div class="transit-image" style="background-image: url('transit-bg.png');"></div>
                                             </div>
                                         </section>
                             

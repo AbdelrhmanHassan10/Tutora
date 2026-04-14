@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 updateProfileUI(user);
+                initAvatarSelection(user);
             } else if (response.status === 401) {
                 if (window.handleLogout) window.handleLogout();
             }
@@ -181,18 +182,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 8. Avatar Selection Logic
-    function initAvatarSelection() {
+    function initAvatarSelection(user) {
+        if (!user) return;
         const avatarOptions = document.querySelectorAll('.avatar-option');
         const heroAvatar = document.querySelector('.profile-image');
         const headerAvatar = document.querySelector('.user-avatar img');
         
-        // Get current avatar from localStorage
-        const currentAvatar = localStorage.getItem('currentAvatar') || './profile-placeholder.svg';
+        // Get current avatar (prioritize user specific)
+        const currentAvatar = user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar') || './profile-placeholder.svg';
         
         // Set active state in collection
         avatarOptions.forEach(option => {
             const avatarPath = option.getAttribute('data-avatar');
-            if (currentAvatar.includes(avatarPath.split('/').pop())) {
+            const cleanPath = avatarPath.split('/').pop();
+            const cleanCurrent = currentAvatar.split('/').pop();
+            
+            if (cleanCurrent === cleanPath) {
                 option.classList.add('active');
             } else {
                 option.classList.remove('active');
@@ -205,27 +210,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 avatarOptions.forEach(opt => opt.classList.remove('active'));
                 option.classList.add('active');
                 
-                // Update LocalStorage
+                // Update User-Specific LocalStorage
+                const localKey = `localProfileData_${user.email}`;
+                const localData = JSON.parse(localStorage.getItem(localKey) || '{}');
+                localData.profileImage = selectedAvatar;
+                localStorage.setItem(localKey, JSON.stringify(localData));
+                
+                // Update Global Auth bridge
                 localStorage.setItem('currentAvatar', selectedAvatar);
                 
                 // Update UI elements immediately
                 if (heroAvatar) heroAvatar.src = selectedAvatar;
                 if (headerAvatar) headerAvatar.src = selectedAvatar;
                 
-                // Trigger global sync if available
+                // Trigger global sync
                 if (window.syncGlobalAvatar) {
                     window.syncGlobalAvatar();
                 }
-                
-                // Optional: Notify user
-                console.log('Avatar updated to:', selectedAvatar);
             });
         });
     }
 
-    // Initial Load
+    // Initial Load - Note: initAvatarSelection is now called inside fetchUserProfile
     fetchUserProfile();
     fetchUserBookings();
     fetchUserFavorites();
-    initAvatarSelection();
 });

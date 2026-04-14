@@ -271,108 +271,154 @@
                             
                                             <!-- Step 2: Choose Tickets -->
                                             <section class="booking-card" id="step2">
-                                                <div class="card-header">
-                                                    <div class="card-header-icon">
-                                                        <span class="material-symbols-outlined">confirmation_number</span>
+                                                <div class="pricing-header">
+                                                    <div class="card-header">
+                                                        <div class="card-header-icon">
+                                                            <span class="material-symbols-outlined">confirmation_number</span>
+                                                        </div>
+                                                        <div>
+                                                            <h3 class="card-title">Select Tickets</h3>
+                                                            <p class="card-subtitle">Choose your admission type and variations</p>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <h3 class="card-title">Choose Your Tickets</h3>
-                                                        <p class="card-subtitle">Select the number of tickets for each category</p>
+
+                                                    <div class="visitor-switcher">
+                                                        <button class="switch-btn active" data-type="international">International</button>
+                                                        <button class="switch-btn" data-type="egyptian">Egyptian / Arab</button>
                                                     </div>
                                                 </div>
+
                                                 <div class="tickets-list">
+                                                    <!-- Ticket 1: General Admission -->
                                                     <div class="ticket-card">
-                                                        <div class="ticket-left">
-                                                            <div class="ticket-icon-badge adult">
-                                                                <span class="material-symbols-outlined">person</span>
+                                                        <div class="ticket-main-info">
+                                                            <div class="ticket-icon-circle">
+                                                                <span class="material-symbols-outlined">stadium</span>
                                                             </div>
-                                                            <div class="ticket-info">
-                                                                <h4 class="ticket-name">General Admission - Adult</h4>
-                                                                <p class="ticket-desc">Ages 18-60. Access to all permanent exhibitions.</p>
+                                                            <div class="ticket-title">
+                                                                <h4>General Admission</h4>
+                                                                <p>Grand Staircase, Statues & Main Exhibition Galleries</p>
                                                             </div>
                                                         </div>
-                                                        <div class="ticket-actions">
-                                                            <p class="ticket-price">$25.00</p>
-                                                            <div class="quantity-selector">
-                                                                <button class="qty-btn">
-                                                                    <span class="material-symbols-outlined">remove</span>
-                                                                </button>
-                                                                <span class="qty-value">0</span>
-                                                                <button class="qty-btn">
-                                                                    <span class="material-symbols-outlined">add</span>
-                                                                </button>
+                                                        <div class="ticket-rows">
+                                                            <div class="ticket-row">
+                                                                <div class="row-label">
+                                                                    <span class="row-title">Adult</span>
+                                                                    <span class="row-subtitle">Standard entry for visitors aged 12-60</span>
+                                                                </div>
+                                                                <div class="row-actions">
+                                                                    <span class="ticket-price" id="price-general-adult">$25.00</span>
+                                                                    <div class="quantity-selector" data-ticket="general_adult">
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">remove</span></button>
+                                                                        <span class="qty-value">0</span>
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">add</span></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ticket-row">
+                                                                <div class="row-label">
+                                                                    <span class="row-title">Student / Child</span>
+                                                                    <span class="row-subtitle">Ages 4-12 or Valid Student ID</span>
+                                                                </div>
+                                                                <div class="row-actions">
+                                                                    <span class="ticket-price" id="price-general-student">$15.00</span>
+                                                                    <div class="quantity-selector" data-ticket="general_student">
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">remove</span></button>
+                                                                        <span class="qty-value">0</span>
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">add</span></button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                            
+
+                                                    <!-- Ticket 2: Guided Experience -->
                                                     <div class="ticket-card">
-                                                        <div class="ticket-left">
-                                                            <div class="ticket-icon-badge student">
-                                                                <span class="material-symbols-outlined">school</span>
+                                                        <div class="ticket-main-info">
+                                                            <div class="ticket-icon-circle">
+                                                                <span class="material-symbols-outlined">interpreter_mode</span>
                                                             </div>
-                                                            <div class="ticket-info">
-                                                                <h4 class="ticket-name">Student / Child</h4>
-                                                                <p class="ticket-desc">Ages 6-17 or with valid student ID.</p>
+                                                            <div class="ticket-title">
+                                                                <h4>Guided Experience</h4>
+                                                                <p>Expert human guide + Includes General Admission</p>
                                                             </div>
                                                         </div>
-                                                        <div class="ticket-actions">
-                                                            <p class="ticket-price">$15.00</p>
-                                                            <div class="quantity-selector">
-                                                                <button class="qty-btn">
-                                                                    <span class="material-symbols-outlined">remove</span>
-                                                                </button>
-                                                                <span class="qty-value">0</span>
-                                                                <button class="qty-btn">
-                                                                    <span class="material-symbols-outlined">add</span>
-                                                                </button>
+                                                        <div class="ticket-rows">
+                                                            <div class="ticket-row">
+                                                                <div class="row-label">
+                                                                    <span class="row-title">Adult</span>
+                                                                    <span class="row-subtitle">2-hour expert-led guided journey</span>
+                                                                </div>
+                                                                <div class="row-actions">
+                                                                    <span class="ticket-price" id="price-guided-adult">$38.00</span>
+                                                                    <div class="quantity-selector" data-ticket="guided_adult">
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">remove</span></button>
+                                                                        <span class="qty-value">0</span>
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">add</span></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ticket-row">
+                                                                <div class="row-label">
+                                                                    <span class="row-title">Student / Child</span>
+                                                                    <span class="row-subtitle">Ages 4-12 or Valid Student ID</span>
+                                                                </div>
+                                                                <div class="row-actions">
+                                                                    <span class="ticket-price" id="price-guided-student">$20.00</span>
+                                                                    <div class="quantity-selector" data-ticket="guided_student">
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">remove</span></button>
+                                                                        <span class="qty-value">0</span>
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">add</span></button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                            
+
+                                                    <!-- Ticket 3: Tut Pass -->
                                                     <div class="ticket-card">
-                                                        <div class="ticket-left">
-                                                            <div class="ticket-icon-badge resident">
-                                                                <span class="material-symbols-outlined">flag</span>
+                                                        <a href="../advanced 3D model/advanced-3D.html" class="ticket-info-link" style="text-decoration: none; display: block; transition: transform 0.3s ease;">
+                                                            <div class="ticket-main-info">
+                                                                <div class="ticket-icon-circle">
+                                                                    <span class="material-symbols-outlined">tempest</span>
+                                                                </div>
+                                                                <div class="ticket-title">
+                                                                    <h4 style="display: flex; align-items: center; gap: 0.5rem;">
+                                                                        Tutankhamun Pass
+                                                                        <span class="material-symbols-outlined" style="font-size: 1rem; opacity: 0.7;">open_in_new</span>
+                                                                    </h4>
+                                                                    <p>The ultimate immersion + Immersive Gallery access</p>
+                                                                </div>
                                                             </div>
-                                                            <div class="ticket-info">
-                                                                <h4 class="ticket-name">Egyptian / Arab Resident</h4>
-                                                                <p class="ticket-desc">Requires valid national ID or passport.</p>
+                                                        </a>
+                                                        <div class="ticket-rows">
+                                                            <div class="ticket-row">
+                                                                <div class="row-label">
+                                                                    <span class="row-title">Adult</span>
+                                                                    <span class="row-subtitle">Full access to all museum areas</span>
+                                                                </div>
+                                                                <div class="row-actions">
+                                                                    <span class="ticket-price" id="price-tut-adult">$42.00</span>
+                                                                    <div class="quantity-selector" data-ticket="tut_adult">
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">remove</span></button>
+                                                                        <span class="qty-value">0</span>
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">add</span></button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="ticket-actions">
-                                                            <p class="ticket-price">EGP 60</p>
-                                                            <div class="quantity-selector">
-                                                                <button class="qty-btn">
-                                                                    <span class="material-symbols-outlined">remove</span>
-                                                                </button>
-                                                                <span class="qty-value">0</span>
-                                                                <button class="qty-btn">
-                                                                    <span class="material-symbols-outlined">add</span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                            
-                                                    <div class="ticket-card">
-                                                        <div class="ticket-left">
-                                                            <div class="ticket-icon-badge senior">
-                                                                <span class="material-symbols-outlined">elderly</span>
-                                                            </div>
-                                                            <div class="ticket-info">
-                                                                <h4 class="ticket-name">Senior Citizen</h4>
-                                                                <p class="ticket-desc">Ages 60+. Valid ID required at entry.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="ticket-actions">
-                                                            <p class="ticket-price">$18.00</p>
-                                                            <div class="quantity-selector">
-                                                                <button class="qty-btn">
-                                                                    <span class="material-symbols-outlined">remove</span>
-                                                                </button>
-                                                                <span class="qty-value">0</span>
-                                                                <button class="qty-btn">
-                                                                    <span class="material-symbols-outlined">add</span>
-                                                                </button>
+                                                            <div class="ticket-row">
+                                                                <div class="row-label">
+                                                                    <span class="row-title">Student / Child</span>
+                                                                    <span class="row-subtitle">Ages 4-12 or Valid Student ID</span>
+                                                                </div>
+                                                                <div class="row-actions">
+                                                                    <span class="ticket-price" id="price-tut-student">$22.00</span>
+                                                                    <div class="quantity-selector" data-ticket="tut_student">
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">remove</span></button>
+                                                                        <span class="qty-value">0</span>
+                                                                        <button class="qty-btn"><span class="material-symbols-outlined">add</span></button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -700,8 +746,23 @@
                             
                                 <script src="../global-core.js"></script>
                                 <script src="../animate.js"></script>
-                                <script src="main.js"></script>
-                            </body>
-                            
-                            </html>
-                            
+                                <!-- Verification Overlay -->
+    <div class="verify-overlay" id="verifyOverlay">
+        <div class="bg-verify-glow"></div>
+        <div class="verify-container">
+            <div class="loader-wrapper">
+                <div class="loader-ring"></div>
+                <div class="loader-ring"></div>
+                <div class="loader-icon">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+            </div>
+            <h1 id="verifyTitle">Verifying</h1>
+            <div class="status-text" id="verifyStatus">Connecting to systems...</div>
+            <div class="venue-info-box" id="verifyVenue">Preparing your experience</div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

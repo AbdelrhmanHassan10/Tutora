@@ -45,17 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Calculation Logic ---
         let subtotal = 0;
         let itemsHTML = '';
+        const isIntl = bookingState.visitorType === 'international';
+        const currencySymbol = isIntl ? '$' : 'EGP ';
 
         // Calculate subtotal from tickets
         Object.values(bookingState.tickets).forEach(ticket => {
             if (ticket.quantity > 0) {
-                subtotal += ticket.quantity * ticket.price;
+                const price = isIntl ? ticket.price.intl : ticket.price.local;
+                const itemTotal = ticket.quantity * price;
+                subtotal += itemTotal;
                 itemsHTML += `
                     <div class="order-item">
                         <img class="item-img" src="./unnamed (5).png" alt="Ticket">
                         <div class="item-info">
                             <p class="item-name">${ticket.name}</p>
-                            <p class="item-details">Qty: ${ticket.quantity}</p>
+                            <p class="item-details">Qty: ${ticket.quantity} | ${currencySymbol}${price.toLocaleString()}</p>
                         </div>
                     </div>
                 `;
@@ -65,30 +69,47 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculate subtotal from addons
         Object.values(bookingState.addons).forEach(addon => {
             if (addon.selected) {
-                subtotal += addon.price;
+                const price = isIntl ? addon.price : addon.price * 50; // Simple conversion for addons
+                subtotal += price;
                 itemsHTML += `
                     <div class="order-item">
                         <img class="item-img" src="./unnamed (5).png" alt="Add-on">
                         <div class="item-info">
                             <p class="item-name">${addon.name}</p>
-                            <p class="item-details">Qty: 1</p>
+                            <p class="item-details">Qty: 1 | ${currencySymbol}${price.toLocaleString()}</p>
                         </div>
                     </div>
                 `;
             }
         });
 
-        const taxes = subtotal * 0.07; // 7% tax rate
+        // Add Dining Logic if present
+        if (bookingState.dining) {
+            const deposit = isIntl ? 4 : 200;
+            subtotal += deposit;
+            itemsHTML += `
+                <div class="order-item">
+                    <div class="item-info">
+                        <p class="item-name">${bookingState.dining.venue} Reservation</p>
+                        <p class="item-details">Deposit: ${currencySymbol}${deposit.toLocaleString()}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        const taxes = subtotal * 0.05; // 5% Admin Fee
         const total = subtotal + taxes;
 
         // --- Update the UI with the calculated values ---
-        orderItemsContainer.innerHTML = itemsHTML;
-        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
-        taxesEl.textContent = `$${taxes.toFixed(2)}`;
-        totalEl.textContent = `$${total.toFixed(2)}`;
+        if (orderItemsContainer) orderItemsContainer.innerHTML = itemsHTML;
+        if (subtotalEl) subtotalEl.textContent = `${currencySymbol}${subtotal.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        if (taxesEl) taxesEl.textContent = `${currencySymbol}${taxes.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        if (totalEl) totalEl.textContent = `${currencySymbol}${total.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        
         if (payBtn) {
-            payBtn.textContent = `Pay $${total.toFixed(2)}`;
+            payBtn.textContent = `Pay ${currencySymbol}${total.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
         }
+
     }
 
     // ============================================
@@ -170,8 +191,47 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error(bookingResult.message || 'Failed to checkout booking');
                 }
 
-                // Success
-                window.location.href = '../success/success.html';
+                // --- Start Transition Overlay ---
+                const overlay = document.getElementById('verifyOverlay');
+                const statusEl = document.getElementById('verifyStatus');
+                const titleEl = document.getElementById('verifyTitle');
+                
+                if (overlay) {
+                    overlay.classList.add('active');
+                    if (titleEl) titleEl.textContent = "Processing";
+
+                    const statuses = [
+                        "Authorizing payment...",
+                        "Verifying transaction...",
+                        "Securing digital tickets...",
+                        "Finalizing confirmation..."
+                    ];
+
+                    let current = 0;
+                    const interval = setInterval(() => {
+                        if (current < statuses.length) {
+                            if (statusEl) {
+                                statusEl.style.opacity = '0';
+                                setTimeout(() => {
+                                    statusEl.textContent = statuses[current];
+                                    statusEl.style.opacity = '1';
+                                    current++;
+                                }, 300);
+                            } else {
+                                current++;
+                            }
+                        } else {
+                            clearInterval(interval);
+                            setTimeout(() => {
+                                window.location.href = '../success/success.html';
+                            }, 500);
+                        }
+                    }, 1000);
+                } else {
+                    // Fallback
+                    window.location.href = '../success/success.html';
+                }
+
             } catch (error) {
                 console.error("Booking/Payment error:", error);
                 alert("Error: " + error.message);

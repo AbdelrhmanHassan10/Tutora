@@ -1961,23 +1961,34 @@ body.light .speaker-card:hover {
     opacity: 0.8;
 }
 
-/* SPECH STYLE (Premium Quote) */
 .speaker-bio {
-    position: relative;
-    font-family: 'Cinzel', serif; /* Using Cinzel for the quote too */
     font-size: 1rem;
-    color: #94A3B8;
-    line-height: 1.8;
-    font-style: italic;
-    padding: 0 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+    opacity: 0.9;
 }
 
-.speaker-bio::before {
+.speaker-quote {
+    position: relative;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: #f2b90d;
+    line-height: 1.6;
+    font-style: italic;
+    padding: 1.5rem;
+    background: rgba(242, 208, 13, 0.05);
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+.speaker-quote::before {
     content: '“';
     position: absolute;
-    top: -20px;
-    left: 0;
-    font-size: 4rem;
+    top: -10px;
+    left: 10px;
+    font-size: 3rem;
     color: rgba(242, 208, 13, 0.2);
     font-family: serif;
 }
@@ -2157,7 +2168,12 @@ body.light .hero-desc {
 }
 
 body.light .speaker-bio {
-    color: #475569 !important;
+    color: var(--text-secondary) !important;
+}
+
+body.light .speaker-quote {
+    background: rgba(242, 208, 13, 0.08);
+    color: #0F172A !important;
 }
 
 body.light .speaker-info h4 {
