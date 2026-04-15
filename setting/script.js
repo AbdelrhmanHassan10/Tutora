@@ -1,84 +1,142 @@
+/* ============================================
+   SETTINGS PAGE LOGIC - TUTORA
+   ============================================ */
+
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Toggle Logic
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
+    // 1. Sidebar Tab Switching
+    const sidebarBtns = document.querySelectorAll('.sidebar-btn');
+    const sections = document.querySelectorAll('.settings-panel');
 
-    const applyTheme = (theme) => {
-        if (theme === 'dark') {
-            body.classList.remove('light');
-            body.classList.add('dark');
-            if (themeToggle) {
-                const icon = themeToggle.querySelector('.material-symbols-outlined');
-                if (icon) icon.textContent = 'light_mode';
-            }
-        } else {
-            body.classList.remove('dark');
-            body.classList.add('light');
-            if (themeToggle) {
-                const icon = themeToggle.querySelector('.material-symbols-outlined');
-                if (icon) icon.textContent = 'dark_mode';
-            }
-        }
-        localStorage.setItem('gem-theme', theme);
-    };
-
-    const savedTheme = localStorage.getItem('gem-theme') || 'dark';
-    applyTheme(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
-            applyTheme(newTheme);
+    sidebarBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            
+            // Update Active Button
+            sidebarBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Update Active Section
+            sections.forEach(sec => {
+                sec.classList.remove('active');
+                if (sec.id === `${tabId}-tab`) {
+                    sec.classList.add('active');
+                }
+            });
         });
-    }
+    });
 
-    // 2. Text Size Range Logic
+    // 2. Accessibility: Text Size Logic
     const textSizeRange = document.getElementById('text-size-range');
     const previewText = document.getElementById('preview-text');
 
-    if (textSizeRange && previewText) {
-        textSizeRange.addEventListener('input', () => {
-            const val = textSizeRange.value;
-            if (val == 1) previewText.style.fontSize = '1rem';
-            else if (val == 2) previewText.style.fontSize = '1.25rem';
-            else if (val == 3) previewText.style.fontSize = '1.75rem';
-        });
+    const updateTextSize = (val) => {
+        if (!previewText) return;
+        let size = '1rem';
+        if (val == 2) size = '1.25rem';
+        if (val == 3) size = '1.75rem';
+        previewText.style.fontSize = size;
+        // Optimization: apply to body for instant preview if needed, 
+        // but here we just preview in the box until "Apply"
+    };
+
+    if (textSizeRange) {
+        textSizeRange.addEventListener('input', (e) => updateTextSize(e.target.value));
     }
 
-    // 3. Form Submission
+    // 3. Accessibility: Contrast Logic
+    const contrastOptions = document.querySelectorAll('input[name="contrast"]');
+    contrastOptions.forEach(opt => {
+        opt.addEventListener('change', () => {
+            // Preview logic if desired
+        });
+    });
+
+    // 4. Appearance: Theme Sync
+    const updateThemeCards = (theme) => {
+        const currentTheme = theme || localStorage.getItem('theme') || 'dark';
+        const cards = document.querySelectorAll('.theme-card');
+        cards.forEach(card => {
+            const isDarkCard = card.querySelector('.dark');
+            card.classList.remove('active');
+            if (currentTheme === 'dark' && isDarkCard) card.classList.add('active');
+            if (currentTheme === 'light' && !isDarkCard) card.classList.add('active');
+        });
+    };
+
+    // Listen for global theme changes (from the sun/moon button)
+    window.addEventListener('themeChanged', (e) => {
+        updateThemeCards(e.detail.theme);
+    });
+
+    // Initial card state
+    updateThemeCards();
+
+    // 5. Load Stored Settings
+    const loadSettings = () => {
+        const storedSize = localStorage.getItem('gem-text-size') || 2;
+        const storedContrast = localStorage.getItem('gem-contrast') || 'standard';
+        const storedMotion = localStorage.getItem('gem-motion') !== 'false'; // default true
+
+        if (textSizeRange) {
+            textSizeRange.value = storedSize;
+            updateTextSize(storedSize);
+        }
+
+        const contrastInput = document.querySelector(`input[name="contrast"][value="${storedContrast}"]`);
+        if (contrastInput) contrastInput.checked = true;
+
+        const motionInput = document.getElementById('motionToggle');
+        if (motionInput) motionInput.checked = storedMotion;
+    };
+
+    loadSettings();
+
+    // 6. Apply & Save Settings
     const applyBtn = document.getElementById('apply-btn');
     if (applyBtn) {
         applyBtn.addEventListener('click', () => {
-            const originalText = applyBtn.textContent;
-            applyBtn.textContent = 'Saving...';
-            applyBtn.disabled = true;
+            // Collect Values
+            const size = textSizeRange ? textSizeRange.value : 2;
+            const contrast = document.querySelector('input[name="contrast"]:checked').value;
+            const motion = document.getElementById('motionToggle').checked;
 
-            setTimeout(() => {
-                applyBtn.textContent = 'Saved!';
-                applyBtn.style.backgroundColor = '#22c55e';
-                applyBtn.style.color = 'white';
+            // Save to LocalStorage
+            localStorage.setItem('gem-text-size', size);
+            localStorage.setItem('gem-contrast', contrast);
+            localStorage.setItem('gem-motion', motion);
 
-                setTimeout(() => {
-                    applyBtn.textContent = originalText;
-                    applyBtn.disabled = false;
-                    applyBtn.style.backgroundColor = '';
-                    applyBtn.style.color = '';
-                }, 2000);
-            }, 1000);
+            // Apply logic (Global effects)
+            if (contrast === 'high') {
+                document.body.classList.add('high-contrast');
+            } else {
+                document.body.classList.remove('high-contrast');
+            }
+
+            // Feedback
+            if (window.showPremiumToast) {
+                window.showPremiumToast('Settings saved successfully. Portal optimized.', 'success');
+            } else {
+                alert('Settings saved!');
+            }
         });
     }
 
-    // 4. Reset Logic
+    // 7. Reset Defaults
     const resetBtn = document.getElementById('reset-btn');
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-            if (textSizeRange) {
-                textSizeRange.value = 2;
-                textSizeRange.dispatchEvent(new Event('input'));
+            localStorage.removeItem('gem-text-size');
+            localStorage.removeItem('gem-contrast');
+            localStorage.removeItem('gem-motion');
+            
+            loadSettings();
+            document.body.classList.remove('high-contrast');
+
+            if (window.showPremiumToast) {
+                window.showPremiumToast('Restored original museum defaults.', 'success');
+            } else {
+                alert('Settings reset.');
             }
-            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-            document.querySelector('input[value="standard"]').checked = true;
-            alert('Settings reset to default.');
         });
     }
 });

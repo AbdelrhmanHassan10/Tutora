@@ -13,6 +13,7 @@
                                 <link rel="stylesheet" href="../Profile/style.css">
                                 <link rel="stylesheet" href="style.css">
                             	<link rel="stylesheet" href="../global-theme.css" />
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" />
                             </head>
                             
                             <body class="dark-mode">
@@ -116,8 +117,17 @@
                                                         <input type="file" id="avatarUpload" accept="image/*" class="hidden-input">
                                                     </div>
                                                     <div class="avatar-info">
-                                                        <p class="avatar-hint">Recommended size: 400x400px</p>
-                                                        <button type="button" class="btn-text-primary" onclick="document.getElementById('avatarUpload').click()">Change Artifact Image</button>
+                                                        <p class="avatar-hint">Recommended: 400x400px</p>
+                                                        <div class="avatar-action-group" style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; margin-top: 1rem;">
+                                                            <button type="button" class="btn-save" style="width: 100%; font-size: 0.75rem; padding: 0.8rem;" onclick="document.getElementById('avatarUpload').click()">
+                                                                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 5px;">upload</span>
+                                                                Upload New Photo
+                                                            </button>
+                                                            <button type="button" class="btn-discard" id="adjustCurrentAvatar" style="display: none; border: 1px solid var(--primary); color: var(--primary); padding: 0.8rem 1.5rem; border-radius: 4px; width: 100%; transition: all 0.3s ease;">
+                                                                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 5px;">crop_free</span>
+                                                                Adjust Current
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </section>
                             
@@ -158,7 +168,7 @@
                                                         </div>
                                                         <h4 class="membership-title">Membership Status</h4>
                                                         <p class="membership-desc">Your 'Premium Curator' status provides access to high-resolution 3D scans of the Tutankhamun collection and priority invitations to private gallery previews.</p>
-                                                        <a href="#" class="membership-link">Review Membership Details</a>
+                                                        <a href="../-membership/code.html" class="membership-link">Review Membership Details</a>
                                                     </div>
                                                 </section>
                                             </div>
@@ -166,6 +176,24 @@
                                     </main>
                                 </div>
                             
+                                <!-- Image Crop Modal -->
+                                <div class="crop-modal" id="cropModal">
+                                    <div class="crop-container">
+                                        <div class="crop-header">
+                                            <h3>Customize Artifact</h3>
+                                            <span class="material-symbols-outlined" style="cursor:pointer" id="closeCropModal">close</span>
+                                        </div>
+                                        <div class="crop-body">
+                                            <img id="imageToCrop" src="" alt="To Crop">
+                                        </div>
+                                        <div class="crop-footer">
+                                            <button class="btn-crop-cancel" id="cancelCrop">Cancel</button>
+                                            <button class="btn-crop-confirm" id="confirmCrop">Apply Selection</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
                                 <script src="script.js"></script>
                             
                             

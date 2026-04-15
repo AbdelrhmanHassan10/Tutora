@@ -1,342 +1,301 @@
 <!doctype html>
-                            <html lang="en">
-                              <head>
-                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-                                <meta charset="utf-8" />
-                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-                                <title>TUTORA Settings | Customize Your Experience</title>
-                                <link rel="icon" type="image/png" href="../museum.png">
-                                <link
-                                  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-                                  rel="stylesheet"
-                                />
-                                <link
-                                  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-                                  rel="stylesheet"
-                                />
-                                <link
-                                  rel="stylesheet"
-                                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-                                />
-                                <link rel="stylesheet" href="style.css" />
-                                <link rel="stylesheet" href="../animate.css" />
-                              	<link rel="stylesheet" href="../global-theme.css" />
-                            </head>
-                            
-                              <body class="dark">
-                                <!-- Navigation -->
-                                <header class="navbar">
-                                  <div class="logo-section">
-                                    <div class="logo-circle">
-                                        <img src="../logo.png" alt="Tutora Logo">
-                                    </div>
-                                    <h2 class="logo-text" style="color: #ecb613; font-size: 20px;">Tutora</h2>
-                                  </div>
-                            
-                                  <div class="nav-actions">
-                                    <button class="btn-icon" id="theme-toggle" title="Toggle Theme">
-                                      <span class="material-symbols-outlined">light_mode</span>
-                                    </button>
-                                    <a
-                                      href="../Profile/profile.html"
-                                      style="text-decoration: none; color: inherit"
-                                    >
-                                      <button class="btn-icon" title="Close Settings">
-                                        <span class="material-symbols-outlined">close</span>
-                                        <span
-                                          style="
-                                            font-size: 0.75rem;
-                                            font-weight: 700;
-                                            text-transform: uppercase;
-                                            margin-left: 0.5rem;
-                                          "
-                                          >Close</span
-                                        >
-                                      </button>
-                                    </a>
-                                  </div>
-                                </header>
-                            
-                                <main class="main-wrapper">
-                                  <div class="panel">
-                                    <header class="panel-header">
-                                      <div class="header-title-row">
-                                        <span class="material-symbols-outlined header-icon"
-                                          >accessibility_new</span
-                                        >
-                                        <h2 class="panel-title">Inclusive Access Settings</h2>
-                                      </div>
-                                      <p class="panel-subtitle">
-                                        Personalize your browsing experience for maximum comfort and
-                                        accessibility.
-                                      </p>
-                                    </header>
-                            
-                                    <div class="panel-body">
-                                      <!-- Text Size -->
-                                      <section>
-                                        <div class="section-head">
-                                          <span class="material-symbols-outlined section-icon"
-                                            >text_fields</span
-                                          >
-                                          <h3 class="section-title">Text Size</h3>
-                                        </div>
-                                        <div class="control-box">
-                                          <div class="range-labels">
-                                            <span>Standard</span>
-                                            <span>Large</span>
-                                            <span>Extra Large</span>
-                                          </div>
-                                          <input
-                                            type="range"
-                                            class="range-input"
-                                            id="text-size-range"
-                                            min="1"
-                                            max="3"
-                                            step="1"
-                                            value="2"
-                                          />
-                                          <div class="preview-box">
-                                            <p id="preview-text" style="font-size: 1.25rem">
-                                              Preview: The treasures of Tutankhamun await your discovery.
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </section>
-                            
-                                      <!-- Color Contrast -->
-                                      <section>
-                                        <div class="section-head">
-                                          <span class="material-symbols-outlined section-icon"
-                                            >contrast</span
-                                          >
-                                          <h3 class="section-title">Color Contrast</h3>
-                                        </div>
-                                        <div class="options-grid">
-                                          <label class="option-card">
-                                            <input
-                                              type="radio"
-                                              name="contrast"
-                                              value="standard"
-                                              class="option-input"
-                                              checked
-                                            />
-                                            <div class="option-content">
-                                              <span class="material-symbols-outlined option-icon"
-                                                >palette</span
-                                              >
-                                              <span style="font-weight: 700">Standard</span>
-                                            </div>
-                                          </label>
-                                          <label class="option-card">
-                                            <input
-                                              type="radio"
-                                              name="contrast"
-                                              value="high"
-                                              class="option-input"
-                                            />
-                                            <div class="option-content">
-                                              <span class="material-symbols-outlined option-icon"
-                                                >contrast</span
-                                              >
-                                              <span style="font-weight: 700">High Contrast</span>
-                                            </div>
-                                          </label>
-                                          <label class="option-card">
-                                            <input
-                                              type="radio"
-                                              name="contrast"
-                                              value="greyscale"
-                                              class="option-input"
-                                            />
-                                            <div class="option-content">
-                                              <span class="material-symbols-outlined option-icon"
-                                                >gradient</span
-                                              >
-                                              <span style="font-weight: 700">Greyscale</span>
-                                            </div>
-                                          </label>
-                                        </div>
-                                      </section>
-                            
-                                      <!-- Assistive Tools -->
-                                      <section class="toggles-grid">
-                                        <div style="display: flex; flex-direction: column; gap: 1rem">
-                                          <div class="toggle-row">
-                                            <div class="toggle-info">
-                                              <span class="material-symbols-outlined section-icon"
-                                                >screen_search_desktop</span
-                                              >
-                                              <div>
-                                                <p class="toggle-label-text">Screen Reader</p>
-                                                <p class="toggle-subtext">Optimized navigation</p>
-                                              </div>
-                                            </div>
-                                            <label class="switch">
-                                              <input type="checkbox" />
-                                              <span class="slider"></span>
-                                            </label>
-                                          </div>
-                                          <div class="toggle-row">
-                                            <div class="toggle-info">
-                                              <span class="material-symbols-outlined section-icon"
-                                                >audio_file</span
-                                              >
-                                              <div>
-                                                <p class="toggle-label-text">Audio Descriptions</p>
-                                                <p class="toggle-subtext">Narration for visuals</p>
-                                              </div>
-                                            </div>
-                                            <label class="switch">
-                                              <input type="checkbox" checked />
-                                              <span class="slider"></span>
-                                            </label>
-                                          </div>
-                                        </div>
-                            
-                                        <div style="display: flex; flex-direction: column; gap: 1rem">
-                                          <div
-                                            class="toggle-row"
-                                            style="border-color: rgba(242, 185, 13, 0.3)"
-                                          >
-                                            <div class="toggle-info">
-                                              <span class="material-symbols-outlined section-icon"
-                                                >motion_photos_off</span
-                                              >
-                                              <div>
-                                                <p class="toggle-label-text">Reduced Motion</p>
-                                                <p class="toggle-subtext">Minimizes animations</p>
-                                              </div>
-                                            </div>
-                                            <label class="switch">
-                                              <input type="checkbox" />
-                                              <span class="slider"></span>
-                                            </label>
-                                          </div>
-                                          <div
-                                            class="control-box"
-                                            style="
-                                              background-color: rgba(242, 185, 13, 0.05);
-                                              border: none;
-                                              padding: 1rem;
-                                            "
-                                          >
-                                            <p style="font-size: 0.75rem; font-style: italic; opacity: 0.7">
-                                              * Enabling 'Reduced Motion' helps users who experience
-                                              dizziness or vertigo with moving UI elements.
-                                            </p>
-                                          </div>
-                                        </div>
-                                      </section>
-                                    </div>
-                                  </div>
-                            
-                                </main>
-                            
-                                <footer class="site-footer">
-                                    <div class="footer-container">
-                                        <!-- Footer Header -->
-                                        <div class="footer-header">
-                                            <div class="footer-logo">
-                                                <span class="material-symbols-outlined">account_balance</span>
-                                            </div>
-                                            <h2 class="footer-title">Grand Egyptian Museum</h2>
-                                            <div class="footer-divider"></div>
-                                        </div>
-                            
-                                        <!-- Footer Grid -->
-                                        <div class="footer-grid">
-                                            <div class="footer-column">
-                                                <h3>Explore</h3>
-                                                <ul>
-                                                    <li><a href="../booking/booking.html">Tickets</a></li>
-                                                    <li><a href="../collection/collection.html">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
-                                                    <li><a href="../-membership/code.html">Membership</a></li>
-                                                    <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="footer-column">
-                                                <h3>About</h3>
-                                                <ul>
-                                                    <li><a href="../About us/About-us.html">History</a></li>
-                                                    <li><a href="../event/event.html">Events</a></li>
-                                                    <li><a href="../-news_press/code.html">News & Press</a></li>
-                                                    <li><a href="../-branding/code.html">Branding</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="footer-column">
-                                                <h3>Support</h3>
-                                                <ul>
-                                                    <li><a href="../visitor help/help.html">Help</a></li>
-                                                    <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                                                    <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                                                    <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="footer-column connect-column">
-                                                <h3>Connect</h3>
-                                                <div class="social-links">
-                                                    <!-- Facebook -->
-                                                    <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                        <i class="fa-brands fa-facebook"></i>
-                                                    </a>
-                            
-                                                    <!-- Twitter (X) -->
-                                                    <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter)">
-                                                        <i class="fa-brands fa-x-twitter"></i>
-                                                    </a>
-                            
-                                                    <!-- Instagram -->
-                                                    <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                        <i class="fa-brands fa-instagram"></i>
-                                                    </a>
-                            
-                                                    <!-- YouTube -->
-                                                    <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                        <i class="fa-brands fa-youtube"></i>
-                                                    </a>
-                                                </div>
-                            
-                                                <p>
-                                                    Follow us on social media for updates and behind-the-scenes content.
-                                                </p>
-                                            </div>
-                                        </div>
-                            
-                                        <!-- Footer Separator -->
-                                        <div class="footer-separator"></div>
-                            
-                                        <!-- Footer Bottom -->
-                                        <div class="footer-bottom">
-                                            <div class="language-toggle">
-                                                <button class="active" data-lang="en">English</button>
-                                                <button data-lang="ar">ط·آ§ط¸â€‍ط·آ¹ط·آ±ط·آ¨ط¸ظ¹ط·آ©</button>
-                                            </div>
-                                            <div class="legal-section">
-                                                <div class="legal-links">
-                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                                                </div>
-                                                <div class="copyright">
-                                                    ط¢آ© 2026 Tutora. All rights reserved.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </footer>
-                            
-                                <!-- Decorative Background -->
-                                <svg class="bg-decor" fill="currentColor" viewBox="0 0 200 200">
-                                  <path
-                                    d="M100 0L122.5 69.1H195.1L136.3 111.8L158.8 180.9L100 138.2L41.2 180.9L63.7 111.8L4.9 69.1H77.5L100 0Z"
-                                  ></path>
-                                </svg>
-                            
-                                <script src="script.js"></script>
-                                <script src="../global-core.js"></script>
-                                <script src="../animate.js"></script>
-                            </body>
-                            </html>
-                            
+<html lang="en">
+<head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TUTORA Settings | Customize Your Experience</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@600;700;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../global-theme.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../animate.css" />
+</head>
+
+<body class="dark">
+    <!-- Navigation Overlay (For consistency) -->
+    <div id="menuOverlay" class="menu-overlay"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="logo-section">
+            <div class="logo-circle">
+                <img src="../logo.png" alt="Tutora Logo">
+            </div>
+            <h2 class="logo-text">Tutora</h2>
+        </div>
+
+        <div class="nav-actions">
+            <button class="btn-icon theme-toggle" id="themeBtn" title="Toggle Theme">
+                <span class="material-symbols-outlined">light_mode</span>
+            </button>
+            <a href="../Profile/profile.html" class="nav-close-link">
+                <span class="material-symbols-outlined">close</span>
+                <span class="close-text">Exit</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="settings-container animate-fade-in">
+            <!-- Settings Sidebar -->
+            <aside class="settings-sidebar">
+                <div class="sidebar-header">
+                    <h3>Hub Settings</h3>
+                </div>
+                <nav class="sidebar-nav">
+                    <button class="sidebar-btn active" data-tab="account">
+                        <span class="material-symbols-outlined">person_outline</span>
+                        Account
+                    </button>
+                    <button class="sidebar-btn" data-tab="appearance">
+                        <span class="material-symbols-outlined">palette</span>
+                        Appearance
+                    </button>
+                    <button class="sidebar-btn" data-tab="accessibility">
+                        <span class="material-symbols-outlined">accessibility_new</span>
+                        Accessibility
+                    </button>
+                    <button class="sidebar-btn" data-tab="privacy">
+                        <span class="material-symbols-outlined">security</span>
+                        Privacy
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Settings Content -->
+            <div class="settings-content">
+                <!-- 1. Account Section -->
+                <section class="settings-panel active" id="account-tab">
+                    <header class="tab-header">
+                        <h2 class="tab-title">Account Management</h2>
+                        <p class="tab-subtitle">Manage your personal information and security.</p>
+                    </header>
+                    <div class="setting-group">
+                        <div class="setting-item">
+                            <div class="item-info">
+                                <h3>Profile Details</h3>
+                                <p>Update your photo, name, and bio.</p>
+                            </div>
+                            <a href="../Edit-profile/code.html" class="btn-text-primary">Edit Profile</a>
+                        </div>
+                        <div class="setting-item">
+                            <div class="item-info">
+                                <h3>Security</h3>
+                                <p>Ensure your account is protected.</p>
+                            </div>
+                            <a href="../change password/change-password.html" class="btn-text-primary">Change Password</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. Appearance Section -->
+                <section class="settings-panel" id="appearance-tab">
+                    <header class="tab-header">
+                        <h2 class="tab-title">Appearance Settings</h2>
+                        <p class="tab-subtitle">Personalize your visual experience on Tutora.</p>
+                    </header>
+                    <div class="setting-group">
+                        <div class="setting-item flex-column">
+                            <div class="item-info">
+                                <h3>Portal Theme</h3>
+                                <p>Select your preferred color mode.</p>
+                            </div>
+                            <div class="theme-options">
+                                <button class="theme-card active" onclick="window.applyTheme('dark')">
+                                    <div class="theme-preview dark"></div>
+                                    <span>Obsidian Dark</span>
+                                </button>
+                                <button class="theme-card" onclick="window.applyTheme('light')">
+                                    <div class="theme-preview light"></div>
+                                    <span>Morning Alabaster</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="item-info">
+                                <h3>Motion & Effects</h3>
+                                <p>Enable fluid transitions and micro-animations.</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="motionToggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Accessibility Section -->
+                <section class="settings-panel" id="accessibility-tab">
+                    <header class="tab-header">
+                        <h2 class="tab-title">Inclusive Access</h2>
+                        <p class="tab-subtitle">Customize the interface for your comfort.</p>
+                    </header>
+                    <div class="setting-group">
+                        <div class="setting-item flex-column">
+                            <div class="item-info">
+                                <h3>Text Size Override</h3>
+                                <p>Adjust text scale for better readability.</p>
+                            </div>
+                            <div class="control-box">
+                                <div class="range-labels">
+                                    <span>Compact</span>
+                                    <span>Standard</span>
+                                    <span>Large</span>
+                                </div>
+                                <input type="range" class="range-input" id="text-size-range" min="1" max="3" step="1" value="2">
+                                <div class="preview-box">
+                                    <p id="preview-text">The treasures of Tutankhamun await your discovery.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting-item flex-column">
+                            <div class="item-info">
+                                <h3>Color Contrast</h3>
+                                <p>Enhance visibility of UI elements.</p>
+                            </div>
+                            <div class="options-grid">
+                                <label class="option-card">
+                                    <input type="radio" name="contrast" value="standard" checked>
+                                    <div class="option-content">Standard</div>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="contrast" value="high">
+                                    <div class="option-content">High Contrast</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. Privacy Section -->
+                <section class="settings-panel" id="privacy-tab">
+                    <header class="tab-header">
+                        <h2 class="tab-title">Privacy & Security</h2>
+                        <p class="tab-subtitle">Review our legal terms and manage cookies.</p>
+                    </header>
+                    <div class="setting-group">
+                        <div class="setting-item">
+                            <div class="item-info">
+                                <h3>Legal Center</h3>
+                                <p>Read our Terms and Privacy commitments.</p>
+                            </div>
+                            <div class="legal-links-group">
+                                <a href="../Privacy-policy/Privacy-Policy.html" class="btn-text-primary">Privacy</a>
+                                <a href="../Terms-of-Service/term-of-service.html" class="btn-text-primary">Terms</a>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <div class="item-info">
+                                <h3>Cookies</h3>
+                                <p>Manage how we use data to improve your journey.</p>
+                            </div>
+                            <a href="../Cookie-Settings/Cookie-Settings.html" class="btn-text-primary">Manage</a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Common Footer for Tabs -->
+                <div class="panel-footer">
+                    <button type="button" class="btn-discard" id="reset-btn">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem;">restart_alt</span>
+                        Reset Defaults
+                    </button>
+                    <button type="button" class="btn-save" id="apply-btn">
+                        <span class="material-symbols-outlined" style="font-size: 1.2rem;">check_circle</span>
+                        Apply Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Footer Header -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html">Tickets</a></li>
+                        <li><a href="../collection/collection.html">Collection</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                        <li><a href="../-membership/code.html">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html">History</a></li>
+                        <li><a href="../event/event.html">Events</a></li>
+                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                        <li><a href="../-branding/code.html">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html">Help Center</a></li>
+                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Separator -->
+            <div class="footer-separator"></div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="language-toggle">
+                    <button class="active" data-lang="en">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">
+                        © 2026 Tutora. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Decorative Element -->
+    <div class="ambient-glow"></div>
+
+    <script src="script.js"></script>
+    <script src="../global-core.js"></script>
+</body>
+</html>

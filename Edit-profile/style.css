@@ -333,34 +333,9 @@ body.light {
     border-color: var(--primary);
 }
 
-/* Notification Global Component */
-.notification {
-    position: fixed;
-    top: 20px;
-    right: -100%;
-    background: var(--card-bg);
-    color: var(--text-primary);
-    border-left: 4px solid var(--primary);
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    z-index: 10000;
-    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
 
-.notification.show {
-    right: 20px;
-}
+/* Notifications handled by global-core showPremiumToast */
 
-.notification.error {
-    border-left-color: #ff3333;
-}
-.notification.success {
-    border-left-color: #4cd964;
-}
 
 /* ============================================
    PREMIUM 3D DROPDOWN ANIMATION OVERRIDE
@@ -387,4 +362,122 @@ body.light {
 }
 .dropdown-link:hover, .dropdown-item:hover {
     transform: translateX(8px) !important;
+}
+
+/* ============================================
+   IMAGE CROP MODAL STYLES
+   ============================================ */
+.crop-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.crop-modal.active {
+    display: flex;
+}
+
+.crop-container {
+    background: var(--dark-card);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 16px;
+    border: 1px solid var(--primary);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.crop-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--dark-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#adjustCurrentAvatar:hover {
+    background: rgba(236, 182, 19, 0.1);
+    border-color: var(--primary-dark) !important;
+}
+
+.crop-header h3 {
+    margin: 0;
+    font-family: 'Noto Serif', serif;
+    color: var(--primary);
+}
+
+.crop-body {
+    padding: 1rem;
+    max-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.crop-body img {
+    max-width: 100%;
+    display: block;
+}
+
+.crop-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--dark-border);
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-crop-cancel {
+    background: transparent;
+    border: 1px solid var(--dark-border);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-crop-cancel:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-crop-confirm {
+    background: var(--primary);
+    color: #000;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-crop-confirm:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Cropper.js Overrides for UI consistency */
+.cropper-view-box,
+.cropper-face {
+    border-radius: 50%; /* Force circle view if square aspect ratio is 1 */
+}
+
+.cropper-line, .cropper-point {
+    background-color: var(--primary) !important;
+}
+
+.cropper-bg {
+    background-image: none !important;
+    background-color: #000 !important;
 }

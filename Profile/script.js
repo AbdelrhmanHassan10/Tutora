@@ -51,17 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerName = document.querySelector('.user-info span:not(.user-level)');
         if (headerName) headerName.textContent = user.name || 'Explorer';
 
-        // Update email and join date
-        const infoValues = document.querySelectorAll('.info-value');
-        if (infoValues.length >= 1) infoValues[0].textContent = user.email || 'N/A';
-        if (infoValues.length >= 2 && user.createdAt) {
-            const date = new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-            infoValues[1].textContent = date;
-        }
-
         // Standardize Bio if present
         const bioText = document.querySelector('.profile-title');
         if (bioText && user.bio) bioText.textContent = user.bio;
+
+        // Update Join Date in Hero Section
+        if (user.createdAt) {
+            const date = new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+            const heroJoinDate = document.getElementById('profile-join-date');
+            if (heroJoinDate) heroJoinDate.textContent = `Joined ${date}`;
+        }
 
         // Sync and Display Avatar
         const avatar = user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar');
@@ -138,6 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
              </div>`;
         });
         listContainer.innerHTML = html;
+
+        // Update Explorer Stats: Exhibitions Toured
+        const exhibitionStat = document.getElementById('exhibitions-stat');
+        if (exhibitionStat) exhibitionStat.textContent = bookings.length;
     }
 
     // 7. Fetch and Display Favorites
@@ -179,6 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     </a>
                 </div>`;
         });
+
+        // Update Explorer Stats: Artifacts Viewed
+        const artifactsStat = document.getElementById('artifacts-stat');
+        if (artifactsStat) artifactsStat.textContent = favorites.length;
     }
 
     // 8. Avatar Selection Logic
@@ -235,4 +242,99 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchUserProfile();
     fetchUserBookings();
     fetchUserFavorites();
+
+    // 9. Share Status Modal Logic
+    const shareBtn = document.getElementById('shareStatusBtn');
+    const shareModal = document.getElementById('shareStatusModal');
+    const closeShareModal = document.getElementById('closeShareModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const copyLinkBtn = document.getElementById('copyShareLink');
+
+    const toggleModal = (show) => {
+        if (!shareModal) return;
+        if (show) {
+            // Update Modal Content before showing
+            const name = document.querySelector('.profile-name').textContent;
+            const avatar = document.querySelector('.profile-image').src;
+            const artCount = document.getElementById('artifacts-stat').textContent;
+            const exhCount = document.getElementById('exhibitions-stat').textContent;
+            const joinDateText = document.getElementById('profile-join-date')?.textContent.replace('Joined ', '') || 'Dec 2022';
+
+            document.getElementById('modal-name').textContent = name;
+            document.getElementById('modal-avatar').src = avatar;
+            document.getElementById('modal-artifacts').textContent = artCount;
+            document.getElementById('modal-exhibitions').textContent = exhCount;
+            
+            const modalIssued = document.getElementById('modal-issued-date');
+            if (modalIssued) modalIssued.textContent = `Issued: ${joinDateText}`;
+
+            shareModal.classList.add('active');
+        } else {
+            shareModal.classList.remove('active');
+        }
+    };
+
+    if (shareBtn) shareBtn.onclick = () => toggleModal(true);
+    if (closeShareModal) closeShareModal.onclick = () => toggleModal(false);
+    if (modalOverlay) modalOverlay.onclick = () => toggleModal(false);
+
+    if (copyLinkBtn) {
+        copyLinkBtn.onclick = async () => {
+            const name = document.querySelector('.profile-name').textContent;
+            let avatar = document.querySelector('.profile-image').src;
+            
+            // Re-optimize: Finalize short link preference
+            // If it's a data: URL (custom upload), we fallback to the default explorer icon to keep link TINY
+            if (avatar.startsWith('data:')) {
+                avatar = 'unnamed.png'; 
+            } else {
+                avatar = avatar.split('/').pop();
+            }
+
+            const artCount = document.getElementById('artifacts-stat').textContent;
+            const exhCount = document.getElementById('exhibitions-stat').textContent;
+
+            const shareData = {
+                n: name,
+                a: avatar,
+                c: artCount,
+                e: exhCount
+            };
+
+            const encoded = btoa(JSON.stringify(shareData));
+            
+            // Fix file:// protocol for local testing shareability
+            const baseUrl = window.location.origin === 'null' || !window.location.origin 
+                            ? window.location.href.split('profile.html')[0] 
+                            : window.location.origin + window.location.pathname.replace('profile.html', '');
+            
+            const shareUrl = `${baseUrl}id.html?e=${encoded}`;
+            
+            const shareTitle = `${name}'s Official Explorer Status`;
+            const shareText = `Check out my pharaonic achievements and artifacts discovered at the Grand Egyptian Museum!`;
+
+            // Try Native Share First (Makes it a real clickable link with preview)
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: shareTitle,
+                        text: shareText,
+                        url: shareUrl
+                    });
+                    if (window.showPremiumToast) window.showPremiumToast('Passport shared successfully!', 'success');
+                } catch (err) {
+                    console.log('Share cancelled or failed', err);
+                }
+            } else {
+                // Fallback to Clipboard (Standard method)
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    if (window.showPremiumToast) {
+                        window.showPremiumToast('Compact Official Link copied!', 'success');
+                    } else {
+                        alert('Official Link copied!');
+                    }
+                });
+            }
+        };
+    }
 });

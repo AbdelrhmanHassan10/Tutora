@@ -103,42 +103,40 @@ document.addEventListener('DOMContentLoaded', () => {
     window.syncGlobalAvatar();
 
     // 3. GLOBAL THEME MANAGEMENT
-    window.applyTheme = function() {
-        const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
+    window.applyTheme = function(themeName) {
+        // If a specific theme is passed, save it first
+        if (themeName) {
+            localStorage.setItem('theme', themeName);
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
         const body = document.body;
         const themeBtns = document.querySelectorAll('#themeBtn, #themeToggle, #themeTwo, #theme-toggle, .theme-toggle, .theme-btn');
         
-        // Clean up all possible theme classes first
         body.classList.remove('light', 'dark', 'light-mode', 'dark-mode');
         
         if (savedTheme === 'light') {
             body.classList.add('light');
-            
             themeBtns.forEach(btn => {
                 const icon = btn.querySelector('.material-symbols-outlined');
-                if (icon) {
-                    icon.textContent = 'dark_mode';
-                    icon.style.color = ''; // Remove hardcoded colors to allow CSS control
-                }
+                if (icon) icon.textContent = 'dark_mode';
             });
         } else {
             body.classList.add('dark');
-            
             themeBtns.forEach(btn => {
                 const icon = btn.querySelector('.material-symbols-outlined');
-                if (icon) {
-                    icon.textContent = 'light_mode';
-                    icon.style.color = ''; // Remove hardcoded colors to allow CSS control
-                }
+                if (icon) icon.textContent = 'light_mode';
             });
         }
+
+        // Custom Event for other components (like Settings page) to react
+        window.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme: savedTheme } }));
     };
 
     window.toggleTheme = function() {
         const currentTheme = localStorage.getItem('theme') || 'dark';
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        localStorage.setItem('theme', newTheme);
-        window.applyTheme();
+        window.applyTheme(newTheme);
     };
 
     // Run Theme Init
@@ -349,4 +347,37 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     initGlobalLoader();
+
+    // 7. GLOBAL PREMIUM TOAST SYSTEM
+    window.showPremiumToast = function(message, type = 'success') {
+        // Remove existing to avoid stacking overlaps if preferred, 
+        // or just let them stack if CSS allows. Here we replace for clarity.
+        const existing = document.querySelector('.premium-toast');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.className = `premium-toast toast-${type}`;
+        
+        const icon = type === 'success' ? 'check_circle' : 'error';
+        
+        toast.innerHTML = `
+            <span class="material-symbols-outlined toast-icon">${icon}</span>
+            <div class="toast-content">
+                <span class="toast-msg">${message}</span>
+            </div>
+            <div class="toast-progress"></div>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        // Trigger reflow
+        void toast.offsetWidth;
+        toast.classList.add('show-toast');
+
+        // Auto-remove
+        setTimeout(() => {
+            toast.classList.remove('show-toast');
+            setTimeout(() => toast.remove(), 500);
+        }, 3500);
+    };
 });

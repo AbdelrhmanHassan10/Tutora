@@ -1418,3 +1418,254 @@ body.dark .language-toggle button:not(.active) {
 .dropdown-link:hover, .dropdown-item:hover {
     transform: translateX(8px) !important;
 }
+
+/* ============================================
+   SHARE STATUS MODAL & PASSPORT CARD
+   ============================================ */
+
+.share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.share-modal.active {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.passport-card {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+    border: 1px solid rgba(236, 182, 19, 0.3);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 
+                0 0 100px rgba(236, 182, 19, 0.1);
+    transform: translateY(30px) scale(0.9);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.share-modal.active .passport-card {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* Decorative Gold Trim */
+.passport-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, transparent, #ecb613, transparent);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-modal:hover {
+    color: #ecb613;
+    transform: rotate(90deg);
+}
+
+.passport-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+}
+
+.passport-logo {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ecb613;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.passport-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.passport-title h3 {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: #ecb613;
+    margin-bottom: 2px;
+}
+
+.passport-title p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.passport-user {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.p-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    border: 2px solid #ecb613;
+    overflow: hidden;
+}
+
+.p-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.p-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.p-rank {
+    color: #ecb613;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+}
+
+.p-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.p-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.p-label {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.p-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #fff;
+    font-family: 'Cinzel', serif;
+}
+
+.p-validity {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.passport-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.share-btn-action {
+    width: 100%;
+    padding: 1rem;
+    background: #ecb613;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.share-btn-action:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-share-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-share-icons button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.social-share-icons button:hover {
+    color: #ecb613;
+    border-color: #ecb613;
+    background: rgba(236, 182, 19, 0.1);
+}
+
+@media (max-width: 480px) {
+    .passport-card {
+        padding: 1.5rem;
+    }
+}
+

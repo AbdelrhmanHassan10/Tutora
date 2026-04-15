@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutora Explorer | Public ID</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+            overflow: hidden;
+        }
+        .public-wrapper {
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom styles for public page visibility */
+        .passport-card {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+        .join-cta {
+            margin-top: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="dark">
+    <div class="public-wrapper">
+        <div class="passport-card">
+            <div class="passport-header">
+                <div class="passport-logo">
+                    <img src="../logo.png" alt="GEM">
+                </div>
+                <div class="passport-title">
+                    <h3>GRAND EGYPTIAN MUSEUM</h3>
+                    <p>Explorer Official Status</p>
+                </div>
+            </div>
+            <div class="passport-body">
+                <div class="passport-user">
+                    <div class="p-avatar">
+                        <img src="./profile-placeholder.svg" id="modal-avatar" alt="Avatar">
+                    </div>
+                    <div class="p-info">
+                        <h2 id="modal-name">Explorer</h2>
+                        <p class="p-rank" id="modal-rank">Honorary Curator</p>
+                    </div>
+                </div>
+                <div class="p-stats-grid">
+                    <div class="p-stat">
+                        <span class="p-label">Treasures Found</span>
+                        <span class="p-value" id="modal-artifacts">0</span>
+                    </div>
+                    <div class="p-stat">
+                        <span class="p-label">Galley Tours</span>
+                        <span class="p-value" id="modal-exhibitions">0</span>
+                    </div>
+                </div>
+                <div class="p-validity">
+                    <span id="p-issued">Issued: 2026-04</span>
+                    <span>Status Class: A-1</span>
+                </div>
+            </div>
+            <div class="passport-footer">
+                <a href="../2.login/code.html" class="share-btn-action" style="text-decoration: none;">
+                    <span class="material-symbols-outlined">account_balance</span>
+                    JOIN TUTORA NOW
+                </a>
+            </div>
+        </div>
+        <div class="join-cta">
+            <p style="color: var(--text-secondary); font-size: 0.8rem;">Presented by Tutora Museum Explorer Bridge</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const rawData = urlParams.get('e'); // Shorter param
+
+            if (rawData) {
+                try {
+                    const data = JSON.parse(atob(rawData));
+                    
+                    // Abbreviated keys decoding
+                    const name = data.n || 'Explorer';
+                    const avatarFile = data.a || 'profile-placeholder.svg';
+                    const artifacts = data.c || '0';
+                    const exhibitions = data.e || '0';
+                    const joined = data.j || ''; // Might be hidden if missing
+
+                    document.getElementById('modal-name').textContent = name;
+                    
+                    // Smart Avatar Rendering
+                    const avatarImg = document.getElementById('modal-avatar');
+                    if (avatarFile.startsWith('data:')) {
+                        avatarImg.src = avatarFile; // Use full data URL for custom uploads
+                    } else {
+                        avatarImg.src = `./${avatarFile}`; // Use local path for official avatars
+                    }
+
+                    document.getElementById('modal-artifacts').textContent = artifacts;
+                    document.getElementById('modal-exhibitions').textContent = exhibitions;
+                    
+                    if(joined) {
+                        document.getElementById('p-issued').textContent = `Issued: ${joined}`;
+                    } else {
+                        document.getElementById('p-issued').style.display = 'none';
+                    }
+
+                    // Rank derivation logic
+                    const totalScore = (parseInt(artifacts) || 0) + (parseInt(exhibitions) || 0);
+                    let rank = 'Novice Explorer';
+                    if (totalScore > 50) rank = 'Master Historian';
+                    else if (totalScore > 20) rank = 'Senior Curator';
+                    else if (totalScore > 5) rank = 'Official Scholar';
+                    
+                    document.getElementById('modal-rank').textContent = rank;
+                    document.title = `${name}'s Explorer Status | Tutora`;
+
+                } catch (e) {
+                    console.error('Invalid ID data', e);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

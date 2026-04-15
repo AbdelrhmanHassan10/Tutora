@@ -115,13 +115,13 @@
                                                     <div class="profile-meta">
                                                         <span class="profile-title">Pharaonic Historian</span>
                                                         <span class="meta-divider"></span>
-                                                        <span class="join-date">Joined December 2022</span>
+                                                        <span class="join-date" id="profile-join-date">Joined December 2022</span>
                                                     </div>
                                                 </div>
                             
                                                 <div class="profile-actions">
                                                    <a href="../Edit-profile/code.html"> <button class="btn btn-primary">Edit Profile</button></a>
-                                                    <button class="btn btn-secondary">Share Status</button>
+                                                    <button class="btn btn-secondary" id="shareStatusBtn">Share Status</button>
                                                 </div>
                                             </section>
                                             
@@ -198,14 +198,14 @@
                                                             <div class="stat-icon"><span class="material-symbols-outlined">visibility</span></div>
                                                             <div class="stat-info">
                                                                 <p class="stat-label">Artifacts Viewed</p>
-                                                                <p class="stat-value">124</p>
+                                                                <p class="stat-value" id="artifacts-stat">0</p>
                                                             </div>
                                                         </div>
                                                         <div class="stat-item">
                                                             <div class="stat-icon"><span class="material-symbols-outlined">map</span></div>
                                                             <div class="stat-info">
                                                                 <p class="stat-label">Exhibitions Toured</p>
-                                                                <p class="stat-value">8</p>
+                                                                <p class="stat-value" id="exhibitions-stat">0</p>
                                                             </div>
                                                         </div>
                                                         <button class="btn btn-outline">View Leaderboard</button>
@@ -372,6 +372,59 @@
                                     </footer>
                                     </main>
                                 </div>
+
+                                <!-- Share Status Modal -->
+                                <div class="share-modal" id="shareStatusModal">
+                                    <div class="modal-overlay" id="modalOverlay"></div>
+                                    <div class="passport-card">
+                                        <button class="close-modal" id="closeShareModal"><span class="material-symbols-outlined">close</span></button>
+                                        <div class="passport-header">
+                                            <div class="passport-logo">
+                                                <img src="../logo.png" alt="GEM">
+                                            </div>
+                                            <div class="passport-title">
+                                                <h3>GRAND EGYPTIAN MUSEUM</h3>
+                                                <p>Explorer Official Status</p>
+                                            </div>
+                                        </div>
+                                        <div class="passport-body">
+                                            <div class="passport-user">
+                                                <div class="p-avatar">
+                                                    <img src="./profile-placeholder.svg" id="modal-avatar" alt="Avatar">
+                                                </div>
+                                                <div class="p-info">
+                                                    <h2 id="modal-name">Explorer</h2>
+                                                    <p class="p-rank" id="modal-rank">Honorary Curator</p>
+                                                </div>
+                                            </div>
+                                            <div class="p-stats-grid">
+                                                <div class="p-stat">
+                                                    <span class="p-label">Treasures Found</span>
+                                                    <span class="p-value" id="modal-artifacts">0</span>
+                                                </div>
+                                                <div class="p-stat">
+                                                    <span class="p-label">Galley Tours</span>
+                                                    <span class="p-value" id="modal-exhibitions">0</span>
+                                                </div>
+                                            </div>
+                                            <div class="p-validity">
+                                                <span>Status Class: A-1</span>
+                                                <span id="modal-issued-date">Issued: 2026-04</span>
+                                            </div>
+                                        </div>
+                                        <div class="passport-footer">
+                                            <button class="share-btn-action" id="copyShareLink">
+                                                <span class="material-symbols-outlined">content_copy</span>
+                                                Copy Status Link
+                                            </button>
+                                            <div class="social-share-icons">
+                                                <button title="Share on X"><i class="fa-brands fa-x-twitter"></i></button>
+                                                <button title="Share on Facebook"><i class="fa-brands fa-facebook"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <script src="script.js "></script>
                                 <script src="../global-core.js"></script>
                                 <script src="../animate.js"></script>

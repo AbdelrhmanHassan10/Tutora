@@ -12,6 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Define Adjust visibility of the "Adjust Selection" button
+    const updateAdjustButtonVisibility = () => {
+        const adjustBtn = document.getElementById('adjustCurrentAvatar');
+        const preview = document.getElementById('profileImagePreview');
+        if (adjustBtn && preview) {
+            const currentSrc = preview.src;
+            if (currentSrc && !currentSrc.includes('unnamed.png')) {
+                adjustBtn.style.display = 'block';
+            } else {
+                adjustBtn.style.display = 'none';
+            }
+        }
+    };
+
     // 2. Load User Data
     async function loadUserData() {
         try {
@@ -46,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('profileImagePreview').src = avatar;
                     localStorage.setItem('currentAvatar', avatar);
                     if (window.syncGlobalAvatar) window.syncGlobalAvatar();
+                    if (typeof updateAdjustButtonVisibility === 'function') updateAdjustButtonVisibility();
                 }
             } else if (response.status === 401) {
                 if (window.handleLogout) window.handleLogout();
@@ -57,19 +72,111 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadUserData();
 
-    // 3. Avatar Preview Handler
+    // 3. Avatar Preview & Cropper Handler
     const avatarUpload = document.getElementById('avatarUpload');
     const profileImagePreview = document.getElementById('profileImagePreview');
+    const cropModal = document.getElementById('cropModal');
+    const imageToCrop = document.getElementById('imageToCrop');
+    const confirmCrop = document.getElementById('confirmCrop');
+    const cancelCrop = document.getElementById('cancelCrop');
+    const closeCropModal = document.getElementById('closeCropModal');
+    let cropper = null;
 
     if (avatarUpload && profileImagePreview) {
         avatarUpload.addEventListener('change', function() {
             const file = this.files[0];
             if (file) {
+                // Safety limit 30MB
+                const maxSizeMB = 30;
+                if (file.size > maxSizeMB * 1024 * 1024) {
+                    if(window.showPremiumToast) window.showPremiumToast(`File is too large! Maximum ${maxSizeMB}MB allowed.`, 'error');
+                    else alert(`File is too large! Maximum ${maxSizeMB}MB allowed.`);
+                    this.value = '';
+                    return;
+                }
+
                 const reader = new FileReader();
-                reader.onload = (e) => profileImagePreview.src = e.target.result;
+                reader.onload = (e) => {
+                    imageToCrop.src = e.target.result;
+                    cropModal.classList.add('active');
+                    
+                    if (cropper) cropper.destroy();
+                    
+                    // Initialize Cropper after modal is shown to avoid layout issues
+                    setTimeout(() => {
+                        cropper = new Cropper(imageToCrop, {
+                            aspectRatio: 1,
+                            viewMode: 1,
+                            guides: true,
+                            background: false,
+                            autoCropArea: 0.8,
+                            responsive: true,
+                            checkOrientation: false
+                        });
+                    }, 100);
+                };
                 reader.readAsDataURL(file);
             }
         });
+    }
+
+    const closeCrop = () => {
+        cropModal.classList.remove('active');
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+        avatarUpload.value = '';
+    };
+
+    if (cancelCrop) cancelCrop.onclick = closeCrop;
+    if (closeCropModal) closeCropModal.onclick = closeCrop;
+
+    if (confirmCrop) {
+        confirmCrop.onclick = () => {
+            if (!cropper) return;
+            
+            const canvas = cropper.getCroppedCanvas({
+                width: 512,
+                height: 512,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high'
+            });
+            
+            profileImagePreview.src = canvas.toDataURL('image/jpeg', 0.9);
+            closeCrop();
+            updateAdjustButtonVisibility();
+            if(window.showPremiumToast) window.showPremiumToast('Artifact image adjusted successfully!', 'success');
+        };
+    }
+
+    // Toggle button visibility on page load
+    updateAdjustButtonVisibility();
+
+    // Re-adjust current image logic
+    const adjustBtn = document.getElementById('adjustCurrentAvatar');
+    if (adjustBtn) {
+        adjustBtn.onclick = () => {
+            const currentSrc = profileImagePreview.src;
+            if (currentSrc && !currentSrc.includes('unnamed.png')) {
+                imageToCrop.src = currentSrc;
+                cropModal.classList.add('active');
+                
+                if (cropper) cropper.destroy();
+                
+                setTimeout(() => {
+                    cropper = new Cropper(imageToCrop, {
+                        aspectRatio: 1,
+                        viewMode: 1,
+                        guides: true,
+                        background: false,
+                        autoCropArea: 1, // Start with everything visible for adjustment
+                        responsive: true,
+                        checkOrientation: false
+                    });
+                }, 100);
+            }
+        };
     }
 
     // 4. Form Submit Handler
@@ -102,12 +209,22 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSave.disabled = true;
 
             setTimeout(() => {
-                alert('Profile updated successfully!');
+                const msg = 'Profile updated successfully!';
+                if (window.showPremiumToast) {
+                    window.showPremiumToast(msg, 'success');
+                } else {
+                    alert(msg);
+                }
+                
                 btnSave.textContent = originalText;
                 btnSave.disabled = false;
                 
                 if (window.syncGlobalAvatar) window.syncGlobalAvatar();
-                window.location.href = '../Profile/profile.html';
+                
+                // Slightly longer delay so the toast is seen before redirect
+                setTimeout(() => {
+                    window.location.href = '../Profile/profile.html';
+                }, 1500);
             }, 1000);
         });
     }
