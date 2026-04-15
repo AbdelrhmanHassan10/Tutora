@@ -114,11 +114,10 @@ body.light .header { background: rgba(255, 255, 255, 0.9); }
 .news-hero-content h1 {
     font-family: 'Cinzel', serif;
     font-size: 6rem;
-    line-height: 0.95;
+    line-height: 1.15;
     margin: 0;
     color: #fff;
 }
-
 .news-hero-desc {
     padding-left: 3rem;
     border-left: 2px solid var(--gold);
@@ -377,40 +376,112 @@ body.light .news-kit-item a:hover span {
 .news-tl-content p { color: var(--news-text-secondary); line-height: 1.8; }
 
 /* --- AWARDS --- */
-.news-awards { padding: 10rem 4rem; max-width: 1400px; margin: 0 auto; }
-.news-awards h2 { text-align: center; font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 6rem; }
-.news-awards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.news-awards { 
+    padding: 10rem 4rem; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+}
+
+.news-awards h2 { 
+    text-align: center; 
+    font-family: 'Cinzel', serif; 
+    font-size: 3.5rem; 
+    margin-bottom: 6rem; 
+    letter-spacing: 2px;
+}
+
+.news-awards-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 2.5rem; 
+}
 
 .news-award-card {
-    background: var(--news-card-bg);
+    background: rgba(22, 22, 22, 0.6);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--news-border);
-    padding: 4rem 2rem;
+    padding: 5rem 2rem;
     text-align: center;
-    border-radius: 24px;
-    transition: all 0.4s;
+    border-radius: 20px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.news-award-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(236, 182, 19, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .news-award-card:hover {
     border-color: var(--gold);
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    background: rgba(30, 30, 30, 0.8);
 }
 
-.news-award-card .material-symbols-outlined { font-size: 4rem; color: var(--gold); margin-bottom: 2rem; }
+.news-award-card:hover::before {
+    opacity: 1;
+}
+
+.news-award-card .material-symbols-outlined { 
+    font-size: 3.5rem; 
+    color: var(--gold); 
+    margin-bottom: 2.5rem; 
+    display: block;
+    transition: transform 0.5s;
+}
+
+.news-award-card:hover .material-symbols-outlined {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.news-award-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.news-award-card p {
+    color: var(--news-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
 
 /* --- ANIMATIONS --- */
 .anim-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .anim-on-scroll.appear { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 1200px) {
-    .news-content { grid-template-columns: 1fr; }
-    .news-sidebar { position: static; }
-    .news-hero-content { grid-template-columns: 1fr; padding-bottom: 4rem; }
-    .news-hero-desc { padding-left: 0; border-left: none; border-top: 2px solid var(--gold); padding-top: 2rem; }
+    .news-content { grid-template-columns: 1fr; padding: 6rem 1.5rem; }
+    .news-sidebar { position: static; order: 2; width: 100%; }
+    .news-hero-content { grid-template-columns: 1fr; padding: 4rem 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .news-hero-desc { padding: 2rem 0 0; border-left: none; border-top: 1px solid var(--gold); margin-top: 2rem; }
+    .news-label { justify-content: center; }
 }
 
 @media (max-width: 768px) {
-    .news-grid { grid-template-columns: 1fr; }
-    .news-hero-content h1 { font-size: 3.5rem; }
-    .news-awards-grid { grid-template-columns: 1fr 1fr; }
+    .header-container { height: 70px; padding: 0 1rem; }
+    .header-right { gap: 1.15rem !important; flex: 0 0 auto !important; }
+    .news-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+    .news-hero-content h1 { font-size: 2.8rem; line-height: 1.25; }
+    .news-awards-grid { grid-template-columns: 1fr; }
+    .sidebar-box { padding: 2rem 1.5rem; }
+    .news-timeline { padding: 6rem 1.5rem; }
+    .news-timeline-list { padding-left: 2rem; }
+    .news-tl-year { font-size: 2rem; }
 }
+
+@media (max-width: 480px) {
+    .news-hero-content h1 { font-size: 2.2rem; }
+    .news-award-card { padding: 3rem 1.5rem; }
+    .news-section-header { flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
+    .news-line { width: 100%; height: 1px; }
+}
+

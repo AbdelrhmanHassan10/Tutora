@@ -623,7 +623,7 @@ body.dark .language-toggle button:not(.active) {
 }
 
 .logo-container {
-    display: none !important; /* Hide old tiny logo */
+    /* Show logo on header */
 }
 
 @keyframes floatLogo {

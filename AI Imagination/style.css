@@ -67,11 +67,15 @@ button {
 
 .logo-text, .menu-logo-text {
     font-family: "Cinzel", serif;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-weight: 900;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: var(--primary-color);
+    color: #ecb613;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
 }
+
 
 /* Containers */
 .container {
@@ -103,19 +107,20 @@ button {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 100%;
-    max-width: 320px;
+    width: 100% !important;
+    max-width: 100% !important;
     height: 100vh;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    border-right: 1px solid var(--border-color);
+    border-right: none;
     z-index: 1000;
     transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
 }
+
 
 .mobile-menu.active {
     left: 0;
@@ -136,12 +141,16 @@ button {
 }
 
 .logo-circle {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    border: 2px solid var(--primary-color);
+    border: 2px solid #ecb613;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 .logo-circle img {
     width: 100%;
@@ -150,19 +159,23 @@ button {
 }
 
 .close-btn {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 0.5rem;
     color: var(--text-primary);
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
 }
 
 .close-btn:hover {
     background: rgba(236, 182, 19, 0.1);
-    color: var(--primary-color);
+    color: #ecb613;
 }
+
 
 .menu-nav {
     display: flex;
@@ -278,7 +291,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .header-left {
@@ -289,8 +302,24 @@ button {
 
 .menu-btn {
     display: none;
-    font-size: 1.8rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    align-items: center;
+    justify-content: center;
 }
+
+.menu-btn:hover {
+    background: rgba(236, 182, 19, 0.1);
+    color: #ecb613;
+}
+
 
 .logo-section {
     display: flex;
@@ -300,20 +329,27 @@ button {
 
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: center;
+    flex: 1;
+    justify-content: center;
 }
 
 .desktop-nav a, .nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
+    transition: color 0.3s ease;
     padding: 0.5rem 0;
     white-space: nowrap;
     position: relative;
+    border: none;
+    background: transparent;
 }
 
 .desktop-nav a:hover, .nav-link:hover {
-    color: var(--primary-color);
+    color: #ecb613;
 }
 
 .desktop-nav a::after {
@@ -323,13 +359,14 @@ button {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--primary-color);
-    transition: var(--transition);
+    background: #ecb613;
+    transition: width 0.3s ease;
 }
 
 .desktop-nav a:hover::after {
     width: 100%;
 }
+
 
 .nav-dropdown {
     position: relative;
@@ -349,11 +386,11 @@ button {
     transform: rotate(180deg);
 }
 
+/* Base Dropdown Menu Styling */
 .dropdown-menu {
     position: absolute;
-    top: 130%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    top: 100%;
+    left: 0;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 1rem;
@@ -361,15 +398,20 @@ button {
     padding: 0.75rem;
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition);
-    box-shadow: var(--card-shadow);
+    transform: translateY(-20px) scale(0.9);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    margin-top: 0.5rem;
+    backdrop-filter: blur(15px);
 }
 
 .nav-dropdown:hover .dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0) scale(1);
 }
+
 
 .dropdown-link {
     display: block;
@@ -442,36 +484,18 @@ button {
         display: none;
     }
     .menu-btn {
-        display: flex;
+        display: flex !important;
+        width: 40px !important;
+        height: 40px !important;
     }
+
     .header-right .search-box, .header-right .btn-booking {
         display: none;
     }
 }
 
-.desktop-nav a,
-.nav-link {
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    white-space: nowrap;
-}
+/* Duplicate block removed and unified above */
 
-html.dark .desktop-nav a:hover,
-html.dark .nav-link:hover {
-    color: #f2b90d;
-}
-
-html:not(.dark) .desktop-nav a:hover,
-html:not(.dark) .nav-link:hover {
-    color: var(--text-dark);
-}
 
 
 /* Nav Dropdown */
@@ -511,37 +535,8 @@ html:not(.dark) .dropdown-trigger:hover {
     transform: rotate(180deg);
 }
 
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--bg-primary);
-    border: 2px solid var(--primary-color);
-    border-radius: 0.75rem;
-    min-width: 240px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px) scale(0.9);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 12px 32px rgba(242, 185, 13, 0.2);
-    z-index: 1000;
-    margin-top: 1rem;
-    backdrop-filter: blur(10px);
-}
+/* Duplicate block removed and unified above */
 
-html.dark .dropdown-menu {
-    background-color: var(--dark-bg);
-}
-
-html:not(.dark) .dropdown-menu {
-    background-color: #ffffff;
-}
-
-.nav-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-}
 
 .dropdown-link {
     display: block;
@@ -684,9 +679,8 @@ html:not(.dark) .dropdown-link:hover {
     .header-container {
         gap: 1rem;
     }
-    .desktop-nav {
-        gap: 1.5rem;
-    }
+/* Removed duplicate gap definition */
+
     .search-box input {
         width: 100px;
     }
@@ -745,9 +739,11 @@ html:not(.dark) .dropdown-link:hover {
         font-size: 1rem;
     }
     .menu-btn {
-        width: 36px;
-        height: 36px;
+        width: 40px !important;
+        height: 40px !important;
+        display: flex !important;
     }
+
     .theme-btn,
     .icon-btn {
         width: 36px;

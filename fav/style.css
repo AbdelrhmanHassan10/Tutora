@@ -19,6 +19,121 @@ body {
     overflow-x: hidden;
 }
 
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+ 
+.tutora {
+    font-family: var(--font-logo);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+.logo-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #ECB613;
+    background-color: #000;
+}
+
+.logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}.logo-text,
+.menu-logo-text {
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ECB613;
+}
+/* Loading styles */
+
+.artifacts-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    width: 100%;
+    grid-column: 1 / -1;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(191, 161, 107, 0.1);
+    border-top-color: #bfa16b;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-container {
+    text-align: center;
+    padding: 2rem;
+    grid-column: 1 / -1;
+    color: #ef4444;
+}
+
+.user-name-display {
+    font-weight: 700;
+    color: var(--primary-color, #bfa16b);
+}
+
+
+/* ============================================
+   HEADER & NAVIGATION - UPDATED CSS
+   ============================================ */
+
+/* Header configuration using global variables */
+
+/* Theme body classes handled by global-core.js and global-theme.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
 /* ============================================
    MOBILE MENU SIDEBAR
    ============================================ */
@@ -104,7 +219,7 @@ body {
 
 .close-btn:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    color: var(--color-primary);
+    color: var(--primary-color);
 }
 
 
@@ -132,15 +247,22 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
+    position: relative;
 }
 
-html.dark .menu-link:hover {
+.menu-link.active {
+    color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    background-color: rgba(242, 208, 13, 0.05);
+}
+
+body.dark .menu-link:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    border-left-color: var(--color-primary);
-    color: var(--color-primary);
+    border-left-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-html:not(.dark) .menu-link:hover {
+body.light .menu-link:hover {
     background-color: rgba(26, 26, 26, 0.1);
     border-left-color: var(--text-dark);
     color: var(--text-dark);
@@ -171,25 +293,25 @@ html:not(.dark) .menu-link:hover {
     text-align: left;
 }
 
-html.dark .dropdown-toggle:hover {
+body.dark .dropdown-toggle:hover {
     background-color: rgb(255, 255, 254);
-    border-left-color: var(--color-primary);
-    color: var(--color-primary);
+    border-left-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-html:not(.dark) .dropdown-toggle:hover {
+body.light .dropdown-toggle:hover {
     background-color: rgb(255, 255, 255);
     border-left-color: var(--text-dark);
     color: var(--text-dark);
 }
 
-html.dark .dropdown-toggle.active {
+body.dark .dropdown-toggle.active {
     background-color: rgba(242, 208, 13, 0.15);
-    border-left-color: var(--color-primary);
-    color: var(--color-primary);
+    border-left-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-html:not(.dark) .dropdown-toggle.active {
+body.light .dropdown-toggle.active {
     background-color: rgb(255, 255, 255);
     border-left-color: var(--text-dark);
     color: var(--text-dark);
@@ -226,13 +348,13 @@ html:not(.dark) .dropdown-toggle.active {
     border-left: 3px solid transparent;
 }
 
-html.dark .dropdown-item:hover {
-    background-color: rgba(242, 208, 13, 0.1);
-    border-left-color: var(--color-primary);
-    color: var(--color-primary);
+body.dark .dropdown-item:hover {
+    background-color: rgba(242, 185, 13, 0.1);
+    border-left-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
-html:not(.dark) .dropdown-item:hover {
+body.light .dropdown-item:hover {
     background-color: rgba(26, 26, 26, 0.1);
     border-left-color: var(--text-dark);
     color: var(--text-dark);
@@ -253,7 +375,7 @@ html:not(.dark) .dropdown-item:hover {
 .menu-booking-btn {
     display: block;
     padding: 0.75rem 1rem;
-    background-color: var(--color-primary);
+    background-color: var(--primary-color);
     color: var(--dark-bg);
     text-decoration: none;
     border-radius: 0.5rem;
@@ -287,8 +409,8 @@ html:not(.dark) .dropdown-item:hover {
 
 .menu-icon-link:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 
@@ -297,8 +419,8 @@ html:not(.dark) .dropdown-item:hover {
    ============================================ */
 
 .header {
-    background-color: var(--color-dark-bg);
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
     padding: 1rem 1.5rem;
     position: sticky;
     top: 0;
@@ -306,27 +428,26 @@ html:not(.dark) .dropdown-item:hover {
     transition: all 0.3s ease;
 }
 
+/* Theme specific header handling in global-theme.css */
+
 .header-container {
     max-width: 1400px;
     margin: 1px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1.3rem;
     padding-left: 0rem;
-    width: 100%;
 }
-a{
-    text-decoration: none;
-}
+
 
 /* Header Left */
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    flex: 1;
+    gap: 0rem;
+ 
 }
 
 .menu-btn {
@@ -344,7 +465,7 @@ a{
 
 .menu-btn:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    color: var(--color-primary);
+    color: var(--primary-color);
 }
 
 .logo-section {
@@ -380,11 +501,9 @@ a{
 
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: 1.25rem;
     align-items: center;
-    flex: 1;
-    justify-content: center;
-}
+ }
 
 .desktop-nav a,
 .nav-link {
@@ -398,15 +517,42 @@ a{
     cursor: pointer;
     padding: 0.5rem 0;
     white-space: nowrap;
+    position: relative;
 }
 
-html.dark .desktop-nav a:hover,
-html.dark .nav-link:hover {
+.desktop-nav a::after,
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.desktop-nav a:hover::after,
+.nav-link:hover::after,
+.desktop-nav a.active::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.desktop-nav a.active {
+    color: var(--primary-color);
+}
+
+body.dark .desktop-nav a:hover,
+body.dark .nav-link:hover {
     color: #f2b90d;
 }
 
-html:not(.dark) .desktop-nav a:hover,
-html:not(.dark) .nav-link:hover {
+body.light .desktop-nav a:hover,
+body.light .nav-link:hover {
     color: var(--text-dark);
 }
 
@@ -432,11 +578,11 @@ html:not(.dark) .nav-link:hover {
     padding: 0.5rem 0;
 }
 
-html.dark .dropdown-trigger:hover {
-    color: var(--color-primary);
+body.dark .dropdown-trigger:hover {
+    color: var(--primary-color);
 }
 
-html:not(.dark) .dropdown-trigger:hover {
+body.light .dropdown-trigger:hover {
     color: var(--text-dark);
 }
 
@@ -453,7 +599,7 @@ html:not(.dark) .dropdown-trigger:hover {
     top: 100%;
     left: 0;
     background-color: var(--bg-primary);
-    border: 2px solid var(--color-primary);
+    border: 2px solid var(--primary-color);
     border-radius: 0.75rem;
     min-width: 240px;
     opacity: 0;
@@ -466,12 +612,12 @@ html:not(.dark) .dropdown-trigger:hover {
     backdrop-filter: blur(10px);
 }
 
-html.dark .dropdown-menu {
-    background-color: white;
+body.dark .dropdown-menu {
+    background-color: var(--dark-bg);
 }
 
-html:not(.dark) .dropdown-menu {
-    background-color: var(--text-primary);
+body.light .dropdown-menu {
+    background-color: white;
 }
 
 .nav-dropdown:hover .dropdown-menu {
@@ -499,14 +645,14 @@ html:not(.dark) .dropdown-menu {
     border-radius: 0 0 0.5rem 0.5rem;
 }
 
-html.dark .dropdown-link:hover {
+body.dark .dropdown-link:hover {
     background-color: rgba(242, 185, 13, 0.15);
-    border-left-color: var(--color-primary);
-    color: var(--color-primary);
+    border-left-color: var(--primary-color);
+    color: var(--primary-color);
     padding-left: 1.5rem;
 }
 
-html:not(.dark) .dropdown-link:hover {
+body.light .dropdown-link:hover {
     background-color: rgba(26, 26, 26, 0.1);
     border-left-color: var(--text-dark);
     color: var(--text-dark);
@@ -520,7 +666,7 @@ html:not(.dark) .dropdown-link:hover {
     display: flex;
     align-items: center;
     gap: 1rem;
-    justify-content: flex-end;
+    margin-left: auto; 
 }
 
 .search-box {
@@ -536,7 +682,7 @@ html:not(.dark) .dropdown-link:hover {
 }
 
 .search-box:focus-within {
-    border-color: var(--color-primary);
+    border-color: var(--primary-color);
     background-color: rgba(242, 208, 13, 0.05);
 }
 
@@ -572,11 +718,11 @@ html:not(.dark) .dropdown-link:hover {
 .theme-btn:hover,
 .icon-btn:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    color: var(--color-primary);
+    color: var(--primary-color);
 }
 
 .btn-booking {
-    background-color: var(--color-primary);
+    background-color: var(--primary-color);
     color: var(--dark-bg);
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
@@ -596,7 +742,7 @@ html:not(.dark) .dropdown-link:hover {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--color-primary);
+    border: 2px solid var(--primary-color);
     cursor: pointer;
     transition: all 0.3s ease;
     object-fit: cover;
@@ -649,21 +795,12 @@ html:not(.dark) .dropdown-link:hover {
     .header-left {
         flex: 1;
     }
-
     .header-right {
         flex: 0;
     }
     .profile-img {
         width: 36px;
         height: 36px;
-    }
-    /* Auto-expand dropdown on mobile */
-    .dropdown-items {
-        max-height: 600px !important;
-        opacity: 1 !important;
-    }
-    .dropdown-toggle {
-        cursor: default;
     }
 }
 
@@ -740,106 +877,143 @@ html:not(.dark) .dropdown-link:hover {
     animation: fadeIn 0.3s ease-out;
 }
 
-.logo-section {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.desktop-nav a {
-    position: relative;
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
 }
 
-.desktop-nav a::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: 0.3s;
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #333;
 }
 
-.desktop-nav a:hover::after {
-    width: 100%;
-} 
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex: 0 0 auto; /* مهم */
+body.dark-mode .hero h1 {
+    color: #f5f5f5;
 }
 
-.desktop-nav {
-    display: flex;
-    gap: 1.3rem;
-    align-items: center;
-    justify-content: center;
-    flex: 1; /* يخلي الناف في النص */
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    flex: 0 0 auto; /* يمنع التمدد */
-}
-
-.tutora {
-     font-family: "Cinzel", serif;
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--color-primary);
-    text-transform: uppercase;
-}
-.logo-circle {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    overflow: hidden;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 2px solid var(--color-primary);
-    background-color: #000;
-}
-
-.logo-circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}.logo-text,
-.menu-logo-text {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--color-primary) !important;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.vision-tag {
+.hero p {
     font-size: 1.25rem;
-    color: var(--color-primary);
-    text-shadow: 0 0 10px rgba(242, 208, 13, 0.4);
-    transition: var(--transition-fast);
+    color: #666;
+    opacity: 0.8;
 }
 
-.logo-section:hover .vision-tag,
-.menu-logo:hover .vision-tag {
-    transform: scale(1.1) rotate(5deg);
-    text-shadow: 0 0 20px rgba(242, 208, 13, 0.6);
+body.dark-mode .hero p {
+    color: #aaa;
 }
 
-.logo-circle {
-    border: 2px solid var(--color-primary);
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 1rem;
+    }
+    .desktop-nav {
+        gap: 1rem;
+    }
+    .search-box input {
+        width: 120px;
+    }
+    .header-right {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.75rem 1rem;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .desktop-nav {
+        display: none;
+    }
+    .header-right {
+        gap: 0.75rem;
+    }
+    .search-box {
+        display: none;
+    }
+    .btn-booking {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    .logo-text {
+        font-size: 1.25rem;
+    }
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+    }
+    .theme-btn,
+    .icon-btn {
+        font-size: 20px;
+        padding: 0.25rem;
+    }
+    .profile-img {
+        width: 32px;
+        height: 32px;
+    }
+    .hero {
+        padding: 2rem 1rem;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0.5rem 0.75rem;
+        gap: 0.5rem;
+    }
+    .header-left {
+        gap: 0.5rem;
+    }
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+    .logo-text {
+        font-size: 1rem;
+    }
+    .header-right {
+        gap: 0.5rem;
+    }
+    .theme-btn,
+    .icon-btn {
+        font-size: 18px;
+        padding: 0.25rem;
+    }
+    .btn-booking {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    .profile-img {
+        width: 28px;
+        height: 28px;
+    }
+    .mobile-menu {
+        width: 100%;
+    }
 }
 
 

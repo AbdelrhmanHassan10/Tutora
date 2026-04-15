@@ -58,19 +58,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeBtn = document.getElementById('closeBtn');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-    if (menuBtn) {
+    if (menuBtn && mobileMenu && menuOverlay) {
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
-    }
 
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
+        const closeMenu = () => {
             mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
             document.body.style.overflow = '';
-        });
+        };
+
+        closeBtn?.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
     }
 
     // 4. Scroll Animations (Intersection Observer)

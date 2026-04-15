@@ -44,13 +44,28 @@ document.addEventListener('DOMContentLoaded', () => {
     syncProfile();
     window.syncGlobalAvatar = syncProfile;
 
-    // 3. Mobile Menu
+    // 3. Mobile Menu Logic
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeBtn = document.getElementById('closeBtn');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
-    if (closeBtn) closeBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
+    if (menuBtn && mobileMenu && menuOverlay) {
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeMenu = () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        closeBtn?.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+    }
 
     // 4. Scroll Reveal Animations
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
