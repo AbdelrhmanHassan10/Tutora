@@ -122,6 +122,78 @@ if (closeBtn) {
             }
         });
     });
+
+    // 7. Dynamic API Integration - Kid-Friendly Artifacts
+    async function fetchKidsArtifacts() {
+        const container = document.getElementById('dynamic-artifacts-container');
+        if (!container) return;
+
+        try {
+            const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
+            const res = await fetch(`${API_URL}/artifacts`);
+            
+            if (res.ok) {
+                const data = await res.json();
+                let artifacts = Array.isArray(data) ? data : (data.artifacts || data.data || []);
+                
+                // Programmatic Filtering setup
+                // Filter logic: any artifact with `targetAudience` == 'kids', `isKidFriendly` == true, or explicitly tagged.
+                // Alternatively, we fallback to all artifacts if no explicit tagging exists to show functionality.
+                let filteredArtifacts = artifacts.filter(art => {
+                    if (art.isKidFriendly) return true;
+                    if (art.targetAudience && art.targetAudience.toLowerCase().includes('kid')) return true;
+                    // Fallback keyword search in description/title for demonstration
+                    const text = ((art.title || art.name || '') + ' ' + (art.description || '')).toLowerCase();
+                    return text.includes('kid') || text.includes('child') || text.includes('interactive') || text.includes('toy');
+                });
+
+                // For testing/demonstration, if the backend doesn't have filtered ones, just take a few
+                if (filteredArtifacts.length === 0 && artifacts.length > 0) {
+                    filteredArtifacts = artifacts.slice(0, 3);
+                }
+
+                if (filteredArtifacts.length > 0) {
+                    container.innerHTML = '';
+                    filteredArtifacts.forEach(artifact => {
+                        const img = artifact.image || artifact.imageUrl || '../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg';
+                        const title = artifact.title || artifact.name || 'Unknown Artifact';
+                        const desc = artifact.description || '';
+                        
+                        const card = document.createElement('div');
+                        card.className = 'fact-card';
+                        card.style.flex = '0 0 auto';
+                        card.style.width = '300px';
+                        
+                        card.innerHTML = `
+                            <div class="fact-icon-box" style="padding: 0; overflow: hidden; height: 150px; background: transparent;">
+                                <img src="${img}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <h4 class="fact-title" style="margin-top: 15px;">${title}</h4>
+                            <p class="fact-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                ${desc}
+                            </p>
+                            <div class="fact-footer">
+                                <span class="fact-topic" style="color: #ecb613;">Explore</span>
+                                <a href="../Artifact-show/code.html?id=${artifact.id || artifact._id}" style="color: white; text-decoration: none;">
+                                    <span class="material-symbols-outlined" style="cursor: pointer;">arrow_forward</span>
+                                </a>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                } else {
+                    container.innerHTML = '<p style="color: #94A3B8; text-align: center; width: 100%;">No interactive artifacts found at the moment! Check back later.</p>';
+                }
+            } else {
+                throw new Error('API request failed');
+            }
+        } catch (error) {
+            console.error('Error fetching kids artifacts:', error);
+            container.innerHTML = '<p style="color: #94A3B8; text-align: center; width: 100%;">Failed to load interactive artifacts.</p>';
+        }
+    }
+
+    fetchKidsArtifacts();
 });
 // ========== FACTS CAROUSEL FUNCTIONALITY ==========
 const factsContainer = document.getElementById('facts-container');

@@ -3,7 +3,7 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
     const uploadBtn = document.getElementById('upload-photo-btn');
     const cameraBtn = document.getElementById('use-camera-btn');
     const fileInput = document.getElementById('scan-upload');
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('image', file);
 
         try {
-            const response = await fetch(`${API_BASE_URL}/ai/detect`, {
+            const response = await fetch(`${API_URL}/ai/detect`, {
                 method: 'POST',
                 headers: {
                     ...(token ? { 'Authorization': `Bearer ${token}` } : {})

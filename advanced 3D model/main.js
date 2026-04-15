@@ -3,7 +3,7 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
     const playBtn = document.querySelector(".play-btn");
     const favBtn = document.querySelector(".btn-collection");
     const accordionTriggers = document.querySelectorAll('.accordion-trigger');
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             playBtn.classList.add("loading");
 
             try {
-                const response = await fetch(`${API_BASE_URL}/ai/text-to-speech`, {
+                const response = await fetch(`${API_URL}/ai/text-to-speech`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const res = await fetch(`${API_BASE_URL}/favorites`, {
+                const res = await fetch(`${API_URL}/favorites`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

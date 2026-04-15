@@ -3,7 +3,7 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
     const token = localStorage.getItem('token');
     const talkBtn = document.querySelector('.talk-button');
     const transcriptionContent = document.querySelector('.transcription-content');
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (welcomeTitle) welcomeTitle.textContent = '"Analyzing neural patterns..."';
         
         try {
-            const response = await fetch(`${API_BASE_URL}/ai/ask`, {
+            const response = await fetch(`${API_URL}/ai/ask`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -185,5 +185,89 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ============================================
+    // API INTEGRATION
+    // ============================================
+    
+    async function fetchEvents() {
+        // Fallback to direct API URL in case global API_BASE_URL is not yet loaded
+        const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
+        
+        try {
+            const res = await fetch(`${API_URL}/events`);
+            if (res.ok) {
+                const events = await res.json();
+                const eventGrid = document.querySelector('.event-grid');
+                
+                if (eventGrid && events && events.length > 0) {
+                    eventGrid.innerHTML = ''; // Clear hardcoded events
+                    
+                    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                    
+                    events.forEach(event => {
+                        const dateObj = new Date(event.date);
+                        let dateStr = event.date;
+                        if (!isNaN(dateObj.getTime())) {
+                            dateStr = `${months[dateObj.getMonth()]} ${String(dateObj.getDate()).padStart(2, '0')} • ${dateObj.getFullYear()}`;
+                        }
+                        
+                        // Use default image if none provided
+                        const imgUrl = event.imageUrl || '../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg';
+                        
+                        const card = document.createElement('div');
+                        card.className = 'event-card';
+                        card.innerHTML = `
+                            <div class="card-image-wrapper">
+                                <div class="card-image" style="background-image: url('${imgUrl}')"></div>
+                            </div>
+                            <div class="card-body">
+                                <div class="event-date">
+                                    <span class="material-symbols-outlined" style="font-size: 1.1rem">calendar_month</span> ${dateStr}
+                                </div>
+                                <h3 class="event-title">${event.title}</h3>
+                                <p class="event-desc">${event.description ? event.description.substring(0, 100) + '...' : ''}</p>
+                                <div class="card-footer">
+                                    <span class="event-location" style="display: flex; align-items: center; gap: 4px; color: #b3b3b3; font-size: 0.9rem;">
+                                        <span class="material-symbols-outlined" style="font-size: 1.1rem">location_on</span> Grand Egyptian Museum
+                                    </span>
+                                    <button class="btn-details">
+                                        View Details <span class="material-symbols-outlined" style="font-size: 1.1rem">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        eventGrid.appendChild(card);
+                    });
+
+                    // Re-attach favorite buttons logic to new specific buttons
+                    const dynamicFavBtns = eventGrid.querySelectorAll('.btn-favorite');
+                    dynamicFavBtns.forEach(btn => {
+                        btn.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const icon = this.querySelector('.material-symbols-outlined');
+                            if (icon) {
+                                const isFilled = icon.style.fontVariationSettings ? icon.style.fontVariationSettings.includes("'FILL' 1") : false;
+                                icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+                                this.style.color = isFilled ? 'white' : '#f2d00d';
+                            }
+                        });
+                    });
+                     // Re-attach ripple logic to new buttons
+                    eventGrid.querySelectorAll('.btn-details').forEach(btn => {
+                        btn.addEventListener('click', e => {
+                            const href = btn.getAttribute('href');
+                            if (href === '#' || !href) e.preventDefault();
+                            addRipple(btn, e);
+                        });
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Failed to load events:', error);
+        }
+    }
+
+    fetchEvents();
+
     console.log('✓ Event page logic initialized');
 });

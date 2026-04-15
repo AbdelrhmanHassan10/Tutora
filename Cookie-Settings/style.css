@@ -169,6 +169,42 @@ h1, h2, h3, h4, .font-display {
 }
 
 
+.btn-back {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+    color: var(--text-primary);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    height: 40px;
+}
+
+.btn-back:hover {
+    background: var(--primary-color);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(236, 182, 19, 0.3);
+}
+
+.btn-back .material-symbols-outlined {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-back:hover .material-symbols-outlined {
+    transform: translateX(-3px);
+}
+
+
 /* ============================================
    MOBILE MENU (ALWAYS DARK)
    ============================================ */

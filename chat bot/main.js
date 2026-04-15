@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMessages = document.getElementById('chatMessages');
     const chatSuggestions = document.getElementById('chatSuggestions');
     const clearChatBtn = document.getElementById('clearChatBtn');
-    const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
 
     function getTime() {
         return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/ai/ask`, {
+            const response = await fetch(`${API_URL}/ai/ask`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const token = localStorage.getItem('token');
             if (!token) return;
-            const res = await fetch(`${API_BASE_URL}/ai/chats`, {
+            const res = await fetch(`${API_URL}/ai/chats`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             if (res.ok) {
