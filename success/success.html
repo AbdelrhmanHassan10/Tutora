@@ -1,142 +1,166 @@
 <!DOCTYPE html>
-                            <html lang="en">
-                            
-                            <head>
-                                <meta charset="UTF-8">
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title>TUTORA Success | Booking Confirmed</title>
-                                <meta name="description" content="Your booking at the Grand Egyptian Museum has been confirmed. View your ticket details and booking summary.">
-                                <link rel="icon" type="image/png" href="../museum.png">
-                                <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-                                <link rel="stylesheet" href="style.css">
-                                <link rel="stylesheet" href="../global-theme.css">
-                            </head>
-                            
-                            <body>
-                                <!-- Background Pattern -->
-                                <div class="background-pattern"></div>
-                                <div class="background-gradient"></div>
-                            
-                                <!-- Navigation -->
-                                <nav class="navbar">
-                                  <div class="navbar-logo">
-                                    <div class="logo-circle">
-                                        <img src="../logo.png" alt="Tutora Logo">
-                                    </div>
-                                    <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
-                                  </div>
-                                    <div class="navbar-actions">
-                                        <button class="theme-toggle" id="themeBtn" title="Toggle Theme">
-                                            <span class="material-symbols-outlined">dark_mode</span>
-                                        </button>
-                                        <div class="user-profile">
-                                            <a href="../Profile/profile.html"> <img src="./unnamed.png" alt="User" class="profile-img"></a>
-                                        </div>
-                                    </div>
-                                </nav>
-                            
-                                <!-- Main Content -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUTORA Success | Official Confirmation</title>
+    <meta name="description" content="Your official booking at the Grand Egyptian Museum is confirmed. View your celestial entry pass.">
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../global-theme.css">
+</head>
+
+<body class="dark success-page">
+    <!-- Starfield Background -->
+    <div class="starfield"></div>
+    <div class="ambient-glow top"></div>
+    <div class="ambient-glow bottom"></div>
+
+    <!-- Global Standard Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+                <h2 class="menu-logo-text">Tutora</h2>
+            </a>
+        </div>
+        <div class="navbar-right">
+            <button class="theme-toggle" id="themeToggle">
+                <span class="material-symbols-outlined">light_mode</span>
+            </button>
+            <div class="user-profile-header">
+                <span class="user-greeting">Explorer</span>
+                <a href="../Profile/profile.html" class="avatar-link">
+                    <img src="./unnamed.png" alt="User" class="nav-avatar" id="headerAvatar">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
     <main class="main-content">
-        <div class="success-icon-wrapper">
-            <div class="success-icon"><span class="material-symbols-outlined">verified</span></div>
-            <div class="success-pulse"></div>
+        <div class="celebration-header">
+            <div class="premium-badge-wrapper">
+                <div class="badge-ring"></div>
+                <div class="success-icon">
+                    <span class="material-symbols-outlined">verified</span>
+                </div>
+            </div>
+            <h1 class="success-title">A Journey Beyond Time</h1>
+            <p class="success-description">
+                Your presence at the Grand Egyptian Museum is officially recorded. A celestial pass has been dispatched to your digital archives.
+            </p>
         </div>
 
-        <h1 class="success-title">Your Journey Awaits</h1>
-        <p class="success-description">
-            Your booking at the Grand Egyptian Museum is confirmed. A digital pass and receipt have been sent to your primary email.
-        </p>
-
-        <div class="booking-card">
+        <!-- Royal Decree / Booking Card -->
+        <div class="booking-card premium-glass">
+            <div class="card-edge top"></div>
+            <div class="card-edge bottom"></div>
+            
             <div class="card-header">
-                <div class="header-left">
-                    <h2 class="card-title">Reservation Summary</h2>
-                    <p class="card-date" id="displayDate">Loading date...</p>
+                <div class="header-main">
+                    <h2 class="card-title">Official Reservation Decree</h2>
+                    <p class="card-subtitle" id="displayDate">Loading celestial alignment...</p>
                 </div>
-                <span class="status-badge">Confirmed</span>
+                <div class="status-indicator">
+                    <span class="pulse-dot"></span>
+                    <span class="status-label">Confirmed by Tutora</span>
+                </div>
             </div>
             
             <div class="card-content">
-                <!-- Data will be injected here by script.js -->
-                <div id="dynamicSummaryItems">
+                <!-- Summary Sections -->
+                <div class="summary-grid">
                     <div class="summary-section">
-                        <h3 class="section-title">Visitor Information</h3>
-                        <div class="summary-row">
-                            <span class="summary-label">Reference ID</span>
-                            <div class="summary-value-with-copy">
-                                <span class="summary-value highlight" data-field="booking-ref">GEM-loading...</span>
-                                <button class="copy-btn" id="copyBtn">
+                        <h3 class="gold-label">Explorer Identity</h3>
+                        <div class="data-row">
+                            <span class="data-label">Reference ID</span>
+                            <div class="copyable-value">
+                                <span class="data-value gold-text" id="bookingRef">GEM-AUTH-000</span>
+                                <button class="copy-action" id="copyBtn" title="Copy ID">
                                     <span class="material-symbols-outlined">content_copy</span>
                                 </button>
                             </div>
                         </div>
-                        <div class="summary-row">
-                            <span class="summary-label">Guest Name</span>
-                            <span class="summary-value" data-field="name">Authenticating...</span>
+                        <div class="data-row">
+                            <span class="data-label">Bearer Name</span>
+                            <span class="data-value" id="bearerName">Authenticating...</span>
                         </div>
                     </div>
 
                     <div class="summary-section" id="ticketsSection">
-                        <h3 class="section-title">Admission Tickets</h3>
+                        <h3 class="gold-label">Admission Passes</h3>
                         <div id="ticketListContainer">
-                             <!-- Tickets injected here -->
+                             <!-- Dynamic Tickets -->
                         </div>
                     </div>
 
                     <div class="summary-section" id="diningSection" style="display: none;">
-                        <h3 class="section-title">Dining Reservation</h3>
-                        <div class="summary-row">
-                            <span class="summary-label">Venue</span>
-                            <span class="summary-value" id="diningVenue">-</span>
+                        <h3 class="gold-label">Pharaonic Table</h3>
+                        <div class="data-row">
+                            <span class="data-label">Venue</span>
+                            <span class="data-value" id="diningVenue">-</span>
                         </div>
-                        <div class="summary-row">
-                            <span class="summary-label">Time</span>
-                            <span class="summary-value" id="diningTime">-</span>
+                        <div class="data-row">
+                            <span class="data-label">Session</span>
+                            <span class="data-value" id="diningTime">-</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="summary-footer">
-                    <div class="total-paid">
-                        <span class="total-label">Total Paid (Incl. Fees)</span>
-                        <div class="total-value-container">
-                            <span class="total-amount" id="totalPaid">0.00</span>
-                            <span class="currency-label" id="currencyCode">USD</span>
-                        </div>
+                <div class="total-valuation">
+                    <div class="total-info">
+                        <span class="total-label">Contribution Total</span>
+                        <p class="total-note">Inclusive of all royal tributes and taxes</p>
+                    </div>
+                    <div class="total-price">
+                        <span class="price-value" id="totalPaid">0.00</span>
+                        <span class="price-currency" id="currencyCode">USD</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="action-buttons">
-            <a href="../Profile/profile.html" class="btn btn-primary">
+        <!-- Dual Action Hub -->
+        <div class="action-hub">
+            <a href="../Profile/profile.html" class="btn-premium primary">
                 <span class="material-symbols-outlined">local_activity</span>
-                View My Tickets
+                ENTER THE MUSEUM PASSPORT
             </a>
-            <button class="btn btn-secondary" onclick="window.print();">
-                <span class="material-symbols-outlined">download</span>
-                Download Receipt
-            </button>
-            <a href="../4.home/code.html" class="btn btn-secondary">
-                Return to Home
-                <span class="material-symbols-outlined">arrow_forward</span>
+            <div class="button-split">
+                <button class="btn-premium secondary" id="btnDownload">
+                    <span class="material-symbols-outlined">download</span>
+                    DIGITAL PASS (PDF)
+                </button>
+                <button class="btn-premium secondary" onclick="window.print()">
+                    <span class="material-symbols-outlined">print</span>
+                    PRINT DECREE
+                </button>
+            </div>
+            <a href="../4.home/code.html" class="btn-premium tertiary">
+                RETURN TO COURTYARD
+                <span class="material-symbols-outlined">north_east</span>
             </a>
         </div>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 Tutora | The Grand Egyptian Museum Digital Portal</p>
+    <footer class="legal-footer">
+        <div class="footer-divider"></div>
+        <p>&copy; 2026 Tutora | Grand Egyptian Museum Digital Legacy</p>
     </footer>
 
-                            
-                                <div class="blur-decoration blur-bottom-left"></div>
-                                <div class="blur-decoration blur-top-right"></div>
-                            
-                                <script src="script.js"></script>
-                                <script src="../global-core.js"></script>
-                            </body>
-                            
-                            </html>
-                            
+    <!-- Decorative Elements -->
+    <div class="decorative-blob one"></div>
+    <div class="decorative-blob two"></div>
+
+    <script src="script.js"></script>
+    <script src="../global-core.js"></script>
+</body>
+
+</html>
