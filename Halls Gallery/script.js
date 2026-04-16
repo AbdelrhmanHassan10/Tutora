@@ -1,6 +1,6 @@
 /**
  * Tutora Halls Gallery - Advanced Interactions
- * Features: Cinematic Parallax, Scroll Revelations, Dynamic Content Loading
+ * Features: Cinematic Parallax, Scroll Revelations, Dynamic Content Loading, Video Gallery
  */
 
 (function() {
@@ -10,6 +10,7 @@
         initParallaxHero();
         initHallInteractions();
         initChronologicalFilter();
+        initVideoGallery();
     }
 
     // Safety: Run immediately if DOM ready, otherwise wait
@@ -164,6 +165,160 @@
                 });
             });
         });
+    }
+
+    /**
+     * Video Gallery — Fetches from API with YouTube fallback
+     */
+    function initVideoGallery() {
+        const videoGrid = document.getElementById('videoGrid');
+        if (!videoGrid) return;
+
+        // Curated fallback videos: real GEM & Egyptian artifact content from YouTube
+        const FALLBACK_VIDEOS = [
+            {
+                title: "The Golden Mask of Tutankhamun",
+                description: "Explore the world's most famous golden death mask — 11kg of solid gold, crafted over 3,300 years ago for the Boy King.",
+                youtubeId: "CSEw_AVfJBY",
+                duration: "10:24",
+                badge: "Royal Treasures"
+            },
+            {
+                title: "Grand Egyptian Museum — Full Tour",
+                description: "A cinematic walkthrough of the largest archaeological museum in the world, home to over 100,000 artifacts.",
+                youtubeId: "Gj9hPMFOSWI",
+                duration: "25:31",
+                badge: "Virtual Tour"
+            },
+            {
+                title: "Tutankhamun's Tomb — Complete Discovery",
+                description: "The story of Howard Carter's legendary 1922 discovery and the 5,398 treasures found inside the sealed tomb.",
+                youtubeId: "JLHtJPysfFo",
+                duration: "15:42",
+                badge: "Documentary"
+            },
+            {
+                title: "The Colossus of Ramses II",
+                description: "Standing 11 meters tall, this 83-ton red granite statue has been moved to the Grand Hall — witness the engineering feat.",
+                youtubeId: "uiDYLMfWq60",
+                duration: "8:15",
+                badge: "Monuments"
+            },
+            {
+                title: "Ancient Egyptian Mummification",
+                description: "Discover the sacred 70-day ritual that preserved the bodies of pharaohs for their journey to the afterlife.",
+                youtubeId: "8x-mBcl6Cfo",
+                duration: "12:08",
+                badge: "Funerary Arts"
+            },
+            {
+                title: "Inside the Pyramids of Giza",
+                description: "Journey into the Great Pyramid's interior chambers — from the Grand Gallery to the King's Chamber.",
+                youtubeId: "rhb1FcSAbJk",
+                duration: "18:55",
+                badge: "Exploration"
+            }
+        ];
+
+        // Show loading state
+        videoGrid.innerHTML = '<div class="video-loading" style="grid-column: 1/-1;"><span class="material-symbols-outlined">hourglass_top</span><p>Loading gallery...</p></div>';
+
+        // Try API first, then fallback
+        fetch('https://gem-backend-production-cb6d.up.railway.app/api/videos')
+            .then(res => res.json())
+            .then(apiVideos => {
+                if (Array.isArray(apiVideos) && apiVideos.length > 0) {
+                    renderApiVideos(apiVideos);
+                } else {
+                    renderFallbackVideos();
+                }
+            })
+            .catch(() => {
+                renderFallbackVideos();
+            });
+
+        function renderApiVideos(videos) {
+            videoGrid.innerHTML = videos.map(video => {
+                const dur = video.duration ? formatDuration(video.duration) : '';
+                return `
+                <div class="video-card anim-reveal" data-url="${video.url}">
+                    <div class="video-thumbnail">
+                        <img src="${video.thumbnail || ''}" alt="${video.title}" />
+                        <div class="video-overlay"></div>
+                        <div class="video-play-btn">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                        </div>
+                        ${dur ? '<span class="video-duration">' + dur + '</span>' : ''}
+                    </div>
+                    <div class="video-info">
+                        <span class="video-badge">Museum Collection</span>
+                        <h3>${video.title}</h3>
+                        <p>${video.description || 'Explore this artifact from the Grand Egyptian Museum collection.'}</p>
+                    </div>
+                </div>`;
+            }).join('');
+
+            attachPlayHandlers();
+            reinitReveals();
+        }
+
+        function renderFallbackVideos() {
+            videoGrid.innerHTML = FALLBACK_VIDEOS.map(video => `
+                <div class="video-card anim-reveal" data-youtube="${video.youtubeId}">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg" alt="${video.title}" loading="lazy" />
+                        <div class="video-overlay"></div>
+                        <div class="video-play-btn">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                        </div>
+                        <span class="video-duration">${video.duration}</span>
+                    </div>
+                    <div class="video-info">
+                        <span class="video-badge">${video.badge}</span>
+                        <h3>${video.title}</h3>
+                        <p>${video.description}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            attachPlayHandlers();
+            reinitReveals();
+        }
+
+        function attachPlayHandlers() {
+            videoGrid.querySelectorAll('.video-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const youtubeId = card.dataset.youtube;
+                    const videoUrl = card.dataset.url;
+                    const thumbnail = card.querySelector('.video-thumbnail');
+
+                    if (youtubeId) {
+                        thumbnail.innerHTML = '<iframe src="https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+                    } else if (videoUrl) {
+                        thumbnail.innerHTML = '<video src="' + videoUrl + '" controls autoplay style="width:100%;height:100%;object-fit:cover;"></video>';
+                    }
+                });
+            });
+        }
+
+        function reinitReveals() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+            videoGrid.querySelectorAll('.anim-reveal').forEach(el => observer.observe(el));
+        }
+
+        function formatDuration(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return mins + ':' + secs.toString().padStart(2, '0');
+        }
     }
 
     /**
