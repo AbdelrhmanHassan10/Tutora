@@ -177,45 +177,45 @@
         // Curated fallback videos: real GEM & Egyptian artifact content from YouTube
         const FALLBACK_VIDEOS = [
             {
-                title: "The Golden Mask of Tutankhamun",
-                description: "Explore the world's most famous golden death mask — 11kg of solid gold, crafted over 3,300 years ago for the Boy King.",
-                youtubeId: "CSEw_AVfJBY",
-                duration: "10:24",
+                title: "The Truth About King Tut's Golden Mask",
+                description: "National Geographic's full episode exploring the world's most famous golden death mask — 11kg of solid gold, crafted over 3,300 years ago.",
+                youtubeId: "UmL4uPn6xe0",
+                duration: "45:00",
                 badge: "Royal Treasures"
             },
             {
-                title: "Grand Egyptian Museum — Full Tour",
-                description: "A cinematic walkthrough of the largest archaeological museum in the world, home to over 100,000 artifacts.",
-                youtubeId: "Gj9hPMFOSWI",
-                duration: "25:31",
-                badge: "Virtual Tour"
+                title: "Building The Great Pyramid of Giza",
+                description: "Follow archaeologists as they explore restricted areas and unlock secrets about the construction of the world's greatest monument.",
+                youtubeId: "hO3tE1v57D0",
+                duration: "44:21",
+                badge: "Lost Treasures"
             },
             {
-                title: "Tutankhamun's Tomb — Complete Discovery",
-                description: "The story of Howard Carter's legendary 1922 discovery and the 5,398 treasures found inside the sealed tomb.",
-                youtubeId: "JLHtJPysfFo",
-                duration: "15:42",
+                title: "Evolution of Ancient Egypt's Pyramids",
+                description: "Trace the architectural evolution from simple mastabas to the towering Great Pyramid — a journey through millennia of engineering.",
+                youtubeId: "TMkoX1kfyDs",
+                duration: "44:14",
                 badge: "Documentary"
             },
             {
-                title: "The Colossus of Ramses II",
-                description: "Standing 11 meters tall, this 83-ton red granite statue has been moved to the Grand Hall — witness the engineering feat.",
-                youtubeId: "uiDYLMfWq60",
-                duration: "8:15",
-                badge: "Monuments"
+                title: "Great Pyramid Mystery — How Was It Built?",
+                description: "Jean-Pierre Houdin's revolutionary theory about an internal ramp system that could explain the pyramid's construction.",
+                youtubeId: "S38pY22j83M",
+                duration: "50:38",
+                badge: "Engineering"
             },
             {
-                title: "Ancient Egyptian Mummification",
-                description: "Discover the sacred 70-day ritual that preserved the bodies of pharaohs for their journey to the afterlife.",
-                youtubeId: "8x-mBcl6Cfo",
-                duration: "12:08",
-                badge: "Funerary Arts"
+                title: "Secrets of Ancient Egypt's Pharaohs",
+                description: "Discover the lives, deaths, and divine rituals of the pharaohs who ruled the Nile Valley for over 3,000 years.",
+                youtubeId: "wPeLkPHCcTM",
+                duration: "51:23",
+                badge: "Pharaohs"
             },
             {
-                title: "Inside the Pyramids of Giza",
-                description: "Journey into the Great Pyramid's interior chambers — from the Grand Gallery to the King's Chamber.",
-                youtubeId: "rhb1FcSAbJk",
-                duration: "18:55",
+                title: "Egypt's Valley of the Kings",
+                description: "Journey deep into the sacred necropolis where the greatest pharaohs of the New Kingdom were laid to rest.",
+                youtubeId: "F9P-ho2UTDA",
+                duration: "46:15",
                 badge: "Exploration"
             }
         ];
