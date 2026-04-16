@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const api = {
         getMe: () => makeApiRequest('/auth/me'),
-        getMyFavorites: () => makeApiRequest('/favorites/my'),
-        removeFavorite: (id) => makeApiRequest(`/favorites/${id}`, 'DELETE'),
+        getMyFavorites: (type) => makeApiRequest(`/favorites/my${type ? '?type=' + type : ''}`),
+        removeFavorite: (id, type) => makeApiRequest(`/favorites/${id}?type=${type || 'Artifact'}`, 'DELETE'),
     };
 
     // ============================================
@@ -65,19 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
 
     function createFavoriteCard(favoriteItem) {
-        const artifact = favoriteItem.artifact;
-        if (!artifact) return '';
+        const isEvent = favoriteItem._type === 'Event';
+        const item = isEvent ? favoriteItem.event : favoriteItem.artifact;
+        if (!item) return '';
+
+        const title = item.name || item.title || 'Untitled';
+        const image = item.imageUrl || '../collection/unnamed.png';
+        const subtitle = isEvent 
+            ? (item.date ? new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Upcoming Event')
+            : (item.material || 'Artifact Detail');
+        const badge = isEvent ? 'Event' : (item.dynasty || 'New Kingdom');
 
         return `
-            <div class="artifact-card" data-id="${artifact.id}">
-                <div class="card-bg" style="background-image: url('${artifact.imageUrl || '../collection/unnamed.png'}');">
+            <div class="artifact-card" data-id="${item._id || item.id}" data-type="${isEvent ? 'Event' : 'Artifact'}">
+                <div class="card-bg" style="background-image: url('${image}');">
                     <button class="btn-fav-active" title="Remove from favorites">
                         <span class="material-symbols-outlined">favorite</span>
                     </button>
                     <div class="card-info">
-                        <span class="card-dynasty">${artifact.dynasty || 'New Kingdom'}</span>
-                        <h3 class="card-title font-serif text-white">${artifact.name}</h3>
-                        <p class="card-material opacity-70 text-xs">${artifact.material || 'Artifact Detail'}</p>
+                        <span class="card-dynasty">${badge}</span>
+                        <h3 class="card-title font-serif text-white">${title}</h3>
+                        <p class="card-material opacity-70 text-xs">${subtitle}</p>
                     </div>
                 </div>
             </div>
@@ -110,19 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
         event.stopPropagation();
         const card = event.currentTarget.closest('.artifact-card');
         const artifactId = card.dataset.id;
+        const itemType = card.dataset.type || 'Artifact';
         if (!artifactId) return;
 
-        if (!confirm(`Remove this artifact from your saved treasures?`)) return;
+        const label = itemType === 'Event' ? 'event' : 'artifact';
+        if (!confirm(`Remove this ${label} from your saved treasures?`)) return;
 
         try {
-            await api.removeFavorite(artifactId);
+            await api.removeFavorite(artifactId, itemType);
             card.style.opacity = '0';
             card.style.transform = 'scale(0.9) translateY(20px)';
             setTimeout(() => {
                 card.remove();
                 if (artifactGrid.children.length === 0) renderFavorites([]);
             }, 400);
-            showNotification('Artifact removed.', 'info');
+            showNotification(`${itemType} removed.`, 'info');
         } catch (error) {}
     }
 
@@ -199,9 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function init() {
         try {
-            const [userResponse, favoritesResponse] = await Promise.all([
+            const [userResponse, artifactFavs, eventFavs] = await Promise.all([
                 api.getMe().catch(() => null),
-                api.getMyFavorites().catch(() => null)
+                api.getMyFavorites('Artifact').catch(() => null),
+                api.getMyFavorites('Event').catch(() => null)
             ]);
 
             if (userResponse && userResponse.data && welcomeTitle) {
@@ -209,11 +220,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 welcomeTitle.textContent = `Welcome back, ${firstName}`;
             }
 
-            if (favoritesResponse && favoritesResponse.data) {
-                renderFavorites(favoritesResponse.data);
-            } else {
-                renderFavorites([]);
+            // Combine artifacts and events into one list
+            const allFavs = [];
+            if (artifactFavs && artifactFavs.data) {
+                artifactFavs.data.forEach(f => {
+                    if (f.artifact) allFavs.push({ ...f, _type: 'Artifact' });
+                });
             }
+            if (eventFavs && eventFavs.data) {
+                eventFavs.data.forEach(f => {
+                    if (f.event) allFavs.push({ ...f, _type: 'Event' });
+                });
+            }
+
+            renderFavorites(allFavs);
         } catch (error) {
             artifactGrid.innerHTML = '<p class="loading-state text-error">Failed to synchronize your collection.</p>';
         }

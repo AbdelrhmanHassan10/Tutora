@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api';
+const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const verifyForm = document.getElementById('verifyForm');
@@ -52,17 +52,27 @@ document.addEventListener('DOMContentLoaded', () => {
             verifyBtn.style.opacity = '0.7';
 
             try {
-                // Endpoint varies by backend. We assume /auth/verify-reset-code
+                const email = localStorage.getItem('resetEmail');
+                if (!email) {
+                    showPremiumToast('Session expired. Please restart the reset process.', 'error');
+                    setTimeout(() => window.location.href = '../reset the password/reset-the-password.html', 2000);
+                    return;
+                }
+
+                // API requires both email and code
                 const response = await fetch(`${API_BASE_URL}/auth/verify-reset-code`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ code })
+                    body: JSON.stringify({ email, code })
                 });
 
                 let data = {};
                 try { data = await response.json(); } catch(e){}
 
-                if (response.ok || true) { // NOTE: bypassing if backend doesn't implement this strictly yet
+                if (response.ok) {
+                    // Save the verified code for the next step (reset password)
+                    localStorage.setItem('resetCode', code);
+                    
                     showPremiumToast('Identity Verified!', 'success');
                     
                     // Proceed to "change password" page

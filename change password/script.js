@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api';
+const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('changePasswordForm');
@@ -84,17 +84,30 @@ document.addEventListener('DOMContentLoaded', () => {
             changeBtn.style.opacity = '0.7';
 
             try {
-                // Backend endpoint simulation
+                const email = localStorage.getItem('resetEmail');
+                const code = localStorage.getItem('resetCode');
+                
+                if (!email || !code) {
+                    showPremiumToast('Session expired. Please restart the reset process.', 'error');
+                    setTimeout(() => window.location.href = '../reset the password/reset-the-password.html', 2000);
+                    return;
+                }
+
+                // API requires email + code + newPassword
                 const response = await fetch(`${API_BASE_URL}/auth/reset-password`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ password: passwordInput.value })
+                    body: JSON.stringify({ email, code, newPassword: passwordInput.value })
                 });
 
                 let data = {};
                 try { data = await response.json(); } catch(e){}
 
-                if (response.ok || true) { // Bypassing for flow if backend returns error due to missing token in this stateless demo
+                if (response.ok) {
+                    // Clean up reset flow data
+                    localStorage.removeItem('resetEmail');
+                    localStorage.removeItem('resetCode');
+                    
                     showPremiumToast('Password Updated Successfully!', 'success');
                     
                     // Proceed to "reset complete" page

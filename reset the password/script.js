@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api';
+const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     const resetForm = document.getElementById('resetForm');
@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 try { data = await response.json(); } catch(e){}
 
                 if (response.ok) {
+                    // Save email for the next two steps (verify OTP + reset password)
+                    localStorage.setItem('resetEmail', email);
+                    
                     showPremiumToast('Reset code sent! Redirecting...', 'success');
                     
                     // Proceed to "code send" page where user types the OTP

@@ -146,13 +146,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. Fetch and Display Favorites
     async function fetchUserFavorites() {
         try {
-            const response = await fetch(`${API_BASE_URL}/favorites/my`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            if (response.ok) {
-                const data = await response.json();
+            const [favsResponse, countResponse] = await Promise.all([
+                fetch(`${API_BASE_URL}/favorites/my`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`${API_BASE_URL}/favorites/count`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                })
+            ]);
+            
+            if (favsResponse.ok) {
+                const data = await favsResponse.json();
                 const favs = Array.isArray(data) ? data : (data.data || data.favorites || []);
                 updateFavoritesUI(favs);
+            }
+            
+            // Use real API count for stats accuracy
+            if (countResponse.ok) {
+                const countData = await countResponse.json();
+                const artifactsStat = document.getElementById('artifacts-stat');
+                if (artifactsStat) artifactsStat.textContent = countData.count || countData.data || 0;
             }
         } catch (error) {
             console.error('Error fetching favorites:', error);
@@ -183,9 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
         });
 
-        // Update Explorer Stats: Artifacts Viewed
-        const artifactsStat = document.getElementById('artifacts-stat');
-        if (artifactsStat) artifactsStat.textContent = favorites.length;
     }
 
     // 8. Avatar Selection Logic
