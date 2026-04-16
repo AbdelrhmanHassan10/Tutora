@@ -98,11 +98,41 @@ body.light .starfield {
     z-index: 100;
 }
 
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 .menu-logo-text {
     font-family: 'Cinzel', serif;
     color: var(--primary-gold);
     letter-spacing: 3px;
     font-size: 1.4rem;
+    margin: 0;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--primary-gold);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    background: rgba(236, 182, 19, 0.1);
 }
 
 .user-profile-header {
@@ -512,16 +542,42 @@ body.light .total-valuation {
     .success-title { font-size: 2.2rem; }
     .button-split { grid-template-columns: 1fr; }
     .card-header { flex-direction: column; text-align: center; gap: 1.5rem; }
+    
+    .total-valuation {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .total-price {
+        text-align: center;
+    }
+    
+    .price-value {
+        font-size: 2rem;
+    }
 }
 
 /* Print Styling */
 @media print {
     body { background: #fff !important; color: #000 !important; }
-    .starfield, .ambient-glow, .navbar, .action-hub, .legal-footer, .decorative-blob { display: none !important; }
-    .main-content { padding: 0; }
-    .booking-card { border: 2px solid #000 !important; box-shadow: none !important; }
-    .gold-text, .price-value { color: #000 !important; }
+    .starfield, .ambient-glow, .navbar, .action-hub, .legal-footer, .decorative-blob, .success-pulse { display: none !important; }
+    .main-content { padding: 0; max-width: 100%; }
+    .booking-card { 
+        border: 2px solid #000 !important; 
+        box-shadow: none !important; 
+        background: #fff !important;
+        border-radius: 0 !important;
+        backdrop-filter: none !important;
+    }
+    .total-valuation {
+        background: #f8f8f8 !important;
+        border: 1px solid #000 !important;
+        color: #000 !important;
+    }
+    .gold-text, .price-value, .total-label, .card-title, .gold-label { color: #000 !important; }
     .gold-label::after { background: #000 !important; }
+    .price-value { font-size: 2rem !important; }
 }
 .menu-logo {
     display: flex;
@@ -571,4 +627,3 @@ body.light .total-valuation {
     height: 100%;
     object-fit: cover;
 }
-
