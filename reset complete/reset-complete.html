@@ -1,79 +1,110 @@
 <!DOCTYPE html>
-                            <html class="dark" lang="en">
-                            
-                            <head>
-                                <meta name="description" content="Tutora - Reset successful." />
-                                <meta charset="utf-8" />
-                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-                                <title>Reset Complete | GEM AI Guide</title>
-                                <link rel="icon" type="image/png" href="../museum.png">
-                                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
-                                <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
-                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-                                <link rel="stylesheet" href="../3.register/style.css"> 
-                                <link rel="stylesheet" href="../2.login/style.css">
-                                <style>
-                                    .success-checkmark {
-                                        animation: bounceIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-                                    }
-                                    @keyframes bounceIn {
-                                        0% { transform: scale(0.5); opacity: 0; }
-                                        50% { transform: scale(1.2); opacity: 1; }
-                                        100% { transform: scale(1); opacity: 1; }
-                                    }
-                                </style>
-                                <link rel="stylesheet" href="../animate.css" />
-                            	<link rel="stylesheet" href="../global-theme.css" />
-                            </head>
-                            
-                            <body>
-                                <div class="container">
-                                    <!-- Transparent Absolute Header -->
-                                    <header style="background-color: transparent; position: absolute; z-index: 10; width: 100%; padding: 2rem;">
-                                        <nav style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                                            <div></div>
-                                        </nav>
-                                    </header>
-                            
-                                    <main>
-                                        <div class="grid-layout">
-                                            <!-- Left Column: Hero Image Panel -->
-                                            <div class="hero-panel" style="background-image: url('../andrea-de-santis-HcKn6GmC8_k-unsplash.jpg');">
-                                                <div class="hero-overlay" style="background: linear-gradient(to right, rgba(18,18,18,0.3), rgba(18,18,18,0.9));"></div>
-                                                <div class="hero-content">
-                                                    <h3 class="hero-title" style="font-family: 'Cormorant Garamond';font-size:3rem;text-shadow: 2px 2px 4px #000;">Legacy Restored.</h3>
-                                                    <p class="hero-subtitle" style="font-size:1.2rem;text-shadow: 2px 2px 4px #000;">Your account is now secure.</p>
-                                                </div>
-                                            </div>
-                            
-                                            <!-- Right Column: Success Info -->
-                                            <div class="form-panel" style="display: flex; align-items: center; justify-content: center;">
-                                                <div class="form-container" style="width: 100%; max-width: 480px; text-align: center;">
-                                                    
-                                                    <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
-                                                        <img src="../logo.png" alt="Tutora Logo" style="width: 150px; height: auto; filter: drop-shadow(0 0 10px rgba(236,182,19,0.3));">
-                                                    </div>
-                            
-                                                    <div class="form-header" style="margin-bottom: 2.5rem;">
-                                                        <span class="material-symbols-outlined success-checkmark" style="font-size: 5rem; color: #10b981; margin-bottom: 1rem;">verified</span>
-                                                        <h1 class="form-title" style="font-size: 2.2rem; font-weight: 800;">All Set!</h1>
-                                                        <p class="form-subtitle" style="margin-top: 0.8rem; color: #b3b3b3; line-height: 1.6;">Your password has been successfully reset. You can now use your new password to log in into your account.</p>
-                                                    </div>
-                            
-                                                    <a href="../2.login/code.html" style="text-decoration: none;">
-                                                        <button class="submit-btn" style="width: 100%; padding: 1rem; background: #ecb613; color: #121212; border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s;">
-                                                            Back to Login
-                                                        </button>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </main>
+<html class="dark" lang="en">
+
+<head>
+    <meta name="description" content="Tutora - Your journey is restored. Access the royal museum gateway." />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Journey Restored | Tutora</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../3.register/style.css">
+    <link rel="stylesheet" href="../animate.css" />
+    <link rel="stylesheet" href="../global-theme.css" />
+    <style>
+        #dust-container, #shapes-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .cursor-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+        }
+        .success-icon {
+            font-size: 6rem;
+            color: var(--primary);
+            filter: drop-shadow(0 0 20px var(--primary-glow));
+            animation: successReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes successReveal {
+            0% { transform: scale(0.5) rotate(-20deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dust-container"></div>
+    <div id="shapes-container"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <div class="scene">
+        <header class="main-header">
+            <nav class="nav-container">
+                <div class="logo-side">
+                    <a href="../1.landing page/code.html" class="nav-logo">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="grid-layout">
+                <!-- Left Column: Hero Image Panel -->
+                <div class="hero-panel" style="background-image: url('../andrea-de-santis-HcKn6GmC8_k-unsplash.jpg');">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Journey<br>Restored</h1>
+                        <p class="hero-subtitle">The stars have aligned. Your sanctuary is secure once more. Eternity awaits your return.</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Success Info Panel -->
+                <div class="form-panel">
+                    <div class="form-card-3d" id="formCard">
+                        <div class="form-card-inner">
+                            <div class="form-container" style="text-align: center;">
+                                <div class="mobile-logo">
+                                    <img src="../logo.png" alt="Tutora Logo">
                                 </div>
-                            
-                                <!-- Scripts -->
-                                <script src="../global-core.js"></script>
-                                <script src="../animate.js"></script>
-                            </body>
-                            </html>
-                            
+
+                                <div class="form-header" style="margin-bottom: 2.5rem;">
+                                    <span class="material-symbols-outlined success-icon">verified</span>
+                                    <h1 class="form-title">Success!</h1>
+                                    <p class="form-subtitle">Your password has been successfully restored. You may now enter the museum sanctuary.</p>
+                                </div>
+
+                                <a href="../2.login/code.html" style="text-decoration: none; width: 100%;">
+                                    <button class="submit-btn">
+                                        <span>Back to Login</span>
+                                        <div class="btn-glow"></div>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
+</body>
+</html>

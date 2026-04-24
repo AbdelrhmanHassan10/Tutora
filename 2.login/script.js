@@ -1,143 +1,248 @@
 document.addEventListener('DOMContentLoaded', () => {
     const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
     
-    // UI Elements
-    const loginForm = document.getElementById('loginForm');
+    const form = document.getElementById('loginForm');
+    const formCard = document.getElementById('formCard');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const loginBtn = document.getElementById('loginBtn');
-    const togglePassword = document.getElementById('togglePassword');
-    
-    // Add real-time visual validation styling
-    [emailInput, passwordInput].forEach(input => {
-        input.addEventListener('input', () => {
-            if (input.value.trim() !== '') {
-                input.style.borderColor = '#ecb613';
-                input.style.boxShadow = '0 0 0 2px rgba(236,182,19,0.1)';
-            } else {
-                input.style.borderColor = '';
-                input.style.boxShadow = '';
-            }
-        });
-    });
+    const dustContainer = document.getElementById('dust-container');
+    const shapesContainer = document.getElementById('shapes-container');
+    const cursorGlow = document.getElementById('cursorGlow');
 
-    // Password Visibility Toggle
-    if (togglePassword) {
-        togglePassword.addEventListener('click', () => {
-            const isPassword = passwordInput.type === 'password';
-            passwordInput.type = isPassword ? 'text' : 'password';
-            const icon = togglePassword.querySelector('.material-symbols-outlined');
-            if (icon) icon.textContent = isPassword ? 'visibility_off' : 'visibility';
+    // 1. Static 3D Presence & Cursor Glow
+    if (window.innerWidth > 1024) {
+        if (formCard) formCard.style.transform = `rotateY(5deg) rotateX(2deg)`;
+        
+        document.addEventListener('mousemove', (e) => {
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
         });
     }
 
-    // Form Submission
-    loginForm.addEventListener('submit', async (e) => {
+    // 2. Generate Scattered Dust
+    const createDust = () => {
+        if (!dustContainer) return;
+        for (let i = 0; i < 40; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            dust.style.width = size + 'px';
+            dust.style.height = size + 'px';
+            dust.style.left = Math.random() * 100 + 'vw';
+            dust.style.top = Math.random() * 100 + 'vh';
+            // Immediate scattering
+            dust.style.animationDelay = (Math.random() * -12) + 's';
+            dustContainer.appendChild(dust);
+        }
+    };
+
+    // 3. Generate Royal Triangles
+    const createShapes = () => {
+        if (!shapesContainer) return;
+        for (let i = 0; i < 10; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.style.left = Math.random() * 100 + 'vw';
+            // Immediate scattering
+            shape.style.animationDelay = (Math.random() * -20) + 's';
+            shapesContainer.appendChild(shape);
+        }
+    };
+
+    createDust();
+    createShapes();
+
+    // 4. Legendary Interactive Effects
+    const magneticBtn = (btn) => {
+        if (!btn) return;
+        document.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const distance = Math.sqrt(x*x + y*y);
+
+            if (distance < 150) {
+                const moveX = x * 0.3;
+                const moveY = y * 0.3;
+                btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            } else {
+                btn.style.transform = `translate(0, 0) scale(1)`;
+            }
+        });
+    };
+
+    const interactiveDust = () => {
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.dust-particle');
+            particles.forEach(p => {
+                const rect = p.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const dist = Math.sqrt(x*x + y*y);
+                if (dist < 100) {
+                    const angle = Math.atan2(y, x);
+                    const force = (100 - dist) / 100;
+                    p.style.transform = `translate(${-Math.cos(angle) * 50 * force}px, ${-Math.sin(angle) * 50 * force}px)`;
+                } else {
+                    p.style.transform = '';
+                }
+            });
+        });
+    };
+
+    // Initialize Legendary Effects
+    magneticBtn(loginBtn);
+    interactiveDust();
+
+    // Liquid Shine Movement
+    const shine = document.createElement('div');
+    shine.className = 'shine-overlay';
+    const cardInner = document.querySelector('.form-card-inner');
+    if (cardInner) {
+        cardInner.appendChild(shine);
+        document.addEventListener('mousemove', (e) => {
+            const rect = cardInner.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            shine.style.left = x + '%';
+            shine.style.top = y + '%';
+        });
+    }
+
+    // 2. Super Star Validation
+    const showError = (fieldId, message) => {
+        const input = document.getElementById(fieldId);
+        const errorEl = document.getElementById(`${fieldId}Error`);
+        if (!input || !errorEl) return;
+
+        input.classList.add('input-invalid');
+        const textEl = errorEl.querySelector('.error-text');
+        if (textEl) textEl.textContent = message;
+        errorEl.classList.add('show');
+    };
+
+    const hideError = (fieldId) => {
+        const input = document.getElementById(fieldId);
+        const errorEl = document.getElementById(`${fieldId}Error`);
+        if (!input || !errorEl) return;
+
+        input.classList.remove('input-invalid');
+        errorEl.classList.remove('show');
+    };
+
+    // Live Validation
+    emailInput.addEventListener('input', () => {
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+            hideError('email');
+        }
+    });
+
+    passwordInput.addEventListener('input', () => {
+        if (passwordInput.value.length > 0) {
+            hideError('password');
+        }
+    });
+
+    // 3. Form Submission
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const email = emailInput.value.trim();
         const password = passwordInput.value;
 
-        // Basic Client-Side check before hitting network
-        if (!email || !/\S+@\S+\.\S+/.test(email)) {
-            showPremiumToast('Please enter a valid email format', 'error');
-            emailInput.focus();
+        if (!email) {
             return;
         }
-
         if (!password) {
-            showPremiumToast('Please enter your password', 'error');
-            passwordInput.focus();
             return;
         }
 
-        // Set Loading State
         const originalBtnText = loginBtn.innerHTML;
         loginBtn.disabled = true;
-        loginBtn.innerHTML = '<div class="loader-spinner"></div> Logging in...';
+        loginBtn.innerHTML = '<span>Entering the Museum...</span>';
         loginBtn.style.opacity = '0.7';
 
         try {
-             const response = await fetch(`${API_BASE_URL}/auth/login`, {
-                 method: 'POST',
-                 headers: { 'Content-Type': 'application/json' },
-                 body: JSON.stringify({ email, password })
-             });
- 
-             const text = await response.text();
-let data;
-try {
-    data = JSON.parse(text);
-} catch {
-    throw new Error('🚫 Backend did not return valid JSON:\n' + text);
-}
-  
-             if (response.ok) {
-                 // Save token and user info safely
-                 localStorage.setItem('token', data.token);
-                 if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
-                 
-                 showPremiumToast('Welcome back to the Grand Egyptian Museum!', 'success');
-                 
-                 // Entrance animation for redirect
-                 setTimeout(() => {
-                     document.body.style.opacity = '0';
-                     document.body.style.transition = 'opacity 0.5s ease';
-                     setTimeout(() => {
-                         window.location.href = '../4.home/code.html';
-                     }, 500);
-                 }, 1500);
-             } else {
-                 // Handle specific error fields from backend (data.error or data.message)
-                 const errorMsg = data.error || data.message || 'Invalid credentials. Please attempt again.';
-                 throw new Error(errorMsg);
-             }
-         } catch (error) {
-             let finalMsg = error.message;
-             
-             // Detect CORS/Network failure which usually throws TypeError
-             if (error.name === 'TypeError' && error.message.includes('fetch')) {
-                 finalMsg = '📡 Connection Blocked: Your browser prevented the request. This is likely a CORS issue from your local environment. Please check the backend configuration.';
-             }
-             
-             showPremiumToast(finalMsg, 'error');
-             // Visual shake animation on inputs
-             passwordInput.classList.add('shake-anim');
-             setTimeout(() => passwordInput.classList.remove('shake-anim'), 500);
-         } finally {
-             loginBtn.disabled = false;
-             loginBtn.innerHTML = originalBtnText;
-             loginBtn.style.opacity = '1';
-         }
+            const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                localStorage.setItem('token', data.token);
+                if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+                
+                showPremiumToast('Welcome Back! Entering the Sanctuary...', 'success');
+                
+                setTimeout(() => {
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.8s ease';
+                    setTimeout(() => {
+                        window.location.href = '../4.home/code.html';
+                    }, 800);
+                }, 1500);
+            } else {
+                throw new Error(data.message || 'Invalid credentials.');
+            }
+        } catch (error) {
+            passwordInput.classList.add('input-invalid');
+            setTimeout(() => passwordInput.classList.remove('input-invalid'), 500);
+        } finally {
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = originalBtnText;
+            loginBtn.style.opacity = '1';
+        }
     });
 
-    // Premium Toast Notification System
-    function showPremiumToast(message, type) {
-        // Remove existing toasts to prevent spam
-        const existingToasts = document.querySelectorAll('.premium-toast');
-        existingToasts.forEach(t => t.remove());
 
+    // Password Toggle
+    const passwordToggle = document.getElementById('passwordToggle');
+    if (passwordToggle) {
+        passwordToggle.addEventListener('click', () => {
+            const isPwd = passwordInput.type === 'password';
+            passwordInput.type = isPwd ? 'text' : 'password';
+            passwordToggle.querySelector('.material-symbols-outlined').textContent = 
+                isPwd ? 'visibility_off' : 'visibility';
+        });
+    }
+
+    function showPremiumToast(message, type) {
+        document.querySelectorAll('.premium-toast').forEach(t => t.remove());
         const toast = document.createElement('div');
         toast.className = `premium-toast toast-${type}`;
-        
-        const icon = type === 'success' ? 'check_circle' : 'error';
+        const icon = type === 'success' ? 'verified' : 'error';
         
         toast.innerHTML = `
             <span class="material-symbols-outlined toast-icon">${icon}</span>
             <span class="toast-msg">${message}</span>
             <div class="toast-progress"></div>
         `;
-        
         document.body.appendChild(toast);
-        
-        // Trigger reflow for animation
-        void toast.offsetWidth;
+        void toast.offsetWidth; 
         toast.classList.add('show-toast');
-
         setTimeout(() => {
             toast.classList.remove('show-toast');
-            setTimeout(() => toast.remove(), 400); // match transition out
-        }, 3000);
+            setTimeout(() => toast.remove(), 400); 
+        }, 3500);
     }
 });
 
+// Animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(120%); }
+        to { transform: translateX(0); }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); }
+        to { transform: translateX(120%); }
+    }
+`;
+document.head.appendChild(style);

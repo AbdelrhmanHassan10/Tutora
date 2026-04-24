@@ -1,128 +1,140 @@
-const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-
 document.addEventListener('DOMContentLoaded', () => {
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    
     const verifyForm = document.getElementById('verifyForm');
+    const otpInputs = document.querySelectorAll('.otp-input');
     const verifyBtn = document.getElementById('verifyBtn');
     const resendBtn = document.getElementById('resendBtn');
-    const otpInputs = Array.from(document.querySelectorAll('.otp-input'));
+    const dustContainer = document.getElementById('dust-container');
+    const shapesContainer = document.getElementById('shapes-container');
+    const cursorGlow = document.getElementById('cursorGlow');
+    const formCard = document.getElementById('formCard');
 
-    // 1. OTP Input Auto-Advancing UX
+    // 1. Session Protection
+    const resetEmail = localStorage.getItem('resetEmail');
+    if (!resetEmail) {
+        window.location.href = '../reset the password/reset-password.html';
+        return;
+    }
+
+    // 2. Visual Engine Initialization
+    if (window.innerWidth > 1024) {
+        if (formCard) formCard.style.transform = `rotateY(5deg) rotateX(2deg)`;
+        document.addEventListener('mousemove', (e) => {
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+    }
+
+    const createDust = () => {
+        if (!dustContainer) return;
+        for (let i = 0; i < 40; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            dust.style.width = size + 'px';
+            dust.style.height = size + 'px';
+            dust.style.left = Math.random() * 100 + 'vw';
+            dust.style.top = Math.random() * 100 + 'vh';
+            dust.style.animationDelay = (Math.random() * -12) + 's';
+            dustContainer.appendChild(dust);
+        }
+    };
+
+    const createShapes = () => {
+        if (!shapesContainer) return;
+        for (let i = 0; i < 10; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.style.left = Math.random() * 100 + 'vw';
+            shape.style.animationDelay = (Math.random() * -20) + 's';
+            shapesContainer.appendChild(shape);
+        }
+    };
+
+    createDust();
+    createShapes();
+
+    // 2. OTP Input Logic
     otpInputs.forEach((input, index) => {
         input.addEventListener('input', (e) => {
-            const val = e.target.value;
-            // Only numbers allowed
-            e.target.value = val.replace(/[^0-9]/g, '');
-            if (e.target.value !== '') {
-                e.target.style.borderColor = '#10b981';
-                e.target.style.boxShadow = '0 0 0 2px rgba(16,185,129,0.1)';
-                if (index < otpInputs.length - 1) {
-                    otpInputs[index + 1].focus();
-                }
-            } else {
-                e.target.style.borderColor = '';
-                e.target.style.boxShadow = '';
+            if (e.target.value && index < otpInputs.length - 1) {
+                otpInputs[index + 1].focus();
             }
         });
 
         input.addEventListener('keydown', (e) => {
-            if (e.key === 'Backspace' && input.value === '') {
-                if (index > 0) otpInputs[index - 1].focus();
+            if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                otpInputs[index - 1].focus();
             }
         });
     });
 
-    // 2. Form Submission API Logic
+    // 4. Resend Logic
+    if (resendBtn) {
+        resendBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            resendBtn.style.pointerEvents = 'none';
+            resendBtn.style.opacity = '0.5';
+            resendBtn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: resetEmail })
+                });
+                if (response.ok) {
+                    resendBtn.textContent = 'Code Sent!';
+                    setTimeout(() => {
+                        resendBtn.textContent = 'Resend Code';
+                        resendBtn.style.pointerEvents = 'all';
+                        resendBtn.style.opacity = '1';
+                    }, 3000);
+                }
+            } catch (error) {
+                resendBtn.textContent = 'Failed. Try again.';
+                resendBtn.style.pointerEvents = 'all';
+                resendBtn.style.opacity = '1';
+            }
+        });
+    }
+
+    // 5. Form Submission
     if (verifyForm) {
         verifyForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const otp = Array.from(otpInputs).map(i => i.value).join('');
+            const email = localStorage.getItem('resetEmail');
 
-            const code = otpInputs.map(input => input.value).join('');
-            
-            if (code.length !== 6) {
-                showPremiumToast('Please enter the full 6-digit code.', 'error');
-                verifyForm.classList.add('shake-anim');
-                setTimeout(() => verifyForm.classList.remove('shake-anim'), 500);
-                return;
-            }
+            if (otp.length < 6) return;
 
-            // Set Loading UI
-            const originalBtnText = verifyBtn.innerHTML;
             verifyBtn.disabled = true;
-            verifyBtn.innerHTML = '<div class="loader-spinner"></div> Verifying...';
-            verifyBtn.style.opacity = '0.7';
+            const originalText = verifyBtn.innerHTML;
+            verifyBtn.innerHTML = '<span>Verifying...</span>';
 
             try {
-                const email = localStorage.getItem('resetEmail');
-                if (!email) {
-                    showPremiumToast('Session expired. Please restart the reset process.', 'error');
-                    setTimeout(() => window.location.href = '../reset the password/reset-the-password.html', 2000);
-                    return;
-                }
-
-                // API requires both email and code
                 const response = await fetch(`${API_BASE_URL}/auth/verify-reset-code`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, code })
+                    body: JSON.stringify({ email, code: otp })
                 });
 
-                let data = {};
-                try { data = await response.json(); } catch(e){}
-
                 if (response.ok) {
-                    // Save the verified code for the next step (reset password)
-                    localStorage.setItem('resetCode', code);
-                    
-                    showPremiumToast('Identity Verified!', 'success');
-                    
-                    // Proceed to "change password" page
-                    setTimeout(() => {
-                        document.body.style.opacity = '0';
-                        document.body.style.transition = 'opacity 0.5s ease';
-                        setTimeout(() => window.location.href = '../change password/change-password.html', 500);
-                    }, 1500);
+                    localStorage.setItem('resetCode', otp);
+                    window.location.href = '../change password/change-password.html';
                 } else {
-                    throw new Error(data.message || data.error || 'Invalid verification code.');
+                    otpInputs.forEach(i => i.classList.add('input-invalid'));
+                    setTimeout(() => otpInputs.forEach(i => i.classList.remove('input-invalid')), 1000);
                 }
             } catch (error) {
-                showPremiumToast(error.message, 'error');
-                verifyForm.classList.add('shake-anim');
-                setTimeout(() => verifyForm.classList.remove('shake-anim'), 500);
+                console.error('Verification failed');
             } finally {
                 verifyBtn.disabled = false;
-                verifyBtn.innerHTML = originalBtnText;
-                verifyBtn.style.opacity = '1';
+                verifyBtn.innerHTML = originalText;
             }
         });
     }
-
-    if (resendBtn) {
-        resendBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Simulate resend
-            showPremiumToast('A new code has been sent to your email.', 'success');
-        });
-    }
-
-    // 3. Global Premium Toast Injector 
-    function showPremiumToast(message, type) {
-        document.querySelectorAll('.premium-toast').forEach(t => t.remove());
-        const toast = document.createElement('div');
-        toast.className = `premium-toast toast-${type}`;
-        const icon = type === 'success' ? 'check_circle' : 'error';
-        
-        toast.innerHTML = `
-            <span class="material-symbols-outlined toast-icon">${icon}</span>
-            <span class="toast-msg">${message}</span>
-            <div class="toast-progress"></div>
-        `;
-        document.body.appendChild(toast);
-        void toast.offsetWidth; 
-        toast.classList.add('show-toast');
-        setTimeout(() => {
-            toast.classList.remove('show-toast');
-            setTimeout(() => toast.remove(), 400); 
-        }, 3500);
-    }
 });
-

@@ -1,116 +1,141 @@
-const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-
 document.addEventListener('DOMContentLoaded', () => {
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    
     const resetForm = document.getElementById('resetForm');
     const emailInput = document.getElementById('email');
     const resetBtn = document.getElementById('resetBtn');
+    const dustContainer = document.getElementById('dust-container');
+    const shapesContainer = document.getElementById('shapes-container');
+    const cursorGlow = document.getElementById('cursorGlow');
+    const formCard = document.getElementById('formCard');
 
-    // 1. Live Error Glow Validation
-    if (emailInput) {
-        emailInput.addEventListener('input', () => {
-            const value = emailInput.value.trim();
-            const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-            
-            if (value.length > 0) {
-                if (isValid) {
-                    emailInput.style.borderColor = '#10b981';
-                    emailInput.style.boxShadow = '0 0 0 2px rgba(16,185,129,0.1)';
-                } else {
-                    emailInput.style.borderColor = '#ef4444';
-                    emailInput.style.boxShadow = '0 0 0 2px rgba(239,68,68,0.1)';
-                }
-            } else {
-                emailInput.style.borderColor = '';
-                emailInput.style.boxShadow = '';
+    // 1. Static 3D Presence & Cursor Glow
+    if (window.innerWidth > 1024) {
+        if (formCard) formCard.style.transform = `rotateY(5deg) rotateX(2deg)`;
+        
+        document.addEventListener('mousemove', (e) => {
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
             }
         });
     }
 
-    // 2. Form Submission with Loader & API Integration
+    // 2. Generate Scattered Dust
+    const createDust = () => {
+        if (!dustContainer) return;
+        for (let i = 0; i < 40; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            dust.style.width = size + 'px';
+            dust.style.height = size + 'px';
+            dust.style.left = Math.random() * 100 + 'vw';
+            dust.style.top = Math.random() * 100 + 'vh';
+            dust.style.animationDelay = (Math.random() * -12) + 's';
+            dustContainer.appendChild(dust);
+        }
+    };
+
+    // 3. Generate Royal Triangles
+    const createShapes = () => {
+        if (!shapesContainer) return;
+        for (let i = 0; i < 10; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.style.left = Math.random() * 100 + 'vw';
+            shape.style.animationDelay = (Math.random() * -20) + 's';
+            shapesContainer.appendChild(shape);
+        }
+    };
+
+    createDust();
+    createShapes();
+
+    // 4. Interactive Effects
+    const magneticBtn = (btn) => {
+        if (!btn) return;
+        document.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const distance = Math.sqrt(x*x + y*y);
+
+            if (distance < 150) {
+                const moveX = x * 0.3;
+                const moveY = y * 0.3;
+                btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            } else {
+                btn.style.transform = `translate(0, 0) scale(1)`;
+            }
+        });
+    };
+
+    magneticBtn(resetBtn);
+
+    // 5. Validation Logic
+    const showError = (fieldId, message) => {
+        const input = document.getElementById(fieldId);
+        const errorEl = document.getElementById(`${fieldId}Error`);
+        if (!input || !errorEl) return;
+
+        input.classList.add('input-invalid');
+        const textEl = errorEl.querySelector('.error-text');
+        if (textEl) textEl.textContent = message;
+        errorEl.classList.add('show');
+    };
+
+    const hideError = (fieldId) => {
+        const input = document.getElementById(fieldId);
+        const errorEl = document.getElementById(`${fieldId}Error`);
+        if (!input || !errorEl) return;
+
+        input.classList.remove('input-invalid');
+        errorEl.classList.remove('show');
+    };
+
+    if (emailInput) {
+        emailInput.addEventListener('input', () => {
+            if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+                hideError('email');
+            }
+        });
+    }
+
+    // 6. Form Submission
     if (resetForm) {
         resetForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-
             const email = emailInput.value.trim();
-            const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-            if (!isValidEmail) {
-                showPremiumToast('Please enter a valid email address.', 'error');
-                resetForm.classList.add('shake-anim');
-                setTimeout(() => resetForm.classList.remove('shake-anim'), 500);
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError('email', 'Please enter a valid email address.');
                 return;
             }
 
-            // Set Loading UI
-            const originalBtnText = resetBtn.innerHTML;
             resetBtn.disabled = true;
-            resetBtn.innerHTML = '<div class="loader-spinner"></div> Sending...';
-            resetBtn.style.opacity = '0.7';
+            const originalText = resetBtn.innerHTML;
+            resetBtn.innerHTML = '<span>Sending...</span>';
 
             try {
-                // Assuming backend expects a POST to /auth/forgot-password or similar. 
-                // Adjust endpoint if backend path is different.
                 const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
                 });
 
-                // Read API response safely (might not return JSON if 404/500)
-                let data = {};
-                try { data = await response.json(); } catch(e){}
-
                 if (response.ok) {
-                    // Save email for the next two steps (verify OTP + reset password)
                     localStorage.setItem('resetEmail', email);
-                    
-                    showPremiumToast('Reset code sent! Redirecting...', 'success');
-                    
-                    // Proceed to "code send" page where user types the OTP
-                    setTimeout(() => {
-                        document.body.style.opacity = '0';
-                        document.body.style.transition = 'opacity 0.5s ease';
-                        setTimeout(() => window.location.href = '../code send/code-send.html', 500);
-                    }, 2000);
+                    window.location.href = '../code send/code-send.html';
                 } else {
-                    // Try to catch backend specific error message
-                    throw new Error(data.message || data.error || 'Failed to send reset code. Email may not exist.');
+                    showError('email', 'Email not found in our sanctuary.');
                 }
             } catch (error) {
-                showPremiumToast(error.message, 'error');
-                resetBtn.classList.add('shake-anim');
-                setTimeout(() => resetBtn.classList.remove('shake-anim'), 500);
+                showError('email', 'The connection to eternity failed.');
             } finally {
-                // Restore Button State
                 resetBtn.disabled = false;
-                resetBtn.innerHTML = originalBtnText;
-                resetBtn.style.opacity = '1';
+                resetBtn.innerHTML = originalText;
             }
         });
     }
-
-    // 3. Global Premium Toast Injector (Inherited Styles)
-    function showPremiumToast(message, type) {
-        document.querySelectorAll('.premium-toast').forEach(t => t.remove());
-        const toast = document.createElement('div');
-        toast.className = `premium-toast toast-${type}`;
-        
-        const icon = type === 'success' ? 'mark_email_read' : 'error';
-        
-        toast.innerHTML = `
-            <span class="material-symbols-outlined toast-icon">${icon}</span>
-            <span class="toast-msg">${message}</span>
-            <div class="toast-progress"></div>
-        `;
-        
-        document.body.appendChild(toast);
-        void toast.offsetWidth; // Reflow
-        toast.classList.add('show-toast');
-
-        setTimeout(() => {
-            toast.classList.remove('show-toast');
-            setTimeout(() => toast.remove(), 400); // map out animation
-        }, 3500);
-    }
 });
-

@@ -1,18 +1,88 @@
-const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-
 document.addEventListener('DOMContentLoaded', () => {
+    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    
     const form = document.getElementById('changePasswordForm');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirmPassword');
     const changeBtn = document.getElementById('changeBtn');
+    const dustContainer = document.getElementById('dust-container');
+    const shapesContainer = document.getElementById('shapes-container');
+    const cursorGlow = document.getElementById('cursorGlow');
+    const formCard = document.getElementById('formCard');
 
-    // Password Visibility Toggles
-    const toggleButtons = [
+    // 1. Session Protection
+    const resetEmail = localStorage.getItem('resetEmail');
+    if (!resetEmail) {
+        window.location.href = '../reset the password/reset-password.html';
+        return;
+    }
+
+    // 2. Visual Engine Initialization
+    if (window.innerWidth > 1024) {
+        if (formCard) formCard.style.transform = `rotateY(5deg) rotateX(2deg)`;
+        document.addEventListener('mousemove', (e) => {
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            }
+        });
+    }
+
+    const createDust = () => {
+        if (!dustContainer) return;
+        for (let i = 0; i < 40; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            dust.style.width = size + 'px';
+            dust.style.height = size + 'px';
+            dust.style.left = Math.random() * 100 + 'vw';
+            dust.style.top = Math.random() * 100 + 'vh';
+            dust.style.animationDelay = (Math.random() * -12) + 's';
+            dustContainer.appendChild(dust);
+        }
+    };
+
+    const createShapes = () => {
+        if (!shapesContainer) return;
+        for (let i = 0; i < 10; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.style.left = Math.random() * 100 + 'vw';
+            shape.style.animationDelay = (Math.random() * -20) + 's';
+            shapesContainer.appendChild(shape);
+        }
+    };
+
+    createDust();
+    createShapes();
+
+    const magneticBtn = (btn) => {
+        if (!btn) return;
+        document.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const distance = Math.sqrt(x*x + y*y);
+            if (distance < 150) {
+                const moveX = x * 0.3;
+                const moveY = y * 0.3;
+                btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            } else {
+                btn.style.transform = `translate(0, 0) scale(1)`;
+            }
+        });
+    };
+
+    magneticBtn(changeBtn);
+
+    // 2. Password Visibility
+    const toggles = [
         { btn: document.getElementById('passwordToggle'), input: passwordInput },
         { btn: document.getElementById('confirmPasswordToggle'), input: confirmPasswordInput }
     ];
 
-    toggleButtons.forEach(({btn, input}) => {
+    toggles.forEach(({btn, input}) => {
         if (btn && input) {
             btn.addEventListener('click', () => {
                 const isPassword = input.type === 'password';
@@ -23,133 +93,73 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Live Validation Glow
-    const validateField = (input, validatorFn) => {
-        const value = input.value.trim();
-        const isValid = validatorFn(value);
-        if (value.length > 0) {
-            if (isValid) {
-                input.style.borderColor = '#10b981';
-                input.style.boxShadow = '0 0 0 2px rgba(16,185,129,0.1)';
-            } else {
-                input.style.borderColor = '#ef4444';
-                input.style.boxShadow = '0 0 0 2px rgba(239,68,68,0.1)';
-            }
-        } else {
-            input.style.borderColor = '';
-            input.style.boxShadow = '';
-        }
-        return isValid;
+    // 3. Validation Logic
+    const showError = (fieldId, message) => {
+        const input = document.getElementById(fieldId);
+        const errorEl = document.getElementById(`${fieldId}Error`);
+        if (!input || !errorEl) return;
+        input.classList.add('input-invalid');
+        const textEl = errorEl.querySelector('.error-text');
+        if (textEl) textEl.textContent = message;
+        errorEl.classList.add('show');
     };
 
-    const isValidPassword = (val) => val.length >= 8;
-    const isValidConfirmPassword = (val) => val === passwordInput.value && val.length > 0;
+    const hideError = (fieldId) => {
+        const input = document.getElementById(fieldId);
+        const errorEl = document.getElementById(`${fieldId}Error`);
+        if (!input || !errorEl) return;
+        input.classList.remove('input-invalid');
+        errorEl.classList.remove('show');
+    };
 
-    passwordInput.addEventListener('input', () => {
-        validateField(passwordInput, isValidPassword);
-        // Force confirm validation update
-        if (confirmPasswordInput.value) validateField(confirmPasswordInput, isValidConfirmPassword);
+    [passwordInput, confirmPasswordInput].forEach(input => {
+        input.addEventListener('input', () => {
+            hideError(input.id === 'password' ? 'password' : 'confirm');
+        });
     });
 
-    confirmPasswordInput.addEventListener('input', () => {
-        validateField(confirmPasswordInput, isValidConfirmPassword);
-    });
-
-
-    // 3. API Form Submission
+    // 4. Form Submission
     if (form) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const password = passwordInput.value;
+            const confirm = confirmPasswordInput.value;
 
-            const isPwdOk = isValidPassword(passwordInput.value);
-            const isConfirmOk = isValidConfirmPassword(confirmPasswordInput.value);
-
-            if (!isPwdOk) {
-                showPremiumToast('Password must be at least 8 characters.', 'error');
-                form.classList.add('shake-anim');
-                setTimeout(() => form.classList.remove('shake-anim'), 500);
+            if (password.length < 8) {
+                showError('password', 'Must be at least 8 characters.');
                 return;
             }
-            if (!isConfirmOk) {
-                showPremiumToast('Passwords do not match.', 'error');
-                form.classList.add('shake-anim');
-                setTimeout(() => form.classList.remove('shake-anim'), 500);
+            if (password !== confirm) {
+                showError('confirm', 'Passwords do not match.');
                 return;
             }
 
-            // Set Loading UI
-            const originalBtnText = changeBtn.innerHTML;
             changeBtn.disabled = true;
-            changeBtn.innerHTML = '<div class="loader-spinner"></div> Updating...';
-            changeBtn.style.opacity = '0.7';
+            const originalText = changeBtn.innerHTML;
+            changeBtn.innerHTML = '<span>Updating...</span>';
 
             try {
                 const email = localStorage.getItem('resetEmail');
                 const code = localStorage.getItem('resetCode');
-                
-                if (!email || !code) {
-                    showPremiumToast('Session expired. Please restart the reset process.', 'error');
-                    setTimeout(() => window.location.href = '../reset the password/reset-the-password.html', 2000);
-                    return;
-                }
-
-                // API requires email + code + newPassword
                 const response = await fetch(`${API_BASE_URL}/auth/reset-password`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, code, newPassword: passwordInput.value })
+                    body: JSON.stringify({ email, code, newPassword: password })
                 });
 
-                let data = {};
-                try { data = await response.json(); } catch(e){}
-
                 if (response.ok) {
-                    // Clean up reset flow data
                     localStorage.removeItem('resetEmail');
                     localStorage.removeItem('resetCode');
-                    
-                    showPremiumToast('Password Updated Successfully!', 'success');
-                    
-                    // Proceed to "reset complete" page
-                    setTimeout(() => {
-                        document.body.style.opacity = '0';
-                        document.body.style.transition = 'opacity 0.5s ease';
-                        setTimeout(() => window.location.href = '../reset complete/reset-complete.html', 500);
-                    }, 1500);
+                    window.location.href = '../reset complete/reset-complete.html';
                 } else {
-                    throw new Error(data.message || data.error || 'Failed to update password.');
+                    showError('password', 'The sanctuary did not accept this key. Please try again.');
                 }
             } catch (error) {
-                showPremiumToast(error.message, 'error');
-                form.classList.add('shake-anim');
-                setTimeout(() => form.classList.remove('shake-anim'), 500);
+                showError('password', 'Connection to eternity lost. Check your network.');
             } finally {
                 changeBtn.disabled = false;
-                changeBtn.innerHTML = originalBtnText;
-                changeBtn.style.opacity = '1';
+                changeBtn.innerHTML = originalText;
             }
         });
     }
-
-    // 3. Global Premium Toast Injector 
-    function showPremiumToast(message, type) {
-        document.querySelectorAll('.premium-toast').forEach(t => t.remove());
-        const toast = document.createElement('div');
-        toast.className = `premium-toast toast-${type}`;
-        const icon = type === 'success' ? 'check_circle' : 'error';
-        
-        toast.innerHTML = `
-            <span class="material-symbols-outlined toast-icon">${icon}</span>
-            <span class="toast-msg">${message}</span>
-            <div class="toast-progress"></div>
-        `;
-        document.body.appendChild(toast);
-        void toast.offsetWidth; 
-        toast.classList.add('show-toast');
-        setTimeout(() => {
-            toast.classList.remove('show-toast');
-            setTimeout(() => toast.remove(), 400); 
-        }, 3500);
-    }
 });
-
