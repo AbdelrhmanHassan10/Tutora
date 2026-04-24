@@ -236,14 +236,19 @@ body {
 /* Form Panel & 3D Card */
 .form-panel {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
+    justify-content: flex-start; /* Start from top to allow scrolling */
+    padding: 6rem 2rem; /* Substantial padding for scroll space */
     background-color: var(--bg-dark);
     z-index: 10;
-    overflow-y: auto; /* Ensure full visibility of long forms */
+    overflow-y: auto;
     max-height: 100vh;
     max-height: 100dvh;
+    scrollbar-width: none; /* Hide scrollbar for clean look */
+}
+.form-panel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
 }
 
 /* Advanced 3D Entrance */
@@ -299,7 +304,7 @@ body {
 
 .form-header {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem; /* Reduced from 2.5rem */
 }
 
 .form-title {
