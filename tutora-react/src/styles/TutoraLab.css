@@ -1,0 +1,253 @@
+/* Tutora Lab Specific Styles */
+
+.hero {
+    padding: 6rem 0 8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image:  url("/11.jpg");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+    .hero-title { font-size: 4.5rem; }
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.gold-button {
+    background-color: #D4AF37;
+    color: #121212;
+    padding: 1rem 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gold-button:hover {
+    background-color: #F9E076;
+    transform: translateY(-2px);
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.header-line {
+    height: 1px;
+    width: 6rem;
+    background-color: rgba(212, 175, 55, 0.3);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.card {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px;
+    transition: all 0.5s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.card-image-wrapper {
+    height: 24rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.card:hover .card-image {
+    transform: scale(1.1);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+.card-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.card-desc {
+    font-size: 0.875rem;
+    color: #bab29c;
+    margin-bottom: 2rem;
+}
+
+/* Gallery */
+.gallery-masonry {
+    columns: 1;
+    column-gap: 1rem;
+}
+
+@media (min-width: 640px) { .gallery-masonry { columns: 2; } }
+@media (min-width: 1024px) { .gallery-masonry { columns: 4; } }
+
+.gallery-item {
+    margin-bottom: 1rem;
+    border: 1px solid #D4AF37;
+    overflow: hidden;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.7s ease;
+    display: block;
+}
+
+/* AI LABORATORY SECTIONS */
+.art-how, .creative-tools-section, .stats-section {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.art-how-grid, .creative-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .art-how-grid, .creative-tools-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.art-how-card, .creative-tools-card {
+    background: #1c1b1b;
+    border: 1px solid rgba(236, 182, 19, 0.1);
+    border-radius: 12px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.4s;
+    position: relative;
+}
+
+.art-how-step-num {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: rgba(236, 182, 19, 0.08);
+    font-weight: 900;
+}
+
+.art-how-icon, .creative-tools-icon {
+    font-size: 2.5rem !important;
+    color: #ecb613;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.art-how-title {
+    font-family: 'Cinzel', serif;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.art-how-text, .creative-tools-text {
+    color: #999;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    background: #1c1b1b;
+    border: 1px solid rgba(236, 182, 19, 0.15);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.stat-value {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    color: #ecb613;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #999;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

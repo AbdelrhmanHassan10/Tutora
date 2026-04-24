@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutora | The Royal Portal</title>
+    <link rel="icon" type="image/png" href="museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="3.register/style.css">
+    <link rel="stylesheet" href="global-theme.css">
+</head>
+<body class="hieroglyph-overlay show-immediately">
+    <div class="unified-auth-container tilt-element show" id="container">
+        <!-- Register Form -->
+        <div class="auth-form-panel sign-up-box">
+            <form action="#" id="registrationForm" class="form-container-inner">
+                <h1 class="brand-namee">Join The Dynasty</h1>
+                <div class="social-group">
+                    <button class="social-btn" type="button"><span>Google</span></button>
+                    <button class="social-btn" type="button"><span>Apple</span></button>
+                </div>
+                <div class="divider"><span>Or</span></div>
+                <div class="field-group">
+                    <input class="form-input input-focus-gold" type="text" placeholder="Full Name" required />
+                </div>
+                <div class="field-group">
+                    <input class="form-input input-focus-gold" type="email" placeholder="Email" required />
+                </div>
+                <div class="field-group">
+                    <input class="form-input input-focus-gold" type="password" placeholder="Password" required />
+                </div>
+                <button class="submit-btn btn-shimmer">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div class="auth-form-panel sign-in-box">
+            <form action="#" id="loginForm" class="form-container-inner">
+                <h1 class="brand-namee">Welcome back</h1>
+                <div class="social-group">
+                    <button class="social-btn" type="button"><span>Google</span></button>
+                    <button class="social-btn" type="button"><span>Apple</span></button>
+                </div>
+                <div class="divider"><span>Or</span></div>
+                <div class="field-group">
+                    <input class="form-input input-focus-gold" type="email" placeholder="Email" required />
+                </div>
+                <div class="field-group">
+                    <input class="form-input input-focus-gold" type="password" placeholder="Password" required />
+                </div>
+                <a href="#" class="forgot-pass">Forgot your password?</a>
+                <button class="submit-btn btn-shimmer">Sign In</button>
+            </form>
+        </div>
+
+        <!-- Overlay Panel -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <div class="pharaoh-hero-img">
+                        <img src="tut-gem.png" alt="Pharaoh">
+                    </div>
+                    <h1>Already part of the Journey?</h1>
+                    <p>Log in to continue your exploration of the Grand Egyptian Museum.</p>
+                    <button class="submit-btn btn-shimmer ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                   <div class="pharaoh-hero-img">
+                        <img src="pharaoh-king.png" alt="Pharaoh King">
+                    </div>
+                    <h1>New Guardian?</h1>
+                    <p>Enter your details and start your journey through 5,000 years of history.</p>
+                    <button class="submit-btn btn-shimmer ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="animate.js"></script>
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+        const overlay = document.querySelector('.overlay-container');
+
+        const toggleForms = (dir) => {
+            if (dir === 'right') container.classList.add("right-panel-active");
+            else container.classList.remove("right-panel-active");
+        };
+
+        signUpButton.addEventListener('click', () => toggleForms('right'));
+        signInButton.addEventListener('click', () => toggleForms('left'));
+
+        // DRAG TO SWITCH LOGIC
+        let isDragging = false;
+        let startX = 0;
+
+        overlay.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const currentX = e.pageX;
+            const diff = currentX - startX;
+
+            // Visual feedback (slight movement)
+            if (Math.abs(diff) < 50) {
+                overlay.style.transform = `translateX(${diff}px)`;
+            }
+        });
+
+        document.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            overlay.style.transform = ''; // reset
+
+            const endX = e.pageX;
+            const diff = endX - startX;
+
+            if (diff < -100) toggleForms('right'); // Drag left -> go to signup
+            if (diff > 100) toggleForms('left');   // Drag right -> go to login
+        });
+    </script>
+</body>
+</html>

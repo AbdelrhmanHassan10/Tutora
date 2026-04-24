@@ -1,0 +1,50 @@
+/* Shared Design Tokens for AI Experience Pages */
+:root {
+    --ai-primary: #f2cc0d;
+    --ai-secondary: #0ea5e9;
+    --ai-gold: #D4AF37;
+    --ai-gold-hover: #F9E076;
+    --ai-bg-dark: #0a0a0a;
+    --ai-card-bg: #1a1a1a;
+    --ai-text-primary: #ffffff;
+    --ai-text-secondary: #bab29c;
+    --ai-border: rgba(255, 255, 255, 0.1);
+    --ai-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Component Reset for these pages to avoid conflicts */
+.ai-page-container {
+    padding-top: 100px; /* Space for fixed header */
+    background-color: var(--ai-bg-dark);
+    color: var(--ai-text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.ai-display-font {
+    font-family: 'Cinzel', serif;
+}
+
+.ai-gold-text {
+    color: var(--ai-gold);
+}
+
+/* Shared Animated Spin */
+@keyframes ai-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.ai-animate-spin {
+    animation: ai-spin 1s linear infinite;
+    display: inline-block;
+}
+
+/* Shared Sections */
+.ai-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
