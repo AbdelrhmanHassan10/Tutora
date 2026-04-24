@@ -241,6 +241,9 @@ body {
     padding: 2rem;
     background-color: var(--bg-dark);
     z-index: 10;
+    overflow-y: auto; /* Ensure full visibility of long forms */
+    max-height: 100vh;
+    max-height: 100dvh;
 }
 
 /* Advanced 3D Entrance */
@@ -375,7 +378,7 @@ body {
 .registration-form {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem; /* Tightened gap */
+    gap: 1rem; /* Further tightened for Register page */
 }
 
 .field-group {
@@ -626,11 +629,12 @@ body {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        justify-content: center !important;
-        padding: 1rem 0 !important; /* Reduced from 2rem */
+        justify-content: flex-start !important; /* Start from top on mobile to ensure visibility */
+        padding: 4rem 1.5rem 2rem !important; /* Extra top padding for mobile logo/header */
         min-height: 100dvh !important;
         background-color: #000000 !important;
         width: 100% !important;
+        overflow-y: auto !important; /* Essential for mobile visibility */
     }
     .form-card-3d {
         max-width: 100% !important;
