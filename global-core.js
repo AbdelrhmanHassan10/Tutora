@@ -380,4 +380,93 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => toast.remove(), 500);
         }, 3500);
     };
+
+    // ============================================
+    // 8. ROYAL ATMOSPHERE GENERATOR
+    // ============================================
+    window.initRoyalAtmosphere = function() {
+        // 1. Ensure Containers Exist
+        let dustContainer = document.getElementById('dust-container');
+        let shapesContainer = document.getElementById('shapes-container');
+
+        if (!dustContainer) {
+            dustContainer = document.createElement('div');
+            dustContainer.id = 'dust-container';
+            document.body.appendChild(dustContainer);
+        }
+        if (!shapesContainer) {
+            shapesContainer = document.createElement('div');
+            shapesContainer.id = 'shapes-container';
+            document.body.appendChild(shapesContainer);
+        }
+
+        // 2. Generate Royal Dust (Increased density for more atmospheric feel)
+        const particleCount = 250;
+        for (let i = 0; i < particleCount; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 4 + 1;
+            const duration = Math.random() * 15 + 15;
+            const delay = Math.random() * -20;
+            
+            dust.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                opacity: ${Math.random() * 0.5 + 0.1};
+                animation: floatParticle ${duration}s infinite linear;
+                animation-delay: ${delay}s;
+            `;
+            dustContainer.appendChild(dust);
+        }
+
+        // 3. Generate Floating Shapes
+        const shapeCount = 10;
+        for (let i = 0; i < shapeCount; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            const size = Math.random() * 30 + 20;
+            const duration = Math.random() * 20 + 20;
+            
+            shape.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                transform: rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.5 + 0.5});
+                animation: rotateFloat ${duration}s infinite linear;
+                animation-delay: ${Math.random() * -20}s;
+            `;
+            shapesContainer.appendChild(shape);
+        }
+    };
+
+    // ============================================
+    // 9. CINEMATIC 3D PARALLAX
+    // ============================================
+    window.init3DParallax = function() {
+        const heroes = document.querySelectorAll('.hero, .main-hero, .landing-hero, .scanner-hero, .guide-hero, .chatbot-container');
+        
+        heroes.forEach(hero => {
+            const content = hero.querySelector('.hero-content, .chatbot-window, .scanner-box, .guide-content');
+            if (!content) return;
+
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                
+                content.style.transform = `rotateY(${x * 15}deg) rotateX(${y * -15}deg) translateZ(20px)`;
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                content.style.transform = 'rotateY(0) rotateX(0) translateZ(0)';
+            });
+        });
+    };
+
+    // Initialize Atmospheric Effects
+    window.initRoyalAtmosphere();
+    window.init3DParallax();
 });

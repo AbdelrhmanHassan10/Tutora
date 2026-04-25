@@ -141,20 +141,20 @@ const TutoraLabPage = () => {
                     <div className="art-how-card">
                         <div className="art-how-step-num">01</div>
                         <span className="material-symbols-outlined art-how-icon">edit_note</span>
-                        <h3 className="art-how-title">Describe Your Vision</h3>
-                        <p className="art-how-text">Type a text prompt or upload your photo. Describe the Egyptian art style you want — pharaonic, hieroglyphic, or mythological.</p>
+                        <h3 className="art-how-title">Define Your Vision</h3>
+                        <p className="art-how-text">Define your creative intent through text or imagery. Specify your desired aesthetic — from Pharaonic grandeur to Mythological symbolism.</p>
                     </div>
                     <div className="art-how-card">
                         <div className="art-how-step-num">02</div>
                         <span className="material-symbols-outlined art-how-icon">auto_awesome</span>
-                        <h3 className="art-how-title">AI Generates Art</h3>
-                        <p className="art-how-text">Our model, trained on thousands of authentic Egyptian artworks, generates unique creations blending ancient style with your input.</p>
+                        <h3 className="art-how-title">Neural Art Synthesis</h3>
+                        <p className="art-how-text">Our proprietary engine, infused with the essence of thousands of Egyptian masterpieces, breathes life into your vision with neural precision.</p>
                     </div>
                     <div className="art-how-card">
                         <div className="art-how-step-num">03</div>
                         <span className="material-symbols-outlined art-how-icon">download</span>
-                        <h3 className="art-how-title">Save & Share</h3>
-                        <p className="art-how-text">Download your creation in high resolution, share on social media, or submit it for the Visitor Gallery wall.</p>
+                        <h3 className="art-how-title">Eternalize & Exhibit</h3>
+                        <p className="art-how-text">Secure your masterpiece in ultra-high resolution. Share your legacy with the world or immortalize it within our Digital Visitor Sanctuary.</p>
                     </div>
                 </div>
             </section>

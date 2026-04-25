@@ -1,4 +1,4 @@
-  document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('DOMContentLoaded', () => {
       // ============================================
       // CONFIGURATION & STATE
       // ============================================
@@ -826,6 +826,57 @@ window.openArtifactModal = function(artifact) {
         }
     });
 
+    // ============================================
+    // ROYAL ATMOSPHERE (Golden Dust & Shapes)
+    // ============================================
+    function initRoyalAtmosphere() {
+        const dustContainer = document.getElementById('dust-container');
+        const shapesContainer = document.getElementById('shapes-container');
+        
+        if (!dustContainer || !shapesContainer) return;
+
+        // Create 500 dust particles
+        for (let i = 0; i < 300; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'dust-particle';
+            
+            const size = Math.random() * 3 + 1;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 15 + 10;
+            const delay = Math.random() * 10;
+            particle.style.animation = `floatParticle ${duration}s infinite linear ${delay}s`;
+            
+            dustContainer.appendChild(particle);
+        }
+
+        // Create 20 royal shapes
+        for (let i = 0; i < 20; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            
+            const size = Math.random() * 40 + 20;
+            shape.style.width = `${size}px`;
+            shape.style.height = `${size}px`;
+            
+            shape.style.left = `${Math.random() * 100}%`;
+            shape.style.top = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 25 + 15;
+            const delay = Math.random() * 10;
+            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
+            
+            shape.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
+            
+            shapesContainer.appendChild(shape);
+        }
+    }
+
     // START
+    initRoyalAtmosphere();
     initialize();
 });

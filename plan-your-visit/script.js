@@ -219,3 +219,134 @@ faqQuestions.forEach(question => {
         }
     });
 });
+
+// ============================================
+// ROYAL SUPERSTAR - ATMOSPHERIC SCRIPTS
+// ============================================
+
+// 1. Royal Dust Particles System
+function createDust() {
+    const container = document.getElementById('dust-container');
+    if (!container) return;
+    
+    const particleCount = 150;
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'dust-particle';
+        
+        const size = Math.random() * 3 + 1;
+        const posX = Math.random() * 100;
+        const delay = Math.random() * 20;
+        const duration = Math.random() * 10 + 10;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.bottom = `-10px`;
+        particle.style.animation = `floatDust ${duration}s linear ${delay}s infinite`;
+        
+        container.appendChild(particle);
+    }
+}
+
+// 2. Royal Geometric Shapes
+function createShapes() {
+    const container = document.getElementById('shapes-container');
+    if (!container) return;
+    
+    const shapes = ['𓂀', '𓋹', '𓅓', '𓃻', '𓊽'];
+    for (let i = 0; i < 15; i++) {
+        const shape = document.createElement('div');
+        shape.className = 'royal-shape';
+        shape.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+        
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const duration = Math.random() * 20 + 20;
+        const delay = Math.random() * -20;
+        
+        shape.style.left = `${posX}%`;
+        shape.style.top = `${posY}%`;
+        shape.style.animation = `rotateFloat ${duration}s ease-in-out ${delay}s infinite`;
+        
+        container.appendChild(shape);
+    }
+}
+
+// 4. Hero Content Parallax Tilt
+const hero = document.querySelector('.hero');
+const heroContent = document.querySelector('.hero-content');
+
+if (hero && heroContent) {
+    hero.addEventListener('mousemove', (e) => {
+        const { width, height } = hero.getBoundingClientRect();
+        const mouseX = (e.clientX / width) - 0.5;
+        const mouseY = (e.clientY / height) - 0.5;
+        
+        heroContent.style.transform = `perspective(1000px) rotateY(${mouseX * 20}deg) rotateX(${mouseY * -20}deg) translateZ(50px)`;
+    });
+    
+    hero.addEventListener('mouseleave', () => {
+        heroContent.style.transform = `perspective(1000px) rotateY(0) rotateX(0) translateZ(0)`;
+    });
+}
+
+// Initialize Royal Atmosphere
+document.addEventListener('DOMContentLoaded', () => {
+    createDust();
+    createShapes();
+});
+
+// ============================================
+// THE DIVINE JOURNEY - EXTRA PREMIUM FEATURES
+// ============================================
+
+// 1. The Oracle's Greeting (Typewriter Effect)
+const greetings = [
+    "The Pharaohs await your arrival...",
+    "Unlock the secrets of the Boy King...",
+    "Walk the path of the Ancients...",
+    "Where history meets eternity...",
+    "Your golden passage is ready..."
+];
+
+let greetingIndex = 0;
+const greetingElement = document.getElementById('divineGreeting');
+
+function typeGreeting(text, i = 0) {
+    if (!greetingElement) return;
+    if (i < text.length) {
+        greetingElement.textContent += text.charAt(i);
+        setTimeout(() => typeGreeting(text, i + 1), 50);
+    } else {
+        setTimeout(eraseGreeting, 3000);
+    }
+}
+
+function eraseGreeting() {
+    if (!greetingElement) return;
+    let text = greetingElement.textContent;
+    if (text.length > 0) {
+        greetingElement.textContent = text.substring(0, text.length - 1);
+        setTimeout(eraseGreeting, 30);
+    } else {
+        greetingIndex = (greetingIndex + 1) % greetings.length;
+        setTimeout(() => typeGreeting(greetings[greetingIndex]), 500);
+    }
+}
+
+// 2. Scroll Progress Journey Bar
+window.addEventListener('scroll', () => {
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (!scrollProgress) return;
+    
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    scrollProgress.style.width = scrolled + "%";
+});
+
+// Initialize Extras
+document.addEventListener('DOMContentLoaded', () => {
+    if (greetingElement) typeGreeting(greetings[0]);
+});

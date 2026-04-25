@@ -27,14 +27,32 @@ body.light {
     --border-color: rgba(0, 0, 0, 0.1);
 }
 
-.logo-text,
-.menu-logo-text {
-    font-family: "Cinzel", serif;
-    font-weight: 700;
-    letter-spacing: 2px;
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+ 
+.tutora {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
     text-transform: uppercase;
-    color: #ECB613;
-}.logo-circle {
+    position: relative;
+    display: inline-block;
+    transition: all 0.5s ease;
+}
+
+.tutora:hover {
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.6));
+    transform: scale(1.05);
+}
+.logo-circle {
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -44,8 +62,9 @@ body.light {
     align-items: center;
     justify-content: center;
 
-    border: 2px solid #ECB613;
+    border: 2px solid var(--primary);
     background-color: #000;
+    box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .logo-circle img {
@@ -54,67 +73,111 @@ body.light {
     object-fit: cover;
 }.logo-text,
 .menu-logo-text {
-    font-family: "Cinzel", serif;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
     text-transform: uppercase;
-    color: #ECB613;
-}.logo-section {
+}
+/* Loading styles */
+
+.artifacts-loading {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 0.5rem;
-}
-
-.desktop-nav a {
-    position: relative;
-}
-
-.desktop-nav a::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #ECB613;
-    transition: 0.3s;
-}
-
-.desktop-nav a:hover::after {
+    min-height: 200px;
     width: 100%;
+    grid-column: 1 / -1;
 }
- 
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(191, 161, 107, 0.1);
+    border-top-color: #bfa16b;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-container {
+    text-align: center;
+    padding: 2rem;
+    grid-column: 1 / -1;
+    color: #ef4444;
+}
+
+.user-name-display {
+    font-weight: 700;
+    color: var(--primary-color, #bfa16b);
+}
+
+
 /* ============================================
-   BUTTONS
+   HEADER & NAVIGATION - UPDATED CSS
    ============================================ */
 
-.btn {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: var(--transition);
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+/* Header configuration using global variables */
+
+/* Theme body classes handled by global-core.js and global-theme.css */
+
+:root {
+    /* Legendary Pharaonic Tokens (Synced with Dynasty Portal) */
+    --primary: #d4af37; /* Aged Royal Gold */
+    --primary-glow: rgba(212, 175, 55, 0.4);
+    --bg-dark: #000000; /* Absolute Black */
+    --card-bg: rgba(15, 18, 22, 0.7);
+    --text-white: #f8f8f2; /* Aged Papyrus */
+    --text-gray: #8c8c82;
+    --font-main: 'Outfit', sans-serif;
+    --font-serif: 'Cinzel', serif;
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: var(--dark-bg);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.btn-primary:hover {
-    background-color: #c99a2e;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+body.light {
+    --bg-dark: #fcfaf7; /* Light Papyrus/Marble */
+    --text-white: #1a1a1a; /* Deep Charcoal */
+    --text-gray: #555555;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --border-color: rgba(191, 161, 107, 0.3);
+    --primary: #8e7341; /* Burnished Bronze for visibility on light */
+    --primary-glow: rgba(142, 115, 65, 0.2);
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    transition: all 0.5s ease;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Ensure containers fit desktop nicely */
+.section-container, .footer-container, .main-content {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
 /* ============================================
-HEADER & NAVIGATION
-============================================ */
+   MOBILE MENU SIDEBAR
+   ============================================ */
 
 .mobile-menu {
     position: fixed;
@@ -123,9 +186,8 @@ HEADER & NAVIGATION
     width: 100%;
     max-width: 320px;
     height: 100vh;
-    background-color: var(--bg-primary, white);
-    color: var(--text-primary, black);
-    border-right: 1px solid rgba(236, 182, 19, 0.2);
+    background-color: var(--bg-dark);
+    border-right: 1px solid rgba(57, 55, 40, 0.2);
     z-index: 1000;
     transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: flex;
@@ -134,30 +196,8 @@ HEADER & NAVIGATION
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
-body.dark .mobile-menu {
-    background-color: #121212;
-    color: #f5f5f5;
-    border-right-color: rgba(236, 182, 19, 0.3);
-}
-
-.mobile-menu.open {
+.mobile-menu.active {
     left: 0;
-}
-
-.menu-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
-}
-
-.menu-overlay.open {
-    opacity: 1;
-    visibility: visible;
 }
 
 
@@ -168,21 +208,11 @@ body.dark .mobile-menu {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    border-bottom: 1px solid rgba(236, 182, 19, 0.2);
-    background-color: transparent;
+    border-bottom: 1px solid rgba(57, 55, 40, 0.2);
+    background-color: var(--bg-dark);
     position: sticky;
     top: 0;
     z-index: 10;
-}
-
-body.dark .menu-header {
-    background-color: #121212; /* Solid obsidian */
-    border-bottom-color: rgba(236, 182, 19, 0.3);
-}
-
-body.light .menu-header {
-    background-color: #ffffff; /* Solid white */
-    border-bottom-color: rgba(236, 182, 19, 0.1);
 }
 
 .menu-logo {
@@ -211,7 +241,7 @@ body.light .menu-header {
     font-size: 1.25rem;
     font-weight: 900;
     letter-spacing: -0.02em;
-    color: var(--text-primary);
+    color: var(--text-white);
 }
 
 .close-btn {
@@ -219,7 +249,7 @@ body.light .menu-header {
     height: 40px;
     border: none;
     background-color: transparent;
-    color: var(--text-primary);
+    color: var(--text-white);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -230,7 +260,7 @@ body.light .menu-header {
 
 .close-btn:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 
@@ -238,7 +268,6 @@ body.light .menu-header {
 
 .menu-nav {
     display: flex;
-    background-color: inherit;
     flex-direction: column;
     gap: 0;
     flex: 1;
@@ -250,7 +279,7 @@ body.light .menu-header {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    color: inherit;
+    color: var(--text-white);
     text-decoration: none;
     border: none;
     background-color: transparent;
@@ -259,16 +288,22 @@ body.light .menu-header {
     font-weight: 500;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
+    position: relative;
 }
 
-html.dark .menu-link:hover,
+.menu-link.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background-color: rgba(242, 208, 13, 0.05);
+}
+
 body.dark .menu-link:hover {
-    background-color: rgba(242, 208, 13, 0.15);
-    border-left-color: var(--primary-color);
-    color: var(--primary-color);
+    background-color: rgba(242, 208, 13, 0.1);
+    border-left-color: var(--primary);
+    color: var(--primary);
 }
 
-html:not(.dark) .menu-link:hover {
+body.light .menu-link:hover {
     background-color: rgba(26, 26, 26, 0.1);
     border-left-color: var(--text-dark);
     color: var(--text-dark);
@@ -287,7 +322,7 @@ html:not(.dark) .menu-link:hover {
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.5rem;
-    color: black;
+    color: var(--text-white);
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -299,26 +334,26 @@ html:not(.dark) .menu-link:hover {
     text-align: left;
 }
 
-html.dark .dropdown-toggle:hover {
-    background-color: rgba(242, 208, 13, 0.1);
-    border-left-color: var(--primary-color);
-    color: var(--primary-color);
+body.dark .dropdown-toggle:hover {
+    background-color: rgb(255, 255, 254);
+    border-left-color: var(--primary);
+    color: var(--primary);
 }
 
-html:not(.dark) .dropdown-toggle:hover {
-    background-color: rgba(26, 26, 26, 0.1);
+body.light .dropdown-toggle:hover {
+    background-color: rgb(255, 255, 255);
     border-left-color: var(--text-dark);
     color: var(--text-dark);
 }
 
-html.dark .dropdown-toggle.active {
+body.dark .dropdown-toggle.active {
     background-color: rgba(242, 208, 13, 0.15);
-    border-left-color: var(--primary-color);
-    color: var(--primary-color);
+    border-left-color: var(--primary);
+    color: var(--primary);
 }
 
-html:not(.dark) .dropdown-toggle.active {
-    background-color: rgba(26, 26, 26, 0.1);
+body.light .dropdown-toggle.active {
+    background-color: rgb(255, 255, 255);
     border-left-color: var(--text-dark);
     color: var(--text-dark);
 }
@@ -335,12 +370,8 @@ html:not(.dark) .dropdown-toggle.active {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(57, 55, 40, 0.05);
     opacity: 0;
-}
-
-body.dark .dropdown-items {
-    background-color: #0a0a0a;
 }
 
 .dropdown-items.show {
@@ -351,25 +382,23 @@ body.dark .dropdown-items {
 .dropdown-item {
     display: block;
     padding: 0.75rem 1.5rem 0.75rem 3rem;
-    color: inherit;
+    color: var(--text-white);
     text-decoration: none;
     font-size: 0.9rem;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
-    opacity: 0.8;
 }
 
 body.dark .dropdown-item:hover {
-    background-color: #000000;
-    color: #f2b90d;
-    border-left-color: #f2b90d;
-    opacity: 1;
+    background-color: rgba(242, 185, 13, 0.1);
+    border-left-color: var(--primary);
+    color: var(--primary);
 }
 
 body.light .dropdown-item:hover {
-    background-color: rgba(242, 208, 13, 0.1);
-    color: #f2b90d;
-    border-left-color: #f2b90d;
+    background-color: rgba(26, 26, 26, 0.1);
+    border-left-color: var(--text-dark);
+    color: var(--text-dark);
 }
 
 
@@ -387,7 +416,7 @@ body.light .dropdown-item:hover {
 .menu-booking-btn {
     display: block;
     padding: 0.75rem 1rem;
-    background-color: var(--primary-color);
+    background-color: var(--primary);
     color: var(--dark-bg);
     text-decoration: none;
     border-radius: 0.5rem;
@@ -408,7 +437,7 @@ body.light .dropdown-item:hover {
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1rem;
-    color: var(--text-primary);
+    color: var(--text-white);
     background-color: transparent;
     border: 1px solid rgba(57, 55, 40, 0.2);
     border-radius: 0.5rem;
@@ -421,8 +450,8 @@ body.light .dropdown-item:hover {
 
 .menu-icon-link:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
 
@@ -431,34 +460,67 @@ body.light .dropdown-item:hover {
    ============================================ */
 
 .header {
-    background-color: var(--header-bg);
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border-color);
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 2rem;
     position: sticky;
     top: 0;
-    z-index: 100;
-    transition: all 0.3s ease;
+    z-index: 1000;
+    transition: all 0.4s ease;
 }
+
+/* Navbar Light Mode Fixes */
+body.light .desktop-nav a,
+body.light .nav-link,
+body.light .logo-text,
+body.light .dropdown-trigger,
+body.light .menu-btn,
+body.light .theme-btn,
+body.light .icon-btn {
+    color: #1a1a1a !important;
+}
+
+body.light .logo-icon {
+    color: #8e7341;
+}
+
+body.light .header.scrolled {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-bottom: 1px solid rgba(142, 115, 65, 0.3);
+}
+
+body.light .header {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(191, 161, 107, 0.2);
+}
+
+.header.scrolled {
+    background: rgba(0, 0, 0, 0.95) !important;
+    padding: 0.8rem 2rem !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+/* Theme specific header handling in global-theme.css */
 
 .header-container {
     max-width: 1400px;
-    margin:1;
+    margin: 1px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1.3rem;
     padding-left: 0rem;
-    width: 100%;
 }
- 
+
 
 /* Header Left */
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    flex: 1;
+    gap: 0rem;
+ 
 }
 
 .menu-btn {
@@ -467,7 +529,7 @@ body.light .dropdown-item:hover {
     height: 40px;
     border: none;
     background-color: transparent;
-    color: var(--text-primary);
+    color: var(--text-white);
     cursor: pointer;
     font-size: 1.5rem;
     transition: all 0.3s ease;
@@ -476,7 +538,7 @@ body.light .dropdown-item:hover {
 
 .menu-btn:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 .logo-section {
@@ -504,7 +566,7 @@ body.light .dropdown-item:hover {
     font-size: 1.25rem;
     font-weight: 900;
     letter-spacing: -0.02em;
-    color: var(--text-primary);
+    color: var(--text-white);
 }
 
 
@@ -512,15 +574,13 @@ body.light .dropdown-item:hover {
 
 .desktop-nav {
     display: flex;
-    gap: 1.75rem;
+    gap: 1rem;
     align-items: center;
-    flex: 1;
-    justify-content: center;
-}
+ }
 
 .desktop-nav a,
 .nav-link {
-    color: var(--text-primary);
+    color: var(--text-white);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
@@ -530,15 +590,42 @@ body.light .dropdown-item:hover {
     cursor: pointer;
     padding: 0.5rem 0;
     white-space: nowrap;
+    position: relative;
 }
 
-html.dark .desktop-nav a:hover,
-html.dark .nav-link:hover {
+.desktop-nav a::after,
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.desktop-nav a:hover::after,
+.nav-link:hover::after,
+.desktop-nav a.active::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.desktop-nav a.active {
+    color: var(--primary);
+}
+
+body.dark .desktop-nav a:hover,
+body.dark .nav-link:hover {
     color: #f2b90d;
 }
 
-html:not(.dark) .desktop-nav a:hover,
-html:not(.dark) .nav-link:hover {
+body.light .desktop-nav a:hover,
+body.light .nav-link:hover {
     color: var(--text-dark);
 }
 
@@ -553,7 +640,7 @@ html:not(.dark) .nav-link:hover {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-primary);
+    color: var(--text-white);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
@@ -564,11 +651,11 @@ html:not(.dark) .nav-link:hover {
     padding: 0.5rem 0;
 }
 
-html.dark .dropdown-trigger:hover {
-    color: var(--primary-color);
+body.dark .dropdown-trigger:hover {
+    color: var(--primary);
 }
 
-html:not(.dark) .dropdown-trigger:hover {
+body.light .dropdown-trigger:hover {
     color: var(--text-dark);
 }
 
@@ -584,8 +671,8 @@ html:not(.dark) .dropdown-trigger:hover {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: var(--bg-primary);
-    border: 2px solid var(--primary-color);
+    background-color: var(--bg-dark);
+    border: 2px solid var(--primary);
     border-radius: 0.75rem;
     min-width: 240px;
     opacity: 0;
@@ -599,15 +686,11 @@ html:not(.dark) .dropdown-trigger:hover {
 }
 
 body.dark .dropdown-menu {
-    background-color: #000000;
-    border-color: #ecb613;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(236, 182, 19, 0.3);
+    background-color: var(--dark-bg);
 }
 
 body.light .dropdown-menu {
-    background-color: #FFFFFF;
-    border-color: #e2e8f0;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 .nav-dropdown:hover .dropdown-menu {
@@ -619,20 +702,12 @@ body.light .dropdown-menu {
 .dropdown-link {
     display: block;
     padding: 0.85rem 1.25rem;
-    color: inherit;
+    color: var(--text-white);
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 500;
     transition: all 0.3s ease;
     border-left: 4px solid transparent;
-}
-
-body.dark .dropdown-link {
-    color: #F5F5DC;
-}
-
-body.light .dropdown-link {
-    color: #0F172A;
 }
 
 .dropdown-link:first-child {
@@ -645,15 +720,15 @@ body.light .dropdown-link {
 
 body.dark .dropdown-link:hover {
     background-color: rgba(242, 185, 13, 0.15);
-    border-left-color: #f2b90d;
-    color: #f2b90d;
+    border-left-color: var(--primary);
+    color: var(--primary);
     padding-left: 1.5rem;
 }
 
 body.light .dropdown-link:hover {
-    background-color: rgba(242, 185, 13, 0.05);
-    border-left-color: #f2b90d;
-    color: #f2b90d;
+    background-color: rgba(26, 26, 26, 0.1);
+    border-left-color: var(--text-dark);
+    color: var(--text-dark);
     padding-left: 1.5rem;
 }
 
@@ -661,12 +736,10 @@ body.light .dropdown-link:hover {
 /* Header Right */
 
 .header-right {
-        display: flex;
+    display: flex;
     align-items: center;
-    gap: 0.6rem;
-    flex: 0 0 auto;
-    margin-left: auto;
-
+    gap: 1rem;
+    margin-left: auto; 
 }
 
 .search-box {
@@ -677,19 +750,19 @@ body.light .dropdown-link:hover {
     border: 1px solid rgba(57, 55, 40, 0.2);
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
-    color: var(--text-primary);
+    color: var(--text-white);
     transition: all 0.3s ease;
 }
 
 .search-box:focus-within {
-    border-color: var(--primary-color);
+    border-color: var(--primary);
     background-color: rgba(242, 208, 13, 0.05);
 }
 
 .search-box input {
     border: none;
     background-color: transparent;
-    color: var(--text-primary);
+    color: var(--text-white);
     outline: none;
     font-size: 0.9rem;
     width: 150px;
@@ -705,7 +778,7 @@ body.light .dropdown-link:hover {
     height: 40px;
     border: none;
     background-color: transparent;
-    color: var(--text-primary);
+    color: var(--text-white);
     cursor: pointer;
     font-size: 1.25rem;
     transition: all 0.3s ease;
@@ -718,11 +791,11 @@ body.light .dropdown-link:hover {
 .theme-btn:hover,
 .icon-btn:hover {
     background-color: rgba(242, 208, 13, 0.1);
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 .btn-booking {
-    background-color: var(--primary-color);
+    background-color: var(--primary);
     color: var(--dark-bg);
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
@@ -742,7 +815,7 @@ body.light .dropdown-link:hover {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--primary);
     cursor: pointer;
     transition: all 0.3s ease;
     object-fit: cover;
@@ -777,24 +850,8 @@ body.light .dropdown-link:hover {
 /* Mobile (480px - 768px) */
 
 @media (max-width: 768px) {
-    .header {
-        padding: 0.5rem 0.75rem !important;
-    }
-    .header-container {
-        padding: 0 0.5rem !important;
-        gap: 0.5rem;
-    }
-    .logo-text {
-        font-size: 1.1rem !important;
-    }
-    .logo-circle {
-        width: 35px !important;
-        height: 35px !important;
-    }
     .menu-btn {
         display: flex;
-        width: 36px;
-        height: 36px;
     }
     .desktop-nav {
         display: none;
@@ -803,7 +860,7 @@ body.light .dropdown-link:hover {
         display: none;
     }
     .header-right {
-        gap: 0.4rem;
+        gap: 0.5rem;
     }
     .btn-booking {
         display: none;
@@ -815,30 +872,8 @@ body.light .dropdown-link:hover {
         flex: 0;
     }
     .profile-img {
-        width: 32px;
-        height: 32px;
-    }
-    /* Auto-expand dropdown on mobile */
-    .dropdown-items {
-        max-height: 600px !important;
-        opacity: 1 !important;
-    }
-    .profile-img {
-        width: 32px;
-        height: 32px;
-    }
-
-    /* Distinct Mobile Background for AI Experience */
-    .hero-section {
-        background: linear-gradient(135deg, #0f0f0c 0%, #1a1a14 100%) !important;
-    }
-    
-    body.light .hero-section {
-        background: linear-gradient(135deg, #fdfaf3 0%, #f5f0e1 100%) !important;
-    }
-
-    .hero-gradient {
-        display: none; /* Let the section background take over on mobile */
+        width: 36px;
+        height: 36px;
     }
 }
 
@@ -915,6 +950,180 @@ body.light .dropdown-link:hover {
     animation: fadeIn 0.3s ease-out;
 }
 
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+body.dark-mode .hero h1 {
+    color: #f5f5f5;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #666;
+    opacity: 0.8;
+}
+
+body.dark-mode .hero p {
+    color: #aaa;
+}
+
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 1rem;
+    }
+    .desktop-nav {
+        gap: 1rem;
+    }
+    .search-box input {
+        width: 120px;
+    }
+    .header-right {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.75rem 1rem;
+    }
+    .menu-btn {
+        display: block;
+    }
+    .desktop-nav {
+        display: none;
+    }
+    .header-right {
+        gap: 0.75rem;
+    }
+    .search-box {
+        display: none;
+    }
+    .btn-booking {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    .logo-text {
+        font-size: 1.25rem;
+    }
+    .logo-icon {
+        width: 32px;
+        height: 32px;
+    }
+    .theme-btn,
+    .icon-btn {
+        font-size: 20px;
+        padding: 0.25rem;
+    }
+    .profile-img {
+        width: 32px;
+        height: 32px;
+    }
+    .hero {
+        padding: 2rem 1rem;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0.5rem 0.75rem;
+        gap: 0.5rem;
+    }
+    .header-left {
+        gap: 0.5rem;
+    }
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+    .logo-text {
+        font-size: 1rem;
+    }
+    .header-right {
+        gap: 0.5rem;
+    }
+    .theme-btn,
+    .icon-btn {
+        font-size: 18px;
+        padding: 0.25rem;
+    }
+    .btn-booking {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    .profile-img {
+        width: 28px;
+        height: 28px;
+    }
+    .mobile-menu {
+        width: 100%;
+    }
+}
+
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+body.dark-mode .hero h1 {
+    color: #f5f5f5;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #666;
+    opacity: 0.8;
+}
+
+body.dark-mode .hero p {
+    color: #aaa;
+}
 
 /* ============================================
    HERO SECTION
@@ -1295,8 +1504,6 @@ body.light .tortara-dialogue-section {
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.4;
 }
-
-
 /* Footer */
 
 .main-content {
@@ -1313,7 +1520,7 @@ body.light .tortara-dialogue-section {
 
 .site-footer {
     width: 100%;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-dark);
     border-top: 1px solid rgba(242, 185, 13, 0.3);
     padding-top: 4rem;
     padding-bottom: 2rem;
@@ -1321,7 +1528,7 @@ body.light .tortara-dialogue-section {
 }
 
 body.dark-mode .site-footer {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-dark);
 }
 
 .footer-container {
@@ -1346,7 +1553,8 @@ body.dark-mode .site-footer {
 
 .footer-logo {
     margin-bottom: 1rem;
-    color: #f2b90d;
+    color: var(--primary);
+    filter: drop-shadow(0 0 15px var(--primary-glow));
 }
 
 .footer-logo .material-symbols-outlined {
@@ -1354,19 +1562,24 @@ body.dark-mode .site-footer {
 }
 
 .footer-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    background: linear-gradient(135deg, #ffffff 0%, var(--primary) 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     text-align: center;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
 }
 
 .footer-divider {
-    height: 0.25rem;
-    width: 3rem;
-    background-color: #f2b90d;
-    margin-top: 1rem;
-    border-radius: 9999px;
+    height: 1px;
+    width: 200px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    margin-top: 1.5rem;
+    box-shadow: 0 0 10px var(--primary-glow);
 }
 
 .footer-grid {
@@ -1455,7 +1668,7 @@ body.light .social-btn {
 body.light .social-links a:hover,
 body.light .social-btn:hover {
     background-color: rgba(236, 182, 19, 0.15);
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 
@@ -1464,13 +1677,13 @@ body.light .social-btn:hover {
 body.dark .social-links a,
 body.dark .social-btn {
     background-color: rgba(255, 255, 255, 0.05);
-    color: var(--text-primary);
+    color: var(--text-white);
 }
 
 body.dark .social-links a:hover,
 body.dark .social-btn:hover {
     background-color: rgba(236, 182, 19, 0.2);
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 
@@ -1597,7 +1810,6 @@ body.dark-mode .language-toggle button:not(.active) {
     letter-spacing: 0.1em;
     margin-top: 0.5rem;
 }
-
 
 /* ============================================
    ANIMATIONS

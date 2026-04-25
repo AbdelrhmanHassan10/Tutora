@@ -5,9 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. HOME-SPECIFIC LOGIC
     // ============================================
 
-    // Note: Global Auth and Theme is handled by global-core.js
-    // If you need to add home-specific logic, do it here.
-
     // --- Mobile Menu ---
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
@@ -33,23 +30,32 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             const dropdownItems = toggle.nextElementSibling;
             if (dropdownItems) {
-                toggle.classList.toggle('active'); // Rotates arrow and changes color
+                toggle.classList.toggle('active');
                 dropdownItems.classList.toggle('show');
             }
         });
     });
 
+    // --- Hover Dropdowns (Desktop) ---
     document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
         dropdown.addEventListener('mouseenter', () => {
             const menu = dropdown.querySelector('.dropdown-menu');
-            if (menu) menu.style.opacity = '1';
+            if (menu) {
+                menu.style.opacity = '1';
+                menu.style.visibility = 'visible';
+                menu.style.transform = 'translateY(0) scale(1)';
+            }
         });
         dropdown.addEventListener('mouseleave', () => {
             const menu = dropdown.querySelector('.dropdown-menu');
-            if (menu) menu.style.opacity = '0';
+            if (menu) {
+                menu.style.opacity = '0';
+                menu.style.visibility = 'hidden';
+                menu.style.transform = 'translateY(-20px) scale(0.9)';
+            }
         });
     });
-    
+
     const directionsBtn = document.querySelector('.btn-directions');
     if (directionsBtn) {
         directionsBtn.addEventListener('click', () => {
@@ -57,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Hero Background Slider with Manual Controls ---
+    // --- Hero Background Slider ---
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.getElementById('prevSlide');
     const nextBtn = document.getElementById('nextSlide');
@@ -76,40 +82,26 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(slideInterval);
             slideInterval = setInterval(() => {
                 showSlide(currentSlide + 1);
-            }, 5000); // 5s cycle for a cinematic feel
+            }, 5000);
         };
 
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                showSlide(currentSlide - 1);
-                startSlider(); // Restart interval on interaction
-            });
-        }
+        if (prevBtn) prevBtn.addEventListener('click', () => { showSlide(currentSlide - 1); startSlider(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { showSlide(currentSlide + 1); startSlider(); });
 
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                showSlide(currentSlide + 1);
-                startSlider(); // Restart interval on interaction
-            });
-        }
-
-        startSlider(); // Initial start
+        startSlider();
     }
 
     // ============================================
-    // 2. DYNAMIC API INTEGRATION (Artifact of the Day & Events)
+    // 2. DYNAMIC API INTEGRATION
     // ============================================
 
-    // Fetch and display Artifact of the Day
     async function fetchArtifactOfTheDay() {
         try {
             const res = await fetch(`${API_URL}/artifacts`);
             if (res.ok) {
                 const artifacts = await res.json();
                 if (artifacts && artifacts.length > 0) {
-                    // Pick a random artifact for "Artifact of the Day"
                     const randomArtifact = artifacts[Math.floor(Math.random() * artifacts.length)];
-                    
                     const curatorPanel = document.querySelector('.curator-panel');
                     if (curatorPanel) {
                         const curatorImg = curatorPanel.querySelector('.curator-image');
@@ -117,32 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         const artifactDesc = curatorPanel.querySelector('.artifact-desc');
                         const exploreBtn = curatorPanel.querySelector('a[href*="advanced-3D.html"]');
 
-                        if (curatorImg && randomArtifact.imageUrl) {
-                            curatorImg.style.backgroundImage = `url('${randomArtifact.imageUrl}')`;
-                        }
-                        if (highlightTitle) {
-                            highlightTitle.textContent = randomArtifact.name;
-                        }
-                        if (artifactDesc) {
-                            artifactDesc.textContent = randomArtifact.description || `Experience the legacy of the ${randomArtifact.era || 'ancient'} era.`;
-                        }
+                        if (curatorImg && randomArtifact.imageUrl) curatorImg.style.backgroundImage = `url('${randomArtifact.imageUrl}')`;
+                        if (highlightTitle) highlightTitle.textContent = randomArtifact.name;
+                        if (artifactDesc) artifactDesc.textContent = randomArtifact.description || `Experience the legacy of the ${randomArtifact.era || 'ancient'} era.`;
                         if (exploreBtn && randomArtifact._id) {
                             exploreBtn.href = `../Artifact-show/Artifact-show.html?id=${randomArtifact._id}`;
-                            // Change text to reflect that we are viewing the artifact 
-                            const btnInner = exploreBtn.querySelector('.btn-action-gold');
-                            if(btnInner) {
-                                btnInner.innerHTML = `Explore Artifact <span class="material-symbols-outlined">arrow_forward</span>`;
-                            }
                         }
                     }
                 }
             }
-        } catch (error) {
-            console.error('Error fetching artifacts:', error);
-        }
+        } catch (error) { console.error('Error fetching artifacts:', error); }
     }
 
-    // Fetch and display Events
     async function fetchEvents() {
         try {
             const res = await fetch(`${API_URL}/events`);
@@ -151,24 +129,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (events && events.length > 0) {
                     const eventsGrid = document.querySelector('.events-grid');
                     if (eventsGrid) {
-                        // Take up to 3 upcoming events alphabetically or just first 3
                         const upcomingEvents = events.slice(0, 3);
-                        eventsGrid.innerHTML = ''; // Clear static events
-
+                        eventsGrid.innerHTML = '';
                         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
                         upcomingEvents.forEach(evt => {
                             const dateObj = new Date(evt.date);
                             const monthStr = months[dateObj.getMonth()] || 'TBD';
                             let dayStr = dateObj.getDate() ? String(dateObj.getDate()).padStart(2, '0') : '--';
-                            if (isNaN(dateObj.getTime())) {
-                                dayStr = '--';
-                            }
-
+                            
                             const eventCard = document.createElement('div');
                             eventCard.className = 'event-card';
-                            
-                            // Truncate description mapping to static HTML structure
                             const shortDesc = evt.description ? (evt.description.length > 80 ? evt.description.substring(0, 80) + '...' : evt.description) : '';
                             
                             eventCard.innerHTML = `
@@ -178,26 +149,120 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p>${shortDesc}</p>
                                 </div>
                             `;
-                            
-                            // Optional: Make the event card clickable to navigate to the event page
-                            eventCard.style.cursor = 'pointer';
-                            eventCard.addEventListener('click', () => {
-                                window.location.href = '../event/event.html';
-                            });
-
+                            eventCard.addEventListener('click', () => { window.location.href = '../event/event.html'; });
                             eventsGrid.appendChild(eventCard);
                         });
                     }
                 }
             }
-        } catch (error) {
-            console.error('Error fetching events:', error);
-        }
+        } catch (error) { console.error('Error fetching events:', error); }
     }
 
     fetchArtifactOfTheDay();
     fetchEvents();
 
-    console.log('✓ Home Logic Loaded');
-});
+    // ============================================
+    // 3. ROYAL INTERACTIVE EFFECTS
+    // ============================================
 
+    const dustContainer = document.getElementById('dust-container');
+    const shapesContainer = document.getElementById('shapes-container');
+    const cursorGlow = document.getElementById('cursorGlow');
+
+    const createAtmosphere = () => {
+        if (!dustContainer || !shapesContainer) return;
+        
+        // Royal Dust (150 particles)
+        for (let i = 0; i < 150; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            dust.style.cssText = `
+                position: absolute;
+                background: rgba(236, 182, 19, 0.4);
+                border-radius: 50%;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                opacity: ${Math.random() * 0.4 + 0.1};
+                animation: float ${Math.random() * 15 + 15}s infinite linear;
+                animation-delay: ${Math.random() * -15}s;
+            `;
+            dustContainer.appendChild(dust);
+        }
+
+        // Shapes
+        for (let i = 0; i < 12; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.style.cssText = `
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                border: 1px solid rgba(236, 182, 19, 0.1);
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                transform: rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.5 + 0.5});
+                animation: rotateFloat ${Math.random() * 20 + 20}s infinite linear;
+                animation-delay: ${Math.random() * -20}s;
+            `;
+            shapesContainer.appendChild(shape);
+        }
+    };
+
+    const initHeroParallax = () => {
+        const hero = document.querySelector('.hero');
+        const heroContent = document.querySelector('.hero-content');
+        if (!hero || !heroContent) return;
+
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            
+            heroContent.style.transform = `rotateY(${x * 20}deg) rotateX(${y * -20}deg) translateZ(30px)`;
+            
+            if (cursorGlow) {
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+                cursorGlow.style.opacity = '1';
+            }
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            heroContent.style.transform = 'rotateY(0) rotateX(0) translateZ(0)';
+            if (cursorGlow) cursorGlow.style.opacity = '0';
+        });
+    };
+
+    const initScrollReveal = () => {
+        const reveals = document.querySelectorAll('section, .tour-card, .event-card, .amenity-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active-reveal');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+        });
+    };
+
+    // Initialize All
+    createAtmosphere();
+    initHeroParallax();
+    initScrollReveal();
+
+    // Header Scroll Effect
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+    });
+
+    console.log('✓ Home System Restored & Optimized');
+});

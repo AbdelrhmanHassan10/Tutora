@@ -1,48 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // 1. Navigation and Sidebar Toggle (Royal Superstar Sync)
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuOverlay = document.getElementById('menuOverlay');
 
-    // Open mobile menu
     const openMenu = () => {
-        if (mobileMenu) mobileMenu.classList.add('open');
-        if (menuOverlay) menuOverlay.classList.add('open');
+        if (mobileMenu) mobileMenu.classList.add('active');
+        if (menuOverlay) menuOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     };
 
     const closeMenu = () => {
-        if (mobileMenu) mobileMenu.classList.remove('open');
-        if (menuOverlay) menuOverlay.classList.remove('open');
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
         document.body.style.overflow = '';
     };
 
-    menuBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-    menuOverlay.addEventListener('click', closeMenu);
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
-    document.querySelectorAll('.menu-link').forEach(link => {
-        if (!link.classList.contains('dropdown-toggle')) {
-            link.addEventListener('click', closeMenu);
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-    });
-
-    // ============================================
-    // MOBILE DROPDOWN TOGGLE
-    // ============================================
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
+    // Dropdown Toggle for Mobile Menu
+    const dropdownToggle = document.querySelector('.mobile-menu .dropdown-toggle');
+    const dropdownItems = document.querySelector('.mobile-menu .dropdown-items');
+    
+    if (dropdownToggle && dropdownItems) {
+        dropdownToggle.addEventListener('click', (e) => {
             e.preventDefault();
-            toggle.classList.toggle('active');
-            const items = toggle.nextElementSibling;
-            items.classList.toggle('active');
+            dropdownToggle.classList.toggle('active');
+            dropdownItems.classList.toggle('show');
+            
+            // Toggle icon
+            const icon = dropdownToggle.querySelector('.material-symbols-outlined');
+            if (icon) {
+                icon.textContent = dropdownItems.classList.contains('show') ? 'expand_less' : 'expand_more';
+            }
         });
-    });
+    }
+
+    // Close menu when clicking links
+    if (mobileMenu) {
+        mobileMenu.querySelectorAll('.menu-link, .dropdown-item').forEach(link => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                link.addEventListener('click', closeMenu);
+            }
+        });
+    }
 
     // ============================================
     // DARK MODE TOGGLE
@@ -155,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // API requires authentication
         if (!token) {
             removeTypingIndicator();
-            addMessage("🔐 You need to be logged in to chat with Tortara. Please <a href='../2.login/code.html' style='color:#ecb613;'>sign in</a> to continue.", 'ai');
+            addMessage("🔐 You need to be logged in to chat with Tutora. Please <a href='../2.login/code.html' style='color:#ecb613;'>sign in</a> to continue.", 'ai');
             return;
         }
 
@@ -219,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="chat-msg-container ai-msg">
                     <div class="chat-msg-avatar"><img src="../logo.png" alt="AI"></div>
                     <div class="chat-msg-bubble">
-                        <p>Welcome to the Grand Egyptian Museum! 🏛️ I'm Tortara, your AI guide. Ask me about pharaohs, artifacts, dynasties, or plan your visit.</p>
+                        <p>Welcome to the Grand Egyptian Museum! 🏛️ I'm Tutora, your AI guide. Ask me about pharaohs, artifacts, dynasties, or plan your visit.</p>
                         <span class="chat-msg-time">${getTime()}</span>
                     </div>
                 </div>
@@ -308,5 +313,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
 
     countElements.forEach(el => countObserver.observe(el));
+
+    // ============================================
+    // ROYAL ATMOSPHERE (Dust & Shapes)
+    // ============================================
+    const dustContainer = document.getElementById('dust-container');
+    const shapesContainer = document.getElementById('shapes-container');
+
+    const createAtmosphere = () => {
+        if (!dustContainer || !shapesContainer) return;
+        
+        // Royal Dust (150 particles)
+        for (let i = 0; i < 150; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            dust.style.cssText = `
+                position: absolute;
+                background: rgba(212, 175, 55, 0.4);
+                border-radius: 50%;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                opacity: ${Math.random() * 0.4 + 0.1};
+                animation: float ${Math.random() * 15 + 15}s infinite linear;
+                animation-delay: ${Math.random() * -15}s;
+            `;
+            dustContainer.appendChild(dust);
+        }
+
+        // Royal Shapes (12 rotating icons)
+        for (let i = 0; i < 12; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.style.cssText = `
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                border: 1px solid rgba(212, 175, 55, 0.1);
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                transform: rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.5 + 0.5});
+                animation: rotateFloat ${Math.random() * 20 + 20}s infinite linear;
+                animation-delay: ${Math.random() * -20}s;
+            `;
+            shapesContainer.appendChild(shape);
+        }
+    };
+
+    createAtmosphere();
+
+    console.log('✓ Chat System Restored & Atmosphericized');
 });
 

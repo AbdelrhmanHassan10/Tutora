@@ -1,377 +1,214 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Management (Handled by global-core.js)
-    
-    // 2. Professional Mobile Menu Logic
-    const menuTrigger = document.querySelector('.menu-btn');
-    const navOverlay = document.querySelector('.mobile-nav-overlay');
-const mobileMenu = document.getElementById('mobileMenu');
-    const menuIcon = menuTrigger?.querySelector('.material-symbols-outlined');
-    
-    let isMenuOpen = false;
+/**
+ * Kids Museum - Royal Superstar Logic
+ * Combined Atmosphere, 3D Effects, and Interactions
+ */
 
-    if (menuTrigger) {
-        menuTrigger.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            
-            if (isMenuOpen) {
-navOverlay.classList.add('active');
-mobileMenu.classList.add('active');                if (menuIcon) menuIcon.textContent = 'close';
-                document.body.style.overflow = 'hidden';
-                
-                // Staggered animation for menu items
-                const items = document.querySelectorAll('.mobile-nav-item');
-                items.forEach((item, index) => {
-                    item.style.transitionDelay = `${0.1 * (index + 1)}s`;
-                });
-            } else {
-            navOverlay.classList.remove('active');
-            mobileMenu.classList.remove('active');       
-                if (menuIcon) menuIcon.textContent = 'menu';
-                document.body.style.overflow = '';
-            }
-        });
-    }
+const DIVINE_MESSAGES = [
+    "Welcome, young protector of history!",
+    "Are you ready to solve the Pharaoh's puzzles?",
+    "Every artifact has a story. Let's find yours!",
+    "The Oracle watches over your explorer journey."
+];
 
-    // Close menu on link click
-    document.querySelectorAll('.menu-link').forEach(link => {
-        link.addEventListener('click', () => {
-            isMenuOpen = false;
-            navOverlay.classList.remove('active');
-            mobileMenu.classList.remove('active');       
-            if (menuIcon) menuIcon.textContent = 'menu';
-            document.body.style.overflow = '';
-        });
-    });
-if (navOverlay) {
-    navOverlay.addEventListener('click', () => {
-        isMenuOpen = false;
-        navOverlay.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        if (menuIcon) menuIcon.textContent = 'menu';
-        document.body.style.overflow = '';
-    });
-}const closeBtn = document.getElementById('closeBtn');
-
-if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-        isMenuOpen = false;
-        navOverlay.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        if (menuIcon) menuIcon.textContent = 'menu';
-        document.body.style.overflow = '';
-    });
-}
-    // 3. Scroll Reveal Animation
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.mission-card, .fact-card, .hero-text, .hero-visual').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-        revealObserver.observe(el);
-    });
-
-    // 4. Interactive Mission Cards
-    document.querySelectorAll('.btn-mission').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const card = e.target.closest('.mission-card');
-            const missionName = card.querySelector('.mission-name').textContent;
-            
-            btn.innerHTML = '<span class="material-symbols-outlined">sync</span> Loading...';
-            btn.style.pointerEvents = 'none';
-            
-            setTimeout(() => {
-                btn.innerHTML = 'Start Mission';
-                btn.style.pointerEvents = 'auto';
-                alert(`Ready to start "${missionName}"? Let's go, Explorer!`);
-            }, 1500);
-        });
-    });
-
-    // 5. Floating Badge Interaction
-    const badge = document.querySelector('.badge-pill');
-    if (badge) {
-        badge.addEventListener('click', () => {
-            alert('You have 3 badges! Keep exploring to unlock the Golden Sarcophagus!');
-        });
-    }
-
-    // 6. Smooth Scroll for Nav Links
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (link.getAttribute('href').startsWith('#')) {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-    });
-
-    // 7. Dynamic API Integration - Kid-Friendly Artifacts
-    async function fetchKidsArtifacts() {
-        const container = document.getElementById('dynamic-artifacts-container');
-        if (!container) return;
-
-        try {
-            const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
-            const res = await fetch(`${API_URL}/artifacts`);
-            
-            if (res.ok) {
-                const data = await res.json();
-                let artifacts = Array.isArray(data) ? data : (data.artifacts || data.data || []);
-                
-                // Programmatic Filtering setup
-                // Filter logic: any artifact with `targetAudience` == 'kids', `isKidFriendly` == true, or explicitly tagged.
-                // Alternatively, we fallback to all artifacts if no explicit tagging exists to show functionality.
-                let filteredArtifacts = artifacts.filter(art => {
-                    if (art.isKidFriendly) return true;
-                    if (art.targetAudience && art.targetAudience.toLowerCase().includes('kid')) return true;
-                    // Fallback keyword search in description/title for demonstration
-                    const text = ((art.title || art.name || '') + ' ' + (art.description || '')).toLowerCase();
-                    return text.includes('kid') || text.includes('child') || text.includes('interactive') || text.includes('toy');
-                });
-
-                // For testing/demonstration, if the backend doesn't have filtered ones, just take a few
-                if (filteredArtifacts.length === 0 && artifacts.length > 0) {
-                    filteredArtifacts = artifacts.slice(0, 3);
-                }
-
-                if (filteredArtifacts.length > 0) {
-                    container.innerHTML = '';
-                    filteredArtifacts.forEach(artifact => {
-                        const img = artifact.image || artifact.imageUrl || '../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg';
-                        const title = artifact.title || artifact.name || 'Unknown Artifact';
-                        const desc = artifact.description || '';
-                        
-                        const card = document.createElement('div');
-                        card.className = 'fact-card';
-                        card.style.flex = '0 0 auto';
-                        card.style.width = '300px';
-                        
-                        card.innerHTML = `
-                            <div class="fact-icon-box" style="padding: 0; overflow: hidden; height: 150px; background: transparent;">
-                                <img src="${img}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover;">
-                            </div>
-                            <h4 class="fact-title" style="margin-top: 15px;">${title}</h4>
-                            <p class="fact-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                ${desc}
-                            </p>
-                            <div class="fact-footer">
-                                <span class="fact-topic" style="color: #ecb613;">Explore</span>
-                                <a href="../Artifact-show/code.html?id=${artifact.id || artifact._id}" style="color: white; text-decoration: none;">
-                                    <span class="material-symbols-outlined" style="cursor: pointer;">arrow_forward</span>
-                                </a>
-                            </div>
-                        `;
-                        container.appendChild(card);
-                    });
-                } else {
-                    container.innerHTML = '<p style="color: #94A3B8; text-align: center; width: 100%;">No interactive artifacts found at the moment! Check back later.</p>';
-                }
-            } else {
-                throw new Error('API request failed');
-            }
-        } catch (error) {
-            console.error('Error fetching kids artifacts:', error);
-            container.innerHTML = '<p style="color: #94A3B8; text-align: center; width: 100%;">Failed to load interactive artifacts.</p>';
-        }
-    }
-
-    fetchKidsArtifacts();
-});
-// ========== FACTS CAROUSEL FUNCTIONALITY ==========
-const factsContainer = document.getElementById('facts-container');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const progressFill = document.getElementById('progress-fill');
-const currentCardSpan = document.getElementById('current-card');
-const totalCardsSpan = document.getElementById('total-cards');
-
-// Configuration
-const cardWidth = 300; // Card width + gap
-const scrollAmount = cardWidth + 24; // Card width + gap (1.5rem = 24px)
-let currentPosition = 0;
-
-// Get total number of cards
-const totalCards = document.querySelectorAll('.fact-card').length;
-totalCardsSpan.textContent = totalCards;
-
-// Initialize progress
-updateProgress();
-
-// ========== SCROLL FUNCTIONS ==========
-function scrollPrev() {
-    if (currentPosition > 0) {
-        currentPosition -= scrollAmount;
-        factsContainer.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
-        updateProgress();
-    }
-}
-
-function scrollNext() {
-    const maxScroll = factsContainer.scrollWidth - factsContainer.clientWidth;
-    if (currentPosition < maxScroll) {
-        currentPosition += scrollAmount;
-        factsContainer.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-        updateProgress();
-    }
-}
-
-// ========== BUTTON EVENT LISTENERS ==========
-prevBtn.addEventListener('click', scrollPrev);
-nextBtn.addEventListener('click', scrollNext);
-
-// ========== UPDATE PROGRESS INDICATOR ==========
-function updateProgress() {
-    const scrollLeft = factsContainer.scrollLeft;
-    const scrollWidth = factsContainer.scrollWidth;
-    const clientWidth = factsContainer.clientWidth;
-    
-    // Calculate current card position
-    const cardIndex = Math.round(scrollLeft / scrollAmount) + 1;
-    const clampedIndex = Math.min(cardIndex, totalCards);
-    
-    currentCardSpan.textContent = clampedIndex;
-    
-    // Calculate progress percentage
-    const maxScroll = scrollWidth - clientWidth;
-    const progressPercent = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
-    progressFill.style.width = progressPercent + '%';
-    
-    // Update button states
-    updateButtonStates(scrollLeft, maxScroll);
-}
-
-function updateButtonStates(scrollLeft, maxScroll) {
-    const isAtStart = scrollLeft <= 10;
-    const isAtEnd = scrollLeft >= maxScroll - 10;
-    
-    // Disable prev button at start
-    if (isAtStart) {
-        prevBtn.classList.add('disabled');
-        prevBtn.style.opacity = '0.5';
-        prevBtn.style.cursor = 'not-allowed';
-    } else {
-        prevBtn.classList.remove('disabled');
-        prevBtn.style.opacity = '1';
-        prevBtn.style.cursor = 'pointer';
-    }
-    
-    // Disable next button at end
-    if (isAtEnd) {
-        nextBtn.classList.add('disabled');
-        nextBtn.style.opacity = '0.5';
-        nextBtn.style.cursor = 'not-allowed';
-    } else {
-        nextBtn.classList.remove('disabled');
-        nextBtn.style.opacity = '1';
-        nextBtn.style.cursor = 'pointer';
-    }
-}
-
-// ========== SCROLL EVENT LISTENER ==========
-factsContainer.addEventListener('scroll', updateProgress);
-window.addEventListener('resize', () => {
-    updateProgress();
-});
-
-// ========== KEYBOARD NAVIGATION ==========
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-        scrollPrev();
-    } else if (e.key === 'ArrowRight') {
-        scrollNext();
-    }
-});
-
-// ========== TOUCH/SWIPE SUPPORT ==========
-let touchStartX = 0;
-let touchEndX = 0;
-
-factsContainer.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-}, false);
-
-factsContainer.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-}, false);
-
-function handleSwipe() {
-    const swipeThreshold = 50; // Minimum distance for swipe
-    const difference = touchStartX - touchEndX;
-    
-    if (Math.abs(difference) > swipeThreshold) {
-        if (difference > 0) {
-            // Swiped left - scroll right
-            scrollNext();
-        } else {
-            // Swiped right - scroll left
-            scrollPrev();
-        }
-    }
-}
-
-// ========== BOOKMARK FUNCTIONALITY ==========
-document.querySelectorAll('.fact-footer .material-symbols-outlined').forEach((bookmark) => {
-    bookmark.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.style.color = this.style.color === 'rgb(255, 215, 0)' ? 'var(--accent-gold)' : '#FFD700';
-        this.textContent = this.textContent === 'bookmark' ? 'bookmark_added' : 'bookmark';
+class RoyalKidsAtmosphere {
+    constructor() {
+        this.scrollProgress = document.getElementById('scrollProgress');
+        this.dustContainer = document.getElementById('dust-container');
+        this.shapesContainer = document.getElementById('shapes-container');
+        this.divineGreeting = document.getElementById('divineGreeting');
+        this.cursorGlow = document.getElementById('cursorGlow');
+        this.heroParallax = document.getElementById('heroStatic');
+        this.revealSections = document.querySelectorAll('.reveal-section');
         
-        // Add animation
-        this.style.animation = 'none';
-        setTimeout(() => {
-            this.style.animation = 'pulse 0.3s ease-out';
-        }, 10);
-    });
-});
+        this.factsContainer = document.getElementById('facts-container');
+        this.prevBtn = document.getElementById('prev-btn');
+        this.nextBtn = document.getElementById('next-btn');
+        this.currentCardSpan = document.getElementById('current-card');
+        this.totalCardsSpan = document.getElementById('total-cards');
+        this.progressFill = document.getElementById('progress-fill');
+        this.currentIndex = 0;
+        this.autoPlayInterval = null;
 
-// ========== SMOOTH SCROLL INITIALIZATION ==========
-window.addEventListener('load', () => {
-    updateProgress();
-});
+        this.init();
+    }
 
-// ========== CARD INTERACTION EFFECTS ==========
-document.querySelectorAll('.fact-card').forEach((card) => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-6px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
+    init() {
+        this.initScrollProgress();
+        this.initAtmosphere();
+        this.initTypewriter();
+        this.initCursorGlow();
+        this.initScrollReveal();
+        this.initFAQ();
+        this.initCarousel();
+        this.initMobileMenu();
+        this.initThemeToggle();
+        this.initLanguageToggle();
+    }
 
-// ========== ACCESSIBILITY IMPROVEMENTS ==========
-prevBtn.setAttribute('aria-label', 'Previous facts');
-nextBtn.setAttribute('aria-label', 'Next facts');
-factsContainer.setAttribute('role', 'region');
-factsContainer.setAttribute('aria-label', 'Facts carousel');
+    initScrollProgress() {
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            if (this.scrollProgress) this.scrollProgress.style.width = scrolled + "%";
+        });
+    }
 
-// ========== CONSOLE LOG ==========
-console.log('Facts carousel initialized with ' + totalCards + ' cards');
-console.log('Use arrow keys to navigate or click the buttons');
- 
+    initAtmosphere() {
+        if (this.dustContainer) for (let i = 0; i < 80; i++) this.createParticle('dust');
+        if (this.shapesContainer) for (let i = 0; i < 20; i++) this.createParticle('shape');
+    }
+
+    createParticle(type) {
+        const p = document.createElement('div');
+        p.className = type === 'dust' ? 'dust' : 'divine-shape';
+        
+        const startX = Math.random() * 100;
+        const startY = Math.random() * 100;
+        const moveX = (Math.random() - 0.5) * 300;
+        const moveY = (Math.random() - 0.5) * 300;
+        const duration = Math.random() * 15 + 10;
+        const delay = Math.random() * 10;
+
+        p.style.left = startX + '%';
+        p.style.top = startY + '%';
+        p.style.setProperty('--moveX', moveX + 'px');
+        p.style.setProperty('--moveY', moveY + 'px');
+        p.style.animationDuration = duration + 's';
+        p.style.animationDelay = delay + 's';
+
+        if (type === 'dust') {
+            const size = Math.random() * 4 + 2;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            this.dustContainer.appendChild(p);
+        } else {
+            this.shapesContainer.appendChild(p);
+        }
+    }
+
+    async initTypewriter() {
+        if (!this.divineGreeting) return;
+        let index = 0;
+        while (true) {
+            const msg = DIVINE_MESSAGES[index];
+            for (let char of msg) {
+                this.divineGreeting.textContent += char;
+                await new Promise(r => setTimeout(r, 50));
+            }
+            await new Promise(r => setTimeout(r, 3000));
+            while (this.divineGreeting.textContent.length > 0) {
+                this.divineGreeting.textContent = this.divineGreeting.textContent.slice(0, -1);
+                await new Promise(r => setTimeout(r, 30));
+            }
+            index = (index + 1) % DIVINE_MESSAGES.length;
+        }
+    }
+
+    initCursorGlow() {
+        if (!this.cursorGlow) return;
+        window.addEventListener('mousemove', (e) => {
+            this.cursorGlow.style.transform = 'translate(' + (e.clientX - 200) + 'px, ' + (e.clientY - 200) + 'px)';
+        });
+    }
+
+    initScrollReveal() {
+        const obs = new IntersectionObserver((es) => {
+            es.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('revealed');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        this.revealSections.forEach(s => obs.observe(s));
+    }
+
+    initFAQ() {
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const active = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!active) item.classList.add('active');
+            });
+        });
+    }
+
+    initCarousel() {
+        if (!this.factsContainer) return;
+        const cards = this.factsContainer.querySelectorAll('.fact-card');
+        if (this.totalCardsSpan) this.totalCardsSpan.textContent = cards.length;
+
+        const updateCarousel = () => {
+            const cardWidth = cards[0].offsetWidth + 20;
+            this.factsContainer.scrollTo({ left: this.currentIndex * cardWidth, behavior: 'smooth' });
+            if (this.currentCardSpan) this.currentCardSpan.textContent = this.currentIndex + 1;
+            if (this.progressFill) this.progressFill.style.width = ((this.currentIndex + 1) / cards.length) * 100 + '%';
+        };
+
+        this.nextBtn?.addEventListener('click', () => {
+            this.currentIndex = (this.currentIndex + 1) % cards.length;
+            updateCarousel();
+            this.resetAutoPlay();
+        });
+
+        this.prevBtn?.addEventListener('click', () => {
+            this.currentIndex = (this.currentIndex - 1 + cards.length) % cards.length;
+            updateCarousel();
+            this.resetAutoPlay();
+        });
+
+        this.startAutoPlay(cards.length);
+    }
+
+    startAutoPlay(len) {
+        if (len <= 1) return;
+        this.autoPlayInterval = setInterval(() => {
+            this.currentIndex = (this.currentIndex + 1) % len;
+            const cardWidth = this.factsContainer.querySelectorAll('.fact-card')[0].offsetWidth + 20;
+            this.factsContainer.scrollTo({ left: this.currentIndex * cardWidth, behavior: 'smooth' });
+            if (this.currentCardSpan) this.currentCardSpan.textContent = this.currentIndex + 1;
+            if (this.progressFill) this.progressFill.style.width = ((this.currentIndex + 1) / len) * 100 + '%';
+        }, 5000);
+    }
+
+    resetAutoPlay() {
+        clearInterval(this.autoPlayInterval);
+        const cards = this.factsContainer.querySelectorAll('.fact-card');
+        this.startAutoPlay(cards.length);
+    }
+
+    initMobileMenu() {
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('menuOverlay');
+        const toggle = (s) => {
+            if (mobileMenu) mobileMenu.classList.toggle('active', s);
+            if (overlay) overlay.classList.toggle('active', s);
+            document.body.style.overflow = s ? 'hidden' : '';
+        };
+        menuBtn?.addEventListener('click', () => toggle(true));
+        closeBtn?.addEventListener('click', () => toggle(false));
+        overlay?.addEventListener('click', () => toggle(false));
+    }
+
+    initThemeToggle() {
+        const toggle = document.getElementById('themeBtn');
+        toggle?.addEventListener('click', () => {
+            document.body.classList.toggle('light');
+        });
+    }
+
+    initLanguageToggle() {
+        document.querySelectorAll('.language-toggle button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.language-toggle button').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    }
+}
+
+window.addEventListener('load', () => { new RoyalKidsAtmosphere(); });

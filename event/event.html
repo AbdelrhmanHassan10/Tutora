@@ -14,20 +14,24 @@
                                 <link rel="stylesheet" href="../animate.css" />
                             	<link rel="stylesheet" href="../global-theme.css" />
                             </head>
-                            
+
+<body class="dark">
+    <!-- Royal Superstar Atmosphere -->
+    <div id="dust-container"></div>
+    <div id="shapes-container"></div>
+    <div id="scrollProgress"></div>
+                             
                                 <!-- Overlay for Mobile Menu -->
                                 <div class="menu-overlay" id="menuOverlay"></div>
                             
                                 <div class="mobile-menu" id="mobileMenu">
                                     <div class="menu-header">
-                                        <div class="menu-logo">
-                                
-                                <div class="logo-circle">
-                                    <img src="../logo.png" alt="Tutora Logo">
-                                </div>
-                            
-                                <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
-                                        </div>
+                                                 <div class="logo-section">
+                                                     <div class="logo-circle">
+                                                         <img src="../logo.png" alt="Tutora Logo">
+                                                     </div>
+                                                     <h2 class="logo-text">TUTORA</h2>
+                                                 </div>
                                         <button class="close-btn" id="closeBtn">
                                           <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
                                         </button>
@@ -36,10 +40,8 @@
                                     <nav class="menu-nav">
                                         <a href="../4.home/code.html" class="menu-link">Home</a>
                                         <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-                                        <a href="../Kids-Museum/kids-museum.html" class="menu-link" >Kids-Museum</a>
-                            
-                                    <a href="../event/event.html" class="menu-link">Event</a>
-                            
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+            <a href="../event/event.html" class="menu-link active">Event</a>
                                         <div class="menu-dropdown">
                                             <button class="menu-link dropdown-toggle">
                                          AI Experience
@@ -63,7 +65,7 @@
                                     </nav>
                             
                                     <div class="menu-footer">
-                                        <a href="../booking/booking.html" class="menu-booking-btn" style="background-color: #ecb613;">Book now</a>
+                                        <a href="../booking/booking.html" class="menu-booking-btn">Book now</a>
                                         <a href="../fav/favourite.html" class="menu-icon-link">
                                             <span class="material-symbols-outlined">favorite</span> Favorites
                                         </a>
@@ -87,8 +89,7 @@
                                 <div class="logo-circle">
                                     <img src="../logo.png" alt="Tutora Logo">
                                 </div>
-                            
-                                <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
+                                                                                <h2 class="logo-text">TUTORA</h2>
                                               </div>
                                             </div>
                             
@@ -137,20 +138,12 @@
                                          <span class="material-symbols-outlined" 
                                            >dark_mode</span>
                                        </button>
-                                       <a
-                                         href="../booking/booking.html"
-                                         class="btn-booking"
-                                         style="color: black; background-color: #ecb613"
-                                         >booking</a>
-                                       <a href="../fav/favourite.html" style="text-decoration: none">
-                                         <button class="icon-btn">
-                                           <span class="material-symbols-outlined" 
-                                             >favorite</span>
-                                         </button>
+                                       <a href="../booking/booking.html" class="btn-booking">booking</a>
+                                       <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;">
+                                           <span class="material-symbols-outlined">favorite</span>
                                        </a>
-                                                         <button class="icon-btn" id="langBtn">
-                                         <span class="material-symbols-outlined" 
-                                           >language</span>
+                                       <button class="icon-btn" id="langBtn">
+                                         <span class="material-symbols-outlined">language</span>
                                        </button>
                                                          <a href="../Profile/profile.html">
                                                              <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
@@ -170,7 +163,7 @@
                                                      Experience the golden age of the pharaohs in our newest immersive exhibition. Discover over 5,000 treasures from the Boy King's tomb.
                                                  </p>
                                                  <div class="hero-actions">
-                                                     <a href="../booking/booking.html" style="background-color: #f2d00d;color: #000000;padding: 0.75rem 2rem;border-radius: 0.5rem;font-weight: 700;text-decoration: none;display: flex;align-items: center;gap: 0.5rem;">
+                                                     <a href="../booking/booking.html" class="btn-primary">
                                                          <span class="material-symbols-outlined">confirmation_number</span> Book Tickets Now
                                                      </a>
                                                      <a href="#" class="btn-outline">Learn More</a>
@@ -389,26 +382,28 @@
                                                      </div>
                                                  </div>
                                              </div>
-                                             <!-- New Event Card -->
                                              <div class="event-card">
                                                  <div class="card-image-wrapper">
-                                                     <div class="badge-selling" style="background: linear-gradient(45deg, #8b5cf6, #6d28d9); animation: none; box-shadow: 0 4px 10px rgba(139,92,246,0.4);">Exclusive</div>
+                                                     <div class="badge-selling" style="background: linear-gradient(45deg, #8b5cf6, #6d28d9); box-shadow: 0 4px 10px rgba(139,92,246,0.4);">Exclusive</div>
+                                                     <button class="btn-favorite">
+                                                       <span class="material-symbols-outlined">favorite</span>
+                                                     </button>
                                                      <div class="card-image" style="background-image: url('../8.jpg')"></div>
                                                  </div>
                                                  <div class="card-body">
                                                      <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1.1rem">calendar_month</span> Every Friday
+                                                         <span class="material-symbols-outlined">calendar_month</span> Every Friday
                                                      </div>
                                                      <h3 class="event-title">The Grand Discovery Tour</h3>
                                                      <p class="event-desc">
                                                          Join our expert archaeologists on an exclusive behind-the-scenes look at newly excavated pharaonic treasures.
                                                      </p>
                                                      <div class="card-footer">
-                                                         <span class="event-location" style="display: flex; align-items: center; gap: 4px; color: #b3b3b3; font-size: 0.9rem;">
-                                                             <span class="material-symbols-outlined" style="font-size: 1.1rem">location_on</span> The Grand Hall
+                                                         <span class="event-location">
+                                                             <span class="material-symbols-outlined">location_on</span> The Grand Hall
                                                          </span>
                                                          <button class="btn-details">
-                                                             View Details <span class="material-symbols-outlined" style="font-size: 1.1rem">arrow_forward</span>
+                                                             View Details <span class="material-symbols-outlined">arrow_forward</span>
                                                          </button>
                                                      </div>
                                                  </div>
@@ -482,7 +477,7 @@
                                                          <h4>Dr. Zahi Hawass</h4>
                                                          <p>Lead Archaeologist</p>
                                                          <div class="speaker-bio">Renowned archaeologist and the former Minister of State for Antiquities Affairs.</div>
-                                                         <blockquote class="speaker-quote">"The Grand Egyptian Museum is the most important cultural project in the world in the 21st century. It is Egypt's gift to humanity."</blockquote>
+                                                         <blockquote class="speaker-quote">The Grand Egyptian Museum is the most important cultural project in the world in the 21st century. It is Egypt's gift to humanity.</blockquote>
                                                      </div>
                                                  </div>
                                                  <div class="speaker-card">
@@ -493,7 +488,7 @@
                                                          <h4>Dr. Hussein Kamal</h4>
                                                          <p>Head of Conservation</p>
                                                          <div class="speaker-bio">Directing the world's most advanced archaeological conservation center at GEM.</div>
-                                                         <blockquote class="speaker-quote">"Our conservation center is a lighthouse of science, ensuring that every artifact is preserved with the highest standards known to man."</blockquote>
+                                                         <blockquote class="speaker-quote">Our conservation center is a lighthouse of science, ensuring that every artifact is preserved with the highest standards known to man.</blockquote>
                                                      </div>
                                                  </div>
                                                  <div class="speaker-card">
@@ -529,82 +524,79 @@
                                          </section>
                                      </main>
                                      <hr />
+                  <!-- Footer -->
+                                <footer class="site-footer">
+                                        <div class="footer-container">
+                                            <!-- Footer Header -->
+                                            <div class="footer-header">
+                                                <div class="footer-logo">
+                                                    <span class="material-symbols-outlined">account_balance</span>
+                                                </div>
+                                                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                                <div class="footer-divider"></div>
+                                            </div>
                             
-                                     <footer class="site-footer">
-                                         <div class="footer-container">
-                                             <!-- Footer Header -->
-                                             <div class="footer-header">
-                                                 <div class="footer-logo">
-                                                     <span class="material-symbols-outlined">account_balance</span>
-                                                 </div>
-                                                 <h2 class="footer-title">Grand Egyptian Museum</h2>
-                                                 <div class="footer-divider"></div>
-                                             </div>
+                                            <!-- Footer Grid -->
+                                            <div class="footer-grid">
+                                                <div class="footer-column">
+                                                    <h3>Explore</h3>
+                                                    <ul>
+                                                        <li><a href="../booking/booking.html">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                                                        <li><a href="../-membership/code.html">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>About</h3>
+                                                    <ul>
+                                                        <li><a href="../About us/About-us.html">History</a></li>
+                                                        <li><a href="../event/event.html">Events</a></li>
+                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column">
+                                                    <h3>Support</h3>
+                                                    <ul>
+                                                        <li><a href="../visitor help/help.html">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="footer-column connect-column">
+                                                    <h3>Connect</h3>
+                                                    <div class="social-links">
+                                                        <!-- Facebook -->
+                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                                            <i class="fa-brands fa-facebook"></i>
+                                                        </a>
                             
-                                             <!-- Footer Grid -->
-                                             <div class="footer-grid">
-                                                 <div class="footer-column">
-                                                     <h3>Explore</h3>
-                                                     <ul>
-                                                         <li><a href="../booking/booking.html">Tickets</a></li>
-                                                         <li><a href="../collection/collection.html">Collection</a></li>
-                                                         <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
-                                                         <li><a href="../-membership/code.html">Membership</a></li>
-                                                         <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
-                                                     </ul>
-                                                 </div>
-                                                 <div class="footer-column">
-                                                     <h3>About</h3>
-                                                     <ul>
-                                                         <li><a href="../About us/About-us.html">History</a></li>
-                                                         <li><a href="../event/event.html">Events</a></li>
-                                                         <li><a href="../-news_press/code.html">News & Press</a></li>
-                                                         <li><a href="../-branding/code.html">Branding</a></li>
-                                                     </ul>
-                                                 </div>
-                                                 <div class="footer-column">
-                                                     <h3>Support</h3>
-                                                     <ul>
-                                                         <li><a href="../visitor help/help.html">Help</a></li>
-                                                         <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                                                         <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                                                         <li><a href="../-accessibility/code.html">Accessibility</a></li>
-                                                     </ul>
-                                                 </div>
-                                                 <div class="footer-column connect-column">
-                                                     <h3>Connect</h3>
-                                                     <div class="social-links">
-                                                         <!-- Facebook -->
-                                                         <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook" style="margin-right: 1rem;">
-                                                             <i class="fa-brands fa-facebook"></i>
-                                                         </a>
+                                                        <!-- Twitter (X ) -->
+                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                                            <i class="fa-brands fa-x-twitter"></i>
+                                                        </a>
                             
-                                                         <!-- Twitter (X ) -->
-                                                         <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )" style="margin-right: 1rem;">
-                                                             <i class="fa-brands fa-x-twitter"></i>
-                                                         </a>
+                                                        <!-- Instagram -->
+                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                                            <i class="fa-brands fa-instagram"></i>
+                                                        </a>
                             
-                                                         <!-- Instagram -->
-                                                         <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram" style="margin-right: 1rem;">
-                                                             <i class="fa-brands fa-instagram"></i>
-                                                         </a>
+                                                        <!-- YouTube -->
+                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                                            <i class="fa-brands fa-youtube"></i>
+                                                        </a>
+                                                    </div>
                             
-                                                         <!-- YouTube -->
-                                                         <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                             <i class="fa-brands fa-youtube"></i>
-                                                         </a>
-                                                     </div>
-                            
-                                                     <p>
-                                                         Follow us on social media for updates and behind-the-scenes content.
-                                                     </p>
-                                                 </div>
-                                             </div>
-                            
-                                             <!-- Footer Separator -->
-                                             <div class="footer-separator"></div>
-                            
-                                             <!-- Footer Bottom -->
+                                                    <p>
+                                                        Follow us on social media for updates and behind-the-scenes content.
+                                                    </p>
+                                                </div>
+                                            </div>
+                             
+                                                   <!-- Footer Bottom -->
                                              <div class="footer-bottom">
                                                  <div class="language-toggle">
                                                      <button class="active" data-lang="en">English</button>
@@ -617,12 +609,13 @@
                                                      <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
                                                  </div>
                                          <div class="copyright">
-                                           © 2026 Tutora. All rights reserved.
+                                           &copy; 2026 Tutora. All rights reserved.
                                          </div>
                                        </div>
                                      </div>
                                    </div>
                                      </footer>
+
                             
                                  <script src="main.js "></script>
                                  <script src="../global-core.js"></script>

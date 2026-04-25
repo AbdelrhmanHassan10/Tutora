@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="../museum.png">
     
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Serif:wght@400;700;900&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Spline+Sans:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
@@ -21,7 +21,10 @@
     <link rel="stylesheet" href="../global-theme.css" />
 </head>
 
-<body class="dark">
+    <!-- Atmospheric Elements -->
+    <div id="dust-container"></div>
+    <div id="shapes-container"></div>
+
     <!-- Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -32,10 +35,10 @@
                 <div class="logo-circle">
                     <img src="../logo.png" alt="Tutora Logo">
                 </div>
-                <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+                <h3 class="menu-logo-text">TUTORA</h3>
             </div>
             <button class="close-btn" id="closeBtn">
-                <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
+                <span class="material-symbols-outlined">close</span>
             </button>
         </div>
 
@@ -87,13 +90,13 @@
         <div class="header-container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn">
-                    <span class="material-symbols-outlined" style="color: #ecb613; font-size: 32px;">menu</span>
+                    <span class="material-symbols-outlined">menu</span>
                 </button>
                 <div class="logo-section">
                     <div class="logo-circle">
                         <img src="../logo.png" alt="Tutora Logo">
                     </div>
-                    <h2 class="logo-text" style="color: #ecb613; font-size: 20px;">Tutora</h2>
+                    <h2 class="logo-text">TUTORA</h2>
                 </div>
             </div>
 
@@ -251,57 +254,11 @@
             </div>
         </section>
 
-        <!-- Timeline Section -->
-        <section class="timeline-section animate-on-scroll">
-            <div class="container">
-                <h2 class="timeline-main-title">Journey Through Time</h2>
-                <div class="timeline-container">
-                    <div class="timeline-line"></div>
-                    
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">2002</div>
-                            <h3>The Foundation</h3>
-                            <p>Presidential decree establishes the Grand Egyptian Museum project on the Giza plateau.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">2012</div>
-                            <h3>Ramses Returns</h3>
-                            <p>The 3,200-year-old statue of Ramses II is moved to its permanent home in the Grand Atrium.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">2021</div>
-                            <h3>Conservation Peak</h3>
-                            <p>Tutankhamun's full collection is moved to the conservation center for final restoration.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item animate-on-scroll">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-year">2024</div>
-                            <h3>The Grand Opening</h3>
-                            <p>The largest museum in the world opens its doors to the global community.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Global Impact Stats Section -->
         <section class="stats-section animate-on-scroll">
-            <div class="container" style="text-align: center;">
-                <h2 class="stats-title" style="display: flex; align-items: center; justify-content: center; gap: 1rem; color: var(--accent-color); font-size: 2.5rem; margin-bottom: 4rem;">
-                    <span class="material-symbols-outlined" style="font-size: 50px; color: #ecb613;">public</span> Global Impact
+            <div class="container">
+                <h2 class="stats-title">
+                    <span class="material-symbols-outlined">public</span> Global Impact
                 </h2>
                 <div class="stats-grid">
                     <div class="stat-card">
@@ -360,19 +317,19 @@
         <!-- Global Partners Section -->
         <section id="partners" class="partners-section animate-on-scroll">
             <div class="container">
-                <h2 class="section-title" style="text-align: center; margin-bottom: 5rem; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 4px;">Institutional Network</h2>
-                <div class="partners-track" style="color: brown;">
-                    <div class="partner-logo" style="color: brown;">UNESCO</div>
-                    <div class="partner-logo" style="color: brown;">British Museum</div>
-                    <div class="partner-logo" style="color: brown;">Louvre</div>
-                    <div class="partner-logo" style="color: brown;">Met Museum</div>
-                    <div class="partner-logo" style="color: brown;">Cairo University</div>
+                <h2 class="section-title">Institutional Network</h2>
+                <div class="partners-track">
+                    <div class="partner-logo">UNESCO</div>
+                    <div class="partner-logo">British Museum</div>
+                    <div class="partner-logo">Louvre</div>
+                    <div class="partner-logo">Met Museum</div>
+                    <div class="partner-logo">Cairo University</div>
                     <!-- Repeated for smooth scroll -->
                     <div class="partner-logo">UNESCO</div>
-                    <div class="partner-logo" style="color: brown;">British Museum</div>
-                    <div class="partner-logo" style="color: brown;">Louvre</div>
-                    <div class="partner-logo" style="color: brown;">Met Museum</div>
-                    <div class="partner-logo" style="color: brown;">Cairo University</div>
+                    <div class="partner-logo">British Museum</div>
+                    <div class="partner-logo">Louvre</div>
+                    <div class="partner-logo">Met Museum</div>
+                    <div class="partner-logo">Cairo University</div>
                 </div>
             </div>
         </section>
@@ -409,11 +366,12 @@
     </main>
 
     <!-- Footer Component -->
+     <!-- Premium Footer -->
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-header">
                 <div class="footer-logo">
-                    <span class="material-symbols-outlined" style="color: #ecb613; font-size: 40px;">account_balance</span>
+                    <span class="material-symbols-outlined">account_balance</span>
                 </div>
                 <h2 class="footer-title">Grand Egyptian Museum</h2>
                 <div class="footer-divider"></div>
@@ -456,10 +414,9 @@
                         <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
                     </div>
+                    <p>Follow us on social media for updates and behind-the-scenes content.</p>
                 </div>
             </div>
-
-            <div class="footer-separator"></div>
 
             <div class="footer-bottom">
                 <div class="language-toggle">
@@ -468,11 +425,11 @@
                 </div>
                 <div class="legal-section">
                     <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                        <a href="../Privacy-policy/Privacy-Policy.html">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html">Cookie Settings</a>
                     </div>
-                    <div class="copyright">&copy; 2026 Tutora. All rights reserved.</div>
+                    <div class="copyright">© 2026 Tutora. All rights reserved.</div>
                 </div>
             </div>
         </div>

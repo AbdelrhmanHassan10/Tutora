@@ -63,21 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
     createShapes();
 
     // 4. Legendary Interactive Effects
-    const magneticBtn = (btn) => {
-        if (!btn) return;
+    const applyMagneticEffect = (selector) => {
+        const elements = document.querySelectorAll(selector);
         document.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            const distance = Math.sqrt(x*x + y*y);
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
+                const distance = Math.sqrt(x*x + y*y);
 
-            if (distance < 150) {
-                const moveX = x * 0.3;
-                const moveY = y * 0.3;
-                btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
-            } else {
-                btn.style.transform = `translate(0, 0) scale(1)`;
-            }
+                if (distance < 150) {
+                    const moveX = x * 0.2;
+                    const moveY = y * 0.2;
+                    el.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+                } else {
+                    el.style.transform = `translate(0, 0) scale(1)`;
+                }
+            });
         });
     };
 
@@ -101,8 +103,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Initialize Legendary Effects
-    magneticBtn(submitBtn);
     interactiveDust();
+
+    // Initialize Magnetic Effects
+    applyMagneticEffect('.login-link-btn');
+    applyMagneticEffect('.signup-link');
+    applyMagneticEffect('.nav-logo');
+    applyMagneticEffect('.submit-btn');
+    applyMagneticEffect('.auth-switcher-bridge');
 
     // Liquid Shine Movement
     const shine = document.createElement('div');
@@ -227,13 +235,48 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             
             if (response.ok) {
+                // Royal Success Sequence
+                submitBtn.innerHTML = '<span>Journey Authenticated</span>';
+                submitBtn.style.background = 'var(--success-green)';
+                
                 setTimeout(() => {
-                    window.location.href = '../2.login/code.html';
-                }, 2000);
+                    const scene = document.querySelector('.scene');
+                    const formPanel = document.querySelector('.form-panel');
+                    
+                    // Create Success Overlay
+                    const successOverlay = document.createElement('div');
+                    successOverlay.className = 'royal-success-overlay';
+                    successOverlay.innerHTML = `
+                        <div class="success-content">
+                            <div class="royal-seal">
+                                <img src="../logo.png" alt="Royal Seal">
+                            </div>
+                            <h2 class="success-title">Welcome to the Dynasty</h2>
+                            <p class="success-subtitle">Your lineage has been recorded in the halls of eternity.</p>
+                            <div class="success-loader"></div>
+                        </div>
+                    `;
+                    document.body.appendChild(successOverlay);
+                    
+                    // Trigger animations
+                    setTimeout(() => successOverlay.classList.add('active'), 100);
+                    
+                    setTimeout(() => {
+                        window.location.href = '../2.login/code.html';
+                    }, 4000);
+                }, 1000);
             } else {
                 throw new Error(data.message || 'Registration failed.');
             }
         } catch (error) {
+            console.error('Registration error:', error);
+            // Show global error using a toast or alert
+            showPremiumToast(error.message, 'error');
+            
+            // If it's a specific field error (e.g. email exists)
+            if (error.message.toLowerCase().includes('email')) {
+                showError('email', 'This email is already registered');
+            }
         } finally {
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalContent;
@@ -258,6 +301,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setupToggle('passwordToggle', 'password');
     setupToggle('confirmPasswordToggle', 'confirmPassword');
+
+    function showPremiumToast(message, type) {
+        document.querySelectorAll('.premium-toast').forEach(t => t.remove());
+        const toast = document.createElement('div');
+        toast.className = `premium-toast toast-${type}`;
+        const icon = type === 'success' ? 'verified' : 'error';
+        
+        toast.innerHTML = `
+            <span class="material-symbols-outlined toast-icon">${icon}</span>
+            <span class="toast-msg">${message}</span>
+            <div class="toast-progress"></div>
+        `;
+        document.body.appendChild(toast);
+        void toast.offsetWidth; 
+        toast.classList.add('show-toast');
+        setTimeout(() => {
+            toast.classList.remove('show-toast');
+            setTimeout(() => toast.remove(), 400); 
+        }, 3500);
+    }
 });
 
 // Animations
@@ -266,6 +329,41 @@ style.textContent = `
     @keyframes slideIn {
         from { transform: translateX(120%); }
         to { transform: translateX(0); }
+    }
+    .premium-toast {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        background: #121212;
+        border-left: 4px solid var(--primary);
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        z-index: 9999;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        transform: translateX(120%);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .premium-toast.show-toast { transform: translateX(0); }
+    .toast-success { border-left-color: var(--success-green); }
+    .toast-error { border-left-color: var(--error-red); }
+    .toast-icon { color: inherit; }
+    .toast-msg { font-weight: 500; font-size: 0.95rem; }
+    .toast-progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background: rgba(255,255,255,0.1);
+        transform-origin: left;
+        animation: toastProgress 3.5s linear forwards;
+    }
+    @keyframes toastProgress {
+        from { transform: scaleX(1); }
+        to { transform: scaleX(0); }
     }
     @keyframes slideOut {
         from { transform: translateX(0); }

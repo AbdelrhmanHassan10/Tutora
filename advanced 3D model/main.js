@@ -8,22 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const favBtn = document.querySelector(".btn-collection");
     const accordionTriggers = document.querySelectorAll('.accordion-trigger');
     
-    // MOBILE MENU LOGIC
+    // 1. Navigation and Sidebar Toggle (Royal Superstar Sync)
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuOverlay = document.getElementById('menuOverlay');
-    const dropdownToggles = document.querySelectorAll('.mobile-menu .dropdown-toggle');
 
     const openMenu = () => {
-        if (mobileMenu) mobileMenu.classList.add('open');
-        if (menuOverlay) menuOverlay.classList.add('open');
+        if (mobileMenu) mobileMenu.classList.add('active');
+        if (menuOverlay) menuOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     };
 
     const closeMenu = () => {
-        if (mobileMenu) mobileMenu.classList.remove('open');
-        if (menuOverlay) menuOverlay.classList.remove('open');
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
         document.body.style.overflow = '';
     };
 
@@ -31,16 +30,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
+    // Dropdown Toggle for Mobile Menu
+    const dropdownToggle = document.querySelector('.mobile-menu .dropdown-toggle');
+    const dropdownItems = document.querySelector('.mobile-menu .dropdown-items');
+    
+    if (dropdownToggle && dropdownItems) {
+        dropdownToggle.addEventListener('click', (e) => {
             e.preventDefault();
-            const items = toggle.nextElementSibling;
-            if (items) {
-                items.classList.toggle('show');
-                toggle.classList.toggle('active');
+            dropdownToggle.classList.toggle('active');
+            dropdownItems.classList.toggle('show');
+            
+            // Toggle icon
+            const icon = dropdownToggle.querySelector('.material-symbols-outlined');
+            if (icon) {
+                icon.textContent = dropdownItems.classList.contains('show') ? 'expand_less' : 'expand_more';
             }
         });
-    });
+    }
+
+    // Close menu when clicking links
+    if (mobileMenu) {
+        mobileMenu.querySelectorAll('.menu-link, .dropdown-item').forEach(link => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                link.addEventListener('click', closeMenu);
+            }
+        });
+    }
 
     let currentAudio = null;
 

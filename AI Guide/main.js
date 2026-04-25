@@ -1,6 +1,4 @@
-// ============================================
-// AI GUIDE SCRIPT - TORTARA
-// ============================================
+// AI GUIDE SCRIPT - TUTORA
 
 document.addEventListener('DOMContentLoaded', () => {
     const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
@@ -53,14 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (talkBtn) {
         talkBtn.addEventListener('click', () => {
             if (!token) {
-                alert('🔐 Please login to sync with Tortara\'s neural link.');
+                alert('🔐 Please login to sync with Tutora\'s neural link.');
                 window.location.href = '../2.login/code.html';
                 return;
             }
 
             if (!recognition) {
                 alert('⚠️ Speech recognition is not supported in this browser.');
-                const query = prompt('Enter your question for Tortara:');
+                const query = prompt('Enter your question for Tutora:');
                 if (query) {
                     addMessage('User', query);
                     processAIQuery(query);
@@ -96,19 +94,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 const data = await response.json();
                 const aiText = data.answer || data.response || "I found some data, but couldn't decode it.";
-                handleTortaraResponse(aiText);
+                handleTutoraResponse(aiText);
             } else {
-                handleTortaraResponse("Connection to the central archive failed. Please try again.");
+                handleTutoraResponse("Connection to the central archive failed. Please try again.");
             }
         } catch (error) {
             console.error('AI Query Error:', error);
-            handleTortaraResponse("My neural link is currently unstable. Please check your connection.");
+            handleTutoraResponse("My neural link is currently unstable. Please check your connection.");
         }
     }
 
-    function handleTortaraResponse(text) {
+    function handleTutoraResponse(text) {
         if (welcomeTitle) welcomeTitle.textContent = `"${text}"`;
-        addMessage('Tortara', text);
+        addMessage('Tutora', text);
         speakText(text);
     }
 
@@ -149,21 +147,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 6. Navigation and Sidebar Toggle
+    // 6. Navigation and Sidebar Toggle (Royal Superstar Sync)
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuOverlay = document.getElementById('menuOverlay');
 
     const openMenu = () => {
-        if (mobileMenu) mobileMenu.classList.add('open');
-        if (menuOverlay) menuOverlay.classList.add('open');
+        if (mobileMenu) mobileMenu.classList.add('active');
+        if (menuOverlay) menuOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     };
 
     const closeMenu = () => {
-        if (mobileMenu) mobileMenu.classList.remove('open');
-        if (menuOverlay) menuOverlay.classList.remove('open');
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
         document.body.style.overflow = '';
     };
 
@@ -171,10 +169,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
+    // Dropdown Toggle for Mobile Menu
+    const dropdownToggle = document.querySelector('.mobile-menu .dropdown-toggle');
+    const dropdownItems = document.querySelector('.mobile-menu .dropdown-items');
+    
+    if (dropdownToggle && dropdownItems) {
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownToggle.classList.toggle('active');
+            dropdownItems.classList.toggle('show');
+            
+            // Toggle icon
+            const icon = dropdownToggle.querySelector('.material-symbols-outlined');
+            if (icon) {
+                icon.textContent = dropdownItems.classList.contains('show') ? 'expand_less' : 'expand_more';
+            }
+        });
+    }
+
     // Close menu when clicking links
     if (mobileMenu) {
         mobileMenu.querySelectorAll('.menu-link, .dropdown-item').forEach(link => {
-            link.addEventListener('click', closeMenu);
+            if (!link.classList.contains('dropdown-toggle')) {
+                link.addEventListener('click', closeMenu);
+            }
         });
     }
 });

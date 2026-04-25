@@ -56,21 +56,23 @@ document.addEventListener('DOMContentLoaded', () => {
     createShapes();
 
     // 4. Legendary Interactive Effects
-    const magneticBtn = (btn) => {
-        if (!btn) return;
+    const applyMagneticEffect = (selector) => {
+        const elements = document.querySelectorAll(selector);
         document.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            const distance = Math.sqrt(x*x + y*y);
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - (rect.left + rect.width / 2);
+                const y = e.clientY - (rect.top + rect.height / 2);
+                const distance = Math.sqrt(x*x + y*y);
 
-            if (distance < 150) {
-                const moveX = x * 0.3;
-                const moveY = y * 0.3;
-                btn.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
-            } else {
-                btn.style.transform = `translate(0, 0) scale(1)`;
-            }
+                if (distance < 150) {
+                    const moveX = x * 0.2;
+                    const moveY = y * 0.2;
+                    el.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+                } else {
+                    el.style.transform = `translate(0, 0) scale(1)`;
+                }
+            });
         });
     };
 
@@ -94,7 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Initialize Legendary Effects
-    magneticBtn(loginBtn);
+    applyMagneticEffect('#loginBtn');
+    applyMagneticEffect('.login-link-btn');
+    applyMagneticEffect('.signup-link');
+    applyMagneticEffect('.nav-logo');
     interactiveDust();
 
     // Liquid Shine Movement

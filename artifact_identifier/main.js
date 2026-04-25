@@ -14,47 +14,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultDesc = document.getElementById('scan-result-desc');
 
     // MOBILE MENU LOGIC
+    // 1. Navigation and Sidebar Toggle (Royal Superstar Sync)
     const menuBtn = document.getElementById('menuBtn');
     const closeBtn = document.getElementById('closeBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuOverlay = document.getElementById('menuOverlay');
-    const dropdownToggles = document.querySelectorAll('.mobile-menu .dropdown-toggle');
 
-    if (menuBtn && mobileMenu && menuOverlay) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scroll
-        });
-    }
+    const openMenu = () => {
+        if (mobileMenu) mobileMenu.classList.add('active');
+        if (menuOverlay) menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
 
-    if (closeBtn && mobileMenu && menuOverlay) {
-        const closeMenu = () => {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scroll
-        };
-        closeBtn.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-    }
+    const closeMenu = () => {
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
 
-    // Mobile Dropdown Toggle
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+    // Dropdown Toggle for Mobile Menu
+    const dropdownToggle = document.querySelector('.mobile-menu .dropdown-toggle');
+    const dropdownItems = document.querySelector('.mobile-menu .dropdown-items');
+    
+    if (dropdownToggle && dropdownItems) {
+        dropdownToggle.addEventListener('click', (e) => {
             e.preventDefault();
-            const items = toggle.nextElementSibling;
-            const icon = toggle.querySelector('.material-symbols-outlined');
+            dropdownToggle.classList.toggle('active');
+            dropdownItems.classList.toggle('show');
             
-            if (items) {
-                items.classList.toggle('show');
-                toggle.classList.toggle('active');
-                
-                if (icon) {
-                    icon.style.transform = items.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-                }
+            // Toggle icon
+            const icon = dropdownToggle.querySelector('.material-symbols-outlined');
+            if (icon) {
+                icon.textContent = dropdownItems.classList.contains('show') ? 'expand_less' : 'expand_more';
             }
         });
-    });
+    }
+
+    // Close menu when clicking links
+    if (mobileMenu) {
+        mobileMenu.querySelectorAll('.menu-link, .dropdown-item').forEach(link => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                link.addEventListener('click', closeMenu);
+            }
+        });
+    }
 
     // 1. Initial UI Setup (Handled by global-core.js)
     console.log('✓ Artifact Identifier Integration Active');

@@ -5,22 +5,25 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="description" content="Explore ancient Egyptian artifacts in stunning 3D with AI-powered voice narration. Rotate, zoom, and interact with the Mask of Tutankhamun and more." />
-    <title>Tutora | 3D Interactive Artifact Explorer</title>
+    <title>Tutora | AI Voice Storytelling (3D)</title>
     <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Material+Icons+Outlined&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../animate.css" />
     <link rel="stylesheet" href="../global-theme.css" />
 </head>
 
 <body class="dark">
-    <!-- Header -->
+    <!-- Royal Atmosphere -->
+    <div id="dust-container"></div>
+    <div id="shapes-container"></div>
+
+    <!-- Mobile Menu Sidebar -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <div class="mobile-menu" id="mobileMenu">
@@ -39,8 +42,10 @@
         <nav class="menu-nav">
             <a href="../4.home/code.html" class="menu-link">Home</a>
             <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition Halls</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids Museum</a>
             <a href="../event/event.html" class="menu-link">Event</a>
+
             <div class="menu-dropdown">
                 <button class="menu-link dropdown-toggle">
                     AI Experience
@@ -51,21 +56,23 @@
                     <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
                     <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Scanner</a>
                     <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
                 </div>
             </div>
+
             <a href="../shop/shop.html" class="menu-link">Shop</a>
             <a href="../about/code.html" class="menu-link">About</a>
-<div class="menu-dropdown">
-                                      <button class="menu-link dropdown-toggle">
-                                        Collection
-                                        <span class="material-symbols-outlined">expand_more</span>
-                                      </button>
-                                      <div class="dropdown-items">
-                                        <a href="../collection/collection.html" class="dropdown-item">Main Gallery</a>
-                                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a>
-                                      </div>
-                                    </div>        </nav>
+  <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    Collection
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../collection/collection.html" class="dropdown-item">Main Gallery</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a>
+                </div>
+            </div>
+        </nav>
 
         <div class="menu-footer">
             <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
@@ -73,7 +80,8 @@
                 <span class="material-symbols-outlined">favorite</span> Favorites
             </a>
             <button class="menu-icon-link" id="menuLangBtn">
-                <span class="material-symbols-outlined">language</span> Language
+                <span class="material-symbols-outlined">language</span>
+                Language
             </button>
         </div>
     </div>
@@ -96,7 +104,7 @@
             <nav class="desktop-nav">
                 <a href="../4.home/code.html">Home</a>
                 <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-                <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                <a href="../Kids-Museum/kids-museum.html">Kids Museum</a>
                 <a href="../event/event.html">Event</a>
                 <div class="nav-dropdown">
                     <button class="nav-link dropdown-trigger">
@@ -108,21 +116,22 @@
                         <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
                         <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Scanner</a>
                         <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
                     </div>
                 </div>
                 <a href="../shop/shop.html">Shop</a>
                 <a href="../about/code.html">About</a>
- <div class="nav-dropdown">
-                                        <button class="nav-link dropdown-trigger">
-                                          Collection
-                                          <span class="material-symbols-outlined" >expand_more</span>
-                                        </button>
-                                        <div class="dropdown-menu" >
-                                          <a href="../collection/collection.html" class="dropdown-link">Main Gallery</a>
-                                          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a>
-                                        </div>
-                                      </div>            </nav>
+<div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        Collection
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../collection/collection.html" class="dropdown-link">Main Gallery</a>
+                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a>
+                    </div>
+                </div>
+            </nav>
 
             <div class="header-right">
                 <div class="search-box">
@@ -132,11 +141,9 @@
                 <button class="theme-btn" id="themeBtn">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </button>
-                <a href="../booking/booking.html" class="btn-booking">booking</a>
-                <a href="../fav/favourite.html" style="text-decoration: none;">
-                    <button class="icon-btn">
-                        <span class="material-symbols-outlined">favorite</span>
-                    </button>
+                <a href="../booking/booking.html" class="btn-booking">Booking</a>
+                <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;">
+                    <span class="material-symbols-outlined">favorite</span>
                 </a>
                 <button class="icon-btn" id="langBtn">
                     <span class="material-symbols-outlined">language</span>
@@ -149,185 +156,206 @@
     </header>
 
     <main class="main-container">
-        <nav class="breadcrumb">
+        <nav class="breadcrumb anim-on-scroll">
             <a href="../4.home/code.html">Home</a>
             <span class="material-icons-outlined">chevron_right</span>
             <a href="../Exhibition-Halls/exhibition-halls.html">Exhibits</a>
-            <span class="material-icons-outlined" style="font-size: 10px;">chevron_right</span>
-            <a href="#">Tutankhamun's Treasures</a>
-            <span class="material-icons-outlined" style="font-size: 10px;">chevron_right</span>
-            <span class="breadcrumb-active">Golden Mask</span>
+            <span class="material-icons-outlined">chevron_right</span>
+            <span class="breadcrumb-active">Interactive Explorer</span>
         </nav>
 
-        <h1 class="font-display page-title">Interactive Artifact Explorer</h1>
+        <h1 class="page-title anim-on-scroll">AI Voice <span class="gold-text-span">Storytelling</span></h1>
 
-        <div class="explorer-grid">
+        <div class="explorer-grid anim-on-scroll">
             <div class="viewer-section">
                 <div class="viewer-controls">
-                    <button class="control-btn active">3D Model Viewer</button>
-                    <button class="control-btn">AI Artifact Scanner</button>
+                    <button class="control-btn active">Neural 3D Scan</button>
+                    <button class="control-btn">Photogrammetry View</button>
                 </div>
 
-                <div class="viewer-display">
-                    <img alt="Golden Mask of Tutankhamun" class="viewer-img" src="../4.jpg">
-                    <div class="viewer-overlay">
-                        <div class="badge">8K Dynamic Render</div>
-                        <div class="play-btn-container">
-                            <button class="play-btn">
-                                <span class="material-icons-outlined" style="font-size: 36px;">play_arrow</span>
-                            </button>
-                        </div>
-                        <div class="viewer-tools">
-                            <span class="tool-item"><span class="material-icons-outlined" style="font-size: 14px;">sync</span> Rotate</span>
-                            <div class="zoom-slider">
-                                <div class="zoom-handle"></div>
+                <div class="viewer-display hero">
+                    <div class="hero-content">
+                        <img alt="Golden Mask of Tutankhamun" class="viewer-img" src="../4.jpg">
+                        <div class="scanner-line"></div>
+                        <div class="scanner-corner tl"></div>
+                        <div class="scanner-corner tr"></div>
+                        <div class="scanner-corner bl"></div>
+                        <div class="scanner-corner br"></div>
+                        <div class="viewer-overlay">
+                            <div class="viewer-badge">
+                                <span class="material-symbols-outlined">center_focus_strong</span>
+                                8K Neural Render
                             </div>
-                            <span class="tool-item"><span class="material-icons-outlined" style="font-size: 14px;">info</span> Annotate</span>
+                            <div class="play-btn-container">
+                                <button class="play-main-btn">
+                                    <span class="material-symbols-outlined">play_circle</span>
+                                    <span>Start Narrative Journey</span>
+                                </button>
+                            </div>
+                            <div class="viewer-tools">
+                                <button class="tool-item">
+                                    <span class="material-symbols-outlined">3d_rotation</span>
+                                    <span>360° Scan</span>
+                                </button>
+                                <div class="zoom-slider-container">
+                                    <div class="zoom-slider">
+                                        <div class="zoom-handle"></div>
+                                    </div>
+                                </div>
+                                <button class="tool-item">
+                                    <span class="material-symbols-outlined">spatial_audio_off</span>
+                                    <span>Spatial Audio</span>
+                                </button>
+                                <button class="tool-item">
+                                    <span class="material-symbols-outlined">info</span>
+                                    <span>Analysis</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <aside class="info-sidebar">
-                <h2 class="font-display artifact-name">The Mask of Tutankhamun</h2>
-                <p class="artifact-desc">Discovered in 1925 by Howard Carter, this golden mask is the death mask of the 18th-dynasty Ancient Egyptian Pharaoh Tutankhamun.</p>
+                <div class="artifact-meta">
+                    <span class="dynasty-tag">18th Dynasty</span>
+                    <span class="catalog-id">ID: GEM-4402</span>
+                </div>
+                <h2 class="artifact-name">The Mask of Tutankhamun</h2>
+                <p class="artifact-desc">Examine the world's most iconic masterpiece in sub-millimeter detail. Our AI storytelling engine recreates the burial rites through spatial audio and 3D reconstruction, revealing secrets hidden for millennia.</p>
 
                 <div class="accordion">
                     <div class="accordion-item active">
                         <button class="accordion-trigger">
-                            <span>Historical Context</span>
-                            <span class="material-icons-outlined expand-icon">expand_more</span>
+                            <span>Historical Narrative</span>
+                            <span class="material-symbols-outlined expand-icon">expand_more</span>
                         </button>
                         <div class="accordion-content">
-                            <p>The mask is one of the best-known works of art in the world. It was crafted during the New Kingdom period, a time of great wealth and power for Egypt.</p>
+                            <p>Discover the journey from the Valley of the Kings to the Grand Egyptian Museum. Narrated by lead archaeologists.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <button class="accordion-trigger">
-                            <span>Materials & Techniques</span>
-                            <span class="material-icons-outlined expand-icon">expand_more</span>
+                            <span>Material Composition</span>
+                            <span class="material-symbols-outlined expand-icon">expand_more</span>
                         </button>
                         <div class="accordion-content">
-                            <p>Crafted from two layers of high-karat gold, inlaid with semi-precious stones including lapis lazuli, quartz, and obsidian.</p>
+                            <p>High-purity gold (22.5 carats), lapis lazuli from Afghanistan, and obsidian from the Red Sea coast.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <button class="accordion-trigger">
-                            <span>Symbolism</span>
-                            <span class="material-icons-outlined expand-icon">expand_more</span>
+                            <span>AI Insights</span>
+                            <span class="material-symbols-outlined expand-icon">expand_more</span>
                         </button>
                         <div class="accordion-content">
-                            <p>The mask represents the pharaoh as Osiris, the god of the afterlife, ensuring his eternal protection and rebirth.</p>
+                            <p>View AI-generated recreations of how the mask looked when it was first placed in the burial chamber.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="sidebar-actions">
                     <button class="btn-collection">
-                        <span class="material-icons-outlined">bookmark_add</span>
-                        Add to Collection
+                        <span class="material-symbols-outlined">bookmark_add</span>
+                        Add to Gallery
                     </button>
                     <button class="btn-share">
-                        <span class="material-icons-outlined">share</span>
+                        <span class="material-symbols-outlined">share</span>
                     </button>
                 </div>
             </aside>
         </div>
 
-        <section class="related-section">
-            <div class="related-header">
-                <h3 class="font-display related-title">Explore Other Artifacts</h3>
-                <a class="view-all" href="../Exhibition-Halls/exhibition-halls.html">View All Collection <span class="material-icons-outlined" style="font-size: 14px;">arrow_forward</span></a>
-            </div>
-            <div class="collection-grid">
-                <div class="artifact-card">
-                    <img alt="Rosetta Stone" class="card-img" src="./unnamed 6.png">
-                    <div class="card-overlay">
-                        <h4 class="card-name">Rosetta Stone</h4>
-                    </div>
-                </div>
-                <div class="artifact-card">
-                    <img alt="Statue of Khafre" class="card-img" src="./unnamed (2).png">
-                    <div class="card-overlay">
-                        <h4 class="card-name">Statue of Khafre</h4>
-                    </div>
-                </div>
-                <div class="artifact-card">
-                    <img alt="Canopic Jars" class="card-img" src="./unnamed (3).png">
-                    <div class="card-overlay">
-                        <h4 class="card-name">Canopic Jars</h4>
-                    </div>
-                </div>
-                <div class="artifact-card">
-                    <img alt="Narmer Palette" class="card-img" src="./unnamed (4).png">
-                    <div class="card-overlay">
-                        <h4 class="card-name">Narmer Palette</h4>
-                    </div>
-                </div>
-                <div class="artifact-card">
-                    <img alt="Bust of Nefertiti" class="card-img" src="./unnamed (5).png">
-                    <div class="card-overlay">
-                        <h4 class="card-name">Bust of Nefertiti</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="model-how">
+        <section class="model-how anim-on-scroll">
             <h2 class="ai-section-title">How 3D Storytelling <span class="gold-text-span">Works</span></h2>
             <div class="model-steps">
                 <div class="model-step">
-                    <div class="model-step-num">01</div><span class="material-symbols-outlined">view_in_ar</span>
-                    <h3>Select an Artifact</h3>
-                    <p>Choose from our library of photogrammetry-scanned 3D models — each at sub-millimeter precision.</p>
+                    <div class="step-header">
+                        <div class="model-step-num">01</div>
+                        <span class="material-symbols-outlined">view_in_ar</span>
+                    </div>
+                    <h3>Neural Model Selection</h3>
+                    <p>Select from our ultra-high fidelity library of 8K photogrammetry scans, captured with sub-millimeter precision.</p>
                 </div>
                 <div class="model-step">
-                    <div class="model-step-num">02</div><span class="material-symbols-outlined">record_voice_over</span>
-                    <h3>AI Narrates</h3>
-                    <p>Our storytelling AI crafts a dramatic narration weaving myth, archaeology, and historical context.</p>
+                    <div class="step-header">
+                        <div class="model-step-num">02</div>
+                        <span class="material-symbols-outlined">record_voice_over</span>
+                    </div>
+                    <h3>Narrative Synthesis</h3>
+                    <p>Our generative engine synthesizes a cinematic narrative, weaving together archaeological facts and ancient mythology.</p>
                 </div>
                 <div class="model-step">
-                    <div class="model-step-num">03</div><span class="material-symbols-outlined">explore</span>
-                    <h3>Interact & Explore</h3>
-                    <p>Rotate, zoom, and inspect details while the AI responds to your questions about specific features.</p>
+                    <div class="step-header">
+                        <div class="model-step-num">03</div>
+                        <span class="material-symbols-outlined">explore</span>
+                    </div>
+                    <h3>Immersive Exploration</h3>
+                    <p>Interact with the artifact in real-time while spatial audio and visual overlays reveal hidden inscriptions and secrets.</p>
                 </div>
             </div>
         </section>
 
-        <section class="model-features">
+        <section class="model-features anim-on-scroll">
             <h2 class="ai-section-title">Immersive <span class="gold-text-span">Features</span></h2>
             <div class="model-feat-grid">
-                <div class="model-feat-card"><span class="material-symbols-outlined">3d_rotation</span>
+                <div class="model-feat-card">
+                    <div class="feat-icon-wrapper">
+                        <span class="material-symbols-outlined">3d_rotation</span>
+                    </div>
                     <h3>360° Inspection</h3>
                     <p>Examine artifacts from every angle — including views impossible in the physical gallery.</p>
                 </div>
-                <div class="model-feat-card"><span class="material-symbols-outlined">grain</span>
+                <div class="model-feat-card">
+                    <div class="feat-icon-wrapper">
+                        <span class="material-symbols-outlined">grain</span>
+                    </div>
                     <h3>Material Analysis</h3>
                     <p>Tap any surface for composition data — gold leaf, faience, limestone — with conservation status.</p>
                 </div>
-                <div class="model-feat-card"><span class="material-symbols-outlined">compare</span>
+                <div class="model-feat-card">
+                    <div class="feat-icon-wrapper">
+                        <span class="material-symbols-outlined">compare</span>
+                    </div>
                     <h3>Historical Reconstruction</h3>
                     <p>Toggle between current state and AI-reconstructed original appearance from 3,000 years ago.</p>
                 </div>
-                <div class="model-feat-card"><span class="material-symbols-outlined">spatial_audio_off</span>
+                <div class="model-feat-card">
+                    <div class="feat-icon-wrapper">
+                        <span class="material-symbols-outlined">spatial_audio_off</span>
+                    </div>
                     <h3>Spatial Audio</h3>
                     <p>Immersive 3D soundscapes — temple chants, Nile waters, and ancient workshop sounds.</p>
                 </div>
             </div>
         </section>
 
-        <section class="model-stats">
+        <section class="model-stats anim-on-scroll">
             <div class="model-stats-grid">
-                <div class="model-stat-item"><span class="model-stat-number">250+</span><span class="model-stat-label">3D Models Available</span></div>
-                <div class="model-stat-item"><span class="model-stat-number">0.1mm</span><span class="model-stat-label">Scan Precision</span></div>
-                <div class="model-stat-item"><span class="model-stat-number">40K+</span><span class="model-stat-label">Stories Told</span></div>
-                <div class="model-stat-item"><span class="model-stat-number">12</span><span class="model-stat-label">Narrator Voices</span></div>
+                <div class="model-stat-item">
+                    <span class="model-stat-number">250+</span>
+                    <span class="model-stat-label">3D Models</span>
+                </div>
+                <div class="model-stat-item">
+                    <span class="model-stat-number">0.1mm</span>
+                    <span class="model-stat-label">Scan Precision</span>
+                </div>
+                <div class="model-stat-item">
+                    <span class="model-stat-number">40K+</span>
+                    <span class="model-stat-label">Stories Told</span>
+                </div>
+                <div class="model-stat-item">
+                    <span class="model-stat-number">12</span>
+                    <span class="model-stat-label">Narrator Voices</span>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-container">
+            <!-- Footer Header -->
             <div class="footer-header">
                 <div class="footer-logo">
                     <span class="material-symbols-outlined">account_balance</span>
@@ -336,6 +364,7 @@
                 <div class="footer-divider"></div>
             </div>
 
+            <!-- Footer Grid -->
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Explore</h3>
@@ -385,8 +414,7 @@
                 </div>
             </div>
 
-            <div class="footer-separator"></div>
-
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="language-toggle">
                     <button class="active" data-lang="en">English</button>
@@ -394,12 +422,12 @@
                 </div>
                 <div class="legal-section">
                     <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" class="legal-link">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" class="legal-link">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" class="legal-link">Cookie Settings</a>
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
                     </div>
                     <div class="copyright">
-                        © 2026 Tutora. All rights reserved.
+                        &copy; 2026 Tutora. All rights reserved.
                     </div>
                 </div>
             </div>
@@ -410,5 +438,4 @@
     <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
 </body>
-
 </html>

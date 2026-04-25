@@ -17,6 +17,8 @@
                             </head>
                             
                             <body class="dark">
+                                <div id="dust-container"></div>
+                                <!-- <div id="shapes-container"></div> -->
                                  <!-- Mobile Menu Overlay -->
                                 <div class="menu-overlay" id="menuOverlay"></div>
                             
@@ -27,7 +29,7 @@
                                     <img src="../logo.png" alt="Tutora Logo">
                                 </div>
                             
-                                <h3 class="menu-logo-text">Tutora</h3>
+                                <h3 class="menu-logo-text">TUTORA</h3>
                                     </div>
                                     <button class="close-btn" id="closeBtn">
                                       <span class="material-symbols-outlined">close</span>
@@ -85,7 +87,7 @@
                                         <div class="logo-circle">
                                             <img src="../logo.png" alt="Tutora Logo">
                                          </div>
-                                        <h2 class="logo-text">Tutora</h2>
+                                        <h2 class="logo-text">TUTORA</h2>
                                       </div>
                                     </div>
                             
@@ -177,7 +179,7 @@
                                     </section>
                             
                                     <!-- Filters Section -->
-                                    <section class="filters-section">
+                                    <!-- <section class="filters-section">
                                         <div class="filters-container">
                                             <button class="filter-btn" id="dynastyFilterBtn">
                                                 <span class="material-symbols-outlined" style="font-size: 1rem">crown</span>
@@ -205,11 +207,10 @@
                                                 Reset Filters
                                             </button>
                                         </div>
-                                        <!-- Active Filters -->
                                         <div id="activeFiltersContainer" class="active-filters-container" style="display:none;">
                                             <div id="activeFiltersList" class="active-filters-list"></div>
                                         </div>
-                                    </section>
+                                    </section> -->
                             
                                     <!-- ============================================ -->
                                     <!--  SECTION 1: PHARAOHS & ROYALTY              -->
@@ -568,40 +569,36 @@
                                 <!-- ============================================ -->
                                 <!--  ARTIFACT DETAIL PANEL (In-Page modal)   -->
                                 <!-- ============================================ -->
-                                <!-- <div id="artifactModal" class="artifact-modal-overlay"> -->
-                                <!-- <div class="artifact-modal-container"> -->
+                                <div id="artifactModal" class="artifact-modal-overlay">
+                                <div class="artifact-modal-container">
                             
-                                    <!-- FIX 1 -->
-                                    <!-- <button id="closeArtifactModal" class="close-modal-btn">
+                                    <button id="closeArtifactModal" class="close-modal-btn">
                                         <span class="material-symbols-outlined">close</span>
-                                    </button> -->
+                                    </button>
                             
-                                    <!-- FIX 2 -->
-                                    <!-- <div class="modal-content"> -->
+                                    <div class="modal-content">
                             
                                         <!-- Image -->
-                                        <!-- <div class="modal-image-col"> -->
-                                            <!-- <img id="modalImg" src="" alt="Artifact" class="modal-image" />
+                                        <div class="modal-image-col">
+                                            <img id="modalImg" src="" alt="Artifact" class="modal-image" />
                                             <div class="modal-image-overlay"></div>
-                                            <div class="modal-image-badge" id="modalBadge" style="display:none;"></div> -->
-                                        <!-- </div> -->
+                                            <div class="modal-image-badge" id="modalBadge" style="display:none;"></div>
+                                        </div>
                             
                                         <!-- Info -->
-                                        <!-- <div class="modal-info-col"> -->
+                                        <div class="modal-info-col">
                             
-                                            <!-- <div class="modal-breadcrumbs">
+                                            <div class="modal-breadcrumbs">
                                                 <span id="modalDynasty" class="modal-dynasty"></span>
-                                                <span class="breadcrumb-dot">â€¢</span>
+                                                <span class="breadcrumb-dot">•</span>
                                                 <span id="modalPeriod" class="modal-period"></span>
                                             </div>
                             
-                                            <h2 id="modalTitle" class="modal-title"></h2> -->
+                                            <h2 id="modalTitle" class="modal-title"></h2>
                             
-                                            <!-- FIX 3 -->
-                                            <!-- <p id="modalDesc" class="modal-description"></p> -->
+                                            <p id="modalDesc" class="modal-description"></p>
                             
-                                            <!-- FIX 4 -->
-                                            <!-- <div class="modal-meta-grid">
+                                            <div class="modal-meta-grid">
                             
                                                 <div class="modal-meta-item">
                                                     <span class="material-symbols-outlined">calendar_today</span>
@@ -635,19 +632,19 @@
                                                     </div>
                                                 </div>
                             
-                                            </div> -->
+                                            </div>
                             
                                             <!-- Significance -->
-                                            <!-- <div class="modal-significance" id="modalSignificanceBlock">
+                                            <div class="modal-significance" id="modalSignificanceBlock">
                                                 <h3 class="significance-title">
                                                     <span class="material-symbols-outlined">history_edu</span>
                                                     Historical Significance
                                                 </h3>
                                                 <p id="modalSignificance" class="significance-text"></p>
-                                            </div> -->
+                                            </div>
                             
                                             <!-- Actions -->
-                                            <!-- <div class="modal-actions">
+                                            <div class="modal-actions">
                                                 <button class="btn-action-view" id="modalViewBtn">
                                                     <span class="material-symbols-outlined">visibility</span>
                                                     Interactive View
@@ -661,65 +658,13 @@
                                                 <button class="btn-action-fav" id="modalShareBtn">
                                                     <span class="material-symbols-outlined">share</span>
                                                 </button>
-                                            </div> -->
+                                            </div>
                             
-                                        <!-- </div> -->
-                                    <!-- </div> -->
-                                <!-- </div> -->
-                                <!-- </div> -->
-                            
-                                <!-- Filter Modals -->
-                                <!-- <div id="dynastyModal" class="filter-modal">
-                                    <div class="filter-modal-content">
-                                        <div class="modal-header">
-                                            <h3>Select Dynasty</h3>
-                                            <button type="button" onclick="closeFilterModal('dynastyModal')"><span class="material-symbols-outlined">close</span></button>
-                                        </div>
-                                        <div id="dynastyFilterOptions" class="filter-options-grid"></div>
-                                        <div class="modal-footer">
-                                            <button class="btn-apply" onclick="applyFilter('dynasty')">Apply</button>
                                         </div>
                                     </div>
                                 </div>
-                            
-                                <div id="materialModal" class="filter-modal">
-                                    <div class="filter-modal-content">
-                                        <div class="modal-header">
-                                            <h3>Select Material</h3>
-                                            <button type="button" onclick="closeFilterModal('materialModal')"><span class="material-symbols-outlined">close</span></button>
-                                        </div>
-                                        <div id="materialFilterOptions" class="filter-options-grid"></div>
-                                        <div class="modal-footer">
-                                            <button class="btn-apply" onclick="applyFilter('material')">Apply</button>
-                                        </div>
-                                    </div>
                                 </div>
                             
-                                <div id="siteModal" class="filter-modal">
-                                    <div class="filter-modal-content">
-                                        <div class="modal-header">
-                                            <h3>Select Discovery Site</h3>
-                                            <button type="button" onclick="closeFilterModal('siteModal')"><span class="material-symbols-outlined">close</span></button>
-                                        </div>
-                                        <div id="siteFilterOptions" class="filter-options-grid"></div>
-                                        <div class="modal-footer">
-                                            <button class="btn-apply" onclick="applyFilter('site')">Apply</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                                <div id="galleryModal" class="filter-modal">
-                                    <div class="filter-modal-content">
-                                        <div class="modal-header">
-                                            <h3>Select Gallery</h3>
-                                            <button type="button" onclick="closeFilterModal('galleryModal')"><span class="material-symbols-outlined">close</span></button>
-                                        </div>
-                                        <div id="galleryFilterOptions" class="filter-options-grid"></div>
-                                        <div class="modal-footer">
-                                            <button class="btn-apply" onclick="applyFilter('gallery')">Apply</button>
-                                        </div>
-                                    </div>
-                                </div> -->
                             
                                 <!-- Footer -->
                                 <footer class="site-footer">
@@ -792,9 +737,7 @@
                                                     </p>
                                                 </div>
                                             </div>
-                            
-                                            <!-- Footer Separator -->
-                                            <div class="footer-separator"></div>
+                             
                                                    <!-- Footer Bottom -->
                                              <div class="footer-bottom">
                                                  <div class="language-toggle">
