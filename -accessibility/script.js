@@ -107,4 +107,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     document.querySelectorAll('.anim-on-scroll').forEach(el => observer.observe(el));
+
+    // 6. Royal Atmosphere Generator
+    function initRoyalAtmosphere() {
+        const dustContainer = document.getElementById('dust-container');
+        const shapesContainer = document.getElementById('shapes-container');
+        if (!dustContainer) return;
+
+        // Generate Massive Dust (150 particles for performance on accessibility page)
+        const particleCount = 150;
+        for (let i = 0; i < particleCount; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            const duration = Math.random() * 10 + 20;
+            const delay = Math.random() * -30;
+            
+            dust.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                opacity: ${Math.random() * 0.4 + 0.1};
+                animation: float ${duration}s infinite linear;
+                animation-delay: ${delay}s;
+                filter: blur(${Math.random() * 1.5}px);
+            `;
+            dustContainer.appendChild(dust);
+        }
+
+        // Generate Royal Shapes
+        if (shapesContainer) {
+            const shapes = ['𓂀', '𓋹', '𓅓', '𓃻', '𓊽'];
+            const shapeCount = 20;
+            for (let i = 0; i < shapeCount; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'royal-shape';
+                shape.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+                const size = Math.random() * 20 + 20;
+                const duration = Math.random() * 20 + 25;
+                
+                shape.style.cssText = `
+                    font-size: ${size}px;
+                    left: ${Math.random() * 100}vw;
+                    top: ${Math.random() * 100}vh;
+                    animation: rotateFloat ${duration}s infinite ease-in-out;
+                    animation-delay: ${Math.random() * -20}s;
+                `;
+                shapesContainer.appendChild(shape);
+            }
+        }
+    }
+    initRoyalAtmosphere();
 });
+

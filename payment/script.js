@@ -3,22 +3,8 @@
 
     document.body.classList.remove('dark', 'light');
     document.body.classList.add(savedTheme);
-})();
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    const themeBtn = document.querySelector('.theme-toggle'); // 🔥 مهم
-
-    themeBtn?.addEventListener('click', () => {
-        const isDark = document.body.classList.contains('dark');
-
-        document.body.classList.remove('dark', 'light');
-        document.body.classList.add(isDark ? 'light' : 'dark');
-
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
-    });
-
-});  // ============================================
+    // ============================================
     // 1. LOAD BOOKING DATA FROM LOCAL STORAGE
     // ============================================
 
@@ -29,7 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!bookingDataString) {
             console.error("No booking data found in localStorage.");
             // Display an error message if no data is found
-            document.querySelector('.order-card').innerHTML = '<p style="color: red; padding: 1rem;">Booking details not found. Please go back and try again.</p>';
+            const orderCard = document.querySelector('.order-card');
+            if (orderCard) {
+                orderCard.innerHTML = '<p style="color: red; padding: 1rem;">Booking details not found. Please go back and try again.</p>';
+            }
             return;
         }
 
@@ -109,193 +98,184 @@ document.addEventListener('DOMContentLoaded', () => {
         if (payBtn) {
             payBtn.textContent = `Pay ${currencySymbol}${total.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
         }
-
     }
 
     // ============================================
-    // 2. PRESERVED UI SCRIPT (Your Original Code)
+    // 2. PAYMENT METHODS & FORM HANDLERS
     // ============================================
 
-
-
-    // --- Payment Method Switching ---
-    const methodLabels = document.querySelectorAll('.method-label');
-    const cardForm = document.querySelector('form');
-    methodLabels.forEach(label => {
-        label.addEventListener('click', () => {
-            methodLabels.forEach(l => l.classList.remove('active'));
-            label.classList.add('active');
-            const method = label.querySelector('input').value;
-            if (cardForm) {
-                cardForm.style.display = (method === 'paypal') ? 'none' : 'block';
-            }
-        });
-    });
-
-    // --- Card Formatting ---
-    const cardInput = document.getElementById('card-number');
-    if (cardInput) {
-        cardInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            e.target.value = (value.match(/.{1,4}/g) || []).join(' ').substring(0, 19);
-        });
-    }
-
-    const expiryInput = document.getElementById('expiry-date');
-    if (expiryInput) {
-        expiryInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            e.target.value = value.length > 2 ? `${value.substring(0, 2)}/${value.substring(2, 4)}` : value;
-        });
-    }
-
-    // --- Pay Button Interaction (With API integration) ---
-    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-    const payBtn = document.querySelector('.btn-pay');
-    if (payBtn) {
-        payBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            payBtn.innerHTML = '<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span> Processing...';
-            payBtn.disabled = true;
-
-            try {
-                const token = localStorage.getItem('token');
-                const bookingDataString = localStorage.getItem('currentBooking');
-                if (!token) {
-                    alert("Authentication token missing. Please log in.");
-                    window.location.href = '../2.login/code.html';
-                    return;
+    function initPaymentHandlers() {
+        // --- Payment Method Switching ---
+        const methodLabels = document.querySelectorAll('.method-label');
+        const cardForm = document.querySelector('form');
+        methodLabels.forEach(label => {
+            label.addEventListener('click', () => {
+                methodLabels.forEach(l => l.classList.remove('active'));
+                label.classList.add('active');
+                const method = label.querySelector('input').value;
+                if (cardForm) {
+                    cardForm.style.display = (method === 'paypal') ? 'none' : 'block';
                 }
-                const bookingState = bookingDataString ? JSON.parse(bookingDataString) : {};
-                
-                // Map frontend ticket keys to backend-compliant categories
-                const categoryMap = {
-                    'general_adult': 'adult',
-                    'guided_adult': 'adult',
-                    'tut_adult': 'adult',
-                    'general_student': 'student',
-                    'guided_student': 'child',
-                    'tut_student': 'child'
-                };
+            });
+        });
 
-                const tickets = [];
-                Object.entries(bookingState.tickets || {}).forEach(([key, t]) => {
-                    if (t.quantity > 0) {
-                        const category = categoryMap[key] || 'adult';
-                        // Merge same categories
-                        const existing = tickets.find(tk => tk.category === category);
-                        if (existing) {
-                            existing.quantity += t.quantity;
-                        } else {
-                            tickets.push({ category, quantity: t.quantity });
-                        }
+        // --- Card Formatting ---
+        const cardInput = document.getElementById('card-number');
+        if (cardInput) {
+            cardInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                e.target.value = (value.match(/.{1,4}/g) || []).join(' ').substring(0, 19);
+            });
+        }
+
+        const expiryInput = document.getElementById('expiry-date');
+        if (expiryInput) {
+            expiryInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                e.target.value = value.length > 2 ? `${value.substring(0, 2)}/${value.substring(2, 4)}` : value;
+            });
+        }
+
+        // --- Pay Button Interaction (With API integration) ---
+        const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+        const payBtn = document.querySelector('.btn-pay');
+        if (payBtn) {
+            payBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                payBtn.innerHTML = '<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span> Processing...';
+                payBtn.disabled = true;
+
+                try {
+                    const token = localStorage.getItem('token');
+                    const bookingDataString = localStorage.getItem('currentBooking');
+                    if (!token) {
+                        alert("Authentication token missing. Please log in.");
+                        window.location.href = '../2.login/code.html';
+                        return;
                     }
-                });
+                    const bookingState = bookingDataString ? JSON.parse(bookingDataString) : {};
+                    
+                    // Map frontend ticket keys to backend-compliant categories
+                    const categoryMap = {
+                        'general_adult': 'adult',
+                        'guided_adult': 'adult',
+                        'tut_adult': 'adult',
+                        'general_student': 'student',
+                        'guided_student': 'child',
+                        'tut_student': 'child'
+                    };
 
-                // Format visit date
-                const visitDate = bookingState.date ? new Date(bookingState.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
-                
-                // Get nationality type
-                const nationalityType = bookingState.visitorType === 'egyptian' ? 'egyptian' : 'expatriate';
-
-                // Get user info for billing
-                const user = JSON.parse(localStorage.getItem('user') || '{}');
-                const nameParts = (user.name || 'Guest User').split(' ');
-
-                const payload = {
-                    visitDate,
-                    nationalityType,
-                    tickets,
-                    billingData: {
-                        first_name: nameParts[0] || 'Guest',
-                        last_name: nameParts.slice(1).join(' ') || 'User',
-                        email: user.email || 'guest@tutora.com',
-                        phone_number: user.phone || '+20100000000'
-                    }
-                };
-
-                // 1. Create booking checkout
-                const bookingResponse = await fetch(`${API_BASE_URL}/bookings/checkout`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                const bookingResult = await bookingResponse.json().catch(() => ({}));
-
-                if (!bookingResponse.ok) {
-                    throw new Error(bookingResult.message || 'Failed to checkout booking');
-                }
-
-                // --- Handle Dual Mode: Paymob redirect OR simulated success ---
-                if (bookingResult.checkoutUrl) {
-                    // Real Paymob payment — redirect to payment gateway
-                    window.location.href = bookingResult.checkoutUrl;
-                    return;
-                }
-
-                // Fallback: Simulated success transition
-                const overlay = document.getElementById('verifyOverlay');
-                const statusEl = document.getElementById('verifyStatus');
-                const titleEl = document.getElementById('verifyTitle');
-                
-                if (overlay) {
-                    overlay.classList.add('active');
-                    if (titleEl) titleEl.textContent = "Processing";
-
-                    const statuses = [
-                        "Authorizing payment...",
-                        "Verifying transaction...",
-                        "Securing digital tickets...",
-                        "Finalizing confirmation..."
-                    ];
-
-                    let current = 0;
-                    const interval = setInterval(() => {
-                        if (current < statuses.length) {
-                            if (statusEl) {
-                                statusEl.style.opacity = '0';
-                                setTimeout(() => {
-                                    statusEl.textContent = statuses[current];
-                                    statusEl.style.opacity = '1';
-                                    current++;
-                                }, 300);
+                    const tickets = [];
+                    Object.entries(bookingState.tickets || {}).forEach(([key, t]) => {
+                        if (t.quantity > 0) {
+                            const category = categoryMap[key] || 'adult';
+                            const existing = tickets.find(tk => tk.category === category);
+                            if (existing) {
+                                existing.quantity += t.quantity;
                             } else {
-                                current++;
+                                tickets.push({ category, quantity: t.quantity });
                             }
-                        } else {
-                            clearInterval(interval);
-                            setTimeout(() => {
-                                window.location.href = '../success/success.html';
-                            }, 500);
                         }
-                    }, 1000);
-                } else {
-                    window.location.href = '../success/success.html';
+                    });
+
+                    const visitDate = bookingState.date ? new Date(bookingState.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+                    const nationalityType = bookingState.visitorType === 'egyptian' ? 'egyptian' : 'expatriate';
+                    const user = JSON.parse(localStorage.getItem('user') || '{}');
+                    const nameParts = (user.name || 'Guest User').split(' ');
+
+                    const payload = {
+                        visitDate,
+                        nationalityType,
+                        tickets,
+                        billingData: {
+                            first_name: nameParts[0] || 'Guest',
+                            last_name: nameParts.slice(1).join(' ') || 'User',
+                            email: user.email || 'guest@tutora.com',
+                            phone_number: user.phone || '+20100000000'
+                        }
+                    };
+
+                    const bookingResponse = await fetch(`${API_BASE_URL}/bookings/checkout`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const bookingResult = await bookingResponse.json().catch(() => ({}));
+
+                    if (!bookingResponse.ok) {
+                        throw new Error(bookingResult.message || 'Failed to checkout booking');
+                    }
+
+                    if (bookingResult.checkoutUrl) {
+                        window.location.href = bookingResult.checkoutUrl;
+                        return;
+                    }
+
+                    const overlay = document.getElementById('verifyOverlay');
+                    const statusEl = document.getElementById('verifyStatus');
+                    const titleEl = document.getElementById('verifyTitle');
+                    
+                    if (overlay) {
+                        overlay.classList.add('active');
+                        if (titleEl) titleEl.textContent = "Processing";
+
+                        const statuses = [
+                            "Authorizing payment...",
+                            "Verifying transaction...",
+                            "Securing digital tickets...",
+                            "Finalizing confirmation..."
+                        ];
+
+                        let current = 0;
+                        const interval = setInterval(() => {
+                            if (current < statuses.length) {
+                                if (statusEl) {
+                                    statusEl.style.opacity = '0';
+                                    setTimeout(() => {
+                                        statusEl.textContent = statuses[current];
+                                        statusEl.style.opacity = '1';
+                                        current++;
+                                    }, 300);
+                                } else {
+                                    current++;
+                                }
+                            } else {
+                                clearInterval(interval);
+                                setTimeout(() => {
+                                    window.location.href = '../success/success.html';
+                                }, 500);
+                            }
+                        }, 1000);
+                    } else {
+                        window.location.href = '../success/success.html';
+                    }
+
+                } catch (error) {
+                    console.error("Booking/Payment error:", error);
+                    alert("Error: " + error.message);
+                    payBtn.innerHTML = 'Pay Again';
+                    payBtn.disabled = false;
                 }
-
-            } catch (error) {
-                console.error("Booking/Payment error:", error);
-                alert("Error: " + error.message);
-                payBtn.innerHTML = 'Pay Again';
-                payBtn.disabled = false;
-            }
-        });
+            });
+        }
     }
-    
-    // Add spinning animation for the processing icon
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
-    document.head.appendChild(styleSheet);
 
-    // ============================================
-    // 3. INITIALIZATION
-    // ============================================
+    // Initialize Page
     initializeOrderSummary();
-    console.log("✓ Payment page initialized and populated from localStorage.");
- 
+    initPaymentHandlers();
+    console.log("✓ Payment page initialized.");
+})();
 
-
+document.addEventListener('DOMContentLoaded', () => {
+    const themeBtn = document.querySelector('.theme-toggle');
+    themeBtn?.addEventListener('click', () => {
+        const isDark = document.body.classList.contains('dark');
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+});

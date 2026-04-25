@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const token = localStorage.getItem('token');
         const profileImg = document.querySelector('.profile-img, .profile-image, .nav-profile-image, .user-avatar img');
         const langBtn = document.getElementById('langBtn') || document.getElementById('menuLangBtn');
-        const favBtn = document.querySelector('.icon-btn:has(.material-symbols-outlined:contains("favorite")), .menu-icon-link:has(.material-symbols-outlined:contains("favorite"))') || document.querySelector('a[href*="fav"]');
+        const favBtn = document.querySelector('a[href*="fav"], a[href*="favourite"], .icon-btn-favorite, .menu-icon-link-favorite') || 
+                       Array.from(document.querySelectorAll('.icon-btn, .menu-icon-link')).find(el => el.textContent.includes('favorite'));
         const bookingBtn = document.querySelector('.btn-booking, .menu-booking-btn');
 
         if (token) {

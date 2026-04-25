@@ -1364,3 +1364,142 @@ body.light .stats-grid {
 .dropdown-link:hover, .dropdown-item:hover {
     transform: translateX(8px) !important;
 }
+
+/* ============================================
+   ROYAL ATMOSPHERE & ELITE FOOTER
+   ============================================ */
+#dust-container, #shapes-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.dust-particle {
+    position: absolute;
+    background: radial-gradient(circle, #ECB613 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.royal-shape {
+    position: absolute;
+    color: rgba(236, 182, 19, 0.15);
+    font-family: serif;
+    pointer-events: none;
+    user-select: none;
+}
+
+@keyframes floatParticle {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-100vh) translateX(50px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes rotateFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(30px, 50px) rotate(120deg); }
+    66% { transform: translate(-20px, 100px) rotate(240deg); }
+}
+
+/* Elite Footer Logo Ring - The Golden Seal */
+.footer-logo-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.ring-pulse {
+    position: absolute;
+    inset: -15px;
+    border: 2px solid rgba(236, 182, 19, 0.3);
+    border-radius: 50%;
+    animation: pulseRing 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.ring-rotate {
+    position: absolute;
+    inset: -5px;
+    border: 2px solid transparent;
+    border-top: 2px solid #ECB613;
+    border-bottom: 2px solid #ECB613;
+    border-radius: 50%;
+    animation: rotateRing 15s linear infinite;
+}
+
+.ring-inner-rotate {
+    position: absolute;
+    inset: 5px;
+    border: 1px dashed rgba(236, 182, 19, 0.5);
+    border-radius: 50%;
+    animation: rotateRing 10s linear infinite reverse;
+}
+
+.logo-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(236, 182, 19, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(236, 182, 19, 0.4);
+    box-shadow: 0 0 30px rgba(236, 182, 19, 0.15);
+}
+
+.logo-icon-wrapper .material-symbols-outlined {
+    font-size: 3.5rem !important;
+    color: #ECB613 !important;
+    filter: drop-shadow(0 0 15px rgba(236, 182, 19, 0.6));
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 0.3; }
+    100% { transform: scale(0.8); opacity: 0.8; }
+}
+
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.05); }
+}
+
+.footer-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: 2.5rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 10px !important;
+    text-transform: uppercase !important;
+    background: linear-gradient(135deg, #fff 0%, #d4af37 50%, #fff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-align: center;
+    margin-bottom: 1.5rem !important;
+}
+
+.footer-divider {
+    height: 1px;
+    width: 300px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 2rem auto;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}

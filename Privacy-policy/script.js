@@ -92,4 +92,43 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('User navigating to contact DPO/Feedback.');
         });
     }
+
+    // --- 6. ROYAL ATMOSPHERE (Standardized - Local) ---
+    function createDust() {
+        const container = document.getElementById('dust-container');
+        if (!container) return;
+        const count = 50;
+        for (let i = 0; i < count; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            dust.style.width = `${size}px`;
+            dust.style.height = `${size}px`;
+            dust.style.left = `${Math.random() * 100}%`;
+            dust.style.top = `${Math.random() * 100}%`;
+            dust.style.opacity = Math.random() * 0.5;
+            dust.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
+            container.appendChild(dust);
+        }
+    }
+
+    function createShapes() {
+        const container = document.getElementById('shapes-container');
+        if (!container) return;
+        const glyphs = ['𓂀', '𓋹', '𓅓', '𓃻', '𓊽'];
+        for (let i = 0; i < 8; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.innerHTML = glyphs[Math.floor(Math.random() * glyphs.length)];
+            shape.style.left = `${Math.random() * 100}%`;
+            shape.style.top = `${Math.random() * 100}%`;
+            shape.style.fontSize = `${Math.random() * 20 + 20}px`;
+            shape.style.animation = `rotateFloat ${Math.random() * 20 + 20}s ease-in-out infinite`;
+            container.appendChild(shape);
+        }
+    }
+
+    createDust();
+    createShapes();
 });
+

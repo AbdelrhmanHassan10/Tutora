@@ -178,20 +178,94 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Scroll Animations
-    const animElements = document.querySelectorAll('.artifact-card, .model-step, .model-feat-card');
+    // 5. Scroll Animations (Fixed Visibility)
+    const animElements = document.querySelectorAll('.anim-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.classList.add('active');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
     animElements.forEach(el => {
-        el.classList.add('anim-on-scroll'); // Ensure base class for animation
         observer.observe(el);
     });
 
-    console.log('✓ Advanced 3D Explorer Initialized');
+    // ============================================
+    // ROYAL ATMOSPHERE & INTERACTION
+    // ============================================
+
+    // 1. Royal Dust Particles System
+    function createDust() {
+        const container = document.getElementById('dust-container');
+        if (!container) return;
+        
+        const particleCount = 100;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'dust-particle';
+            
+            const size = Math.random() * 3 + 1;
+            const posX = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = Math.random() * 15 + 15;
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}%`;
+            particle.style.bottom = `-10px`;
+            particle.style.animation = `floatDust ${duration}s linear ${delay}s infinite`;
+            
+            container.appendChild(particle);
+        }
+    }
+
+    // 2. Royal Geometric Shapes
+    function createShapes() {
+        const container = document.getElementById('shapes-container');
+        if (!container) return;
+        
+        const shapes = ['𓂀', '𓋹', '𓅓', '𓃻', '𓊽'];
+        for (let i = 0; i < 12; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+            
+            const posX = Math.random() * 100;
+            const posY = Math.random() * 100;
+            const duration = Math.random() * 25 + 25;
+            const delay = Math.random() * -20;
+            
+            shape.style.left = `${posX}%`;
+            shape.style.top = `${posY}%`;
+            shape.style.animation = `rotateFloat ${duration}s ease-in-out ${delay}s infinite`;
+            
+            container.appendChild(shape);
+        }
+    }
+
+    // 3. 3D Viewer Tilt Logic
+    const viewer = document.querySelector('.viewer-display');
+    const viewerImg = document.querySelector('.viewer-img');
+
+    if (viewer && viewerImg) {
+        viewer.addEventListener('mousemove', (e) => {
+            const { width, height, left, top } = viewer.getBoundingClientRect();
+            const mouseX = (e.clientX - left) / width - 0.5;
+            const mouseY = (e.clientY - top) / height - 0.5;
+            
+            viewerImg.style.transform = `scale(1.1) rotateY(${mouseX * 15}deg) rotateX(${mouseY * -15}deg) translateZ(30px)`;
+        });
+        
+        viewer.addEventListener('mouseleave', () => {
+            viewerImg.style.transform = `scale(1) rotateY(0) rotateX(0) translateZ(0)`;
+        });
+    }
+
+    // Initialize Atmosphere
+    createDust();
+    createShapes();
+
+    console.log('✓ Advanced 3D Explorer & Royal Atmosphere Initialized');
 });

@@ -3233,3 +3233,49 @@ body.light .copyright {
         margin-right: 0;
     }
 }
+
+/* ============================================
+   ATMOSPHERE ENGINE
+   ============================================ */
+#dust-container, #shapes-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.dust-particle {
+    position: absolute;
+    background: #d4af37;
+    border-radius: 50%;
+    filter: blur(1px);
+    pointer-events: none;
+}
+
+.royal-shape {
+    position: absolute;
+    color: #d4af37;
+    opacity: 0.15;
+    pointer-events: none;
+    font-family: serif;
+    user-select: none;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+    20% { opacity: 0.4; }
+    80% { opacity: 0.4; }
+    100% { transform: translate(100px, -100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes rotateFloat {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0; }
+    20% { opacity: 0.15; }
+    50% { transform: translate(50px, -50px) rotate(180deg) scale(1.2); }
+    80% { opacity: 0.15; }
+    100% { transform: translate(100px, -100px) rotate(360deg) scale(1); opacity: 0; }
+}

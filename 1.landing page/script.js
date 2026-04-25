@@ -1,91 +1,84 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const dustContainer = document.getElementById('dust-container');
+    const shapesContainer = document.getElementById('shapes-container');
+    const header = document.querySelector('.glass-header');
+    const heroContent = document.querySelector('.hero-content');
 
-    /* =========================
-       1. Dark Mode Toggle
-    ========================= */
+    // 1. Generate Atmospheric Dust Particles
+    const createDust = () => {
+        if (!dustContainer) return;
+        const particleCount = window.innerWidth > 768 ? 40 : 20;
+        for (let i = 0; i < particleCount; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 3 + 1;
+            dust.style.width = size + 'px';
+            dust.style.height = size + 'px';
+            dust.style.left = Math.random() * 100 + 'vw';
+            dust.style.top = Math.random() * 100 + 'vh';
+            dust.style.animationDelay = (Math.random() * -12) + 's';
+            dust.style.opacity = Math.random() * 0.5 + 0.1;
+            dustContainer.appendChild(dust);
+        }
+    };
 
-    // const html = document.documentElement;
-    // const header = document.querySelector("header");
+    // 2. Generate Royal Pharaonic Shapes
+    const createShapes = () => {
+        if (!shapesContainer) return;
+        const shapeCount = window.innerWidth > 768 ? 12 : 6;
+        for (let i = 0; i < shapeCount; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.style.left = Math.random() * 100 + 'vw';
+            shape.style.top = Math.random() * 100 + 'vh';
+            shape.style.animationDelay = (Math.random() * -20) + 's';
+            const scale = Math.random() * 0.5 + 0.5;
+            shape.style.transform = `scale(${scale})`;
+            shapesContainer.appendChild(shape);
+        }
+    };
 
-    // // إنشاء زرار الدارك مود
-    // const themeBtn = document.createElement("button");
-    // themeBtn.id = "themeToggle";
-    // themeBtn.textContent = "🌙";
-    // themeBtn.style.marginLeft = "1rem";
+    // 3. Cinematic Header Scroll Effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.style.background = 'rgba(0, 0, 0, 0.9)';
+            header.style.padding = '1rem 3rem';
+            header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+        } else {
+            header.style.background = 'rgba(10, 10, 10, 0.7)';
+            header.style.padding = '1.5rem 3rem';
+            header.style.boxShadow = 'none';
+        }
+    });
 
-    // header.appendChild(themeBtn);
-
-    // // تحميل الثيم المحفوظ
-    // const savedTheme = localStorage.getItem("theme");
-    // if (savedTheme === "dark") {
-    //     html.classList.add("dark");
-    //     themeBtn.textContent = "☀️";
-    // }
-
-    // // التبديل
-    // themeBtn.addEventListener("click", () => {
-    //     html.classList.toggle("dark");
-
-    //     const isDark = html.classList.contains("dark");
-    //     localStorage.setItem("theme", isDark ? "dark" : "light");
-    //     themeBtn.textContent = isDark ? "☀️" : "🌙";
-    // });
-
-    /* =========================
-       2. Reveal Animation on Scroll
-    ========================= */
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-                observer.unobserve(entry.target);
+    // 4. 3D Parallax Mouse Tracking
+    if (window.innerWidth > 1024) {
+        document.addEventListener('mousemove', (e) => {
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            if (heroContent) {
+                heroContent.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
             }
+
+            // Interactive Dust response
+            const particles = document.querySelectorAll('.dust-particle');
+            particles.forEach(p => {
+                const rect = p.getBoundingClientRect();
+                const dx = e.clientX - rect.left;
+                const dy = e.clientY - rect.top;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 150) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (150 - dist) / 150;
+                    p.style.transform = `translate(${-Math.cos(angle) * 30 * force}px, ${-Math.sin(angle) * 30 * force}px)`;
+                } else {
+                    p.style.transform = '';
+                }
+            });
         });
-    }, { threshold: 0.1 });
+    }
 
-    const animatedElements = document.querySelectorAll(
-        "h1, h2, button, footer"
-    );
-
-    animatedElements.forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(20px)";
-        el.style.transition = "all 0.6s ease";
-        observer.observe(el);
-    });
-
-    /* =========================
-       3. Smooth Scroll
-    ========================= */
-
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener("click", e => {
-            e.preventDefault();
-            const target = document.querySelector(link.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
-            }
-        });
-    });
-
-    /* =========================
-       4. Button Click Effect
-    ========================= */
-
-    document.querySelectorAll("button").forEach(btn => {
-        btn.addEventListener("mousedown", () => {
-            btn.style.transform = "scale(0.95)";
-        });
-
-        btn.addEventListener("mouseup", () => {
-            btn.style.transform = "scale(1)";
-        });
-
-        btn.addEventListener("mouseleave", () => {
-            btn.style.transform = "scale(1)";
-        });
-    });
-
+    // Initialize
+    createDust();
+    createShapes();
 });

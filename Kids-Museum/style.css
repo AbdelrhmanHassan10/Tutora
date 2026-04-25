@@ -514,20 +514,52 @@ body.light .header {
     border-bottom: 1px solid rgba(191, 161, 107, 0.2);
 }
 
-.header.scrolled {
-    background: rgba(0, 0, 0, 0.95) !important;
-    padding: 0.8rem 2rem !important;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+.header {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    will-change: transform, background, padding;
 }
 
 .header-container {
     max-width: 1400px;
-    margin: 1px;
+    margin:1;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
-    padding-left: 0rem;
+    padding: 1.2rem 2rem;
+    width: 100%;
+}
+
+.scroll-progress-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 1001;
+    pointer-events: none;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #f2d00d, #fff, #f2d00d);
+    box-shadow: 0 0 15px rgba(242, 208, 13, 0.6);
+    transition: width 0.1s ease-out;
+}
+
+.header.scrolled {
+    background: rgba(0, 0, 0, 0.95) !important;
+    padding: 0.8rem 0 !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
 }
 
 .header-left {
@@ -4024,22 +4056,65 @@ body.light .site-footer {
     pointer-events: none;
 }
 
+
 .footer-logo {
     margin-bottom: 2rem;
-    color: var(--primary);
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
 }
 
 .footer-logo::before {
-    content: "";
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
-    z-index: -1;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: rotateSeal 10s linear infinite;
+}
+
+.footer-logo::after {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    border: 1px dashed var(--primary-color);
+    opacity: 0.5;
+    animation: rotateSeal 15s linear infinite reverse;
+}
+
+.footer-logo .material-symbols-outlined {
+    font-size: 3.5rem !important;
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 20px var(--primary-glow));
+    animation: pulseIcon 3s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes rotateSeal {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px var(--primary-glow)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 30px var(--primary-color)); }
+}
+
+.footer-title {
+    font-family: var(--cinzel);
+    font-size: 2.2rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #fff 0%, var(--primary-color) 50%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .footer-column h3 {
@@ -4254,4 +4329,168 @@ body.light .copyright {
     .legal-links a {
         margin-right: 0;
     }
+}
+
+/* ============================================
+   KID-FRIENDLY ARTIFACT CARDS
+   ============================================ */
+
+.kid-artifact-card {
+    min-width: 280px;
+    background: #1C1B14;
+    border: 2px solid #393728;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.kid-artifact-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--color-primary);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.artifact-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--color-primary);
+    color: #000;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.artifact-img {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid #393728;
+    transition: transform 0.5s ease;
+}
+
+.kid-artifact-card:hover .artifact-img {
+    transform: scale(1.1);
+}
+
+.artifact-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.artifact-info h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+}
+
+.artifact-info p {
+    font-size: 0.9rem;
+    color: #94A3B8;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.btn-artifact-view {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: 1px solid #393728;
+    transition: all 0.3s ease;
+}
+
+.kid-artifact-card:hover .btn-artifact-view {
+    background: var(--color-primary);
+    color: #000;
+    border-color: var(--color-primary);
+}
+
+/* ============================================
+   CONSOLIDATED RESPONSIVE SYSTEM (KIDS EDITION)
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .header-container { padding: 1rem 2rem !important; }
+    .hero-card { padding: 2rem !important; }
+    .hero-title { font-size: 3.5rem !important; }
+}
+
+@media (max-width: 768px) {
+    .header { padding: 0 !important; }
+    .header-container { padding: 0.8rem 1rem !important; gap: 0.75rem !important; }
+    .menu-btn { display: flex !important; }
+    .desktop-nav, .search-box, .btn-booking { display: none !important; }
+    .header-left { flex: 1; gap: 0.5rem; }
+    .header-right { flex: 0; gap: 0.5rem; }
+    .logo-text { font-size: 1.25rem !important; letter-spacing: 2px !important; }
+    .logo-circle { width: 36px !important; height: 36px !important; }
+    
+    .header.scrolled { padding: 0 !important; }
+    .header.scrolled .header-container { padding: 0.6rem 1rem !important; }
+
+    .hero-section { padding: 1rem !important; }
+    .hero-card { min-height: auto !important; padding: 2rem 1.5rem !important; border-radius: 1.5rem !important; }
+    .hero-content { gap: 2rem !important; flex-direction: column !important; }
+    .hero-title { font-size: 2.5rem !important; }
+    .hero-visual { max-width: 18rem !important; margin: 0 auto !important; }
+    .floating-icon { padding: 0.75rem !important; }
+    .icon-bottom { bottom: 1rem !important; left: 0 !important; }
+
+    .section-padding { padding: 3rem 1rem !important; }
+    .section-title { font-size: 1.75rem !important; }
+    .missions-grid { gap: 1.25rem !important; }
+    
+    .flip-card { height: 300px !important; }
+    .flip-card-front h3 { font-size: 1.25rem !important; }
+    .flip-card-back p { font-size: 0.95rem !important; }
+
+    .sandpit-wrapper { padding: 1.5rem !important; }
+    .sandpit-layer { gap: 1.5rem !important; }
+    .dig-spot { height: 250px !important; }
+
+    .board-container { padding: 2rem 1.5rem !important; }
+    .board-title { font-size: 1.5rem !important; }
+
+    .mobile-menu {
+        background: rgba(10, 10, 10, 0.95) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
+    }
+    
+    /* Force dropdowns to be open on mobile */
+    .dropdown-items {
+        max-height: 1000px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background-color: rgba(212, 175, 55, 0.05) !important;
+    }
+    .dropdown-toggle .material-symbols-outlined {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container { padding: 0.8rem 0.5rem !important; }
+    .logo-text { font-size: 1.1rem !important; }
+    .hero-title { font-size: 2.2rem !important; }
+    .hero-btns { flex-direction: column !important; }
+    .btn-primary-large, .btn-secondary-large { width: 100% !important; padding: 0 1.5rem !important; font-size: 1rem !important; }
+    .profile-img { width: 32px; height: 32px; }
 }

@@ -849,7 +849,7 @@ window.openArtifactModal = function(artifact) {
             
             const duration = Math.random() * 15 + 10;
             const delay = Math.random() * 10;
-            particle.style.animation = `floatParticle ${duration}s infinite linear ${delay}s`;
+            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
             
             dustContainer.appendChild(particle);
         }
