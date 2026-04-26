@@ -5124,3 +5124,70 @@ body.light .copyright {
     font-weight: 700;
     margin-right: 5px;
 }
+
+/* ==========================================================================
+   ABOUT PAGE LIGHT MODE OPTIMIZATION
+   ========================================================================== */
+body.light .hero-title, 
+body.light .section-title {
+    background: linear-gradient(135deg, #0F172A 0%, #d4af37 50%, #0F172A 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light .section-description, 
+body.light .timeline-text,
+body.light .mission-text,
+body.light .partner-desc {
+    color: #334155 !important;
+}
+
+body.light .timeline-year {
+    background: linear-gradient(135deg, #0F172A, #d4af37) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+body.light .timeline-content,
+body.light .mission-card,
+body.light .team-card,
+body.light .partner-card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05) !important;
+}
+
+body.light .timeline-content:hover,
+body.light .mission-card:hover,
+body.light .team-card:hover {
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1), 0 0 15px rgba(212, 175, 55, 0.1) !important;
+}
+
+body.light .timeline-title,
+body.light .mission-title,
+body.light .team-name {
+    color: #0F172A !important;
+}
+
+body.light .timeline-marker {
+    background: #ffffff !important;
+    border-color: #d4af37 !important;
+    color: #0F172A !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2) !important;
+}
+
+body.light .gold-text-span {
+    background: linear-gradient(135deg, #0F172A 0%, #d4af37 50%, #0F172A 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+body.light .drop-cap::first-letter {
+    color: #d4af37 !important;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.2) !important;
+}
+
+body.light .timeline::before {
+    background: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.1), transparent) !important;
+}
