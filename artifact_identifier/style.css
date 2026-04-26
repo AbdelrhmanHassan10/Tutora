@@ -1364,55 +1364,92 @@ body.light .hero-subtitle {
    ============================================ */
 
 .how-it-works {
-    padding: 4rem 0;
+    padding: 10rem 0;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    padding: 0 2rem;
 }
 
 .card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 32px;
+    padding: 4rem 3rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: var(--card-shadow);
+    gap: 2.5rem;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+body.light .card {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
-    border-color: #D4AF37;
-    transform: translateY(-4px);
-    box-shadow: var(--card-shadow);
+    transform: translateY(-20px);
+    border-color: var(--primary);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.1);
 }
 
-.card-icon {
-    font-size: 2.25rem;
-    color: #D4AF37;
-    transition: transform 0.3s ease;
+.card-icon-box {
+    width: 90px;
+    height: 90px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
 }
 
-.card:hover .card-icon {
-    transform: scale(1.1);
+.card:hover .card-icon-box {
+    background: var(--primary);
+    transform: rotateY(180deg);
 }
 
-.card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
+.card-icon-box span {
+    font-size: 3.5rem !important;
+    color: var(--primary);
+    transition: all 0.5s ease;
 }
 
-.card-text {
-    font-size: 1rem;
-    color: #999999;
-    line-height: 1.5;
+.card:hover .card-icon-box span {
+    color: #000;
+}
+
+.card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+body.light .card h3 {
+    color: #1e293b;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+body.light .card p {
+    color: #475569;
 }
 
 
@@ -2061,7 +2098,52 @@ body.light a {
 }
 
 /* ============= SHARED ============= */
-.ai-section-title { font-family: 'Cinzel', serif; font-size: 2.2rem; color: var(--text-primary); text-align: center; margin-bottom: 3rem; }
+/* ============= SHARED ============= */
+.ai-section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.8rem, 6vw, 4rem);
+    text-align: center;
+    margin: 10rem 0 6rem;
+    text-transform: uppercase;
+    letter-spacing: 15px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.ai-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ecb613, transparent);
+    box-shadow: 0 0 25px rgba(236, 182, 19, 0.6);
+}
+
+body.light .ai-section-title {
+    color: #1e293b;
+}
+
+.gold-text-span {
+    background: linear-gradient(135deg, #fff 0%, #d4af37 50%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+}
+
+@media (max-width: 768px) {
+    .ai-section-title {
+        font-size: 2rem;
+        letter-spacing: 5px;
+        margin: 5rem 0 3rem;
+    }
+    .ai-section-title::after {
+        width: 100px;
+    }
+}
 body.light .ai-section-title { color: var(--text-primary); }
 
 /* ============= SCROLL ANIMATIONS ============= */
@@ -2119,12 +2201,71 @@ body.light .ai-section-title { color: var(--text-primary); }
 
 /* ============= IDENT SECTIONS (upgraded) ============= */
 .ident-tech, .ident-categories, .ident-stats { max-width: 1100px; margin: 5rem auto; padding: 0 2rem; }
-.ident-tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.ident-tech-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 14px; padding: 2rem; text-align: center; transition: all 0.4s; }
-.ident-tech-card:hover { border-color: rgba(236,182,19,0.3); transform: translateY(-4px); }
-.ident-tech-card .material-symbols-outlined { font-size: 2rem; color: #ecb613; margin-bottom: 0.75rem; display: block; }
-.ident-tech-card h3 { color: #fff; font-size: 0.95rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
-.ident-tech-card p { color: #888; font-size: 0.8rem; line-height: 1.6; }
+.ident-tech-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2.5rem; 
+}
+
+.ident-tech-card { 
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    border-radius: 24px; 
+    padding: 3rem; 
+    transition: all 0.4s ease; 
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+body.light .ident-tech-card {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.ident-tech-card:hover { 
+    border-color: var(--primary); 
+    transform: translateY(-10px); 
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.tech-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ident-tech-card .material-symbols-outlined { 
+    font-size: 2.5rem !important; 
+    color: var(--primary); 
+}
+
+.ident-tech-card h3 { 
+    color: #fff; 
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
+
+body.light .ident-tech-card h3 {
+    color: #1e293b;
+}
+
+.ident-tech-card p { 
+    color: rgba(255, 255, 255, 0.6); 
+    font-size: 0.95rem; 
+    line-height: 1.7; 
+}
+
+body.light .ident-tech-card p {
+    color: #64748b;
+}
 .ident-cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .ident-cat-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 14px; padding: 2rem; text-align: center; transition: all 0.4s; }
 .ident-cat-card:hover { border-color: rgba(236,182,19,0.3); transform: translateY(-4px); }

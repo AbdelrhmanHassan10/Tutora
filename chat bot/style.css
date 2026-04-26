@@ -3093,3 +3093,247 @@ body.light .copyright {
     margin: 2rem auto;
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
+
+/* ============================================
+   CHATBOT TUTORA - PREMIUM SECTION STYLING
+   ============================================ */
+
+/* Section Titles with Royal Gold */
+.ai-section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    text-align: center;
+    margin: 8rem 0 4rem;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.ai-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: var(--gold-gradient);
+    box-shadow: 0 0 15px rgba(242, 185, 13, 0.5);
+}
+
+body.light .ai-section-title {
+    color: #1e293b;
+}
+
+.gold-text {
+    background: linear-gradient(135deg, #fff 0%, #d4af37 50%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+}
+
+/* Personality Section - Meet Tutora */
+.chat-personality {
+    padding: 2rem 2rem 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.chat-personality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.personality-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 4rem 2.5rem;
+    border-radius: 30px;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+body.light .personality-card {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.personality-card:hover {
+    transform: translateY(-20px);
+    border-color: #d4af37;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 30px rgba(212, 175, 55, 0.1);
+}
+
+.personality-icon {
+    width: 100px;
+    height: 100px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2.5rem;
+    color: #d4af37;
+    transition: all 0.5s ease;
+}
+
+.personality-icon span {
+    font-size: 3.5rem !important;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+}
+
+.personality-card:hover .personality-icon {
+    background: #d4af37;
+    color: #000;
+    transform: rotateY(180deg);
+}
+
+.personality-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    letter-spacing: 2px;
+}
+
+body.light .personality-card h3 {
+    color: #1e293b;
+}
+
+.personality-card p {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+body.light .personality-card p {
+    color: #475569;
+}
+
+/* Capabilities Section - What I Can Do */
+.chat-capabilities {
+    padding: 10rem 2rem;
+    background: radial-gradient(circle at top, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+}
+
+.chat-cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.chat-cap-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 4rem 3rem;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+body.light .chat-cap-card {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.chat-cap-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(242, 185, 13, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.chat-cap-card:hover {
+    transform: translateY(-15px);
+    border-color: #d4af37;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.chat-cap-card:hover::before {
+    opacity: 1;
+}
+
+.chat-cap-icon-box {
+    width: 80px;
+    height: 80px;
+    background: rgba(242, 185, 13, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.chat-cap-card:hover .chat-cap-icon-box {
+    background: #d4af37;
+    transform: rotate(10deg);
+}
+
+.chat-cap-icon-box span {
+    font-size: 3rem !important;
+    color: #d4af37;
+    transition: all 0.5s ease;
+}
+
+.chat-cap-card:hover .chat-cap-icon-box span {
+    color: #000;
+}
+
+.chat-cap-info {
+    position: relative;
+    z-index: 2;
+}
+
+.chat-cap-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.75rem;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    letter-spacing: 2px;
+}
+
+body.light .chat-cap-card h3 {
+    color: #1e293b;
+}
+
+.chat-cap-card p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+body.light .chat-cap-card p {
+    color: #475569;
+}
+
+@media (max-width: 768px) {
+    .chat-cap-grid {
+        grid-template-columns: 1fr;
+    }
+    .chat-cap-card {
+        padding: 3rem 2rem;
+        text-align: center;
+        align-items: center;
+    }
+}

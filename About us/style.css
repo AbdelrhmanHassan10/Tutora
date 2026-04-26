@@ -4209,3 +4209,270 @@ body.light .timeline-year {
     margin: 2rem auto;
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
+
+/* ==========================================================================
+   SUPER STAR PREMIUM DESIGN SYSTEM - ABOUT US PAGE
+   ========================================================================== */
+
+/* Cinematic Hero Typography */
+.hero-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: clamp(2.5rem, 8vw, 5rem) !important;
+
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 15px !important;
+    background: linear-gradient(135deg, #fff 0%, #ecb613 50%, #fff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 2rem !important;
+    text-align: center;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem !important;
+    font-weight: 300 !important;
+    line-height: 2 !important;
+    letter-spacing: 2px !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-align: center;
+    text-wrap: balance;
+}
+
+/* Royal Section Headers */
+.section-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: clamp(2.5rem, 6vw, 4.2rem) !important;
+    letter-spacing: 10px !important;
+    text-transform: uppercase !important;
+    position: relative !important;
+    padding-bottom: 25px !important;
+    margin-bottom: 3rem !important;
+    text-align: center !important;
+}
+
+.section-title::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 150px !important;
+    height: 3px !important;
+    background: linear-gradient(90deg, transparent, #ecb613, transparent) !important;
+    box-shadow: 0 0 20px rgba(236, 182, 19, 0.5) !important;
+}
+
+/* Airy Narrative Typography */
+.narrative-text p, 
+.arch-description, 
+.section-description,
+.alabaster-p {
+    font-size: 1.25rem !important;
+    line-height: 2.1 !important;
+    font-weight: 300 !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    letter-spacing: 0.02em !important;
+    margin-bottom: 2.5rem !important;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.drop-cap::first-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    float: left;
+    line-height: 1;
+    padding-right: 15px;
+    padding-top: 5px;
+    color: #ecb613;
+    text-shadow: 0 0 20px rgba(236, 182, 19, 0.4);
+}
+
+
+.narrative-title, .arch-content h2, .stats-title, .location-title {
+
+    font-family: 'Cinzel', serif !important;
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+    letter-spacing: 6px !important;
+    text-transform: uppercase !important;
+    background: linear-gradient(135deg, #fff, #ecb613) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 2rem !important;
+    position: relative !important;
+    padding-bottom: 15px !important;
+}
+
+.narrative-title::after, .arch-content h2::after, .stats-title::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 80px !important;
+    height: 2px !important;
+    background: #ecb613 !important;
+    box-shadow: 0 0 10px rgba(236, 182, 19, 0.5) !important;
+}
+
+.stats-title {
+    text-align: center !important;
+}
+
+.stats-title::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+
+/* Premium Interactive Cards */
+.frosted-card, .stat-card, .ai-feature-card {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(25px) !important;
+    border: 1px solid rgba(236, 182, 19, 0.2) !important;
+    border-radius: 2.5rem !important;
+    padding: 4rem 3rem !important;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.frosted-card:hover, .stat-card:hover, .ai-feature-card:hover {
+    transform: translateY(-20px) scale(1.02) !important;
+    border-color: #ecb613 !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 20px rgba(236, 182, 19, 0.2) !important;
+}
+
+.icon {
+    font-size: 4rem !important;
+    background: linear-gradient(135deg, #fff, #ecb613) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 2rem !important;
+}
+
+.ai-feature-card h3, .stat-label {
+
+    font-family: 'Cinzel', serif !important;
+    font-size: 1.6rem !important;
+    color: #fff !important;
+    margin-bottom: 1rem !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+}
+
+.ai-feature-card p, .stat-desc {
+    font-size: 1.05rem !important;
+    line-height: 1.8 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 300 !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+}
+
+body.light .ai-feature-card h3, body.light .stat-label {
+    color: #0F172A !important;
+}
+
+body.light .ai-feature-card p, body.light .stat-desc {
+    color: #475569 !important;
+}
+
+
+/* Stat Numbers Upgrade */
+.stat-number {
+    font-family: 'Cinzel', serif !important;
+    font-size: 4.5rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #fff, #ecb613) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-bottom: 1rem !important;
+}
+
+.stat-label {
+    letter-spacing: 5px !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+}
+
+/* Gold Highlight Class */
+.gold-text {
+    background: linear-gradient(135deg, #fff 0%, #ecb613 50%, #fff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: drop-shadow(0 0 10px rgba(236, 182, 19, 0.3)) !important;
+}
+
+/* ==========================================================================
+   LIGHT MODE PREMIUM OPTIMIZATION
+   ========================================================================== */
+body.light .hero-title {
+    background: linear-gradient(135deg, #0F172A 0%, #d4af37 50%, #0F172A 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light .hero-subtitle {
+    color: #475569 !important;
+}
+
+body.light .section-title {
+    color: #0F172A !important;
+}
+
+body.light .narrative-text p, 
+body.light .arch-description, 
+body.light .section-description,
+body.light .alabaster-p {
+    color: #334155 !important;
+}
+
+body.light .narrative-title, 
+body.light .arch-content h2,
+body.light .location-title {
+    background: linear-gradient(135deg, #0F172A, #d4af37) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+body.light .frosted-card, 
+body.light .stat-card, 
+body.light .ai-feature-card {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(212, 175, 55, 0.2) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05) !important;
+}
+
+body.light .frosted-card:hover, 
+body.light .stat-card:hover, 
+body.light .ai-feature-card:hover {
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1), 0 0 20px rgba(212, 175, 55, 0.1) !important;
+}
+
+body.light .stat-number,
+body.light .icon,
+body.light .stat-icon {
+    background: linear-gradient(135deg, #0F172A, #d4af37) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+body.light .visual-glow {
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%) !important;
+}
+
+
+body.light .drop-cap::first-letter {
+    color: #d4af37 !important;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.2) !important;
+}
+
+body.light .arch-highlight {
+    background: rgba(212, 175, 55, 0.05) !important;
+    border-left-color: #d4af37 !important;
+    color: #0F172A !important;
+}

@@ -1930,6 +1930,209 @@ body.dark .site-footer {
     to { transform: rotate(360deg); }
 }
 
+
+/* ============================================
+   HOW IT WORKS & FEATURES (Premium Storytelling)
+   ============================================ */
+
+.ai-section-title {
+    font-family: var(--cinzel);
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.model-how {
+    padding: 8rem 0;
+    position: relative;
+}
+
+.model-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.model-step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    padding: 3.5rem 2.5rem;
+    border-radius: 24px;
+    position: relative;
+    transition: var(--transition-slow);
+    overflow: hidden;
+}
+
+.model-step:hover {
+    transform: translateY(-15px);
+    border-color: var(--primary-color);
+    background: rgba(212, 175, 55, 0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.model-step-num {
+    font-family: var(--cinzel);
+    font-size: 3.5rem;
+    font-weight: 900;
+    opacity: 0.1;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.model-step .material-symbols-outlined {
+    font-size: 3rem;
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 10px var(--primary-glow));
+}
+
+.model-step h3 {
+    font-family: var(--cinzel);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+.model-step p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Features Grid */
+.model-features {
+    padding-bottom: 8rem;
+}
+
+.model-feat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.model-feat-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: var(--transition-fast);
+}
+
+.model-feat-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-color);
+    transform: scale(1.03);
+}
+
+.feat-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    transition: var(--transition-fast);
+}
+
+.model-feat-card:hover .feat-icon-wrapper {
+    background: var(--primary-color);
+}
+
+.model-feat-card:hover .material-symbols-outlined {
+    color: #000;
+}
+
+.model-feat-card .material-symbols-outlined {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+}
+
+.model-feat-card h3 {
+    font-family: var(--cinzel);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.model-feat-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Stats Section */
+.model-stats {
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.05), transparent);
+    padding: 6rem 0;
+    margin: 4rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.model-stats-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.model-stat-item {
+    text-align: center;
+}
+
+.model-stat-number {
+    display: block;
+    font-family: var(--cinzel);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px var(--primary-glow);
+}
+
+.model-stat-label {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .model-steps {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .ai-section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .model-stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .model-feat-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Footer Title Fix */
 .footer-title {
     font-family: 'Cinzel', serif !important;
     font-size: 2.5rem !important;
@@ -1942,6 +2145,7 @@ body.dark .site-footer {
     text-align: center;
     margin-bottom: 1.5rem !important;
 }
+
 
 .footer-divider {
     height: 1px;
