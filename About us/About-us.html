@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="../museum.png">
     
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Spline+Sans:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
@@ -21,36 +21,34 @@
     <link rel="stylesheet" href="../global-theme.css" />
 </head>
 <body class="dark">
-    <!-- Atmospheric Elements -->
+    <!-- Royal Atmosphere & Interactivity -->
+    <div id="scrollProgress"></div>
     <div id="dust-container"></div>
     <div id="shapes-container"></div>
 
-    <!-- Menu Overlay -->
+    <!-- Overlay for Mobile Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- Mobile Menu -->
+    <!-- Single Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="menu-header">
             <div class="menu-logo">
                 <div class="logo-circle">
                     <img src="../logo.png" alt="Tutora Logo">
                 </div>
-                <h3 class="menu-logo-text">TUTORA</h3>
+                <h3 class="menu-logo-text">Tutora</h3>
             </div>
             <button class="close-btn" id="closeBtn">
-                <span class="material-symbols-outlined">close</span>
+                <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
             </button>
         </div>
-
         <nav class="menu-nav">
             <a href="../4.home/code.html" class="menu-link">Home</a>
             <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-            <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition Halls</a>
-            <a href="../Kids-Museum/kids-museum.html" class="menu-link" style="color: #ecb613;">Kids-Museum</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
             <a href="../event/event.html" class="menu-link">Event</a>
-
             <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle" style="color: #000;">
+                <button class="menu-link dropdown-toggle">
                     AI Experience
                     <span class="material-symbols-outlined">expand_more</span>
                 </button>
@@ -59,12 +57,11 @@
                     <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
                     <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
                     <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
                 </div>
             </div>
-
             <a href="../shop/shop.html" class="menu-link">Shop</a>
-            <a href="../About us/About-us.html" class="menu-link">About</a>
+            <a href="../about/About.html" class="menu-link">About</a>
             <div class="menu-dropdown">
                 <button class="menu-link dropdown-toggle">Collection <span class="material-symbols-outlined">expand_more</span></button>
                 <div class="dropdown-items">
@@ -73,9 +70,8 @@
                 </div>
             </div>
         </nav>
-
         <div class="menu-footer">
-            <a href="../booking/booking.html" class="menu-booking-btn" style="background-color: #ecb613;">Booking</a>
+            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
             <a href="../fav/favourite.html" class="menu-icon-link">
                 <span class="material-symbols-outlined">favorite</span> Favorites
             </a>
@@ -85,21 +81,20 @@
         </div>
     </div>
 
-    <!-- Header -->
     <header class="header">
+        <div class="scroll-progress-container"><div class="scroll-progress-bar" id="scrollProgress"></div></div>
         <div class="header-container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn">
-                    <span class="material-symbols-outlined">menu</span>
+                    <span class="material-symbols-outlined" style="color: #ecb613;padding-top: 5px;">menu</span>
                 </button>
                 <div class="logo-section">
                     <div class="logo-circle">
                         <img src="../logo.png" alt="Tutora Logo">
                     </div>
-                    <h2 class="logo-text">TUTORA</h2>
+                    <h2 class="logo-text">Tutora</h2>
                 </div>
             </div>
-
             <nav class="desktop-nav">
                 <a href="../4.home/code.html">Home</a>
                 <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
@@ -115,11 +110,11 @@
                         <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
                         <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
                         <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
                     </div>
                 </div>
                 <a href="../shop/shop.html">Shop</a>
-                <a href="../About us/About-us.html" class="active">About</a>
+                <a href="../about/About.html">About</a>
                 <div class="nav-dropdown">
                     <button class="nav-link dropdown-trigger">Collection <span class="material-symbols-outlined">expand_more</span></button>
                     <div class="dropdown-menu">
@@ -128,25 +123,22 @@
                     </div>
                 </div>
             </nav>
-
             <div class="header-right">
                 <div class="search-box">
                     <span class="material-symbols-outlined">search</span>
                     <input type="text" placeholder="Search..." />
                 </div>
-                <button class="theme-btn" id="themeBtn">
+                <button class="theme-btn" id="theme-toggle">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </button>
-                <a href="../booking/booking.html" class="btn-booking" style="background-color: #ecb613; color: black;">booking</a>
-                <a href="../fav/favourite.html">
-                    <button class="icon-btn">
-                        <span class="material-symbols-outlined">favorite</span>
-                    </button>
+                <a href="../booking/booking.html" class="btn-booking">booking</a>
+                <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;">
+                    <span class="material-symbols-outlined">favorite</span>
                 </a>
                 <button class="icon-btn" id="langBtn">
                     <span class="material-symbols-outlined">language</span>
                 </button>
-                <a href="../Profile/Profile_page.html">
+                <a href="../Profile/profile.html">
                     <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
                 </a>
             </div>
@@ -368,10 +360,9 @@
         </section>
     </main>
 
-    <!-- Footer Component -->
-     <!-- Premium Footer -->
     <footer class="site-footer">
         <div class="footer-container">
+            <!-- Footer Header -->
             <div class="footer-header">
                 <div class="footer-logo">
                     <span class="material-symbols-outlined">account_balance</span>
@@ -380,13 +371,14 @@
                 <div class="footer-divider"></div>
             </div>
 
+            <!-- Footer Grid -->
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Explore</h3>
                     <ul>
                         <li><a href="../booking/booking.html">Tickets</a></li>
                         <li><a href="../collection/collection.html">Collection</a></li>
-                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition-Halls</a></li>
                         <li><a href="../-membership/code.html">Membership</a></li>
                         <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
                     </ul>
@@ -412,15 +404,32 @@
                 <div class="footer-column connect-column">
                     <h3>Connect</h3>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://x.com/GrandEGMuseum" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <!-- Twitter (X) -->
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter)">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
                     </div>
+
                     <p>Follow us on social media for updates and behind-the-scenes content.</p>
                 </div>
             </div>
 
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <div class="language-toggle">
                     <button class="active" data-lang="en">English</button>
@@ -428,11 +437,13 @@
                 </div>
                 <div class="legal-section">
                     <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html">Cookie Settings</a>
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
                     </div>
-                    <div class="copyright">© 2026 Tutora. All rights reserved.</div>
+                    <div class="copyright">
+                        © 2026 Tutora. All rights reserved.
+                    </div>
                 </div>
             </div>
         </div>
@@ -442,7 +453,6 @@
     <script src="main.js"></script>
     <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
-    <script src="../standardize_theme.js"></script>
 </body>
 
 </html>
