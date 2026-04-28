@@ -404,6 +404,24 @@ body.dark .menu-header {
 
 
 
+    color: var(--text-primary);
+    background-color: transparent;
+    border: 1px solid rgba(57, 55, 40, 0.2);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.menu-icon-link:hover {
+    background-color: rgba(242, 208, 13, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+
 /* ============================================
    HEADER STYLES
    ============================================ */
@@ -4404,80 +4422,119 @@ body.light .copyright {
 
 .kid-artifact-card:hover .btn-artifact-view {
     background: var(--color-primary);
-    color: #000;
-    border-color: var(--color-primary);
-}
-
-/* ============================================
-   CONSOLIDATED RESPONSIVE SYSTEM (KIDS EDITION)
-   ============================================ */
-
-@media (max-width: 1024px) {
-    .header-container { padding: 1rem 2rem !important; }
-    .hero-card { padding: 2rem !important; }
-    .hero-title { font-size: 3.5rem !important; }
-}
+    color
+/* ============================================================
+   ULTIMATE MOBILE FIX (STRICT OVERRIDE)
+   ============================================================ */
 
 @media (max-width: 768px) {
-    .header { padding: 0 !important; }
-    .header-container { padding: 0.8rem 1rem !important; gap: 0.75rem !important; }
-    .menu-btn { display: flex !important; }
-    .desktop-nav, .search-box, .btn-booking { display: none !important; }
-    .header-left { flex: 1; gap: 0.5rem; }
-    .header-right { flex: 0; gap: 0.5rem; }
-    .logo-text { font-size: 1.25rem !important; letter-spacing: 2px !important; }
-    .logo-circle { width: 36px !important; height: 36px !important; }
-    
-    .header.scrolled { padding: 0 !important; }
-    .header.scrolled .header-container { padding: 0.6rem 1rem !important; }
-
-    .hero-section { padding: 1rem !important; }
-    .hero-card { min-height: auto !important; padding: 2rem 1.5rem !important; border-radius: 1.5rem !important; }
-    .hero-content { gap: 2rem !important; flex-direction: column !important; }
-    .hero-title { font-size: 2.5rem !important; }
-    .hero-visual { max-width: 18rem !important; margin: 0 auto !important; }
-    .floating-icon { padding: 0.75rem !important; }
-    .icon-bottom { bottom: 1rem !important; left: 0 !important; }
-
-    .section-padding { padding: 3rem 1rem !important; }
-    .section-title { font-size: 1.75rem !important; }
-    .missions-grid { gap: 1.25rem !important; }
-    
-    .flip-card { height: 300px !important; }
-    .flip-card-front h3 { font-size: 1.25rem !important; }
-    .flip-card-back p { font-size: 0.95rem !important; }
-
-    .sandpit-wrapper { padding: 1.5rem !important; }
-    .sandpit-layer { gap: 1.5rem !important; }
-    .dig-spot { height: 250px !important; }
-
-    .board-container { padding: 2rem 1.5rem !important; }
-    .board-title { font-size: 1.5rem !important; }
-
+    /* Reset and Hide Menu by Default */
     .mobile-menu {
-        background: rgba(10, 10, 10, 0.95) !important;
-        backdrop-filter: blur(20px) !important;
-        -webkit-backdrop-filter: blur(20px) !important;
-        border-right: 1px solid rgba(212, 175, 55, 0.2) !important;
+        display: flex !important;
+        visibility: visible !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important; /* STRICTLY HIDDEN */
+        width: 280px !important;
+        height: 100vh !important;
+        background: #000000 !important; /* SOLID BLACK */
+        z-index: 9999 !important;
+        transition: left 0.4s ease !important;
+        box-shadow: 20px 0 50px rgba(0,0,0,0.9) !important;
     }
-    
-    /* Force dropdowns to be open on mobile */
-    .dropdown-items {
-        max-height: 1000px !important;
+
+    .mobile-menu.active {
+        left: 0 !important; /* SHOW ONLY WHEN ACTIVE */
+    }
+
+    .menu-overlay {
+        display: block !important;
+        position: fixed !important;
+        inset: 0 !important;
+        background: rgba(0,0,0,0.8) !important;
+        backdrop-filter: blur(8px) !important;
+        z-index: 9998 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .menu-overlay.active {
         opacity: 1 !important;
         visibility: visible !important;
-        background-color: rgba(212, 175, 55, 0.05) !important;
     }
-    .dropdown-toggle .material-symbols-outlined {
+
+    /* Force Vertical Stack for Links */
+    .menu-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        padding-top: 2rem !important;
+    }
+
+    .menu-link {
+        display: block !important;
+        width: 100% !important;
+        padding: 1.2rem 1.5rem !important;
+        color: #ffffff !important;
+        font-size: 1.2rem !important;
+        font-weight: 800 !important;
+        text-decoration: none !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    }
+
+    .menu-link:hover {
+        color: #f2d00d !important;
+        background: rgba(255,255,255,0.05) !important;
+    }
+
+    /* Dropdowns CLOSED by default */
+    .dropdown-items {
+        max-height: 0 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        overflow: hidden !important;
+        transition: all 0.4s ease !important;
+    }
+
+    .dropdown-items.show {
+        max-height: 800px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: rgba(255,255,255,0.02) !important;
+    }
+
+    /* Header Stability */
+    .header {
+        height: 70px !important;
+        padding: 0 1rem !important;
+        background: #000000 !important;
+    }
+
+    .header-container {
+        padding: 0 !important;
+        height: 100% !important;
+    }
+
+    .logo-text {
+        font-size: 1.1rem !important;
+        letter-spacing: 2px !important;
+    }
+
+    .logo-circle {
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    /* Hide Desktop Bulky Items */
+    .desktop-nav, .search-box, .btn-booking {
         display: none !important;
+    }
+
+    .header-right {
+        gap: 0.5rem !important;
     }
 }
 
 @media (max-width: 480px) {
-    .header-container { padding: 0.8rem 0.5rem !important; }
-    .logo-text { font-size: 1.1rem !important; }
-    .hero-title { font-size: 2.2rem !important; }
-    .hero-btns { flex-direction: column !important; }
-    .btn-primary-large, .btn-secondary-large { width: 100% !important; padding: 0 1.5rem !important; font-size: 1rem !important; }
-    .profile-img { width: 32px; height: 32px; }
+    .mobile-menu { width: 100% !important; }
 }
