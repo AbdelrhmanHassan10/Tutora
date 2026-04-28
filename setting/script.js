@@ -138,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Settings reset.');
             }
         });
+    }
+
     // ============================================
     // ROYAL ATMOSPHERE (Golden Dust & Shapes)
     // ============================================
