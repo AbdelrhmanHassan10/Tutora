@@ -42,16 +42,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof google !== 'undefined') {
             google.accounts.id.initialize({
                 client_id: GOOGLE_CLIENT_ID,
-                callback: window.handleGoogleResponse
+                callback: window.handleGoogleResponse,
+                use_fedcm_for_prompt: false, // Disabling FedCM as it requires additional server-side setup
+                auto_select: false
             });
             
+            // Create a hidden container for the standard Google button
+            let hiddenContainer = document.getElementById('hiddenGoogleBtn');
+            if (!hiddenContainer) {
+                hiddenContainer = document.createElement('div');
+                hiddenContainer.id = 'hiddenGoogleBtn';
+                hiddenContainer.style.display = 'none';
+                document.body.appendChild(hiddenContainer);
+            }
+
+            google.accounts.id.renderButton(
+                hiddenContainer,
+                { theme: "outline", size: "large" } 
+            );
+
             const googleBtn = document.getElementById('googleBtn');
             if (googleBtn) {
                 googleBtn.addEventListener('click', () => {
-                    google.accounts.id.prompt(); // Show One Tap if available
-                    // For manual trigger of the picker:
-                    // google.accounts.id.renderButton is usually required for a real button,
-                    // but we can also use prompt() to show the "One Tap" or "Select Account" UI.
+                    // Try to find the actual clickable div inside the hidden container
+                    const actualBtn = hiddenContainer.querySelector('div[role="button"]');
+                    if (actualBtn) {
+                        actualBtn.click();
+                    } else {
+                        google.accounts.id.prompt();
+                    }
                 });
             }
         } else {

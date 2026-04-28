@@ -55,13 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof google !== 'undefined') {
             google.accounts.id.initialize({
                 client_id: GOOGLE_CLIENT_ID,
-                callback: window.handleGoogleResponse
+                callback: window.handleGoogleResponse,
+                use_fedcm_for_prompt: false,
+                auto_select: false
             });
             
+            let hiddenContainer = document.getElementById('hiddenGoogleBtn');
+            if (!hiddenContainer) {
+                hiddenContainer = document.createElement('div');
+                hiddenContainer.id = 'hiddenGoogleBtn';
+                hiddenContainer.style.display = 'none';
+                document.body.appendChild(hiddenContainer);
+            }
+
+            google.accounts.id.renderButton(
+                hiddenContainer,
+                { theme: "outline", size: "large" } 
+            );
+
             const googleBtn = document.getElementById('googleBtn');
             if (googleBtn) {
                 googleBtn.addEventListener('click', () => {
-                    google.accounts.id.prompt();
+                    const actualBtn = hiddenContainer.querySelector('div[role="button"]');
+                    if (actualBtn) {
+                        actualBtn.click();
+                    } else {
+                        google.accounts.id.prompt();
+                    }
                 });
             }
         } else {
