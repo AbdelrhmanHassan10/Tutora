@@ -404,7 +404,7 @@ body.dark .menu-header {
 
 
 
-    color: var(--text-primary);
+    color: var(--text-primary); 
     background-color: transparent;
     border: 1px solid rgba(57, 55, 40, 0.2);
     border-radius: 0.5rem;
@@ -2205,7 +2205,7 @@ margin-bottom: 0.75rem;
     .progress-text {
         font-size: 0.9rem;
     }
-}
+
 
 /* Tablet - Medium Screens (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
@@ -4427,7 +4427,6 @@ body.light .copyright {
    ULTIMATE MOBILE FIX (STRICT OVERRIDE)
    ============================================================ */
 
-@media (max-width: 768px) {
     /* Reset and Hide Menu by Default */
     .mobile-menu {
         display: flex !important;
