@@ -814,19 +814,61 @@ body.light .search-box input::placeholder {
     letter-spacing: 1px;
 }
 
+/* ============================================
+   MOBILE OPTIMIZATIONS (MUSEUM GRADE)
+   ============================================ */
+
 @media (max-width: 768px) {
+    .header {
+        padding: 0.8rem 1rem !important; /* Tighter padding on mobile */
+    }
+
+    .header-container {
+        padding: 0 !important;
+        gap: 0.5rem !important;
+    }
+
+    .logo-text {
+        font-size: 1rem !important; /* Smaller logo text */
+        letter-spacing: 2px !important;
+    }
+
+    .logo-circle {
+        width: 35px !important; /* Smaller logo circle */
+        height: 35px !important;
+    }
+
     .menu-btn {
-        display: flex;
+        display: flex !important;
+        width: 36px;
+        height: 36px;
     }
+
     .desktop-nav {
-        display: none;
+        display: none !important;
     }
+
     .header-right {
-        gap: 0.5rem;
+        gap: 0.25rem !important;
+        margin-left: auto;
     }
-    .btn-booking {
-        display: none;
+
+    /* Hide bulky items on mobile header */
+    .search-box, 
+    .btn-booking,
+    .icon-btn:not(#langBtn) { 
+        display: none !important; 
     }
+
+    .profile-img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+
+/* Ensure mobile menu footer links are accessible */
+.menu-footer {
+    padding-bottom: 2rem;
 }
 
 .btn-booking:hover {
