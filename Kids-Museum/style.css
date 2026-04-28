@@ -404,24 +404,6 @@ body.dark .menu-header {
 
 
 
-    color: var(--text-primary); 
-    background-color: transparent;
-    border: 1px solid rgba(57, 55, 40, 0.2);
-    border-radius: 0.5rem;
-    text-decoration: none;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.menu-icon-link:hover {
-    background-color: rgba(242, 208, 13, 0.1);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-
 /* ============================================
    HEADER STYLES
    ============================================ */
@@ -745,92 +727,11 @@ body.light .search-box input::placeholder {
     letter-spacing: 1px;
 }
 
-/* ============================================
-   MOBILE OPTIMIZATIONS (MUSEUM GRADE)
-   ============================================ */
 
-@media (max-width: 768px) {
-    .header {
-        padding: 0.8rem 1rem !important; /* Tighter padding on mobile */
-    }
-
-    .header-container {
-        padding: 0 !important;
-        gap: 0.5rem !important;
-    }
-
-    .logo-text {
-        font-size: 1rem !important; /* Smaller logo text */
-        letter-spacing: 2px !important;
-    }
-
-    .logo-circle {
-        width: 35px !important; /* Smaller logo circle */
-        height: 35px !important;
-    }
-
-    .menu-btn {
-        display: flex !important;
-        width: 36px;
-        height: 36px;
-    }
-
-    .desktop-nav {
-        display: none !important;
-    }
-
-    .header-right {
-        gap: 0.25rem !important;
-        margin-left: auto;
-    }
-
-    /* Hide bulky items on mobile header */
-    .search-box, 
-    .btn-booking,
-    .icon-btn:not(#langBtn) { 
-        display: none !important; 
-    }
-
-    .profile-img {
-        width: 32px !important;
-        height: 32px !important;
-    }
+/* Corrected Header Interaction */
+.dropdown-toggle {
+    cursor: pointer;
 }
-
-/* Ensure mobile menu footer links are accessible */
-.menu-footer {
-    padding-bottom: 2rem;
-}
-
-.btn-booking:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px var(--primary-glow);
-}
-
-/* ============================================
-   RESPONSIVE DESIGN (HEADER)
-   ============================================ */
-
-@media (max-width: 1024px) {
-    .header-container { padding: 0 2rem; }
-    .desktop-nav { gap: 1rem; }
-}
-
-@media (max-width: 768px) {
-    .menu-btn { display: flex; }
-    .desktop-nav { display: none; }
-    .header-right { gap: 0.5rem; }
-    .btn-booking { display: none; }
-}
-
-@media (max-width: 480px) {
-    .header { padding: 0.75rem 1rem; }
-    .header-container { gap: 0.5rem; }
-    .logo-text { font-size: 1rem; }
-}
-    .dropdown-toggle {
-        cursor: default;
-    }
 
 
 
@@ -4420,13 +4321,12 @@ body.light .copyright {
     transition: all 0.3s ease;
 }
 
-.kid-artifact-card:hover .btn-artifact-view {
-    background: var(--color-primary);
-    color
+.kid-artifact-card:hover .btn-artifact-vie
 /* ============================================================
    ULTIMATE MOBILE FIX (STRICT OVERRIDE)
    ============================================================ */
 
+@media (max-width: 768px) {
     /* Reset and Hide Menu by Default */
     .mobile-menu {
         display: flex !important;
@@ -4468,6 +4368,7 @@ body.light .copyright {
         display: flex !important;
         flex-direction: column !important;
         padding-top: 2rem !important;
+        gap: 0 !important;
     }
 
     .menu-link {
@@ -4479,6 +4380,7 @@ body.light .copyright {
         font-weight: 800 !important;
         text-decoration: none !important;
         border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+        margin: 0 !important;
     }
 
     .menu-link:hover {
@@ -4493,6 +4395,7 @@ body.light .copyright {
         visibility: hidden !important;
         overflow: hidden !important;
         transition: all 0.4s ease !important;
+        padding: 0 !important;
     }
 
     .dropdown-items.show {
@@ -4500,6 +4403,7 @@ body.light .copyright {
         opacity: 1 !important;
         visibility: visible !important;
         background: rgba(255,255,255,0.02) !important;
+        padding: 0.5rem 0 !important;
     }
 
     /* Header Stability */
@@ -4512,11 +4416,15 @@ body.light .copyright {
     .header-container {
         padding: 0 !important;
         height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
     }
 
     .logo-text {
         font-size: 1.1rem !important;
         letter-spacing: 2px !important;
+        display: block !important;
     }
 
     .logo-circle {
@@ -4531,8 +4439,16 @@ body.light .copyright {
 
     .header-right {
         gap: 0.5rem !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .menu-btn {
+        display: flex !important;
+        z-index: 10001 !important;
     }
 }
+
 
 @media (max-width: 480px) {
     .mobile-menu { width: 100% !important; }
