@@ -304,23 +304,34 @@ html[dir="rtl"] .scroll-progress-bar {
     position: relative;
 }
 
-/* ── RTL Navigation Mirroring ───────────────── */
-/* Handles the 180-degree flip for all header types (Home, Login, Register) */
 
-html[dir="rtl"] .header-container,
-html[dir="rtl"] .nav-container {
+/* ── RTL Navigation Mirroring (FORCE FLIP) ─── */
+/* This ensures the Logo moves to the right in Arabic regardless of local styles */
+
+/* Home Page Header */
+html[dir="rtl"] .header-container {
     flex-direction: row-reverse !important;
+    display: flex !important;
 }
 
+/* Login/Register Page Header */
+html[dir="rtl"] .nav-container,
+html[dir="rtl"] .main-header {
+    flex-direction: row-reverse !important;
+    display: flex !important;
+}
+
+/* Sections inside headers */
 html[dir="rtl"] .header-left,
 html[dir="rtl"] .header-right,
 html[dir="rtl"] .desktop-nav,
 html[dir="rtl"] .logo-side,
+html[dir="rtl"] .logo-section,
 html[dir="rtl"] .nav-links {
     flex-direction: row-reverse !important;
 }
 
-/* Fix spacing/alignment in RTL */
+/* Ensure flow alignment */
 html[dir="rtl"] .desktop-nav,
 html[dir="rtl"] .nav-links {
     justify-content: flex-start !important;
