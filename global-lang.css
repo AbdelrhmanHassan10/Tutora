@@ -305,20 +305,24 @@ html[dir="rtl"] .scroll-progress-bar {
 }
 
 /* ── RTL Navigation Mirroring ───────────────── */
-/* Only handles the 180-degree flip for Arabic mode */
+/* Handles the 180-degree flip for all header types (Home, Login, Register) */
 
-html[dir="rtl"] .header-container {
+html[dir="rtl"] .header-container,
+html[dir="rtl"] .nav-container {
     flex-direction: row-reverse !important;
 }
 
 html[dir="rtl"] .header-left,
 html[dir="rtl"] .header-right,
-html[dir="rtl"] .desktop-nav {
+html[dir="rtl"] .desktop-nav,
+html[dir="rtl"] .logo-side,
+html[dir="rtl"] .nav-links {
     flex-direction: row-reverse !important;
 }
 
-/* Fix spacing/alignment in RTL without forcing sizes */
-html[dir="rtl"] .desktop-nav {
+/* Fix spacing/alignment in RTL */
+html[dir="rtl"] .desktop-nav,
+html[dir="rtl"] .nav-links {
     justify-content: flex-start !important;
 }
 
