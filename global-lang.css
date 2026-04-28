@@ -304,10 +304,92 @@ html[dir="rtl"] .scroll-progress-bar {
     position: relative;
 }
 
-/* ── Smooth Transition for Language Changes ─── */
-[data-i18n],
-[data-i18n-html] {
-    transition: opacity 0.2s ease;
+/* ── Navbar Stabilization ────────────────── */
+/* Perfectly matched to the sleek reference image provided */
+
+.header {
+    height: 70px !important; /* Reduced from 85px to match the image's sleekness */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #000 !important; /* Pure black like the image */
+}
+
+.header-container {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 2rem !important; /* Tighter padding to fit all elements comfortably */
+    gap: 0.5rem !important;
+}
+
+/* Stable widths based on visual proportions in the image */
+.header-left {
+    flex: 0 0 auto !important;
+    min-width: 160px;
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* Matches the left-alignment in the image */
+    gap: 1.2rem !important; /* Tight, professional spacing */
+    padding: 0 1.5rem !important;
+}
+
+.header-right {
+    flex: 0 0 auto !important;
+    display: flex;
+    align-items: center;
+    gap: 1rem !important;
+    min-width: 420px; /* Accounts for Search, Theme, Booking, Fav, Lang, Profile */
+    justify-content: flex-end;
+}
+
+/* Lock-in font sizes to match the image proportions */
+.logo-text {
+    font-size: 1.2rem !important;
+    letter-spacing: 4px !important;
+}
+
+.desktop-nav a, 
+.desktop-nav button {
+    font-size: 0.88rem !important; /* Small, elegant links */
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+}
+
+/* Specific Search Box stabilization */
+.search-box {
+    width: 240px !important;
+    height: 38px !important;
+}
+
+/* RTL Specific Overrides to maintain the mirror perfectly */
+html[dir="rtl"] .header-container {
+    flex-direction: row-reverse !important;
+}
+
+html[dir="rtl"] .header-left, 
+html[dir="rtl"] .header-right {
+    flex-direction: row-reverse !important;
+}
+
+html[dir="rtl"] .desktop-nav {
+    flex-direction: row-reverse !important;
+    padding: 0 1.5rem !important;
+}
+
+/* Ensure consistent font heights for Arabic */
+html[dir="rtl"] {
+    line-height: 1.35;
+}
+
+html[dir="rtl"] .desktop-nav a,
+html[dir="rtl"] .logo-text {
+    font-size: 0.85em !important; 
 }
 
 /* ── Print RTL Support ─────────────────────── */

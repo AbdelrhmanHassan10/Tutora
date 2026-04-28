@@ -15,6 +15,7 @@
                                 <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../animate.css" />
     <link rel="stylesheet" href="../global-theme.css" />
+    <link rel="stylesheet" href="../global-lang.css" />
 </head>
 
 <body class="dark">
@@ -123,19 +124,19 @@
             <div class="header-right">
                 <div class="search-box">
                     <span class="material-symbols-outlined">search</span>
-                    <input type="text" placeholder="Search..." />
+                    <input type="text" placeholder="Search..." data-i18n-placeholder="nav.search" />
                 </div>
                 <button class="theme-btn" id="theme-toggle">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </button>
-                <a href="../booking/booking.html" class="btn-booking">booking</a>
+                <a href="../booking/booking.html" class="btn-booking" data-i18n="nav.booking">booking</a>
                 <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;">
                     <span class="material-symbols-outlined">favorite</span>
                 </a>
                 <button class="icon-btn" id="langBtn">
                     <span class="material-symbols-outlined">language</span>
                 </button>
-                <a href="../Profile/profile.html">
+                <a href="../Profile/profile.html" class="profile-link">
                     <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
                 </a>
             </div>
@@ -146,9 +147,9 @@
         <section class="hero" style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg');">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h1 class="hero-title" style="color: white;">Your Journey Through Time Begins Here.</h1>
+                <h1 class="hero-title" style="color: white;" data-i18n="plan.hero_title">Your Journey Through Time Begins Here.</h1>
                 <p class="hero-subtitle" id="divineGreeting" style="color: white; min-height: 1.5em;"></p>
-                <a href="../booking/booking.html"> <button class="btn-primary" style="padding: 1rem 2rem; font-size: 1.125rem;">Book Your Ticket Now</button></a>
+                <a href="../booking/booking.html"> <button class="btn-primary" style="padding: 1rem 2rem; font-size: 1.125rem;" data-i18n="plan.hero_btn">Book Your Ticket Now</button></a>
             </div>
         </section>
 
@@ -460,6 +461,7 @@
 
     <script src="script.js"></script>
     <script src="../global-core.js"></script>
+    <script src="../global-lang.js"></script>
     <script src="../animate.js"></script>
 </body>
 </html>
