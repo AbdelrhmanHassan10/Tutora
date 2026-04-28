@@ -589,7 +589,7 @@ body.light .header {
 /* Desktop Navigation */
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: .9 rem;
     align-items: center;
 }
 

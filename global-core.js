@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (profileImg) profileImg.style.display = 'none';
             if (favBtn) favBtn.style.display = 'none';
 
-            // Change Lang button to Login
-            if (langBtn) {
+            // Change Lang button to Login (only if language system is NOT active)
+            if (langBtn && !window.TutoraLang) {
                 langBtn.innerHTML = `<span class="material-symbols-outlined" style="color: white;">login</span>`;
                 langBtn.title = "Login";
                 langBtn.onclick = (e) => {

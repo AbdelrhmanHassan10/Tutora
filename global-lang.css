@@ -1,0 +1,319 @@
+/* ============================================
+   GLOBAL RTL & LANGUAGE STYLES - TUTORA
+   ============================================ */
+
+/* ── RTL Direction Override ─────────────────── */
+html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] body {
+    font-family: 'Plus Jakarta Sans', 'Tajawal', 'Cairo', sans-serif;
+}
+
+/* ── Navigation RTL ────────────────────────── */
+html[dir="rtl"] .header-container {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .header-left {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .header-right {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .desktop-nav {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .desktop-nav a,
+html[dir="rtl"] .desktop-nav button {
+    direction: rtl;
+}
+
+/* ── Mobile Menu RTL ───────────────────────── */
+html[dir="rtl"] .mobile-menu {
+    left: 0;
+    right: auto;
+    transform: translateX(-100%);
+}
+
+html[dir="rtl"] .mobile-menu.active {
+    transform: translateX(0);
+}
+
+html[dir="rtl"] .menu-header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .menu-nav {
+    text-align: right;
+}
+
+html[dir="rtl"] .menu-nav a,
+html[dir="rtl"] .menu-nav button {
+    text-align: right;
+}
+
+html[dir="rtl"] .menu-footer {
+    text-align: right;
+}
+
+/* ── Search Box RTL ────────────────────────── */
+html[dir="rtl"] .search-box {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .search-box input {
+    text-align: right;
+}
+
+/* ── Hero Section RTL ──────────────────────── */
+html[dir="rtl"] .hero-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .hero-buttons {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+/* ── Info Bar RTL ──────────────────────────── */
+html[dir="rtl"] .quick-info-bar .info-item {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .quick-info-bar .info-item div {
+    text-align: right;
+}
+
+/* ── Cards RTL ─────────────────────────────── */
+html[dir="rtl"] .tour-info {
+    text-align: right;
+}
+
+html[dir="rtl"] .event-card {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .event-details {
+    text-align: right;
+}
+
+/* ── Artifact Panel RTL ────────────────────── */
+html[dir="rtl"] .artifact-panel {
+    flex-direction: row-reverse !important;
+}
+
+html[dir="rtl"] .artifact-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .artifact-actions {
+    flex-direction: row-reverse;
+}
+
+/* ── Section Headers RTL ───────────────────── */
+html[dir="rtl"] .section-title {
+    text-align: right;
+}
+
+html[dir="rtl"] .section-header-flex {
+    flex-direction: row-reverse;
+}
+
+/* ── Membership RTL ────────────────────────── */
+html[dir="rtl"] .membership-content {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .membership-text {
+    text-align: right;
+}
+
+html[dir="rtl"] .membership-perks li {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+html[dir="rtl"] .membership-perks .check {
+    margin-left: 8px;
+    margin-right: 0;
+}
+
+/* ── Newsletter RTL ────────────────────────── */
+html[dir="rtl"] .newsletter-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .newsletter-form {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .newsletter-form input {
+    text-align: right;
+}
+
+/* ── Location RTL ──────────────────────────── */
+html[dir="rtl"] .location-header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .location-title,
+html[dir="rtl"] .location-subtitle {
+    text-align: right;
+}
+
+html[dir="rtl"] .visit-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .visit-info .info-item {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .info-content {
+    text-align: right;
+}
+
+/* ── Footer RTL ────────────────────────────── */
+html[dir="rtl"] .footer-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-column {
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-column ul {
+    padding-right: 0;
+}
+
+html[dir="rtl"] .legal-links {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .footer-bottom {
+    flex-direction: row-reverse;
+}
+
+/* ── Dropdown RTL ──────────────────────────── */
+html[dir="rtl"] .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .dropdown-items {
+    text-align: right;
+}
+
+/* ── Buttons with Icons RTL ────────────────── */
+html[dir="rtl"] .btn-primary .material-symbols-outlined,
+html[dir="rtl"] .btn-action-gold .material-symbols-outlined,
+html[dir="rtl"] .btn-action-turquoise .material-symbols-outlined,
+html[dir="rtl"] .view-all-link .material-symbols-outlined,
+html[dir="rtl"] .btn-directions .material-symbols-outlined {
+    margin-left: 0;
+    margin-right: 10px;
+    transform: scaleX(-1);
+}
+
+/* ── Curator Panel RTL ─────────────────────── */
+html[dir="rtl"] .curator-badge {
+    left: auto;
+    right: 16px;
+}
+
+html[dir="rtl"] .curator-content {
+    text-align: right;
+}
+
+/* ── Amenities RTL ─────────────────────────── */
+html[dir="rtl"] .amenity-info {
+    text-align: right;
+}
+
+/* ── Slider Controls RTL ───────────────────── */
+html[dir="rtl"] .slider-control.prev {
+    left: auto;
+    right: 16px;
+}
+
+html[dir="rtl"] .slider-control.next {
+    right: auto;
+    left: 16px;
+}
+
+/* ── Scroll Progress RTL ───────────────────── */
+html[dir="rtl"] .scroll-progress-bar {
+    right: 0;
+    left: auto;
+}
+
+/* ── Language Toggle Highlight ─────────────── */
+.language-toggle {
+    display: flex;
+    gap: 4px;
+}
+
+.language-toggle button {
+    padding: 6px 14px;
+    border: 1px solid rgba(236, 182, 19, 0.3);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.language-toggle button:hover {
+    border-color: rgba(236, 182, 19, 0.6);
+    color: #ECB613;
+}
+
+.language-toggle button.active {
+    background: rgba(236, 182, 19, 0.15);
+    border-color: #ECB613;
+    color: #ECB613;
+    font-weight: 600;
+}
+
+/* ── Language Switch Indicator on Lang Button ── */
+#langBtn::after,
+#menuLangBtn::after {
+    content: attr(data-current-lang);
+    font-size: 0.6rem;
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: #ECB613;
+    color: #0a0a0a;
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+#langBtn,
+#menuLangBtn {
+    position: relative;
+}
+
+/* ── Smooth Transition for Language Changes ─── */
+[data-i18n],
+[data-i18n-html] {
+    transition: opacity 0.2s ease;
+}
+
+/* ── Print RTL Support ─────────────────────── */
+@media print {
+    html[dir="rtl"] * {
+        direction: rtl;
+        text-align: right;
+    }
+}
