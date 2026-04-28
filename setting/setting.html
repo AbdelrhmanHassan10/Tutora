@@ -14,8 +14,57 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="../global-theme.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css?v=1.1" />
     <link rel="stylesheet" href="../animate.css" />
+    
+    <style>
+        /* NUCLEAR CSS INJECTION TO BYPASS CACHE */
+        .theme-toggle {
+            background: rgba(242, 208, 13, 0.1) !important;
+            border: 1px solid rgba(242, 208, 13, 0.4) !important;
+            color: #F2D00D !important;
+            width: 45px !important;
+            height: 45px !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            box-shadow: 0 0 15px rgba(242, 208, 13, 0.2) !important;
+        }
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1) !important;
+            background: rgba(242, 208, 13, 0.2) !important;
+            box-shadow: 0 0 25px rgba(242, 208, 13, 0.4) !important;
+        }
+        .nav-close-link {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(242, 208, 13, 0.3) !important;
+            border-radius: 50px !important;
+            padding: 0.6rem 1.4rem !important;
+            color: white !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+        }
+        .nav-close-link:hover {
+            background: rgba(242, 208, 13, 0.15) !important;
+            border-color: #F2D00D !important;
+            color: #F2D00D !important;
+            transform: translateY(-2px) !important;
+        }
+        body.light .theme-toggle {
+            background: rgba(0, 0, 0, 0.05) !important;
+            color: #121212 !important;
+            border-color: rgba(0,0,0,0.1) !important;
+        }
+        body.light .nav-close-link {
+            color: #121212 !important;
+            border-color: rgba(0,0,0,0.2) !important;
+        }
+    </style>
 </head>
 
 <body class="dark">
