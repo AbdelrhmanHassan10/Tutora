@@ -319,36 +319,36 @@ html[dir="rtl"] .scroll-progress-bar {
 
 .header-container {
     width: 100% !important;
-    max-width: none !important; /* Full width edge-to-edge */
+    max-width: none !important;
     margin: 0 !important;
-    padding: 0 2rem !important; /* Balanced padding for large screens */
+    padding: 0 !important; /* Stuck to the edges */
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important; /* Starts from the logo */
 }
 
-/* Base Sections - Use flex-basis for predictable layout */
+/* Base Sections */
 .header-left {
     flex: 0 0 auto !important;
     display: flex;
     align-items: center;
-    min-width: 140px;
+    padding-left: 1.5rem !important; /* Small gap for visual comfort */
 }
 
 .desktop-nav {
-    flex: 1;
+    flex: 1; /* Fills remaining space */
     display: flex;
-    justify-content: center;
-    gap: clamp(0.5rem, 1.2vw, 1.5rem) !important; /* Fluid gaps prevent overlap */
-    padding: 0 1rem !important;
+    justify-content: flex-start; /* Flows immediately after logo */
+    gap: 1.5rem !important;
+    padding: 0 2rem !important;
 }
 
 .header-right {
     flex: 0 0 auto !important;
     display: flex;
     align-items: center;
-    gap: 0.8rem !important;
-    justify-content: flex-end;
+    gap: 1rem !important;
+    padding-right: 1.5rem !important; /* Symmetrical padding on the other end */
 }
 
 /* Element Fixes */
@@ -374,10 +374,20 @@ html[dir="rtl"] .header-container {
     flex-direction: row-reverse !important;
 }
 
-html[dir="rtl"] .header-left,
-html[dir="rtl"] .header-right,
+html[dir="rtl"] .header-left {
+    padding-left: 0 !important;
+    padding-right: 1.5rem !important; /* Flip padding for logo */
+}
+
+html[dir="rtl"] .header-right {
+    padding-right: 0 !important;
+    padding-left: 1.5rem !important; /* Flip padding for actions */
+}
+
 html[dir="rtl"] .desktop-nav {
     flex-direction: row-reverse !important;
+    padding: 0 2rem !important;
+    justify-content: flex-start !important; /* Mirror link flow */
 }
 
 /* Fix text alignments in RTL */
