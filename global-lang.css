@@ -304,106 +304,24 @@ html[dir="rtl"] .scroll-progress-bar {
     position: relative;
 }
 
-/* ── Navbar Stabilization & Mirroring (v2 Responsive) ── */
-/* This version ensures stability without causing overcrowding or overlaps */
+/* ── RTL Navigation Mirroring ───────────────── */
+/* Only handles the 180-degree flip for Arabic mode */
 
-.header {
-    height: 70px !important; 
-    background-color: #000 !important;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-container {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important; /* Absolute edge-to-edge */
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-}
-
-/* Sections Division - Exactly as the image */
-.header-left {
-    flex: 0 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
-    margin: 0 !important; /* Reset any local margins */
-    padding-left: 1.5rem !important; 
-}
-
-.desktop-nav {
-    flex: 1 !important;
-    display: flex !important;
-    justify-content: flex-start !important;
-    margin: 0 !important;
-    gap: 1.3rem !important; 
-    padding: 0 2rem !important;
-}
-
-.header-right {
-    flex: 0 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
-    margin: 0 !important; /* CRITICAL: Overrides 'margin-left: auto' in local CSS */
-    gap: 0.8rem !important; 
-    padding-right: 1.5rem !important;
-}
-
-/* Element Refinements */
-.logo-text {
-    font-size: 1.15rem !important;
-    letter-spacing: 3px !important;
-    white-space: nowrap !important;
-}
-
-.desktop-nav a {
-    font-size: 0.9rem !important;
-    font-weight: 500 !important;
-    white-space: nowrap !important;
-}
-
-.btn-booking {
-    background-color: #ECB613 !important;
-    color: #fff !important;
-    padding: 8px 18px !important;
-    border-radius: 8px !important;
-    font-weight: 700 !important;
-    text-transform: lowercase !important; /* Matches the image 'booking' */
-}
-
-
-.search-box {
-    width: clamp(150px, 15vw, 220px) !important; /* Flexible search width */
-    height: 36px !important;
-}
-
-/* ── RTL COMPLETE MIRROR ───────────────────── */
 html[dir="rtl"] .header-container {
     flex-direction: row-reverse !important;
 }
 
-html[dir="rtl"] .header-left {
-    padding-left: 0 !important;
-    padding-right: 1.5rem !important;
-}
-
-html[dir="rtl"] .header-right {
-    padding-right: 0 !important;
-    padding-left: 1.5rem !important;
-}
-
+html[dir="rtl"] .header-left,
+html[dir="rtl"] .header-right,
 html[dir="rtl"] .desktop-nav {
     flex-direction: row-reverse !important;
-    padding: 0 2rem !important;
-    justify-content: flex-start !important; /* Mirror flow from logo */
 }
 
-/* Fix Search Box in RTL */
+/* Fix spacing/alignment in RTL without forcing sizes */
+html[dir="rtl"] .desktop-nav {
+    justify-content: flex-start !important;
+}
+
 html[dir="rtl"] .search-box input {
     text-align: right !important;
     padding: 0 35px 0 10px !important;
@@ -414,7 +332,7 @@ html[dir="rtl"] .search-box span {
     left: auto !important;
 }
 
-/* Smooth Transition for Language Changes */
+/* ── Smooth Transition for Language Changes ─── */
 [data-i18n], [data-i18n-html] {
     transition: opacity 0.2s ease;
 }
