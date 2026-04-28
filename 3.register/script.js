@@ -1,5 +1,74 @@
 document.addEventListener('DOMContentLoaded', () => {
     const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const GOOGLE_CLIENT_ID = '322457229349-1riijja3taalo0kbd4i6ulaotscujif5.apps.googleusercontent.com';
+
+    // Google Sign-In Callback
+    window.handleGoogleResponse = async (response) => {
+        const tokenId = response.credential;
+        
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/google`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ tokenId })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                localStorage.setItem('token', data.token);
+                if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+                
+                showPremiumToast('Welcome to the Dynasty! Entering the Sanctuary...', 'success');
+                
+                setTimeout(() => {
+                    const successOverlay = document.createElement('div');
+                    successOverlay.className = 'royal-success-overlay';
+                    successOverlay.innerHTML = `
+                        <div class="success-content">
+                            <div class="royal-seal">
+                                <img src="../logo.png" alt="Royal Seal">
+                            </div>
+                            <h2 class="success-title">Welcome to the Dynasty</h2>
+                            <p class="success-subtitle">Your lineage has been recorded in the halls of eternity.</p>
+                            <div class="success-loader"></div>
+                        </div>
+                    `;
+                    document.body.appendChild(successOverlay);
+                    setTimeout(() => successOverlay.classList.add('active'), 100);
+                    
+                    setTimeout(() => {
+                        window.location.href = '../4.home/code.html';
+                    }, 3000);
+                }, 1000);
+            } else {
+                throw new Error(data.message || 'Google Registration failed.');
+            }
+        } catch (error) {
+            console.error('Google Auth Error:', error);
+            showPremiumToast(error.message, 'error');
+        }
+    };
+
+    // Initialize Google Sign-In
+    const initGoogleSignIn = () => {
+        if (typeof google !== 'undefined') {
+            google.accounts.id.initialize({
+                client_id: GOOGLE_CLIENT_ID,
+                callback: window.handleGoogleResponse
+            });
+            
+            const googleBtn = document.getElementById('googleBtn');
+            if (googleBtn) {
+                googleBtn.addEventListener('click', () => {
+                    google.accounts.id.prompt();
+                });
+            }
+        } else {
+            setTimeout(initGoogleSignIn, 100);
+        }
+    };
+    initGoogleSignIn();
     
     const form = document.getElementById('registrationForm');
     const formCard = document.getElementById('formCard');

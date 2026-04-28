@@ -330,24 +330,27 @@ html[dir="rtl"] .scroll-progress-bar {
 /* Sections Division - Exactly as the image */
 .header-left {
     flex: 0 0 auto !important;
-    display: flex;
-    align-items: center;
-    padding-left: 1.5rem !important; /* Symmetrical side padding */
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important; /* Reset any local margins */
+    padding-left: 1.5rem !important; 
 }
 
 .desktop-nav {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-    gap: 1.3rem !important; /* Preserving user's preferred gap */
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    gap: 1.3rem !important; 
     padding: 0 2rem !important;
 }
 
 .header-right {
     flex: 0 0 auto !important;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem !important; /* Subtle, professional spacing */
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important; /* CRITICAL: Overrides 'margin-left: auto' in local CSS */
+    gap: 0.8rem !important; 
     padding-right: 1.5rem !important;
 }
 

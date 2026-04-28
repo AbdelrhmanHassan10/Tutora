@@ -1,5 +1,64 @@
 document.addEventListener('DOMContentLoaded', () => {
     const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const GOOGLE_CLIENT_ID = '322457229349-1riijja3taalo0kbd4i6ulaotscujif5.apps.googleusercontent.com';
+
+    // Google Sign-In Callback
+    window.handleGoogleResponse = async (response) => {
+        const tokenId = response.credential;
+        
+        try {
+            const res = await fetch(`${API_BASE_URL}/auth/google`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ tokenId })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                localStorage.setItem('token', data.token);
+                if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+                
+                showPremiumToast('Welcome Back! Entering the Sanctuary...', 'success');
+                
+                setTimeout(() => {
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.8s ease';
+                    setTimeout(() => {
+                        window.location.href = '../4.home/code.html';
+                    }, 800);
+                }, 1500);
+            } else {
+                throw new Error(data.message || 'Google Login failed.');
+            }
+        } catch (error) {
+            console.error('Google Auth Error:', error);
+            showPremiumToast(error.message, 'error');
+        }
+    };
+
+    // Initialize Google Sign-In
+    const initGoogleSignIn = () => {
+        if (typeof google !== 'undefined') {
+            google.accounts.id.initialize({
+                client_id: GOOGLE_CLIENT_ID,
+                callback: window.handleGoogleResponse
+            });
+            
+            const googleBtn = document.getElementById('googleBtn');
+            if (googleBtn) {
+                googleBtn.addEventListener('click', () => {
+                    google.accounts.id.prompt(); // Show One Tap if available
+                    // For manual trigger of the picker:
+                    // google.accounts.id.renderButton is usually required for a real button,
+                    // but we can also use prompt() to show the "One Tap" or "Select Account" UI.
+                });
+            }
+        } else {
+            setTimeout(initGoogleSignIn, 100);
+        }
+    };
+    initGoogleSignIn();
     
     const form = document.getElementById('loginForm');
     const formCard = document.getElementById('formCard');
