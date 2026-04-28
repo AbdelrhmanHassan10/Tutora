@@ -321,25 +321,25 @@ html[dir="rtl"] .scroll-progress-bar {
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
-    padding: 0 !important; /* Stuck to the edges */
+    padding: 0 !important; /* Absolute edge-to-edge */
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important; /* Starts from the logo */
+    justify-content: flex-start !important;
 }
 
-/* Base Sections */
+/* Sections Division - Exactly as the image */
 .header-left {
     flex: 0 0 auto !important;
     display: flex;
     align-items: center;
-    padding-left: 1.5rem !important; /* Small gap for visual comfort */
+    padding-left: 1.5rem !important; /* Symmetrical side padding */
 }
 
 .desktop-nav {
-    flex: 1; /* Fills remaining space */
+    flex: 1;
     display: flex;
-    justify-content: flex-start; /* Flows immediately after logo */
-    gap: 1.5rem !important;
+    justify-content: flex-start;
+    gap: 1.3rem !important; /* Preserving user's preferred gap */
     padding: 0 2rem !important;
 }
 
@@ -347,22 +347,32 @@ html[dir="rtl"] .scroll-progress-bar {
     flex: 0 0 auto !important;
     display: flex;
     align-items: center;
-    gap: 1rem !important;
-    padding-right: 1.5rem !important; /* Symmetrical padding on the other end */
+    gap: 0.8rem !important; /* Subtle, professional spacing */
+    padding-right: 1.5rem !important;
 }
 
-/* Element Fixes */
+/* Element Refinements */
 .logo-text {
-    font-size: 1.1rem !important;
-    letter-spacing: 2px !important;
+    font-size: 1.15rem !important;
+    letter-spacing: 3px !important;
     white-space: nowrap !important;
 }
 
 .desktop-nav a {
-    font-size: 0.85rem !important;
+    font-size: 0.9rem !important;
     font-weight: 500 !important;
     white-space: nowrap !important;
 }
+
+.btn-booking {
+    background-color: #ECB613 !important;
+    color: #fff !important;
+    padding: 8px 18px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    text-transform: lowercase !important; /* Matches the image 'booking' */
+}
+
 
 .search-box {
     width: clamp(150px, 15vw, 220px) !important; /* Flexible search width */
@@ -376,25 +386,24 @@ html[dir="rtl"] .header-container {
 
 html[dir="rtl"] .header-left {
     padding-left: 0 !important;
-    padding-right: 1.5rem !important; /* Flip padding for logo */
+    padding-right: 1.5rem !important;
 }
 
 html[dir="rtl"] .header-right {
     padding-right: 0 !important;
-    padding-left: 1.5rem !important; /* Flip padding for actions */
+    padding-left: 1.5rem !important;
 }
 
 html[dir="rtl"] .desktop-nav {
     flex-direction: row-reverse !important;
     padding: 0 2rem !important;
-    justify-content: flex-start !important; /* Mirror link flow */
+    justify-content: flex-start !important; /* Mirror flow from logo */
 }
 
-/* Fix text alignments in RTL */
+/* Fix Search Box in RTL */
 html[dir="rtl"] .search-box input {
     text-align: right !important;
-    padding-right: 35px !important;
-    padding-left: 10px !important;
+    padding: 0 35px 0 10px !important;
 }
 
 html[dir="rtl"] .search-box span {
