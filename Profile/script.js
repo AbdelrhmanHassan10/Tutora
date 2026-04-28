@@ -402,4 +402,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initRoyalAtmosphere();
+
+    // --- Carousel Scroll Indicator Logic ---
+    const carousel = document.querySelector('.carousel-container');
+    const thumb = document.querySelector('.scroll-thumb');
+    const track = document.querySelector('.scroll-track');
+
+    if (carousel && thumb && track) {
+        carousel.addEventListener('scroll', () => {
+            const scrollLeft = carousel.scrollLeft;
+            const scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+            const scrollPercentage = (scrollLeft / scrollWidth);
+            
+            const maxMove = track.clientWidth - thumb.clientWidth;
+            const currentMove = scrollPercentage * maxMove;
+            
+            thumb.style.transform = `translateX(${currentMove}px)`;
+        });
+        
+        // Initial positioning
+        thumb.style.transition = 'transform 0.1s ease-out';
+    }
 });
