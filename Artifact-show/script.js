@@ -102,31 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. ORIGINAL UI SCRIPT (PRESERVED)
     // ============================================
 
-    // --- Theme Toggle ---
-    const themeBtn = document.getElementById('themeBtn');
-    const body = document.body;
-
-    function updateThemeIcon() {
-        if (themeBtn) {
-            const icon = themeBtn.querySelector('.material-symbols-outlined');
-            if (icon) {
-                icon.textContent = body.classList.contains('dark-mode') ? 'light_mode' : 'dark_mode';
-            }
-        }
-    }
-
-    const savedTheme = localStorage.getItem('theme');
-    // Default to dark mode if nothing is saved
-    body.classList.toggle('dark-mode', savedTheme !== 'light');
-    updateThemeIcon();
-
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-            updateThemeIcon();
-        });
-    }
+    // --- Mobile Menu ---
 
     // --- Mobile Menu ---
     const menuBtn = document.getElementById('menuBtn');
@@ -172,11 +148,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // ROYAL ATMOSPHERE (Golden Dust & Shapes)
     // ============================================
-    function initRoyalAtmosphere() {
+    function initRoyalAtmosphere(color = '#f2b90d') {
         const dustContainer = document.getElementById('dust-container');
         const shapesContainer = document.getElementById('shapes-container');
         
         if (!dustContainer || !shapesContainer) return;
+
+        // Clear existing
+        dustContainer.innerHTML = '';
+        shapesContainer.innerHTML = '';
 
         // Create 150 dust particles
         for (let i = 0; i < 150; i++) {
@@ -186,6 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const size = Math.random() * 3 + 1;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
+            particle.style.background = color;
+            particle.style.boxShadow = `0 0 10px ${color}`;
             
             const left = Math.random() * 100;
             const top = Math.random() * 100;
@@ -205,6 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const shape = document.createElement('div');
             shape.className = 'royal-shape';
             shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
+            shape.style.color = color;
+            shape.style.textShadow = `0 0 15px ${color}`;
             
             const size = Math.random() * 20 + 20;
             shape.style.fontSize = `${size}px`;
@@ -222,6 +206,120 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // ============================================
+    // DYNAMIC IMAGE EFFECTS (3D Tilt & Parallax)
+    // ============================================
+    const imagePanel = document.querySelector('.artifact-image-panel');
+    const artifactImg = document.querySelector('.artifact-image');
+
+    if (imagePanel && artifactImg) {
+        imagePanel.addEventListener('mousemove', (e) => {
+            if (artifactImg.classList.contains('zoomed')) return; // Disable tilt when zoomed
+
+            const rect = imagePanel.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -15; // Max 15 degrees
+            const rotateY = ((x - centerX) / centerX) * 15;
+            
+            // Only apply tilt on desktop
+            if (window.innerWidth > 768) {
+                artifactImg.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                
+                // Slight parallax for atmosphere
+                const dust = document.getElementById('dust-container');
+                if (dust) dust.style.transform = `translate(${rotateY * 0.5}px, ${rotateX * 0.5}px)`;
+            }
+        });
+
+        imagePanel.addEventListener('mouseleave', () => {
+            if (artifactImg.classList.contains('zoomed')) return;
+            artifactImg.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            const dust = document.getElementById('dust-container');
+            if (dust) dust.style.transform = `none`;
+        });
+    }
+
+    // ============================================
+    // ARTIFACT TOOLBAR ACTIONS
+    // ============================================
+    const btnRotate = document.getElementById('btnRotate');
+    const btnZoom = document.getElementById('btnZoom');
+    const btnExpand = document.getElementById('btnExpand');
+    const fullscreenOverlay = document.getElementById('fullscreenOverlay');
+    const overlayImg = fullscreenOverlay ? fullscreenOverlay.querySelector('.overlay-img') : null;
+    const overlayClose = fullscreenOverlay ? fullscreenOverlay.querySelector('.overlay-close') : null;
+
+    let currentRotation = 0;
+
+    if (btnRotate && artifactImg) {
+        btnRotate.addEventListener('click', () => {
+            currentRotation += 90;
+            artifactImg.style.transform = `perspective(1000px) rotate(${currentRotation}deg)`;
+        });
+    }
+
+    if (btnZoom && artifactImg) {
+        btnZoom.addEventListener('click', () => {
+            artifactImg.classList.toggle('zoomed');
+            const icon = btnZoom.querySelector('.material-symbols-outlined');
+            if (artifactImg.classList.contains('zoomed')) {
+                icon.textContent = 'zoom_out';
+            } else {
+                icon.textContent = 'zoom_in';
+                artifactImg.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            }
+        });
+    }
+
+    if (btnExpand && artifactImg && fullscreenOverlay) {
+        btnExpand.addEventListener('click', () => {
+            overlayImg.src = artifactImg.src;
+            fullscreenOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    if (overlayClose) {
+        overlayClose.addEventListener('click', () => {
+            fullscreenOverlay.classList.remove('active');
+            document.body.style.overflow = 'hidden'; // Keep layout overflow hidden
+        });
+    }
+
+    // ============================================
+    // MOBILE SCROLL SYNC (Sticky & Rotate)
+    // ============================================
+    const artifactLayout = document.querySelector('.artifact-layout');
+    if (artifactLayout) {
+        artifactLayout.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) {
+                const scrollPos = artifactLayout.scrollTop;
+                const maxScroll = 300; // Point where image is fully shrunk
+                const progress = Math.min(scrollPos / maxScroll, 1);
+                
+                // Shrink height
+                const newHeight = 50 - (progress * 20); // From 50vh to 30vh
+                if (imagePanel) imagePanel.style.height = `${newHeight}vh`;
+                
+                // Rotate based on scroll
+                const scrollRotation = progress * 45; // Rotate up to 45 degrees
+                if (artifactImg && !artifactImg.classList.contains('zoomed')) {
+                    artifactImg.style.transform = `perspective(1000px) rotate(${currentRotation + scrollRotation}deg) scale(${1 - progress * 0.1})`;
+                }
+
+                // Fade toolbar
+                const toolbar = document.querySelector('.artifact-toolbar');
+                if (toolbar) toolbar.style.opacity = 1 - progress;
+            }
+        });
+    }
+
     // Initialize the atmosphere
+    window.initRoyalAtmosphere = initRoyalAtmosphere;
     initRoyalAtmosphere();
     });

@@ -1,14 +1,9 @@
 <!doctype html>
-                            <html lang="en">
-                              <head>
-                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-                                <meta charset="utf-8" />
-                            <!doctype html>
-                            <html lang="en">
-                              <head>
-                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-                                <meta charset="utf-8" />
-                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
                                 <title>Golden Mask of Tutankhamun | Tutora</title>
                                 <link rel="icon" type="image/png" href="../museum.png">
                                 
@@ -23,71 +18,154 @@
     <div id="dust-container"></div>
     <div id="shapes-container"></div>
 
-                            
-                                <header class="fixed top-0 z-50 w-full border-b border-white/5 bg-charcoal/90 backdrop-blur-xl px-6 py-4">
-                            <div class="max-w-7xl mx-auto flex items-center justify-between">
-                            <div class="flex items-center gap-12">
-                            <div class="flex items-center gap-3">
-                            <div class="size-7 text-primary">
-                            <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z"></path>
-                            </svg>
-                            </div>
-                            <h2 class="text-white text-base font-bold leading-tight tracking-[0.15em] uppercase">Grand Egyptian Museum</h2>
-                            </div>
-                            <nav class="hidden lg:flex items-center gap-8">
-                            <a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Collections</a>
-                            <a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Exhibitions</a>
-                            <a class="text-white/50 hover:text-primary text-[11px] uppercase tracking-widest font-bold transition-colors" href="#">Visit</a>
-                            </nav>
-                            </div>
-                            <div class="flex items-center gap-6">
-                            <button class="p-2 text-white/70 hover:text-white transition-colors">
-                            <span class="material-symbols-outlined text-[22px]">search</span>
-                            </button>
-                            <button class="flex items-center gap-2 group">
-                            <span class="material-symbols-outlined text-primary fill-current">favorite</span>
-                            <span class="text-[11px] text-white/50 uppercase tracking-widest font-bold group-hover:text-white transition-colors">Journey</span>
-                            </button>
-                            <button class="bg-primary hover:bg-white hover:text-charcoal text-charcoal px-6 py-2 rounded-none text-[11px] uppercase tracking-widest font-bold transition-all">
-                                            Book Tickets
-                                        </button>
-                            </div>
-                            </div>
-                            </header>
+                           
+    <!-- Mobile Menu Sidebar -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition Halls</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids Museum</a>
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Scanner</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/About.html" class="menu-link">About</a>
+  <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    Collection
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../collection/collection.html" class="dropdown-item">Main Gallery</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+            <button class="menu-icon-link" id="menuLangBtn">
+                <span class="material-symbols-outlined">language</span>
+                Language
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="logo-section">
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
+                    <h2 class="logo-text">Tutora</h2>
+                </div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html">Kids Museum</a>
+                <a href="../event/event.html">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        AI Experience
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Scanner</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html">Shop</a>
+                <a href="../about/About.html">About</a>
+<div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        Collection
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../collection/collection.html" class="dropdown-link">Main Gallery</a>
+                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search..." />
+                </div>
+                <button class="theme-btn" id="themeBtn">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <a href="../booking/booking.html" class="btn-booking">Booking</a>
+                <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;">
+                    <span class="material-symbols-outlined">favorite</span>
+                </a>
+                <button class="icon-btn" id="langBtn">
+                    <span class="material-symbols-outlined">language</span>
+                </button>
+                <a href="../Profile/profile.html">
+                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                </a>
+            </div>
+        </div>
+    </header>
                             <!-- ARTIFACT CONTENT (Re-architected to Vanilla CSS) -->
                                 <main class="artifact-layout">
                                     
                                     <!-- Left: Image & Hotspots -->
                                     <section class="artifact-image-panel">
                                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk30V1D4BWOG-AsEk0u6gKN4VTeSfzs-pjB5LUcjRRJW7eaTzNAelN_cyMbZW7G_FqfShzPO4nOKQdu3ivNK1NMnZl0nSNS0fEQ_a0bpF7O6wwIuXItwo4dLgo6gyljXazgElDMx2GDfY8EEkXq3t3qEFTIWofpcs_HZHlnzO6H8o37mavAI-i9atT2jrk1Z4zWRLf2fvI6gCS8FYiH3VtHsKkAKO8PQR6ISuSOXLNdSonPpSGdw8He1K2qdflWBkX3Qh47GyaGMYg" alt="Golden Mask of Tutankhamun" class="artifact-image">
-                                        
-                                        <div class="hotspot" style="top: 38%; left: 48%;">
-                                            <div class="hotspot-tooltip">
-                                                <h4 class="tooltip-title">Lapis Lazuli Inlays</h4>
-                                                <p class="tooltip-desc">Genuine semi-precious stones symbolizing the celestial night sky and the rebirth of the soul.</p>
-                                            </div>
-                                        </div>
-                            
-                                        <div class="hotspot" style="top: 48%; left: 58%;">
-                                            <div class="hotspot-tooltip">
-                                                <h4 class="tooltip-title">Protective Deities</h4>
-                                                <p class="tooltip-desc">The vulture and cobra representing the unified powers of Upper and Lower Egypt.</p>
-                                            </div>
-                                        </div>
-                            
+                                       
+                                                                
                                         <div class="artifact-toolbar">
-                                            <button class="toolbar-btn">
-                                                <span class="material-symbols-outlined">rotate_90_degrees_ccw</span>
-                                                <span>Rotate</span>
-                                            </button>
                                             <div class="toolbar-divider"></div>
-                                            <button class="toolbar-btn">
+                                            <button class="toolbar-btn" id="btnZoom">
                                                 <span class="material-symbols-outlined">zoom_in</span>
                                                 <span>Zoom</span>
                                             </button>
                                             <div class="toolbar-divider"></div>
-                                            <button class="toolbar-btn">
+                                            <button class="toolbar-btn" id="btnExpand">
                                                 <span class="material-symbols-outlined">open_in_full</span>
                                                 <span>Expand</span>
                                             </button>
@@ -98,21 +176,19 @@
                                     <section class="artifact-info-panel custom-scrollbar">
                                         <div class="info-breadcrumbs">
                                             <span>18th Dynasty</span>
-                                            <span style="opacity: 0.3">أ¢â‚¬آ¢</span>
+                                            <span style="opacity: 0.3">•</span>
                                             <span>New Kingdom</span>
                                         </div>
                             
-                                        <h1 class="artifact-title">Golden Mask of Tutankhamun</h1>
+                                        <h1 class="artifact-title">
+                                            Golden Mask of Tutankhamun
+                                        </h1>
                                         
                                         <div class="action-buttons">
-                                            <button class="btn-ar">
+                                            <a href="../advanced 3D model/advanced-3D.html" style="text-decoration: none;"><button class="btn-ar">
                                                 <span class="material-symbols-outlined">view_in_ar</span>
                                                 View in Your Room (AR)
-                                            </button>
-                                            <button class="btn-listen">
-                                                <span class="material-symbols-outlined" style="color: var(--primary-color);">graphic_eq</span>
-                                                Listen to Story
-                                            </button>
+                                            </button></a>
                                         </div>
                             
                                         <div class="info-section">
@@ -136,78 +212,709 @@
                                             </div>
                                         </div>
                             
-                                        <div class="info-section" style="margin-bottom: 80px;">
+                                        <div class="info-section discovery-section" style="margin-bottom: 80px;">
                                             <h2 class="info-heading">The Discovery</h2>
-                                            <p class="info-text">"As my eyes grew accustomed to the light, details of the room within emerged slowly from the mist... goldأ¢â‚¬â€‌everywhere the glint of gold." أ¢â‚¬â€‌ Howard Carter, November 1922.</p>
+                                            <blockquote class="historical-quote">
+                                                <div class="quote-section">
+                                                    <p class="quote-text">"As my eyes grew accustomed to the light, details of the room within emerged slowly from the mist... gold—everywhere the glint of gold."</p>
+                                                    <cite class="quote-author">— Howard Carter, November 1922</cite>
+                                                </div>
+                                            </blockquote>
                                         </div>
                                     </section>
                                 </main>
                             
-                                <!-- Floating Action Panel -->
-                                <div class="floating-actions">
-                                    <button class="float-btn" title="Share">
-                                        <span class="material-symbols-outlined">share</span>
-                                    </button>
-                                    <button class="float-btn" id="favoriteBtn" title="Save to Favorites">
-                                        <span class="material-symbols-outlined" style="color: var(--primary-color);">favorite</span>
-                                    </button>
-                                    <a href="../chat bot/chat.html" class="float-btn-primary">
-                                        Ask Museum AI
-                                    </a>
-                                </div>
-                            
-                                <!-- Scripts -->
-                                <script src="script.js"></script>
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', () => {
-                                        const favoriteBtn = document.getElementById('favoriteBtn');
-                                        const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-                                        const urlParams = new URLSearchParams(window.location.search);
-                                        let ARTIFACT_ID = urlParams.get('id') || "660000000000000000000001";
-                                        
-                                        if (urlParams.has('id')) {
-                                            fetch(`${API_BASE_URL}/artifacts/${ARTIFACT_ID}`).then(res => res.json()).then(data => {
-                                                const art = data.data || data;
-                                                if(art && art.title) document.querySelector('.artifact-title').textContent = art.title;
-                                            }).catch(e => console.error("Artifact load error: ", e));
-                                        }
-                                        
-                                        if (favoriteBtn) {
-                                            favoriteBtn.addEventListener('click', async () => {
-                                                const token = localStorage.getItem('token');
-                                                if (!token) {
-                                                    alert("Please log in to save to favorites.");
-                                                    return;
-                                                }
-                                                try {
-                                                    const response = await fetch(`${API_BASE_URL}/favorites/${ARTIFACT_ID}`, {
-                                                        method: 'POST',
-                                                        headers: {
-                                                            'Content-Type': 'application/json',
-                                                            'Authorization': `Bearer ${token}`
-                                                        }
-                                                    });
-                                                    if (response.ok) {
-                                                        alert("Added to favorites successfully!");
-                                                    } else {
-                                                        const data = await response.json();
-                                                        if (data.message && data.message.toLowerCase().includes('already')) {
-                                                            alert("This item is already in your favorites.");
-                                                        } else {
-                                                            throw new Error('Failed to add to favorites');
-                                                        }
-                                                    }
-                                                } catch (error) {
-                                                    alert("Unable to save to favorites: " + error.message);
-                                                }
-                                            });
-                                        }
-                                    });
-                                </script>
-                                
-                                <script src="../global-core.js"></script>
-                                <script src="../animate.js"></script>
-                            </body>
-                            
-                            </html>
-                            
+                                 <!-- Floating Action Panel -->
+                                 <div class="floating-actions">
+                                     <a href="../chat bot/chat.html" class="float-btn-primary">
+                                          <span class="material-symbols-outlined" style="margin-right: 12px; font-size: 1.2rem;">auto_awesome</span>
+                                          <span>
+                                         Ask Museum AI</span>
+                                     </a>
+                                 </div>
+                                 <!-- Fullscreen Overlay -->
+                                 <div id="fullscreenOverlay" class="fullscreen-overlay">
+                                     <button class="overlay-close">
+                                         <span class="material-symbols-outlined">close</span>
+                                     </button>
+                                     <img src="" alt="Fullscreen Artifact" class="overlay-img">
+                                 </div>
+
+                                 <!-- Scripts -->
+                                 <script src="script.js"></script>
+                                 <script>
+                                      document.addEventListener('DOMContentLoaded', () => {
+                                          const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+                                          const urlParams = new URLSearchParams(window.location.search);
+                                          let ARTIFACT_ID = urlParams.get('id') || "6643b109558a239478145f07";
+
+                                          const SAMPLE_DATA = {
+                                              "6643b109558a239478145f07": {
+                                                  title: "Golden Mask of Tutankhamun",
+                                                  dynasty: "18th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Halls Gallery/images/tut.png",
+                                                  introHeading: "The Face of Eternity",
+                                                  introText: "Crafted from two layers of high-karat gold and inlaid with semi-precious stones, this mask is the ultimate symbol of ancient Egyptian royalty. It was placed directly over the mummified face of the king to ensure his eternal protection.",
+                                                  detailsHeading: "Artistry in Gold",
+                                                  detailsText: "The mask features lapis lazuli for the eye surrounds and eyebrows, quartz and obsidian for the eyes, and carnelian, feldspar, and glass inlays. The back is inscribed with a protective spell from the Book of the Dead.",
+                                                  stats: [
+                                                      { label: "Material", value: "Solid Gold" },
+                                                      { label: "Weight", value: "10.23 kg" }
+                                                  ],
+                                                  quote: "Gold—everywhere the glint of gold.",
+                                                  quoteAuthor: "Howard Carter"
+                                              },
+                                              "senet-board": {
+                                                  title: "Senet Game Board",
+                                                  dynasty: "New Kingdom",
+                                                  period: "18th Dynasty",
+                                                  image: "../Halls Gallery/images/senet_board.png",
+                                                  introHeading: "The Game of Passing",
+                                                  introText: "Senet was the most popular strategy game in ancient Egypt, played by both royalty and commoners for over 3,000 years.",
+                                                  detailsHeading: "Spiritual Significance",
+                                                  detailsText: "The game was not just a pastime but a symbolic ritual representing the journey of the soul through the underworld.",
+                                                  stats: [
+                                                      { label: "Material", value: "Ivory & Wood" },
+                                                      { label: "Squares", value: "30" }
+                                                  ]
+                                              },
+                                              "6643b109558a239478145f09": {
+                                                  title: "Ceremonial Chariot",
+                                                  dynasty: "18th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Halls Gallery/images/ceremonial_chariot.png",
+                                                  introHeading: "The Royal Vehicle",
+                                                  introText: "One of the most complex items in the tomb, this chariot shows the Pharaoh as a warrior. It was found in pieces and painstakingly restored to show its full golden glory.",
+                                                  detailsHeading: "Warrior Symbolism",
+                                                  detailsText: "Covered in gold foil and decorated with scenes of the Pharaoh crushing enemies, it served both a practical and symbolic role in royal state ceremonies.",
+                                                  stats: [
+                                                      { label: "Type", value: "State Chariot" },
+                                                      { label: "Material", value: "Gold & Wood" }
+                                                  ]
+                                              },
+                                              "golden-throne": {
+                                                  title: "Golden Throne of Tutankhamun",
+                                                  dynasty: "18th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Halls Gallery/images/golden_throne.png",
+                                                  introHeading: "The Seat of Power",
+                                                  introText: "This magnificent throne is made of wood covered in gold and silver, and inlaid with semi-precious stones and colored glass. It was found in the Antechamber of Tutankhamun's tomb.",
+                                                  detailsHeading: "Royal Intimacy",
+                                                  detailsText: "The backrest depicts the king and his queen, Ankhesenamun, in a scene of domestic affection. Above them, the Aten sun disk spreads its protective rays.",
+                                                  stats: [
+                                                      { label: "Material", value: "Gold & Wood" },
+                                                      { label: "Found in", value: "Tomb KV62" }
+                                                  ]
+                                              },
+                                              "ramses-colossus": {
+                                                  title: "Colossus of Ramses II",
+                                                  dynasty: "19th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Halls Gallery/images/grand.png",
+                                                  introHeading: "The Great Sun King",
+                                                  introText: "Standing as the centerpiece of the Grand Egyptian Museum, this 11-meter-high statue of Ramses II was moved from Ramses Square to its new home in a feat of modern engineering.",
+                                                  detailsHeading: "Eternal Presence",
+                                                  detailsText: "Carved from a single block of red granite, the statue captures the Pharaoh in a classic posture of strength. It is oriented so that the sun illuminates it twice a year, as it did in the Great Temple of Abu Simbel.",
+                                                  stats: [
+                                                      { label: "Height", value: "11 Meters" },
+                                                      { label: "Weight", value: "82 Tons" }
+                                                  ]
+                                              },
+                                              "tut-fan": {
+                                                  title: "Golden Fan (Flabellum)",
+                                                  dynasty: "18th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Halls Gallery/images/golden_fan.png",
+                                                  introHeading: "The Royal Breeze",
+                                                  introText: "Found in the burial chamber, this fan was once used to cool the boy king. It originally held 42 ostrich feathers, representing the Pharaoh's luxury even in the afterlife.",
+                                                  detailsHeading: "The Royal Hunt",
+                                                  detailsText: "The gold foil decorations show King Tutankhamun hunting the very ostriches that provided the feathers for this fan, showcasing his prowess as a hunter and provider.",
+                                                  stats: [
+                                                      { label: "Material", value: "Gilded Wood" },
+                                                      { label: "Feathers", value: "42 Ostrich" }
+                                                  ]
+                                              },
+                                              "victory-stele": {
+                                                  title: "Victory Stele of Amenhotep III",
+                                                  dynasty: "18th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Halls Gallery/images/victory_stele.png",
+                                                  introHeading: "Monuments of Might",
+                                                  introText: "A massive black granite slab documenting the peak of 18th Dynasty power. It records the many temples and palaces built by the Sun King, Amenhotep III.",
+                                                  detailsHeading: "Records of Grandeur",
+                                                  detailsText: "The stele reflects the incredible wealth and artistic peak of the New Kingdom, before the religious revolution of Akhenaten.",
+                                                  stats: [
+                                                      { label: "Material", value: "Black Granite" },
+                                                      { label: "Significance", value: "Historical Record" }
+                                                  ]
+                                              },
+                                              "makeup-kit": {
+                                                  title: "Royal Makeup Kit",
+                                                  dynasty: "Middle Kingdom",
+                                                  period: "12th Dynasty",
+                                                  image: "../Halls Gallery/images/makeup_kit.png",
+                                                  introHeading: "Ancient Elegance",
+                                                  introText: "A luxury vanity box belonging to a Middle Kingdom noblewoman, showcasing the advanced cosmetic practices of ancient Egypt.",
+                                                  detailsHeading: "Secrets of Beauty",
+                                                  detailsText: "Contains jars for scented oils, mirrors of polished bronze, and tools for applying the famous black kohl eye paint.",
+                                                  stats: [
+                                                      { label: "Material", value: "Cedar & Ivory" },
+                                                      { label: "Includes", value: "Mirror & Jars" }
+                                                  ]
+                                              },
+                                              "khafre-statue": {
+                                                  title: "Statue of King Khafre",
+                                                  dynasty: "4th Dynasty",
+                                                  period: "Old Kingdom",
+                                                  image: "../Halls Gallery/images/khafre_statue.png",
+                                                  introHeading: "The Builder of Giza",
+                                                  introText: "A monumental diorite statue of the builder of the second pyramid, capturing the king in a pose of eternal divine protection.",
+                                                  detailsHeading: "The Falcon's Embrace",
+                                                  detailsText: "The falcon god Horus perches behind the king's head, symbolizing the divine nature of the Pharaonic office.",
+                                                  stats: [
+                                                      { label: "Material", value: "Diorite" },
+                                                      { label: "Found at", value: "Giza" }
+                                                  ]
+                                              },
+                                              "menkaure-statue": {
+                                                  title: "Group Statue of Menkaure",
+                                                  dynasty: "4th Dynasty",
+                                                  period: "Old Kingdom",
+                                                  image: "../Halls Gallery/images/menkaure_statue.png",
+                                                  introHeading: "The Triad of Power",
+                                                  introText: "One of the famous greywacke triads showing King Menkaure with the goddess Hathor and a provincial deity.",
+                                                  detailsHeading: "Old Kingdom Perfection",
+                                                  detailsText: "The statue exemplifies the peak of Old Kingdom artistic proportions and the relationship between the king and the divine.",
+                                                  stats: [
+                                                      { label: "Material", value: "Greywacke" },
+                                                      { label: "Found at", value: "Giza" }
+                                                  ]
+                                              },
+                                              "scribe-palette": {
+                                                  title: "Scribe's Palette and Pens",
+                                                  dynasty: "Middle Kingdom",
+                                                  period: "12th Dynasty",
+                                                  image: "../Halls Gallery/images/scribe_palette.png",
+                                                  introHeading: "The Power of the Pen",
+                                                  introText: "The essential tools of the ancient Egyptian intellectual, used to record everything from taxes to sacred texts.",
+                                                  detailsHeading: "The Scribe's Craft",
+                                                  detailsText: "The palette features wells for black and red ink, made from carbon and ochre.",
+                                                  stats: [
+                                                      { label: "Material", value: "Wood" },
+                                                      { label: "Ink Colors", value: "Black & Red" }
+                                                  ]
+                                              },
+                                              "cosmetic-palette": {
+                                                  title: "Cosmetic Palette",
+                                                  dynasty: "Predynastic",
+                                                  period: "Naqada II",
+                                                  image: "../Halls Gallery/images/cosmetic_palette.png",
+                                                  introHeading: "Rituals of Beauty",
+                                                  introText: "An ancient siltstone palette used for grinding minerals like malachite into cosmetic eye paint.",
+                                                  detailsHeading: "Symbolic Design",
+                                                  detailsText: "The animal-shaped design reflects the spiritual connection between the user and the natural world.",
+                                                  stats: [
+                                                      { label: "Material", value: "Siltstone" },
+                                                      { label: "Period", value: "Predynastic" }
+                                                  ]
+                                              },
+                                              "mummy-mask": {
+                                                  title: "Gilded Mummy Mask",
+                                                  dynasty: "Late Period",
+                                                  period: "7th-4th Century BCE",
+                                                  image: "../Halls Gallery/images/mummy_mask.png",
+                                                  introHeading: "The Divine Face",
+                                                  introText: "A stunning gilded mask used to protect the identity of the deceased and grant them a god-like appearance for eternity.",
+                                                  detailsHeading: "Cartonnage Craft",
+                                                  detailsText: "Made from cartonnage—layers of linen and plaster—and meticulously covered in gold foil.",
+                                                  stats: [
+                                                      { label: "Material", value: "Cartonnage & Gold" },
+                                                      { label: "Purpose", value: "Divine Identity" }
+                                                  ]
+                                              },
+                                              "ancient-sandals": {
+                                                  title: "Ancient Egyptian Sandals",
+                                                  dynasty: "New Kingdom",
+                                                  period: "18th-20th Dynasty",
+                                                  image: "../Halls Gallery/images/ancient_sandals.png",
+                                                  introHeading: "Stepping into the Past",
+                                                  introText: "Remarkably preserved sandals made from organic materials, showing the high skill of ancient weavers.",
+                                                  detailsHeading: "Sophisticated Fashion",
+                                                  detailsText: "Woven from papyrus and palm leaves, these sandals provided comfort in the desert heat and were often buried with their owners.",
+                                                  stats: [
+                                                      { label: "Material", value: "Papyrus & Palm" },
+                                                      { label: "Age", value: "c. 1300 BCE" }
+                                                  ]
+                                              },
+                                              "column-merneptah": {
+                                                  title: "Granite Column of Merneptah",
+                                                  dynasty: "19th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Halls Gallery/images/column_merneptah.png",
+                                                  introHeading: "Monolithic Triumph",
+                                                  introText: "This massive 5.6-meter column originally stood in the temple of Ptah at Memphis, serving as a monumental record of royal power.",
+                                                  detailsHeading: "Royal Inscriptions",
+                                                  detailsText: "The column is inscribed with the titles and triumphs of King Merneptah, celebrating his military victories and his role as the chosen one of the gods.",
+                                                  stats: [
+                                                      { label: "Material", value: "Red Granite" },
+                                                      { label: "Height", value: "5.6 Meters" }
+                                                  ]
+                                              },
+                                              "ptolemaic-king": {
+                                                  title: "Colossus of a Ptolemaic King",
+                                                  dynasty: "Ptolemaic Period",
+                                                  period: "Late Period",
+                                                  image: "../Halls Gallery/images/ptolemaic_king.png",
+                                                  introHeading: "The Greek Pharaoh",
+                                                  introText: "Recovered from the sunken city of Heracleion, this statue represents a Ptolemaic ruler presenting himself in the traditional style of an Egyptian Pharaoh.",
+                                                  detailsHeading: "Cultural Fusion",
+                                                  detailsText: "The statue bridges the gap between Hellenistic leadership and ancient Egyptian tradition, carved from a single block of red granite.",
+                                                  stats: [
+                                                      { label: "Discovery", value: "Underwater" },
+                                                      { label: "Material", value: "Red Granite" }
+                                                  ]
+                                              },
+                                              "ptolemaic-queen": {
+                                                  title: "Colossus of a Ptolemaic Queen",
+                                                  dynasty: "Ptolemaic Period",
+                                                  period: "Late Period",
+                                                  image: "../Halls Gallery/images/ptolemaic_queen.png",
+                                                  introHeading: "Divine Majesty",
+                                                  introText: "A dark granite masterpiece representing a Ptolemaic queen as the goddess Isis, showcasing the intricate blending of Greek and Egyptian religious iconography.",
+                                                  detailsHeading: "Artistic Detail",
+                                                  detailsText: "The queen holds a cornucopia and wears a traditional Egyptian wig, symbolizing her role as a source of abundance and divine favor for the kingdom.",
+                                                  stats: [
+                                                      { label: "Representing", value: "Ptolemaic Queen" },
+                                                      { label: "Material", value: "Dark Granite" }
+                                                  ]
+                                              },
+                                              "sarcophagus-seti": {
+                                                  title: "Sarcophagus of Seti I",
+                                                  dynasty: "19th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Halls Gallery/images/sarcophagus_seti.png",
+                                                  introHeading: "The Alabaster Masterpiece",
+                                                  introText: "This translucent sarcophagus is widely considered the finest example of Egyptian stone carving ever discovered.",
+                                                  detailsHeading: "Book of Gates",
+                                                  detailsText: "Covered in delicate hieroglyphic inscriptions and scenes from the Book of Gates, the sarcophagus guided the king through the hours of the night into the afterlife.",
+                                                  stats: [
+                                                      { label: "Material", value: "Translucent Alabaster" },
+                                                      { label: "Technique", value: "Micro-carving" }
+                                                  ]
+                                              },
+                                              "canopic-hetepheres": {
+                                                  title: "Canopic Chest of Queen Hetepheres",
+                                                  dynasty: "4th Dynasty",
+                                                  period: "Old Kingdom",
+                                                  image: "../Halls Gallery/images/canopic_chest_hetepheres.png",
+                                                  introHeading: "Origins of Eternity",
+                                                  introText: "Found in a secret shaft at Giza, this chest is one of the oldest surviving examples of the specialized funerary equipment used to preserve the internal organs.",
+                                                  detailsHeading: "Old Kingdom Craft",
+                                                  detailsText: "The calcite chest contains four distinct compartments, reflecting the early development of mummification rituals that would persist for thousands of years.",
+                                                  stats: [
+                                                      { label: "Found in", value: "Giza" },
+                                                      { label: "Material", value: "Calcite" }
+                                                  ]
+                                              },
+                                              "mask-psusennes": {
+                                                  title: "Golden Mask of Psusennes I",
+                                                  dynasty: "21st Dynasty",
+                                                  period: "Late Period",
+                                                  image: "../Halls Gallery/images/mask_psusennes.png",
+                                                  introHeading: "The Silver Pharaoh's Gold",
+                                                  introText: "While his coffin was made of silver, Psusennes I's mask is solid gold, proving the wealth of the Tanite kings during a time once thought to be in decline.",
+                                                  detailsHeading: "Exquisite Craftsmanship",
+                                                  detailsText: "The mask features detailed engraving and glass paste inlays, rivaling the artistry of the 18th Dynasty while maintaining a distinct 21st Dynasty style.",
+                                                  stats: [
+                                                      { label: "Found at", value: "Tanis" },
+                                                      { label: "Material", value: "Solid Gold" }
+                                                  ]
+                                              },
+                                              "statue-1": {
+                                                  title: "The Seated Scribe",
+                                                  dynasty: "5th Dynasty",
+                                                  period: "Old Kingdom",
+                                                  image: "../Halls Gallery/images/seated_scribe.png",
+                                                  introHeading: "A Moment of Focus",
+                                                  introText: "One of the most important works of Ancient Egyptian art, this statue depicts a scribe at work, capturing a lifelike and individualistic expression rare for the period.",
+                                                  detailsHeading: "Seeing the Soul",
+                                                  detailsText: "The eyes are inlaid with rock crystal, magnesite, and copper-arsenic alloy, giving them a startlingly realistic appearance that seems to follow the viewer.",
+                                                  stats: [
+                                                      { label: "Material", value: "Painted Limestone" },
+                                                      { label: "Eyes", value: "Rock Crystal" }
+                                                  ],
+                                                  quote: "Be a scribe! Thy limbs will be sleek, thy hands will grow soft.",
+                                                  quoteAuthor: "The Satire of the Trades"
+                                              },
+
+                                              "narmer-palette": {
+                                                  title: "Narmer Palette (Replica)",
+                                                  dynasty: "Protodynastic",
+                                                  period: "c. 3100 BCE",
+                                                  image: "../Halls Gallery/images/narmer_palette.png",
+                                                  introHeading: "The Unification of Egypt",
+                                                  introText: "Considered the first historical document in the world, this palette commemorates the unification of Upper and Lower Egypt under King Narmer.",
+                                                  detailsHeading: "Foundations of Art",
+                                                  detailsText: "It establishes the artistic conventions—such as hierarchical scale and registers—that would define Egyptian art for the next 3,000 years.",
+                                                  stats: [
+                                                      { label: "Material", value: "Siltstone" },
+                                                      { label: "Age", value: "5,000+ Years" }
+                                                  ]
+                                              },
+                                              "predynastic-vessel": {
+                                                  title: "Painted Predynastic Vessel",
+                                                  dynasty: "Naqada II",
+                                                  period: "Pre-dynastic",
+                                                  image: "../Halls Gallery/images/predynastic_vessel.png",
+                                                  introHeading: "The Nile Highway",
+                                                  introText: "This Gerzean pottery vessel is decorated with ochre-red paint depicting multi-oared boats, mountain ranges, and flamingos.",
+                                                  detailsHeading: "Early Communication",
+                                                  detailsText: "It illustrates the importance of the Nile as a highway for trade and communication even before the dawn of the Pharaonic state.",
+                                                  stats: [
+                                                      { label: "Type", value: "Pottery" },
+                                                      { label: "Discovery", value: "Naqada" }
+                                                  ]
+                                              },
+                                              "flint-knife": {
+                                                  title: "Ritual Flint Knife",
+                                                  dynasty: "Predynastic",
+                                                  period: "Naqada III",
+                                                  image: "../Halls Gallery/images/flint_knife.png",
+                                                  introHeading: "Mastery of Stone",
+                                                  introText: "Known as the Gebel el-Arak knife style, this object features a ripple-flaked flint blade of incredible sharpness.",
+                                                  detailsHeading: "Ivory Detail",
+                                                  detailsText: "The ivory handle is carved with microscopic detail, showing complex battle scenes and mythological motifs.",
+                                                  stats: [
+                                                      { label: "Material", value: "Flint & Ivory" },
+                                                      { label: "Use", value: "Ritual" }
+                                                  ]
+                                              },
+                                              "anubis-statue": {
+                                                  title: "Anubis Guardian Statue",
+                                                  dynasty: "New Kingdom",
+                                                  period: "18th Dynasty",
+                                                  image: "../Halls Gallery/images/anubis_guardian.png",
+                                                  introHeading: "Guardian of the Dead",
+                                                  introText: "This recumbent jackal represents Anubis, the god of mummification and the protector of tombs.",
+                                                  detailsHeading: "Lord of the Sacred Land",
+                                                  detailsText: "Carved from wood and covered in black resin, Anubis guided the deceased through the hall of Maat to their final judgment.",
+                                                  stats: [
+                                                      { label: "Material", value: "Wood & Resin" },
+                                                      { label: "God", value: "Anubis" }
+                                                  ]
+                                              },
+                                              "6643b109558a239478145f0c": {
+                                                  title: "Book of the Dead Fragment",
+                                                  dynasty: "New Kingdom",
+                                                  period: "19th Dynasty",
+                                                  image: "https://images.unsplash.com/photo-1618172193622-ae2d025f4158?q=80&w=2064&auto=format&fit=crop",
+                                                  introHeading: "Guide to the Duat",
+                                                  introText: "This papyrus fragment is part of a personalized collection of spells intended to guide the deceased through the dangers of the underworld.",
+                                                  detailsHeading: "Negative Confession",
+                                                  detailsText: "It includes instructions for the critical 'weighing of the heart' ceremony, ensuring the soul passes into paradise.",
+                                                  stats: [
+                                                      { label: "Type", value: "Papyrus" },
+                                                      { label: "Language", value: "Hieroglyphic" }
+                                                  ]
+                                              },
+                                              "shabti-tut": {
+                                                  title: "Shabti Figures of Tutankhamun",
+                                                  dynasty: "18th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5947?q=80&w=2069&auto=format&fit=crop",
+                                                  introHeading: "Magical Workers",
+                                                  introText: "These blue faience figurines were meant to perform manual labor for the king in the afterlife if he were called upon to do so.",
+                                                  detailsHeading: "The Shabti Spell",
+                                                  detailsText: "Each is inscribed with a spell ensuring that when the king is called to work, the shabti will stand and say, 'Here I am!'",
+                                                  stats: [
+                                                      { label: "Material", value: "Faience" },
+                                                      { label: "Found in", value: "KV62" }
+                                                  ]
+                                              },
+                                              "6643b109558a239478145f0a": {
+                                                  title: "Rosetta Stone (Replica)",
+                                                  dynasty: "Ptolemaic Period",
+                                                  period: "196 BCE",
+                                                  image: "../Halls Gallery/images/rosetta_stone.png",
+                                                  introHeading: "The Key to History",
+                                                  introText: "This high-fidelity replica represents the stone that allowed modern scholars to finally decipher ancient Egyptian hieroglyphs.",
+                                                  detailsHeading: "Three Scripts",
+                                                  detailsText: "Inscribed with a decree in three scripts—Hieroglyphic, Demotic, and Greek—it provided the vital link needed for translation.",
+                                                  stats: [
+                                                      { label: "Period", value: "Ptolemaic" },
+                                                      { label: "Discovery", value: "1799" }
+                                                  ]
+                                              },
+                                              "fayum-portrait": {
+                                                  title: "Fayum Mummy Portrait",
+                                                  dynasty: "Roman Era",
+                                                  period: "1st-3rd Century CE",
+                                                  image: "https://images.unsplash.com/photo-1626084300762-5f72382e379a?q=80&w=2069&auto=format&fit=crop",
+                                                  introHeading: "The Fusion of Styles",
+                                                  introText: "These encaustic-on-wood paintings represent a unique cultural crossroads between Egyptian burial tradition and Roman artistic realism.",
+                                                  detailsHeading: "Vivid Glimpse",
+                                                  detailsText: "They provide the most lifelike portraits of the people who lived in Egypt during the Roman period, preserving their memory for two millennia.",
+                                                  stats: [
+                                                      { label: "Style", value: "Encaustic" },
+                                                      { label: "Region", value: "Fayum Basin" }
+                                                  ]
+                                              },
+                                              "sarapis-statue": {
+                                                  title: "Statue of Sarapis",
+                                                  dynasty: "Ptolemaic Era",
+                                                  period: "3rd Century BCE",
+                                                  image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop",
+                                                  introHeading: "The Universal God",
+                                                  introText: "Sarapis was a synthetic deity created to unite Greek and Egyptian worshippers under the Ptolemaic kings.",
+                                                  detailsHeading: "Iconographic Blend",
+                                                  detailsText: "The statue combines the physical appearance of the Greek Zeus with the spiritual attributes of Osiris and Apis.",
+                                                  stats: [
+                                                      { label: "Material", value: "Granite" },
+                                                      { label: "Origin", value: "Alexandria" }
+                                                  ]
+                                              },
+                                              "terracotta-figure": {
+                                                  title: "Terra-cotta Female Figure",
+                                                  dynasty: "Naqada I",
+                                                  period: "Predynastic",
+                                                  image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop",
+                                                  introHeading: "Dawn of Art",
+                                                  introText: "A rare Predynastic figure representing the very beginnings of Egyptian sculptural tradition.",
+                                                  detailsHeading: "Mystical Origins",
+                                                  detailsText: "Likely a ritual object associated with fertility or dance, found in the earliest settlements along the Nile.",
+                                                  stats: [
+                                                      { label: "Material", value: "Terra-cotta" },
+                                                      { label: "Age", value: "c. 3500 BCE" }
+                                                  ]
+                                              },
+                                              "featured-tut-mask": {
+                                                  title: "Golden Tut Mask",
+                                                  dynasty: "18th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Kids-Museum/tut-mask-kids.png",
+                                                  introHeading: "The Boy King's Gold!",
+                                                  introText: "Hi explorer! This is the most famous mask in the world. It belonged to King Tut, who became Pharaoh when he was only 9 years old! That's probably your age!",
+                                                  detailsHeading: "What's it made of?",
+                                                  detailsText: "It's made of solid gold and decorated with beautiful blue stones called Lapis Lazuli. It was meant to protect the King in the afterlife and help him find his way.",
+                                                  stats: [
+                                                      { label: "Material", value: "Shiny Gold" },
+                                                      { label: "Fun Fact", value: "Worn by a kid king!" }
+                                                  ]
+                                              },
+                                              "featured-ramses": {
+                                                  title: "Ramses the Great",
+                                                  dynasty: "19th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Kids-Museum/ramses-kids.png",
+                                                  introHeading: "The Mightiest Pharaoh",
+                                                  introText: "Meet Ramses II! He was a super-strong leader who built huge statues of himself all over Egypt. He wanted everyone to know how brave he was!",
+                                                  detailsHeading: "Giant Statues",
+                                                  detailsText: "He lived for a very long time (over 90 years!) and had many children. He even signed the first peace treaty in the world to stop a war.",
+                                                  stats: [
+                                                      { label: "Superpower", value: "Brave Leader" },
+                                                      { label: "Favorite color", value: "Royal Gold" }
+                                                  ]
+                                              },
+                                              "featured-sphinx": {
+                                                  title: "The Smiling Sphinx",
+                                                  dynasty: "Old Kingdom",
+                                                  period: "4th Dynasty",
+                                                  image: "../Kids-Museum/sphinx-kids.png",
+                                                  introHeading: "Riddle Master",
+                                                  introText: "I have the body of a lion and the head of a human! I guard the Great Pyramids and I love to solve riddles. Can you solve mine?",
+                                                  detailsHeading: "One Big Rock",
+                                                  detailsText: "I'm not built from many blocks—I'm carved out of one giant piece of limestone mountain! I've been sitting in the sand for over 4,500 years.",
+                                                  stats: [
+                                                      { label: "Body", value: "Lion (Strong!)" },
+                                                      { label: "Head", value: "Human (Smart!)" }
+                                                  ]
+                                              },
+                                              "featured-nefertari": {
+                                                  title: "Queen Nefertari",
+                                                  dynasty: "19th Dynasty",
+                                                  period: "New Kingdom",
+                                                  image: "../Kids-Museum/nefertari-kids.png",
+                                                  introHeading: "The Star of Egypt",
+                                                  introText: "Nefertari was a very important Queen. Her name means 'The Most Beautiful.' She was a very smart advisor to King Ramses II.",
+                                                  detailsHeading: "Her Magical Tomb",
+                                                  detailsText: "Her tomb is the most beautiful one ever found! It's full of bright paintings that look like they were painted yesterday. They show her playing games and meeting gods.",
+                                                  stats: [
+                                                      { label: "Role", value: "Great Royal Wife" },
+                                                      { label: "Specialty", value: "Peace Maker" }
+                                                  ]
+                                              },
+                                              "featured-blue-hippo": {
+                                                  title: "Magical Blue Hippo",
+                                                  dynasty: "Middle Kingdom",
+                                                  period: "12th Dynasty",
+                                                  image: "../Kids-Museum/blue-hippo-kids.png",
+                                                  introHeading: "William the Hippo",
+                                                  introText: "This cute little hippo is made of a blue material called 'faience.' He was found in a tomb and was meant to bring life and joy to the owner.",
+                                                  detailsHeading: "Flower Power",
+                                                  detailsText: "Look closely at his back—you can see paintings of lotus flowers! Hippos love to swim in the Nile among these beautiful flowers.",
+                                                  stats: [
+                                                      { label: "Nickname", value: "William" },
+                                                      { label: "Color", value: "Egyptian Blue" }
+                                                  ]
+                                              },
+                                              "alexander-statue": {
+                                                  title: "Bust of Alexander the Great",
+                                                  dynasty: "Ptolemaic Era",
+                                                  period: "Early Ptolemaic",
+                                                  image: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop",
+                                                  introHeading: "The Macedonian Pharaoh",
+                                                  introText: "Alexander the Great, the founder of Alexandria, depicted in the heroic style of late classical sculpture.",
+                                                  detailsHeading: "Imperial Vision",
+                                                  detailsText: "This bust captures Alexander's distinctive features and his role as the conqueror who united Greece and Egypt.",
+                                                  stats: [
+                                                      { label: "Material", value: "Marble" },
+                                                      { label: "Origin", value: "Alexandria" }
+                                                  ]
+                                              },
+                                              "djoser-statue": {
+                                                  title: "Statue of King Djoser",
+                                                  dynasty: "3rd Dynasty",
+                                                  period: "Old Kingdom",
+                                                  image: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop",
+                                                  introHeading: "The First Colossus",
+                                                  introText: "The oldest life-size statue of an Egyptian king, found in the Step Pyramid complex at Saqqara.",
+                                                  detailsHeading: "Eternal Vigil",
+                                                  detailsText: "The statue was placed in a sealed chamber with two eye-holes, allowing the king's spirit to look out and receive offerings.",
+                                                  stats: [
+                                                      { label: "Material", value: "Limestone" },
+                                                      { label: "Found at", value: "Saqqara" }
+                                                  ]
+                                              }
+                                          };
+
+                                          async function loadArtifactData() {
+                                              let artifact = null;
+
+                                              // 0. Check for Kid Mode
+                                              if (ARTIFACT_ID.startsWith('featured-') || new URLSearchParams(window.location.search).get('mode') === 'kids') {
+                                                  document.body.classList.add('kid-mode');
+                                                  // Force dark mode if in kids mode for contrast, or let it be
+                                              }
+
+                                              // 1. Try API
+                                              try {
+                                                  const res = await fetch(`${API_BASE_URL}/artifacts/${ARTIFACT_ID}`);
+                                                  if (res.ok) {
+                                                      const apiData = await res.json();
+                                                      artifact = apiData.data || apiData;
+                                                  }
+                                              } catch (e) {
+                                                  console.warn("API unavailable, using sample data.");
+                                              }
+
+                                              // 2. Fallback to Sample Data
+                                              if (!artifact || !artifact.title) {
+                                                  artifact = SAMPLE_DATA[ARTIFACT_ID] || SAMPLE_DATA["6643b109558a239478145f07"];
+                                              }
+
+                                              updateUI(artifact);
+                                          }
+
+                                          function updateUI(art) {
+                                              if (!art) return;
+
+                                              // Basic Info
+                                              document.querySelector('.artifact-title').textContent = art.title;
+                                              document.querySelector('.artifact-image').src = art.image || art.imageUrl;
+                                              
+                                              const breadcrumbs = document.querySelector('.info-breadcrumbs');
+                                              if (breadcrumbs) {
+                                                  breadcrumbs.innerHTML = `
+                                                      <span>${art.dynasty || 'Unknown Dynasty'}</span>
+                                                      <span style="opacity: 0.3">•</span>
+                                                      <span>${art.period || art.date || 'Ancient Egypt'}</span>
+                                                  `;
+                                              }
+
+                                              // Intro Section
+                                              const introSection = document.querySelectorAll('.info-section')[0];
+                                              if (introSection) {
+                                                  introSection.querySelector('.info-heading').textContent = art.introHeading || "Overview";
+                                                  introSection.querySelector('.info-text').textContent = art.introText || art.description || "";
+                                              }
+
+                                              // Details Section
+                                              const detailsSection = document.querySelectorAll('.info-section')[1];
+                                              if (detailsSection) {
+                                                  if (art.detailsHeading || art.detailsText) {
+                                                      detailsSection.style.display = 'block';
+                                                      detailsSection.querySelector('.info-heading').textContent = art.detailsHeading || "Details";
+                                                      detailsSection.querySelector('.info-text').textContent = art.detailsText || "";
+                                                      
+                                                      // Stats
+                                                      const statsGrid = detailsSection.querySelector('.stats-grid');
+                                                      if (statsGrid && art.stats) {
+                                                          statsGrid.innerHTML = art.stats.map(s => `
+                                                              <div class="stat-box">
+                                                                  <span class="stat-label">${s.label}</span>
+                                                                  <span class="stat-value">${s.value}</span>
+                                                              </div>
+                                                          `).join('');
+                                                      } else if (statsGrid) {
+                                                          statsGrid.style.display = 'none';
+                                                      }
+                                                  } else {
+                                                      detailsSection.style.display = 'none';
+                                                  }
+                                              }
+
+                                              // Discovery/Quote Section
+                                              const discoverySection = document.querySelector('.discovery-section');
+                                              if (discoverySection) {
+                                                  if (art.quote) {
+                                                      discoverySection.style.display = 'block';
+                                                      discoverySection.querySelector('.quote-text').textContent = `"${art.quote}"`;
+                                                      discoverySection.querySelector('.quote-author').textContent = `— ${art.quoteAuthor || 'Unknown'}`;
+                                                  } else {
+                                                      discoverySection.style.display = 'none';
+                                                  }
+                                              }
+                                          }
+
+                                          loadArtifactData();
+
+                                          // Favorite Button logic
+                                          const favoriteBtn = document.getElementById('favoriteBtn');
+                                          if (favoriteBtn) {
+                                              favoriteBtn.addEventListener('click', async () => {
+                                                  const token = localStorage.getItem('token');
+                                                  if (!token) {
+                                                      alert("Please log in to save to favorites.");
+                                                      return;
+                                                  }
+                                                  try {
+                                                      const response = await fetch(`${API_BASE_URL}/favorites/${ARTIFACT_ID}`, {
+                                                          method: 'POST',
+                                                          headers: {
+                                                              'Content-Type': 'application/json',
+                                                              'Authorization': `Bearer ${token}`
+                                                          }
+                                                      });
+                                                      if (response.ok) {
+                                                          alert("Added to favorites successfully!");
+                                                      } else {
+                                                          const data = await response.json();
+                                                          if (data.message && data.message.toLowerCase().includes('already')) {
+                                                              alert("This item is already in your favorites.");
+                                                          } else {
+                                                              throw new Error('Failed to add to favorites');
+                                                          }
+                                                      }
+                                                  } catch (error) {
+                                                      alert("Unable to save to favorites: " + error.message);
+                                                  }
+                                              });
+                                          }
+                                      });
+                                  </script>
+                                 
+                                 <script src="../global-core.js"></script>
+                                 <script src="../animate.js"></script>
+                             </body>
+                             </html>

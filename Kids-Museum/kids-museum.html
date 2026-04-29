@@ -81,14 +81,14 @@
     </div>
 
     <!-- Header -->
-    <header class="header">
+    <header class="header" style="height: 120px">
         <div class="scroll-progress-container"><div class="scroll-progress-bar" id="scrollProgress"></div></div>
         <div class="header-container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn">
                     <span class="material-symbols-outlined" style="color: #ecb613;">menu</span>
                 </button>
-                <div class="logo-section">
+                <div class="logo-section" style="padding-top: 30px;">
                     <div class="logo-circle">
                         <img src="../logo.png" alt="Tutora Logo">
                     </div>
@@ -97,13 +97,13 @@
             </div>
 
             <nav class="desktop-nav">
-                <a href="../4.home/code.html">Home</a>
-                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-                <a href="../Kids-Museum/kids-museum.html" class="active">Kids-Museum</a>
-                <a href="../event/event.html">Event</a>
+                <a href="../4.home/code.html"> Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html"> Visit</a>
+                <a href="../Kids-Museum/kids-museum.html" class="active"> Kids Museum</a>
+                <a href="../event/event.html"> Events</a>
                 <div class="nav-dropdown">
                     <button class="nav-link dropdown-trigger">
-                        AI Experience
+                       AI Experience
                         <span class="material-symbols-outlined">expand_more</span>
                     </button>
                     <div class="dropdown-menu">
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <a href="../shop/shop.html">Shop</a>
-                <a href="../about/About.html">About</a>
+                <a href="../about/About.html"> About</a>
                 <div class="nav-dropdown">
                     <button class="nav-link dropdown-trigger">Collection <span class="material-symbols-outlined">expand_more</span></button>
                     <div class="dropdown-menu">
@@ -128,20 +128,22 @@
             <div class="header-right">
                 <div class="search-box">
                     <span class="material-symbols-outlined">search</span>
-                    <input type="text" placeholder="Search..." />
+                    <input type="text" placeholder="Search..." data-i18n-placeholder="nav.search" />
                 </div>
                 <button class="theme-btn" id="themeBtn">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </button>
-                <a href="../booking/booking.html" class="btn-booking" style="color: black; background-color: #ecb613">booking</a>
-                <a href="../fav/favourite.html" class="icon-btn">
-                    <span class="material-symbols-outlined">favorite</span>
+                <a href="../booking/booking.html" class="btn-booking" data-i18n="nav.booking">booking</a>
+                <a href="../fav/favourite.html">
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined">favorite</span>
+                    </button>
                 </a>
                 <button class="icon-btn" id="langBtn">
                     <span class="material-symbols-outlined">language</span>
                 </button>
                 <a href="../Profile/profile.html">
-                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                    <img src="./unnamed.png" alt="Profile" class="profile-img" />
                 </a>
             </div>
         </div>

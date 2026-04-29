@@ -171,31 +171,87 @@ class RoyalKidsAtmosphere {
         const container = document.getElementById('dynamic-artifacts-container');
         if (!container) return;
 
+        // Local featured artifacts for kids
+        const featuredArtifacts = [
+            {
+                name: "Golden Tut Mask",
+                description: "The most famous mask in the world, now with a friendly smile for young explorers!",
+                imageUrl: "tut-mask-kids.png",
+                _id: "featured-tut-mask"
+            },
+            {
+                name: "Ramses the Great",
+                description: "Meet the mightiest Pharaoh! He built giant statues and was a great leader of Egypt.",
+                imageUrl: "ramses-kids.png",
+                _id: "featured-ramses"
+            },
+            {
+                name: "The Smiling Sphinx",
+                description: "A lion with a human head! He guards the pyramids and loves solving riddles with kids.",
+                imageUrl: "sphinx-kids.png",
+                _id: "featured-sphinx"
+            },
+            {
+                name: "Queen Nefertari",
+                description: "The most beautiful queen! She was very kind and lived in a palace full of magic and art.",
+                imageUrl: "nefertari-kids.png",
+                _id: "featured-nefertari"
+            },
+            {
+                name: "Magical Blue Hippo",
+                description: "This little blue hippo is named William. He loves swimming in the Nile and hiding in flowers!",
+                imageUrl: "blue-hippo-kids.png",
+                _id: "featured-blue-hippo"
+            }
+        ];
+
         try {
             const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
             const res = await fetch(`${API_URL}/artifacts`);
-            if (!res.ok) throw new Error('API failed');
+            let selection = [];
             
-            const artifacts = await res.json();
-            const selection = artifacts.slice(0, 12).sort(() => 0.5 - Math.random()).slice(0, 8);
+            if (res.ok) {
+                const artifacts = await res.json();
+                selection = artifacts.slice(0, 10).sort(() => 0.5 - Math.random()).slice(0, 6);
+            }
+
+            // Combine featured with dynamic
+            const allArtifacts = [...featuredArtifacts, ...selection];
 
             container.innerHTML = '';
-            selection.forEach(item => {
+            allArtifacts.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'kid-artifact-card micro-lift';
+                const isFeatured = item._id && item._id.toString().startsWith('featured');
+                
                 card.innerHTML = `
-                    <div class="artifact-badge">Ancient Treasure</div>
+                    <div class="artifact-badge">${isFeatured ? "Explorer's Pick" : "Ancient Treasure"}</div>
                     <div class="artifact-img" style="background-image: url('${item.imageUrl || '../4.home/images/hero-1.jpg'}')"></div>
                     <div class="artifact-info">
                         <h3>${item.name}</h3>
                         <p>${item.description?.substring(0, 100) || 'An ancient wonder waiting for you to discover its magical story!'}...</p>
-                        <a href="../Artifact-show/Artifact-show.html?id=${item._id}" class="btn-artifact-view">Discover More</a>
+                        <a href="../Artifact-show/code.html?id=${item._id}" class="btn-artifact-view">Discover More</a>
                     </div>
                 `;
                 container.appendChild(card);
             });
         } catch (e) {
-            container.innerHTML = '<p style="color: #94A3B8; text-align: center; width: 100%;">The Pharaoh is sleeping. Come back later!</p>';
+            // Fallback to featured artifacts only
+            container.innerHTML = '';
+            featuredArtifacts.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'kid-artifact-card micro-lift';
+                card.innerHTML = `
+                    <div class="artifact-badge">Explorer's Pick</div>
+                    <div class="artifact-img" style="background-image: url('${item.imageUrl}')"></div>
+                    <div class="artifact-info">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                        <a href="../Artifact-show/code.html?id=${item._id}" class="btn-artifact-view">Discover More</a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
         }
     }
 

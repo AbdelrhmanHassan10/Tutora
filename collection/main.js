@@ -514,9 +514,16 @@
 
                             card.querySelector('.favorite-btn').addEventListener('click', handleFavoriteClick);
 
-              // Click outside heart opens the modal
+              // Click handling
               card.addEventListener('click', (e) => {
-                  if(!e.target.closest('.favorite-btn')) {
+                  const isArrow = e.target.closest('.arrow-icon');
+                  const isFav = e.target.closest('.favorite-btn');
+                  
+                  if (isArrow) {
+                      e.stopPropagation();
+                      window.location.href = `../Artifact-show/code.html?id=${artifact.id}`;
+                  } else if (!isFav) {
+                      // Click outside heart/arrow opens the modal
                       if (window.openArtifactModal) window.openArtifactModal(artifact);
                   }
               });
@@ -875,6 +882,19 @@ window.openArtifactModal = function(artifact) {
             shapesContainer.appendChild(shape);
         }
     }
+
+    // Global listener for Arrow Icons (handles static and dynamic cards)
+    document.querySelector('.main-content')?.addEventListener('click', (e) => {
+        const arrowBtn = e.target.closest('.arrow-icon');
+        if (arrowBtn) {
+            const card = arrowBtn.closest('.artifact-card');
+            if (card && card.dataset.id) {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = `../Artifact-show/code.html?id=${card.dataset.id}`;
+            }
+        }
+    });
 
     // START
     initRoyalAtmosphere();

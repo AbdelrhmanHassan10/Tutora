@@ -59,8 +59,8 @@ button {
 }
 
 .logo-circle img {
-    width: 80%;
-    height: 80%;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
     transition: transform 0.5s ease;
 }
