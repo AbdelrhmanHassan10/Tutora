@@ -5800,7 +5800,7 @@ body.light .artifact-badge {
 #dynamic-artifacts-container::-webkit-scrollbar-thumb:hover {
     background: #FFD700 !important;
 }
-
+    }
 /* Mobile Scrollbar Force Visibility */
 @media (max-width: 768px) {
     #dynamic-artifacts-container {
@@ -5811,4 +5811,5 @@ body.light .artifact-badge {
     #dynamic-artifacts-container::-webkit-scrollbar {
         height: 14px !important;
     }
+}
 }

@@ -77,12 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'The Middle Kingdom is considered the classical age of Egyptian culture. Step into the daily lives of ancient Egyptians through their intricate jewelry, tools, cosmetics, and fascinating recreational games.',
         image: 'images/daily.png',
         artifacts: [
-            { name: "Senet Game Board", period: "Middle Kingdom", desc: "An ancient board game that held deep religious and recreational significance.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Senet_board_game-Metropolitan_Museum.png/800px-Senet_board_game-Metropolitan_Museum.png" },
-            { name: "Scribe's Palette", period: "Middle Kingdom", desc: "A wooden palette complete with ink wells and reed brushes used by scribes.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Ancient_Egyptian_scribes_palette.jpg/800px-Ancient_Egyptian_scribes_palette.jpg" },
+            { name: "Senet Game Board", period: "Middle Kingdom", desc: "An ancient board game that held deep religious and recreational significance.", image: "images/artifacts/senet_board_ai.png" },
+            { name: "Scribe's Palette", period: "Middle Kingdom", desc: "A wooden palette complete with ink wells and reed brushes used by scribes.", image: "images/artifacts/scribes_palette_ai.png" },
             { name: "Cosmetic Palette", period: "Middle Kingdom", desc: "Used for grinding malachite and galena for eye makeup.", image: "images/artifacts/cosmetic_palette.jpg" },
             { name: "Ancient Egyptian Sandals", period: "Middle Kingdom", desc: "Woven papyrus and palm leaf sandals for daily wear.", image: "images/artifacts/ancient_egyptian_sandals.jpg" },
-            { name: "Pectoral of Senusret II", period: "12th Dynasty", desc: "A masterpiece of cloisonné jewelry from the Lahun treasure.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Pectoral_of_Senusret_II.jpg/800px-Pectoral_of_Senusret_II.jpg" },
-            { name: "William the Hippopotamus", period: "12th Dynasty", desc: "A famous faience hippopotamus statuette decorated with marsh flora.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/William_the_Hippopotamus_-_The_Met_-_6_cropped.jpg/800px-William_the_Hippopotamus_-_The_Met_-_6_cropped.jpg" }
+            { name: "Pectoral of Senusret II", period: "12th Dynasty", desc: "A masterpiece of cloisonné jewelry from the Lahun treasure.", image: "images/artifacts/pectoral_senusret_ai.png" },
+            { name: "William the Hippopotamus", period: "12th Dynasty", desc: "A famous faience hippopotamus statuette decorated with marsh flora.", image: "images/artifacts/william_hippo_ai.png" }
         ]
     },
     {
