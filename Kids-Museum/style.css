@@ -5808,3 +5808,19 @@ body.light .artifact-badge {
     border: 1px solid transparent;
     background-clip: padding-box;
 }
+
+/* Mobile Scrollbar Force Visibility */
+@media (max-width: 768px) {
+    #dynamic-artifacts-container::-webkit-scrollbar {
+        display: block !important;
+        height: 6px !important;
+    }
+    #dynamic-artifacts-container::-webkit-scrollbar-thumb {
+        background: rgba(236, 182, 19, 0.5) !important;
+        border-radius: 10px !important;
+    }
+    #dynamic-artifacts-container {
+        -webkit-overflow-scrolling: touch !important;
+        padding-bottom: 40px !important; /* Extra space for mobile scrollbar */
+    }
+}
