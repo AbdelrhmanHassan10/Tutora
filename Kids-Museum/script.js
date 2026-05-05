@@ -224,13 +224,13 @@ class RoyalKidsAtmosphere {
             },
             {
                 name: "King Khufu",
-                description: "The builder of the Great Pyramid! He was a very wise king who loved big projects.",
+                description: "The builder of the Great Pyramid! He was a very wise king who built the tallest building in the ancient world. It's made of millions of stones!",
                 imageUrl: "khufu-kids.png",
                 _id: "featured-khufu"
             },
             {
                 name: "Thutmose the Brave",
-                description: "The Napoleon of Egypt! He was a great warrior king who protected his kingdom with honor.",
+                description: "The Napoleon of Ancient Egypt! He was a brave warrior king who won 17 battles and never lost once. He was super smart!",
                 imageUrl: "thutmose-kids.png",
                 _id: "featured-thutmose"
             }
