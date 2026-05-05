@@ -100,7 +100,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.ticket-card, .ai-planner, .info-card, .hero-content').forEach(el => {
+document.querySelectorAll('.ticket-card, .itinerary-card, .ai-planner, .info-card, .hero-content').forEach(el => {
     el.classList.add('reveal');
     revealObserver.observe(el);
 });
@@ -143,6 +143,12 @@ if (plannerBtn) {
 
             // If no match, pick 3 random ones
             const finalPicks = matches.length > 0 ? matches : museumSpots.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+            // Save to localStorage for the Favorites Dashboard
+            localStorage.setItem('myJourney', JSON.stringify({
+                date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                route: finalPicks
+            }));
 
             // Render
             routeContent.innerHTML = finalPicks.map(spot => `

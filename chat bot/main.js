@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMessages = document.getElementById('chatMessages');
     const chatSuggestions = document.getElementById('chatSuggestions');
     const clearChatBtn = document.getElementById('clearChatBtn');
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
 
     function getTime() {
         return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -366,4 +366,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('✓ Chat System Restored & Atmosphericized');
 });
+
 

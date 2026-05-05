@@ -3,7 +3,7 @@ import '../styles/AI-common.css';
 import '../styles/NameTranslator.css';
 
 const NameTranslatorPage = () => {
-    const API_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
     const [name, setName] = useState('');
     const [hieroglyphDisplay, setHieroglyphDisplay] = useState('𓀀 𓃠 𓅓 𓏏');
     const [phoneticText, setPhoneticText] = useState('Amun-Ra-Te');
@@ -251,3 +251,4 @@ const NameTranslatorPage = () => {
 };
 
 export default NameTranslatorPage;
+

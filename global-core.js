@@ -2,8 +2,8 @@
 // GLOBAL CORE SCRIPT - TUTORA
 // ============================================
 
-const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-// Fallback if direct fails (CORS): 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-cb6d.up.railway.app/api'
+const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+// Fallback if direct fails (CORS): 'https://cors-anywhere.herokuapp.com/https://gem-backend-production-1ea2.up.railway.app/api'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -471,3 +471,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.initRoyalAtmosphere();
     window.init3DParallax();
 });
+

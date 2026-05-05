@@ -3,7 +3,7 @@
       // CONFIGURATION & STATE
       // ============================================
       const CONFIG = {
-          API_BASE_URL: 'https://gem-backend-production-cb6d.up.railway.app/api',
+          API_BASE_URL: 'https://gem-backend-production-1ea2.up.railway.app/api',
           ITEMS_PER_PAGE: 12,
           DEFAULT_GRID_VIEW: 'grid-3'
       };
@@ -57,7 +57,7 @@
               material: "Wood & Gold",
               site: "Grand Hall Gallery",
               gallery: "Royal Treasures",
-              image: "./unnamed (3).png",
+              image: "./royal_chariot_real.jpg",
               description: "An ornate royal chariot used for ceremonial purposes.",
               date: "1295 BCE"
           },
@@ -68,7 +68,7 @@
               material: "Granite",
               site: "Rashid (Rosetta)",
               gallery: "Historical Monuments",
-              image: "./unnamed (4).png",
+              image: "./rosetta_stone_real.jpg",
               description: "The famous stone that helped decode Egyptian hieroglyphics.",
               date: "196 BCE"
           },
@@ -79,20 +79,20 @@
               material: "Limestone",
               site: "Funerary Gallery",
               gallery: "Funerary Arts",
-              image: "./unnamed (5).png",
+              image: "./Canopic Jarspng.png",
               description: "Set of four jars used to store mummified organs.",
               date: "1200 BCE"
           },
           {
               id: "6643b109558a239478145f0c",
               title: "Hunefer Papyrus",
-              dynasty: "4th Dynasty",
+              dynasty: "19th Dynasty",
               material: "Papyrus",
               site: "Theban Necropolis",
               gallery: "Ancient Texts",
-              image: "./unnamed (6).png",
+              image: "./Hunefer Papyrus.jpg",
               description: "Ancient papyrus scroll with Book of the Dead inscriptions.",
-              date: "2500 BCE"
+              date: "1280 BCE"
           },
           {
               id: "6643b109558a239478145f0d",
@@ -101,7 +101,7 @@
               material: "Limestone",
               site: "Giza Plateau",
               gallery: "Monumental Art",
-              image: "./unnamed (7).png",
+              image: "./Sphinx Model.webp",
               description: "A miniature model of the Great Sphinx of Giza.",
               date: "2558 BCE"
           },
@@ -112,7 +112,7 @@
               material: "Granite",
               site: "Rashid (Rosetta)",
               gallery: "Historical Monuments",
-              image: "./unnamed (8).png",
+              image: "./the-rosetta-stone.jpg",
               description: "A replica of the famous Rosetta Stone.",
               date: "196 BCE"
           },
@@ -134,7 +134,7 @@
               material: "Limestone",
               site: "Saqqara",
               gallery: "Statuary",
-              image: "./statue_scribe.png",
+              image: "./The Seated Scribewebp.webp",
               description: "A world-renowned masterpiece of painted limestone, capturing the lifelike focus of a royal scribe.",
               date: "2450 BCE"
           },
@@ -145,7 +145,7 @@
               material: "Gold & Lapis",
               site: "Dahshur",
               gallery: "Jewelry",
-              image: "./jewelry_pectoral.png",
+              image: "./golden_pectoral_real.jpg",
               description: "A stunning ceremonial breastplate with a winged scarab, symbolizing eternal life and protection.",
               date: "1850 BCE"
           }
@@ -177,7 +177,7 @@
       // ============================================
       // API FUNCTIONS
       // ============================================
-      async function makeApiRequest(endpoint, method = 'GET') {
+      async function makeApiRequest(endpoint, method = 'GET', body = null) {
           const token = localStorage.getItem('token');
           if (!token && method !== 'GET') {
               showNotification('Please log in to manage your favorites.', 'info');
@@ -192,6 +192,9 @@
           }
 
           const config = { method, headers };
+          if (body && (method === 'POST' || method === 'PUT' || method === 'PATCH')) {
+              config.body = JSON.stringify(body);
+          }
 
           try {
               const response = await fetch(`${CONFIG.API_BASE_URL}${endpoint}`, config);
@@ -212,8 +215,8 @@
 
       const api = {
           getMyFavorites: () => makeApiRequest('/favorites/my'),
-          addFavorite: (id) => makeApiRequest(`/favorites/${id}`, 'POST'),
-          removeFavorite: (id) => makeApiRequest(`/favorites/${id}`, 'DELETE'),
+          addFavorite: (id) => makeApiRequest(`/favorites/${id}`, 'POST', { type: "Artifact" }),
+          removeFavorite: (id) => makeApiRequest(`/favorites/${id}?type=Artifact`, 'DELETE')
       };
 
       // ============================================
@@ -246,6 +249,7 @@
               }
           } catch (error) {
               console.error('Favorite operation failed:', error);
+              showNotification('Failed to update favorites', 'error');
           }
       }
 
@@ -253,11 +257,14 @@
           if (localStorage.getItem('token')) {
               try {
                   const favoritesResponse = await api.getMyFavorites();
-                  if (favoritesResponse && favoritesResponse.data) {
-                      favoritesResponse.data.forEach(fav => {
-                          STATE.favorites.add(fav.artifactId);
-                      });
-                  }
+                  const favs = Array.isArray(favoritesResponse) ? favoritesResponse : (favoritesResponse ? favoritesResponse.data || [] : []);
+                  favs.forEach(fav => {
+                      const itemData = fav.artifact || fav.item || fav;
+                      const id = fav.artifactId || fav.itemId || (itemData && (itemData._id || itemData.id));
+                      if (id) {
+                          STATE.favorites.add(id);
+                      }
+                  });
               } catch (error) {
                   console.error('Failed to load favorites:', error);
               }
@@ -505,14 +512,16 @@
                         <div class="card-content">
                             <p class="dynasty-label">${artifact.dynasty}</p>
                             <h3 class="artifact-title">${artifact.title}</h3>
+                            <p class="card-description">${artifact.description || ''}</p>
                             <div class="card-footer">
-                                <span class="location-text">${artifact.site}</span>
-                                <span class="material-symbols-outlined arrow-icon">arrow_forward</span>
+                                <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> ${artifact.site}</span>
+                                <button class="view-details-btn" onclick="window.location.href='../Artifact-show/code.html?id=${artifact.id}'">
+                                    <span>Details</span>
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
                             </div>
                         </div>
                     `;
-
-                            card.querySelector('.favorite-btn').addEventListener('click', handleFavoriteClick);
 
               // Click handling
               card.addEventListener('click', (e) => {
@@ -696,7 +705,7 @@
       async function initialize() {
           showLoading(true);
           try {
-              const res = await fetch('https://gem-backend-production-cb6d.up.railway.app/api/artifacts');
+              const res = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/artifacts');
               if (res.ok) {
                   const data = await res.json();
                   STATE.allArtifacts = Array.isArray(data) ? data : (data.artifacts || data.data || []);
@@ -883,9 +892,11 @@ window.openArtifactModal = function(artifact) {
         }
     }
 
-    // Global listener for Arrow Icons (handles static and dynamic cards)
+    // Global listener for Arrow Icons and Favorite Buttons (handles static and dynamic cards)
     document.querySelector('.main-content')?.addEventListener('click', (e) => {
-        const arrowBtn = e.target.closest('.arrow-icon');
+        const arrowBtn = e.target.closest('.arrow-icon') || e.target.closest('.view-details-btn');
+        const favBtn = e.target.closest('.favorite-btn');
+        
         if (arrowBtn) {
             const card = arrowBtn.closest('.artifact-card');
             if (card && card.dataset.id) {
@@ -893,6 +904,11 @@ window.openArtifactModal = function(artifact) {
                 e.stopPropagation();
                 window.location.href = `../Artifact-show/code.html?id=${card.dataset.id}`;
             }
+        } else if (favBtn) {
+            handleFavoriteClick({
+                stopPropagation: () => e.stopPropagation(),
+                currentTarget: favBtn
+            });
         }
     });
 

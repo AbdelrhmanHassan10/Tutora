@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
     
     const resetForm = document.getElementById('resetForm');
     const emailInput = document.getElementById('email');
@@ -139,3 +139,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

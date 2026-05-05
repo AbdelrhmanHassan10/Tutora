@@ -3,7 +3,7 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
     const token = localStorage.getItem('token');
 
     // 1. Auth check and redirection for private page
@@ -424,3 +424,4 @@ document.addEventListener('DOMContentLoaded', () => {
         thumb.style.transition = 'transform 0.1s ease-out';
     }
 });
+

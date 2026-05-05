@@ -8,6 +8,12 @@ html {
     scroll-behavior: smooth;
 }
 
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: auto; /* Smoother touch inertia on mobile */
+    }
+}
+
 /* Theme synchronization handled by global-theme.css */
 
 a {
@@ -151,8 +157,9 @@ body.light {
     --text-gray: #555555;
     --card-bg: rgba(255, 255, 255, 0.7);
     --border-color: rgba(191, 161, 107, 0.3);
-    --primary: #8e7341; /* Burnished Bronze for visibility on light */
+    --primary: #8e7341; /* Burnished Bronze */
     --primary-glow: rgba(142, 115, 65, 0.2);
+    --muted-gold: #7a6a4a;
 }
 
 body {
@@ -542,8 +549,19 @@ body.light .header {
 }
 
 @media (max-width: 768px) {
+    .header {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(10, 10, 10, 0.98) !important;
+    }
+    
+    body.light .header {
+        background: rgba(255, 255, 255, 0.98) !important;
+    }
+
     .header.scrolled {
         padding: 0.8rem 0 !important; /* Match mobile base padding to prevent jump */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 }
 
@@ -817,6 +835,16 @@ body.light .dropdown-link:hover {
 
 .search-box input::placeholder {
     color: var(--muted-gold);
+}
+
+body.light .search-box {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(142, 115, 65, 0.2);
+}
+
+body.light .search-box:focus-within {
+    background-color: rgba(142, 115, 65, 0.05);
+    border-color: #8e7341;
 }
 
 .theme-btn,
@@ -1242,6 +1270,8 @@ body.light .hero-content {
     gap: 1rem;
     padding: 1rem;
     scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .tours-scroll::-webkit-scrollbar {
@@ -1250,10 +1280,11 @@ body.light .hero-content {
 
 .tour-card {
     min-width: 18rem;
-    flex: 1;
+    flex: 0 0 18rem;
     background: var(--card-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    scroll-snap-align: start;
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 1.5rem;
     overflow: hidden;
@@ -1276,6 +1307,11 @@ body.dark .tour-card {
     aspect-ratio: 16/9;
     background-size: cover;
     background-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tour-card:hover .tour-image {
+    transform: scale(1.08);
 }
 
 .tour-info {
@@ -2014,9 +2050,17 @@ body.dark .quick-info-bar {
     font-size: 2.5rem;
 }
 
+body.light .info-item .icon-gold {
+    color: #8e7341 !important;
+}
+
 .info-item .icon-turquoise {
     color: #40e0d0;
     font-size: 2.5rem;
+}
+
+body.light .info-item .icon-turquoise {
+    color: #008080 !important;
 }
 
 .info-item h4 {
@@ -2254,6 +2298,17 @@ body.light .newsletter-banner {
     background: linear-gradient(rgba(252, 250, 247, 0.9), rgba(252, 250, 247, 0.95)), url('../gem.jpg');
     color: #1a1a1a;
     border-color: rgba(191, 161, 107, 0.3);
+}
+
+body.light .newsletter-banner h2 {
+    color: #8e7341 !important;
+    text-shadow: none !important;
+}
+
+body.light .newsletter-form input {
+    background: #fff !important;
+    border-color: rgba(142, 115, 65, 0.3) !important;
+    color: #1a1a1a !important;
 }
 
 .newsletter-content h2 { 
@@ -2540,15 +2595,23 @@ body.light .newsletter-banner {
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 10px;
-    background: linear-gradient(90deg, #fff, var(--primary), #fff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 5s infinite linear;
-    background-size: 200% auto;
 }
 
 @keyframes shine {
     to { background-position: 200% center; }
+}
+
+body.light .discover-tag {
+    background: linear-gradient(90deg, #8e7341, #1a1a1a, #8e7341);
+    -webkit-background-clip: text;
+    background-size: 200% auto;
+    text-shadow: none;
+}
+
+body.light .hero-subtitle {
+    color: #ffffff !important; /* Force white for readability on dark images */
+    font-weight: 600;
+    text-shadow: 0 0 30px rgba(0,0,0,1), 0 4px 15px rgba(0,0,0,0.8);
 }
 
 .museum-name {
@@ -2565,14 +2628,14 @@ body.light .newsletter-banner {
 }
 
 .hero-subtitle {
-    font-size: 1.3rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.95);
-    max-width: 850px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #ffffff;
+    max-width: 800px;
     margin-bottom: 3.5rem;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+    letter-spacing: 1px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.9);
 }
 
 .hero-buttons {
@@ -2582,11 +2645,10 @@ body.light .newsletter-banner {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary), #fff, var(--primary));
-    background-size: 200% auto;
+    background: var(--primary);
     color: #000;
-    box-shadow: 0 10px 40px rgba(242, 208, 13, 0.4);
-    animation: flowGradient 6s infinite;
+    box-shadow: 0 10px 40px rgba(242, 208, 13, 0.5), 0 0 20px rgba(242, 208, 13, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 @keyframes flowGradient {
@@ -2596,11 +2658,12 @@ body.light .newsletter-banner {
 }
 
 .btn-accent {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(15px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    font-weight: 600;
 }
 
 .btn-primary:hover {
@@ -2864,14 +2927,52 @@ body.light .newsletter-banner {
 /* Scroll Reveal System */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(40px) scale(0.96);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
 .reveal.active-reveal {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+}
+
+.reveal-left { transform: translateX(-50px) scale(0.98); }
+.reveal-right { transform: translateX(50px) scale(0.98); }
+
+.reveal-left.active-reveal, 
+.reveal-right.active-reveal { 
+    transform: translate(0) scale(1); 
+}
+
+/* Staggered Delays */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+@media (max-width: 768px) {
+    .reveal {
+        transition-duration: 0.5s;
+        transform: translateY(20px) scale(0.98);
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    .tour-card, .event-card, .amenity-card, .curator-panel, .mobile-menu {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: var(--card-bg-solid, rgba(20, 22, 25, 0.95));
+    }
+
+    body.light .tour-card, 
+    body.light .event-card, 
+    body.light .amenity-card, 
+    body.light .curator-panel, 
+    body.light .mobile-menu {
+        background-color: rgba(255, 255, 255, 0.98);
+    }
 }
 
 /* Interactive Particles (Fixed for full page coverage) */
@@ -2957,8 +3058,16 @@ body.light .tour-name,
 body.light .artifact-title,
 body.light .event-details h4,
 body.light .amenity-info h3,
-body.light .highlight-title {
+body.light .highlight-title,
+body.light .section-title {
     color: #8e7341 !important;
+}
+
+body.light .btn-primary:hover,
+body.light .btn-accent:hover {
+    background: #1a1a1a !important;
+    color: #fff !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
 }
 
 body.light .tour-desc,
@@ -2967,6 +3076,25 @@ body.light .event-details p,
 body.light .amenity-info p,
 body.light .membership-text p {
     color: #444 !important;
+}
+
+body.light .membership-section {
+    background: linear-gradient(135deg, #fdfbf7 0%, #f4eee1 100%) !important;
+    border-color: rgba(142, 115, 65, 0.4) !important;
+    box-shadow: 0 20px 40px rgba(142, 115, 65, 0.1) !important;
+    color: #1a1a1a !important;
+}
+
+body.light .membership-text h2 {
+    color: #8e7341 !important;
+}
+
+body.light .membership-perks .check {
+    color: #008080 !important;
+}
+
+body.light .membership-perks li {
+    color: #333;
 }
 
 body.light .btn-accent {
@@ -2984,6 +3112,29 @@ body.light .footer-separator {
 
 body.light .site-footer {
     border-top: 1px solid rgba(142, 115, 65, 0.2);
+}
+
+body.light .visit-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(142, 115, 65, 0.4) !important;
+    color: #1a1a1a !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+body.light .visit-card h3 {
+    color: #8e7341 !important;
+}
+
+body.light .visit-card .material-symbols-outlined {
+    color: #8e7341 !important;
+}
+
+body.light .visit-card .info-content p:first-child {
+    color: #8e7341;
+}
+
+body.light .visit-card .info-content p:last-child {
+    color: #444;
 }
 
 /* ============================================

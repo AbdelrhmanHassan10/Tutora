@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/AIGuide.css';
 
 const AIGuidePage = () => {
-    const API_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
     const [messages, setMessages] = useState([
         { sender: 'User', text: 'Where is the Rossetta Stone located?' },
         { sender: 'Tortara', text: "It's currently in the British Museum, but I can show you a high-fidelity holographic projection of it right here in the Digital Gallery." }
@@ -249,3 +249,4 @@ const AIGuidePage = () => {
 };
 
 export default AIGuidePage;
+

@@ -3,8 +3,8 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
-    const playBtn = document.querySelector(".play-btn");
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const playBtn = document.querySelector(".play-main-btn");
     const favBtn = document.querySelector(".btn-collection");
     const accordionTriggers = document.querySelectorAll('.accordion-trigger');
     
@@ -269,3 +269,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('✓ Advanced 3D Explorer & Royal Atmosphere Initialized');
 });
+

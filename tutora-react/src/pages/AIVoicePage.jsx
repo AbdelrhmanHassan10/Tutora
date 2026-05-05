@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import '../styles/AIVoice.css';
 
 const AIVoicePage = () => {
-    const API_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
     const [searchParams] = useSearchParams();
     const artifactId = searchParams.get('id') || "4"; // Default Golden Mask
     
@@ -315,3 +315,4 @@ const AIVoicePage = () => {
 };
 
 export default AIVoicePage;
+

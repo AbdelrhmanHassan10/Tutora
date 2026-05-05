@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const API_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
 
 const HomePage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -435,3 +435,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

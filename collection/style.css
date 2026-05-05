@@ -1979,7 +1979,7 @@ a:focus {
 
 .artifact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 2.5rem;
 }
 
@@ -2003,15 +2003,18 @@ a:focus {
 
 .image-container {
     position: relative;
-    height: 350px;
+    height: 450px;
     overflow: hidden;
+    background: rgba(0, 0, 0, 0.2); /* Added background for contain fallback */
 }
 
 .artifact-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.3); /* Subtle dark background for contain view */
     transition: transform 0.8s ease;
+    padding: 1rem; /* Add some padding for contain */
 }
 
 .artifact-card:hover .artifact-image {
@@ -2118,13 +2121,53 @@ a:focus {
     font-size: 0.85rem;
 }
 
-.arrow-icon {
+.view-details-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--col-accent);
     color: var(--col-accent);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.view-details-btn span:first-child {
+    font-family: 'Cinzel', serif;
+}
+
+.view-details-btn .material-symbols-outlined {
+    font-size: 1.2rem;
     transition: transform 0.3s ease;
 }
 
-.artifact-card:hover .arrow-icon {
-    transform: translateX(5px);
+.view-details-btn:hover {
+    background: var(--col-accent);
+    color: #000;
+    box-shadow: 0 10px 20px rgba(242, 185, 13, 0.2);
+    transform: translateY(-2px);
+}
+
+.view-details-btn:hover .material-symbols-outlined {
+    transform: translateX(3px);
+}
+
+/* Light Mode Override */
+body.light .view-details-btn {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+body.light .view-details-btn:hover {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(142, 115, 65, 0.2);
 }
 
 /* Load More Section - Premium Styling */

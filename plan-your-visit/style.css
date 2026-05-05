@@ -892,16 +892,25 @@ body.dark .dropdown-item:hover {
 }
 
 .btn-secondary {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: inherit;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
     padding: 0.6rem 1.25rem;
     border-radius: 0.5rem;
     font-weight: 700;
     font-size: 0.875rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
 body.dark .btn-secondary {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.light .btn-secondary {
+    background: rgba(0, 0, 0, 0.05);
+    color: #1a1a1a;
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .profile-img {
@@ -2643,8 +2652,39 @@ body.light .newsletter-banner {
 }
 
 .btn-primary:hover, .btn-accent:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px var(--primary-glow);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(242, 185, 13, 0.4);
+}
+
+/* Ticket Card Button Specifics */
+.ticket-card .btn-primary,
+.ticket-card .btn-secondary {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.ticket-card .btn-primary::before,
+.ticket-card .btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.ticket-card .btn-primary:hover::before,
+.ticket-card .btn-secondary:hover::before {
+    left: 100%;
 }
 
 /* Fix Hero Text Colors - Upgraded to Royal Gold */
@@ -2687,6 +2727,11 @@ body.light .newsletter-banner {
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
+.itinerary-card.popular-itin {
+    border-color: var(--primary-color);
+    background: rgba(242, 208, 13, 0.03);
+}
+
 .itinerary-card:hover {
     transform: translateY(-15px) rotateX(3deg) rotateY(3deg);
     border-color: var(--primary-color);
@@ -2694,15 +2739,19 @@ body.light .newsletter-banner {
 }
 
 .itinerary-time {
-    display: inline-block;
-    padding: 0.5rem 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.4rem;
     background: rgba(242, 208, 13, 0.1);
     color: var(--primary-color);
     border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
     border: 1px solid rgba(242, 208, 13, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .itinerary-card h3 {
@@ -2714,8 +2763,20 @@ body.light .newsletter-banner {
 
 .timeline {
     list-style: none;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
     padding: 0;
+    position: relative;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-color), transparent);
+    opacity: 0.3;
 }
 
 .timeline li {
@@ -2730,29 +2791,43 @@ body.light .newsletter-banner {
     content: "";
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
     background: var(--primary-color);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--primary-color);
+    box-shadow: 0 0 12px var(--primary-color);
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.itinerary-card:hover .timeline li::before {
+    transform: scale(1.3);
 }
 
 .itin-link {
-    display: inline-block;
-    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
     color: var(--primary-color);
+    border: 1px solid rgba(242, 208, 13, 0.3);
+    border-radius: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .itin-link:hover {
-    letter-spacing: 2px;
-    filter: brightness(1.2);
+    background: var(--primary-color);
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(242, 208, 13, 0.3);
 }
 
 /* Cinematic Hero Slider */
@@ -2894,18 +2969,30 @@ body.light .event-card,
 body.light .amenity-card, 
 body.light .artifact-panel,
 body.light .quick-info-bar,
-body.light .curator-panel {
+body.light .curator-panel,
+body.light .ticket-card,
+body.light .itinerary-card,
+body.light .info-card,
+body.light .ai-planner,
+body.light .transit-split,
+body.light .rule-item {
     background: rgba(255, 255, 255, 0.9) !important;
     backdrop-filter: blur(20px);
-    border-color: rgba(142, 115, 65, 0.3) !important;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05) !important;
+    border-color: rgba(142, 115, 65, 0.4) !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important;
+    color: #1a1a1a !important;
 }
 
 body.light .tour-name,
 body.light .artifact-title,
 body.light .event-details h4,
 body.light .amenity-info h3,
-body.light .highlight-title {
+body.light .highlight-title,
+body.light .ticket-name,
+body.light .itinerary-card h3,
+body.light .info-card h3,
+body.light .transit-content h4,
+body.light .section-title {
     color: #8e7341 !important;
 }
 
@@ -2913,8 +3000,28 @@ body.light .tour-desc,
 body.light .artifact-desc,
 body.light .event-details p,
 body.light .amenity-info p,
-body.light .membership-text p {
+body.light .membership-text p,
+body.light .feature-item,
+body.light .itinerary-card p,
+body.light .info-card p,
+body.light .transit-list p,
+body.light .price-unit,
+body.light .rule-item p,
+body.light .timeline li {
     color: #444 !important;
+}
+
+body.light .timeline li strong {
+    color: #1a1a1a !important;
+}
+
+body.light .timeline::after {
+    background: linear-gradient(to bottom, #8e7341, transparent) !important;
+    opacity: 0.2 !important;
+}
+
+body.light .price-value {
+    color: #1a1a1a !important;
 }
 
 body.light .btn-accent {
@@ -3543,6 +3650,177 @@ body.light .faq-answer p {
     .transit-image {
         min-height: 350px;
     }
+
+/* ============================================
+   AI ROUTE PLANNER RESULTS STYLING
+   ============================================ */
+.route-results-container {
+    margin-top: 3rem;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    border: 1px solid rgba(236, 182, 19, 0.15);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.8s ease-out;
+}
+
+body.dark .route-results-container {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.route-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(236, 182, 19, 0.2);
+}
+
+.route-header .material-symbols-outlined {
+    font-size: 2.5rem;
+    color: #ecb613;
+    filter: drop-shadow(0 0 10px rgba(236, 182, 19, 0.4));
+}
+
+.route-header h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.route-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+}
+
+.route-steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 23px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #ecb613 10%, #ecb613 90%, transparent);
+    opacity: 0.3;
+}
+
+.route-step {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.route-step:hover {
+    transform: translateX(10px);
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--bg-dark);
+    border: 2px solid #ecb613;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(236, 182, 19, 0.2);
+    flex-shrink: 0;
+}
+
+.step-icon .material-symbols-outlined {
+    color: #ecb613;
+    font-size: 1.5rem;
+}
+
+.step-info {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+body.dark .step-info {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.route-step:hover .step-info {
+    background: rgba(236, 182, 19, 0.05);
+    border-color: rgba(236, 182, 19, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.step-info h5 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-family: 'Cinzel', serif;
+}
+
+.step-info p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.step-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ecb613;
+    background: rgba(236, 182, 19, 0.1);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.step-time::before {
+    content: 'schedule';
+    font-family: 'Material Symbols Outlined';
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .route-step {
+        flex-direction: column;
+        gap: 1rem;
+        padding-left: 3rem;
+    }
+    .route-steps::before {
+        left: 23px;
+    }
+    .step-icon {
+        position: absolute;
+        left: 0;
+        top: 2rem;
+        width: 40px;
+        height: 40px;
+    }
+    .step-icon .material-symbols-outlined {
+        font-size: 1.2rem;
+    }
+    .route-header h4 {
+        font-size: 1.4rem;
+    }
+    .route-results-container {
+        padding: 1.5rem;
+    }
+}
 
 /* ============================================
    PREMIUM FOOTER UPGRADE

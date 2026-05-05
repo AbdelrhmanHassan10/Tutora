@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         generateBtn.disabled = true;
 
         try {
-            const response = await fetch('https://gem-backend-production-cb6d.up.railway.app/api/ai/name-to-cartouche', {
+            const response = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/ai/name-to-cartouche', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -189,3 +189,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     initializeTheme();
 });
+

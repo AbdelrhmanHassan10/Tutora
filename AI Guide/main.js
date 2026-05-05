@@ -1,7 +1,7 @@
 // AI GUIDE SCRIPT - TUTORA
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
     const token = localStorage.getItem('token');
     const talkBtn = document.querySelector('.talk-button');
     const transcriptionContent = document.querySelector('.transcription-content');
@@ -251,4 +251,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initRoyalAtmosphere();
 });
+
 

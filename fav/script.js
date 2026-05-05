@@ -6,8 +6,8 @@
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
-    const artifactGrid = document.querySelector('.saved-section .artifact-grid');
+    const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const artifactGrid = document.querySelector('.saved-section .artifact-grid') || document.querySelector('.artifact-grid');
     const welcomeTitle = document.querySelector('.dashboard-header .title');
 
     // --- Immediate Profile Sync ---
@@ -66,11 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createFavoriteCard(favoriteItem) {
         const isEvent = favoriteItem._type === 'Event';
-        const item = isEvent ? favoriteItem.event : favoriteItem.artifact;
-        if (!item) return '';
+        const item = favoriteItem._itemData || favoriteItem.artifact || favoriteItem.event || favoriteItem.item || favoriteItem;
+        if (!item || !item._id && !item.id) return '';
 
         const title = item.name || item.title || 'Untitled';
-        const image = item.imageUrl || '../collection/unnamed.png';
+        const image = item.image || item.imageUrl || '../collection/unnamed (1).png';
         const subtitle = isEvent 
             ? (item.date ? new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Upcoming Event')
             : (item.material || 'Artifact Detail');
@@ -106,6 +106,112 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         artifactGrid.innerHTML = favorites.map(createFavoriteCard).join('');
         attachCardEventListeners();
+    }
+
+    // ============================================
+    // 2.5 KIDS MUSEUM FACTS HANDLING
+    // ============================================
+    
+    const FUN_FACTS_DATA = {
+        'fact-1': { title: "Mummification 101", text: "They believed the heart was the most important organ, while the brain was often thrown away!", topic: "Science", icon: "science" },
+        'fact-2': { title: "Hieroglyph Power", text: "There are over 700 symbols. Some represent sounds, others represent whole words!", topic: "Language", icon: "edit_note" },
+        'fact-3': { title: "Pyramids Mystery", text: "The pyramids were built as tombs for pharaohs and remain architectural wonders!", topic: "History", icon: "history_edu" },
+        'fact-4': { title: "Ancient Honey", text: "Archaeologists found honey in tombs that is 3,000 years old and STILL perfectly edible!", topic: "Food", icon: "restaurant" },
+        'fact-5': { title: "365-Day Year", text: "Egyptians invented the 365-day calendar to predict when the Nile River would flood!", topic: "Science", icon: "calendar_month" },
+        'fact-6': { title: "Bread Medicine", text: "They used moldy bread to treat infections—the earliest form of penicillin!", topic: "Medicine", icon: "medication" },
+        'fact-7': { title: "Senet Game", text: "Ancient Egyptians loved board games! Senet was their favorite, played for over 3,000 years.", topic: "Games", icon: "casino" },
+        'fact-8': { title: "Women's Rights", text: "Egyptian women could own property, sign legal contracts, and even become Pharaohs!", topic: "Society", icon: "balance" },
+        'fact-9': { title: "Paid Builders", text: "The pyramids weren't built by slaves, but by respected workers who were paid in bread and beer!", topic: "History", icon: "groups" },
+        'fact-10': { title: "First Police", text: "Egyptians had the first police force! They used trained dogs and even monkeys to catch criminals.", topic: "Society", icon: "policy" },
+        'fact-11': { title: "Hair Secrets", text: "To stay cool, children often shaved their heads except for one long 'lock of youth' on the side!", topic: "Culture", icon: "content_cut" },
+        'fact-12': { title: "Sacred Animals", text: "It wasn't just cats! Crocodiles, ibises, and even baboons were considered sacred and respected.", topic: "Religion", icon: "pets" },
+        'fact-13': { title: "First Dentists", text: "Ancient Egyptians were the first to have dentists. They even used gold wire to fix loose teeth!", topic: "Medicine", icon: "dentistry" },
+        'fact-14': { title: "Cleopatra's Secret", text: "Cleopatra VII, the most famous Queen of Egypt, was actually Greek, from a family named Ptolemy.", topic: "History", icon: "person" },
+        'fact-15': { title: "Giant Sphinx", text: "The Sphinx is carved from a single giant piece of limestone. It guards the pyramids with a lion's body!", topic: "Architecture", icon: "architecture" },
+        'fact-16': { title: "Peace Treaty", text: "Ramses II signed the first peace treaty in history with the Hittite Empire 3,000 years ago.", topic: "History", icon: "handshake" },
+        'fact-17': { title: "Makeup Power", text: "Both men and women wore eye makeup! It protected their eyes from the sun's glare and biting flies.", topic: "Culture", icon: "visibility" },
+        'fact-18': { title: "Surgical Tools", text: "Ancient doctors used copper scalpels and needles to perform surgeries, much like today!", topic: "Medicine", icon: "hardware" },
+        'fact-19': { title: "Golden Ratio", text: "Architects used advanced math to build the Great Pyramid, which is perfectly aligned with the stars.", topic: "Science", icon: "calculate" },
+        'fact-20': { title: "First Toothpaste", text: "Egyptians invented toothpaste! They used a mix of rock salt, pepper, mint, and dried iris flowers.", topic: "Medicine", icon: "clean_hands" }
+    };
+
+    function renderSavedFacts() {
+        console.log("--- Syncing Saved Fun Facts ---");
+        const grid = document.getElementById('savedFactsGrid');
+        if (!grid) return;
+
+        let savedIds = [];
+        try {
+            savedIds = JSON.parse(localStorage.getItem('savedFacts') || '[]');
+        } catch (e) {
+            console.error("Failed to parse savedFacts:", e);
+            savedIds = [];
+        }
+        
+        console.log("Retrieved IDs:", savedIds);
+
+        if (savedIds.length === 0) {
+            if (document.getElementById('factsCount')) document.getElementById('factsCount').style.display = 'none';
+            grid.innerHTML = `
+                <div class="loading-state">
+                    <span class="material-symbols-outlined">lightbulb</span>
+                    <p>No fun facts saved yet. Visit the Kids Museum to collect some!</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Update badge count
+        const badge = document.getElementById('factsCount');
+        if (badge) {
+            badge.textContent = savedIds.length;
+            badge.style.display = 'flex';
+        }
+
+        grid.innerHTML = savedIds.map(id => {
+            const data = FUN_FACTS_DATA[id];
+            if (!data) return '';
+            
+            const topicClass = {
+                'Science': 'icon-science',
+                'History': 'icon-history',
+                'Language': 'icon-lang',
+                'Food': 'icon-science',
+                'Medicine': 'icon-medicine',
+                'Games': 'icon-art',
+                'Society': 'icon-science',
+                'Culture': 'icon-art',
+                'Religion': 'icon-religion',
+                'Architecture': 'icon-art'
+            }[data.topic] || '';
+
+            return `
+                <div class="fact-fav-card" data-id="${id}">
+                    <div class="fact-icon-box ${topicClass}"><span class="material-symbols-outlined">${data.icon}</span></div>
+                    <div class="fact-body">
+                        <h4>${data.title}</h4>
+                        <p>${data.text}</p>
+                    </div>
+                    <button class="remove-fact-btn" title="Remove Fact">
+                        <span class="material-symbols-outlined">bookmark_remove</span>
+                    </button>
+                </div>
+            `;
+        }).join('');
+
+        // Attach listeners for removal
+        grid.querySelectorAll('.remove-fact-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const card = btn.closest('.fact-fav-card');
+                const id = card.dataset.id;
+                let currentSaved = JSON.parse(localStorage.getItem('savedFacts') || '[]');
+                currentSaved = currentSaved.filter(fid => fid !== id);
+                localStorage.setItem('savedFacts', JSON.stringify(currentSaved));
+                card.remove();
+                if (currentSaved.length === 0) renderSavedFacts();
+                showNotification("Fact removed from collection.", "info");
+            });
+        });
     }
 
     function attachCardEventListeners() {
@@ -155,8 +261,71 @@ document.addEventListener('DOMContentLoaded', () => {
             sections.forEach(section => {
                 section.classList.toggle('active', section.id === targetId);
             });
+
+            // Re-render facts if that tab is selected
+            if (targetId === 'facts') {
+                renderSavedFacts();
+            } else if (targetId === 'journey') {
+                renderJourney();
+            }
         });
     });
+
+    // ============================================
+    // JOURNEY RENDERING LOGIC
+    // ============================================
+    function renderJourney() {
+        const journeyTimelineWrapper = document.getElementById('journeyTimelineWrapper');
+        const journeyItems = document.getElementById('journeyItems');
+        const journeyEmptyState = document.getElementById('journeyEmptyState');
+
+        if (!journeyTimelineWrapper || !journeyItems || !journeyEmptyState) return;
+
+        const storedJourney = localStorage.getItem('myJourney');
+        if (!storedJourney) {
+            journeyTimelineWrapper.style.display = 'none';
+            journeyEmptyState.style.display = 'block';
+            return;
+        }
+
+        try {
+            const journeyData = JSON.parse(storedJourney);
+            const route = journeyData.route || [];
+
+            if (route.length === 0) {
+                journeyTimelineWrapper.style.display = 'none';
+                journeyEmptyState.style.display = 'block';
+                return;
+            }
+
+            journeyEmptyState.style.display = 'none';
+            journeyTimelineWrapper.style.display = 'block';
+
+            journeyItems.innerHTML = route.map((spot, index) => {
+                const isHighlight = index === 0 || index === route.length - 1;
+                return `
+                    <div class="timeline-item">
+                        <div class="timeline-icon ${isHighlight ? 'pulse-gold' : ''}">
+                            <span class="material-symbols-outlined">${spot.icon || 'map'}</span>
+                        </div>
+                        <div class="timeline-content ${isHighlight ? 'highlight' : ''}">
+                            <span class="item-date uppercase tracking-widest">${journeyData.date || 'Today'}</span>
+                            <h4 class="item-title font-serif">${spot.title}</h4>
+                            <p class="item-desc opacity-70">${spot.desc}</p>
+                            <span class="step-time" style="display: inline-block; margin-top: 10px; font-size: 0.8em; color: #ecb613;">
+                                <span class="material-symbols-outlined" style="font-size: 1.2em; vertical-align: middle;">schedule</span>
+                                ${spot.time || ''}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        } catch (error) {
+            console.error("Failed to parse journey data", error);
+            journeyTimelineWrapper.style.display = 'none';
+            journeyEmptyState.style.display = 'block';
+        }
+    }
 
     // ============================================
     // 4. THEME & NAVIGATION
@@ -220,22 +389,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 welcomeTitle.textContent = `Welcome back, ${firstName}`;
             }
 
-            // Combine artifacts and events into one list
             const allFavs = [];
-            if (artifactFavs && artifactFavs.data) {
-                artifactFavs.data.forEach(f => {
-                    if (f.artifact) allFavs.push({ ...f, _type: 'Artifact' });
-                });
-            }
-            if (eventFavs && eventFavs.data) {
-                eventFavs.data.forEach(f => {
-                    if (f.event) allFavs.push({ ...f, _type: 'Event' });
-                });
-            }
+            const arts = Array.isArray(artifactFavs) ? artifactFavs : (artifactFavs ? artifactFavs.data || [] : []);
+            arts.forEach(f => {
+                const itemData = f.artifact || f.item || f;
+                if (itemData) allFavs.push({ ...f, _type: 'Artifact', _itemData: itemData });
+            });
+            
+            const evts = Array.isArray(eventFavs) ? eventFavs : (eventFavs ? eventFavs.data || [] : []);
+            evts.forEach(f => {
+                const itemData = f.event || f.item || f;
+                if (itemData) allFavs.push({ ...f, _type: 'Event', _itemData: itemData });
+            });
 
             renderFavorites(allFavs);
+            renderJourney();
         } catch (error) {
-            artifactGrid.innerHTML = '<p class="loading-state text-error">Failed to synchronize your collection.</p>';
+            console.error("Initialization error:", error);
+            if (artifactGrid) artifactGrid.innerHTML = '<p class="loading-state text-error">Failed to synchronize your collection.</p>';
+        } finally {
+            renderSavedFacts();
         }
     }
 
@@ -256,15 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
-    // Notification Styles
-    const notifyStyles = document.createElement('style');
-    notifyStyles.textContent = `
-        .custom-notification { position: fixed; top: 30px; right: 30px; background: #2f3542; color: white; padding: 15px 25px; border-radius: 12px; display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 9999; animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-        .custom-notification.error { border-left: 4px solid #ff4757; }
-        .custom-notification.info { border-left: 4px solid #f2d00d; }
-        .custom-notification.out { opacity: 0; transform: translateX(50px) scale(0.9); transition: 0.4s ease; }
-        @keyframes slideIn { from { transform: translateX(100px) scale(0.8); opacity: 0; } to { transform: translateX(0) scale(1); opacity: 1; } }
-    `;
     // ============================================
     // ROYAL ATMOSPHERE (Golden Dust & Shapes)
     // ============================================
@@ -274,46 +438,27 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!dustContainer || !shapesContainer) return;
 
-        // Create 150 dust particles
         for (let i = 0; i < 150; i++) {
             const particle = document.createElement('div');
             particle.className = 'dust-particle';
-            
             const size = Math.random() * 3 + 1;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            particle.style.left = `${left}%`;
-            particle.style.top = `${top}%`;
-            
-            const duration = Math.random() * 10 + 10;
-            const delay = Math.random() * 5;
-            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
-            
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animation = `float ${Math.random() * 10 + 10}s infinite linear ${Math.random() * 5}s`;
             dustContainer.appendChild(particle);
         }
 
-        // Create 15 royal shapes (Hieroglyphs)
         const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
         for (let i = 0; i < 15; i++) {
             const shape = document.createElement('div');
             shape.className = 'royal-shape';
             shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-            
-            const size = Math.random() * 20 + 20;
-            shape.style.fontSize = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            shape.style.left = `${left}%`;
-            shape.style.top = `${top}%`;
-            
-            const duration = Math.random() * 20 + 20;
-            const delay = Math.random() * 10;
-            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
-            
+            shape.style.fontSize = `${Math.random() * 20 + 20}px`;
+            shape.style.left = `${Math.random() * 100}%`;
+            shape.style.top = `${Math.random() * 100}%`;
+            shape.style.animation = `rotateFloat ${Math.random() * 20 + 20}s infinite ease-in-out ${Math.random() * 10}s`;
             shapesContainer.appendChild(shape);
         }
     }

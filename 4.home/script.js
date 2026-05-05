@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
     const isMobile = window.innerWidth < 768;
 
     // ============================================
@@ -137,22 +137,58 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('section, .tour-card, .event-card, .amenity-card').forEach(s => {
+        document.querySelectorAll('section:not(.hero), .curator-panel, .membership-section').forEach(s => {
             s.classList.add('reveal');
             observer.observe(s);
         });
 
+        // Staggered reveals for grid items
+        document.querySelectorAll('.tours-scroll, .events-grid, .amenities-grid, .quick-info-bar').forEach(grid => {
+            Array.from(grid.children).forEach((child, index) => {
+                child.classList.add('reveal');
+                // Limit delay to first 5 items to avoid excessive wait
+                if (index > 0 && index < 6) {
+                    child.classList.add(`delay-${index * 100}`);
+                }
+                observer.observe(child);
+            });
+        });
+
         // Optimized Header & Progress updates
         let ticking = false;
+        let lastScrollY = window.scrollY;
+        let totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        let isScrolled = lastScrollY > 50;
+
+        // Cache total height and update on resize
+        window.addEventListener('resize', () => {
+            totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        }, { passive: true });
+
         window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
             if (!ticking) {
                 window.requestAnimationFrame(() => {
-                    const scrollY = window.scrollY;
-                    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-                    const pct = (scrollY / totalHeight) * 100;
+                    // Update progress bar
+                    if (progress && totalHeight > 0) {
+                        const pct = Math.min(100, Math.max(0, (lastScrollY / totalHeight) * 100));
+                        progress.style.width = pct + '%';
+                    }
+
+                    // Toggle header state only when changed
+                    const shouldBeScrolled = lastScrollY > 50;
+                    if (shouldBeScrolled !== isScrolled) {
+                        isScrolled = shouldBeScrolled;
+                        header?.classList.toggle('scrolled', isScrolled);
+                        
+                        // Subtle logo shrink
+                        const logoCircle = header?.querySelector('.logo-circle');
+                        if (logoCircle) {
+                            logoCircle.style.transform = isScrolled ? 'scale(0.9)' : 'scale(1)';
+                        }
+                    }
+
                     
-                    if (progress) progress.style.width = pct + '%';
-                    header?.classList.toggle('scrolled', scrollY > 50);
                     ticking = false;
                 });
                 ticking = true;
@@ -198,3 +234,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('✓ Home System Optimized & Synced');
 });
+

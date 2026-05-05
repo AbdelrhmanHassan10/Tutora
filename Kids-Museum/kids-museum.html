@@ -168,17 +168,23 @@
                             <p class="hero-subtitle" id="divineGreeting"></p>
                         </div>
                         <div class="hero-btns">
-                            <button class="btn-primary-large">
-                                <span class="material-symbols-outlined">star</span>
-                                Join the Explorer Club
-                            </button>
-                            <button class="btn-secondary-large">View Map</button>
+                            <a href="#juniorLab" class="btn-primary-large">
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                                Start Adventure
+                            </a>
                         </div>
                     </div>
 
                     <div class="hero-visual">
                         <div class="visual-bg"></div>
-                        <img class="hero-img" src="./unnamed (1).png" alt="Pharaoh Character">
+                        <div class="character-container">
+                            <img class="hero-img premium-character" src="../kids.png" alt="Pharaoh Character">
+                            <div class="character-glow"></div>
+                        </div>
+                        <div class="welcome-chat-bubble">
+                            <span class="bubble-text">Hi! I'm Tut! 👋 Ready to explore the magic of ancient Egypt?</span>
+                            <div class="bubble-tail"></div>
+                        </div>
                         <div class="floating-icon icon-top">
                             <span class="material-symbols-outlined">pets</span>
                         </div>
@@ -191,7 +197,7 @@
         </section>
 
         <!-- Junior Laboratory Section -->
-        <section class="container section-padding reveal-section">
+        <section class="container section-padding reveal-section" id="juniorLab">
             <div class="section-header">
                 <div>
                     <p class="section-tag">Interactive Challenges</p>
@@ -270,144 +276,244 @@
                     <button class="fact-btn prev" id="prev-btn">&lt;</button>
                     <div class="facts-container" id="facts-container">
                         <!-- Fact 1: Mummification -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-1">
                             <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">science</span></div>
                             <h4 class="fact-title">Mummification 101</h4>
                             <p class="fact-text">They believed the heart was the most important organ, while the brain was often thrown away!</p>
-                            <div class="fact-footer"><span class="fact-topic">Science</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Science</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 2: Hieroglyphs -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-2">
                             <div class="fact-icon-box icon-lang"><span class="material-symbols-outlined">edit_note</span></div>
                             <h4 class="fact-title">Hieroglyph Power</h4>
                             <p class="fact-text">There are over 700 symbols. Some represent sounds, others represent whole words!</p>
-                            <div class="fact-footer"><span class="fact-topic">Language</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Language</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 3: Pyramids -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-3">
                             <div class="fact-icon-box icon-history"><span class="material-symbols-outlined">history_edu</span></div>
                             <h4 class="fact-title">Pyramids Mystery</h4>
                             <p class="fact-text">The pyramids were built as tombs for pharaohs and remain architectural wonders!</p>
-                            <div class="fact-footer"><span class="fact-topic">History</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">History</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 4: Ancient Honey -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-4">
                             <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">restaurant</span></div>
                             <h4 class="fact-title">Ancient Honey</h4>
                             <p class="fact-text">Archaeologists found honey in tombs that is 3,000 years old and STILL perfectly edible!</p>
-                            <div class="fact-footer"><span class="fact-topic">Food</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Food</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 5: Calendar -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-5">
                             <div class="fact-icon-box icon-lang"><span class="material-symbols-outlined">calendar_month</span></div>
                             <h4 class="fact-title">365-Day Year</h4>
                             <p class="fact-text">Egyptians invented the 365-day calendar to predict when the Nile River would flood!</p>
-                            <div class="fact-footer"><span class="fact-topic">Science</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Science</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 6: Bread Medicine -->
-                        <div class="fact-card micro-lift">
-                            <div class="fact-icon-box icon-history"><span class="material-symbols-outlined">medication</span></div>
+                        <div class="fact-card micro-lift" data-fact-id="fact-6">
+                            <div class="fact-icon-box icon-medicine"><span class="material-symbols-outlined">medication</span></div>
                             <h4 class="fact-title">Bread Medicine</h4>
                             <p class="fact-text">They used moldy bread to treat infections—the earliest form of penicillin!</p>
-                            <div class="fact-footer"><span class="fact-topic">Medicine</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Medicine</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 7: Senet Game -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-7">
                             <div class="fact-icon-box icon-art"><span class="material-symbols-outlined">casino</span></div>
                             <h4 class="fact-title">Senet Game</h4>
                             <p class="fact-text">Ancient Egyptians loved board games! Senet was their favorite, played for over 3,000 years.</p>
-                            <div class="fact-footer"><span class="fact-topic">Games</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Games</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 8: Women's Rights -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-8">
                             <div class="fact-icon-box icon-religion"><span class="material-symbols-outlined">balance</span></div>
                             <h4 class="fact-title">Women's Rights</h4>
                             <p class="fact-text">Egyptian women could own property, sign legal contracts, and even become Pharaohs!</p>
-                            <div class="fact-footer"><span class="fact-topic">Society</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Society</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 9: Paid Builders -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-9">
                             <div class="fact-icon-box icon-history"><span class="material-symbols-outlined">groups</span></div>
                             <h4 class="fact-title">Paid Builders</h4>
                             <p class="fact-text">The pyramids weren't built by slaves, but by respected workers who were paid in bread and beer!</p>
-                            <div class="fact-footer"><span class="fact-topic">History</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">History</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 10: First Police -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-10">
                             <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">policy</span></div>
                             <h4 class="fact-title">First Police</h4>
                             <p class="fact-text">Egyptians had the first police force! They used trained dogs and even monkeys to catch criminals.</p>
-                            <div class="fact-footer"><span class="fact-topic">Society</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Society</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 11: Hair Secrets -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-11">
                             <div class="fact-icon-box icon-art"><span class="material-symbols-outlined">content_cut</span></div>
                             <h4 class="fact-title">Hair Secrets</h4>
                             <p class="fact-text">To stay cool, children often shaved their heads except for one long 'lock of youth' on the side!</p>
-                            <div class="fact-footer"><span class="fact-topic">Culture</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Culture</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 12: Sacred Animals -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-12">
                             <div class="fact-icon-box icon-religion"><span class="material-symbols-outlined">pets</span></div>
                             <h4 class="fact-title">Sacred Animals</h4>
                             <p class="fact-text">It wasn't just cats! Crocodiles, ibises, and even baboons were considered sacred and respected.</p>
-                            <div class="fact-footer"><span class="fact-topic">Religion</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Religion</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 13: Dentistry -->
-                        <div class="fact-card micro-lift">
-                            <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">dentistry</span></div>
+                        <div class="fact-card micro-lift" data-fact-id="fact-13">
+                            <div class="fact-icon-box icon-medicine"><span class="material-symbols-outlined">dentistry</span></div>
                             <h4 class="fact-title">First Dentists</h4>
                             <p class="fact-text">Ancient Egyptians were the first to have dentists. They even used gold wire to fix loose teeth!</p>
-                            <div class="fact-footer"><span class="fact-topic">Medicine</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Medicine</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 14: Cleopatra -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-14">
                             <div class="fact-icon-box icon-history"><span class="material-symbols-outlined">person</span></div>
                             <h4 class="fact-title">Cleopatra's Secret</h4>
                             <p class="fact-text">Cleopatra VII, the most famous Queen of Egypt, was actually Greek, from a family named Ptolemy.</p>
-                            <div class="fact-footer"><span class="fact-topic">History</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">History</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 15: Giant Sphinx -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-15">
                             <div class="fact-icon-box icon-art"><span class="material-symbols-outlined">architecture</span></div>
                             <h4 class="fact-title">Giant Sphinx</h4>
                             <p class="fact-text">The Sphinx is carved from a single giant piece of limestone. It guards the pyramids with a lion's body!</p>
-                            <div class="fact-footer"><span class="fact-topic">Architecture</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Architecture</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 16: Peace Treaty -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-16">
                             <div class="fact-icon-box icon-lang"><span class="material-symbols-outlined">handshake</span></div>
                             <h4 class="fact-title">Peace Treaty</h4>
                             <p class="fact-text">Ramses II signed the first peace treaty in history with the Hittite Empire 3,000 years ago.</p>
-                            <div class="fact-footer"><span class="fact-topic">History</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">History</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 17: Makeup Power -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-17">
                             <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">visibility</span></div>
                             <h4 class="fact-title">Makeup Power</h4>
                             <p class="fact-text">Both men and women wore eye makeup! It protected their eyes from the sun's glare and biting flies.</p>
-                            <div class="fact-footer"><span class="fact-topic">Culture</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Culture</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 18: Surgical Tools -->
-                        <div class="fact-card micro-lift">
-                            <div class="fact-icon-box icon-history"><span class="material-symbols-outlined">hardware</span></div>
+                        <div class="fact-card micro-lift" data-fact-id="fact-18">
+                            <div class="fact-icon-box icon-medicine"><span class="material-symbols-outlined">hardware</span></div>
                             <h4 class="fact-title">Surgical Tools</h4>
                             <p class="fact-text">Ancient doctors used copper scalpels and needles to perform surgeries, much like today!</p>
-                            <div class="fact-footer"><span class="fact-topic">Medicine</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Medicine</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 19: Golden Ratio -->
-                        <div class="fact-card micro-lift">
+                        <div class="fact-card micro-lift" data-fact-id="fact-19">
                             <div class="fact-icon-box icon-lang"><span class="material-symbols-outlined">calculate</span></div>
                             <h4 class="fact-title">Golden Ratio</h4>
                             <p class="fact-text">Architects used advanced math to build the Great Pyramid, which is perfectly aligned with the stars.</p>
-                            <div class="fact-footer"><span class="fact-topic">Science</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Science</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                         <!-- Fact 20: Toothpaste -->
-                        <div class="fact-card micro-lift">
-                            <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">clean_hands</span></div>
+                        <div class="fact-card micro-lift" data-fact-id="fact-20">
+                            <div class="fact-icon-box icon-medicine"><span class="material-symbols-outlined">clean_hands</span></div>
                             <h4 class="fact-title">First Toothpaste</h4>
                             <p class="fact-text">Egyptians invented toothpaste! They used a mix of rock salt, pepper, mint, and dried iris flowers.</p>
-                            <div class="fact-footer"><span class="fact-topic">Medicine</span><span class="material-symbols-outlined">bookmark</span></div>
+                            <div class="fact-footer">
+                                <span class="fact-topic">Medicine</span>
+                                <button class="save-fact-btn" title="Save Fact">
+                                    <span class="material-symbols-outlined">bookmark</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <button class="fact-btn next" id="next-btn">&gt;</button>
@@ -604,6 +710,15 @@
                                     </div>
                                   </div>
                                     </footer>
+
+    <!-- Floating Interactive Assistant -->
+    <a href="../chat bot/chat.html"><div class="floating-assistant-wrap">
+        <div class="assistant-tooltip">Need help, Explorer?</div>
+        <button class="assistant-btn" id="assistantBtn">
+            <img src="./unnamed (1).png" alt="Tut Assistant" class="assistant-img">
+            <div class="assistant-badge">1</div>
+        </button>
+    </div></a>
 
     <script src="script.js"></script>
     <script src="../global-core.js"></script>

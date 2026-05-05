@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/AIChatbot.css';
 
 const AIChatbotPage = () => {
-    const API_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [isTyping, setIsTyping] = useState(false);
@@ -390,3 +390,4 @@ const AIChatbotPage = () => {
 };
 
 export default AIChatbotPage;
+

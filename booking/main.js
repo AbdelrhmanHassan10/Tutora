@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
             guided_adult: { quantity: 0, price: { intl: 38.00, local: 350 }, name: "Guided Experience - Adult" },
             guided_student: { quantity: 0, price: { intl: 20.00, local: 175 }, name: "Guided Experience - Student/Child" },
             tut_adult: { quantity: 0, price: { intl: 42.00, local: 450 }, name: "Tutankhamun Pass - Adult" },
-            tut_student: { quantity: 0, price: { intl: 22.00, local: 225 }, name: "Tutankhamun Pass - Student/Child" }
+            tut_student: { quantity: 0, price: { intl: 22.00, local: 225 }, name: "Tutankhamun Pass - Student/Child" },
+            kids_child: { quantity: 0, price: { intl: 15.00, local: 100 }, name: "Kids Museum - Explorer" },
+            kids_adult: { quantity: 0, price: { intl: 10.00, local: 75 }, name: "Kids Museum - Guardian" }
         },
         addons: {
             audio: { selected: false, price: 8.00, name: "Audio Guide" },

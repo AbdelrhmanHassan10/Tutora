@@ -12,7 +12,7 @@
 
     const API_BASE = (typeof API_BASE_URL !== 'undefined')
         ? API_BASE_URL
-        : 'https://gem-backend-production-cb6d.up.railway.app/api';
+        : 'https://gem-backend-production-1ea2.up.railway.app/api';
 
     // ─── LOCAL FALLBACK TRANSLATIONS ──────────────────────────────
     const LOCAL_TRANSLATIONS = {
@@ -678,3 +678,4 @@
     }
 
 })();
+

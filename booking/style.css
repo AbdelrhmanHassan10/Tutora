@@ -4177,3 +4177,9 @@ body.light .copyright {
     opacity: 1 !important;
     transform: translate(2px, -2px) !important;
 }
+
+/* Kids Museum Special Ticket Styling */
+.kids-special-ticket { border: 2px dashed rgba(236, 182, 19, 0.3) !important; transition: all 0.3s ease; }
+.kids-special-ticket:hover { border-style: solid !important; border-color: #ECB613 !important; background: rgba(236, 182, 19, 0.02) !important; }
+.kids-special-ticket .ticket-main-info .material-symbols-outlined { animation: kids-icon-bounce 2s infinite ease-in-out; }
+@keyframes kids-icon-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }

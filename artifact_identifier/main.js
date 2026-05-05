@@ -3,7 +3,7 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
     const uploadBtn = document.getElementById('upload-photo-btn');
     const cameraBtn = document.getElementById('use-camera-btn');
     const fileInput = document.getElementById('scan-upload');
@@ -167,3 +167,4 @@ if (!document.getElementById('ai-pulse-style')) {
     `;
     document.head.appendChild(style);
 }
+

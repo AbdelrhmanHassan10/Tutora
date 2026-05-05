@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/tut.png"
                 },
                 {
-                    id: "golden-throne",
+                    id: "6643b109558a239478145f08",
                     name: "Golden Throne",
                     period: "18th Dynasty",
                     material: "Gold-covered Wood",
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/ceremonial_chariot.png"
                 },
                 {
-                    id: "tut-fan",
+                    id: "6643b109558a239478145f0a",
                     name: "Golden Fan (Flabellum)",
                     period: "18th Dynasty",
                     material: "Gilded Wood",
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/grand.png',
             artifacts: [
                 {
-                    id: "ramses-colossus",
+                    id: "6643b109558a239478145f0b",
                     name: "Colossal Ramses II",
                     period: "19th Dynasty",
                     material: "Red Granite",
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/grand.png"
                 },
                 {
-                    id: "column-merneptah",
+                    id: "6643b109558a239478145f0c",
                     name: "Granite Column of Merneptah",
                     period: "19th Dynasty",
                     material: "Red Granite",
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/column_merneptah.png"
                 },
                 {
-                    id: "ptolemaic-king",
+                    id: "6643b109558a239478145f0d",
                     name: "Colossus of a Ptolemaic King",
                     period: "Ptolemaic Period",
                     material: "Red Granite",
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/ptolemaic_king.png"
                 },
                 {
-                    id: "ptolemaic-queen",
+                    id: "6643b109558a239478145f0e",
                     name: "Colossus of a Ptolemaic Queen",
                     period: "Ptolemaic Period",
                     material: "Dark Granite",
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/ptolemaic_queen.png"
                 },
                 {
-                    id: "victory-stele",
+                    id: "6643b109558a239478145f0f",
                     name: "Victory Stele of Amenhotep III",
                     period: "18th Dynasty",
                     material: "Black Granite",
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/mummy.png',
             artifacts: [
                 {
-                    id: "sarcophagus-seti",
+                    id: "6643b109558a239478145f10",
                     name: "Sarcophagus of Seti I",
                     period: "19th Dynasty",
                     material: "Alabaster",
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/sarcophagus_seti.png"
                 },
                 {
-                    id: "canopic-hetepheres",
+                    id: "6643b109558a239478145f11",
                     name: "Canopic Chest of Queen Hetepheres",
                     period: "4th Dynasty",
                     material: "Calcite",
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/canopic_chest_hetepheres.png"
                 },
                 {
-                    id: "mask-psusennes",
+                    id: "6643b109558a239478145f12",
                     name: "Golden Mask of Psusennes I",
                     period: "21st Dynasty",
                     material: "Solid Gold",
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/daily.png',
             artifacts: [
                 {
-                    id: "senet-board",
+                    id: "6643b109558a239478145f13",
                     name: "Senet Game Board",
                     period: "New Kingdom",
                     material: "Ivory & Ebony",
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/senet_board.png"
                 },
                 {
-                    id: "scribe-palette",
+                    id: "6643b109558a239478145f14",
                     name: "Scribe's Palette and Pens",
                     period: "Middle Kingdom",
                     material: "Wood",
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/scribe_palette.png"
                 },
                 {
-                    id: "cosmetic-palette",
+                    id: "6643b109558a239478145f15",
                     name: "Cosmetic Palette",
                     period: "Predynastic",
                     material: "Siltstone",
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/cosmetic_palette.png"
                 },
                 {
-                    id: "ancient-sandals",
+                    id: "6643b109558a239478145f16",
                     name: "Ancient Egyptian Sandals",
                     period: "New Kingdom",
                     material: "Papyrus & Palm Leaf",
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/ancient_sandals.png"
                 },
                 {
-                    id: "makeup-kit",
+                    id: "6643b109558a239478145f17",
                     name: "Royal Makeup Kit",
                     period: "Middle Kingdom",
                     material: "Cedar wood, Ivory & Copper",
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/sculpture.png',
             artifacts: [
                 {
-                    id: "statue-1",
+                    id: "6643b109558a239478145f18",
                     name: "The Seated Scribe",
                     period: "5th Dynasty",
                     material: "Painted Limestone",
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/seated_scribe.png"
                 },
                 {
-                    id: "khafre-statue",
+                    id: "6643b109558a239478145f19",
                     name: "Statue of King Khafre",
                     period: "4th Dynasty",
                     material: "Diorite",
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/khafre_statue.png"
                 },
                 {
-                    id: "menkaure-statue",
+                    id: "6643b109558a239478145f1a",
                     name: "Group Statue of Menkaure",
                     period: "4th Dynasty",
                     material: "Greywacke",
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/menkaure_statue.png"
                 },
                 {
-                    id: "nefertiti-bust",
+                    id: "6643b109558a239478145f1b",
                     name: "Bust of Nefertiti (Replica)",
                     period: "Amarna Period",
                     material: "Painted Limestone",
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/nefertiti_bust.png"
                 },
                 {
-                    id: "djoser-statue",
+                    id: "6643b109558a239478145f1c",
                     name: "Statue of King Djoser",
                     period: "3rd Dynasty",
                     material: "Limestone",
@@ -241,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/predynastic.png',
             artifacts: [
                 {
-                    id: "narmer-palette",
+                    id: "6643b109558a239478145f1d",
                     name: "Narmer Palette (Replica)",
                     period: "Protodynastic",
                     material: "Siltstone",
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/narmer_palette.png"
                 },
                 {
-                    id: "predynastic-vessel",
+                    id: "6643b109558a239478145f1e",
                     name: "Painted Predynastic Vessel",
                     period: "Naqada II",
                     material: "Pottery (Clay)",
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/predynastic_vessel.png"
                 },
                 {
-                    id: "flint-knife",
+                    id: "6643b109558a239478145f1f",
                     name: "Ritual Flint Knife",
                     period: "Predynastic",
                     material: "Flint & Ivory",
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/flint_knife.png"
                 },
                 {
-                    id: "terracotta-figure",
+                    id: "6643b109558a239478145f20",
                     name: "Terra-cotta Female Figure",
                     period: "Naqada I",
                     material: "Terra-cotta",
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/afterlife.png',
             artifacts: [
                 {
-                    id: "anubis-statue",
+                    id: "6643b109558a239478145f21",
                     name: "Anubis Guardian Statue",
                     period: "New Kingdom",
                     material: "Gilded Wood & Resin",
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/anubis_guardian.png"
                 },
                 {
-                    id: "6643b109558a239478145f0c",
+                    id: "6643b109558a239478145f22",
                     name: "Book of the Dead Fragment",
                     period: "New Kingdom",
                     material: "Papyrus",
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "https://images.unsplash.com/photo-1618172193622-ae2d025f4158?q=80&w=2064&auto=format&fit=crop"
                 },
                 {
-                    id: "shabti-tut",
+                    id: "6643b109558a239478145f23",
                     name: "Shabti Figures of Tutankhamun",
                     period: "18th Dynasty",
                     material: "Blue Faience",
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5947?q=80&w=2069&auto=format&fit=crop"
                 },
                 {
-                    id: "mummy-mask",
+                    id: "6643b109558a239478145f24",
                     name: "Gilded Mummy Mask",
                     period: "Late Period",
                     material: "Cartonnage & Gold Leaf",
@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/grecoroman.png',
             artifacts: [
                 {
-                    id: "6643b109558a239478145f0a",
+                    id: "6643b109558a239478145f25",
                     name: "Rosetta Stone (Replica)",
                     period: "Ptolemaic Era",
                     material: "Granodiorite",
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/rosetta_stone.png"
                 },
                 {
-                    id: "fayum-portrait",
+                    id: "6643b109558a239478145f26",
                     name: "Fayum Mummy Portrait",
                     period: "Roman Era",
                     material: "Encaustic on Wood",
@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "https://images.unsplash.com/photo-1626084300762-5f72382e379a?q=80&w=2069&auto=format&fit=crop"
                 },
                 {
-                    id: "sarapis-statue",
+                    id: "6643b109558a239478145f27",
                     name: "Statue of Sarapis",
                     period: "Ptolemaic Era",
                     material: "Marble",
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop"
                 },
                 {
-                    id: "alexander-statue",
+                    id: "6643b109558a239478145f28",
                     name: "Bust of Alexander the Great",
                     period: "Early Ptolemaic",
                     material: "Marble",
@@ -542,9 +542,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Interaction Handlers
-    window.toggleFavorite = (btn, event) => {
+    window.toggleFavorite = async (btn, event) => {
         event.stopPropagation();
-        btn.classList.toggle('active');
+        const card = btn.closest('.artifact-card');
+        const artifactId = card.querySelector('.arrow-icon-link').getAttribute('onclick').match(/id=([^']+)/)[1];
+        if (!artifactId) return;
+
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("Please log in to save favorites.");
+            return;
+        }
+
+        const isFav = btn.classList.contains('active');
+        try {
+            const method = isFav ? 'DELETE' : 'POST';
+            const endpoint = isFav 
+                ? `https://gem-backend-production-1ea2.up.railway.app/api/favorites/${artifactId}?type=Artifact` 
+                : `https://gem-backend-production-1ea2.up.railway.app/api/favorites/${artifactId}`;
+
+            const response = await fetch(endpoint, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: method === 'POST' ? JSON.stringify({ type: 'Artifact' }) : null
+            });
+
+            if (response.ok) {
+                btn.classList.toggle('active');
+                if (!isFav) {
+                    alert('Added to favorites!');
+                } else {
+                    alert('Removed from favorites.');
+                }
+            } else {
+                throw new Error('Failed to update favorites');
+            }
+        } catch (error) {
+            console.error('Favorite error:', error);
+            alert('Unable to save favorite. Please try again.');
+        }
     };
 
     window.playAudio = (name, event) => {
@@ -580,3 +619,4 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHalls();
     initAnimations();
 });
+

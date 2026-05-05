@@ -1040,10 +1040,65 @@ body.dark-mode .hero p {
         font-size: 20px;
         padding: 0.25rem;
     }
-    .profile-img {
-        width: 32px;
-        height: 32px;
+
+    .main-content {
+        padding: 1rem !important; /* Provide more space for cards on mobile */
     }
+
+    .hero-card {
+        width: 100%;
+        min-height: 380px;
+        padding: 2rem 1.25rem;
+        margin-bottom: 2rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center !important; /* Center vertically */
+        align-items: center !important;    /* Center horizontally */
+        text-align: center;
+    }
+
+    .hero-bg {
+        background-position: center center !important;
+    }
+
+    .hero-content {
+        text-align: center !important;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: clamp(1.4rem, 7vw, 1.8rem) !important;
+        line-height: 1.1;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    .hero-desc {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1rem;
+        width: 100%;
+        align-items: center; /* Centers the buttons */
+    }
+
+    .btn-primary, .btn-outline {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem 1.5rem;
+    }
+
     .hero {
         padding: 2rem 1rem;
     }
@@ -1086,8 +1141,26 @@ body.dark-mode .hero p {
         width: 28px;
         height: 28px;
     }
-    .mobile-menu {
-        width: 100%;
+    .speakers-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        padding: 1rem !important;
+    }
+
+    .speaker-card {
+        padding: 3rem 1.5rem 2rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .speaker-img-wrapper {
+        margin: 0 auto 2.5rem !important; /* Forces horizontal centering */
+        display: block !important;
+    }
+
+    .section-title {
+        font-size: 2rem !important;
     }
 }
 
@@ -1259,7 +1332,7 @@ body.dark-mode .hero p {
 /* ========== FILTER BAR REDESIGN ========== */
 .filter-bar {
     position: sticky;
-    top: 0;
+    top: 72px; /* Adjusted to sit below the sticky header */
     z-index: 90;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -1283,15 +1356,31 @@ body.light .filter-bar {
 }
 
 @media (max-width: 768px) {
+    .filter-bar {
+        top: 64px; /* Smaller header on mobile */
+    }
+
     .filter-tabs {
         justify-content: flex-start;
         overflow-x: auto;
-        padding-bottom: 0.5rem;
-        -ms-overflow-style: none;
+        padding: 0.5rem 1.5rem 1rem;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
         scrollbar-width: none;
+        /* Visual indicator for more items */
+        mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
     }
+    
     .filter-tabs::-webkit-scrollbar {
         display: none;
+    }
+
+    .filter-tab {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+        scroll-snap-align: start;
+        flex-shrink: 0;
     }
 }
 
@@ -3905,7 +3994,7 @@ body.light .copyright {
 
 .event-card:hover .btn-details {
     border-color: #ecb613 !important;
-    color: #ecb613 !important;
+    /* color: #ecb613 !important; */
 }
 
 .btn-details:hover {

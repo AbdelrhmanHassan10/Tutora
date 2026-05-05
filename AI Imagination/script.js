@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mainImg.style.scale = '1.05';
 
         try {
-            const response = await fetch('https://gem-backend-production-cb6d.up.railway.app/api/ai/story-to-image', {
+            const response = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/ai/story-to-image', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -120,3 +120,4 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 });
+

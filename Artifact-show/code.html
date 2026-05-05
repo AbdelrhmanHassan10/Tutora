@@ -169,6 +169,11 @@
                                                 <span class="material-symbols-outlined">open_in_full</span>
                                                 <span>Expand</span>
                                             </button>
+                                            <div class="toolbar-divider"></div>
+                                            <button class="toolbar-btn" id="favoriteBtn">
+                                                <span class="material-symbols-outlined">favorite</span>
+                                                <span>Favorite</span>
+                                            </button>
                                         </div>
                                     </section>
                             
@@ -244,7 +249,7 @@
                                  <script src="script.js"></script>
                                  <script>
                                       document.addEventListener('DOMContentLoaded', () => {
-                                          const API_BASE_URL = 'https://gem-backend-production-cb6d.up.railway.app/api';
+                                          const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
                                           const urlParams = new URLSearchParams(window.location.search);
                                           let ARTIFACT_ID = urlParams.get('id') || "6643b109558a239478145f07";
 
@@ -253,7 +258,7 @@
                                                   title: "Golden Mask of Tutankhamun",
                                                   dynasty: "18th Dynasty",
                                                   period: "New Kingdom",
-                                                  image: "../Halls Gallery/images/tut.png",
+                                                  image: "../suzi-kim-AVUvVdVKcSg-unsplash.jpg",
                                                   introHeading: "The Face of Eternity",
                                                   introText: "Crafted from two layers of high-karat gold and inlaid with semi-precious stones, this mask is the ultimate symbol of ancient Egyptian royalty. It was placed directly over the mummified face of the king to ensure his eternal protection.",
                                                   detailsHeading: "Artistry in Gold",
@@ -283,7 +288,7 @@
                                                   title: "Ceremonial Chariot",
                                                   dynasty: "18th Dynasty",
                                                   period: "New Kingdom",
-                                                  image: "../Halls Gallery/images/ceremonial_chariot.png",
+                                                  image: "../collection/royal_chariot_real.jpg",
                                                   introHeading: "The Royal Vehicle",
                                                   introText: "One of the most complex items in the tomb, this chariot shows the Pharaoh as a warrior. It was found in pieces and painstakingly restored to show its full golden glory.",
                                                   detailsHeading: "Warrior Symbolism",
@@ -535,7 +540,7 @@
                                                   title: "The Seated Scribe",
                                                   dynasty: "5th Dynasty",
                                                   period: "Old Kingdom",
-                                                  image: "../Halls Gallery/images/seated_scribe.png",
+                                                  image: "../collection/The Seated Scribewebp.webp",
                                                   introHeading: "A Moment of Focus",
                                                   introText: "One of the most important works of Ancient Egyptian art, this statue depicts a scribe at work, capturing a lifelike and individualistic expression rare for the period.",
                                                   detailsHeading: "Seeing the Soul",
@@ -608,7 +613,7 @@
                                                   title: "Book of the Dead Fragment",
                                                   dynasty: "New Kingdom",
                                                   period: "19th Dynasty",
-                                                  image: "https://images.unsplash.com/photo-1618172193622-ae2d025f4158?q=80&w=2064&auto=format&fit=crop",
+                                                  image: "../collection/Hunefer Papyrus.jpg",
                                                   introHeading: "Guide to the Duat",
                                                   introText: "This papyrus fragment is part of a personalized collection of spells intended to guide the deceased through the dangers of the underworld.",
                                                   detailsHeading: "Negative Confession",
@@ -636,7 +641,7 @@
                                                   title: "Rosetta Stone (Replica)",
                                                   dynasty: "Ptolemaic Period",
                                                   period: "196 BCE",
-                                                  image: "../Halls Gallery/images/rosetta_stone.png",
+                                                  image: "../collection/rosetta_stone_real.jpg",
                                                   introHeading: "The Key to History",
                                                   introText: "This high-fidelity replica represents the stone that allowed modern scholars to finally decipher ancient Egyptian hieroglyphs.",
                                                   detailsHeading: "Three Scripts",
@@ -773,19 +778,103 @@
                                                   ]
                                               },
                                               "djoser-statue": {
-                                                  title: "Statue of King Djoser",
-                                                  dynasty: "3rd Dynasty",
-                                                  period: "Old Kingdom",
-                                                  image: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop",
-                                                  introHeading: "The First Colossus",
-                                                  introText: "The oldest life-size statue of an Egyptian king, found in the Step Pyramid complex at Saqqara.",
-                                                  detailsHeading: "Eternal Vigil",
-                                                  detailsText: "The statue was placed in a sealed chamber with two eye-holes, allowing the king's spirit to look out and receive offerings.",
-                                                  stats: [
-                                                      { label: "Material", value: "Limestone" },
-                                                      { label: "Found at", value: "Saqqara" }
-                                                  ]
-                                              }
+                                                   title: "Statue of King Djoser",
+                                                   dynasty: "3rd Dynasty",
+                                                   period: "Old Kingdom",
+                                                   image: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop",
+                                                   introHeading: "The First Colossus",
+                                                   introText: "The oldest life-size statue of an Egyptian king, found in the Step Pyramid complex at Saqqara.",
+                                                   detailsHeading: "Eternal Vigil",
+                                                   detailsText: "The statue was placed in a sealed chamber with two eye-holes, allowing the king's spirit to look out and receive offerings.",
+                                                   stats: [
+                                                       { label: "Material", value: "Limestone" },
+                                                       { label: "Found at", value: "Saqqara" }
+                                                   ]
+                                               },
+                                               "6643b109558a239478145f08": {
+                                                   title: "Painted Sarcophagus",
+                                                   dynasty: "21st Dynasty",
+                                                   period: "Third Intermediate Period",
+                                                   image: "../collection/unnamed (2).png",
+                                                   introHeading: "The Eternal Vessel",
+                                                   introText: "Beautifully decorated with intricate hieroglyphics and scenes from the Book of the Dead, this sarcophagus was designed to protect the soul on its journey to the afterlife.",
+                                                   detailsHeading: "Sacred Artistry",
+                                                   detailsText: "The vibrant colors were made from natural minerals, and the detailed scenes depict the deceased being presented to Osiris, the god of the underworld.",
+                                                   stats: [
+                                                       { label: "Material", value: "Polychrome Wood" },
+                                                       { label: "Origin", value: "Thebes" }
+                                                   ]
+                                               },
+                                               "6643b109558a239478145f0b": {
+                                                   title: "Canopic Jars",
+                                                   dynasty: "18th Dynasty",
+                                                   period: "New Kingdom",
+                                                   image: "../collection/Canopic Jarspng.png",
+                                                   introHeading: "Guardians of the Organs",
+                                                   introText: "Four limestone jars used to store mummified organs, each guarded by one of the four sons of Horus.",
+                                                   detailsHeading: "Divine Protection",
+                                                   detailsText: "Each jar has a different head representing a son of Horus: human, baboon, jackal, and falcon, protecting the liver, lungs, stomach, and intestines.",
+                                                   stats: [
+                                                       { label: "Material", value: "Alabaster/Limestone" },
+                                                       { label: "Set", value: "4 Jars" }
+                                                   ]
+                                               },
+                                               "6643b109558a239478145f0d": {
+                                                   title: "Sphinx Model",
+                                                   dynasty: "Old Kingdom",
+                                                   period: "4th Dynasty",
+                                                   image: "../collection/Sphinx Model.webp",
+                                                   introHeading: "The Royal Guardian",
+                                                   introText: "A miniature guardian figure modeled after the Great Sphinx, symbolizing divine protection of sacred sites.",
+                                                   detailsHeading: "Lion's Strength",
+                                                   detailsText: "Carved with the body of a lion and the head of a Pharaoh, it represents the union of physical power and royal wisdom.",
+                                                   stats: [
+                                                       { label: "Material", value: "Limestone" },
+                                                       { label: "Style", value: "Old Kingdom" }
+                                                   ]
+                                               },
+                                               "6643b109558a239478145f0e": {
+                                                   title: "Rosetta Stone Replica",
+                                                   dynasty: "Ptolemaic Period",
+                                                   period: "196 BCE",
+                                                   image: "../collection/the-rosetta-stone.jpg",
+                                                   introHeading: "The Gift of Language",
+                                                   introText: "An exact replica preserving the three scripts—Hieroglyphic, Demotic, and Greek—used for the vital work of translation.",
+                                                   detailsHeading: "Historical Milestone",
+                                                   detailsText: "This piece allows visitors to see the intricate details of the decree that unlocked the secrets of ancient Egyptian writing.",
+                                                   stats: [
+                                                       { label: "Material", value: "Black Basalt" },
+                                                       { label: "Scripts", value: "3 Types" }
+                                                   ]
+                                               },
+                                               "daily-1": {
+                                                   title: "Inlaid Wooden Chair",
+                                                   dynasty: "18th Dynasty",
+                                                   period: "New Kingdom",
+                                                   image: "../collection/daily_life_chair.png",
+                                                   introHeading: "Royal Comfort",
+                                                   introText: "A remarkably preserved chair with ebony and ivory inlays, showcasing the luxury of Egyptian furniture.",
+                                                   detailsHeading: "Master Carpentry",
+                                                   detailsText: "The intricate patterns and ergonomic design demonstrate the advanced woodworking skills of the craftsmen of Deir el-Medina.",
+                                                   stats: [
+                                                       { label: "Material", value: "Ebony & Ivory" },
+                                                       { label: "Origin", value: "Deir el-Medina" }
+                                                   ]
+                                               },
+                                               "jewel-1": {
+                                                   title: "Golden Pectoral",
+                                                   dynasty: "12th Dynasty",
+                                                   period: "Middle Kingdom",
+                                                   image: "../collection/golden_pectoral_real.jpg",
+                                                   introHeading: "Celestial Adornment",
+                                                   introText: "A stunning ceremonial breastplate with a winged scarab, symbolizing eternal life and protection.",
+                                                   detailsHeading: "Heavenly Jewels",
+                                                   detailsText: "Inlaid with lapis lazuli, carnelian, and turquoise, this piece represents the cosmic order and the Pharaoh's connection to the gods.",
+                                                   stats: [
+                                                       { label: "Material", value: "Gold & Gems" },
+                                                       { label: "Symbol", value: "Scarab" }
+                                                   ]
+                                               }
                                           };
 
                                           async function loadArtifactData() {
@@ -794,10 +883,19 @@
                                               // 0. Check for Kid Mode
                                               if (ARTIFACT_ID.startsWith('featured-') || new URLSearchParams(window.location.search).get('mode') === 'kids') {
                                                   document.body.classList.add('kid-mode');
-                                                  // Force dark mode if in kids mode for contrast, or let it be
+                                               }
+
+                                               // 1. Try Custom Data from SessionStorage
+                                              if (ARTIFACT_ID === 'custom') {
+                                                  const customData = sessionStorage.getItem('currentArtifact');
+                                                  if (customData) {
+                                                      artifact = JSON.parse(customData);
+                                                      updateUI(artifact);
+                                                      return;
+                                                  }
                                               }
 
-                                              // 1. Try API
+                                              // 2. Try API
                                               try {
                                                   const res = await fetch(`${API_BASE_URL}/artifacts/${ARTIFACT_ID}`);
                                                   if (res.ok) {
@@ -807,8 +905,8 @@
                                               } catch (e) {
                                                   console.warn("API unavailable, using sample data.");
                                               }
-
-                                              // 2. Fallback to Sample Data
+                                              
+                                              // 3. Fallback to Sample Data
                                               if (!artifact || !artifact.title) {
                                                   artifact = SAMPLE_DATA[ARTIFACT_ID] || SAMPLE_DATA["6643b109558a239478145f07"];
                                               }
@@ -817,28 +915,38 @@
                                           }
 
                                           function updateUI(art) {
-                                              if (!art) return;
+                                               if (!art) return;
 
-                                              // Basic Info
-                                              document.querySelector('.artifact-title').textContent = art.title;
-                                              document.querySelector('.artifact-image').src = art.image || art.imageUrl;
+                                               // Basic Info
+                                               document.querySelector('.artifact-title').textContent = art.title;
+                                               document.querySelector('.artifact-image').src = art.image || art.imageUrl;
+                                               
+                                               const breadcrumbs = document.querySelector('.info-breadcrumbs');
+                                               if (breadcrumbs) {
+                                                   let displayId = ARTIFACT_ID.toUpperCase();
+                                                   if (ARTIFACT_ID === 'custom' && art.title) {
+                                                       const hash = art.title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+                                                       displayId = `GEM-${art.title.slice(0, 3).toUpperCase()}-${hash}`;
+                                                   } else if (ARTIFACT_ID.length > 10) {
+                                                       displayId = `GEM-${ARTIFACT_ID.slice(-4).toUpperCase()}`;
+                                                   }
+                                                   
+                                                   breadcrumbs.innerHTML = `
+                                                       <span class="catalog-id" style="font-weight: 700; color: var(--primary-color); letter-spacing: 1px;">#${displayId}</span>
+                                                       <span style="opacity: 0.3">•</span>
+                                                       <span>${art.dynasty || 'Unknown Dynasty'}</span>
+                                                       <span style="opacity: 0.3">•</span>
+                                                       <span>${art.period || art.date || 'Ancient Egypt'}</span>
+                                                   `;
+                                               }
+
+                                               // Intro Section
+                                               const introSection = document.querySelectorAll('.info-section')[0];
+                                               if (introSection) {
+                                                   introSection.querySelector('.info-heading').textContent = art.introHeading || "Overview";
+                                                   introSection.querySelector('.info-text').textContent = art.introText || art.description || "";
+                                               }                            
                                               
-                                              const breadcrumbs = document.querySelector('.info-breadcrumbs');
-                                              if (breadcrumbs) {
-                                                  breadcrumbs.innerHTML = `
-                                                      <span>${art.dynasty || 'Unknown Dynasty'}</span>
-                                                      <span style="opacity: 0.3">•</span>
-                                                      <span>${art.period || art.date || 'Ancient Egypt'}</span>
-                                                  `;
-                                              }
-
-                                              // Intro Section
-                                              const introSection = document.querySelectorAll('.info-section')[0];
-                                              if (introSection) {
-                                                  introSection.querySelector('.info-heading').textContent = art.introHeading || "Overview";
-                                                  introSection.querySelector('.info-text').textContent = art.introText || art.description || "";
-                                              }
-
                                               // Details Section
                                               const detailsSection = document.querySelectorAll('.info-section')[1];
                                               if (detailsSection) {
@@ -882,39 +990,63 @@
                                           // Favorite Button logic
                                           const favoriteBtn = document.getElementById('favoriteBtn');
                                           if (favoriteBtn) {
+                                              const token = localStorage.getItem('token');
+                                              let isFav = false;
+
+                                              // Check initial state
+                                              if (token) {
+                                                  fetch(`${API_BASE_URL}/favorites/check/${ARTIFACT_ID}?type=Artifact`, {
+                                                      headers: { 'Authorization': `Bearer ${token}` }
+                                                  })
+                                                  .then(res => res.json())
+                                                  .then(data => {
+                                                      if (data && data.isFavorited !== undefined) {
+                                                          isFav = data.isFavorited;
+                                                          if (isFav) favoriteBtn.classList.add('active');
+                                                      }
+                                                  })
+                                                  .catch(console.error);
+                                              }
+
                                               favoriteBtn.addEventListener('click', async () => {
-                                                  const token = localStorage.getItem('token');
-                                                  if (!token) {
+                                                  const currentToken = localStorage.getItem('token');
+                                                  if (!currentToken) {
                                                       alert("Please log in to save to favorites.");
                                                       return;
                                                   }
                                                   try {
-                                                      const response = await fetch(`${API_BASE_URL}/favorites/${ARTIFACT_ID}`, {
-                                                          method: 'POST',
+                                                      const method = isFav ? 'DELETE' : 'POST';
+                                                      const endpoint = isFav ? `${API_BASE_URL}/favorites/${ARTIFACT_ID}?type=Artifact` : `${API_BASE_URL}/favorites/${ARTIFACT_ID}`;
+                                                      
+                                                      const response = await fetch(endpoint, {
+                                                          method: method,
                                                           headers: {
                                                               'Content-Type': 'application/json',
-                                                              'Authorization': `Bearer ${token}`
-                                                          }
+                                                              'Authorization': `Bearer ${currentToken}`
+                                                          },
+                                                          body: method === 'POST' ? JSON.stringify({ type: "Artifact" }) : null
                                                       });
                                                       if (response.ok) {
-                                                          alert("Added to favorites successfully!");
-                                                      } else {
-                                                          const data = await response.json();
-                                                          if (data.message && data.message.toLowerCase().includes('already')) {
-                                                              alert("This item is already in your favorites.");
+                                                          isFav = !isFav;
+                                                          if (isFav) {
+                                                              favoriteBtn.classList.add('active');
+                                                              alert("Added to favorites successfully!");
                                                           } else {
-                                                              throw new Error('Failed to add to favorites');
+                                                              favoriteBtn.classList.remove('active');
+                                                              alert("Removed from favorites.");
                                                           }
+                                                      } else {
+                                                          throw new Error('Failed to update favorites');
                                                       }
                                                   } catch (error) {
-                                                      alert("Unable to save to favorites: " + error.message);
+                                                      alert("Unable to update favorites: " + error.message);
                                                   }
                                               });
                                           }
                                       });
                                   </script>
-                                 
+
+                             </body>
                                  <script src="../global-core.js"></script>
                                  <script src="../animate.js"></script>
-                             </body>
-                             </html>
+                             </html>    

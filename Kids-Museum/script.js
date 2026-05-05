@@ -42,6 +42,7 @@ class RoyalKidsAtmosphere {
         this.initThemeToggle();
         this.initLanguageToggle();
         this.loadKidArtifacts();
+        this.initSaveFacts();
         
         if (!this.isMobile) this.initDesktopEffects();
         console.log("✓ Kids Museum System Optimized & Ready");
@@ -206,7 +207,7 @@ class RoyalKidsAtmosphere {
         ];
 
         try {
-            const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-cb6d.up.railway.app/api';
+            const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
             const res = await fetch(`${API_URL}/artifacts`);
             let selection = [];
             
@@ -279,6 +280,55 @@ class RoyalKidsAtmosphere {
         });
     }
 
+    // 6.5 Save Fun Facts Logic
+    initSaveFacts() {
+        const saveBtns = document.querySelectorAll('.save-fact-btn');
+        const savedFacts = JSON.parse(localStorage.getItem('savedFacts') || '[]');
+
+        // Initialize saved state
+        saveBtns.forEach(btn => {
+            const card = btn.closest('.fact-card');
+            const factId = card.getAttribute('data-fact-id');
+            if (savedFacts.includes(factId)) {
+                btn.classList.add('saved');
+            }
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isSaved = btn.classList.toggle('saved');
+                let currentSaved = JSON.parse(localStorage.getItem('savedFacts') || '[]');
+
+                if (isSaved) {
+                    if (!currentSaved.includes(factId)) {
+                        currentSaved.push(factId);
+                        this.showNotification("Fact Saved!", "auto_awesome");
+                    }
+                } else {
+                    currentSaved = currentSaved.filter(id => id !== factId);
+                    this.showNotification("Fact Removed", "bookmark_remove");
+                }
+
+                localStorage.setItem('savedFacts', JSON.stringify(currentSaved));
+            });
+        });
+    }
+
+    showNotification(text, icon) {
+        const notify = document.createElement('div');
+        notify.className = 'kids-notify';
+        notify.innerHTML = `
+            <span class="material-symbols-outlined">${icon}</span>
+            <span>${text}</span>
+        `;
+        document.body.appendChild(notify);
+
+        setTimeout(() => notify.classList.add('active'), 100);
+        setTimeout(() => {
+            notify.classList.remove('active');
+            setTimeout(() => notify.remove(), 500);
+        }, 2000);
+    }
+
     // 7. Desktop 3D Parallax
     initDesktopEffects() {
         const hero = document.querySelector('.hero-card');
@@ -320,3 +370,4 @@ if (document.readyState === 'loading') {
 } else {
     new RoyalKidsAtmosphere();
 }
+

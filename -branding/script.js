@@ -1,30 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Management (Standardized)
-    const body = document.body;
-    const themeBtn = document.getElementById('themeBtn');
-    
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.classList.remove('dark', 'light');
-    body.classList.add(savedTheme);
-    updateThemeIcon(savedTheme);
 
-    function updateThemeIcon(theme) {
-        const icon = themeBtn?.querySelector('.material-symbols-outlined');
-        if (icon) {
-            icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
-        }
-    }
-
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            const isDark = body.classList.contains('dark');
-            const newTheme = isDark ? 'light' : 'dark';
-            body.classList.remove('dark', 'light');
-            body.classList.add(newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-    }
 
     // 2. Profile Image Synchronization
     function syncProfile() {
@@ -44,28 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     syncProfile();
     window.syncGlobalAvatar = syncProfile;
 
-    // 3. Mobile Menu Logic
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeBtn = document.getElementById('closeBtn');
-    const menuOverlay = document.getElementById('menuOverlay');
 
-    if (menuBtn && mobileMenu && menuOverlay) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-
-        const closeMenu = () => {
-            mobileMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-
-        closeBtn?.addEventListener('click', closeMenu);
-        menuOverlay.addEventListener('click', closeMenu);
-    }
 
     // 4. Scroll Reveal Animations
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };

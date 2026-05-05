@@ -3327,6 +3327,179 @@ body.light .copyright {
 }
 
 /* ============================================
+   PREMIUM CONTACT FORM STYLES
+   ============================================ */
+.form-container {
+    background: rgba(18, 18, 18, 0.95);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(236, 182, 19, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ecb613, transparent);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    color: #b5ae9d;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Custom Select Dropdown Wrapper */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper .form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.select-wrapper .select-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ecb613;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(236, 182, 19, 0.3);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: #ecb613;
+    box-shadow: 0 0 15px rgba(236, 182, 19, 0.2);
+}
+
+.form-select option {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 15px;
+}
+
+.btn-submit {
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #d4a512 0%, #ecb613 100%);
+    color: #000;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(236, 182, 19, 0.2);
+}
+
+.btn-submit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(236, 182, 19, 0.4);
+}
+
+.form-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 1rem;
+}
+
+/* --- Light Mode Form Overrides --- */
+body.light .form-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(142, 115, 65, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+body.light .form-label {
+    color: #666;
+}
+
+body.light .form-input,
+body.light .form-select,
+body.light .form-textarea {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+body.light .form-input:hover,
+body.light .form-select:hover,
+body.light .form-textarea:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(142, 115, 65, 0.4);
+}
+
+body.light .form-input:focus,
+body.light .form-select:focus,
+body.light .form-textarea:focus {
+    background: #fff;
+    border-color: #8e7341;
+    box-shadow: 0 0 15px rgba(142, 115, 65, 0.15);
+}
+
+body.light .form-select option {
+    background: #fff;
+    color: #333;
+}
+
+body.light .form-note {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
    ROYAL ATMOSPHERE & PREMIUM FOOTER
    ============================================ */
 #dust-container, #shapes-container {
