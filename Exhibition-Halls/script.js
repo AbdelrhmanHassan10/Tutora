@@ -93,12 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'Unlike the divine, idealized statues of the Old Kingdom, Middle Kingdom royal portraits display unprecedented realism. Look into the tired, burdened faces of kings who ruled during an era of profound political change.',
         image: 'images/middle-kingdom-kingship.png',
         artifacts: [
-            { name: "Head of Senusret III", period: "12th Dynasty", desc: "Famous for its realistic, somber facial expression portraying the burden of rule.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/SenusretIII-BritishMuseum.jpg/800px-SenusretIII-BritishMuseum.jpg" },
-            { name: "Statue of Amenemhat III", period: "12th Dynasty", desc: "A striking statue of the king with prominent cheekbones and heavy eyelids.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/AmenemhatIII-MetropolitanMuseum.png/800px-AmenemhatIII-MetropolitanMuseum.png" },
-            { name: "Osiride Pillar of Senusret I", period: "12th Dynasty", desc: "A pillar showing the king in the form of Osiris, the god of the dead.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Statue_of_Senusret_I_as_Osiris.jpg/800px-Statue_of_Senusret_I_as_Osiris.jpg" },
-            { name: "Sphinx of Amenemhat III", period: "12th Dynasty", desc: "A uniquely stylized sphinx featuring a lion's mane instead of the traditional royal headdress.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/AmenemhatIII-Tanis.jpg/800px-AmenemhatIII-Tanis.jpg" },
-            { name: "Block Statue of Senusret-senebefny", period: "12th Dynasty", desc: "An early example of a block statue, providing large surfaces for inscriptions.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Block_Statue_of_Senusret-senebefny.jpg/800px-Block_Statue_of_Senusret-senebefny.jpg" },
-            { name: "Mentuhotep II Statue", period: "11th Dynasty", desc: "A painted sandstone statue of the king who reunited Egypt.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/MentuhotepII-CairoMuseum.png/800px-MentuhotepII-CairoMuseum.png" }
+            { name: "Head of Senusret III", period: "12th Dynasty", desc: "Famous for its realistic, somber facial expression portraying the burden of rule.", image: "images/artifacts/senusret_iii_head_ai.png" },
+            { name: "Statue of Amenemhat III", period: "12th Dynasty", desc: "A striking statue of the king with prominent cheekbones and heavy eyelids.", image: "images/artifacts/amenemhat_iii_statue_ai.png" },
+            { name: "Osiride Pillar of Senusret I", period: "12th Dynasty", desc: "A pillar showing the king in the form of Osiris, the god of the dead.", image: "images/artifacts/osiride_pillar_ai.png" },
+            { name: "Sphinx of Amenemhat III", period: "12th Dynasty", desc: "A uniquely stylized sphinx featuring a lion's mane instead of the traditional royal headdress.", image: "images/artifacts/sphinx_amenemhat_ai.png" },
+            { name: "Block Statue of Senusret-senebefny", period: "12th Dynasty", desc: "An early example of a block statue, providing large surfaces for inscriptions.", image: "images/artifacts/block_statue_ai.png" },
+            { name: "Mentuhotep II Statue", period: "11th Dynasty", desc: "A painted sandstone statue of the king who reunited Egypt.", image: "images/artifacts/mentuhotep_ii_statue_ai.png" }
         ]
     },
     {
