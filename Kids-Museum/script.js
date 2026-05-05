@@ -221,6 +221,18 @@ class RoyalKidsAtmosphere {
                 description: "Can you beat the Pharaoh at Senet? It's the oldest board game in the world and super fun!",
                 imageUrl: "senet-kids.png",
                 _id: "featured-senet-kids"
+            },
+            {
+                name: "King Khufu",
+                description: "The builder of the Great Pyramid! He was a very wise king who loved big projects.",
+                imageUrl: "khufu-kids.png",
+                _id: "featured-khufu"
+            },
+            {
+                name: "Thutmose the Brave",
+                description: "The Napoleon of Egypt! He was a great warrior king who protected his kingdom with honor.",
+                imageUrl: "thutmose-kids.png",
+                _id: "featured-thutmose"
             }
         ];
 
