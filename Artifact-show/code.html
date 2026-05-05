@@ -1021,11 +1021,6 @@
                                           async function loadArtifactData() {
                                               let artifact = null;
 
-                                              // 0. Check for Kid Mode
-                                              if (ARTIFACT_ID.startsWith('featured-') || new URLSearchParams(window.location.search).get('mode') === 'kids') {
-                                                  document.body.classList.add('kid-mode');
-                                               }
-
                                                // 1. Try Custom Data from SessionStorage
                                               if (ARTIFACT_ID === 'custom') {
                                                   const customData = sessionStorage.getItem('currentArtifact');

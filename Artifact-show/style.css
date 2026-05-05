@@ -1266,42 +1266,7 @@ body.light .artifact-image {
     }
 }
 
-/* Kid Mode Overrides */
-body.kid-mode {
-    --primary-color: #FFD700;
-    --bg-primary: #FFF9E6;
-    --text-primary: #2D3748;
-    --bg-color: #FFF9E6;
-}
 
-body.kid-mode .artifact-layout {
-    background-color: #FFF9E6;
-}
-
-body.kid-mode .artifact-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 900;
-}
-
-body.kid-mode .info-text {
-    font-size: 1.3rem;
-    color: #4A5568;
-    font-weight: 600;
-}
-
-body.kid-mode .btn-ar, 
-body.kid-mode .float-btn-primary {
-    background: linear-gradient(135deg, #FF6B6B, #FFD93D);
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-}
-
-body.kid-mode .hotspot {
-    background-color: #FF6B6B;
-}
 
 /* Premium Panel Upgrades */
 .artifact-info-panel {
