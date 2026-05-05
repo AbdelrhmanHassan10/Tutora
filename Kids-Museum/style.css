@@ -5774,53 +5774,41 @@ body.light .artifact-badge {
     /* Hide Desktop Bulky Items */
     .desktop-nav, .search-box, .btn-booking {
         display: none !important;
-    }
-
-    .header-right {
-        gap: 0.5rem !important;
-    }
-}
 /* Kid-Friendly Artifacts Scroller */
 #dynamic-artifacts-container {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(236, 182, 19, 0.3) rgba(236, 182, 19, 0.05);
+    scrollbar-width: auto;
+    scrollbar-color: #ECB613 rgba(236, 182, 19, 0.1);
 }
 
 #dynamic-artifacts-container::-webkit-scrollbar {
-    height: 8px;
+    height: 12px !important;
+    display: block !important;
 }
 
 #dynamic-artifacts-container::-webkit-scrollbar-track {
-    background: rgba(236, 182, 19, 0.05);
+    background: rgba(236, 182, 19, 0.1) !important;
     border-radius: 10px;
-    margin: 0 20px;
 }
 
 #dynamic-artifacts-container::-webkit-scrollbar-thumb {
-    background: rgba(236, 182, 19, 0.3);
+    background: #ECB613 !important;
     border-radius: 10px;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     background-clip: padding-box;
 }
 
 #dynamic-artifacts-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(236, 182, 19, 0.6);
-    border: 1px solid transparent;
-    background-clip: padding-box;
+    background: #FFD700 !important;
 }
 
 /* Mobile Scrollbar Force Visibility */
 @media (max-width: 768px) {
-    #dynamic-artifacts-container::-webkit-scrollbar {
-        display: block !important;
-        height: 6px !important;
-    }
-    #dynamic-artifacts-container::-webkit-scrollbar-thumb {
-        background: rgba(236, 182, 19, 0.5) !important;
-        border-radius: 10px !important;
-    }
     #dynamic-artifacts-container {
         -webkit-overflow-scrolling: touch !important;
-        padding-bottom: 40px !important; /* Extra space for mobile scrollbar */
+        padding-bottom: 50px !important;
+    }
+    
+    #dynamic-artifacts-container::-webkit-scrollbar {
+        height: 14px !important;
     }
 }
