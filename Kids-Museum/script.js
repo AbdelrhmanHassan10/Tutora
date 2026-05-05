@@ -217,10 +217,10 @@ class RoyalKidsAtmosphere {
                 _id: "featured-bastet"
             },
             {
-                name: "The Mystery Game",
-                description: "Can you beat the Pharaoh at Senet? It's the oldest board game in the world and super fun!",
-                imageUrl: "senet-kids.png",
-                _id: "featured-senet-kids"
+                name: "Queen Hatshepsut",
+                description: "One of the most powerful female Pharaohs! She built the most beautiful temple and led a peaceful time of building and trading.",
+                imageUrl: "hatshepsut-kids.png",
+                _id: "featured-hatshepsut"
             },
             {
                 name: "King Khufu",
