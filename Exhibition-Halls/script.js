@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'During the New Kingdom, Egypt became a global empire. This gallery showcases the unprecedented wealth, luxurious lifestyles, vibrant fashion, and advanced tools used by the society that thrived along the Nile.',
         image: 'images/new-kingdom-society.png',
         artifacts: [
-            { name: "Ostracon with a Sketch", period: "New Kingdom", desc: "A piece of limestone used as a sketchpad by an ancient artisan.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Ostracon_with_a_sketch_of_a_human_head.jpg/800px-Ostracon_with_a_sketch_of_a_human_head.jpg" },
+            { name: "Ostracon with a Sketch", period: "New Kingdom", desc: "A piece of limestone used as a sketchpad by an ancient artisan.", image: "images/artifacts/ostracon_sketch_ai.png" },
             { name: "Nobleman's Chair", period: "18th Dynasty", desc: "An elegantly crafted wooden chair showing the luxury of the elite.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ancient_Egyptian_chair_MET.jpg/800px-Ancient_Egyptian_chair_MET.jpg" },
             { name: "Floral Collar", period: "New Kingdom", desc: "A broad collar (Usekh) made of faience beads simulating real flowers.", image: "images/artifacts/floral_collar.jpg" },
             { name: "Sistrum", period: "New Kingdom", desc: "A sacred musical rattle used in religious ceremonies, particularly for Hathor.", image: "images/artifacts/sistrum.jpg" },
