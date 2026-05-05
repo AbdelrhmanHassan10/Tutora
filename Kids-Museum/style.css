@@ -5780,3 +5780,31 @@ body.light .artifact-badge {
         gap: 0.5rem !important;
     }
 }
+/* Kid-Friendly Artifacts Scroller */
+#dynamic-artifacts-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(236, 182, 19, 0.3) rgba(236, 182, 19, 0.05);
+}
+
+#dynamic-artifacts-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+#dynamic-artifacts-container::-webkit-scrollbar-track {
+    background: rgba(236, 182, 19, 0.05);
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+#dynamic-artifacts-container::-webkit-scrollbar-thumb {
+    background: rgba(236, 182, 19, 0.3);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+#dynamic-artifacts-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(236, 182, 19, 0.6);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
