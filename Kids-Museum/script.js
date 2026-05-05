@@ -203,6 +203,24 @@ class RoyalKidsAtmosphere {
                 description: "This little blue hippo is named William. He loves swimming in the Nile and hiding in flowers!",
                 imageUrl: "blue-hippo-kids.png",
                 _id: "featured-blue-hippo"
+            },
+            {
+                name: "Anubis the Puppy",
+                description: "The guardian of secrets! He looks like a friendly puppy but he's actually a powerful protector.",
+                imageUrl: "anubis-kids.png",
+                _id: "featured-anubis"
+            },
+            {
+                name: "Bastet the Cat",
+                description: "Meet the goddess of joy and protection! She's a very fast and smart cat who loves to play.",
+                imageUrl: "bastet-kids.png",
+                _id: "featured-bastet"
+            },
+            {
+                name: "The Mystery Game",
+                description: "Can you beat the Pharaoh at Senet? It's the oldest board game in the world and super fun!",
+                imageUrl: "senet-kids.png",
+                _id: "featured-senet-kids"
             }
         ];
 
