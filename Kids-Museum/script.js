@@ -42,6 +42,7 @@ class RoyalKidsAtmosphere {
         this.initThemeToggle();
         this.initLanguageToggle();
         this.loadKidArtifacts();
+        this.initArtifactScroller();
         this.initSaveFacts();
         
         if (!this.isMobile) this.initDesktopEffects();
@@ -266,6 +267,9 @@ class RoyalKidsAtmosphere {
                 `;
                 container.appendChild(card);
             });
+
+            const totalCount = document.getElementById('artifact-total-count');
+            if (totalCount) totalCount.textContent = allArtifacts.length;
         } catch (e) {
             // Fallback to featured artifacts only
             container.innerHTML = '';
@@ -283,6 +287,8 @@ class RoyalKidsAtmosphere {
                 `;
                 container.appendChild(card);
             });
+            const totalCount = document.getElementById('artifact-total-count');
+            if (totalCount) totalCount.textContent = featuredArtifacts.length;
         }
     }
 
@@ -308,6 +314,55 @@ class RoyalKidsAtmosphere {
             this.currentIndex = (this.currentIndex - 1 + cards.length) % cards.length;
             updateCarousel();
         });
+    }
+    
+    // 6.2 Artifact Scroller
+    initArtifactScroller() {
+        const container = document.getElementById('dynamic-artifacts-container');
+        const prevBtn = document.getElementById('artifact-prev-btn');
+        const nextBtn = document.getElementById('artifact-next-btn');
+        const progressFill = document.getElementById('artifact-progress-fill');
+        const currentCount = document.getElementById('artifact-current-count');
+
+        if (!container || !prevBtn || !nextBtn) return;
+
+        const scrollAmount = 320; // Width of card + gap
+
+        nextBtn.addEventListener('click', () => {
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            if (container.scrollLeft >= maxScroll - 10) {
+                container.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (container.scrollLeft <= 10) {
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                container.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            }
+        });
+
+        container.addEventListener('scroll', () => {
+            const totalWidth = container.scrollWidth - container.clientWidth;
+            if (totalWidth <= 0) return;
+            
+            const scrollLeft = container.scrollLeft;
+            const pct = (scrollLeft / totalWidth) * 100;
+            
+            if (progressFill) progressFill.style.width = pct + '%';
+            
+            // Estimate current card
+            const cards = container.querySelectorAll('.kid-artifact-card');
+            if (cards.length > 0) {
+                const cardWidth = 320; // Estimated card width + gap
+                const index = Math.round(scrollLeft / cardWidth) + 1;
+                if (currentCount) currentCount.textContent = Math.min(index, cards.length);
+            }
+        }, { passive: true });
     }
 
     // 6.5 Save Fun Facts Logic

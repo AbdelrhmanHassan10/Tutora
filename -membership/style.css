@@ -63,21 +63,38 @@ body.light {
    MOBILE MENU SIDEBAR
    ============================================ */
 
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 .mobile-menu {
     position: fixed;
     top: 0;
     left: -100%;
     width: 100%;
-    max-width: 320px;
+    max-width: 100%;
     height: 100vh;
-    background-color: var(--bg-primary);
+    background-color: var(--bg-primary, #121212);
     border-right: 1px solid rgba(57, 55, 40, 0.2);
-    z-index: 1000;
-    transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10000;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-menu.active {
@@ -129,22 +146,34 @@ body.light {
 }
 
 .close-btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-color: transparent;
-    color: var(--text-primary);
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(242, 208, 13, 0.4) !important;
+    border-radius: 50% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: #f2d00d !important;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0.5rem;
     transition: all 0.3s ease;
 }
 
 .close-btn:hover {
-    background-color: rgba(242, 208, 13, 0.1);
-    color: var(--color-primary);
+    background-color: rgba(242, 208, 13, 0.1) !important;
+    border-color: #f2d00d !important;
+    transform: rotate(90deg);
+}
+
+.close-btn .material-symbols-outlined {
+    font-size: 2rem !important;
+    font-weight: 300 !important;
+}
+
+.menu-link.active {
+    color: #f2d00d;
+    border-left: 3px solid #f2d00d;
+    background-color: rgba(242, 208, 13, 0.05);
 }
 
 
@@ -1053,24 +1082,119 @@ body.light .dropdown-link:hover {
     .mem-test-grid { grid-template-columns: 1fr !important; gap: 2rem; padding: 0 1.5rem; }
 }
 
+/* Mobile Header Optimization (to match premium design) */
 @media (max-width: 768px) {
-    .menu-btn { display: flex; }
-    .desktop-nav { display: none !important; }
-    .header-right { 
-        display: flex !important; 
-        gap: 0.8rem; 
-        flex: 1; 
-        justify-content: flex-end; 
+    .header {
+        padding: 0.6rem 0.8rem !important;
+        background: #000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid rgba(236, 182, 19, 0.2) !important;
     }
-    .search-box, .btn-booking { display: none !important; }
-    .header-left { flex: 0 0 auto; }
-    .logo-text { font-size: 1.1rem; display: flex !important; }
-    .profile-img { width: 32px; height: 32px; }
-    .icon-btn, .theme-btn { 
-        width: 34px; 
-        height: 34px; 
-        font-size: 1.1rem; 
-        display: flex !important; 
+    .header-container {
+        padding: 0 !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        gap: 0.5rem;
+    }
+    
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem !important;
+        flex: 1;
+    }
+
+    .menu-btn {
+        display: flex !important;
+        color: #ecb613 !important;
+        font-size: 1.8rem !important;
+        width: 40px !important;
+        height: 40px !important;
+        background: transparent !important;
+        border: none !important;
+    }
+
+    .logo-section {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.6rem !important;
+    }
+
+    .logo-circle {
+        width: 42px !important;
+        height: 42px !important;
+        box-shadow: 0 0 15px rgba(236, 182, 19, 0.4) !important;
+        border: 1px solid #ecb613 !important;
+    }
+
+    .logo-text {
+        font-family: 'Cinzel', serif !important;
+        font-size: 1.1rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 3px !important;
+        color: #fff !important;
+        text-transform: uppercase !important;
+        margin-top: 2px !important;
+        display: flex !important;
+    }
+
+    .header-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.6rem !important;
+        flex: 0 0 auto !important;
+    }
+
+    .header-right .icon-btn, 
+    .header-right .theme-btn {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        color: #fff !important;
+        background: transparent !important;
+        border: none !important;
+    }
+
+    .header-right .material-symbols-outlined {
+        font-size: 1.5rem !important;
+    }
+
+    /* Language Badge (EN) */
+    #langBtn {
+        position: relative;
+    }
+    #langBtn::after {
+        content: 'EN';
+        position: absolute;
+        bottom: -2px;
+        right: -4px;
+        background: #ecb613;
+        color: #000;
+        font-size: 7px;
+        font-weight: 900;
+        padding: 1px 2px;
+        border-radius: 2px;
+        line-height: 1;
+    }
+
+    .profile-img {
+        width: 34px !important;
+        height: 34px !important;
+        border: 2px solid #ecb613 !important;
+    }
+
+    .desktop-nav, .search-box, .btn-booking {
+        display: none !important;
+    }
+
+    .mobile-menu {
+        background-color: #0a0a0a !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 }
 
@@ -2905,41 +3029,224 @@ body.light .copyright {
 body { overflow-x: hidden; width: 100%; position: relative; }
 
 @media (max-width: 768px) {
-    .mem-hero { height: 100dvh; overflow: hidden; }
-    .mem-hero-content h1 { font-size: 2.8rem; line-height: 1.1; letter-spacing: 2px; }
-    .mem-hero-content p { font-size: 0.9rem; max-width: 100%; padding: 0 1rem; opacity: 0.9; }
+    .header {
+        padding: 0.5rem 0.75rem !important;
+        background: #000 !important;
+        border-bottom: 1px solid rgba(236, 182, 19, 0.2) !important;
+    }
+    
+    .header-container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        gap: 0.25rem !important;
+        padding: 0 !important;
+    }
+    
+    .header-left {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        flex: none !important;
+    }
+    
+    .menu-btn {
+        display: flex !important;
+        width: 40px !important;
+        height: 40px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        color: #ECB613 !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .logo-section {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+    
+    .logo-circle {
+        width: 32px !important;
+        height: 32px !important;
+        border: 1px solid #ECB613 !important;
+        background: #fff !important;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem !important;
+        font-family: "Cinzel", serif !important;
+        font-weight: 700 !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        color: #ECB613 !important;
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+        margin: 0 !important;
+    }
+    
+    .header-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.25rem !important;
+        flex: none !important;
+    }
+    
+    .theme-btn, .icon-btn {
+        display: flex !important;
+        width: 36px !important;
+        height: 36px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: transparent !important;
+        border: none !important;
+        color: #fff !important;
+    }
+    
+    .theme-btn span, .icon-btn span {
+        font-size: 1.4rem !important;
+    }
+    
+    .profile-img {
+        width: 34px !important;
+        height: 34px !important;
+        border-radius: 50% !important;
+        border: 2px solid #ECB613 !important;
+        object-fit: cover !important;
+    }
+
+    /* Force dropdowns open */
+    .dropdown-items {
+        max-height: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        padding-left: 1rem !important;
+        background-color: rgba(242, 208, 13, 0.03) !important;
+    }
+
+    .dropdown-toggle .material-symbols-outlined {
+        display: none !important;
+    }
+
+    /* Hide desktop stuff */
+    .desktop-nav, .btn-booking, .search-box {
+        display: none !important;
+    }
+
+    /* Sections Fixes */
+    .mem-hero-content h1 { font-size: 2.5rem !important; }
     
     .mem-tiers { 
         grid-template-columns: 1fr !important; 
-        max-width: 100% !important; 
-        padding: 3rem 1.5rem !important;
+        padding: 2rem 1rem !important;
+    }
+
+    .mem-why { 
+        padding: 4rem 1rem !important; 
+    }
+    
+    .mem-why-header {
+        font-size: 1.8rem !important;
+        margin-bottom: 3rem !important;
+    }
+
+    .mem-why-grid { 
+        grid-template-columns: 1fr !important; 
+        gap: 1.5rem !important; 
+    }
+
+    .mem-why-item {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 2rem 1.5rem !important;
+        gap: 1rem !important;
+    }
+
+    .mem-why-item .material-symbols-outlined {
+        font-size: 2.5rem !important;
+    }
+
+    .mem-why-item h3 {
+        font-size: 1.3rem !important;
+    }
+
+    .mem-testimonials { 
+        padding: 4rem 1.5rem !important; 
+    }
+    
+    .mem-test-grid { 
+        grid-template-columns: 1fr !important; 
         gap: 2rem !important;
     }
-    
-    .mem-card { padding: 2rem !important; }
-    .mem-price { font-size: 2.2rem !important; }
-    
-    .mem-why { padding: 3rem 1.5rem !important; }
-    .mem-why-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
-    
-    /* Voices from the Circle - Mobile Refinement */
-    .mem-testimonials { padding: 4rem 1.5rem !important; text-align: center; }
-    .mem-test-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; padding: 0 !important; }
-    .mem-test-card { 
-        padding: 2.5rem 1.5rem !important; 
-        text-align: center; 
-        border-color: rgba(236, 182, 19, 0.15) !important;
-        background: linear-gradient(145deg, var(--mem-card-bg), rgba(236, 182, 19, 0.03)) !important;
+
+    .mem-test-card {
+        padding: 2.5rem 1.5rem !important;
+        text-align: center !important;
     }
-    .mem-test-quote { font-size: 1rem !important; line-height: 1.6 !important; }
-    .mem-test-quote::before { left: 50% !important; transform: translateX(-50%) !important; top: -30px !important; }
+
+    .mem-faq { 
+        padding: 4rem 1.25rem !important; 
+    }
+
+    .mem-faq-header {
+        font-size: 1.8rem !important;
+        margin-bottom: 2.5rem !important;
+        text-align: center;
+    }
+
+    .mem-faq-item summary {
+        padding: 1.25rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+
+    .mem-faq-item p {
+        padding: 0 1.5rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* Footer Fix */
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+        text-align: center !important;
+    }
+
+    .footer-column ul {
+        align-items: center !important;
+    }
+
+    .footer-header {
+        margin-bottom: 2rem !important;
+    }
+
+    .footer-title {
+        font-size: 1.6rem !important;
+        letter-spacing: 5px !important;
+    }
     
-    .mem-faq { padding: 3rem 1.5rem !important; }
-    .mem-faq-item summary { font-size: 0.95rem; padding: 1rem 1.2rem; }
-    .mem-faq-item p { padding: 0.8rem 1.2rem; font-size: 0.85rem; }
+    .footer-logo {
+        width: 70px !important;
+        height: 70px !important;
+        margin: 0 auto 1.5rem !important;
+    }
     
-    .newsletter-banner { padding: 3rem 1.5rem !important; }
-    .newsletter-content h2 { font-size: 1.8rem; }
+    .footer-logo .material-symbols-outlined {
+        font-size: 2.5rem !important;
+    }
+
+    .footer-logo::before {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .footer-logo::after {
+        inset: 5px !important;
+    }
 }
 
 @media (max-width: 480px) {

@@ -33,7 +33,7 @@
                 <div class="logo-circle">
                     <img src="../logo.png" alt="Tutora Logo">
                 </div>
-                <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+                <h3 class="menu-logo-text">Tutora</h3>
             </div>
             <button class="close-btn" id="closeBtn">
                 <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
@@ -81,14 +81,14 @@
     </div>
 
     <!-- Header -->
-    <header class="header" style="height: 120px">
+    <header class="header">
         <div class="scroll-progress-container"><div class="scroll-progress-bar" id="scrollProgress"></div></div>
         <div class="header-container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn">
-                    <span class="material-symbols-outlined" style="color: #ecb613;">menu</span>
+                    <span class="material-symbols-outlined">menu</span>
                 </button>
-                <div class="logo-section" style="padding-top: 30px;">
+                <div class="logo-section">
                     <div class="logo-circle">
                         <img src="../logo.png" alt="Tutora Logo">
                     </div>
@@ -98,7 +98,7 @@
 
             <nav class="desktop-nav">
                 <a href="../4.home/code.html"> Home</a>
-                <a href="../plan-your-visit/plan-your-visit.html"> Visit</a>
+                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
                 <a href="../Kids-Museum/kids-museum.html" class="active"> Kids Museum</a>
                 <a href="../event/event.html"> Events</a>
                 <div class="nav-dropdown">
@@ -258,9 +258,15 @@
                     Kid-Friendly Artifacts
                 </h2>
                 <div class="facts-wrapper">
+                    <button class="fact-btn prev" id="artifact-prev-btn" style="z-index: 10;"><span class="material-symbols-outlined">chevron_left</span></button>
                     <div class="facts-container" id="dynamic-artifacts-container" style="display: flex; gap: 20px; overflow-x: auto; padding-bottom: 30px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
                         <p style="color: #94A3B8; text-align: center; width: 100%;">Loading ancient treasures...</p>
                     </div>
+                    <button class="fact-btn next" id="artifact-next-btn" style="z-index: 10;"><span class="material-symbols-outlined">chevron_right</span></button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill" id="artifact-progress-fill"></div></div>
+                    <p class="progress-text"><span id="artifact-current-count">1</span> / <span id="artifact-total-count">10</span></p>
                 </div>
             </div>
         </section>
@@ -712,7 +718,7 @@
                                     </footer>
 
     <!-- Floating Interactive Assistant -->
-    <a href="../chat bot/chat.html"><div class="floating-assistant-wrap">
+    <a href="../chat bot/chat.html"><div class="floating-assistant-wrap" style="width: 35px;" >
         <div class="assistant-tooltip">Need help, Explorer?</div>
         <button class="assistant-btn" id="assistantBtn">
             <img src="./unnamed (1).png" alt="Tut Assistant" class="assistant-img">

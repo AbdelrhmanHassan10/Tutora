@@ -109,6 +109,90 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     new RoyalAtmosphere();
+    initMobileMenu();
+
+    function initMobileMenu() {
+        const menuBtn = document.getElementById("menuBtn");
+        const closeBtn = document.getElementById("closeBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const menuOverlay = document.getElementById("menuOverlay");
+
+        const toggleMenu = (show) => {
+            if (mobileMenu) mobileMenu.classList.toggle("active", show);
+            if (menuOverlay) menuOverlay.classList.toggle("active", show);
+            document.body.style.overflow = show ? "hidden" : "";
+        };
+
+        if (menuBtn) menuBtn.addEventListener("click", () => toggleMenu(true));
+        if (closeBtn) closeBtn.addEventListener("click", () => toggleMenu(false));
+        if (menuOverlay) menuOverlay.addEventListener("click", () => toggleMenu(false));
+
+        const dropdownToggles = document.querySelectorAll(".mobile-menu .dropdown-toggle");
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                const parent = toggle.closest(".menu-dropdown");
+                const items = parent.querySelector(".dropdown-items");
+                const icon = toggle.querySelector(".material-symbols-outlined");
+
+                dropdownToggles.forEach(otherToggle => {
+                    if (otherToggle !== toggle) {
+                        otherToggle.classList.remove("active");
+                        const otherParent = otherToggle.closest(".menu-dropdown");
+                        otherParent.querySelector(".dropdown-items").classList.remove("show");
+                        const otherIcon = otherToggle.querySelector(".material-symbols-outlined");
+                        if (otherIcon) otherIcon.textContent = "expand_more";
+                    }
+                });
+
+                const isOpen = items.classList.toggle("show");
+                toggle.classList.toggle("active", isOpen);
+                if (icon) icon.textContent = isOpen ? "expand_less" : "expand_more";
+            });
+        });
+    }
+    initMobileMenu();
+
+    function initMobileMenu() {
+        const menuBtn = document.getElementById("menuBtn");
+        const closeBtn = document.getElementById("closeBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const menuOverlay = document.getElementById("menuOverlay");
+
+        const toggleMenu = (show) => {
+            if (mobileMenu) mobileMenu.classList.toggle("active", show);
+            if (menuOverlay) menuOverlay.classList.toggle("active", show);
+            document.body.style.overflow = show ? "hidden" : "";
+        };
+
+        if (menuBtn) menuBtn.addEventListener("click", () => toggleMenu(true));
+        if (closeBtn) closeBtn.addEventListener("click", () => toggleMenu(false));
+        if (menuOverlay) menuOverlay.addEventListener("click", () => toggleMenu(false));
+
+        const dropdownToggles = document.querySelectorAll(".mobile-menu .dropdown-toggle");
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                const parent = toggle.closest(".menu-dropdown");
+                const items = parent.querySelector(".dropdown-items");
+                const icon = toggle.querySelector(".material-symbols-outlined");
+
+                dropdownToggles.forEach(otherToggle => {
+                    if (otherToggle !== toggle) {
+                        otherToggle.classList.remove("active");
+                        const otherParent = otherToggle.closest(".menu-dropdown");
+                        otherParent.querySelector(".dropdown-items").classList.remove("show");
+                        const otherIcon = otherToggle.querySelector(".material-symbols-outlined");
+                        if (otherIcon) otherIcon.textContent = "expand_more";
+                    }
+                });
+
+                const isOpen = items.classList.toggle("show");
+                toggle.classList.toggle("active", isOpen);
+                if (icon) icon.textContent = isOpen ? "expand_less" : "expand_more";
+            });
+        });
+    }
 
     // ============================================
     // ROYAL SLIDER CLASS
@@ -183,6 +267,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuBtn) menuBtn.addEventListener("click", openMenu);
     if (closeBtn) closeBtn.addEventListener("click", closeMenu);
     if (menuOverlay) menuOverlay.addEventListener("click", closeMenu);
+
+    // ============================================
+    // MOBILE MENU DROPDOWN TOGGLE
+    // ============================================
+    const dropdownToggles = document.querySelectorAll(".mobile-menu .dropdown-toggle");
+    
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            const parent = toggle.closest(".menu-dropdown");
+            const items = parent.querySelector(".dropdown-items");
+            
+            // Toggle active classes
+            toggle.classList.toggle("active");
+            if (items) {
+                items.classList.toggle("show");
+            }
+            
+            // Optional: Close other dropdowns if needed
+            dropdownToggles.forEach(otherToggle => {
+                if (otherToggle !== toggle) {
+                    otherToggle.classList.remove("active");
+                    const otherParent = otherToggle.closest(".menu-dropdown");
+                    const otherItems = otherParent.querySelector(".dropdown-items");
+                    if (otherItems) otherItems.classList.remove("show");
+                }
+            });
+        });
+    });
 
     // ============================================
     // QUIZ LOGIC

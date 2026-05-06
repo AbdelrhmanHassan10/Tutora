@@ -401,8 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.appendChild(shapesContainer);
         }
 
-        // 2. Generate Royal Dust (Increased density for more atmospheric feel)
-        const particleCount = 250;
+        // 2. Generate Royal Dust (Optimized count for mobile vs desktop)
+        const isMobile = window.innerWidth <= 768;
+        const particleCount = isMobile ? 120 : 400;
         for (let i = 0; i < particleCount; i++) {
             const dust = document.createElement('div');
             dust.className = 'dust-particle';
@@ -422,8 +423,8 @@ document.addEventListener('DOMContentLoaded', () => {
             dustContainer.appendChild(dust);
         }
 
-        // 3. Generate Floating Shapes
-        const shapeCount = 10;
+        // 3. Generate Floating Shapes (Optimized count for mobile vs desktop)
+        const shapeCount = isMobile ? 6 : 15;
         for (let i = 0; i < shapeCount; i++) {
             const shape = document.createElement('div');
             shape.className = 'royal-shape';
@@ -458,7 +459,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
                 
-                content.style.transform = `rotateY(${x * 15}deg) rotateX(${y * -15}deg) translateZ(20px)`;
+                const isMobile = window.innerWidth <= 768;
+                const range = isMobile ? 5 : 15;
+                content.style.transform = `rotateY(${x * range}deg) rotateX(${y * -range}deg) translateZ(20px)`;
             });
 
             hero.addEventListener('mouseleave', () => {

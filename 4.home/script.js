@@ -121,38 +121,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ============================================
-    // 4. SCROLL OPTIMIZATION (Observer & Progress)
+    // 4. SCROLL OPTIMIZATION (Progress & Header)
     // ============================================
     const initScroll = () => {
         const header = document.querySelector('.header');
         const progress = document.getElementById('scrollProgress');
         
-        // Scroll Reveal Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active-reveal');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section:not(.hero), .curator-panel, .membership-section').forEach(s => {
-            s.classList.add('reveal');
-            observer.observe(s);
-        });
-
-        // Staggered reveals for grid items
-        document.querySelectorAll('.tours-scroll, .events-grid, .amenities-grid, .quick-info-bar').forEach(grid => {
-            Array.from(grid.children).forEach((child, index) => {
-                child.classList.add('reveal');
-                // Limit delay to first 5 items to avoid excessive wait
-                if (index > 0 && index < 6) {
-                    child.classList.add(`delay-${index * 100}`);
-                }
-                observer.observe(child);
-            });
-        });
+        // Note: Scroll Reveal animations are now handled globally by smooth-reveal.js
+        // to ensure better performance and unified transitions.
 
         // Optimized Header & Progress updates
         let ticking = false;

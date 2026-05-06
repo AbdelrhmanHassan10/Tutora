@@ -777,30 +777,102 @@ body.light .dropdown-link:hover {
 /* Mobile (480px - 768px) */
 
 @media (max-width: 768px) {
-    .menu-btn {
+    .header {
+        padding: 0.6rem 0.8rem !important;
+        background: #000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    .header-container {
+        padding: 0 !important;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
     }
-    .desktop-nav {
-        display: none;
-    }
-    .search-box {
-        display: none;
-    }
-    .header-right {
-        gap: 0.5rem;
-    }
-    .btn-booking {
-        display: none;
-    }
+    
     .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem !important;
         flex: 1;
     }
-    .header-right {
-        flex: 0;
+
+    .menu-btn {
+        display: flex !important;
+        color: #ecb613 !important;
+        font-size: 1.8rem !important;
     }
+
+    .logo-section {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.6rem !important;
+    }
+
+    .logo-circle {
+        width: 42px !important;
+        height: 42px !important;
+        box-shadow: 0 0 15px rgba(236, 182, 19, 0.4) !important;
+        border: 1px solid #ecb613 !important;
+    }
+
+    .logo-text {
+        font-family: 'Cinzel', serif !important;
+        font-size: 1.1rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 3px !important;
+        color: #fff !important;
+        text-transform: uppercase !important;
+        margin-top: 2px !important;
+    }
+
+    .header-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.6rem !important;
+        flex: 0 0 auto !important;
+    }
+
+    .header-right .icon-btn, 
+    .header-right .theme-btn {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        color: #fff !important;
+    }
+
+    .header-right .material-symbols-outlined {
+        font-size: 1.5rem !important;
+    }
+
+    /* Language Badge (EN) */
+    #langBtn {
+        position: relative;
+    }
+    #langBtn::after {
+        content: 'EN';
+        position: absolute;
+        bottom: -2px;
+        right: -4px;
+        background: #ecb613;
+        color: #000;
+        font-size: 7px;
+        font-weight: 900;
+        padding: 1px 2px;
+        border-radius: 2px;
+        line-height: 1;
+    }
+
     .profile-img {
-        width: 36px;
-        height: 36px;
+        width: 34px !important;
+        height: 34px !important;
+        border: 2px solid #ecb613 !important;
+    }
+
+    .desktop-nav, .search-box, .btn-booking {
+        display: none !important;
     }
 }
 
@@ -1924,10 +1996,106 @@ body {
 
 
 /* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
+   RESPONSIVE DESIGN/* Mobile Header Optimization (to match reference image) */
 @media (max-width: 768px) {
+    .header {
+        padding: 0.6rem 0.8rem !important;
+        background: #000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    .header-container {
+        padding: 0 !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex: 1;
+    }
+
+    .menu-btn {
+        display: flex !important;
+        color: #ecb613 !important;
+        font-size: 1.8rem !important;
+    }
+
+    .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .logo-circle {
+        width: 42px !important;
+        height: 42px !important;
+        box-shadow: 0 0 15px rgba(236, 182, 19, 0.4);
+        border: 1px solid #ecb613;
+    }
+
+    .logo-text {
+        font-family: 'Cinzel', serif !important;
+        font-size: 1.1rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 3px !important;
+        color: #fff !important;
+        text-transform: uppercase;
+        margin-top: 2px;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem !important;
+        flex: 0 0 auto;
+    }
+
+    .header-right .icon-btn, 
+    .header-right .theme-btn {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        color: #fff !important;
+    }
+
+    .header-right .material-symbols-outlined {
+        font-size: 1.5rem !important;
+    }
+
+    /* Language Badge (EN) */
+    #langBtn {
+        position: relative;
+    }
+    #langBtn::after {
+        content: 'EN';
+        position: absolute;
+        bottom: -2px;
+        right: -4px;
+        background: #ecb613;
+        color: #000;
+        font-size: 7px;
+        font-weight: 900;
+        padding: 1px 2px;
+        border-radius: 2px;
+        line-height: 1;
+    }
+
+    .profile-img {
+        width: 34px !important;
+        height: 34px !important;
+        border: 2px solid #ecb613 !important;
+    }
+
+    .desktop-nav, .search-box, .btn-booking {
+        display: none !important;
+    }
+}
     .header {
         padding: 1rem;
     }
@@ -1959,7 +2127,6 @@ body {
         gap: 1rem;
         font-size: 0.8rem;
     }
-}
 
 @media (max-width: 480px) {
     .header {

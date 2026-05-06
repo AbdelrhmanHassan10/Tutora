@@ -123,25 +123,41 @@ html {
     visibility: visible;
 }
 
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 .mobile-menu {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 100% !important;
-    max-width: 100% !important;
+    width: 100%;
+    max-width: 100%;
     height: 100vh;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     border-right: none;
-    z-index: 1000;
-    transition: left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10000;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     box-shadow: none;
 }
-
-
 
 .mobile-menu.active {
     left: 0;
@@ -197,22 +213,28 @@ body.dark .menu-header {
 }
 
 .close-btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background-color: transparent;
-    color: var(--text-primary);
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(242, 208, 13, 0.4) !important;
+    border-radius: 50% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: #f2d00d !important;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 0.5rem;
     transition: all 0.3s ease;
 }
 
 .close-btn:hover {
-    background-color: rgba(242, 208, 13, 0.1);
-    color: var(--primary-color);
+    background-color: rgba(242, 208, 13, 0.1) !important;
+    border-color: #f2d00d !important;
+    transform: rotate(90deg);
+}
+
+.close-btn .material-symbols-outlined {
+    font-size: 2rem !important;
+    font-weight: 300 !important;
 }
 
 
@@ -547,73 +569,107 @@ html:not(.dark) .menu-link:hover {
 
 /* Mobile (480px - 768px) */
 
+/* Mobile Header Optimization (to match reference image) */
 @media (max-width: 768px) {
     .header {
-        padding: 0.5rem 0.75rem !important;
+        padding: 0.6rem 0.8rem !important;
+        background: #000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
     .header-container {
-        padding: 0 0.5rem !important;
+        padding: 0 !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
         gap: 0.5rem;
     }
-    .logo-text {
-        font-size: 1.1rem !important;
-    }
-    .logo-circle {
-        width: 35px !important;
-        height: 35px !important;
-    }
-    .hero-card {
-        min-height: 400px !important;
-        padding: 1.5rem !important;
-    }
-    .hero-title {
-        font-size: 2rem !important;
-    }
-    .hero-desc {
-        font-size: 1rem !important;
-        margin-bottom: 1.5rem !important;
-    }
-    .hero-actions {
-        flex-direction: column;
-        gap: 0.75rem !important;
-    }
-    .hero-actions a {
-        width: 100%;
-        justify-content: center;
-    }
-    .filter-tab {
-        padding: 0.5rem 1.25rem !important;
-        font-size: 0.8rem !important;
-    }
     
-    .menu-btn {
-        display: flex;
-        width: 36px;
-        height: 36px;
-    }
-    .desktop-nav {
-        display: none;
-    }
-    .search-box,
-    .search-btn {
-        display: none !important;
-    }
-    .header-right {
-        gap: 0.4rem;
-    }
-    .btn-booking {
-        display: none;
-    }
     .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem !important;
         flex: 1;
     }
+
+    .menu-btn {
+        display: flex !important;
+        color: #ecb613 !important;
+        font-size: 1.8rem !important;
+    }
+
+    .logo-section {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.6rem !important;
+    }
+
+    .logo-circle {
+        width: 42px !important;
+        height: 42px !important;
+        box-shadow: 0 0 15px rgba(236, 182, 19, 0.4) !important;
+        border: 1px solid #ecb613 !important;
+    }
+
+    .logo-text {
+        font-family: 'Cinzel', serif !important;
+        font-size: 1.1rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 3px !important;
+        color: #fff !important;
+        text-transform: uppercase !important;
+        margin-top: 2px !important;
+    }
+
     .header-right {
-        flex: 0;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.6rem !important;
+        flex: 0 0 auto !important;
     }
+
+    .header-right .icon-btn, 
+    .header-right .theme-btn {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        color: #fff !important;
+    }
+
+    .header-right .material-symbols-outlined {
+        font-size: 1.5rem !important;
+    }
+
+    /* Language Badge (EN) */
+    #langBtn {
+        position: relative;
+    }
+    #langBtn::after {
+        content: 'EN';
+        position: absolute;
+        bottom: -2px;
+        right: -4px;
+        background: #ecb613;
+        color: #000;
+        font-size: 7px;
+        font-weight: 900;
+        padding: 1px 2px;
+        border-radius: 2px;
+        line-height: 1;
+    }
+
     .profile-img {
-        width: 32px;
-        height: 32px;
+        width: 34px !important;
+        height: 34px !important;
+        border: 2px solid #ecb613 !important;
     }
+
+    .desktop-nav, .search-box, .btn-booking {
+        display: none !important;
+    }
+}
     /* Auto-expand dropdown on mobile */
     .dropdown-items {
         max-height: 600px !important;
@@ -622,8 +678,6 @@ html:not(.dark) .menu-link:hover {
     .dropdown-toggle {
         cursor: default;
     }
-}
-
 
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) {

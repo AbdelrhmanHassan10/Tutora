@@ -48,19 +48,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Button Interaction Feedback
+    // 2. Button Interaction Feedback (Safe for Navigation)
     document.querySelectorAll('.gold-button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const originalText = btn.textContent;
-            btn.textContent = 'Launching Lab...';
-            btn.style.pointerEvents = 'none';
-            btn.style.opacity = '0.8';
+        btn.addEventListener('click', (e) => {
+            // Only show feedback if it's not a link or if we want to delay navigation
+            const parentLink = btn.closest('a');
             
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.pointerEvents = 'auto';
-                btn.style.opacity = '1';
-            }, 1000);
+            if (!parentLink) {
+                const originalText = btn.textContent;
+                btn.textContent = 'Launching Lab...';
+                btn.style.pointerEvents = 'none';
+                btn.style.opacity = '0.8';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.pointerEvents = 'auto';
+                    btn.style.opacity = '1';
+                }, 1000);
+            } else {
+                // For links, just show a brief ripple effect or glow
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => btn.style.transform = '', 200);
+            }
         });
     });
 

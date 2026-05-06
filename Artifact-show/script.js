@@ -319,6 +319,105 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ============================================
+    // 3. LAYOUT RESIZER (MANUAL RESIZE)
+    // ============================================
+    const resizer = document.getElementById('layoutResizer');
+    const leftPanel = document.querySelector('.artifact-image-panel');
+    const rightPanel = document.querySelector('.artifact-info-panel');
+    const container = document.querySelector('.artifact-layout');
+
+    if (resizer && leftPanel && rightPanel && container) {
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', (e) => {
+            isResizing = true;
+            resizer.classList.add('active');
+            document.body.style.cursor = 'col-resize';
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            
+            const containerRect = container.getBoundingClientRect();
+            const relativeX = e.clientX - containerRect.left;
+            const percentage = (relativeX / containerRect.width) * 100;
+            
+            // Constrain between 25% and 75%
+            if (percentage > 25 && percentage < 75) {
+                leftPanel.style.width = `${percentage}%`;
+                rightPanel.style.width = `${100 - percentage}%`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (!isResizing) return;
+            isResizing = false;
+            resizer.classList.remove('active');
+            document.body.style.cursor = 'default';
+            document.body.style.userSelect = 'auto';
+        });
+
+        // Touch support for tablets
+        resizer.addEventListener('touchstart', (e) => {
+            isResizing = true;
+            resizer.classList.add('active');
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isResizing) return;
+            const touch = e.touches[0];
+            const containerRect = container.getBoundingClientRect();
+            const relativeX = touch.clientX - containerRect.left;
+            const percentage = (relativeX / containerRect.width) * 100;
+            
+            if (percentage > 25 && percentage < 75) {
+                leftPanel.style.width = `${percentage}%`;
+                rightPanel.style.width = `${100 - percentage}%`;
+            }
+        });
+
+        document.addEventListener('touchend', () => {
+            isResizing = false;
+            resizer.classList.remove('active');
+        });
+    }
+
+    // ============================================
+    // 4. PERFORMANCE & SMOOTHNESS OPTIMIZER
+    // ============================================
+    const optimizeExperience = () => {
+        // Force Hardware Acceleration for heavy elements
+        const heavyElements = document.querySelectorAll('.artifact-image, .royal-shape, .dust-particle, .card');
+        heavyElements.forEach(el => {
+            el.style.willChange = 'transform, opacity';
+        });
+
+        // Smooth Reveal on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.info-section, .stat-box, .historical-quote, .artifact-title, .info-breadcrumbs').forEach(el => {
+            el.classList.add('reveal-hidden');
+            revealObserver.observe(el);
+        });
+    };
+
+    // Initialize Optimizations
+    optimizeExperience();
+
     // Initialize the atmosphere
     window.initRoyalAtmosphere = initRoyalAtmosphere;
     initRoyalAtmosphere();

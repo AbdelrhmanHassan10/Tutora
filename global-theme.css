@@ -51,6 +51,41 @@ body {
     font-family: var(--font-primary) !important;
 }
 
+/* Custom Global Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Dark Mode Scrollbar (Royal Gold) */
+body.dark::-webkit-scrollbar-thumb,
+body.dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #F2D00D 0%, #D4AF37 100%);
+    border-radius: 5px;
+    border: 2px solid #121212;
+}
+
+body.dark::-webkit-scrollbar-thumb:hover,
+body.dark ::-webkit-scrollbar-thumb:hover {
+    background: #D4AF37;
+}
+
+/* Light Mode Scrollbar (Sleek Black) */
+body.light::-webkit-scrollbar-thumb,
+body.light ::-webkit-scrollbar-thumb {
+    background: #121212;
+    border-radius: 5px;
+    border: 2px solid #F8F8F5;
+}
+
+body.light::-webkit-scrollbar-thumb:hover,
+body.light ::-webkit-scrollbar-thumb:hover {
+    background: #000;
+}
+
 /* Header & Nav responsiveness */
 .header {
     background-color: var(--header-bg) !important;
