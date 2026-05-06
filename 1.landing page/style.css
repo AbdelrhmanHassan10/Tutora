@@ -44,8 +44,10 @@ text-decoration: none;}
     position: absolute;
     background: var(--primary-color);
     border-radius: 50%;
-    opacity: 0.4;
-    animation: floatParticle 12s infinite linear;
+    opacity: 0.3;
+    animation: floatParticle 15s infinite linear;
+    will-change: transform;
+    pointer-events: none;
 }
 
 .royal-shape {
@@ -54,8 +56,10 @@ text-decoration: none;}
     height: 30px;
     background: linear-gradient(45deg, var(--primary-color), transparent);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    opacity: 0.15;
-    animation: rotateFloat 20s infinite ease-in-out;
+    opacity: 0.12;
+    animation: rotateFloat 25s infinite ease-in-out;
+    will-change: transform;
+    pointer-events: none;
 }
 
 @keyframes floatParticle {
@@ -484,15 +488,76 @@ text-decoration: none;}
    ============================================ */
 @media (max-width: 768px) {
     .glass-header {
-        padding: 1rem 1.5rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+    }
+
+    .logo-container {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-login-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-section {
+        padding-top: 80px; /* Push content down on mobile */
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 15vw, 4rem);
+        margin-bottom: 2rem;
+    }
+
+    .hero-title .meet-text {
+        letter-spacing: 10px;
+        margin-bottom: 0.5rem;
+    }
+
+    .gold-gradient-text {
+        padding: 0.3rem 1.2rem;
+        font-size: 1em;
+    }
+
+    .gold-gradient-text::before, .gold-gradient-text::after {
+        width: 25px;
+    }
+
+    .subtitle {
+        letter-spacing: 4px;
+        font-size: 0.9rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .cta-primary-btn {
+        padding: 1rem 2rem;
+        font-size: 0.95rem;
+        width: 90%;
+        justify-content: center;
     }
     
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+        gap: 2rem;
     }
     
     .legal-links {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 }

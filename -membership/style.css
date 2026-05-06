@@ -838,7 +838,7 @@ body.light .dropdown-link:hover {
     height: 100%;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     z-index: 1;
     transition: transform 0.5s ease;
 }

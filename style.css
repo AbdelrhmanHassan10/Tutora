@@ -25,48 +25,43 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
 }
+a{
+text-decoration: none;}
 
 /* ============================================
-   ATMOSPHERIC ENGINE (3D PARTICLES)
+   ATMOSPHERIC ENGINE (SPARKLES)
    ============================================ */
-#dust-container, #shapes-container {
+#dust-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: -1;
+    overflow: hidden;
+    contain: paint;
+}
+
+body.light .dust-particle {
+    background: #5a4a15 !important;
 }
 
 .dust-particle {
     position: absolute;
     background: var(--primary-color);
     border-radius: 50%;
-    opacity: 0.4;
-    animation: floatParticle 12s infinite linear;
-}
-
-.royal-shape {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: linear-gradient(45deg, var(--primary-color), transparent);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    opacity: 0.15;
-    animation: rotateFloat 20s infinite ease-in-out;
+    opacity: 0;
+    animation: floatParticle 15s infinite linear;
+    will-change: transform, opacity;
+    pointer-events: none;
 }
 
 @keyframes floatParticle {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.6; }
     90% { opacity: 0.6; }
-    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-}
-
-@keyframes rotateFloat {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(40px, -60px) rotate(180deg); }
+    100% { transform: translate3d(20px, -100vh, 50px) rotate(360deg); opacity: 0; }
 }
 
 /* ============================================
@@ -188,7 +183,7 @@ body {
     justify-content: center;
     background: 
         linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-        url("./100.jpg");
+        url("../100.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -207,7 +202,6 @@ body {
     max-width: 1000px;
     text-align: center;
     padding: 0 2rem;
-    z-index: 5;
 }
 
 .hero-title {
@@ -300,6 +294,14 @@ body {
     transform: translateY(-5px) scale(1.05);
     background: #fff;
     box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+}
+
+.cta-primary-btn .material-symbols-outlined {
+    transition: transform 0.3s ease;
+}
+
+.cta-primary-btn:hover .material-symbols-outlined {
+    transform: translateX(5px);
 }
 
 /* ============================================
@@ -447,12 +449,6 @@ body {
     color: #000;
 }
 
-.legal-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
 .legal-links {
     display: flex;
     gap: 2rem;
@@ -482,16 +478,71 @@ body {
    ============================================ */
 @media (max-width: 768px) {
     .glass-header {
-        padding: 1rem 1.5rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+        letter-spacing: 3px;
+    }
+
+    .logo-container {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-login-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-section {
+        padding-top: 80px; /* Push content down on mobile */
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 15vw, 4rem);
+        margin-bottom: 2rem;
+    }
+
+    .hero-title .meet-text {
+        letter-spacing: 10px;
+        margin-bottom: 0.5rem;
+    }
+
+    .gold-gradient-text {
+        padding: 0.3rem 1.2rem;
+        font-size: 1em;
+    }
+
+    .gold-gradient-text::before, .gold-gradient-text::after {
+        width: 25px;
+    }
+
+    .subtitle {
+        letter-spacing: 4px;
+        font-size: 0.9rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .cta-primary-btn {
+        padding: 1rem 2rem;
+        font-size: 0.95rem;
+        width: 90%;
+        justify-content: center;
     }
     
     .footer-bottom {
         flex-direction: column;
         text-align: center;
-    }
-    
-    .legal-section {
-        align-items: center;
+        gap: 2rem;
     }
     
     .legal-links {
@@ -500,3 +551,18 @@ body {
         gap: 1rem;
     }
 }
+/* Lottie Scroll Indicator */
+.lottie-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.lottie-scroll:hover {
+    opacity: 1;
+}
+

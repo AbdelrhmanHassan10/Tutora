@@ -149,46 +149,89 @@ body.light .logo-circle {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 10; /* Behind content but above some backgrounds */
+    z-index: 1; /* Keep global effects in background */
     overflow: hidden;
+    perspective: 1000px;
+    contain: paint;
 }
 
 .dust-particle {
     position: absolute;
-    background: rgba(212, 175, 55, 0.4);
+    background: var(--primary-color);
     border-radius: 50%;
     pointer-events: none;
-    filter: blur(1px);
     z-index: 1;
 }
 
 body.light .dust-particle {
-    background: rgba(142, 115, 65, 0.3) !important;
+    background: #5a4a15 !important;
+    box-shadow: 0 0 4px rgba(90, 74, 21, 0.1);
 }
 
 @keyframes floatParticle {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
     20% { opacity: 0.6; }
     80% { opacity: 0.6; }
-    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    100% { transform: translate3d(20px, -100vh, 50px) rotate(360deg); opacity: 0; }
 }
 
 .royal-shape {
     position: absolute;
-    border: 1px solid rgba(212, 175, 55, 0.1);
+    transform-style: preserve-3d;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.15;
+    opacity: 0.2;
 }
 
-body.light .royal-shape {
-    border-color: rgba(142, 115, 65, 0.1);
+/* Pyramid Geometry */
+.shape-pyramid { width: 0; height: 0; }
+.shape-pyramid .face {
+    position: absolute;
+    width: 0; height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid var(--primary-color);
+    transform-origin: 50% 100%;
+}
+.shape-pyramid .face:nth-child(1) { transform: rotateY(0deg) rotateX(30deg); }
+.shape-pyramid .face:nth-child(2) { transform: rotateY(90deg) rotateX(30deg); }
+.shape-pyramid .face:nth-child(3) { transform: rotateY(180deg) rotateX(30deg); }
+.shape-pyramid .face:nth-child(4) { transform: rotateY(270deg) rotateX(30deg); }
+
+/* Diamond Geometry */
+.shape-diamond {
+    width: 20px; height: 20px;
+    background: linear-gradient(45deg, var(--primary-color), transparent);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
-@keyframes rotateFloat {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(30px, 30px) rotate(180deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
+/* Cube Geometry */
+.shape-cube { width: 20px; height: 20px; }
+.shape-cube .face {
+    position: absolute;
+    width: 20px; height: 20px;
+    background: rgba(212, 175, 55, 0.4);
+    border: 1px solid var(--primary-color);
+}
+.shape-cube .face:nth-child(1) { transform: rotateY(0deg) translateZ(10px); }
+.shape-cube .face:nth-child(2) { transform: rotateY(90deg) translateZ(10px); }
+.shape-cube .face:nth-child(3) { transform: rotateY(180deg) translateZ(10px); }
+.shape-cube .face:nth-child(4) { transform: rotateY(270deg) translateZ(10px); }
+.shape-cube .face:nth-child(5) { transform: rotateX(90deg) translateZ(10px); }
+.shape-cube .face:nth-child(6) { transform: rotateX(-90deg) translateZ(10px); }
+
+/* Ring Geometry */
+.shape-ring {
+    width: 30px; height: 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+@keyframes rotateFloat3D {
+    0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    33% { transform: translate3d(30px, -20px, 50px) rotateX(120deg) rotateY(40deg) rotateZ(10deg); }
+    66% { transform: translate3d(-20px, -40px, -25px) rotateX(240deg) rotateY(-20deg) rotateZ(-10deg); }
 }
 
 /* 3D Hero Parallax Base */
@@ -864,3 +907,19 @@ body.dark .dropdown-items {
         min-width: auto;
     }
 }
+
+/* Light Mode Shape Overrides for Visibility */
+body.light .shape-pyramid .face {
+    border-bottom-color: #9a7b0c !important;
+}
+body.light .shape-diamond {
+    background: linear-gradient(45deg, #9a7b0c, transparent) !important;
+}
+body.light .shape-cube .face {
+    background: rgba(154, 123, 12, 0.4) !important;
+    border-color: #9a7b0c !important;
+}
+body.light .shape-ring {
+    border-color: #9a7b0c !important;
+}
+

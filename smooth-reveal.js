@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Force Hardware Acceleration for smooth rendering
     // On mobile, we only accelerate the most critical visible components to save memory
     const selectors = isMobile 
-        ? ['.hero', '.card', '.artifact-image', '.stat-box'] 
-        : ['section', '.hero', '.card', '.artifact-image', 'img', '.stat-box', '.info-section'];
+        ? ['.hero', '.artifact-image'] 
+        : ['.hero', '.artifact-image', '.stat-box'];
         
     selectors.forEach(selector => {
         document.querySelectorAll(selector).forEach(el => {
@@ -74,16 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 5. CRITICAL PERFORMANCE FIX FOR MOBILE
-    // Heavy backgrounds (Dust & Shapes) are the primary cause of scroll lag
+    // Removed hiding of atmospheric effects as they are now optimized.
     if (isMobile) {
-        const heavyBackgrounds = ['#dust-container', '#shapes-container', '#cursorGlow', '.dust-particle', '.royal-shape'];
-        heavyBackgrounds.forEach(selector => {
-            document.querySelectorAll(selector).forEach(el => {
-                el.style.display = 'none'; // Force hide to stop CPU/GPU load
-            });
-        });
-
-        // Optimize overall page responsiveness
         document.body.style.textRendering = 'optimizeSpeed';
         document.body.style.webkitFontSmoothing = 'antialiased';
     }

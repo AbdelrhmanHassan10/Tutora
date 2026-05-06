@@ -385,8 +385,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 8. ROYAL ATMOSPHERE GENERATOR
     // ============================================
-    window.initRoyalAtmosphere = function() {
-        // 1. Ensure Containers Exist
+    window.initRoyalAtmosphere = window.initRoyalAtmosphere || function() {
+        // 1. Exclusion Logic: Don't run on Home, Landing, Login, or Register
+        const path = window.location.pathname;
+        const isExcluded = path === '/' || 
+                           path.endsWith('index.html') || 
+                           path.includes('/4.home/') || 
+                           path.includes('/1.login/') || 
+                           path.includes('/2.register/');
+        
+        if (isExcluded) {
+            console.log('✦ Global Atmosphere suppressed for this specialized page');
+            return;
+        }
+
+        // 2. Density Logic: Decrease amount on specific pages
+        const isLowDensity = path.includes('/AI-Laboratory/') || 
+                             path.includes('/Booking/') || 
+                             path.includes('/Halls/') || 
+                             path.includes('/Membership/') || 
+                             path.includes('/News/') || 
+                             path.includes('/Help/') || 
+                             path.includes('/Terms-of-Service/');
+
+        // 3. Ensure Containers Exist
         let dustContainer = document.getElementById('dust-container');
         let shapesContainer = document.getElementById('shapes-container');
 
@@ -401,13 +423,20 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.appendChild(shapesContainer);
         }
 
-        // 2. Generate Royal Dust (Optimized count for mobile vs desktop)
+        // 4. Generate Royal Dust (Dynamic Density)
         const isMobile = window.innerWidth <= 768;
-        const particleCount = isMobile ? 120 : 400;
+        let particleCount = isMobile ? 60 : 100; 
+        
+        if (path.includes('/AI-Laboratory/') || path.includes('/News/') || path.includes('/-membership/')) {
+            particleCount = isMobile ? 3 : 5; // Near-zero for Laboratory, News, and Membership
+        } else if (isLowDensity) {
+            particleCount = isMobile ? 20 : 30; // Standard low-density
+        }
+
         for (let i = 0; i < particleCount; i++) {
             const dust = document.createElement('div');
             dust.className = 'dust-particle';
-            const size = Math.random() * 4 + 1;
+            const size = Math.random() * 2 + 1;
             const duration = Math.random() * 15 + 15;
             const delay = Math.random() * -20;
             
@@ -416,31 +445,52 @@ document.addEventListener('DOMContentLoaded', () => {
                 height: ${size}px;
                 left: ${Math.random() * 100}vw;
                 top: ${Math.random() * 100}vh;
-                opacity: ${Math.random() * 0.5 + 0.1};
+                opacity: ${Math.random() * 0.5 + 0.2};
                 animation: floatParticle ${duration}s infinite linear;
                 animation-delay: ${delay}s;
+                will-change: transform;
+                pointer-events: none;
             `;
             dustContainer.appendChild(dust);
         }
 
-        // 3. Generate Floating Shapes (Optimized count for mobile vs desktop)
-        const shapeCount = isMobile ? 6 : 15;
+        // 5. Generate 3D Floating Shapes (Dynamic Variety)
+        let shapeCount = isMobile ? 5 : 8;
+        
+        if (path.includes('/AI-Laboratory/') || path.includes('/News/') || path.includes('/-membership/')) {
+            shapeCount = 0; // No shapes in heavy pages
+        } else if (isLowDensity) {
+            shapeCount = isMobile ? 1 : 2; // Minimal shapes for focus pages
+        }
+        
+        const shapeTypes = ['pyramid', 'diamond', 'cube', 'ring'];
+        
         for (let i = 0; i < shapeCount; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            const size = Math.random() * 30 + 20;
-            const duration = Math.random() * 20 + 20;
+            const shapeWrapper = document.createElement('div');
+            shapeWrapper.className = 'royal-shape';
             
-            shape.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
+            const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+            shapeWrapper.classList.add(`shape-${type}`);
+            
+            if (type === 'pyramid' || type === 'cube') {
+                const faces = type === 'pyramid' ? 4 : 6;
+                for (let j = 0; j < faces; j++) {
+                    const face = document.createElement('div');
+                    face.className = 'face';
+                    shapeWrapper.appendChild(face);
+                }
+            }
+
+            shapeWrapper.style.cssText = `
                 left: ${Math.random() * 100}vw;
                 top: ${Math.random() * 100}vh;
-                transform: rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.5 + 0.5});
-                animation: rotateFloat ${duration}s infinite linear;
-                animation-delay: ${Math.random() * -20}s;
+                animation: rotateFloat3D ${Math.random() * 10 + 20}s infinite ease-in-out;
+                animation-delay: ${Math.random() * -30}s;
+                transform: scale(${Math.random() * 0.5 + 0.3});
+                will-change: transform;
+                pointer-events: none;
             `;
-            shapesContainer.appendChild(shape);
+            shapesContainer.appendChild(shapeWrapper);
         }
     };
 

@@ -95,23 +95,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 3. ATMOSPHERIC EFFECTS & PERFORMANCE
     // ============================================
-    const initEffects = () => {
-        if (isMobile) {
-            // Remove heavy animation containers on mobile to save RAM/Battery
-            document.getElementById('dust-container')?.remove();
-            document.getElementById('shapes-container')?.remove();
-            return; 
+    // Define a lighter version specifically for the Home page to optimize performance
+    window.initRoyalAtmosphere = () => {
+        const dustContainer = document.getElementById('dust-container');
+        if (!dustContainer) return;
+
+        // 1. Generate Atmospheric Dust (Mobile Optimized)
+        const particleCount = isMobile ? 40 : 80; 
+        for (let i = 0; i < particleCount; i++) {
+            const dust = document.createElement('div');
+            dust.className = 'dust-particle';
+            const size = Math.random() * 1.5 + 0.5;
+            dust.style.width = size + 'px';
+            dust.style.height = size + 'px';
+            dust.style.left = Math.random() * 100 + 'vw';
+            dust.style.top = Math.random() * 100 + 'vh';
+            dust.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            dust.style.animationDelay = (Math.random() * -15) + 's';
+            dustContainer.appendChild(dust);
         }
+
+    };
+
+    const initEffects = () => {
+        // Initialize Royal Atmosphere
+        if (window.initRoyalAtmosphere) window.initRoyalAtmosphere();
 
         // Desktop Only: Light 3D Parallax
         const hero = document.querySelector('.hero');
         const content = document.querySelector('.hero-content');
-        if (hero && content) {
+        if (hero && content && !isMobile) {
             hero.addEventListener('mousemove', (e) => {
                 const rect = hero.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
-                content.style.transform = `rotateY(${x * 15}deg) rotateX(${y * -15}deg)`;
+                content.style.transform = `rotateY(${x * 10}deg) rotateX(${y * -10}deg)`;
             }, { passive: true });
 
             hero.addEventListener('mouseleave', () => {
