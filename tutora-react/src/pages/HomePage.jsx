@@ -396,7 +396,7 @@ const HomePage = () => {
                         <h2 className="location-title">Visit the GEM</h2>
                         <p className="location-subtitle">Experience the dawn of history at the foot of the Giza Pyramids.</p>
                     </div>
-                    <a href="https://maps.app.goo.gl/YourMapLinkHere" target="_blank" rel="noopener noreferrer" className="btn-directions" style={{ textDecoration: "none" }}>
+                    <a href="https://maps.app.goo.gl/3A7D6fQzXy7sU7W4A" target="_blank" rel="noopener noreferrer" className="btn-directions" style={{ textDecoration: "none" }}>
                         Plan Your Route
                         <span className="material-symbols-outlined">arrow_forward</span>
                     </a>

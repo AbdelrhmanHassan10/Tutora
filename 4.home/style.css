@@ -3957,3 +3957,573 @@ body.light .dust-particle {
     100% { transform: translate3d(20px, -100vh, 50px) rotate(360deg); opacity: 0; }
 }
 
+
+/* ============================================
+   INTERACTIVE MUSEUM MAP
+   ============================================ */
+.interactive-map-section {
+    padding: 8rem 2rem;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.map-layout {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Legend Styling */
+.map-legend {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(236, 182, 19, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+    height: fit-content;
+}
+
+.legend-header h2 {
+    font-family: 'Cinzel', serif;
+    color: #ecb613;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.legend-header p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 2.5rem;
+}
+
+.legend-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+}
+
+.legend-item:hover {
+    background: rgba(236, 182, 19, 0.05);
+    border-color: rgba(236, 182, 19, 0.3);
+    transform: translateX(10px);
+}
+
+.legend-item.active {
+    background: rgba(236, 182, 19, 0.1);
+    border-color: #ecb613;
+    box-shadow: 0 0 20px rgba(236, 182, 19, 0.1);
+}
+
+.dot-indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-item span:last-child {
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+/* SVG Map Container */
+.map-visual-container {
+    position: relative;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.museum-svg {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    filter: drop-shadow(0 0 30px rgba(0,0,0,0.5));
+}
+
+.map-hall {
+    fill: #222;
+    stroke: rgba(236, 182, 19, 0.2);
+    stroke-width: 1;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.map-hall:hover {
+    stroke: #ecb613;
+    stroke-width: 2;
+    filter: brightness(1.2);
+}
+
+.map-hall.active-hall {
+    fill: rgba(236, 182, 19, 0.2) !important;
+    stroke: #ecb613;
+    stroke-width: 2.5;
+}
+
+/* Pulsing Markers */
+.map-marker {
+    fill: #ecb613;
+    cursor: pointer;
+}
+
+.marker-pulse {
+    animation: markerPulse 2s infinite;
+    transform-origin: center;
+}
+
+@keyframes markerPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.5); opacity: 0.3; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Tooltip */
+.map-tooltip {
+    position: absolute;
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid #ecb613;
+    padding: 1.5rem;
+    border-radius: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    width: 240px;
+}
+
+.map-tooltip.visible {
+    opacity: 1;
+}
+
+.map-tooltip h4 { color: #ecb613; margin-bottom: 0.5rem; font-family: 'Cinzel', serif; }
+.map-tooltip p { color: #ccc; font-size: 0.85rem; line-height: 1.4; }
+
+@media (max-width: 1024px) {
+    .map-layout { grid-template-columns: 1fr; }
+    .map-legend { order: 2; }
+}
+
+
+/* Rich Tooltip Upgrades */
+.tooltip-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(236, 182, 19, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.hall-number {
+    background: #ecb613;
+    color: #000;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.map-label-ar {
+    font-family: 'Cinzel', serif;
+    pointer-events: none;
+}
+
+
+/* ============================================
+   MAP MODAL STYLING
+   ============================================ */
+.map-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.map-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.map-modal .modal-content {
+    background: #1a1a1a;
+    border: 1px solid #ecb613;
+    border-radius: 24px;
+    padding: 3rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(236, 182, 19, 0.1);
+}
+
+.map-modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #ecb613;
+}
+
+.modal-body h2 {
+    font-family: 'Cinzel', serif;
+    color: #ecb613;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.modal-detail-row {
+    margin-bottom: 1.5rem;
+}
+
+.detail-label {
+    display: block;
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.detail-value {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.artefact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.artefact-list li {
+    color: #fff;
+    font-size: 1.1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.8rem;
+}
+
+.artefact-list li::before {
+    content: '•';
+    color: #ecb613;
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+
+/* ============================================
+   ULTIMATE MUSEUM MAP (POWERFUL & THEMED)
+   ============================================ */
+:root {
+    --map-bg: rgba(10, 10, 10, 0.95);
+    --map-stroke: rgba(236, 182, 19, 0.2);
+    --hall-bg: rgba(255, 255, 255, 0.03);
+    --hall-hover: rgba(236, 182, 19, 0.2);
+    --hall-active: rgba(236, 182, 19, 0.4);
+    --text-primary: #ffffff;
+    --text-secondary: #888888;
+}
+
+[data-theme='light'] .interactive-map-section {
+    --map-bg: rgba(245, 245, 245, 0.98);
+    --map-stroke: rgba(184, 134, 11, 0.3);
+    --hall-bg: rgba(0, 0, 0, 0.05);
+    --hall-hover: rgba(184, 134, 11, 0.15);
+    --hall-active: rgba(184, 134, 11, 0.3);
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+}
+
+.interactive-map-section {
+    background: var(--map-bg);
+    color: var(--text-primary);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.map-visual-container {
+    background: radial-gradient(circle at center, rgba(236, 182, 19, 0.05) 0%, transparent 70%);
+}
+
+.museum-svg .map-hall {
+    fill: var(--hall-bg);
+    stroke: var(--map-stroke);
+    stroke-width: 0.5;
+    transition: all 0.3s ease;
+}
+
+.museum-svg .map-hall:hover, 
+.museum-svg .map-hall.active-hall {
+    fill: var(--hall-hover);
+    stroke: #ecb613;
+    stroke-width: 1.5;
+    filter: drop-shadow(0 0 8px rgba(236, 182, 19, 0.4));
+}
+
+/* Map Control Bar */
+.map-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--map-stroke);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.map-search-box {
+    position: relative;
+    width: 300px;
+}
+
+.map-search-box input {
+    width: 100%;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--map-stroke);
+    border-radius: 30px;
+    padding: 0.8rem 1.5rem;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.map-search-box input:focus {
+    border-color: #ecb613;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: 1px solid var(--map-stroke);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+
+/* ============================================
+   ISOMETRIC PREMIUM MAP (CYBER-ANCIENT STYLE)
+   ============================================ */
+.isometric-map-wrapper {
+    perspective: 1000px;
+    padding: 4rem;
+}
+
+.museum-svg.isometric {
+    transform: rotateX(45deg) rotateZ(-30deg);
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+}
+
+.neon-marker {
+    fill: #00f2ff;
+    filter: drop-shadow(0 0 10px #00f2ff) drop-shadow(0 0 20px #00f2ff);
+    animation: markerFloat 2s infinite ease-in-out;
+}
+
+@keyframes markerFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.isometric-hall {
+    fill: rgba(236, 182, 19, 0.05);
+    stroke: rgba(236, 182, 19, 0.4);
+    stroke-width: 1;
+    transition: all 0.3s;
+}
+
+.isometric-hall:hover {
+    fill: rgba(0, 242, 255, 0.1);
+    stroke: #00f2ff;
+    stroke-width: 2;
+}
+
+/* Glass Legend Panel */
+.glass-legend {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    z-index: 10;
+    width: 280px;
+}
+
+.level-switcher {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.level-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.level-btn.active {
+    background: #ecb613;
+    color: #000;
+}
+
+
+/* ============================================
+   ULTRA-PREMIUM MOCKUP FIDELITY
+   ============================================ */
+.neon-marker {
+    fill: #00f2ff;
+    r: 12;
+    filter: drop-shadow(0 0 15px #00f2ff) drop-shadow(0 0 30px #00f2ff);
+}
+
+.isometric-hall {
+    stroke-width: 2;
+    stroke: rgba(236, 182, 19, 0.6);
+    filter: drop-shadow(0 0 5px rgba(236,182,19,0.3));
+}
+
+.isometric-hall:hover {
+    filter: drop-shadow(0 0 20px #00f2ff);
+    cursor: pointer;
+}
+
+.map-modal {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(30px);
+}
+
+.modal-content {
+    border: 1px solid #00f2ff;
+    box-shadow: 0 0 50px rgba(0, 242, 255, 0.2);
+    border-radius: 30px;
+    background: rgba(10, 10, 10, 0.9);
+}
+
+.nav-block {
+    animation: slideInNav 0.5s ease-out;
+}
+
+@keyframes slideInNav {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+
+/* ============================================
+   ULTIMATE REAL-CODE FIDELITY (NO PHOTOS)
+   ============================================ */
+.legend-icon-custom {
+    font-size: 1.5rem;
+    color: #ecb613;
+    margin-right: 1rem;
+    filter: drop-shadow(0 0 5px #ecb613);
+}
+
+.interactive-map-section {
+    background: radial-gradient(circle at center, #0a111a 0%, #050505 100%);
+    overflow: hidden;
+    position: relative;
+    padding: 100px 0;
+}
+
+.museum-svg.isometric {
+    transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* Enhanced 3D Walls effect */
+.isometric-hall {
+    stroke: #ecb613;
+    stroke-opacity: 0.8;
+    fill: rgba(236, 182, 19, 0.08);
+    stroke-width: 1.5;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.isometric-hall:hover {
+    fill: rgba(0, 242, 255, 0.2);
+    stroke: #00f2ff;
+    stroke-opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
+}
+
+
+/* ============================================
+   VISIBILITY FIX (GUARANTEED CONTRAST)
+   ============================================ */
+.isometric-hall {
+    fill: rgba(236, 182, 19, 0.2) !important; /* Increased visibility */
+    stroke-opacity: 1 !important;
+    stroke-width: 2 !important;
+}
+
+.neon-marker {
+    fill: #00f2ff !important;
+    opacity: 1 !important;
+    r: 15 !important; /* Larger markers */
+}
+
+.floor-grid path {
+    stroke: #ecb613 !important;
+    stroke-opacity: 0.3 !important;
+}
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEM | Hyper-Realistic 3D Digital Twin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CINEMATIC LOADING -->
+    <div id="loading-screen" class="loading-overlay">
+        <div class="loader-content">
+            <div class="loader-eye">𓂀</div>
+            <h1 class="loader-title">GRAND EGYPTIAN MUSEUM</h1>
+            <p class="loader-subtitle">DIGITAL TWIN EXPERIENCE</p>
+            <div class="loader-bar-container"><div class="loader-bar" id="loadBar"></div></div>
+            <p class="loader-text" id="loadText">INITIALIZING 3D ENGINE...</p>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <div id="canvas-container"></div>
+
+    <!-- HEADER HUD -->
+    <header class="hud-header">
+        <div class="logo-area">
+            <img src="../logo.png" alt="GEM" class="mini-logo">
+            <div class="header-text">
+                <h1>Grand Egyptian Museum</h1>
+                <p>Digital Twin v7.0</p>
+            </div>
+        </div>
+
+        <nav class="view-mode-tabs glassmorphism" id="viewTabs">
+            <button class="view-tab active" data-view="complex">
+                <span class="material-symbols-outlined">landscape</span>
+                <span>COMPLEX</span>
+            </button>
+            <button class="view-tab" data-view="interior">
+                <span class="material-symbols-outlined">museum</span>
+                <span>INTERIOR 3D</span>
+            </button>
+        </nav>
+
+        <div class="header-actions">
+            <button class="hud-icon-btn" id="searchToggle" title="Search">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <button class="hud-icon-btn" id="tourBtn" title="Guided Tour">
+                <span class="material-symbols-outlined">tour</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- SEARCH PANEL -->
+    <div class="search-panel glassmorphism hidden" id="searchPanel">
+        <input type="text" id="searchInput" placeholder="Search halls, artifacts..." autocomplete="off">
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- LEFT LEGEND -->
+    <aside class="map-legend glassmorphism" id="legendPanel">
+        <div class="legend-header">
+            <h2 id="legendTitle">MUSEUM COMPLEX</h2>
+        </div>
+        <!-- Interior Legend -->
+        <div class="legend-items" id="legend-items"></div>
+        <!-- Complex Legend -->
+        <div class="complex-sidebar-legend" id="complex-sidebar-legend">
+            <ol class="landmark-list">
+                <li><span>1.</span> Hanging Obelisk</li>
+                <li><span>2.</span> Events Area</li>
+                <li><span>3.</span> Khufu's Boats Museum</li>
+                <li><span>4.</span> Pyramids Steps</li>
+                <li><span>5.</span> Conservation Centre</li>
+            </ol>
+            <div class="utility-icons">
+                <div class="u-item"><span class="u-box p-box">P</span> Parking</div>
+                <div class="u-item"><span class="u-box t-box">T</span> Ticketing & Entrance</div>
+                <div class="u-item"><span class="u-icon">🌴</span> Garden</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- COMPLEX MAP OVERLAY (SVG) -->
+    <div id="complex-map-container" class="complex-map-container">
+        <svg id="gem-map" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid meet"></svg>
+        <div id="complex-overlay" class="complex-overlay">
+            <div class="complex-title"><h1>GEM</h1><h2>Complex</h2></div>
+            <div class="compass-widget">
+                <span class="compass-icon">🧭</span>
+                <div class="compass-labels"><span>N</span><span>E</span><span>S</span><span>W</span></div>
+            </div>
+            <div class="pyramid-indicator"><span class="pyramid-icon">▲</span><span class="indicator-arrow">←</span></div>
+            <div class="road-label cairo-road-left">Cairo - Alexandria Desert Road</div>
+            <div class="road-label cairo-road-center">Cairo - Alexandria Desert Road</div>
+            <div class="road-label ring-road">Ring Road</div>
+        </div>
+    </div>
+
+    <!-- CAMERA CONTROLS -->
+    <div class="camera-controls glassmorphism" id="cameraControls">
+        <button id="camTopView" title="Top View"><span class="material-symbols-outlined">visibility</span></button>
+        <button id="camFirstPerson" title="First Person"><span class="material-symbols-outlined">person</span></button>
+        <button id="camOrbit" title="Orbit"><span class="material-symbols-outlined">3d_rotation</span></button>
+        <button id="camReset" title="Reset"><span class="material-symbols-outlined">restart_alt</span></button>
+    </div>
+
+    <!-- FLOOR SWITCHER -->
+    <div class="level-switcher hidden" id="floor-switcher">
+        <button class="level-btn" data-level="L3">L3</button>
+        <button class="level-btn active" data-level="L2">L2</button>
+        <button class="level-btn" data-level="L1">L1</button>
+    </div>
+
+    <!-- MINI MAP -->
+    <div class="mini-map glassmorphism hidden" id="miniMap">
+        <div class="mini-map-header">MINI MAP</div>
+        <canvas id="miniMapCanvas" width="200" height="150"></canvas>
+        <div class="mini-map-indicator" id="miniMapIndicator"></div>
+    </div>
+
+    <!-- HALL POPUP -->
+    <div id="hall-popup" class="hall-popup hidden">
+        <div class="popup-content glassmorphism">
+            <button class="popup-close">&times;</button>
+            <div class="popup-image-container">
+                <img id="popupImage" src="" alt="Hall">
+            </div>
+            <div class="popup-body">
+                <h2 id="popupName">---</h2>
+                <p id="popupDesc">---</p>
+                <div class="popup-meta">
+                    <span id="popupLevel">LEVEL L2</span>
+                    <span id="popupTime">20 MINS</span>
+                </div>
+                <div class="popup-artifacts" id="popupArtifacts"></div>
+                <button id="startNavBtn" class="primary-btn">
+                    <span class="material-symbols-outlined">navigation</span>
+                    NAVIGATE HERE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline-bar hidden" id="timelineBar">
+        <div class="timeline-track" id="timelineTrack"></div>
+    </div>
+
+    <!-- FPS Counter -->
+    <div class="fps-counter" id="fpsCounter">60 FPS</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="map-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

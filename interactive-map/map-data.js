@@ -1,0 +1,163 @@
+const MAP_DATA = {
+    halls: [
+        {
+            id: "grand-hall",
+            name: "Grand Hall",
+            level: "L2",
+            description: "The majestic entrance atrium dominated by the colossal 82-ton statue of Ramses II, welcoming visitors with ancient grandeur.",
+            artifacts: ["Colossal Ramses II", "Victory Stele of Merneptah", "Ptolemaic Royal Statues"],
+            time: "20 mins",
+            image: "../statue-of-ramesses-ii-in-the-entrance-hall-of-the-grand-egyptian-museum-3BNPFMK.jpg",
+            category: "statues",
+            coordinates: { x: 500, y: 650 },
+            nearby: ["hanging-obelisk", "grand-staircase", "commercial-area"],
+            connections: ["hanging-obelisk", "grand-staircase", "commercial-area", "childrens-museum"]
+        },
+        {
+            id: "hanging-obelisk",
+            name: "Hanging Obelisk Area",
+            level: "L2",
+            description: "The world's first hanging obelisk, allowing visitors to see the rare cartouche of Ramses II on its base.",
+            artifacts: ["Ramses II Obelisk"],
+            time: "10 mins",
+            image: "../the-entrance-to-the-grand-egyptian-museum-3BAN3ER.jpg",
+            category: "pharaohs",
+            coordinates: { x: 500, y: 750 },
+            nearby: ["grand-hall"],
+            connections: ["grand-hall"]
+        },
+        {
+            id: "grand-staircase",
+            name: "Grand Staircase",
+            level: "L2",
+            description: "A chronological journey through 87 colossal statues and architectural elements spanning thousands of years of history.",
+            artifacts: ["Statues of Akhenaten", "Middle Kingdom Sarcophagi", "Old Kingdom Columns"],
+            time: "45 mins",
+            image: "../Grand_Staircase_(GEM).jpg",
+            category: "statues",
+            coordinates: { x: 500, y: 450 },
+            nearby: ["grand-hall", "tut-galleries", "main-galleries"],
+            connections: ["grand-hall", "tut-galleries", "main-galleries"]
+        },
+        {
+            id: "tut-galleries",
+            name: "Tutankhamun Galleries",
+            level: "L3",
+            description: "The complete, world-famous collection of the boy king, featuring the golden mask, throne, and over 5,000 artifacts.",
+            artifacts: ["Golden Death Mask", "Golden Throne", "Anubis Shrine"],
+            time: "120 mins",
+            image: "../tut-mask.png",
+            category: "jewelry",
+            coordinates: { x: 300, y: 250 },
+            nearby: ["grand-staircase", "main-galleries"],
+            connections: ["grand-staircase", "main-galleries"]
+        },
+        {
+            id: "main-galleries",
+            name: "Main Galleries",
+            level: "L3",
+            description: "A massive exhibition space divided by eras, from the Predynastic period to the Greco-Roman era.",
+            artifacts: ["Rosetta Stone Replica", "Seated Scribe", "Rahotep and Nofret"],
+            time: "180 mins",
+            image: "../hall.jpg",
+            category: "pharaohs",
+            coordinates: { x: 700, y: 250 },
+            nearby: ["grand-staircase", "tut-galleries", "khufu-boats"],
+            connections: ["grand-staircase", "tut-galleries", "khufu-boats"]
+        },
+        {
+            id: "childrens-museum",
+            name: "Children's Museum",
+            level: "L1",
+            description: "An interactive, educational space designed to introduce the youngest visitors to the wonders of Ancient Egypt.",
+            artifacts: ["Interactive Mummy Puzzle", "Ancient Games Replicas"],
+            time: "60 mins",
+            image: "../kids.png",
+            category: "pharaohs",
+            coordinates: { x: 200, y: 650 },
+            nearby: ["grand-hall", "commercial-area"],
+            connections: ["grand-hall", "commercial-area"]
+        },
+        {
+            id: "khufu-boats",
+            name: "Khufu Boats Museum",
+            level: "L3",
+            description: "Home to the magnificent solar barks of King Khufu, masterfully preserved for over 4,500 years.",
+            artifacts: ["First Solar Bark", "Second Solar Bark"],
+            time: "45 mins",
+            image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_7.jpg",
+            category: "pharaohs",
+            coordinates: { x: 700, y: 100 },
+            nearby: ["main-galleries"],
+            connections: ["main-galleries"]
+        },
+        {
+            id: "commercial-area",
+            name: "Commercial Area",
+            level: "L1",
+            description: "Premium shopping and dining experience featuring Egyptian-inspired boutiques and world-class restaurants.",
+            artifacts: ["Luxury Gift Shops", "Gourmet Cafes"],
+            time: "Anytime",
+            image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg",
+            category: "all",
+            coordinates: { x: 800, y: 650 },
+            nearby: ["grand-hall", "childrens-museum"],
+            connections: ["grand-hall", "childrens-museum"]
+        },
+        {
+            id: "conservation-center",
+            name: "Conservation Center",
+            level: "L1",
+            description: "One of the world's largest and most advanced laboratories for the restoration of ancient antiquities.",
+            artifacts: ["State-of-the-art Labs", "Restoration Workshops"],
+            time: "Private Tours",
+            image: "../tutora-lab.png",
+            category: "all",
+            coordinates: { x: 150, y: 350 },
+            nearby: ["tut-galleries"],
+            connections: ["tut-galleries"]
+        },
+        {
+            id: "greco-roman",
+            name: "Greco-Roman Period",
+            level: "L3",
+            description: "The fascinating blend of Ancient Egyptian and Greco-Roman cultures.",
+            artifacts: ["Fayum Mummy Portraits"],
+            time: "30 mins",
+            image: "../hall.jpg",
+            category: "greco",
+            coordinates: { x: 300, y: 350 },
+            nearby: ["tut-galleries"],
+            connections: ["tut-galleries"]
+        }
+    ],
+    complex: [
+        { id: "main-building", name: "Main Building", type: "building", description: "The architectural centerpiece of the GEM, housing the main galleries and the Grand Staircase.", image: "../hall.jpg", coordinates: { x: 500, y: 450 } },
+        { id: "hanging-obelisk-ext", name: "Hanging Obelisk", type: "poi", labelId: 1, description: "The world's first hanging obelisk, showcasing the cartouche of Ramses II on its base.", image: "../the-entrance-to-the-grand-egyptian-museum-3BAN3ER.jpg", coordinates: { x: 400, y: 700 } },
+        { id: "events-area", name: "Events Area", type: "area", labelId: 2, description: "Outdoor venue for cultural events and exhibitions with views of the Giza Pyramids.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg", coordinates: { x: 750, y: 650 } },
+        { id: "khufu-boats-ext", name: "Khufu's Boats Museum", type: "building", labelId: 3, description: "Dedicated museum for the ancient solar barks of King Khufu.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_7.jpg", coordinates: { x: 650, y: 400 } },
+        { id: "pyramid-steps", name: "Pyramid Steps", type: "poi", labelId: 4, description: "A unique architectural viewpoint overlooking the Giza plateau.", image: "../Grand_Staircase_(GEM).jpg", coordinates: { x: 400, y: 350 } },
+        { id: "conservation-centre-ext", name: "Conservation Centre", type: "building", labelId: 5, description: "Advanced laboratories for the restoration and preservation of Egypt's artifacts.", image: "../tutora-lab.png", coordinates: { x: 500, y: 150 } },
+        { id: "sculpture-garden", name: "Sculpture Garden", type: "garden", description: "Open-air gallery featuring monumental statues from various eras of Egyptian history.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg", coordinates: { x: 250, y: 650 } },
+        { id: "terraced-garden", name: "Terraced Garden", type: "garden", description: "Beautifully landscaped gardens offering a peaceful environment for visitors.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_5.jpg", coordinates: { x: 550, y: 350 } },
+        { id: "palm-garden", name: "Palm Garden", type: "garden", description: "Lush palm groves representing the fertile lands of the Nile valley.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_6.jpg", coordinates: { x: 700, y: 750 } },
+        { id: "parking-main", name: "Main Parking", type: "parking", description: "Primary visitor parking area with easy access to the ticketing entrance.", image: "../parking.png", coordinates: { x: 150, y: 800 } }
+    ],
+    pois: [
+        { id: "wc-1", type: "restroom", name: "Restrooms", coordinates: { x: 250, y: 720 } },
+        { id: "wc-2", type: "restroom", name: "Restrooms", coordinates: { x: 750, y: 720 } },
+        { id: "lift-1", type: "elevator", name: "Elevators", coordinates: { x: 420, y: 450 } },
+        { id: "lift-2", type: "elevator", name: "Elevators", coordinates: { x: 580, y: 450 } },
+        { id: "cafe-1", type: "restaurant", name: "Lotus Cafe", coordinates: { x: 850, y: 600 } },
+        { id: "shop-1", type: "giftshop", name: "Museum Shop", coordinates: { x: 150, y: 600 } }
+    ],
+    timeline: [
+        { year: "-3100 BC", event: "Unification of Upper and Lower Egypt by King Narmer." },
+        { year: "-2580 BC", event: "Construction of the Great Pyramid of Giza by King Khufu." },
+        { year: "-1332 BC", event: "Accession of King Tutankhamun to the throne." },
+        { year: "-1279 BC", event: "Reign of Ramses II the Great begins." },
+        { year: "-30 BC", event: "Death of Cleopatra VII and end of Ptolemaic period." },
+        { year: "1922 AD", event: "Discovery of Tutankhamun's tomb by Howard Carter." },
+        { year: "2024 AD", event: "Grand opening of the Grand Egyptian Museum." }
+    ]
+};
