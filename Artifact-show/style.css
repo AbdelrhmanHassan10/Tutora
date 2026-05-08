@@ -72,59 +72,47 @@ h6 {
 .logo-section {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-}
- 
-.tutora {
-    font-family: 'Cinzel', serif;
-    font-size: 36px;
-    font-weight: 900;
-    letter-spacing: 10px;
-    background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #ffffff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
-    transition: all 0.5s ease;
+    gap: 1rem;
+    flex-shrink: 0;
 }
 
-.tutora:hover {
-    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.6));
-    transform: scale(1.05);
-}
 .logo-circle {
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     overflow: hidden;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border: 2px solid var(--primary);
+    border: 2px solid #f2b90d;
     background-color: #000;
-    box-shadow: 0 0 15px var(--primary-glow);
+    box-shadow: 0 0 15px rgba(242, 185, 13, 0.3);
+    transition: all 0.3s ease;
+}
+
+.logo-circle:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 25px rgba(242, 185, 13, 0.5);
 }
 
 .logo-circle img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}.logo-text,
-.menu-logo-text {
+}
+
+.logo-text {
     font-family: 'Cinzel', serif;
     font-size: 24px;
     font-weight: 900;
-    letter-spacing: 5px;
+    letter-spacing: 6px;
     background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #ffffff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
     text-transform: uppercase;
 }
+
 /* Loading styles */
 
 .artifacts-loading {
@@ -182,12 +170,6 @@ h6 {
     --text-gray: #8c8c82;
     --font-main: 'Outfit', sans-serif;
     --font-serif: 'Cinzel', serif;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
 body.light {
@@ -550,12 +532,12 @@ body.light .header {
 
 .header-container {
     max-width: 1400px;
-    margin: 1px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1.3rem;
-    padding-left: 0rem;
+    gap: 2rem;
 }
 
 
@@ -564,8 +546,7 @@ body.light .header {
 .header-left {
     display: flex;
     align-items: center;
-    gap: 0rem;
- 
+    gap: 1.5rem;
 }
 
 .menu-btn {
@@ -584,12 +565,6 @@ body.light .header {
 .menu-btn:hover {
     background-color: rgba(242, 208, 13, 0.1);
     color: var(--primary);
-}
-
-.logo-section {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
 }
 
 .logo-icon {
@@ -1390,10 +1365,20 @@ body.light .artifact-image-panel {
     transition: all 0.4s ease;
 }
 
+body.light .stat-box {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(142, 115, 65, 0.1);
+}
+
 .stat-box:hover {
     background: rgba(242, 185, 13, 0.05);
     border-color: var(--primary-color);
     transform: translateY(-5px);
+}
+
+body.light .stat-box:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: #8e7341;
 }
 
 .stat-label {
@@ -1405,6 +1390,11 @@ body.light .artifact-image-panel {
     font-weight: 800;
     margin-bottom: 12px;
     opacity: 0.8;
+}
+
+body.light .stat-label {
+    color: #8e7341;
+    opacity: 1;
 }
 
 .stat-value {
@@ -1434,6 +1424,11 @@ body.light .artifact-image-panel {
     border-left: 4px solid var(--primary-color);
     border-radius: 0 20px 20px 0;
     margin: 40px 0;
+}
+
+body.light .historical-quote {
+    background: rgba(142, 115, 65, 0.05);
+    border-left-color: #8e7341;
 }
 
 .historical-quote::before {
@@ -1467,6 +1462,10 @@ body.light .artifact-image-panel {
     text-transform: uppercase;
     font-weight: 700;
     display: block;
+}
+
+body.light .quote-author {
+    color: #8e7341;
 }
  
 .float-btn:hover {

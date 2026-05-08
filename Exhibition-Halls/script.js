@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'The Grand Hall is the majestic entrance to the GEM, dominated by the 82-ton, 11-meter-high statue of King Ramses II. This hall serves as a gateway to the museum’s chronological journey, surrounded by colossal architectural elements from various dynasties.',
         image: 'images/grand.png',
         artifacts: [
-            { name: "Colossal Ramses II", period: "19th Dynasty", desc: "The centerpiece of the Grand Hall, greeting every visitor with divine authority.", image: "images/grand.png" },
-            { name: "Granite Column of Merneptah", period: "19th Dynasty", desc: "A massive monolithic red granite column inscribed with triumphs.", image: "images/column_merneptah.png" },
-            { name: "Colossus of a Ptolemaic King", period: "Ptolemaic Period", desc: "A monumental statue retrieved from the Mediterranean sea.", image: "images/ptolemaic_king.png" },
-            { name: "Colossus of a Ptolemaic Queen", period: "Ptolemaic Period", desc: "A massive statue of a queen depicted in traditional Egyptian style.", image: "images/ptolemaic_queen.png" },
-            { name: "Victory Stele of Merneptah", period: "19th Dynasty", desc: "A large stele detailing the military victories of King Merneptah.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Israel_Stele.jpg/800px-Israel_Stele.jpg" },
-            { name: "Statue of Senusret I", period: "12th Dynasty", desc: "One of the large seated colossi of the great Middle Kingdom pharaoh.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Statue_of_Senusret_I-CairoMuseum.png/800px-Statue_of_Senusret_I-CairoMuseum.png" }
+            { id: "ramses-colossus", name: "Colossal Ramses II", period: "19th Dynasty", desc: "The centerpiece of the Grand Hall, greeting every visitor with divine authority.", image: "images/grand.png" },
+            { id: "merneptah-column", name: "Granite Column of Merneptah", period: "19th Dynasty", desc: "A massive monolithic red granite column inscribed with triumphs.", image: "images/column_merneptah.png" },
+            { id: "ptolemaic-king", name: "Colossus of a Ptolemaic King", period: "Ptolemaic Period", desc: "A monumental statue retrieved from the Mediterranean sea.", image: "images/ptolemaic_king.png" },
+            { id: "ptolemaic-queen", name: "Colossus of a Ptolemaic Queen", period: "Ptolemaic Period", desc: "A massive statue of a queen depicted in traditional Egyptian style.", image: "images/ptolemaic_queen.png" },
+            { id: "victory-stele", name: "Victory Stele of Merneptah", period: "19th Dynasty", desc: "Also known as the Israel Stele, this massive black granite slab commemorates King Merneptah's military victories and contains the earliest known mention of 'Israel'.", image: "images/Victory Stele of Merneptah.png" },
+            { id: "senusret-statue", name: "Statue of Senusret I", period: "12th Dynasty", desc: "A beautifully preserved seated colossus of the great Middle Kingdom pharaoh, showcasing the refined artistic style of the 12th Dynasty.", image: "images/Statue of Senusret I.png" }
         ]
     },
     {
@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: 'images/sculpture.png',
         artifacts: [
             { name: "The Seated Scribe", period: "5th Dynasty", desc: "A remarkably lifelike statue of a scribe with penetrating crystal eyes.", image: "images/artifacts/the_seated_scribe.jpg" },
+            { id: "ra-hotep-scribe", name: "The Royal Scribe Ra-Hotep", period: "4th Dynasty", desc: "A masterful stone-carved portrait of one of the Old Kingdom's highest intellectual officials.", image: "images/sculpture.png" },
             { name: "Statue of King Khafre", period: "4th Dynasty", desc: "A majestic diorite statue of the builder of the second pyramid of Giza.", image: "images/artifacts/statue_of_king_khafre.jpg" },
             { name: "Group Statue of Menkaure", period: "4th Dynasty", desc: "A stunning triad showing King Menkaure flanked by two deities.", image: "images/artifacts/group_statue_of_menkaure.jpg" },
             { name: "Rahotep and Nofret", period: "4th Dynasty", desc: "Beautifully painted limestone statues of a prince and his wife, retaining their original colors.", image: "images/artifacts/rahotep_and_nofret.jpg" },
@@ -61,12 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'Beliefs in the afterlife took physical form during the Old Kingdom. This gallery displays the earliest funerary texts, reserve heads, and magical objects intended to ensure the deceased\'s survival in the next world.',
         image: 'images/old-kingdom-beliefs.png',
         artifacts: [
-            { name: "Pyramid Texts Fragment", period: "Old Kingdom", desc: "The oldest known religious texts, carved to guide the king to the afterlife.", image: "images/artifacts/pyramid_texts_fragment.jpg" },
-            { name: "Reserve Head", period: "4th Dynasty", desc: "A mysterious limestone head, likely a substitute for the deceased's real head.", image: "images/artifacts/reserve_head.jpg" },
-            { name: "False Door Stele", period: "Old Kingdom", desc: "A magical portal for the Ka (soul) to receive offerings in the tomb.", image: "images/artifacts/false_door_stele.jpg" },
-            { name: "Hetepheres I Bed", period: "4th Dynasty", desc: "A reconstructed golden canopy bed belonging to the mother of Khufu.", image: "images/artifacts/hetepheres_i_bed.jpg" },
-            { name: "Ptah-Sokar-Osiris figure", period: "Old Kingdom", desc: "A wooden statuette representing the synthesized funerary deity.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Ptah-Sokar-Osiris_figure_MET.jpg/800px-Ptah-Sokar-Osiris_figure_MET.jpg" },
-            { name: "Khufu Ship", period: "4th Dynasty", desc: "An intact full-size solar bark from the Giza pyramid complex.", image: "images/artifacts/khufu_ship.jpg" }
+            { id: "pyramid-texts", name: "Pyramid Texts Fragment", period: "Old Kingdom", desc: "The oldest known religious texts, carved to guide the king to the afterlife.", image: "images/artifacts/pyramid_texts_fragment.jpg" },
+            { id: "reserve-head", name: "Reserve Head", period: "4th Dynasty", desc: "A mysterious limestone head, likely a substitute for the deceased's real head.", image: "images/artifacts/reserve_head.jpg" },
+            { id: "false-door", name: "False Door Stele", period: "Old Kingdom", desc: "A magical portal for the Ka (soul) to receive offerings in the tomb.", image: "images/artifacts/false_door_stele.jpg" },
+            { id: "hetepheres-bed", name: "Hetepheres I Bed", period: "4th Dynasty", desc: "A reconstructed golden canopy bed belonging to the mother of Khufu.", image: "images/artifacts/hetepheres_i_bed.jpg" },
+            { id: "ptah-sokar-osiris", name: "Ptah-Sokar-Osiris figure", period: "Old Kingdom", desc: "A wooden statuette representing the synthesized funerary deity, ensuring protection and rebirth in the afterlife.", image: "images/artifacts/ptah_sokar_osiris.png" },
+            { id: "khufu-ship", name: "Khufu Ship", period: "4th Dynasty", desc: "An intact full-size solar bark from the Giza pyramid complex.", image: "images/artifacts/khufu_ship.jpg" }
         ]
     },
     {
@@ -77,7 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'The Middle Kingdom is considered the classical age of Egyptian culture. Step into the daily lives of ancient Egyptians through their intricate jewelry, tools, cosmetics, and fascinating recreational games.',
         image: 'images/daily.png',
         artifacts: [
-            { name: "Senet Game Board", period: "Middle Kingdom", desc: "An ancient board game that held deep religious and recreational significance.", image: "images/artifacts/senet_board_ai.png" },
+            { id: "senet-board", name: "Senet Game Board", period: "Middle Kingdom", desc: "An ancient board game that held deep religious and recreational significance.", image: "images/artifacts/senet_board_ai.png" },
+            { id: "meshti-governor", name: "Meshti the Governor", period: "Middle Kingdom", desc: "An exquisite alabaster statue showing the refined bureaucratic status of the Middle Kingdom.", image: "images/daily.png" },
+            { id: "union-kheper", name: "Union of Kheper-ka-Ra-Seneb", period: "Middle Kingdom", desc: "A rare depiction of high-ranking officials unified in eternal service.", image: "images/daily.png" },
+            { id: "sobek-nakht", name: "The Voice of Sobek-Nakht", period: "Middle Kingdom", desc: "A narrative journey into the life of a Middle Kingdom noble.", image: "images/daily.png" },
             { name: "Scribe's Palette", period: "Middle Kingdom", desc: "A wooden palette complete with ink wells and reed brushes used by scribes.", image: "images/artifacts/scribes_palette_ai.png" },
             { name: "Cosmetic Palette", period: "Middle Kingdom", desc: "Used for grinding malachite and galena for eye makeup.", image: "images/artifacts/cosmetic_palette.jpg" },
             { name: "Ancient Egyptian Sandals", period: "Middle Kingdom", desc: "Woven papyrus and palm leaf sandals for daily wear.", image: "images/artifacts/ancient_egyptian_sandals.jpg" },
@@ -109,12 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'During the New Kingdom, Egypt became a global empire. This gallery showcases the unprecedented wealth, luxurious lifestyles, vibrant fashion, and advanced tools used by the society that thrived along the Nile.',
         image: 'images/new-kingdom-society.png',
         artifacts: [
-            { name: "Ostracon with a Sketch", period: "New Kingdom", desc: "A piece of limestone used as a sketchpad by an ancient artisan.", image: "images/artifacts/ostracon_sketch_ai.png" },
-            { name: "Nobleman's Chair", period: "18th Dynasty", desc: "An elegantly crafted wooden chair showing the luxury of the elite.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Ancient_Egyptian_chair_MET.jpg/800px-Ancient_Egyptian_chair_MET.jpg" },
-            { name: "Floral Collar", period: "New Kingdom", desc: "A broad collar (Usekh) made of faience beads simulating real flowers.", image: "images/artifacts/floral_collar.jpg" },
-            { name: "Sistrum", period: "New Kingdom", desc: "A sacred musical rattle used in religious ceremonies, particularly for Hathor.", image: "images/artifacts/sistrum.jpg" },
-            { name: "Shabti Box", period: "New Kingdom", desc: "A painted wooden box used to store the magical servant figurines.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Shabti_box_of_Sennedjem.jpg/800px-Shabti_box_of_Sennedjem.jpg" },
-            { name: "Papyrus of Ani", period: "19th Dynasty", desc: "One of the most beautifully illustrated scrolls of the Book of the Dead.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Papyrus_of_Ani_sheet_1.jpg/800px-Papyrus_of_Ani_sheet_1.jpg" }
+            { id: "ostracon-sketch", name: "Ostracon with a Sketch", period: "New Kingdom", desc: "A piece of limestone used as a sketchpad by an ancient artisan.", image: "images/artifacts/ostracon_sketch_ai.png" },
+            { id: "bakenkhonsu-priest", name: "Priest Bakenkhonsu", period: "19th Dynasty", desc: "The high priest of Amun who served under Ramses the Great.", image: "images/new-kingdom-society.png" },
+            { id: "nobleman-chair", name: "Nobleman's Chair", period: "18th Dynasty", desc: "An elegantly crafted wooden chair with ebony and ivory inlays, showing the luxury of the elite.", image: "images/artifacts/nobleman_chair.png" },
+            { id: "floral-collar", name: "Floral Collar", period: "New Kingdom", desc: "A broad collar (Usekh) made of faience beads simulating real flowers.", image: "images/artifacts/floral_collar.jpg" },
+            { id: "sistrum", name: "Sistrum", period: "New Kingdom", desc: "A sacred musical rattle used in religious ceremonies, particularly for Hathor.", image: "images/artifacts/sistrum.jpg" },
+            { id: "shabti-box", name: "Shabti Box", period: "New Kingdom", desc: "A painted wooden box used to store the magical servant figurines, decorated with scenes of the afterlife.", image: "images/artifacts/shabti_box.png" },
+            { id: "papyrus-ani", name: "Papyrus of Ani", period: "19th Dynasty", desc: "One of the most beautifully illustrated scrolls of the Book of the Dead, featuring the Weighing of the Heart.", image: "images/artifacts/papyrus_ani.png" }
         ]
     },
     {
@@ -125,12 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'This gallery focuses on the most famous pharaohs in history—from Thutmose III, the Napoleon of Egypt, to the controversial "heretic king" Akhenaten. Witness the evolution of imperial art and power.',
         image: 'images/imperial-kingship.png',
         artifacts: [
-            { name: "Statue of Thutmose III", period: "18th Dynasty", desc: "A schist statue of Egypt's greatest military commander.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/ThutmoseIII-CairoMuseum.jpg/800px-ThutmoseIII-CairoMuseum.jpg" },
-            { name: "Relief of the Battle of Kadesh", period: "19th Dynasty", desc: "A deeply carved relief showing Ramses II charging into battle on his chariot.", image: "images/artifacts/relief_of_the_battle_of_kadesh.jpg" },
-            { name: "Seated Sphinx of Hatshepsut", period: "18th Dynasty", desc: "The female pharaoh depicted as a powerful sphinx.", image: "images/artifacts/seated_sphinx_of_hatshepsut.jpg" },
-            { name: "Colossi of Memnon fragment", period: "18th Dynasty", desc: "A massive piece of quartzite from the statues of Amenhotep III.", image: "images/artifacts/colossi_of_memnon_fragment.jpg" },
-            { name: "Statue of Akhenaten", period: "18th Dynasty", desc: "A colossal statue from Karnak displaying the radical Amarna art style.", image: "images/artifacts/statue_of_akhenaten.jpg" },
-            { name: "Nefertiti Bust", period: "18th Dynasty", desc: "A stunningly realistic stucco-coated limestone bust of the Great Royal Wife.", image: "images/artifacts/nefertiti_bust.jpg" }
+            { id: "thutmose-statue", name: "Statue of Thutmose III", period: "18th Dynasty", desc: "A schist statue of Egypt's greatest military commander.", image: "images/artifacts/thutmose_statue.png" },
+            { id: "thutmose-triad", name: "Sacred Triad of Thutmose I", period: "18th Dynasty", desc: "A monumental representation of the early New Kingdom's divine authority.", image: "images/imperial-kingship.png" },
+            { id: "kadesh-relief", name: "Relief of the Battle of Kadesh", period: "19th Dynasty", desc: "A deeply carved relief showing Ramses II charging into battle on his chariot.", image: "images/artifacts/relief_of_the_battle_of_kadesh.jpg" },
+            { id: "hatshepsut-sphinx", name: "Seated Sphinx of Hatshepsut", period: "18th Dynasty", desc: "The female pharaoh depicted as a powerful sphinx.", image: "images/artifacts/seated_sphinx_of_hatshepsut.jpg" },
+            { id: "memnon-fragment", name: "Colossi of Memnon fragment", period: "18th Dynasty", desc: "A massive piece of quartzite from the statues of Amenhotep III.", image: "images/artifacts/memnon_fragment.png" },
+            { id: "akhenaten-statue", name: "Statue of Akhenaten", period: "18th Dynasty", desc: "A colossal statue from Karnak displaying the radical Amarna art style.", image: "images/artifacts/statue_of_akhenaten.jpg" },
+            { id: "nefertiti-bust", name: "Nefertiti Bust", period: "18th Dynasty", desc: "A stunningly realistic stucco-coated limestone bust of the Great Royal Wife.", image: "images/artifacts/nefertiti_bust.jpg" }
         ]
     },
     {
@@ -141,12 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'To achieve eternal life, an Egyptian had to pass through the treacherous Duat. Here you will find the magical amulets, intricate sarcophagi, and the Books of the Netherworld designed to protect the soul.',
         image: 'images/afterlife.png',
         artifacts: [
-            { name: "Anubis Guardian Statue", period: "New Kingdom", desc: "A jackal statue of Anubis, the god of embalming, guarding the dead.", image: "images/artifacts/anubis_guardian_statue.jpg" },
-            { name: "Book of the Dead Fragment", period: "New Kingdom", desc: "A papyrus scroll containing spells to navigate the dangers of the underworld.", image: "images/artifacts/book_of_the_dead_fragment.jpg" },
-            { name: "Canopic Jars", period: "New Kingdom", desc: "Four alabaster jars used to store and protect the mummified organs.", image: "images/artifacts/canopic_jars.jpg" },
-            { name: "Weighing of the Heart Papyrus", period: "New Kingdom", desc: "An illustration of the ultimate judgment before Osiris.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/The_Weighing_of_the_Heart_from_the_Book_of_the_Dead_of_Ani.jpg/800px-The_Weighing_of_the_Heart_from_the_Book_of_the_Dead_of_Ani.jpg" },
-            { name: "Heart Scarab", period: "New Kingdom", desc: "An amulet placed over the heart to prevent it from testifying against the deceased.", image: "images/artifacts/heart_scarab.jpg" },
-            { name: "Mummy Cartonnage", period: "New Kingdom", desc: "A painted casing made of layers of linen and plaster to cover the mummy.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Egyptian_mummy_cartonnage_MET.jpg/800px-Egyptian_mummy_cartonnage_MET.jpg" }
+            { id: "anubis-guardian", name: "Anubis Guardian Statue", period: "New Kingdom", desc: "A jackal statue of Anubis, the god of embalming, guarding the dead.", image: "images/artifacts/anubis_guardian_statue.jpg" },
+            { id: "afterlife-book", name: "Book of the Dead Fragment", period: "New Kingdom", desc: "A papyrus scroll containing spells to navigate the dangers of the underworld.", image: "images/artifacts/book_of_the_dead_fragment.jpg" },
+            { id: "canopic-jars-afterlife", name: "Canopic Jars", period: "New Kingdom", desc: "Four alabaster jars used to store and protect the mummified organs.", image: "images/artifacts/canopic_jars.jpg" },
+            { id: "weighing-heart-afterlife", name: "Weighing of the Heart Papyrus", period: "New Kingdom", desc: "An illustration of the ultimate judgment before Osiris.", image: "images/artifacts/weighing_heart.png" },
+            { id: "heart-scarab", name: "Heart Scarab", period: "New Kingdom", desc: "An amulet placed over the heart to prevent it from testifying against the deceased.", image: "images/artifacts/heart_scarab.jpg" },
+            { id: "mummy-cartonnage", name: "Mummy Cartonnage", period: "New Kingdom", desc: "A painted casing made of layers of linen and plaster to cover the mummy.", image: "images/artifacts/mummy_cartonnage.png" }
         ]
     },
     {
@@ -154,15 +160,31 @@ document.addEventListener('DOMContentLoaded', () => {
         name: 'Special: Tutankhamun Galleries',
         era: 'New Kingdom',
         shortDesc: 'The complete, unedited collection of the boy king’s legendary treasures.',
-        longDesc: 'For the first time since their discovery in 1922, over 5,000 artifacts from the tomb of King Tutankhamun are displayed together. Experience the gold, the mystery, and the legacy of the boy pharaoh.',
+        longDesc: `
+            <p style="margin-bottom: 2rem;">For the first time since their discovery in 1922, over 5,000 artifacts from the tomb of King Tutankhamun are displayed together. Experience the gold, the mystery, and the legacy of the boy pharaoh.</p>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 2rem;">
+                <div class="staircase-feature">
+                    <div class="feature-icon-wrapper">
+                        <span class="material-symbols-outlined">diamond</span>
+                    </div>
+                    <span class="feature-text">The Complete Collection (5,000+ Pieces)</span>
+                </div>
+                <div class="staircase-feature">
+                    <div class="feature-icon-wrapper">
+                        <span class="material-symbols-outlined">history_edu</span>
+                    </div>
+                    <span class="feature-text">The Legacy of the Boy Pharaoh</span>
+                </div>
+            </div>
+        `,
         image: 'images/tut.png',
         artifacts: [
-            { name: "Tutankhamun's Mask", period: "18th Dynasty", desc: "The iconic 11kg solid gold death mask inlaid with semi-precious stones.", image: "images/artifacts/tutankhamun_s_mask.jpg" },
-            { name: "Golden Throne", period: "18th Dynasty", desc: "A wooden throne covered in gold foil, depicting Tutankhamun and his wife Ankhesenamun.", image: "images/artifacts/golden_throne.jpg" },
-            { name: "Ceremonial Chariot", period: "18th Dynasty", desc: "An ornate ceremonial chariot made from wood and gold leaf.", image: "images/artifacts/ceremonial_chariot.jpg" },
-            { name: "Golden Shrine", period: "18th Dynasty", desc: "The outermost of four gilded shrines that protected the king's sarcophagus.", image: "images/artifacts/golden_shrine.jpg" },
-            { name: "Anubis Shrine", period: "18th Dynasty", desc: "A jackal figure of Anubis mounted on a portable gilded shrine.", image: "images/artifacts/anubis_shrine.jpg" },
-            { name: "Pectoral with Solar Scarab", period: "18th Dynasty", desc: "A complex piece of jewelry symbolizing the sun god's journey.", image: "images/artifacts/pectoral_with_solar_scarab.jpg" }
+            { id: "tut-mask", name: "Tutankhamun's Mask", period: "18th Dynasty", desc: "The iconic 11kg solid gold death mask inlaid with semi-precious stones.", image: "images/artifacts/tut_mask.png" },
+            { id: "tut-throne", name: "Golden Throne", period: "18th Dynasty", desc: "A wooden throne covered in gold foil, depicting Tutankhamun and his wife Ankhesenamun.", image: "images/artifacts/tut_throne.png" },
+            { id: "tut-chariot", name: "Ceremonial Chariot", period: "18th Dynasty", desc: "An ornate ceremonial chariot made from wood and gold leaf.", image: "images/artifacts/tut_chariot.png" },
+            { id: "tut-shrine", name: "Golden Shrine", period: "18th Dynasty", desc: "The outermost of four gilded shrines that protected the king's sarcophagus.", image: "images/artifacts/tut_shrine.png" },
+            { id: "anubis-shrine", name: "Anubis Shrine", period: "18th Dynasty", desc: "A jackal figure of Anubis mounted on a portable gilded shrine.", image: "images/artifacts/anubis_shrine.png" },
+            { id: "tut-pectoral", name: "Pectoral with Solar Scarab", period: "18th Dynasty", desc: "A complex piece of jewelry symbolizing the sun god's journey.", image: "images/artifacts/tut_pectoral.png" }
         ]
     },
     {
@@ -173,12 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'A solemn, respectful environment housing the preserved bodies of Egypt’s greatest pharaohs and queens. Discover the sophisticated mummification techniques that allowed them to survive millennia.',
         image: 'images/mummy.png',
         artifacts: [
-            { name: "Sarcophagus of Seti I", period: "19th Dynasty", desc: "An alabaster sarcophagus carved with intricate spells from the Book of Gates.", image: "images/artifacts/sarcophagus_of_seti_i.jpg" },
-            { name: "Mummy of Ramses II", period: "19th Dynasty", desc: "The remarkably preserved body of Egypt's longest-ruling pharaoh.", image: "images/artifacts/mummy_of_ramses_ii.jpg" },
-            { name: "Mummy of Hatshepsut", period: "18th Dynasty", desc: "The remains of the powerful female pharaoh, identified by a missing tooth.", image: "images/artifacts/mummy_of_hatshepsut.jpg" },
-            { name: "Mummy of Thutmose III", period: "18th Dynasty", desc: "The preserved body of the great military king.", image: "images/artifacts/mummy_of_thutmose_iii.jpg" },
-            { name: "Golden Mask of Psusennes I", period: "21st Dynasty", desc: "A stunning solid gold funerary mask from Tanis.", image: "images/artifacts/golden_mask_of_psusennes_i.jpg" },
-            { name: "Sarcophagus of Merneptah", period: "19th Dynasty", desc: "The outermost granite sarcophagus of Ramses II's successor.", image: "images/artifacts/sarcophagus_of_merneptah.jpg" }
+            { id: "seti-sarcophagus", name: "Sarcophagus of Seti I", period: "19th Dynasty", desc: "An alabaster sarcophagus carved with intricate spells from the Book of Gates.", image: "images/artifacts/sarcophagus_of_seti_i.jpg" },
+            { id: "seqenenre-mummy", name: "Mummy of Seqenenre Tao II", period: "17th Dynasty", desc: "The 'Martyr King' whose battle wounds tell the story of the struggle against the Hyksos.", image: "images/artifacts/seqenenre_mummy.png" },
+            { id: "hatshepsut-mummy", name: "Mummy of Hatshepsut", period: "18th Dynasty", desc: "The remains of the powerful female pharaoh, identified by a missing tooth.", image: "images/artifacts/mummy_of_hatshepsut.jpg" },
+            { id: "seti-mummy", name: "Mummy of Seti I", period: "19th Dynasty", desc: "One of the most perfectly preserved and noble-looking mummies ever discovered.", image: "images/artifacts/seti_mummy.png" },
+            { id: "tiye-mummy", name: "Mummy of Queen Tiye", period: "18th Dynasty", desc: "The 'Elder Lady' mummy, famous for her beautifully preserved long hair.", image: "images/artifacts/tiye_mummy.png" },
+            { id: "merneptah-sarcophagus", name: "Sarcophagus of Merneptah", period: "19th Dynasty", desc: "The outermost granite sarcophagus of Ramses II's successor.", image: "images/artifacts/sarcophagus_of_merneptah.jpg" }
         ]
     },
     {
@@ -189,12 +211,12 @@ document.addEventListener('DOMContentLoaded', () => {
         longDesc: 'After Alexander the Great’s conquest, Egypt became a crossroads of cultures. This gallery shows the fascinating hybrid art, where Pharaohs were depicted in Greek styles and Roman emperors adopted Egyptian titles.',
         image: 'images/grecoroman.png',
         artifacts: [
-            { name: "Rosetta Stone Replica", period: "Ptolemaic Period", desc: "The world-famous basalt slab that provided the key to deciphering hieroglyphs.", image: "images/artifacts/rosetta_stone_replica.jpg" },
-            { name: "Fayum Mummy Portrait", period: "Roman Era", desc: "A remarkably realistic encaustic portrait combining Roman art with Egyptian traditions.", image: "images/artifacts/fayum_mummy_portrait.jpg" },
-            { name: "Statue of Sarapis", period: "Ptolemaic Period", desc: "A syncretic deity blending Osiris and Apis with Greek gods.", image: "images/artifacts/statue_of_sarapis.jpg" },
-            { name: "Pompeys Pillar", period: "Roman Era", desc: "A massive Roman triumphal column from Alexandria.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Pompeys_Pillar_Alexandria.jpg/800px-Pompeys_Pillar_Alexandria.jpg" },
-            { name: "Crocodile Mummy", period: "Greco-Roman", desc: "A mummified crocodile honoring the god Sobek.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Mummified_crocodile_Louvre.jpg/800px-Mummified_crocodile_Louvre.jpg" },
-            { name: "Roman Emperor as Pharaoh", period: "Roman Era", desc: "A statue depicting a Roman ruler in traditional Egyptian pharaonic dress.", image: "images/artifacts/roman_emperor_as_pharaoh.jpg" }
+            { id: "rosetta-replica-gr", name: "Rosetta Stone Replica", period: "Ptolemaic Period", desc: "The world-famous basalt slab that provided the key to deciphering hieroglyphs.", image: "images/artifacts/rosetta_stone.png" },
+            { id: "fayum-portrait-gr", name: "Fayum Mummy Portrait", period: "Roman Era", desc: "A remarkably realistic encaustic portrait combining Roman art with Egyptian traditions.", image: "images/artifacts/fayum_portrait.png" },
+            { id: "sarapis-statue-gr", name: "Statue of Sarapis", period: "Ptolemaic Period", desc: "A syncretic deity blending Osiris and Apis with Greek gods.", image: "images/artifacts/sarapis_statue.png" },
+            { id: "pompeys-pillar", name: "Pompeys Pillar", period: "Roman Era", desc: "A massive Roman triumphal column from Alexandria.", image: "images/artifacts/pompeys_pillar.png" },
+            { id: "crocodile-mummy", name: "Crocodile Mummy", period: "Greco-Roman", desc: "A mummified crocodile honoring the god Sobek.", image: "images/artifacts/crocodile_mummy.png" },
+            { id: "roman-emperor-pharaoh", name: "Roman Emperor as Pharaoh", period: "Roman Era", desc: "A statue depicting a Roman ruler in traditional Egyptian pharaonic dress.", image: "images/artifacts/roman_pharaoh.png" }
         ]
     }
 ];
@@ -289,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!hall) return;
 
         currentHallName.innerText = hall.name;
-        currentHallDesc.innerText = hall.longDesc;
+        currentHallDesc.innerHTML = hall.longDesc;
         
         artifactsGrid.innerHTML = '';
         hall.artifacts.forEach(art => {
@@ -315,10 +337,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="material-symbols-outlined">location_on</span>
                         <span>${hall.name}</span>
                     </div>
-                    <button class="details-btn" onclick="viewArtifact('${hall.id}', '${art.name.replace(/'/g, "\\'")}')">
-                        <span>DETAILS</span>
-                        <span class="material-symbols-outlined">arrow_forward</span>
-                    </button>
+                    <div style="display: flex; gap: 0.5rem; width: 100%; margin-top: 1rem;">
+                        <button class="details-btn" style="flex: 1;" onclick="viewArtifact('${hall.id}', '${art.name.replace(/'/g, "\\'")}')">
+                            <span>DETAILS</span>
+                        </button>
+                        <button class="details-btn ar-btn" style="flex: 1; background: linear-gradient(135deg, #40e0d0 0%, #d4af37 100%); color: #000; border: none;" onclick="window.location.href='../advanced 3D model/advanced-3D.html?id=${art.id || art.name.toLowerCase().replace(/\s+/g, '-')}'">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem;">view_in_ar</span>
+                            <span>AR</span>
+                        </button>
+                    </div>
                 </div>
             `;
             artifactsGrid.appendChild(artCard);

@@ -1197,9 +1197,9 @@ body.light .hall-box {
 
 .artifact-img-box {
     position: relative;
-    height: 400px;
+    height: 320px;
     background: linear-gradient(to bottom, #000, #1a1a1a);
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .artifact-img-box img {
@@ -1255,7 +1255,7 @@ body.light .hall-box {
 }
 
 .artifact-info {
-    padding: 3rem 2.5rem;
+    padding: 2rem 1.5rem;
     flex-grow: 1;
     background: linear-gradient(to bottom, transparent, rgba(236, 182, 19, 0.02));
 }
@@ -1280,8 +1280,8 @@ body.light .hall-box {
 }
 
 .artifact-actions {
+    padding: 1.5rem;
     display: flex;
-    padding: 2.5rem;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid var(--border-color);
@@ -3410,4 +3410,218 @@ body.light .copyright {
     .legal-links a {
         margin-right: 0;
     }
+}
+
+/* --- STAIRCASE FEATURES --- */
+.staircase-feature {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 2rem;
+    background: rgba(236, 182, 19, 0.03);
+    border: 1px solid rgba(236, 182, 19, 0.1);
+    border-radius: 20px;
+    transition: var(--transition);
+    cursor: default;
+    width: fit-content;
+    min-width: 350px;
+}
+
+.staircase-feature:hover {
+    background: rgba(236, 182, 19, 0.08);
+    border-color: rgba(236, 182, 19, 0.4);
+    transform: translateX(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.feature-icon-wrapper {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(236, 182, 19, 0.1);
+    border-radius: 14px;
+    color: var(--hall-gold);
+    transition: var(--transition);
+}
+
+.feature-icon-wrapper .material-symbols-outlined {
+    font-size: 2rem;
+}
+
+.staircase-feature:hover .feature-icon-wrapper {
+    background: var(--hall-gold);
+    color: #000;
+    box-shadow: 0 0 25px rgba(236, 182, 19, 0.4);
+    transform: rotate(5deg);
+}
+
+.feature-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+}
+
+body.light .staircase-feature {
+    background: rgba(236, 182, 19, 0.05);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light .staircase-feature:hover {
+    background: rgba(236, 182, 19, 0.12);
+}
+
+/* --- GUARDIAN CARDS --- */
+.guardian-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(15, 18, 22, 0.6) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(236, 182, 19, 0.15) !important;
+    padding: 2.5rem !important;
+    border-radius: 32px !important;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.guardian-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--hall-gold) !important;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 30px rgba(236, 182, 19, 0.15);
+}
+
+.guardian-img-container {
+    width: 100%;
+    height: 350px;
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.guardian-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.guardian-card:hover .guardian-img-container img {
+    transform: scale(1.1) translateY(-10px);
+}
+
+.guardian-title {
+    font-family: 'Cinzel', serif !important;
+    color: var(--hall-gold) !important;
+    font-size: 2rem !important;
+    margin-bottom: 1rem !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.guardian-desc {
+    color: var(--text-secondary) !important;
+    line-height: 1.8 !important;
+    font-size: 1.15rem !important;
+    opacity: 0.9;
+    margin-bottom: 2rem !important;
+}
+
+.dynasty-badge {
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(236, 182, 19, 0.3);
+    color: var(--hall-gold);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 900;
+    border-radius: 50px;
+    background: rgba(236, 182, 19, 0.05);
+    transition: all 0.3s ease;
+}
+
+.guardian-card:hover .dynasty-badge {
+    background: var(--hall-gold);
+    color: #000;
+    border-color: var(--hall-gold);
+}
+
+body.light .guardian-card {
+    background: #fff !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05) !important;
+}
+
+
+/* --- STAIRCASE FEATURES --- */
+.staircase-feature {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 2rem;
+    background: rgba(236, 182, 19, 0.03);
+    border: 1px solid rgba(236, 182, 19, 0.1);
+    border-radius: 20px;
+    transition: var(--transition);
+    cursor: default;
+    width: fit-content;
+    min-width: 350px;
+}
+
+.staircase-feature:hover {
+    background: rgba(236, 182, 19, 0.08);
+    border-color: rgba(236, 182, 19, 0.4);
+    transform: translateX(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.feature-icon-wrapper {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(236, 182, 19, 0.1);
+    border-radius: 14px;
+    color: var(--hall-gold);
+    transition: var(--transition);
+}
+
+.feature-icon-wrapper .material-symbols-outlined {
+    font-size: 2rem;
+}
+
+.staircase-feature:hover .feature-icon-wrapper {
+    background: var(--hall-gold);
+    color: #000;
+    box-shadow: 0 0 25px rgba(236, 182, 19, 0.4);
+    transform: rotate(5deg);
+}
+
+.feature-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+}
+
+body.light .staircase-feature {
+    background: rgba(236, 182, 19, 0.05);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light .staircase-feature:hover {
+    background: rgba(236, 182, 19, 0.12);
 }

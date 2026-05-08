@@ -513,11 +513,13 @@
                             <p class="dynasty-label">${artifact.dynasty}</p>
                             <h3 class="artifact-title">${artifact.title}</h3>
                             <p class="card-description">${artifact.description || ''}</p>
-                            <div class="card-footer">
-                                <span class="location-text"><span class="material-symbols-outlined" style="font-size:14px">location_on</span> ${artifact.site}</span>
-                                <button class="view-details-btn" onclick="window.location.href='../Artifact-show/code.html?id=${artifact.id}'">
+                            <div class="card-footer" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; width: 100%;">
+                                <button class="view-details-btn" style="padding: 0.5rem; justify-content: center;" onclick="window.location.href='../Artifact-show/code.html?id=${artifact.id}'">
                                     <span>Details</span>
-                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                </button>
+                                <button class="view-details-btn ar-btn" style="padding: 0.5rem; justify-content: center; background: linear-gradient(135deg, #40e0d0 0%, #d4af37 100%); color: #000; border: none;" onclick="window.location.href='../advanced 3D model/advanced-3D.html?id=${artifact.id}'">
+                                    <span class="material-symbols-outlined" style="font-size: 1.1rem;">view_in_ar</span>
+                                    <span>AR</span>
                                 </button>
                             </div>
                         </div>

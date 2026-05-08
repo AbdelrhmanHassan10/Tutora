@@ -65,6 +65,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: "images/grand.png"
                 },
                 {
+                    id: "merneptah-stele",
+                    name: "Victory Stele of Merneptah",
+                    period: "19th Dynasty",
+                    material: "Black Granite",
+                    desc: "Also known as the Israel Stele, this massive black granite slab commemorates King Merneptah's military victories. It is famous for containing the earliest known historical mention of 'Israel' in an ancient text.",
+                    image: "images/Victory Stele of Merneptah.png"
+                },
+                {
+                    id: "senusret-statue",
+                    name: "Statue of Senusret I",
+                    period: "12th Dynasty",
+                    material: "Limestone",
+                    desc: "A beautifully preserved seated colossus of the Middle Kingdom pharaoh Senusret I. It showcases the refined artistic style of the 12th Dynasty, emphasizing the king's divine authority and serene majesty.",
+                    image: "images/Statue of Senusret I.png"
+                },
+                {
                     id: "6643b109558a239478145f0c",
                     name: "Granite Column of Merneptah",
                     period: "19th Dynasty",
@@ -87,14 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     material: "Dark Granite",
                     desc: "Carved with exceptional detail in dark granite, this statue represents a queen of the Ptolemaic dynasty. The queen holds a double cornucopia, a Greek symbol of fertility and abundance, while wearing a traditional Egyptian tripartite wig.",
                     image: "images/ptolemaic_queen.png"
-                },
-                {
-                    id: "6643b109558a239478145f0f",
-                    name: "Victory Stele of Amenhotep III",
-                    period: "18th Dynasty",
-                    material: "Black Granite",
-                    desc: "A massive slab of black granite inscribed with the many triumphs and construction projects of Amenhotep III. It reflects the peak of New Kingdom power and artistic grandeur.",
-                    image: "images/victory_stele.png"
                 }
             ]
         },
