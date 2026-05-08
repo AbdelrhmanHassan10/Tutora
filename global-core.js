@@ -386,18 +386,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 8. ROYAL ATMOSPHERE GENERATOR
     // ============================================
     window.initRoyalAtmosphere = window.initRoyalAtmosphere || function() {
-        // 1. Exclusion Logic: Don't run on Home, Landing, Login, or Register
-        const path = window.location.pathname;
-        const isExcluded = path === '/' || 
-                           path.endsWith('index.html') || 
-                           path.includes('/4.home/') || 
-                           path.includes('/1.login/') || 
-                           path.includes('/2.register/');
-        
-        if (isExcluded) {
-            console.log('✦ Global Atmosphere suppressed for this specialized page');
-            return;
-        }
+        // Restricted to Home page only (Home has its own local version)
+        // Disabling global version as per user request
+        return;
 
         // 2. Density Logic: Decrease amount on specific pages
         const isLowDensity = path.includes('/AI-Laboratory/') || 
