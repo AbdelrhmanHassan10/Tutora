@@ -101,17 +101,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!dustContainer) return;
 
         // 1. Generate Atmospheric Dust (Mobile Optimized)
-        const particleCount = isMobile ? 40 : 80; 
+        const particleCount = isMobile ? 60 : 120; 
         for (let i = 0; i < particleCount; i++) {
             const dust = document.createElement('div');
             dust.className = 'dust-particle';
-            const size = Math.random() * 1.5 + 0.5;
+            const size = Math.random() * 2.5 + 0.5; // Slightly larger for "Royal" feel
             dust.style.width = size + 'px';
             dust.style.height = size + 'px';
             dust.style.left = Math.random() * 100 + 'vw';
             dust.style.top = Math.random() * 100 + 'vh';
-            dust.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            dust.style.animationDelay = (Math.random() * -15) + 's';
+            dust.style.animationDuration = (Math.random() * 15 + 15) + 's'; // Slower, more majestic
+            dust.style.animationDelay = (Math.random() * -20) + 's';
             dustContainer.appendChild(dust);
         }
 
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const moveTooltip = (e) => {
         const x = e.clientX;
         const y = e.clientY;
-        tooltip.style.transform = \	ranslate(\px, \px)\;
+        tooltip.style.transform = `translate(${x}px, ${y}px)`;
         tooltip.style.position = 'fixed';
         tooltip.style.left = '0';
         tooltip.style.top = '0';
@@ -323,9 +323,10 @@ document.addEventListener('DOMContentLoaded', () => {
         marker.addEventListener('click', () => {
             const num = marker.getAttribute('data-num');
             const period = marker.getAttribute('data-period');
-            const artefacts = marker.getAttribute('data-artefacts').split(',');
+            const artefactsData = marker.getAttribute('data-artefacts');
+            const artefacts = artefactsData ? artefactsData.split(',') : [];
 
-            modalTitle.innerText = \Gallery \\;
+            modalTitle.innerText = `Gallery ${num}`;
             modalPeriod.innerText = period;
             
             // Clear and populate artefacts
@@ -456,7 +457,7 @@ function updateMap(level) {
     data.markers.forEach(m => {
         const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         group.setAttribute('class', 'neon-marker-group');
-        group.setAttribute('style', \	ransform: translate(\px, \px);\);
+        group.setAttribute('style', `transform: translate(${m.x}px, ${m.y}px);`);
         
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         circle.setAttribute('class', 'neon-marker');
@@ -546,14 +547,14 @@ function showHallDetail(name, num, desc, level) {
     
     title.innerText = name + ' (' + num + ')';
     period.innerText = 'Level ' + level;
-    descText.innerHTML = \
+    descText.innerHTML = `
         <div class='info-block'>
-            <strong>About:</strong><br>\
+            <strong>About:</strong><br>${desc}
         </div>
         <div class='nav-block' style='margin-top: 1.5rem; padding: 1rem; background: rgba(236,182,19,0.1); border-radius: 10px; border-left: 4px solid #ecb613;'>
-            <strong style='color: #ecb613;'>How to reach:</strong><br>\
+            <strong style='color: #ecb613;'>How to reach:</strong><br>${navInfo}
         </div>
-    \;
+    `;
     
     modal.classList.add('active');
 }
@@ -604,7 +605,7 @@ function updateMap(level) {
     data.markers.forEach(m => {
         const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         group.setAttribute('class', 'neon-marker-group');
-        group.setAttribute('style', \	ransform: translate(\px, \px);\);
+        group.setAttribute('style', `transform: translate(${m.x}px, ${m.y}px);`);
         
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         circle.setAttribute('class', 'neon-marker');
