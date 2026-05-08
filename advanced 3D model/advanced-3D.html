@@ -174,41 +174,29 @@
                 </div>
 
                 <div class="viewer-display hero">
-                    <div class="hero-content">
-                        <img alt="Golden Mask of Tutankhamun" class="viewer-img" src="../collection/tut_mask_real.jpg">
-                        <div class="scanner-line"></div>
-                        <div class="scanner-corner tl"></div>
-                        <div class="scanner-corner tr"></div>
-                        <div class="scanner-corner bl"></div>
-                        <div class="scanner-corner br"></div>
+                    <div class="hero-content" id="viewerContent">
+                        <!-- Content will be injected by main.js -->
+                        <img alt="Artifact Viewer" class="viewer-img" src="../collection/tut_mask_real.jpg" id="mainImage">
+                        <video id="mainVideo" class="viewer-video" playsinline muted loop style="display: none;"></video>
+                        
                         <div class="viewer-overlay">
-                            <div class="viewer-badge">
-                                <span class="material-symbols-outlined">center_focus_strong</span>
-                                8K Neural Render
+                            <div class="video-controls-bar">
+                            <div class="progress-container">
+                                <input type="range" class="video-progress" value="0" min="0" max="100">
+                                <div class="progress-filled"></div>
                             </div>
+                            <div class="time-display">
+                                <span class="current-time">00:00</span>
+                                <span class="time-separator">/</span>
+                                <span class="duration-time">00:00</span>
+                            </div>
+                        </div>
+
+                      
                             <div class="play-btn-container">
                                 <button class="play-main-btn">
                                     <span class="material-symbols-outlined">play_circle</span>
                                     <span>Start Narrative Journey</span>
-                                </button>
-                            </div>
-                            <div class="viewer-tools">
-                                <button class="tool-item">
-                                    <span class="material-symbols-outlined">3d_rotation</span>
-                                    <span>360° Scan</span>
-                                </button>
-                                <div class="zoom-slider-container">
-                                    <div class="zoom-slider">
-                                        <div class="zoom-handle"></div>
-                                    </div>
-                                </div>
-                                <button class="tool-item">
-                                    <span class="material-symbols-outlined">spatial_audio_off</span>
-                                    <span>Spatial Audio</span>
-                                </button>
-                                <button class="tool-item">
-                                    <span class="material-symbols-outlined">info</span>
-                                    <span>Analysis</span>
                                 </button>
                             </div>
                         </div>
@@ -265,7 +253,16 @@
                 </div>
             </aside>
         </div>
-
+        
+         <section class="gallery-section anim-on-scroll">
+            <div class="section-header">
+                <h2 class="section-subtitle">Digital Archives</h2>
+                <h3 class="section-main-title">3D Narrative <span class="gold-text-span">Collection</span></h3>
+            </div>
+            <div class="artifacts-grid" id="artifactGallery">
+                <!-- Cards will be injected by main.js -->
+            </div>
+        </section>
         <section class="model-how anim-on-scroll">
             <h2 class="ai-section-title">How 3D Storytelling <span class="gold-text-span">Works</span></h2>
             <div class="model-steps">
@@ -350,6 +347,8 @@
                 </div>
             </div>
         </section>
+
+       
     </main>
 
     <!-- Footer -->
