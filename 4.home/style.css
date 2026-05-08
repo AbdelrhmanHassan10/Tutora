@@ -511,29 +511,51 @@ body.light .dropdown-item:hover {
    ============================================ */
 
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     background: #0a0a0a; /* Solid on mobile */
     border-bottom: 1px solid var(--border-color);
     padding: 1rem 1.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
     transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
 }
+/* Scroll Progress Bar Styles (Global) */
+.scroll-progress-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 3000;
+    pointer-events: none;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), #fff, var(--primary));
+    box-shadow: 0 0 15px var(--primary-glow);
+    transition: width 0.1s ease-out;
+}
+
 
 @media (min-width: 768px) {
     .header {
         background: rgba(10, 10, 10, 0.85);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
-        padding: 0.8rem 2rem;
+        padding: 0.8rem 1.5rem; /* Standard edge padding */
     }
     .header-container {
         width: 100%;
-        padding: 0 4rem;
+        padding: 0; /* No internal padding to ensure logo is at the far left of the container */
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 3rem;
+        gap: 1.5rem; /* Restore gap for readability */
     }
     .header-left, .header-right {
         flex: 0 0 auto !important;
@@ -542,7 +564,7 @@ body.light .dropdown-item:hover {
     }
     .header-right {
         margin-left: auto !important;
-        gap: 1.2rem !important;
+        gap: .8rem !important;
     }
 }
 
@@ -729,7 +751,7 @@ body.light .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: center;
  }
 
@@ -2110,6 +2132,36 @@ body.dark-mode .copyright {
     transform: translateX(8px) !important;
 }
 
+/* Dark Mode Specific Dropdown Polish */
+body.dark .dropdown-menu {
+    background: rgba(10, 10, 10, 0.98) !important;
+    border: 1px solid rgba(236, 182, 19, 0.3) !important;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(236, 182, 19, 0.1) inset !important;
+}
+
+body.dark .dropdown-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark .dropdown-link:hover {
+    background: rgba(236, 182, 19, 0.1) !important;
+    color: var(--primary) !important;
+}
+
+body.dark .dropdown-items {
+    background: rgba(20, 20, 20, 0.95) !important;
+    border-left: 2px solid var(--primary) !important;
+}
+
+body.dark .dropdown-item {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+body.dark .dropdown-item:hover {
+    background: rgba(236, 182, 19, 0.1) !important;
+    color: var(--primary) !important;
+}
+
 /* ============================================
    NEW PREMIUM HOME PAGE SECTIONS STYLES
    ============================================ */
@@ -2821,20 +2873,7 @@ body.light .hero-subtitle {
     .hero-title { font-size: 2.5rem; letter-spacing: 4px; }
 }
 
-/* Premium Header Upgrade */
-.header {
-    background: transparent;
-    backdrop-filter: none;
-    transition: all 0.5s ease;
-    border-bottom: 1px solid transparent;
-}
-
-.header.scrolled {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--primary);
-    padding: 0.5rem 0;
-}
+/* Premium Header Polish */
 
 .logo-section {
     transition: transform 0.3s ease;
@@ -3897,28 +3936,7 @@ body.light .copyright {
     }
 }
 
-/* FINAL DESKTOP HEADER ALIGNMENT OVERRIDE */
-@media (min-width: 1025px) {
-    .header-container {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 0 4rem !important;
-        display: flex !important;
-        justify-content: flex-start !important;
-        gap: 4rem !important;
-    }
 
-    .desktop-nav {
-        display: flex !important;
-        justify-content: flex-start !important;
-        flex: none !important;
-    }
-
-    .header-right {
-        margin-left: auto !important;
-    }
-}
 
 
 /* ============================================
@@ -4250,7 +4268,7 @@ body.light .dust-particle {
 }
 
 .artefact-list li::before {
-    content: '•';
+    content: 'ï¿½';
     color: #ecb613;
     position: absolute;
     left: 0;
