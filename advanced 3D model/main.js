@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "Discover the journey from the Valley of the Kings to the Grand Egyptian Museum. Narrated by lead archaeologists.",
             material: "High-purity gold (22.5 carats), lapis lazuli from Afghanistan, and obsidian from the Red Sea coast.",
             insights: "Neural analysis reveals the mask was likely crafted in three distinct stages, combining rare alloys for eternal preservation.",
-            video: "../3D vid/The Eternal Mask of Tutankhamun_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Eternal_Mask_of_Tutankhamun_720p_caption_lvqxdw.mp4",
             image: "../suzi-kim-AVUvVdVKcSg-unsplash.jpg"
         },
         "ramses-colossus": {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "Trace the relocation of this massive statue from Memphis to the GEM entrance hall. A feat of modern engineering.",
             material: "Carved from a single block of red granite, transported over 500 miles down the Nile.",
             insights: "The statue's symmetry is near-perfect, suggesting advanced geometric knowledge by 19th Dynasty architects.",
-            video: "../3D vid/The Eternal Authority of Ramesses II_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Eternal_Authority_of_Ramesses_II_720p_caption_tihhjj.mp4",
             image: "../ramesses-ii.webp"
         },
         "hatshepsut-mummy": {
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "The 17 military campaigns of Thutmose III, visualized through spatial mapping and historical artifacts.",
             material: "Fine crystalline limestone, polished to a mirror finish to represent the king's divine radiance.",
             insights: "Isotopic testing of the stone traces its origin to the Tura quarries, used exclusively for royal monuments.",
-            video: "../3D vid/The Eternal King_ Thutmose III_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Eternal_King__Thutmose_III_720p_caption_kbudjq.mp4",
             image: "../Exhibition-Halls/images/artifacts/thutmose_statue.png"
         },
         "statue-1": {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "Uncover the importance of literacy and bureaucracy in the Old Kingdom, narrated through the scribe's own perspective.",
             material: "Painted limestone with crystal, magnesite, and copper eyes that track the viewer from any angle.",
             insights: "Spectral imaging shows the original pigments were made from malachite and desert ochre.",
-            video: "../3D vid/The Wisdom of the Scribe_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Wisdom_of_the_Scribe_720p_caption_f6ihha.mp4",
             image: "../collection/The Seated Scribewebp.webp"
         },
         "meshti-governor": {
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "The ritual duties within the Temple of Karnak, from dawn prayers to the secrets of the Holy of Holies.",
             material: "Dark grey basalt, one of the hardest stones used by ancient Egyptians to ensure eternal life.",
             insights: "The inscriptions on the back pillar reveal the priest's 70-year career serving three successive kings.",
-            video: "../3D vid/The Eternal Priest_ Bakenkhonsu III_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Eternal_Priest__Bakenkhonsu_III_720p_caption_of7atp.mp4",
             image: "../Priest Bakenkhonsu.png"
         },
         "sekhmet-statue": {
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "The pacification of Sekhmet and her transformation into Bastet, protecting the Pharaoh in battle.",
             material: "Granodiorite from Aswan, textured to represent the lioness's fur and the goddess's divine power.",
             insights: "This statue was one of 730 commissioned by Amenhotep III to protect his funerary temple.",
-            video: "../3D vid/The Wisdom of Sekhmet_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Wisdom_of_Sekhmet_720p_caption_vlrsvi.mp4",
             image: "../Statue of Sekhmet.webp"
         },
         "ra-hotep-scribe": {
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "The education of a royal scribe and the sacred art of hieroglyphs in the 4th Dynasty court.",
             material: "Quartzite and copper inlays create a lifelike gaze that has fascinated archaeologists for decades.",
             insights: "The posture of Ra-Hotep is mathematically aligned with the golden ratio of Old Kingdom art.",
-            video: "../3D vid/Wisdom of the Stone_ The Royal Scribe Ra-Hotep_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/Wisdom_of_the_Stone__The_Royal_Scribe_Ra-Hotep_720p_caption_kqlkqm.mp4",
             image: "../Ra-Hotep.jfif"
         },
         "isis-legacy": {
@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "The search for Osiris and the nursing of Horus in the Delta marshes, a cornerstone of Egyptian faith.",
             material: "Bronze with gold leaf gilding, representing the indestructible flesh of the gods.",
             insights: "The chemical composition of the bronze reveals advanced metallurgical techniques from the Late Period.",
-            video: "../3D vid/The Legacy of Isis_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Legacy_of_Isis_720p_caption_hjgqbx.mp4",
             image: "../Statue-of-Isis-of-Coptos.webp"
         },
         "thutmose-triad": {
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "The divine selection of Thutmose I and the establishment of the Thutmosid dynasty's power.",
             material: "Red quartzite from Gebel el-Ahmar, known as the 'Sun Stone' for its vibrant color.",
             insights: "Virtual reconstruction shows the triad was originally placed to catch the first rays of the winter solstice.",
-            video: "../3D vid/The Sacred Triad of Thutmose I_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Sacred_Triad_of_Thutmose_I_720p_caption_rcpohs.mp4",
             image: "../Triad-of-Ramesses-II-with-Amun-and-Mut.webp"
         },
         "kheper-ka-merit": {
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "The domestic life and marriage customs of the Middle Kingdom elite, revealed through their shared tomb.",
             material: "Soft cedar wood covered in painted plaster, preserved perfectly by the desert climate.",
             insights: "Micro-scans show the artist used over 15 different types of natural pigments for the clothing.",
-            video: "../3D vid/The Union of Kheper-ka-Ra-Seneb and Merit_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Union_of_Kheper-ka-Ra-Seneb_and_Merit_720p_caption_t9zj1m.mp4",
             image: "../Union of Kheper-ka-Ra.png"
         },
         "sobek-nakht": {
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             narrative: "The political challenges of the 13th Dynasty and the preservation of culture during times of change.",
             material: "Steatite (Soapstone), allowing for incredibly fine detail in the facial expression and jewelry.",
             insights: "The style represents a bridge between the idealism of the 12th Dynasty and 13th Dynasty realism.",
-            video: "../3D vid/The Voice of Sobek-Nakht_720p_caption.mp4",
+            video: "https://res.cloudinary.com/dxhwv4y3f/video/upload/The_Voice_of_Sobek-Nakht_720p_caption_xttlso.mp4",
             image: "../Sobek-Nakht.png"
         }
     };
