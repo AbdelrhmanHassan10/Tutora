@@ -168,10 +168,7 @@
 
         <div class="explorer-grid anim-on-scroll">
             <div class="viewer-section">
-                <div class="viewer-controls">
-                    <button class="control-btn active">Neural 3D Scan</button>
-                    <button class="control-btn">Photogrammetry View</button>
-                </div>
+
 
                 <div class="viewer-display hero">
                     <div class="hero-content" id="viewerContent">
@@ -180,17 +177,7 @@
                         <video id="mainVideo" class="viewer-video" playsinline muted loop style="display: none;"></video>
                         
                         <div class="viewer-overlay">
-                            <div class="video-controls-bar">
-                            <div class="progress-container">
-                                <input type="range" class="video-progress" value="0" min="0" max="100">
-                                <div class="progress-filled"></div>
-                            </div>
-                            <div class="time-display">
-                                <span class="current-time">00:00</span>
-                                <span class="time-separator">/</span>
-                                <span class="duration-time">00:00</span>
-                            </div>
-                        </div>
+                            <!-- controls-bar moved out -->
 
                       
                             <div class="play-btn-container">
@@ -200,6 +187,33 @@
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
+                
+                <div class="video-controls-bar">
+                    <div class="left-controls">
+                        <button class="vid-control-btn" id="playPauseBtn">
+                            <span class="material-symbols-outlined">pause_circle</span>
+                        </button>
+                        <button class="vid-control-btn" id="muteBtn">
+                            <span class="material-symbols-outlined">volume_up</span>
+                        </button>
+                    </div>
+
+                    <div class="progress-container">
+                        <input type="range" class="video-progress" value="0" min="0" max="100">
+                        <div class="progress-filled"></div>
+                    </div>
+
+                    <div class="right-controls">
+                        <div class="time-display">
+                            <span class="current-time">00:00</span>
+                            <span class="time-separator">/</span>
+                            <span class="duration-time">00:00</span>
+                        </div>
+                        <button class="vid-control-btn" id="fullscreenBtn">
+                            <span class="material-symbols-outlined">fullscreen</span>
+                        </button>
                     </div>
                 </div>
             </div>
