@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentTimeEl = document.querySelector('.current-time');
     const durationTimeEl = document.querySelector('.duration-time');
     const controlsBar = document.querySelector('.video-controls-bar');
+    
+    // Video Control Buttons
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
 
     // 2. URL Parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -281,7 +286,42 @@ document.addEventListener('DOMContentLoaded', () => {
             mainVid.play();
             overlay.style.opacity = '0';
             overlay.style.pointerEvents = 'none';
+            updatePlayPauseIcon();
+            updateMuteIcon();
         });
+    }
+
+    // New Control Listeners
+    if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlayback);
+    if (muteBtn) muteBtn.addEventListener('click', toggleMute);
+    if (fullscreenBtn) fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+    function updatePlayPauseIcon() {
+        const icon = playPauseBtn.querySelector('.material-symbols-outlined');
+        icon.textContent = mainVid.paused ? 'play_circle' : 'pause_circle';
+    }
+
+    function updateMuteIcon() {
+        const icon = muteBtn.querySelector('.material-symbols-outlined');
+        icon.textContent = mainVid.muted ? 'volume_off' : 'volume_up';
+    }
+
+    function toggleMute() {
+        mainVid.muted = !mainVid.muted;
+        updateMuteIcon();
+    }
+
+    function toggleFullscreen() {
+        const viewer = document.querySelector('.viewer-section'); // Updated target
+        if (!document.fullscreenElement) {
+            viewer.requestFullscreen().catch(err => {
+                alert(`Error attempting to enable full-screen mode: ${err.message}`);
+            });
+            fullscreenBtn.querySelector('.material-symbols-outlined').textContent = 'fullscreen_exit';
+        } else {
+            document.exitFullscreen();
+            fullscreenBtn.querySelector('.material-symbols-outlined').textContent = 'fullscreen';
+        }
     }
 
     // Video/Image Click Logic
@@ -296,6 +336,8 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.style.opacity = '0';
             overlay.style.pointerEvents = 'none';
         }
+        updatePlayPauseIcon();
+        updateMuteIcon();
     }
 
     if (mainVid) mainVid.addEventListener('click', togglePlayback);
