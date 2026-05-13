@@ -86,9 +86,88 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastAnalyzedFile = null;
 
     // 3. AI Analysis Integration — POST /api/ai/detect
+    
+    // NEW: Function to show Related Statues (Historical Siblings)
+    function showRelatedStatues(detectedName) {
+        const relatedSection = document.getElementById('related-statues-section');
+        const relatedGrid = document.getElementById('related-statues-grid');
+        
+        if (!relatedSection || !relatedGrid) return;
+        
+        // Mock data for related statues
+        // In a real scenario, this would come from the user's model or an API
+        const relatedData = [
+            {
+                name: "Mask of Tutankhamun",
+                dynasty: "18th Dynasty",
+                relation: "Artistic Sibling",
+                match: "98%",
+                image: "./unnamed (1).png",
+                desc: "A masterpiece of gold craftsmanship, sharing similar neural markers with your discovery."
+            },
+            {
+                name: "Canopic Jar of Imsety",
+                dynasty: "New Kingdom",
+                relation: "Same Period",
+                match: "94%",
+                image: "./unnamed (2).png",
+                desc: "Used for ritual preservation, this artifact represents the funerary arts of the same era."
+            },
+            {
+                name: "The Rosetta Stone",
+                dynasty: "Ptolemaic Period",
+                relation: "Cultural Link",
+                match: "92%",
+                image: "./unnamed 3.png",
+                desc: "Crucial for decoding hieroglyphs, providing essential context to your scanned treasure."
+            }
+        ];
+        
+        // Clear previous grid
+        relatedGrid.innerHTML = '';
+        
+        // Populate grid
+        relatedData.forEach(statue => {
+            const card = document.createElement('div');
+            card.className = 'related-card anim-on-scroll';
+            card.innerHTML = `
+                <div class="related-img-container">
+                    <img src="${statue.image}" alt="${statue.name}">
+                    <div class="related-card-overlay">
+                        <span class="related-match-badge">${statue.match} Match</span>
+                    </div>
+                </div>
+                <div class="related-card-info">
+                    <span class="related-card-tag">${statue.relation} • ${statue.dynasty}</span>
+                    <h4 class="related-card-title">${statue.name}</h4>
+                    <p class="related-card-desc">${statue.desc}</p>
+                </div>
+            `;
+            relatedGrid.appendChild(card);
+        });
+        
+        // Show section
+        relatedSection.style.display = 'block';
+        setTimeout(() => {
+            relatedSection.classList.add('visible');
+            // Trigger animation for cards
+            relatedGrid.querySelectorAll('.related-card').forEach((c, i) => {
+                setTimeout(() => c.classList.add('visible'), i * 150);
+            });
+        }, 100);
+    }
+
+    // 3. AI Analysis Integration — POST /api/ai/detect
     async function analyzeImage(file) {
         const token = localStorage.getItem('token');
         lastAnalyzedFile = file;
+        
+        // Hide related section on new scan
+        const relatedSection = document.getElementById('related-statues-section');
+        if (relatedSection) {
+            relatedSection.style.display = 'none';
+            relatedSection.classList.remove('visible');
+        }
         
         // Show loading state
         if (resultContainer) {
@@ -146,6 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 `;
+
+                // NEW: Show related statues
+                showRelatedStatues(detected);
 
                 // Attach text-to-speech handler
                 const listenBtn = document.getElementById('listenStoryBtn');
@@ -276,13 +358,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 historyContainer.innerHTML = items.slice(0, 6).map(det => {
                     const name = det.detected || det.name || 'Unknown';
                     const conf = det.confidence || 'N/A';
-                    const date = det.createdAt ? new Date(det.createdAt).toLocaleDateString() : '';
+                    const date = det.createdAt ? new Date(det.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) : 'Recently';
+                    
                     return `
-                        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
-                            <span class="material-symbols-outlined" style="color: #ecb613; font-size: 24px;">image_search</span>
-                            <div style="flex: 1;">
-                                <strong style="color: #fff; font-size: 14px;">${name}</strong>
-                                <p style="color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 2px;">${date} • Confidence: ${conf}</p>
+                        <div class="history-item">
+                            <div class="history-icon">
+                                <span class="material-symbols-outlined">history_edu</span>
+                            </div>
+                            <div class="history-content">
+                                <div class="history-header">
+                                    <span class="history-name">${name}</span>
+                                    <span class="history-badge">${conf} Match</span>
+                                </div>
+                                <div class="history-meta">
+                                    <span class="history-date">
+                                        <span class="material-symbols-outlined">calendar_today</span>
+                                        ${date}
+                                    </span>
+                                    <span class="history-link">
+                                        View Details
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     `;
