@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         getMe: () => makeApiRequest('/auth/me'),
         getMyFavorites: (type) => makeApiRequest(`/favorites/my${type ? '?type=' + type : ''}`),
         removeFavorite: (id, type) => makeApiRequest(`/favorites/${id}?type=${type || 'Artifact'}`, 'DELETE'),
+        toggleFavorite: (id, type) => makeApiRequest(`/favorites/toggle/${id}`, 'POST'),
     };
 
     // ============================================

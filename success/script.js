@@ -4,7 +4,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. DYNAMIC CONTENT & DATA HANDLING
     // ============================================
 
-    function initializeSuccessPage() {
+    const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+
+    async function verifyPayment() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('order') || urlParams.get('orderId') || urlParams.get('merchant_order_id');
+        const transactionId = urlParams.get('id') || urlParams.get('transactionId') || urlParams.get('transaction_id');
+
+        if (!orderId && !transactionId) return null;
+
+        const token = localStorage.getItem('token');
+        if (!token) return null;
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/bookings/verify-payment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    orderId: orderId || '',
+                    transactionId: transactionId || ''
+                })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Payment verified:', data.message);
+                return data.booking || null;
+            } else {
+                console.warn('Payment verification failed:', response.status);
+                return null;
+            }
+        } catch (error) {
+            console.error('Payment verification error:', error);
+            return null;
+        }
+    }
+
+    async function initializeSuccessPage() {
+        // Step 1: Verify payment with backend if returning from Paymob
+        const verifiedBooking = await verifyPayment();
+
         const bookingDataString = localStorage.getItem('currentBooking');
         
         // --- Sync Profile Data to Header ---
@@ -25,17 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const avatar = finalUserData.profileImage || finalUserData.profilePicture || localStorage.getItem('currentAvatar');
         if (avatar && headerAvatar) headerAvatar.src = avatar;
 
-        if (!bookingDataString) {
+        if (!bookingDataString && !verifiedBooking) {
             console.warn("No booking data found. Using placeholders.");
             return;
         }
 
         let bookingState;
         try {
-            bookingState = JSON.parse(bookingDataString);
+            bookingState = bookingDataString ? JSON.parse(bookingDataString) : {};
         } catch (e) {
             console.error("Failed to parse booking data:", e);
-            return;
+            bookingState = {};
+        }
+
+        // Merge verified booking data if available
+        if (verifiedBooking) {
+            bookingState = { ...bookingState, ...verifiedBooking };
         }
 
         // --- UI Elements ---
@@ -50,9 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const diningTime = document.getElementById('diningTime');
 
         // --- 1. Generation Reference ---
-        const randomRef = `GEM-AUTH-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
-        if (bookingRefElement) bookingRefElement.textContent = randomRef;
-        if (copyBtn) copyBtn.addEventListener('click', () => copyToClipboard(randomRef, copyBtn));
+        const bookingRef = verifiedBooking?._id 
+            ? `GEM-${verifiedBooking._id.slice(-8).toUpperCase()}`
+            : `GEM-AUTH-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+        if (bookingRefElement) bookingRefElement.textContent = bookingRef;
+        if (copyBtn) copyBtn.addEventListener('click', () => copyToClipboard(bookingRef, copyBtn));
 
         // --- 2. Date Formatting ---
         if (displayDate && bookingState.date) {
@@ -100,15 +149,25 @@ document.addEventListener('DOMContentLoaded', () => {
             subtotal += (bookingState.dining.deposit || 0);
         }
 
-        // --- 5. Totals (5% Tax) ---
-        const taxes = subtotal * 0.05;
-        const finalTotal = subtotal + taxes;
+        // --- 5. Totals (14% VAT as per backend docs) ---
+        // Use server-provided total if available from verified booking
+        if (verifiedBooking && verifiedBooking.total) {
+            if (totalPaid) {
+                totalPaid.textContent = `${currencySymbol}${verifiedBooking.total.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                })}`;
+            }
+        } else {
+            const taxes = subtotal * 0.14;
+            const finalTotal = subtotal + taxes;
 
-        if (totalPaid) {
-            totalPaid.textContent = `${currencySymbol}${finalTotal.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })}`;
+            if (totalPaid) {
+                totalPaid.textContent = `${currencySymbol}${finalTotal.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                })}`;
+            }
         }
     }
 

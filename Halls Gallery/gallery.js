@@ -562,27 +562,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const isFav = btn.classList.contains('active');
         try {
-            const method = isFav ? 'DELETE' : 'POST';
-            const endpoint = isFav 
-                ? `https://gem-backend-production-1ea2.up.railway.app/api/favorites/${artifactId}?type=Artifact` 
-                : `https://gem-backend-production-1ea2.up.railway.app/api/favorites/${artifactId}`;
-
-            const response = await fetch(endpoint, {
-                method: method,
+            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/favorites/toggle/${artifactId}`, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: method === 'POST' ? JSON.stringify({ type: 'Artifact' }) : null
+                body: JSON.stringify({ type: 'Artifact' })
             });
 
             if (response.ok) {
-                btn.classList.toggle('active');
-                if (!isFav) {
+                const data = await response.json();
+                if (data.isFavorited) {
+                    btn.classList.add('active');
                     alert('Added to favorites!');
                 } else {
+                    btn.classList.remove('active');
                     alert('Removed from favorites.');
                 }
             } else {

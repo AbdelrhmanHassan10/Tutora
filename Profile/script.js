@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerName = document.querySelector('.user-info span:not(.user-level)');
         if (headerName) headerName.textContent = user.name || 'Explorer';
 
+        // Show Admin link if role is admin
+        const adminLink = document.getElementById('adminLink');
+        if (adminLink && user.role === 'admin') {
+            adminLink.style.display = 'flex';
+        }
+
         // Standardize Bio if present
         const bioText = document.querySelector('.profile-title');
         if (bioText && user.bio) bioText.textContent = user.bio;

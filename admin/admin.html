@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="GEM Admin Dashboard — Manage artifacts, events, bookings, and videos." />
+    <title>Tutora | Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../4.home/style.css" />
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="../animate.css" />
+    <link rel="stylesheet" href="../global-theme.css" />
+</head>
+
+<body class="dark">
+    <!-- Royal Atmosphere -->
+    <div id="dust-container"></div>
+    <div id="shapes-container"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="menu-link">Exhibition Halls</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids Museum</a>
+            <a href="../event/event.html" class="menu-link">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Scanner</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/About.html" class="menu-link">About</a>
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    Collection
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../collection/collection.html" class="dropdown-item">Main Gallery</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+            <button class="menu-icon-link" id="menuLangBtn">
+                <span class="material-symbols-outlined">language</span>
+                Language
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="logo-section">
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
+                    <h2 class="logo-text">Tutora</h2>
+                </div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html">Kids Museum</a>
+                <a href="../event/event.html">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        AI Experience
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Scanner</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html">Shop</a>
+                <a href="../about/About.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        Collection
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../collection/collection.html" class="dropdown-link">Main Gallery</a>
+                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" id="adminSearch" placeholder="Search Archives..." />
+                </div>
+                
+                <!-- Admin Identity Badge (Dynamic) -->
+                <div id="adminIdentityArea"></div>
+
+                <button class="theme-btn" id="themeBtn">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;">
+                    <span class="material-symbols-outlined">favorite</span>
+                </a>
+                <a href="../Profile/profile.html" class="admin-profile-link">
+                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" id="adminHeaderAvatar" />
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <!-- Hero Section -->
+        <section class="hero-section hero anim-on-scroll" style="background-image: url(../1212.jpg);">
+            <div class="hero-content" >
+                <div class="admin-hero-badge">
+                    <span class="material-symbols-outlined">admin_panel_settings</span>
+                    <span>Management Console</span>
+                </div>
+                <h1 class="hero-title">Admin <span class="gold-text">Dashboard</span></h1>
+                <h2 class="hero-subtitle">Manage artifacts, events, bookings, and video content for the Grand Egyptian Museum.</h2>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="admin-stats anim-on-scroll">
+            <div class="admin-stats-grid">
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #ecb613; font-size: 28px;">museum</span>
+                    <span class="admin-stat-number" id="statArtifacts">—</span>
+                    <span class="admin-stat-label">Artifacts</span>
+                </div>
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #3b82f6; font-size: 28px;">event</span>
+                    <span class="admin-stat-number" id="statEvents">—</span>
+                    <span class="admin-stat-label">Events</span>
+                </div>
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #10b981; font-size: 28px;">confirmation_number</span>
+                    <span class="admin-stat-number" id="statBookings">—</span>
+                    <span class="admin-stat-label">Bookings</span>
+                </div>
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 28px;">video_library</span>
+                    <span class="admin-stat-number" id="statVideos">—</span>
+                    <span class="admin-stat-label">Videos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Navigation -->
+        <section class="admin-tabs-section anim-on-scroll">
+            <div class="admin-tab-nav">
+                <button class="admin-tab active" data-tab="artifacts">
+                    <span class="material-symbols-outlined">museum</span> Artifacts
+                </button>
+                <button class="admin-tab" data-tab="events">
+                    <span class="material-symbols-outlined">event</span> Events
+                </button>
+                <button class="admin-tab" data-tab="bookings">
+                    <span class="material-symbols-outlined">confirmation_number</span> Bookings
+                </button>
+                <button class="admin-tab" data-tab="videos">
+                    <span class="material-symbols-outlined">video_library</span> Videos
+                </button>
+            </div>
+
+            <!-- ═══ Artifacts Tab ═══ -->
+            <div class="admin-tab-content active" id="tab-artifacts">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">Manage <span class="gold-text">Artifacts</span></h2>
+                    <button class="btn-primary" id="addArtifactBtn">
+                        <span class="material-symbols-outlined">add</span> Add Artifact
+                    </button>
+                </div>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>Name</th><th>Era</th><th>Description</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="artifactsTable">
+                            <tr><td colspan="4" class="table-empty">Loading artifacts...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ═══ Events Tab ═══ -->
+            <div class="admin-tab-content" id="tab-events">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">Manage <span class="gold-text">Events</span></h2>
+                    <button class="btn-primary" id="addEventBtn">
+                        <span class="material-symbols-outlined">add</span> Add Event
+                    </button>
+                </div>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>Title</th><th>Date</th><th>Description</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="eventsTable">
+                            <tr><td colspan="4" class="table-empty">Loading events...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ═══ Bookings Tab ═══ -->
+            <div class="admin-tab-content" id="tab-bookings">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">All <span class="gold-text">Bookings</span></h2>
+                    <button class="btn-secondary" id="refreshBookingsBtn">
+                        <span class="material-symbols-outlined">refresh</span> Refresh
+                    </button>
+                </div>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>User</th><th>Date</th><th>Nationality</th><th>Total</th><th>Status</th></tr>
+                        </thead>
+                        <tbody id="bookingsTable">
+                            <tr><td colspan="5" class="table-empty">Loading bookings...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ═══ Videos Tab ═══ -->
+            <div class="admin-tab-content" id="tab-videos">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">Manage <span class="gold-text">Videos</span></h2>
+                    <button class="btn-primary" id="uploadVideoBtn">
+                        <span class="material-symbols-outlined">upload</span> Upload Video
+                    </button>
+                </div>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>Title</th><th>Duration</th><th>URL</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="videosTable">
+                            <tr><td colspan="4" class="table-empty">Loading videos...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══ Modals ═══ -->
+
+    <!-- Artifact Modal -->
+    <div class="admin-modal-overlay" id="artifactModal">
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <h3><span class="material-symbols-outlined" style="color:#ecb613">museum</span> <span id="artifactModalTitle">Add Artifact</span></h3>
+                <button class="modal-close-btn" onclick="closeModal('artifactModal')">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="artifactForm">
+                <input type="hidden" id="artifactEditId" />
+                
+                <div class="image-preview-container" id="artifactPreview">
+                    <div class="placeholder">
+                        <span class="material-symbols-outlined" style="font-size: 48px;">image</span>
+                        <p>Image Preview</p>
+                    </div>
+                    <img src="" alt="Preview">
+                </div>
+
+                <div class="form-group"><label>Name *</label><input type="text" id="artifactName" required placeholder="Golden Mask of Tutankhamun" /></div>
+                <div class="form-group"><label>Description *</label><textarea id="artifactDesc" required placeholder="Description of the artifact..."></textarea></div>
+                <div class="form-group"><label>Era</label><input type="text" id="artifactEra" placeholder="18th Dynasty — New Kingdom" /></div>
+                <div class="form-group"><label>Image URL</label><input type="text" id="artifactImageUrl" placeholder="https://..." /></div>
+                
+                <div class="form-grid-2">
+                    <div class="form-group"><label>3D Model URL</label><input type="text" id="artifactModel3DUrl" placeholder="https://..." /></div>
+                    <div class="form-group"><label>Audio URL</label><input type="text" id="artifactAudioUrl" placeholder="https://..." /></div>
+                </div>
+                <div class="form-group"><label>Video URL</label><input type="text" id="artifactVideoUrl" placeholder="https://..." /></div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('artifactModal')">Cancel</button>
+                    <button type="submit" class="btn-primary" id="artifactSubmitBtn">Save Artifact</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div class="admin-modal-overlay" id="eventModal">
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <h3><span class="material-symbols-outlined" style="color:#ecb613">event</span> Add Event</h3>
+                <button class="modal-close-btn" onclick="closeModal('eventModal')">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="eventForm">
+                <div class="image-preview-container" id="eventPreview">
+                    <div class="placeholder">
+                        <span class="material-symbols-outlined" style="font-size: 48px;">calendar_today</span>
+                        <p>Event Poster Preview</p>
+                    </div>
+                    <img src="" alt="Preview">
+                </div>
+
+                <div class="form-group"><label>Title *</label><input type="text" id="eventTitle" required placeholder="Exhibition Opening" /></div>
+                <div class="form-group"><label>Description *</label><textarea id="eventDesc" required placeholder="Event details..."></textarea></div>
+                <div class="form-group"><label>Date *</label><input type="datetime-local" id="eventDate" required /></div>
+                <div class="form-group"><label>Image URL</label><input type="text" id="eventImageUrl" placeholder="https://..." /></div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('eventModal')">Cancel</button>
+                    <button type="submit" class="btn-primary" id="eventSubmitBtn">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Upload Modal -->
+    <div class="admin-modal-overlay" id="videoModal">
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <h3><span class="material-symbols-outlined" style="color:#ecb613">video_library</span> Upload Video</h3>
+                <button class="modal-close-btn" onclick="closeModal('videoModal')">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="videoForm">
+                <div class="upload-drop-zone" id="videoDropZone">
+                    <span class="material-symbols-outlined" style="font-size: 48px; color: var(--primary);">cloud_upload</span>
+                    <p>Drag & Drop video file here or click to browse</p>
+                    <span style="font-size: 11px; opacity: 0.5;">MP4, WebM up to 100MB</span>
+                    <input type="file" id="videoFile" accept="video/*" required style="display: none;" />
+                </div>
+
+                <div id="selectedFileInfo" style="display: none; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 13px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="material-symbols-outlined" style="color: #10b981;">check_circle</span>
+                        <span id="fileNameDisplay">filename.mp4</span>
+                    </div>
+                </div>
+
+                <div class="form-group"><label>Title</label><input type="text" id="videoTitle" placeholder="Artifact Story Video" /></div>
+                
+                <div id="uploadProgress" style="display:none; margin-top:12px;">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; height: 10px; margin-bottom: 8px;">
+                        <div id="uploadBar" style="height:100%; background: linear-gradient(90deg, #ecb613, #fff); width:0%; transition: width 0.3s; box-shadow: 0 0 10px rgba(236,182,19,0.5);"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; opacity: 0.8;">
+                        <span id="uploadStatus">Uploading...</span>
+                        <span id="uploadPercent">0%</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('videoModal')">Cancel</button>
+                    <button type="submit" class="btn-primary" id="videoSubmitBtn">Start Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html">Tickets</a></li>
+                        <li><a href="../collection/collection.html">Collection</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                        <li><a href="../-membership/code.html">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html">History</a></li>
+                        <li><a href="../event/event.html">Events</a></li>
+                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                        <li><a href="../-branding/code.html">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <p>Follow us on social media for updates and behind-the-scenes content.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="language-toggle">
+                    <button class="active" data-lang="en">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">&copy; 2026 Tutora. All rights reserved.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

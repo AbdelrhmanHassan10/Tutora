@@ -1430,19 +1430,17 @@
                                                       return;
                                                   }
                                                   try {
-                                                      const method = isFav ? 'DELETE' : 'POST';
-                                                      const endpoint = isFav ? `${API_BASE_URL}/favorites/${ARTIFACT_ID}?type=Artifact` : `${API_BASE_URL}/favorites/${ARTIFACT_ID}`;
-                                                      
-                                                      const response = await fetch(endpoint, {
-                                                          method: method,
+                                                      const response = await fetch(`${API_BASE_URL}/favorites/toggle/${ARTIFACT_ID}`, {
+                                                          method: 'POST',
                                                           headers: {
                                                               'Content-Type': 'application/json',
                                                               'Authorization': `Bearer ${currentToken}`
                                                           },
-                                                          body: method === 'POST' ? JSON.stringify({ type: "Artifact" }) : null
+                                                          body: JSON.stringify({ type: "Artifact" })
                                                       });
                                                       if (response.ok) {
-                                                          isFav = !isFav;
+                                                          const data = await response.json();
+                                                          isFav = data.isFavorited;
                                                           if (isFav) {
                                                               favoriteBtn.classList.add('active');
                                                               alert("Added to favorites successfully!");

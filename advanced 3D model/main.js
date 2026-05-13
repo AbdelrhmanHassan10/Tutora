@@ -390,4 +390,101 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize
     renderGallery();
     updateArtifactUI(currentArtifactId);
+
+    // 10. Generate 3D Model — POST /api/ai/image-to-3d
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const generate3dBtn = document.getElementById('generate3dBtn');
+    const generate3dStatus = document.getElementById('generate3d-status');
+
+    if (generate3dBtn) {
+        generate3dBtn.addEventListener('click', async () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please log in to use this feature.');
+                return;
+            }
+
+            // Get current artifact image
+            const currentData = ARTIFACT_MAPPING[currentArtifactId];
+            if (!currentData || !currentData.image) return;
+
+            generate3dBtn.disabled = true;
+            generate3dBtn.innerHTML = `<span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span>`;
+            
+            if (generate3dStatus) {
+                generate3dStatus.style.display = 'block';
+                generate3dStatus.style.background = 'rgba(139,92,246,0.15)';
+                generate3dStatus.style.border = '1px solid rgba(139,92,246,0.3)';
+                generate3dStatus.style.color = '#a78bfa';
+                generate3dStatus.innerHTML = `
+                    <span class="material-symbols-outlined" style="animation: spin 1s linear infinite; vertical-align: middle;">sync</span>
+                    Generating 3D model for ${currentData.name}...
+                `;
+            }
+
+            try {
+                // Fetch image and convert to File
+                const imgResponse = await fetch(currentData.image);
+                const blob = await imgResponse.blob();
+                const file = new File([blob], 'artifact.jpg', { type: blob.type || 'image/jpeg' });
+
+                const formData = new FormData();
+                formData.append('image', file);
+
+                const response = await fetch(`${API_URL}/ai/image-to-3d`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (generate3dStatus) {
+                    if (response.status === 202 || data.status === 'placeholder') {
+                        // Coming Soon response
+                        generate3dStatus.style.background = 'rgba(236,182,19,0.15)';
+                        generate3dStatus.style.border = '1px solid rgba(236,182,19,0.3)';
+                        generate3dStatus.style.color = '#ecb613';
+                        generate3dStatus.innerHTML = `
+                            <span class="material-symbols-outlined" style="vertical-align: middle;">construction</span>
+                            <strong>Coming Soon!</strong><br>
+                            <span style="font-size: 13px; opacity: 0.8;">${data.message || 'AI 3D generation is under development. Stay tuned!'}</span>
+                        `;
+                    } else if (response.ok) {
+                        generate3dStatus.style.background = 'rgba(16,185,129,0.15)';
+                        generate3dStatus.style.border = '1px solid rgba(16,185,129,0.3)';
+                        generate3dStatus.style.color = '#10b981';
+                        generate3dStatus.innerHTML = `
+                            <span class="material-symbols-outlined" style="vertical-align: middle;">check_circle</span>
+                            3D Model generated successfully!
+                        `;
+                    }
+                }
+            } catch (error) {
+                console.error('Image-to-3D Error:', error);
+                if (generate3dStatus) {
+                    generate3dStatus.style.background = 'rgba(239,68,68,0.15)';
+                    generate3dStatus.style.border = '1px solid rgba(239,68,68,0.3)';
+                    generate3dStatus.style.color = '#ef4444';
+                    generate3dStatus.innerHTML = `
+                        <span class="material-symbols-outlined" style="vertical-align: middle;">error</span>
+                        Connection failed. Please try again.
+                    `;
+                }
+            } finally {
+                generate3dBtn.disabled = false;
+                generate3dBtn.innerHTML = `<span class="material-symbols-outlined">view_in_ar</span>`;
+            }
+        });
+    }
 });
+
+// Spin animation for loading states
+if (!document.getElementById('spin-style')) {
+    const style = document.createElement('style');
+    style.id = 'spin-style';
+    style.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+    document.head.appendChild(style);
+}

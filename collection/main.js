@@ -216,7 +216,8 @@
       const api = {
           getMyFavorites: () => makeApiRequest('/favorites/my'),
           addFavorite: (id) => makeApiRequest(`/favorites/${id}`, 'POST', { type: "Artifact" }),
-          removeFavorite: (id) => makeApiRequest(`/favorites/${id}?type=Artifact`, 'DELETE')
+          removeFavorite: (id) => makeApiRequest(`/favorites/${id}?type=Artifact`, 'DELETE'),
+          toggleFavorite: (id) => makeApiRequest(`/favorites/toggle/${id}`, 'POST', { type: "Artifact" })
       };
 
       // ============================================

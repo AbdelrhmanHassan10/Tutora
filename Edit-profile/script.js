@@ -132,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cancelCrop) cancelCrop.onclick = closeCrop;
     if (closeCropModal) closeCropModal.onclick = closeCrop;
 
+    // Store cropped file for avatar upload
+    let croppedAvatarFile = null;
+
     if (confirmCrop) {
         confirmCrop.onclick = () => {
             if (!cropper) return;
@@ -144,6 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             
             profileImagePreview.src = canvas.toDataURL('image/jpeg', 0.9);
+            
+            // Convert canvas to File for API upload
+            canvas.toBlob((blob) => {
+                croppedAvatarFile = new File([blob], 'avatar.jpg', { type: 'image/jpeg' });
+            }, 'image/jpeg', 0.9);
+            
             closeCrop();
             updateAdjustButtonVisibility();
             if(window.showPremiumToast) window.showPremiumToast('Artifact image adjusted successfully!', 'success');
@@ -179,7 +188,39 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // 4. Form Submit Handler
+    // 4. Avatar Upload via API: POST /api/auth/me/avatar
+    async function uploadAvatarToAPI(file) {
+        const formData = new FormData();
+        formData.append('avatar', file);
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/auth/me/avatar`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const avatarUrl = data.avatarUrl || data.avatar || data.url;
+                if (avatarUrl) {
+                    localStorage.setItem('currentAvatar', avatarUrl);
+                    if (window.syncGlobalAvatar) window.syncGlobalAvatar();
+                }
+                return avatarUrl;
+            } else {
+                console.error('Avatar upload failed:', response.status);
+                return null;
+            }
+        } catch (error) {
+            console.error('Avatar upload error:', error);
+            return null;
+        }
+    }
+
+    // 5. Form Submit Handler — PUT /api/auth/me
     const editProfileForm = document.getElementById('editProfileForm');
     if (editProfileForm) {
         editProfileForm.addEventListener('submit', async (e) => {
@@ -191,41 +232,81 @@ document.addEventListener('DOMContentLoaded', () => {
             const bio = document.getElementById('bio').value;
 
             const fullName = `${firstName} ${lastName}`.trim();
-            const payload = { name: fullName, email: email, bio: bio };
 
-            // Handle Avatar in payload
-            if (profileImagePreview.src && !profileImagePreview.src.includes('unnamed.png')) {
-                payload.profileImage = profileImagePreview.src;
-                localStorage.setItem('currentAvatar', profileImagePreview.src);
-            }
-
-            // SIMULATION: Save to LocalStorage
-            localStorage.setItem(`localProfileData_${email}`, JSON.stringify(payload));
-            
-            // Show Success UI
             const btnSave = document.querySelector('.btn-save');
             const originalText = btnSave.textContent;
             btnSave.textContent = 'Saving...';
             btnSave.disabled = true;
 
-            setTimeout(() => {
-                const msg = 'Profile updated successfully!';
+            try {
+                // Step 1: Upload avatar if changed
+                if (croppedAvatarFile) {
+                    const avatarUrl = await uploadAvatarToAPI(croppedAvatarFile);
+                    if (avatarUrl) {
+                        profileImagePreview.src = avatarUrl;
+                        croppedAvatarFile = null; // Reset after successful upload
+                    }
+                }
+
+                // Step 2: Update profile via PUT /api/auth/me
+                const payload = { name: fullName };
+                if (bio) payload.bio = bio;
+
+                const response = await fetch(`${API_BASE_URL}/auth/me`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Also keep localStorage in sync for offline fallback
+                    localStorage.setItem(`localProfileData_${email}`, JSON.stringify({
+                        name: fullName,
+                        email: email,
+                        bio: bio,
+                        profileImage: profileImagePreview.src
+                    }));
+
+                    const msg = data.message || 'Profile updated successfully!';
+                    if (window.showPremiumToast) {
+                        window.showPremiumToast(msg, 'success');
+                    } else {
+                        alert(msg);
+                    }
+                    
+                    if (window.syncGlobalAvatar) window.syncGlobalAvatar();
+                    
+                    setTimeout(() => {
+                        window.location.href = '../Profile/profile.html';
+                    }, 1500);
+                } else {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || 'Failed to update profile');
+                }
+            } catch (error) {
+                console.error('Profile update error:', error);
+                
+                // Fallback: Save to localStorage if API fails
+                localStorage.setItem(`localProfileData_${email}`, JSON.stringify({
+                    name: fullName, email, bio,
+                    profileImage: profileImagePreview.src
+                }));
+                
+                const msg = error.message || 'Saved locally. Will sync when connection restores.';
                 if (window.showPremiumToast) {
-                    window.showPremiumToast(msg, 'success');
+                    window.showPremiumToast(msg, 'warning');
                 } else {
                     alert(msg);
                 }
-                
+            } finally {
                 btnSave.textContent = originalText;
                 btnSave.disabled = false;
-                
-                if (window.syncGlobalAvatar) window.syncGlobalAvatar();
-                
-                // Slightly longer delay so the toast is seen before redirect
-                setTimeout(() => {
-                    window.location.href = '../Profile/profile.html';
-                }, 1500);
-            }, 1000);
+            }
         });
     }
 

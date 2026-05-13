@@ -82,9 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
         cameraInput.addEventListener('change', handleFile);
     }
 
-    // 3. AI Analysis Integration
+    // Store last analyzed file for text-to-speech pipeline
+    let lastAnalyzedFile = null;
+
+    // 3. AI Analysis Integration — POST /api/ai/detect
     async function analyzeImage(file) {
         const token = localStorage.getItem('token');
+        lastAnalyzedFile = file;
         
         // Show loading state
         if (resultContainer) {
@@ -118,22 +122,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             
-            if (response.ok && data.predictions && data.predictions.length > 0) {
-                const topMatch = data.predictions[0];
-                const confidence = (topMatch.probability * 100).toFixed(1);
+            // Support both old format (predictions[]) and new format (detected, confidence, artifact)
+            const detected = data.detected || (data.predictions && data.predictions[0]?.className);
+            const confidence = data.confidence || (data.predictions && data.predictions[0]?.probability ? (data.predictions[0].probability * 100).toFixed(1) + '%' : null);
+            const artifactInfo = data.artifact || null;
+
+            if (response.ok && detected) {
+                const confDisplay = typeof confidence === 'number' ? confidence.toFixed(1) + '%' : confidence || 'High';
                 
-                resultTitle.textContent = `Match Found: ${topMatch.className}`;
-                resultTitle.style.color = '#4ade80'; // Success green
+                resultTitle.textContent = `Match Found: ${detected}`;
+                resultTitle.style.color = '#4ade80';
                 resultDesc.innerHTML = `
                     <div style="color: #fff; line-height: 1.6;">
-                        <p style="margin-bottom: 10px;"><strong>Confidence Score:</strong> ${confidence}%</p>
-                        <p>Our neural network has identified this artifact. Accessing historical records and curator notes for <strong>${topMatch.className}</strong>...</p>
-                        <button class="btn-primary" style="margin-top: 15px; padding: 8px 16px; font-size: 14px;" onclick="window.location.href='../collection/collection.html'">View in Collection</button>
+                        <p style="margin-bottom: 10px;"><strong>Confidence Score:</strong> ${confDisplay}</p>
+                        ${artifactInfo ? `<p style="margin-bottom: 10px;">${artifactInfo.description || ''}</p>` : ''}
+                        <p>Our neural network has identified this artifact. Accessing historical records and curator notes for <strong>${detected}</strong>...</p>
+                        <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                            <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;" onclick="window.location.href='../collection/collection.html'">View in Collection</button>
+                            <button id="listenStoryBtn" class="btn-primary" style="padding: 8px 16px; font-size: 14px; background: linear-gradient(135deg, #8b5cf6, #6d28d9);">
+                                <span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">volume_up</span>
+                                Listen to Story
+                            </button>
+                        </div>
                     </div>
                 `;
+
+                // Attach text-to-speech handler
+                const listenBtn = document.getElementById('listenStoryBtn');
+                if (listenBtn) {
+                    listenBtn.addEventListener('click', () => generateStoryAudio(lastAnalyzedFile));
+                }
+
+                // Refresh detection history
+                loadDetectionHistory();
             } else {
                 resultTitle.textContent = 'Identification Unsuccessful';
-                resultTitle.style.color = '#f87171'; // Error red
+                resultTitle.style.color = '#f87171';
                 resultDesc.textContent = data.message || 'Tutora AI could not find a definitive match. Please ensure the photo is clear and well-lit.';
             }
         } catch (error) {
@@ -144,7 +168,135 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 4. Scroll Animations (Sync with local visible class)
+    // 4. Text-to-Speech Pipeline — POST /api/ai/text-to-speech
+    async function generateStoryAudio(file) {
+        if (!file) return;
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('Please log in to use this feature.');
+            return;
+        }
+
+        const listenBtn = document.getElementById('listenStoryBtn');
+        if (listenBtn) {
+            listenBtn.disabled = true;
+            listenBtn.innerHTML = `
+                <span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle; animation: rotate 2s linear infinite;">sync</span>
+                Generating Story & Audio...
+            `;
+        }
+
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('language', localStorage.getItem('language') || 'en');
+
+        try {
+            const response = await fetch(`${API_URL}/ai/text-to-speech`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.story) {
+                // Show story text
+                const storySection = document.createElement('div');
+                storySection.style.cssText = 'margin-top: 20px; padding: 15px; background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; color: #fff;';
+                storySection.innerHTML = `
+                    <h4 style="color: #a78bfa; margin-bottom: 8px;">
+                        <span class="material-symbols-outlined" style="vertical-align: middle; font-size: 18px;">auto_stories</span>
+                        AI-Generated Story
+                    </h4>
+                    <p style="line-height: 1.7; font-size: 14px;">${data.story}</p>
+                `;
+                resultDesc.appendChild(storySection);
+
+                // Play audio if available
+                if (data.audioBase64) {
+                    const audio = new Audio(`data:audio/mp3;base64,${data.audioBase64}`);
+                    audio.play().catch(e => console.warn('Audio autoplay blocked:', e));
+
+                    const audioPlayer = document.createElement('div');
+                    audioPlayer.style.cssText = 'margin-top: 12px;';
+                    audioPlayer.innerHTML = `
+                        <audio controls style="width: 100%; border-radius: 8px;">
+                            <source src="data:audio/mp3;base64,${data.audioBase64}" type="audio/mpeg">
+                        </audio>
+                    `;
+                    storySection.appendChild(audioPlayer);
+                }
+
+                if (listenBtn) {
+                    listenBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">check_circle</span> Story Generated`;
+                    listenBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                }
+            } else {
+                throw new Error(data.message || 'Failed to generate story');
+            }
+        } catch (error) {
+            console.error('Text-to-Speech Error:', error);
+            if (listenBtn) {
+                listenBtn.disabled = false;
+                listenBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">volume_up</span> Try Again`;
+                listenBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            }
+            alert('Story generation failed: ' + error.message);
+        }
+    }
+
+    // 5. Detection History — GET /api/ai/detections
+    async function loadDetectionHistory() {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+
+        const historyContainer = document.getElementById('detection-history');
+        if (!historyContainer) return;
+
+        try {
+            const response = await fetch(`${API_URL}/ai/detections`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (response.ok) {
+                const detections = await response.json();
+                const items = Array.isArray(detections) ? detections : (detections.data || []);
+
+                if (items.length === 0) {
+                    historyContainer.innerHTML = `
+                        <p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px;">
+                            No previous scans yet. Upload an artifact photo to get started!
+                        </p>
+                    `;
+                    return;
+                }
+
+                historyContainer.innerHTML = items.slice(0, 6).map(det => {
+                    const name = det.detected || det.name || 'Unknown';
+                    const conf = det.confidence || 'N/A';
+                    const date = det.createdAt ? new Date(det.createdAt).toLocaleDateString() : '';
+                    return `
+                        <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+                            <span class="material-symbols-outlined" style="color: #ecb613; font-size: 24px;">image_search</span>
+                            <div style="flex: 1;">
+                                <strong style="color: #fff; font-size: 14px;">${name}</strong>
+                                <p style="color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 2px;">${date} • Confidence: ${conf}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        } catch (error) {
+            console.error('Failed to load detection history:', error);
+        }
+    }
+
+    // Load detection history on page load
+    loadDetectionHistory();
+
+    // 6. Scroll Animations
     const animElements = document.querySelectorAll('.anim-on-scroll');
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
