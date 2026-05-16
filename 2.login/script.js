@@ -84,8 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const loginBtn = document.getElementById('loginBtn');
-    const dustContainer = document.getElementById('dust-container');
-    const shapesContainer = document.getElementById('shapes-container');
     const cursorGlow = document.getElementById('cursorGlow');
 
     // 1. Static 3D Presence & Cursor Glow
@@ -94,91 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
         
         document.addEventListener('mousemove', (e) => {
             if (cursorGlow) {
-                cursorGlow.style.left = e.clientX + 'px';
-                cursorGlow.style.top = e.clientY + 'px';
+                const x = e.clientX;
+                const y = e.clientY;
+                cursorGlow.style.left = `${x}px`;
+                cursorGlow.style.top = `${y}px`;
+            }
+            
+            if (formCard) {
+                const x = (window.innerWidth / 2 - e.clientX) / 50;
+                const y = (window.innerHeight / 2 - e.clientY) / 50;
+                formCard.style.transform = `rotateY(${5 - x}deg) rotateX(${2 + y}deg)`;
             }
         });
     }
 
-    // 2. Generate Scattered Dust
-    const createDust = () => {
-        if (!dustContainer) return;
-        for (let i = 0; i < 40; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 3 + 1;
-            dust.style.width = size + 'px';
-            dust.style.height = size + 'px';
-            dust.style.left = Math.random() * 100 + 'vw';
-            dust.style.top = Math.random() * 100 + 'vh';
-            // Immediate scattering
-            dust.style.animationDelay = (Math.random() * -12) + 's';
-            dustContainer.appendChild(dust);
-        }
-    };
-
-    // 3. Generate Royal Triangles
-    const createShapes = () => {
-        if (!shapesContainer) return;
-        for (let i = 0; i < 10; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.style.left = Math.random() * 100 + 'vw';
-            // Immediate scattering
-            shape.style.animationDelay = (Math.random() * -20) + 's';
-            shapesContainer.appendChild(shape);
-        }
-    };
-
-    createDust();
-    createShapes();
-
-    // 4. Legendary Interactive Effects
-    const applyMagneticEffect = (selector) => {
-        const elements = document.querySelectorAll(selector);
-        document.addEventListener('mousemove', (e) => {
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const x = e.clientX - (rect.left + rect.width / 2);
-                const y = e.clientY - (rect.top + rect.height / 2);
-                const distance = Math.sqrt(x*x + y*y);
-
-                if (distance < 150) {
-                    const moveX = x * 0.2;
-                    const moveY = y * 0.2;
-                    el.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
-                } else {
-                    el.style.transform = `translate(0, 0) scale(1)`;
-                }
-            });
+    // Magnetic Buttons (Exclude social buttons per user request)
+    document.querySelectorAll('.login-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
         });
-    };
-
-    const interactiveDust = () => {
-        document.addEventListener('mousemove', (e) => {
-            const particles = document.querySelectorAll('.dust-particle');
-            particles.forEach(p => {
-                const rect = p.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const dist = Math.sqrt(x*x + y*y);
-                if (dist < 100) {
-                    const angle = Math.atan2(y, x);
-                    const force = (100 - dist) / 100;
-                    p.style.transform = `translate(${-Math.cos(angle) * 50 * force}px, ${-Math.sin(angle) * 50 * force}px)`;
-                } else {
-                    p.style.transform = '';
-                }
-            });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
         });
-    };
+    });
 
-    // Initialize Legendary Effects
-    applyMagneticEffect('#loginBtn');
-    applyMagneticEffect('.login-link-btn');
-    applyMagneticEffect('.signup-link');
-    applyMagneticEffect('.nav-logo');
-    interactiveDust();
 
     // Liquid Shine Movement
     const shine = document.createElement('div');
@@ -186,14 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardInner = document.querySelector('.form-card-inner');
     if (cardInner) {
         cardInner.appendChild(shine);
-        document.addEventListener('mousemove', (e) => {
+        cardInner.addEventListener('mousemove', (e) => {
             const rect = cardInner.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            shine.style.left = x + '%';
-            shine.style.top = y + '%';
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            shine.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(212, 175, 55, 0.15) 0%, transparent 70%)`;
         });
     }
+
 
     // 2. Super Star Validation
     const showError = (fieldId, message) => {

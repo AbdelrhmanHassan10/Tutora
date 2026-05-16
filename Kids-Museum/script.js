@@ -14,7 +14,6 @@ class RoyalKidsAtmosphere {
     constructor() {
         this.isMobile = window.innerWidth < 768;
         this.scrollProgress = document.getElementById('scrollProgress');
-        this.dustContainer = document.getElementById('dust-container');
         this.shapesContainer = document.getElementById('shapes-container');
         this.divineGreeting = document.getElementById('divineGreeting');
         this.cursorGlow = document.getElementById('cursorGlow');

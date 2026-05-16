@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetForm = document.getElementById('resetForm');
     const emailInput = document.getElementById('email');
     const resetBtn = document.getElementById('resetBtn');
-    const dustContainer = document.getElementById('dust-container');
-    const shapesContainer = document.getElementById('shapes-container');
     const cursorGlow = document.getElementById('cursorGlow');
     const formCard = document.getElementById('formCard');
 
@@ -22,19 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Generate Scattered Dust
-    const createDust = () => {
-        if (!dustContainer) return;
-        for (let i = 0; i < 40; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 3 + 1;
-            dust.style.width = size + 'px';
-            dust.style.height = size + 'px';
-            dust.style.left = Math.random() * 100 + 'vw';
-            dust.style.top = Math.random() * 100 + 'vh';
-            dust.style.animationDelay = (Math.random() * -12) + 's';
-            dustContainer.appendChild(dust);
-        }
     };
 
     // 3. Generate Royal Triangles
@@ -49,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    createDust();
     createShapes();
 
     // 4. Interactive Effects

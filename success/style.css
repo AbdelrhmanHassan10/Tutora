@@ -1749,24 +1749,6 @@ body.light .newsletter-banner {
 /* --- Royal Redesign Additions --- */
 
 /* Background Atmosphere */
-.dust-particle {
-    position: absolute;
-    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: floatParticle 15s infinite linear;
-}
-
-.royal-shape {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: linear-gradient(45deg, var(--primary), transparent);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    opacity: 0.1;
-    animation: floatShape 25s infinite ease-in-out;
-}
-
 @keyframes floatParticle {
     0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.4; }
@@ -2069,48 +2051,14 @@ body.light .newsletter-banner {
 }
 
 /* Interactive Particles (Fixed for full page coverage) */
-#dust-container, #shapes-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 50; /* Above background, below interactive menus */
-}
-
-.dust-particle {
-    pointer-events: none;
-    z-index: 1;
-}
-
-body.light .dust-particle {
-    background: rgba(142, 115, 65, 0.3) !important;
-}
-
-@keyframes float {
+body.light @keyframes float {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
 
-.royal-shape {
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.15;
-}
 
-@keyframes rotateFloat {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(30px, 30px) rotate(180deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* Card Hover Enhancements */
-.tour-card, .event-card, .amenity-card {
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
 
 .tour-card:hover, .event-card:hover, .amenity-card:hover {
     transform: translateY(-15px) scale(1.02);

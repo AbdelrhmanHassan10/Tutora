@@ -146,25 +146,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // ROYAL ATMOSPHERE (Golden Dust & Shapes)
+    
     // ============================================
     function initRoyalAtmosphere(color = '#f2b90d') {
-        const dustContainer = document.getElementById('dust-container');
-        const shapesContainer = document.getElementById('shapes-container');
-        
-        if (!dustContainer || !shapesContainer) return;
-
         // Clear existing
         dustContainer.innerHTML = '';
         shapesContainer.innerHTML = '';
 
-        // Create 150 dust particles
-        for (let i = 0; i < 150; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'dust-particle';
-            
-            const size = Math.random() * 3 + 1;
-            particle.style.width = `${size}px`;
+        px`;
             particle.style.height = `${size}px`;
             particle.style.background = color;
             particle.style.boxShadow = `0 0 10px ${color}`;

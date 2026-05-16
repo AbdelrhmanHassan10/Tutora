@@ -450,41 +450,4 @@ document.addEventListener('DOMContentLoaded', () => {
                         generate3dStatus.innerHTML = `
                             <span class="material-symbols-outlined" style="vertical-align: middle;">construction</span>
                             <strong>Coming Soon!</strong><br>
-                            <span style="font-size: 13px; opacity: 0.8;">${data.message || 'AI 3D generation is under development. Stay tuned!'}</span>
-                        `;
-                    } else if (response.ok) {
-                        generate3dStatus.style.background = 'rgba(16,185,129,0.15)';
-                        generate3dStatus.style.border = '1px solid rgba(16,185,129,0.3)';
-                        generate3dStatus.style.color = '#10b981';
-                        generate3dStatus.innerHTML = `
-                            <span class="material-symbols-outlined" style="vertical-align: middle;">check_circle</span>
-                            3D Model generated successfully!
-                        `;
-                    }
-                }
-            } catch (error) {
-                console.error('Image-to-3D Error:', error);
-                if (generate3dStatus) {
-                    generate3dStatus.style.background = 'rgba(239,68,68,0.15)';
-                    generate3dStatus.style.border = '1px solid rgba(239,68,68,0.3)';
-                    generate3dStatus.style.color = '#ef4444';
-                    generate3dStatus.innerHTML = `
-                        <span class="material-symbols-outlined" style="vertical-align: middle;">error</span>
-                        Connection failed. Please try again.
-                    `;
-                }
-            } finally {
-                generate3dBtn.disabled = false;
-                generate3dBtn.innerHTML = `<span class="material-symbols-outlined">view_in_ar</span>`;
-            }
-        });
-    }
-});
-
-// Spin animation for loading states
-if (!document.getElementById('spin-style')) {
-    const style = document.createElement('style');
-    style.id = 'spin-style';
-    style.textContent = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
-    document.head.appendChild(style);
-}
+                            <span style="font-size: 13

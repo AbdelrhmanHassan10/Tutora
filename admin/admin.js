@@ -97,33 +97,7 @@ async function verifyAccess() {
             // Real rejection for non-admins
             document.body.innerHTML = `
                 <div style="height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#000; color:#fff; font-family:'Cinzel', serif; text-align:center;">
-                    <span class="material-symbols-outlined" style="font-size:100px; color:#ecb613; margin-bottom:20px;">lock</span>
-                    <h1>ACCESS DENIED</h1>
-                    <p style="opacity:0.6; max-width:400px; margin:20px auto;">Admin privileges required to enter the Sanctuary. Contact the Grand Scribe for access.</p>
-                    <a href="../4.home/code.html" style="margin-top:30px; color:#ecb613; border:1px solid #ecb613; padding:12px 35px; border-radius:50px; text-decoration:none;">Return to Museum</a>
-                </div>
-            `;
-            return false;
-        }
-        
-        adminState.user = userData;
-        localStorage.setItem('user', JSON.stringify(userData));
-        
-        // Update UI Identity
-        const identityArea = document.getElementById('adminIdentityArea');
-        if (identityArea) {
-            identityArea.innerHTML = `
-                <div class="admin-identity-card">
-                    <span class="admin-name">${userData.name}</span>
-                    <span class="admin-role-badge">
-                        <span class="material-symbols-outlined" style="font-size:12px;">verified</span>
-                        Verified High Admin
-                    </span>
-                </div>
-            `;
-        }
-        
-        const avatar = document.getElementById('adminHeaderAvatar');
+                    <span class="material-symbols-outlined" style="font-size:100const avatar = document.getElementById('adminHeaderAvatar');
         if (avatar && userData.avatar) avatar.src = userData.avatar;
 
         return true;

@@ -142,49 +142,14 @@ body.light .logo-circle {
    ATMOSPHERIC ANIMATIONS (Royal Dust & Shapes)
    ============================================ */
 
-#dust-container, #shapes-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1; /* Keep global effects in background */
-    overflow: hidden;
-    perspective: 1000px;
-    contain: paint;
-}
-
-.dust-particle {
-    position: absolute;
-    background: var(--primary-color);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-body.light .dust-particle {
-    background: #5a4a15 !important;
-    box-shadow: 0 0 4px rgba(90, 74, 21, 0.1);
-}
-
-@keyframes floatParticle {
+body.light @keyframes floatParticle {
     0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
     20% { opacity: 0.6; }
     80% { opacity: 0.6; }
     100% { transform: translate3d(20px, -100vh, 50px) rotate(360deg); opacity: 0; }
 }
 
-.royal-shape {
-    position: absolute;
-    transform-style: preserve-3d;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.2;
-}
-
 /* Pyramid Geometry */
-.shape-pyramid { width: 0; height: 0; }
 .shape-pyramid .face {
     position: absolute;
     width: 0; height: 0;
@@ -206,7 +171,6 @@ body.light .dust-particle {
 }
 
 /* Cube Geometry */
-.shape-cube { width: 20px; height: 20px; }
 .shape-cube .face {
     position: absolute;
     width: 20px; height: 20px;
@@ -228,30 +192,7 @@ body.light .dust-particle {
     opacity: 0.3;
 }
 
-@keyframes rotateFloat3D {
-    0%, 100% { transform: translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-    33% { transform: translate3d(30px, -20px, 50px) rotateX(120deg) rotateY(40deg) rotateZ(10deg); }
-    66% { transform: translate3d(-20px, -40px, -25px) rotateX(240deg) rotateY(-20deg) rotateZ(-10deg); }
-}
 
-/* 3D Hero Parallax Base */
-.hero-content {
-    transition: transform 0.1s ease-out;
-    transform-style: preserve-3d;
-}
-
-/* ============================================
-   NAVBAR THEME ADAPTATION
-   ============================================ */
-
-body.light .navbar {
-    background-color: var(--header-bg);
-    border-bottom-color: var(--border-color);
-}
-
-body.light .navbar .btn-icon {
-    color: var(--text-primary);
-}
 
 .connect-column .social-links {
     display: flex;
@@ -925,36 +866,86 @@ body.light .shape-ring {
 
 
 /* ============================================
-   ROYAL ATMOSPHERE - GLOBAL STYLING
+   GLOBAL ROYAL ATMOSPHERE - DUST & SHAPES
    ============================================ */
-.dust-particle {
+
+
+
+
+.shape-pyramid .face:nth-child(1) { transform: rotateY(0deg) rotateX(30deg); }
+.shape-pyramid .face:nth-child(2) { transform: rotateY(90deg) rotateX(30deg); }
+.shape-pyramid .face:nth-child(3) { transform: rotateY(180deg) rotateX(30deg); }
+.shape-pyramid .face:nth-child(4) { transform: rotateY(270deg) rotateX(30deg); }
+
+/* Cube Design */
+.shape-cube .face {
     position: absolute;
-    background: radial-gradient(circle, #F2D00D 0%, transparent 70%);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: floatParticle 15s infinite linear;
-    pointer-events: none;
-    z-index: 1;
+    width: 30px;
+    height: 30px;
+    background: rgba(236, 182, 19, 0.08);
+    border: 1px solid rgba(236, 182, 19, 0.15);
+}
+.shape-cube .face:nth-child(1) { transform: translateZ(15px); }
+.shape-cube .face:nth-child(2) { transform: rotateY(180deg) translateZ(15px); }
+.shape-cube .face:nth-child(3) { transform: rotateY(90deg) translateZ(15px); }
+.shape-cube .face:nth-child(4) { transform: rotateY(-90deg) translateZ(15px); }
+.shape-cube .face:nth-child(5) { transform: rotateX(90deg) translateZ(15px); }
+.shape-cube .face:nth-child(6) { transform: rotateX(-90deg) translateZ(15px); }
+
+
+
+.reveal-hidden {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: transform, opacity;
 }
 
-body.light .dust-particle {
-    background: rgba(142, 115, 65, 0.3) !important;
+.reveal-active {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
 }
 
-@keyframes floatParticle {
-    0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
-    20% { opacity: 0.4; }
-    80% { opacity: 0.4; }
-    100% { transform: translate3d(100px, -100vh, 0) rotate(360deg); opacity: 0; }
-}
+.reveal-delay-1 { transition-delay: 0.1s !important; }
+.reveal-delay-2 { transition-delay: 0.2s !important; }
+.reveal-delay-3 { transition-delay: 0.3s !important; }
+.reveal-delay-4 { transition-delay: 0.4s !important; }
+.reveal-delay-5 { transition-delay: 0.5s !important; }
 
-#dust-container, #shapes-container {
+#cursorGlow {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(236, 182, 19, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+    display: none;
+}
+
+@media (min-width: 769px) {
+    #cursorGlow { display: block; }
+}
+
+.btn-primary, .btn-accent, .nav-item, .card, .booking-btn {
+    position: relative;
     overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary:hover, .btn-accent:hover {
+    box-shadow: 0 0 30px rgba(236, 182, 19, 0.3);
+}
+
+@media (max-width: 768px) {
+    .reveal-hidden {
+        transition-duration: 0.4s !important;
+    }
 }

@@ -1193,7 +1193,6 @@ body.light .newsletter-banner {
     opacity: 0.1;
     animation: floatShape 25s infinite ease-in-out;
 }
-
 @keyframes floatParticle {
     0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.4; }
@@ -1496,6 +1495,7 @@ body.light .newsletter-banner {
 }
 
 /* Interactive Particles (Fixed for full page coverage) */
+/* Interactive Particles (Fixed for full page coverage) */
 #dust-container, #shapes-container {
     position: fixed;
     top: 0;
@@ -1534,10 +1534,7 @@ body.light .dust-particle {
     100% { transform: translate(0, 0) rotate(360deg); }
 }
 
-/* Card Hover Enhancements */
-.tour-card, .event-card, .amenity-card {
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+
 
 .tour-card:hover, .event-card:hover, .amenity-card:hover {
     transform: translateY(-15px) scale(1.02);

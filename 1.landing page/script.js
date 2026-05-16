@@ -1,26 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const dustContainer = document.getElementById('dust-container');
-    const shapesContainer = document.getElementById('shapes-container');
     const header = document.querySelector('.glass-header');
     const heroContent = document.querySelector('.hero-content');
 
     // 1. Generate Atmospheric Dust Particles (Optimized Counts)
-    const createDust = () => {
-        if (!dustContainer) return;
-        // Significantly reduced counts for better performance
-        const particleCount = window.innerWidth > 768 ? 15 : 8; 
-        for (let i = 0; i < particleCount; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 2 + 1;
-            dust.style.width = size + 'px';
-            dust.style.height = size + 'px';
-            dust.style.left = Math.random() * 100 + 'vw';
-            dust.style.top = Math.random() * 100 + 'vh';
-            dust.style.animationDelay = (Math.random() * -12) + 's';
-            dust.style.opacity = Math.random() * 0.3 + 0.1;
-            dustContainer.appendChild(dust);
-        }
     };
 
     // 2. Generate Royal Pharaonic Shapes (Optimized Counts)
@@ -28,14 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!shapesContainer) return;
         // Reduced shape count to lighten the DOM
         const shapeCount = window.innerWidth > 768 ? 6 : 3;
-        for (let i = 0; i < shapeCount; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.style.left = Math.random() * 100 + 'vw';
-            shape.style.top = Math.random() * 100 + 'vh';
-            shape.style.animationDelay = (Math.random() * -20) + 's';
-            const scale = Math.random() * 0.4 + 0.3;
-            shape.style.transform = `scale(${scale})`;
+        )`;
             shapesContainer.appendChild(shape);
         }
     };
@@ -72,6 +47,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize
-    createDust();
     createShapes();
 });

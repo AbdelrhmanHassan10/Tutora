@@ -124,32 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
              const totalAmount = b.totalPrice || b.totalAmount || 0;
              
              html += `
-             <div class="visit-card" style="margin-bottom: 20px;">
-                 <div class="visit-image"><img src="../111.png" alt="GEM"></div>
-                 <div class="visit-content">
-                     <div class="visit-header">
-                         <span class="visit-badge" style="background:#10b981;">${b.status || 'Confirmed'}</span>
-                         <h3 class="visit-title">Museum Booking</h3>
-                     </div>
-                     <div class="visit-details">
-                         <div class="detail-item"><span class="detail-label">Date</span><span class="detail-value">${visitDate}</span></div>
-                         <div class="detail-item"><span class="detail-label">Tickets</span><span class="detail-value">${itemsTotal}</span></div>
-                     </div>
-                     <div class="visit-footer">
-                         <span class="price-tag" style="color:#ecb613;">$${totalAmount}</span>
-                         <a href="../success/success.html"><button class="btn btn-primary">VIEW TICKET</button></a>
-                     </div>
-                 </div>
-             </div>`;
-        });
-        listContainer.innerHTML = html;
-
-        // Update Explorer Stats: Exhibitions Toured
-        const exhibitionStat = document.getElementById('exhibitions-stat');
-        if (exhibitionStat) exhibitionStat.textContent = bookings.length;
-    }
-
-    // 7. Fetch and Display Favorites
+             <div class="visit-card" style="margin-bottom: 20// 7. Fetch and Display Favorites
     async function fetchUserFavorites() {
         try {
             const [favsResponse, countResponse] = await Promise.all([
@@ -355,34 +330,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // ROYAL ATMOSPHERE (Golden Dust & Shapes)
+    
     // ============================================
-    function initRoyalAtmosphere() {
-        const dustContainer = document.getElementById('dust-container');
-        const shapesContainer = document.getElementById('shapes-container');
-        
-        if (!dustContainer || !shapesContainer) return;
-
-        // Create 150 dust particles
-        for (let i = 0; i < 150; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'dust-particle';
-            
-            const size = Math.random() * 3 + 1;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            particle.style.left = `${left}%`;
-            particle.style.top = `${top}%`;
-            
-            const duration = Math.random() * 10 + 10;
-            const delay = Math.random() * 5;
-            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
-            
-            dustContainer.appendChild(particle);
-        }
+    
 
         // Create 15 royal shapes (Hieroglyphs)
         const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
@@ -406,8 +356,6 @@ document.addEventListener('DOMContentLoaded', () => {
             shapesContainer.appendChild(shape);
         }
     }
-
-    initRoyalAtmosphere();
 
     // --- Carousel Scroll Indicator Logic ---
     const carousel = document.querySelector('.carousel-container');

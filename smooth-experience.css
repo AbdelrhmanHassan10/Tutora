@@ -1,59 +1,94 @@
-/* Global Performance & Overflow Protection */
 html, body {
     overflow-x: hidden !important;
     max-width: 100vw !important;
     width: 100% !important;
     margin: 0;
     padding: 0;
-    -webkit-overflow-scrolling: touch; /* Enable smooth momentum on iOS */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth; /* Standard smooth scroll */
 }
+
+/* Global Page Transition */
+body {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+body.page-loaded {
+    opacity: 1;
+}
+
 
 .reveal-hidden {
     opacity: 0;
-    transform: translateY(20px); /* Reduced for mobile performance */
-    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
     will-change: transform, opacity;
 }
 
 .reveal-active {
     opacity: 1 !important;
-    transform: translateY(0) !important;
+    transform: translateY(0) scale(1) !important;
 }
 
+/* Staggered Delay Helpers (0.1s steps) */
+.reveal-delay-1 { transition-delay: 0.1s !important; }
+.reveal-delay-2 { transition-delay: 0.2s !important; }
+.reveal-delay-3 { transition-delay: 0.3s !important; }
+.reveal-delay-4 { transition-delay: 0.4s !important; }
+.reveal-delay-5 { transition-delay: 0.5s !important; }
+
+
 /* Optimization for heavy elements */
-img, .card, .royal-shape, .dust-particle, section, .hero-content, .artifact-image {
+img, .card, section, .hero-content, .artifact-image {
     backface-visibility: hidden;
     -webkit-font-smoothing: antialiased;
     transform: translateZ(0); /* Force GPU acceleration */
 }
 
-/* Emergency Mobile Performance: Disable expensive filters */
+/* Cursor Glow Effect */
+#cursorGlow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(236, 182, 19, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+    will-change: transform;
+    display: none; /* Hidden on mobile by default */
+}
+
+@media (min-width: 769px) {
+    #cursorGlow { display: block; }
+}
+
+/* Enhanced Buttons & Interactions */
+.btn-primary, .btn-accent, .nav-item, .card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary:hover, .btn-accent:hover {
+    box-shadow: 0 0 30px rgba(236, 182, 19, 0.3);
+}
+
 @media (max-width: 768px) {
     * {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
         text-shadow: none !important;
     }
-
-    /* Simplify Hero Slide transitions for mobile */
-    .slide {
-        transition: opacity 0.8s ease !important;
-        transform: none !important;
-        animation: none !important;
-    }
-
-    /* Disable sticky header if it still lags */
-    /* .header { position: absolute !important; } */
-
-    /* Force sections to be simple blocks */
-    section {
-        will-change: auto !important;
-    }
-
-    /* Strict Transition Control for Mobile */
-    * {
-        transition-property: opacity, transform !important;
-        transition-duration: 0.3s !important;
-        transition-timing-function: ease-out !important;
+    
+    .reveal-hidden {
+        transition-duration: 0.4s !important;
     }
 }
+

@@ -17,13 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const bookingBtn = document.querySelector('.btn-booking, .menu-booking-btn');
 
         if (token) {
-            // Initially show profile if token exists (optimistic)
             if (profileImg) profileImg.style.display = 'block';
             if (favBtn) favBtn.style.display = 'flex';
-            
-            // If langBtn was a login button, we should hide it or restore its original state
-            // But we don't know its original state easily. So we just ensure it's NOT the login icon.
-
             try {
                 const response = await fetch(`${API_BASE_URL}/auth/me`, {
                     headers: { 'Authorization': `Bearer ${token}` }
@@ -382,108 +377,106 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3500);
     };
 
-    // ============================================
-    // 8. ROYAL ATMOSPHERE GENERATOR
-    // ============================================
-    window.initRoyalAtmosphere = window.initRoyalAtmosphere || function() {
-        // Restricted to Home page only (Home has its own local version)
-        // Disabling global version as per user request
-        return;
+    // 8. GLOBAL ROYAL ATMOSPHERE (Optimized Dust & Shapes)
+    window.initRoyalAtmosphere = function() {
+        const dustContainer = document.getElementById('dust-container');
+        const shapesContainer = document.getElementById('shapes-container');
+        if (!dustContainer || !shapesContainer) return;
 
-        // 2. Density Logic: Decrease amount on specific pages
-        const isLowDensity = path.includes('/AI-Laboratory/') || 
-                             path.includes('/Booking/') || 
-                             path.includes('/Halls/') || 
-                             path.includes('/Membership/') || 
-                             path.includes('/News/') || 
-                             path.includes('/Help/') || 
-                             path.includes('/Terms-of-Service/');
-
-        // 3. Ensure Containers Exist
-        let dustContainer = document.getElementById('dust-container');
-        let shapesContainer = document.getElementById('shapes-container');
-
-        if (!dustContainer) {
-            dustContainer = document.createElement('div');
-            dustContainer.id = 'dust-container';
-            document.body.appendChild(dustContainer);
-        }
-        if (!shapesContainer) {
-            shapesContainer = document.createElement('div');
-            shapesContainer.id = 'shapes-container';
-            document.body.appendChild(shapesContainer);
-        }
-
-        // 4. Generate Royal Dust (Dynamic Density)
         const isMobile = window.innerWidth <= 768;
-        let particleCount = isMobile ? 60 : 100; 
+        const path = window.location.pathname;
         
-        if (path.includes('/AI-Laboratory/') || path.includes('/News/') || path.includes('/-membership/')) {
-            particleCount = isMobile ? 3 : 5; // Near-zero for Laboratory, News, and Membership
-        } else if (isLowDensity) {
-            particleCount = isMobile ? 20 : 30; // Standard low-density
+        // Density Configuration
+        let dustCount = isMobile ? 40 : 100;
+        let shapeCount = isMobile ? 4 : 8;
+        let shape3DCount = isMobile ? 1 : 2;
+
+        const isAuthPage = path.includes('/2.login/') || path.includes('/3.register/');
+        if (isAuthPage) {
+            dustCount = 85; 
+            shapeCount = 6;
+            shape3DCount = 1;
         }
 
-        for (let i = 0; i < particleCount; i++) {
+        // 4. Generate Royal Dust
+        for (let i = 0; i < dustCount; i++) {
             const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 2 + 1;
             const duration = Math.random() * 15 + 15;
             const delay = Math.random() * -20;
             
             dust.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
+                width: ${Math.random() * 2 + 1}px;
+                height: ${Math.random() * 2 + 1}px;
                 left: ${Math.random() * 100}vw;
                 top: ${Math.random() * 100}vh;
-                opacity: ${Math.random() * 0.5 + 0.2};
-                animation: floatParticle ${duration}s infinite linear;
+                animation: floatDust ${duration}s infinite linear;
                 animation-delay: ${delay}s;
-                will-change: transform;
+                position: absolute;
+                background: rgba(236, 182, 19, 0.6);
+                border-radius: 50%;
+                filter: blur(1.5px);
                 pointer-events: none;
+                will-change: transform;
+                z-index: 10000;
             `;
             dustContainer.appendChild(dust);
         }
 
-        // 5. Generate 3D Floating Shapes (Dynamic Variety)
-        let shapeCount = isMobile ? 5 : 8;
-        
-        if (path.includes('/AI-Laboratory/') || path.includes('/News/') || path.includes('/-membership/')) {
-            shapeCount = 0; // No shapes in heavy pages
-        } else if (isLowDensity) {
-            shapeCount = isMobile ? 1 : 2; // Minimal shapes for focus pages
-        }
-        
-        const shapeTypes = ['pyramid', 'diamond', 'cube', 'ring'];
-        
+        // 5. Generate Ancient Archaeological Shapes (Hieroglyphs)
+        const glyphs = ['𓂀', '𓋹', '𓅓', '𓃻', '𓊽', '𓇳', '𓈖', '𓋀', '𓁹', '𓂋', '𓆎', '𓎛'];
         for (let i = 0; i < shapeCount; i++) {
-            const shapeWrapper = document.createElement('div');
-            shapeWrapper.className = 'royal-shape';
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.innerHTML = glyphs[Math.floor(Math.random() * glyphs.length)];
+            const duration = Math.random() * 20 + 20;
+            const delay = Math.random() * -30;
             
-            const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+            shape.style.cssText = `
+                left: ${Math.random() * 90}vw;
+                top: ${Math.random() * 90}vh;
+                animation: rotateFloat ${duration}s infinite ease-in-out;
+                animation-delay: ${delay}s;
+                position: absolute;
+                color: rgba(236, 182, 19, 0.2);
+                font-size: 3rem;
+                font-family: 'Cinzel', serif;
+                pointer-events: none;
+                will-change: transform;
+                z-index: 9999;
+            `;
+            shapesContainer.appendChild(shape);
+        }
+
+        // 6. Generate 3D Shapes (Subtle Pyramids)
+        const shape3DTypes = ['pyramid'];
+        for (let i = 0; i < shape3DCount; i++) {
+            const shapeWrapper = document.createElement('div');
+            shapeWrapper.className = 'royal-shape-3d';
+            
+            const type = shape3DTypes[Math.floor(Math.random() * shape3DTypes.length)];
             shapeWrapper.classList.add(`shape-${type}`);
             
-            if (type === 'pyramid' || type === 'cube') {
-                const faces = type === 'pyramid' ? 4 : 6;
-                for (let j = 0; j < faces; j++) {
-                    const face = document.createElement('div');
-                    face.className = 'face';
-                    shapeWrapper.appendChild(face);
-                }
+            const facesCount = type === 'pyramid' ? 4 : 6;
+            for (let j = 0; j < facesCount; j++) {
+                const face = document.createElement('div');
+                face.className = 'face';
+                shapeWrapper.appendChild(face);
             }
 
             shapeWrapper.style.cssText = `
-                left: ${Math.random() * 100}vw;
-                top: ${Math.random() * 100}vh;
+                left: ${Math.random() * 90}vw;
+                top: ${Math.random() * 90}vh;
                 animation: rotateFloat3D ${Math.random() * 10 + 20}s infinite ease-in-out;
                 animation-delay: ${Math.random() * -30}s;
-                transform: scale(${Math.random() * 0.5 + 0.3});
-                will-change: transform;
-                pointer-events: none;
+                transform: scale(${Math.random() * 0.5 + 0.5});
             `;
             shapesContainer.appendChild(shapeWrapper);
         }
     };
+
+    // Initialize Atmospheric Effects
+    window.initRoyalAtmosphere();
+
 
     // ============================================
     // 9. CINEMATIC 3D PARALLAX
@@ -511,8 +504,96 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Initialize Atmospheric Effects
-    window.initRoyalAtmosphere();
+    // ============================================
+    // 10. SMOOTH EXPERIENCE ENGINE (Global Integration)
+    // ============================================
+    window.initSmoothExperience = function() {
+        const isMobile = window.innerWidth <= 768;
+
+        // Page Loaded Trigger
+        setTimeout(() => document.body.classList.add('page-loaded'), 100);
+
+        // Cursor Glow Creation & Movement
+        if (!isMobile) {
+            let cursorGlow = document.getElementById('cursorGlow');
+            if (!cursorGlow) {
+                cursorGlow = document.createElement('div');
+                cursorGlow.id = 'cursorGlow';
+                document.body.appendChild(cursorGlow);
+            }
+            window.addEventListener('mousemove', (e) => {
+                cursorGlow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+            });
+        }
+
+        // Staggered Reveal Logic
+        const observerOptions = {
+            threshold: isMobile ? 0.05 : 0.1,
+            rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -60px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const targets = [
+            '.hero-content', '.section-title', '.card', '.stat-box', '.exhibition-card', 
+            '.artifact-panel', '.amenity-card', '.info-section', '.event-card', 
+            '.feature-item', '.curator-panel', '.membership-content', '.newsletter-content',
+            '.tour-card', '.footer-column', '.museum-stat', '.form-card-3d'
+
+        ];
+
+        targets.forEach(selector => {
+            document.querySelectorAll(selector).forEach((el, index) => {
+                el.classList.add('reveal-hidden');
+                
+                // Auto-staggering
+                if (!isMobile) {
+                    const parent = el.parentElement;
+                    const siblings = Array.from(parent.children).filter(c => targets.some(t => targets.some(selector => c.matches(selector))));
+                    const childIndex = siblings.indexOf(el);
+                    if (childIndex >= 0 && childIndex < 6) {
+                        el.classList.add(`reveal-delay-${childIndex}`);
+                    }
+                }
+
+                revealObserver.observe(el);
+            });
+        });
+
+        // Magnetic Interactions
+        if (!isMobile) {
+            document.querySelectorAll('.btn-primary, .btn-accent, .nav-item, .card, .booking-btn, .btn-learn').forEach(btn => {
+                if (btn.classList.contains('social-btn')) return; // Explicitly skip social buttons
+                btn.addEventListener('mousemove', (e) => {
+
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const deltaX = (x - centerX) / 10;
+                    const deltaY = (y - centerY) / 10;
+                    btn.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(1.02)`;
+                    btn.style.transition = 'none';
+                });
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = `translate3d(0, 0, 0) scale(1)`;
+                    btn.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+                });
+            });
+        }
+    };
+
+    // Initialize All Global Modules
     window.init3DParallax();
+    window.initSmoothExperience();
 });
+
 

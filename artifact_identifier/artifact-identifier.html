@@ -16,13 +16,14 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="../animate.css" />
     <link rel="stylesheet" href="../global-theme.css" />
+    <link rel="stylesheet" href="../smooth-experience.css" />
 </head>
+
 
 <body class="dark">
     <!-- Royal Atmosphere -->
     <div id="dust-container"></div>
     <div id="shapes-container"></div>
-
     <!-- Mobile Menu Sidebar -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -157,7 +158,7 @@
 
     <main class="main-container">
         <!-- Hero Section -->
-        <section class="hero-section hero anim-on-scroll">
+        <section class="hero-section hero">
             <div class="hero-content">
                 <div class="ident-hero-badge">
                     <span class="material-symbols-outlined">center_focus_strong</span>
@@ -184,19 +185,19 @@
                     </div>
                     <p id="scan-result-desc"></p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Related Statues (Historical Siblings) -->
-                <section id="related-statues-section" class="anim-on-scroll" style="display:none; margin-top: 50px; width: 100%;">
-                    <div class="related-header">
-                        <div class="related-line"></div>
-                        <h2 class="related-title">Historical <span class="gold-text">Siblings</span></h2>
-                        <div class="related-line"></div>
-                    </div>
-                    <p class="related-subtitle">Neural patterns suggest these historically related treasures may also interest you.</p>
-                    <div id="related-statues-grid" class="related-grid">
-                        <!-- Dynamically populated -->
-                    </div>
-                </section>
+        <!-- Related Statues (Historical Siblings) - Moved out of Hero -->
+        <section id="related-statues-section" style="display:none; margin: 4rem auto; max-width: 1400px; padding: 0 2rem;">
+            <div class="related-header">
+                <div class="related-line"></div>
+                <h2 class="related-title">Historical <span class="gold-text">Siblings</span></h2>
+                <div class="related-line"></div>
+            </div>
+            <p class="related-subtitle">Neural patterns suggest these historically related treasures may also interest you.</p>
+            <div id="related-statues-grid" class="related-grid">
+                <!-- Dynamically populated -->
             </div>
         </section>
 
@@ -469,9 +470,9 @@
                 </div>
                 <div class="legal-section">
                     <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                        <a href="../Privacy-policy/Privacy-Policy.html">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html">Cookie Settings</a>
                     </div>
                     <div class="copyright">
                         &copy; 2026 Tutora. All rights reserved.
@@ -483,6 +484,8 @@
 
     <script src="main.js"></script>
     <script src="../global-core.js"></script>
+    <script src="../smooth-reveal.js"></script>
     <script src="../animate.js"></script>
 </body>
+
 </html>

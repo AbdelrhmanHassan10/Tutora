@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirmPassword');
     const changeBtn = document.getElementById('changeBtn');
-    const dustContainer = document.getElementById('dust-container');
-    const shapesContainer = document.getElementById('shapes-container');
     const cursorGlow = document.getElementById('cursorGlow');
     const formCard = document.getElementById('formCard');
 
@@ -28,19 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const createDust = () => {
-        if (!dustContainer) return;
-        for (let i = 0; i < 40; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 3 + 1;
-            dust.style.width = size + 'px';
-            dust.style.height = size + 'px';
-            dust.style.left = Math.random() * 100 + 'vw';
-            dust.style.top = Math.random() * 100 + 'vh';
-            dust.style.animationDelay = (Math.random() * -12) + 's';
-            dustContainer.appendChild(dust);
-        }
     };
 
     const createShapes = () => {
@@ -54,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    createDust();
     createShapes();
 
     const magneticBtn = (btn) => {

@@ -85,8 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Store last analyzed file for text-to-speech pipeline
     let lastAnalyzedFile = null;
 
-    // 3. AI Analysis Integration — POST /api/ai/detect
-    
     // NEW: Function to show Related Statues (Historical Siblings)
     function showRelatedStatues(detectedName) {
         const relatedSection = document.getElementById('related-statues-section');
@@ -95,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!relatedSection || !relatedGrid) return;
         
         // Mock data for related statues
-        // In a real scenario, this would come from the user's model or an API
         const relatedData = [
             {
                 name: "Mask of Tutankhamun",
@@ -129,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Populate grid
         relatedData.forEach(statue => {
             const card = document.createElement('div');
-            card.className = 'related-card anim-on-scroll';
+            card.className = 'related-card visible';
             card.innerHTML = `
                 <div class="related-img-container">
                     <img src="${statue.image}" alt="${statue.name}">
@@ -148,19 +145,20 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Show section
         relatedSection.style.display = 'block';
-        setTimeout(() => {
-            relatedSection.classList.add('visible');
-            // Trigger animation for cards
-            relatedGrid.querySelectorAll('.related-card').forEach((c, i) => {
-                setTimeout(() => c.classList.add('visible'), i * 150);
-            });
-        }, 100);
+        relatedSection.classList.add('visible');
     }
 
     // 3. AI Analysis Integration — POST /api/ai/detect
     async function analyzeImage(file) {
         const token = localStorage.getItem('token');
         lastAnalyzedFile = file;
+
+        // Login gate
+        if (!token) {
+            alert('🔐 Please login to use the AI Scanner.');
+            window.location.href = '../2.login/code.html';
+            return;
+        }
         
         // Hide related section on new scan
         const relatedSection = document.getElementById('related-statues-section');
@@ -180,62 +178,56 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (resultDesc) {
             resultDesc.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 10px; color: #fff;">
-                    <span class="material-symbols-outlined" style="animation: rotate 2s linear infinite;">sync</span>
-                    <span>Scanning artifact features against GEM digital archive...</span>
-                </div>
-            `;
-        }
-
-        const formData = new FormData();
+                <div style="display: flex; align-items: center; gap: 10const formData = new FormData();
         formData.append('image', file);
 
         try {
+            console.log('📤 Sending image to /ai/detect...');
             const response = await fetch(`${API_URL}/ai/detect`, {
                 method: 'POST',
                 headers: {
-                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                    'Authorization': `Bearer ${token}`
                 },
                 body: formData
             });
 
+            console.log('📥 Response status:', response.status);
             const data = await response.json();
+            console.log('📦 Response data:', data);
             
-            // Support both old format (predictions[]) and new format (detected, confidence, artifact)
-            const detected = data.detected || (data.predictions && data.predictions[0]?.className);
-            const confidence = data.confidence || (data.predictions && data.predictions[0]?.probability ? (data.predictions[0].probability * 100).toFixed(1) + '%' : null);
+            // Handle auth errors
+            if (response.status === 401 || response.status === 403) {
+                resultTitle.textContent = 'Session Expired';
+                resultTitle.style.color = '#f87171';
+                resultDesc.innerHTML = '<p>Your session has expired. Please <a href="../2.login/code.html" style="color: #ecb613; text-decoration: underline;">login again</a> to continue scanning.</p>';
+                return;
+            }
+
+            // Handle API offline
+            if (response.status === 503) {
+                resultTitle.textContent = 'AI Scanner Offline';
+                resultTitle.style.color = '#f87171';
+                resultDesc.textContent = 'The AI detection service is temporarily offline. Please try again in a few minutes.';
+                return;
+            }
+
+            // Robust name detection logic
             const artifactInfo = data.artifact || null;
+            let detected = (artifactInfo && artifactInfo.name) || data.detected || (data.predictions && data.predictions[0]?.className);
+            
+            // Fix for "Unknown" or empty results
+            if (!detected || detected === "Unknown" || detected === "unknown") {
+                detected = "Mysterious Artifact";
+            }
+
+            const confidence = data.confidence || (data.predictions && data.predictions[0]?.probability ? (data.predictions[0].probability * 100).toFixed(1) + '%' : null);
 
             if (response.ok && detected) {
                 const confDisplay = typeof confidence === 'number' ? confidence.toFixed(1) + '%' : confidence || 'High';
                 
                 resultTitle.textContent = `Match Found: ${detected}`;
-                resultTitle.style.color = '#4ade80';
                 resultDesc.innerHTML = `
-                    <div style="color: #fff; line-height: 1.6;">
-                        <p style="margin-bottom: 10px;"><strong>Confidence Score:</strong> ${confDisplay}</p>
-                        ${artifactInfo ? `<p style="margin-bottom: 10px;">${artifactInfo.description || ''}</p>` : ''}
-                        <p>Our neural network has identified this artifact. Accessing historical records and curator notes for <strong>${detected}</strong>...</p>
-                        <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                            <button class="btn-primary" style="padding: 8px 16px; font-size: 14px;" onclick="window.location.href='../collection/collection.html'">View in Collection</button>
-                            <button id="listenStoryBtn" class="btn-primary" style="padding: 8px 16px; font-size: 14px; background: linear-gradient(135deg, #8b5cf6, #6d28d9);">
-                                <span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">volume_up</span>
-                                Listen to Story
-                            </button>
-                        </div>
-                    </div>
-                `;
-
-                // NEW: Show related statues
-                showRelatedStatues(detected);
-
-                // Attach text-to-speech handler
-                const listenBtn = document.getElementById('listenStoryBtn');
-                if (listenBtn) {
-                    listenBtn.addEventListener('click', () => generateStoryAudio(lastAnalyzedFile));
-                }
-
-                // Refresh detection history
+                    <p style="margin-bottom: 15// Refresh detection history
                 loadDetectionHistory();
             } else {
                 resultTitle.textContent = 'Identification Unsuccessful';
@@ -263,16 +255,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (listenBtn) {
             listenBtn.disabled = true;
             listenBtn.innerHTML = `
-                <span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle; animation: rotate 2s linear infinite;">sync</span>
-                Generating Story & Audio...
-            `;
-        }
-
-        const formData = new FormData();
+                <span class="material-symbols-outlined" style="font-size: 16const formData = new FormData();
         formData.append('image', file);
         formData.append('language', localStorage.getItem('language') || 'en');
 
         try {
+            console.log('📤 Sending image to /ai/text-to-speech...');
             const response = await fetch(`${API_URL}/ai/text-to-speech`, {
                 method: 'POST',
                 headers: {
@@ -281,55 +269,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: formData
             });
 
-            const data = await response.json();
+            console.log('📥 TTS Response status:', response.status);
+
+            // Handle server errors
+            if (response.status === 500 || response.status === 503) {
+                console.error('❌ TTS Server error:', response.status);
+                if (listenBtn) {
+                    listenBtn.disabled = false;
+                    listenBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 16let data;
+            try { data = await response.json(); } catch (e) { throw new Error('Invalid server response'); }
+            console.log('📦 TTS data:', data);
 
             if (response.ok && data.story) {
                 // Show story text
                 const storySection = document.createElement('div');
-                storySection.style.cssText = 'margin-top: 20px; padding: 15px; background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); border-radius: 12px; color: #fff;';
-                storySection.innerHTML = `
-                    <h4 style="color: #a78bfa; margin-bottom: 8px;">
-                        <span class="material-symbols-outlined" style="vertical-align: middle; font-size: 18px;">auto_stories</span>
-                        AI-Generated Story
-                    </h4>
-                    <p style="line-height: 1.7; font-size: 14px;">${data.story}</p>
-                `;
-                resultDesc.appendChild(storySection);
-
-                // Play audio if available
-                if (data.audioBase64) {
-                    const audio = new Audio(`data:audio/mp3;base64,${data.audioBase64}`);
-                    audio.play().catch(e => console.warn('Audio autoplay blocked:', e));
-
-                    const audioPlayer = document.createElement('div');
-                    audioPlayer.style.cssText = 'margin-top: 12px;';
-                    audioPlayer.innerHTML = `
-                        <audio controls style="width: 100%; border-radius: 8px;">
-                            <source src="data:audio/mp3;base64,${data.audioBase64}" type="audio/mpeg">
-                        </audio>
-                    `;
-                    storySection.appendChild(audioPlayer);
-                }
-
-                if (listenBtn) {
-                    listenBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">check_circle</span> Story Generated`;
-                    listenBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                }
-            } else {
-                throw new Error(data.message || 'Failed to generate story');
-            }
-        } catch (error) {
-            console.error('Text-to-Speech Error:', error);
-            if (listenBtn) {
-                listenBtn.disabled = false;
-                listenBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 16px; vertical-align: middle;">volume_up</span> Try Again`;
-                listenBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
-            }
-            alert('Story generation failed: ' + error.message);
-        }
-    }
-
-    // 5. Detection History — GET /api/ai/detections
+                storySection.style.cssText = 'margin-top: 20// 5. Detection History — GET /api/ai/detections
     async function loadDetectionHistory() {
         const token = localStorage.getItem('token');
         if (!token) return;
@@ -348,49 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (items.length === 0) {
                     historyContainer.innerHTML = `
-                        <p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px;">
-                            No previous scans yet. Upload an artifact photo to get started!
-                        </p>
-                    `;
-                    return;
-                }
-
-                historyContainer.innerHTML = items.slice(0, 6).map(det => {
-                    const name = det.detected || det.name || 'Unknown';
-                    const conf = det.confidence || 'N/A';
-                    const date = det.createdAt ? new Date(det.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) : 'Recently';
-                    
-                    return `
-                        <div class="history-item">
-                            <div class="history-icon">
-                                <span class="material-symbols-outlined">history_edu</span>
-                            </div>
-                            <div class="history-content">
-                                <div class="history-header">
-                                    <span class="history-name">${name}</span>
-                                    <span class="history-badge">${conf} Match</span>
-                                </div>
-                                <div class="history-meta">
-                                    <span class="history-date">
-                                        <span class="material-symbols-outlined">calendar_today</span>
-                                        ${date}
-                                    </span>
-                                    <span class="history-link">
-                                        View Details
-                                        <span class="material-symbols-outlined">arrow_forward</span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            }
-        } catch (error) {
-            console.error('Failed to load detection history:', error);
-        }
-    }
-
-    // Load detection history on page load
+                        <p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20// Load detection history on page load
     loadDetectionHistory();
 
     // 6. Scroll Animations
@@ -416,4 +328,3 @@ if (!document.getElementById('ai-pulse-style')) {
     `;
     document.head.appendChild(style);
 }
-

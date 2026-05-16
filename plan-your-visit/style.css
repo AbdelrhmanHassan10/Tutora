@@ -2397,7 +2397,6 @@ body.light .newsletter-banner {
     opacity: 0.1;
     animation: floatShape 25s infinite ease-in-out;
 }
-
 @keyframes floatParticle {
     0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.4; }
@@ -2899,6 +2898,8 @@ body.light .dust-particle {
     50% { transform: translate(30px, 30px) rotate(180deg); }
     100% { transform: translate(0, 0) rotate(360deg); }
 }
+
+
 
 /* Card Hover Enhancements */
 .tour-card, .event-card, .amenity-card {

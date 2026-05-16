@@ -313,22 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="item-date uppercase tracking-widest">${journeyData.date || 'Today'}</span>
                             <h4 class="item-title font-serif">${spot.title}</h4>
                             <p class="item-desc opacity-70">${spot.desc}</p>
-                            <span class="step-time" style="display: inline-block; margin-top: 10px; font-size: 0.8em; color: #ecb613;">
-                                <span class="material-symbols-outlined" style="font-size: 1.2em; vertical-align: middle;">schedule</span>
-                                ${spot.time || ''}
-                            </span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        } catch (error) {
-            console.error("Failed to parse journey data", error);
-            journeyTimelineWrapper.style.display = 'none';
-            journeyEmptyState.style.display = 'block';
-        }
-    }
-
-    // ============================================
+                            <span class="step-time" style="display: inline-block; margin-top: 10// ============================================
     // 4. THEME & NAVIGATION
     // ============================================
 
@@ -431,25 +416,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // ROYAL ATMOSPHERE (Golden Dust & Shapes)
+    
     // ============================================
-    function initRoyalAtmosphere() {
-        const dustContainer = document.getElementById('dust-container');
-        const shapesContainer = document.getElementById('shapes-container');
-        
-        if (!dustContainer || !shapesContainer) return;
-
-        for (let i = 0; i < 150; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'dust-particle';
-            const size = Math.random() * 3 + 1;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.animation = `float ${Math.random() * 10 + 10}s infinite linear ${Math.random() * 5}s`;
-            dustContainer.appendChild(particle);
-        }
+    
 
         const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
         for (let i = 0; i < 15; i++) {
@@ -464,6 +433,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    initRoyalAtmosphere();
-});
+    });
 

@@ -140,19 +140,7 @@ function showGemNotification(message, type) {
     notification.textContent = message;
 
     notification.style.cssText =
-        'position:fixed;top:20px;right:20px;' +
-        'background:#3b82f6;color:white;padding:1rem 1.5rem;' +
-        'border-radius:8px;z-index:1000;font-weight:600;';
-
-    document.body.appendChild(notification);
-
-    setTimeout(function() {
-        notification.remove();
-    }, 3000);
-}
-
-
-// ============================================
+        'position:fixed;top:20// ============================================
 // EXPORT API
 // ============================================
 

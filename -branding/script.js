@@ -35,87 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.anim-on-scroll').forEach(el => observer.observe(el));
 
     // 5. Royal Atmosphere Generator (More Dust & Small Shapes)
-    function initRoyalAtmosphere() {
-        const dustContainer = document.getElementById('dust-container');
-        const shapesContainer = document.getElementById('shapes-container');
-        if (!dustContainer) return;
-
-        // Generate Massive Dust (200 particles)
-        const particleCount = 200;
-        for (let i = 0; i < particleCount; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 2 + 1;
-            const duration = Math.random() * 15 + 25;
-            const delay = Math.random() * -30;
-            
-            dust.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                left: ${Math.random() * 100}vw;
-                top: ${Math.random() * 100}vh;
-                background-color: var(--dust-color);
-                opacity: ${Math.random() * 0.3 + 0.05};
-                animation: float ${duration}s infinite linear;
-                animation-delay: ${delay}s;
-                filter: blur(${Math.random() * 1.5}px);
-                position: absolute;
-                border-radius: 50%;
-            `;
-            dustContainer.appendChild(dust);
-        }
+    
 
         // Generate Small Shapes Only
         if (shapesContainer) {
             const shapeCount = 25;
-            for (let i = 0; i < shapeCount; i++) {
-                const shape = document.createElement('div');
-                shape.className = 'royal-shape';
-                const size = Math.random() * 8 + 8; // Small: 8-16px
-                const duration = Math.random() * 20 + 25;
-                
-                shape.style.cssText = `
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${Math.random() * 100}vw;
-                    top: ${Math.random() * 100}vh;
-                    transform: rotate(${Math.random() * 360}deg);
-                    opacity: ${Math.random() * 0.15 + 0.05};
-                    animation: float ${duration}s infinite linear reverse;
-                    animation-delay: ${Math.random() * -25}s;
-                    clip-path: ${i % 2 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none'};
-                    border: 1px solid var(--shape-border);
-                    position: absolute;
-                `;
-                shapesContainer.appendChild(shape);
-            }
-        }
-    }
-    initRoyalAtmosphere();
-    initMobileMenu();
-    initThemeToggle();
-
-    function initThemeToggle() {
-        const themeBtn = document.getElementById('themeBtn');
-        const body = document.body;
-
-        // Load saved theme
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        body.classList.remove('light', 'dark');
-        body.classList.add(savedTheme);
-        updateThemeIcon(savedTheme);
-
-        if (themeBtn) {
-            themeBtn.addEventListener('click', () => {
-                const newTheme = body.classList.contains('light') ? 'dark' : 'light';
-                body.classList.remove('light', 'dark');
-                body.classList.add(newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateThemeIcon(newTheme);
-            });
-        }
-
-        function updateThemeIcon(theme) {
+            function updateThemeIcon(theme) {
             if (!themeBtn) return;
             const icon = themeBtn.querySelector('.material-symbols-outlined');
             if (icon) {

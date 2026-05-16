@@ -198,20 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
-        .royal-sparkle { position: fixed; top: -10px; pointer-events: none; z-index: 1001; animation: royalFall linear forwards; border-radius: 50%; opacity: 0.8; }
-        @keyframes royalFall { 
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            20% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(styleSheet);
-
-    for (let i = 0; i < 70; i++) {
-        setTimeout(() => createRoyalSparkle(), i * 35);
-    }
-
-    // --- Action Button Logic ---
+        .royal-sparkle { position: fixed; top: -10// --- Action Button Logic ---
     const btnDownload = document.getElementById('btnDownload');
     if (btnDownload) {
         btnDownload.onclick = () => {
@@ -255,34 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // ROYAL ATMOSPHERE (Golden Dust & Shapes)
+    
     // ============================================
-    function initRoyalAtmosphere() {
-        const dustContainer = document.getElementById('dust-container');
-        const shapesContainer = document.getElementById('shapes-container');
-        
-        if (!dustContainer || !shapesContainer) return;
-
-        // Create 150 dust particles
-        for (let i = 0; i < 150; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'dust-particle';
-            
-            const size = Math.random() * 3 + 1;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            particle.style.left = `${left}%`;
-            particle.style.top = `${top}%`;
-            
-            const duration = Math.random() * 10 + 10;
-            const delay = Math.random() * 5;
-            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
-            
-            dustContainer.appendChild(particle);
-        }
+    
 
         // Create 15 royal shapes (Hieroglyphs)
         const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
@@ -307,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    initRoyalAtmosphere();
     initializeSuccessPage();
 });
 

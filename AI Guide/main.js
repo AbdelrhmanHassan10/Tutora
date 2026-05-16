@@ -197,34 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // ROYAL ATMOSPHERE (Golden Dust & Shapes)
+    
     // ============================================
-    function initRoyalAtmosphere() {
-        const dustContainer = document.getElementById('dust-container');
-        const shapesContainer = document.getElementById('shapes-container');
-        
-        if (!dustContainer || !shapesContainer) return;
-
-        // Create 150 dust particles
-        for (let i = 0; i < 150; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'dust-particle';
-            
-            const size = Math.random() * 3 + 1;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            particle.style.left = `${left}%`;
-            particle.style.top = `${top}%`;
-            
-            const duration = Math.random() * 10 + 10;
-            const delay = Math.random() * 5;
-            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
-            
-            dustContainer.appendChild(particle);
-        }
+    
 
         // Create 15 royal shapes (Hieroglyphs)
         const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
@@ -249,7 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    initRoyalAtmosphere();
-});
+    });
 
 

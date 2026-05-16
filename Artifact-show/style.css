@@ -2837,24 +2837,6 @@ body.light .newsletter-banner {
 /* --- Royal Redesign Additions --- */
 
 /* Background Atmosphere */
-.dust-particle {
-    position: absolute;
-    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: floatParticle 15s infinite linear;
-}
-
-.royal-shape {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: linear-gradient(45deg, var(--primary), transparent);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    opacity: 0.1;
-    animation: floatShape 25s infinite ease-in-out;
-}
-
 @keyframes floatParticle {
     0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.4; }
@@ -3157,48 +3139,14 @@ body.light .newsletter-banner {
 }
 
 /* Interactive Particles (Fixed for full page coverage) */
-#dust-container, #shapes-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 50; /* Above background, below interactive menus */
-}
-
-.dust-particle {
-    pointer-events: none;
-    z-index: 1;
-}
-
-body.light .dust-particle {
-    background: rgba(142, 115, 65, 0.3) !important;
-}
-
-@keyframes float {
+body.light @keyframes float {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }
     100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
 
-.royal-shape {
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.15;
-}
 
-@keyframes rotateFloat {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(30px, 30px) rotate(180deg); }
-    100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* Card Hover Enhancements */
-.tour-card, .event-card, .amenity-card {
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
 
 .tour-card:hover, .event-card:hover, .amenity-card:hover {
     transform: translateY(-15px) scale(1.02);
@@ -3606,57 +3554,13 @@ body.light .copyright {
 /* ============================================
    ATMOSPHERE ENGINE
    ============================================ */
-#dust-container, #shapes-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 50;
-    overflow: hidden;
-}
-.dust-particle {
-    position: absolute;
-    background: #d4af37;
-    border-radius: 50%;
-    filter: blur(1px);
-    pointer-events: none;
-}
-.royal-shape {
-    position: absolute;
-    color: #d4af37;
-    opacity: 0.15;
-    pointer-events: none;
-    font-family: serif;
-    user-select: none;
-}
 @keyframes float {
     0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
     20% { opacity: 0.4; }
     80% { opacity: 0.4; }
     100% { transform: translate(100px, -100vh) rotate(360deg); opacity: 0; }
 }
-@keyframes rotateFloat {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0; }
-    20% { opacity: 0.15; }
-    50% { transform: translate(50px, -50px) rotate(180deg) scale(1.2); }
-    80% { opacity: 0.15; }
-    100% { transform: translate(100px, -100px) rotate(360deg) scale(1); opacity: 0; }
-}
 
-@media (max-width: 768px) {
-    .actions-label {
-        display: none; /* Hide label on mobile to save space */
-    }
-}/* Mobile Header Optimization (to match reference image) */
-@media (max-width: 768px) {
-    .header {
-        padding: 0.6rem 0.8rem !important;
-        background: #000 !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
     .header-container {
         padding: 0 !important;
         display: flex;
@@ -3935,11 +3839,7 @@ html {
     transform: translateY(0) !important;
 }
 /* Optimization for heavy elements */
-.artifact-image, .royal-shape, .dust-particle {
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-/* Custom smooth scrollbar for the whole page */
+.artifact-image, /* Custom smooth scrollbar for the whole page */
 ::-webkit-scrollbar {
     width: 10px;
 }

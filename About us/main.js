@@ -113,25 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ============================================
-    // ROYAL ATMOSPHERE (Standardized - Local)
+    
     // ============================================
-    function createDust() {
-        const container = document.getElementById('dust-container');
-        if (!container) return;
-        const count = 50;
-        for (let i = 0; i < count; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 3 + 1;
-            dust.style.width = `${size}px`;
-            dust.style.height = `${size}px`;
-            dust.style.left = `${Math.random() * 100}%`;
-            dust.style.top = `${Math.random() * 100}%`;
-            dust.style.opacity = Math.random() * 0.5;
-            dust.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
-            container.appendChild(dust);
-        }
-    }
+    
 
     function createShapes() {
         const container = document.getElementById('shapes-container');
@@ -149,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    createDust();
     createShapes();
 
     // ============================================

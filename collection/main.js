@@ -854,42 +854,45 @@ window.openArtifactModal = function(artifact) {
         
         if (!dustContainer || !shapesContainer) return;
 
-        // Create 500 dust particles
+        // Create 300 dust particles
         for (let i = 0; i < 300; i++) {
             const particle = document.createElement('div');
             particle.className = 'dust-particle';
             
-            const size = Math.random() * 3 + 1;
+            const size = Math.random() * 2 + 1;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
             
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.top = `${Math.random() * 100}%`;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            particle.style.left = `${left}%`;
+            particle.style.top = `${top}%`;
             
-            const duration = Math.random() * 15 + 10;
-            const delay = Math.random() * 10;
+            const duration = Math.random() * 8 + 12;
+            const delay = Math.random() * 5;
             particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
             
             dustContainer.appendChild(particle);
         }
 
-        // Create 20 royal shapes
-        for (let i = 0; i < 20; i++) {
+        // Create 15 royal shapes (Hieroglyphs)
+        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
+        for (let i = 0; i < 15; i++) {
             const shape = document.createElement('div');
             shape.className = 'royal-shape';
+            shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
             
-            const size = Math.random() * 40 + 20;
-            shape.style.width = `${size}px`;
-            shape.style.height = `${size}px`;
+            const size = Math.random() * 15 + 15;
+            shape.style.fontSize = `${size}px`;
             
-            shape.style.left = `${Math.random() * 100}%`;
-            shape.style.top = `${Math.random() * 100}%`;
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            shape.style.left = `${left}%`;
+            shape.style.top = `${top}%`;
             
-            const duration = Math.random() * 25 + 15;
-            const delay = Math.random() * 10;
+            const duration = Math.random() * 15 + 25;
+            const delay = Math.random() * 15;
             shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
-            
-            shape.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
             
             shapesContainer.appendChild(shape);
         }
@@ -919,3 +922,4 @@ window.openArtifactModal = function(artifact) {
     initRoyalAtmosphere();
     initialize();
 });
+

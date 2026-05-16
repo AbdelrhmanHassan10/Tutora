@@ -315,24 +315,11 @@ document.addEventListener('DOMContentLoaded', () => {
     countElements.forEach(el => countObserver.observe(el));
 
     // ============================================
-    // ROYAL ATMOSPHERE (Dust & Shapes)
+    
     // ============================================
-    const dustContainer = document.getElementById('dust-container');
-    const shapesContainer = document.getElementById('shapes-container');
-
     const createAtmosphere = () => {
-        if (!dustContainer || !shapesContainer) return;
-        
         // Royal Dust (150 particles)
-        for (let i = 0; i < 150; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 3 + 1;
-            dust.style.cssText = `
-                position: absolute;
-                background: rgba(212, 175, 55, 0.4);
-                border-radius: 50%;
-                width: ${size}px;
+        px;
                 height: ${size}px;
                 left: ${Math.random() * 100}vw;
                 top: ${Math.random() * 100}vh;

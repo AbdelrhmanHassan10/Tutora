@@ -476,55 +476,53 @@ document.addEventListener('DOMContentLoaded', () => {
     function initRoyalAtmosphere() {
         const dustContainer = document.getElementById('dust-container');
         const shapesContainer = document.getElementById('shapes-container');
-        if (!dustContainer) return;
+        
+        if (!dustContainer || !shapesContainer) return;
 
-        // Generate Massive Dust (500 particles)
-        const particleCount = 500;
-        for (let i = 0; i < particleCount; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 3 + 1;
-            const duration = Math.random() * 10 + 20;
-            const delay = Math.random() * -30;
+        // Create 500 dust particles
+        for (let i = 0; i < 500; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'dust-particle';
             
-            dust.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                left: ${Math.random() * 100}vw;
-                top: ${Math.random() * 100}vh;
-                opacity: ${Math.random() * 0.6 + 0.1};
-                animation: float ${duration}s infinite linear;
-                animation-delay: ${delay}s;
-                filter: blur(${Math.random() * 1.5}px);
-            `;
-            dustContainer.appendChild(dust);
+            const size = Math.random() * 2 + 1;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            particle.style.left = `${left}%`;
+            particle.style.top = `${top}%`;
+            
+            const duration = Math.random() * 8 + 12;
+            const delay = Math.random() * 5;
+            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
+            
+            dustContainer.appendChild(particle);
         }
 
-        // Generate Small Shapes Only
-        if (shapesContainer) {
-            const shapeCount = 25;
-            for (let i = 0; i < shapeCount; i++) {
-                const shape = document.createElement('div');
-                shape.className = 'royal-shape';
-                const size = Math.random() * 8 + 8; // Small: 8-16px
-                const duration = Math.random() * 20 + 25;
-                
-                shape.style.cssText = `
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${Math.random() * 100}vw;
-                    top: ${Math.random() * 100}vh;
-                    transform: rotate(${Math.random() * 360}deg);
-                    opacity: ${Math.random() * 0.15 + 0.05};
-                    animation: float ${duration}s infinite linear reverse;
-                    animation-delay: ${Math.random() * -25}s;
-                    clip-path: ${i % 2 === 0 ? 'polygon(50% 0%, 0% 100%, 100% 100%)' : 'none'};
-                    border: 1px solid rgba(236, 182, 19, 0.3);
-                `;
-                shapesContainer.appendChild(shape);
-            }
+        // Create 20 royal shapes (Hieroglyphs)
+        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
+        for (let i = 0; i < 20; i++) {
+            const shape = document.createElement('div');
+            shape.className = 'royal-shape';
+            shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
+            
+            const size = Math.random() * 15 + 15;
+            shape.style.fontSize = `${size}px`;
+            
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            shape.style.left = `${left}%`;
+            shape.style.top = `${top}%`;
+            
+            const duration = Math.random() * 15 + 25;
+            const delay = Math.random() * 15;
+            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
+            
+            shapesContainer.appendChild(shape);
         }
     }
 
     initRoyalAtmosphere();
 });
+

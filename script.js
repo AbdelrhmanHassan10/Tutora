@@ -1,24 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const dustContainer = document.getElementById('dust-container');
     const header = document.querySelector('.glass-header');
     const heroContent = document.querySelector('.hero-content');
 
     // 1. Generate Atmospheric Dust Particles (Ultra-Lightweight Sparkles)
-    const createDust = () => {
-        if (!dustContainer) return;
-        const particleCount = window.innerWidth > 768 ? 40 : 20; 
-        for (let i = 0; i < particleCount; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 1.5 + 0.5;
-            dust.style.width = size + 'px';
-            dust.style.height = size + 'px';
-            dust.style.left = Math.random() * 100 + 'vw';
-            dust.style.top = Math.random() * 100 + 'vh';
-            dust.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            dust.style.animationDelay = (Math.random() * -15) + 's';
-            dustContainer.appendChild(dust);
-        }
     };
 
     // 2. Cinematic Header Scroll Effect
@@ -53,9 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.initRoyalAtmosphere = () => {
-        if (dustContainer) dustContainer.innerHTML = '';
-        createDust();
-    };
+        };
 
-    window.initRoyalAtmosphere();
-});
+    });

@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) { console.error("Data load failed", e); }
     };
 
+
     // ============================================
     // 3. ATMOSPHERIC EFFECTS & PERFORMANCE
     // ============================================
@@ -559,7 +560,7 @@ function showHallDetail(name, num, desc, level) {
     modal.classList.add('active');
 }
 
-// Update the click handler in updateMap or bindMapEvents
+
 function rebindClickHandlers(level) {
     document.querySelectorAll('.isometric-hall, .neon-marker').forEach(item => {
         item.addEventListener('click', () => {
@@ -570,14 +571,6 @@ function rebindClickHandlers(level) {
         });
     });
 }
-
-
-// Override the updateMap to include level-aware click rebinding
-const originalUpdateMap = updateMap;
-updateMap = function(level) {
-    originalUpdateMap(level);
-    rebindClickHandlers(level);
-};
 
 
 /* ============================================
@@ -621,4 +614,5 @@ function updateMap(level) {
 
     rebindClickHandlers(level);
 }
+
 

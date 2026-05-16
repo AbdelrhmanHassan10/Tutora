@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     syncProfileData();
     
     // Global effects are handled by global-core.js
-    if (window.initRoyalAtmosphere) window.initRoyalAtmosphere();
-    if (window.init3DParallax) window.init3DParallax();
+    if (window.initRoyalAtmosphere) if (window.init3DParallax) window.init3DParallax();
 });
 
 // 1. FAQ Accordion Logic
