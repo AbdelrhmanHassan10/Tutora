@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (localData) {
                     try {
                         const parsed = JSON.parse(localData);
-                        user = { ...user, ...parsed };
+                        user = { ...parsed, ...user }; // Server data takes priority
                     } catch(e) {}
                 }
                 
@@ -320,34 +320,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileBtn && sidebarElement) mobileBtn.onclick = () => sidebarElement.classList.add('active');
     if (closeBtn && sidebarElement) closeBtn.onclick = () => sidebarElement.classList.remove('active');
 
-    // ============================================
-    
-    // ============================================
-    
-
-        // Create 15 royal shapes (Hieroglyphs)
-        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
-        for (let i = 0; i < 15; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-            
-            const size = Math.random() * 20 + 20;
-            shape.style.fontSize = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            shape.style.left = `${left}%`;
-            shape.style.top = `${top}%`;
-            
-            const duration = Math.random() * 20 + 20;
-            const delay = Math.random() * 10;
-            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
-            
-            shapesContainer.appendChild(shape);
-        }
-    }
-
-    });
+});
 
 

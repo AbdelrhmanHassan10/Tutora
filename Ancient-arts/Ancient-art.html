@@ -1,369 +1,382 @@
 <!doctype html>
-                            <html lang="en">
-                            
-                            <head>
-                                <meta charset="utf-8" />
-                                <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-                                <title>TUTORA Pharaoh Lab | Professional Unified Edition</title>
-                                <link rel="icon" type="image/png" href="../museum.png">
-                                <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-                                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-                                <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
-                                <link rel="stylesheet" href="style.css" />
-                                <link rel="stylesheet" href="../animate.css" />
-                            	<link rel="stylesheet" href="../global-theme.css" />
-                            </head>
-                            
-                            <body class="dark">
-                        <div class="menu-overlay" id="menuOverlay"></div>
-                            
-                                <!-- Single Mobile Menu -->
-                                <div class="mobile-menu" id="mobileMenu" >
-                                    <div class="menu-header">
-                                        <div class="menu-logo">
-                                
-                                <div class="logo-circle">
-                                    <img src="../logo.png" alt="Tutora Logo">
-                                </div>
-                            
-                                <h3 class="menu-logo-text">Tutora</h3>
-                                        </div>
-                                        <button class="close-btn" id="closeBtn">
-                                          <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
-                                        </button>
-                                    </div>
-                                    <nav class="menu-nav" >
-                                        <a href="../4.home/code.html" class="menu-link"  >Home</a>
-                                        <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" >Plan Your Visit</a
-                                    >         <a href="../Kids-Museum/kids-museum.html" class="menu-link"  >Kids-Museum</a>
-                            
-                                    <a href="../event/event.html" class="menu-link" >Event</a>
-                                        <div class="menu-dropdown">
-                                            <button class="menu-link dropdown-toggle" >
-                                        AI Experience
-                                        <span class="material-symbols-outlined">expand_more</span>
-                                      </button>
-                                            <div class="dropdown-items">
-                                                <a href="../AI Guide/guide.html" class="dropdown-item"  >AI Tour Guide</a
-                                        >
-                                        <a href="../chat bot/chat.html" class="dropdown-item"  >AI Chatbot</a>
-                                                <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"  >AI Artifact Identifier</a
-                                        >
-                                        <a
-                                          href="../advanced 3D model/advanced-3D.html"
-                                          class="dropdown-item" 
-                                          >AI Voice Storytelling (3D )</a
-                                        >
-                                                   <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item" >Tutora laboratory</a>
-                             </div>
-                                    </div>
-                                    <a href="../shop/shop.html" class="menu-link" >Shop</a>
-                                                <a href="../about/About.html" class="menu-link">About</a>
-                                                <div class="menu-dropdown"><button class="menu-link dropdown-toggle">Collection <span class="material-symbols-outlined">expand_more</span></button><div class="dropdown-items"><a href="../collection/collection.html" class="dropdown-item">Main Gallery</a><a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a></div></div>
-                                    </nav>
-                                    <div class="menu-footer">
-                                        <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-                                        <a href="../fav/favourite.html" class="menu-icon-link" >
-                                            <span class="material-symbols-outlined">favorite</span> Favorites
-                                        </a>
-                                        <button class="menu-icon-link" id="menuLangBtn" >
-                                      <span class="material-symbols-outlined" >language</span> Language
-                                    </button>
-                                    </div>
-                                    </div>
-                            
-                                    <!-- Header -->
-                                    <header class="header" >
-                                        <div class="header-container" >
-                                            <div class="header-left">
-                                                <button class="menu-btn" id="menuBtn">
-                                        <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span
-                                        >
-                                                </button>
-                                              <div class="logo-section">
-                                
-                                <div class="logo-circle">
-                                    <img src="../logo.png" alt="Tutora Logo">
-                                </div>
-                            
-                                <h2 class="logo-text">Tutora</h2>
-                                              </div>
-                                            </div>
-                                            <nav class="desktop-nav" >
-                                                <a href="../4.home/code.html" >Home</a>
-                                                <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a>
-                               <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-                                                <a href="../event/event.html" >Event</a>
-                                                <div class="nav-dropdown">
-                                                    <button class="nav-link dropdown-trigger" >
-                                          AI Experience
-                                          <span class="material-symbols-outlined">expand_more</span>
-                                        </button>
-                                                    <div class="dropdown-menu">
-                                                        <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a
-                                          >
-                                          <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a
-                                          >
-                                          <a
-                                            href="../artifact_identifier/artifact-identifier.html"
-                                            class="dropdown-link "> AI Artifact Identifier</a
-                                          >
-                                          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D )</a>
-                                            <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link">Tutora laboratory</a>
-                             </div>
-                                      </div>
-                                      <a href="../shop/shop.html" >Shop</a>
-                                                        <a href="../about/About.html" >About</a>
-                                                        <div class="nav-dropdown"><button class="nav-link dropdown-trigger">Collection <span class="material-symbols-outlined">expand_more</span></button><div class="dropdown-menu"><a href="../collection/collection.html" class="dropdown-link">Main Gallery</a><a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a></div></div>
-                                            </nav>
-                                            <div class="header-right">
-                                                <div class="search-box" >
-                                                    <span class="material-symbols-outlined">search</span>
-                                                    <input type="text" placeholder="Search..." />
-                                                </div>
-                                                <button class="theme-btn" id="theme-toggle">
-                                        <span class="material-symbols-outlined">dark_mode</span>
-                                      </button>
-                                                <a href="../booking/booking.html" class="btn-booking">booking</a>
-                                                <a href="../fav/favourite.html" class="icon-btn" style="   text-decoration: none;">
-                                                    <span class="material-symbols-outlined">favorite</span>
-                                                </a>
-                                                <button class="icon-btn" id="langBtn">
-                                        <span class="material-symbols-outlined">language</span>
-                                      </button>
-                                                <a href="../Profile/profile.html">
-                                                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
-                                                </a>
-                                            </div>
-                                            </div>
-                                    </header>
-                                <main>
-                                    <!-- Hero Section -->
-                                    <section class="hero">
-                                        <div class="hero-bg"></div>
-                                        <div class="container hero-content">
-                                            <h1 class="display-font hero-title">
-                                                Revive Ancient Egyptian <span class="gold-text-span">Art with AI</span>
-                                            </h1>
+<html lang="en">
 
-                                            <h2 class="hero-subtitle">
-                                                Reviving ancient Egyptian art with generative artificial intelligence
-                                            </h2>
-                                            <button class="gold-button">Start creating now</button>
-                                        </div>
-                                    </section>
-                                    <br><br>
-                                    <!-- Creation Styles Section -->
-                                    <section class="container">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TUTORA Pharaoh Lab | Professional Unified Edition</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../animate.css" />
+    <link rel="stylesheet" href="../global-theme.css" />
+</head>
 
-                                        <h2 class="ai-section-title">Choose a <span class="gold-text-span">Creative Style</span></h2>
+<body class="dark">
+    <div class="menu-overlay" id="menuOverlay"></div>
 
-                            
-                                        <div class="cards-grid">
-                                            <!-- Card 1 -->
-                                            <div class="card">
-                                                <div class="card-image-wrapper">
-                                                    <img alt="Hieroglyphic Cartouche" class="card-image" src="unnamed 1.png" />
-                                                    <div class="card-overlay"></div>
-                                                </div>
-                                                <div class="card-content">
-                                                    <h4 class="card-title">Write your name in hieroglyphics</h4>
-                                                    <p class="card-desc">
-                                                        Transform your name into a royal name using the symbols of authentic Egyptian art.
-                                                    </p>
-                                                    <a href="../Name-Translator/Name-Translator.html"><button class="gold-button" style="width: 100%; padding: 0.75rem">
-                                            Try it now
-                                          </button></a>
-                                                </div>
-                                            </div>
-                            
-                                            <!-- Card 2 -->
-                                            <div class="card" style="transform: translateY(-1rem)">
-                                                <div class="card-image-wrapper">
-                                                    <img alt="Pharaonic Portrait" class="card-image" src="unnamed (2).png" />
-                                                    <div class="card-overlay"></div>
-                                                </div>
-                                                <div class="card-content">
-                                                    <h4 class="card-title">Turn your picture into a pharaoh</h4>
-                                                    <p class="card-desc">
-                                                        Upload your profile picture and let artificial intelligence redraw your features as an Egyptian king.
-                                                    </p>
-                                                    <a href="../Pharaoh Transformer/Pharaoh-Transformer.html"> <button class="gold-button" style="width: 100%; padding: 0.75rem">
-                                            Try it now
-                                          </button></a>
-                                                </div>
-                                            </div>
-                            
-                                            <!-- Card 3 -->
-                                            <div class="card">
-                                                <div class="card-image-wrapper">
-                                                    <img alt="Mythical Egyptian Cat" class="card-image" src="unnamed (3).png" />
-                                                    <div class="card-overlay"></div>
-                                                </div>
-                                                <div class="card-content">
-                                                    <h4 class="card-title">Create from your imagination</h4>
-                                                    <p class="card-desc">
-                                                        Write a description of any object or scene and let your imagination blend with the grandeur of Egyptian civilization.
-                                                    </p>
-                                                    <a href="../AI Imagination/AI-Imagination.html">
-                                                        <button class="gold-button" style="width: 100%; padding: 0.75rem">
-                                            Try it now
-                                          </button></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Gallery Section -->
-                                    <section class="container">
+    <!-- Single Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
 
-                                        <h2 class="ai-section-title">Visitor <span class="gold-text-span">Creations</span></h2>
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
 
-                            
-                                        <div class="gallery-masonry">
-                                            <div class="gallery-item">
-                                                <img class="gallery-img" src="1.png" alt="Gallery 1" />
-                                            </div>
-                                            <div class="gallery-item">
-                                                <img class="gallery-img" src="2.png" alt="Gallery 2" />
-                                            </div>
-                                            <div class="gallery-item">
-                                                <img class="gallery-img" src="3.png" alt="Gallery 3" />
-                                            </div>
-                                            <div class="gallery-item">
-                                                <img class="gallery-img" src="4.png" alt="Gallery 4" />
-                                            </div>
-                                            <div class="gallery-item">
-                                                <img class="gallery-img" src="5.png" alt="Gallery 5" />
-                                            </div>
-                                            <div class="gallery-item">
-                                                <img class="gallery-img" src="6.png" alt="Gallery 6" />
-                                            </div>
-                                            <div class="gallery-item">
-                                                <img class="gallery-img" src="7.png" alt="Gallery 7" />
-                                            </div>
-                                            <div class="gallery-item">
-                                                <img class="gallery-img" src="1.png" alt="Gallery 2" />
-                                            </div>
-                                        </div>
-                                    </section>
-                                </main>
-                            
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
+            </button>
+        </div>
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a> <a
+                href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
 
-                                <!-- How AI Art Works -->
-                                <section class="art-how">
-                                    <h2 class="ai-section-title">How AI Art <span class="gold-text-span">Creation Works</span></h2>
-                                    <div class="art-how-grid">
-                                        <!-- Step 1 -->
-                                        <div class="art-how-card">
-                                            <div class="art-how-step-num">01</div>
-                                            <div class="art-how-icon-box">
-                                                <span class="material-symbols-outlined art-how-icon">edit_note</span>
-                                            </div>
-                                            <div class="art-how-info">
-                                                <h3 class="art-how-title">Describe Your Vision</h3>
-                                                <p class="art-how-text">Type a text prompt or upload your photo. Describe the Egyptian art style you want — pharaonic, hieroglyphic, or mythological.</p>
-                                            </div>
-                                        </div>
+            <a href="../event/event.html" class="menu-link">Event</a>
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    AI Experience
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact
+                        Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D
+                        )</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                </div>
+            </div>
+            <a href="../shop/shop.html" class="menu-link">Shop</a>
+            <a href="../about/About.html" class="menu-link">About</a>
+            <div class="menu-dropdown"><button class="menu-link dropdown-toggle">Collection <span
+                        class="material-symbols-outlined">expand_more</span></button>
+                <div class="dropdown-items"><a href="../collection/collection.html" class="dropdown-item">Main
+                        Gallery</a><a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition
+                        Halls</a></div>
+            </div>
+        </nav>
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link">
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+            <button class="menu-icon-link" id="menuLangBtn">
+                <span class="material-symbols-outlined">language</span> Language
+            </button>
+        </div>
+    </div>
 
-                                        <!-- Step 2 -->
-                                        <div class="art-how-card">
-                                            <div class="art-how-step-num">02</div>
-                                            <div class="art-how-icon-box">
-                                                <span class="material-symbols-outlined art-how-icon">auto_awesome</span>
-                                            </div>
-                                            <div class="art-how-info">
-                                                <h3 class="art-how-title">AI Generates Art</h3>
-                                                <p class="art-how-text">Our model, trained on thousands of authentic Egyptian artworks, generates unique creations blending ancient style with your input.</p>
-                                            </div>
-                                        </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span>
+                </button>
+                <div class="logo-section">
 
-                                        <!-- Step 3 -->
-                                        <div class="art-how-card">
-                                            <div class="art-how-step-num">03</div>
-                                            <div class="art-how-icon-box">
-                                                <span class="material-symbols-outlined art-how-icon">download</span>
-                                            </div>
-                                            <div class="art-how-info">
-                                                <h3 class="art-how-title">Save & Share</h3>
-                                                <p class="art-how-text">Download your creation in high resolution, share on social media, or submit it for the Visitor Gallery wall.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
 
-                            
+                    <h2 class="logo-text">Tutora</h2>
+                </div>
+            </div>
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
+                <a href="../event/event.html">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        AI Experience
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link "> AI Artifact
+                            Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D
+                            )</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html">Shop</a>
+                <a href="../about/About.html">About</a>
+                <div class="nav-dropdown"><button class="nav-link dropdown-trigger">Collection <span
+                            class="material-symbols-outlined">expand_more</span></button>
+                    <div class="dropdown-menu"><a href="../collection/collection.html" class="dropdown-link">Main
+                            Gallery</a><a href="../Exhibition-Halls/exhibition-halls.html"
+                            class="dropdown-link">Exhibition Halls</a></div>
+                </div>
+            </nav>
+            <div class="header-right">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search..." />
+                </div>
+                <button class="theme-btn" id="theme-toggle">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <a href="../booking/booking.html" class="btn-booking">booking</a>
+                <a href="../fav/favourite.html" class="icon-btn" style="   text-decoration: none;">
+                    <span class="material-symbols-outlined">favorite</span>
+                </a>
+                <button class="icon-btn" id="langBtn">
+                    <span class="material-symbols-outlined">language</span>
+                </button>
+                <a href="../Profile/profile.html">
+                    <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <h1 class="display-font hero-title">
+                    Revive Ancient Egyptian <span class="gold-text-span">Art with AI</span>
+                </h1>
 
-                                <!-- Creative Tools -->
-                                <section class="creative-tools-section">
-                                    <h2 class="ai-section-title">Creative <span class="gold-text-span">Tools</span></h2>
-                                    <div class="creative-tools-grid">
-                                        <!-- Tool 1 -->
-                                        <div class="creative-tools-card">
-                                            <div class="tool-icon-box">
-                                                <span class="material-symbols-outlined creative-tools-icon">text_fields</span>
-                                            </div>
-                                            <div class="tool-info">
-                                                <h3 class="creative-tools-title">Hieroglyph Writer</h3>
-                                                <p class="creative-tools-text">Translate your name into authentic hieroglyphic cartouches with royal styling.</p>
-                                            </div>
-                                        </div>
+                <h2 class="hero-subtitle">
+                    Reviving ancient Egyptian art with generative artificial intelligence
+                </h2>
+                <button class="gold-button">Start creating now</button>
+            </div>
+        </section>
+        <br><br>
+        <!-- Creation Styles Section -->
+        <section class="container">
 
-                                        <!-- Tool 2 -->
-                                        <div class="creative-tools-card">
-                                            <div class="tool-icon-box">
-                                                <span class="material-symbols-outlined creative-tools-icon">face_retouching_natural</span>
-                                            </div>
-                                            <div class="tool-info">
-                                                <h3 class="creative-tools-title">Pharaoh Transformer</h3>
-                                                <p class="creative-tools-text">Transform your selfie into a pharaonic portrait — complete with crown and regalia.</p>
-                                            </div>
-                                        </div>
+            <h2 class="ai-section-title">Choose a <span class="gold-text-span">Creative Style</span></h2>
 
-                                        <!-- Tool 3 -->
-                                        <div class="creative-tools-card">
-                                            <div class="tool-icon-box">
-                                                <span class="material-symbols-outlined creative-tools-icon">brush</span>
-                                            </div>
-                                            <div class="tool-info">
-                                                <h3 class="creative-tools-title">Free Imagination</h3>
-                                                <p class="creative-tools-text">Describe any scene and watch AI render it in ancient Egyptian artistic style.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
 
-                            
-                                <!-- Stats -->
-                                <section class="stats-section">
-                                    <h2 class="ai-section-title">Laboratory <span class="gold-text-span">Statistics</span></h2>
-                                    <div class="stats-grid">
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-image-wrapper">
+                        <img alt="Hieroglyphic Cartouche" class="card-image" src="unnamed 1.png" />
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Write your name in hieroglyphics</h4>
+                        <p class="card-desc">
+                            Transform your name into a royal name using the symbols of authentic Egyptian art.
+                        </p>
+                        <a href="../Name-Translator/Name-Translator.html"><button class="gold-button"
+                                style="width: 100%; padding: 0.75rem">
+                                Try it now
+                            </button></a>
+                    </div>
+                </div>
 
-                                        <div class="stat-item">
-                                            <span class="stat-value">75K+</span>
-                                            <span class="stat-label">Artworks Created</span>
-                                        </div>
-                                        <div class="stat-item">
-                                            <span class="stat-value">3</span>
-                                            <span class="stat-label">Creative Modes</span>
-                                        </div>
-                                        <div class="stat-item">
-                                            <span class="stat-value">4.8/5</span>
-                                            <span class="stat-label">User Rating</span>
-                                        </div>
-                                        <div class="stat-item">
-                                            <span class="stat-value">12K+</span>
-                                            <span class="stat-label">Gallery Submissions</span>
-                                        </div>
-                                    </div>
-                                </section>
-                            
-                                <br /><br /><br />
-                            
-                                  <!-- Footer -->
+                <!-- Card 2 -->
+                <div class="card" style="transform: translateY(-1rem)">
+                    <div class="card-image-wrapper">
+                        <img alt="Pharaonic Portrait" class="card-image" src="unnamed (2).png" />
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Turn your picture into a pharaoh</h4>
+                        <p class="card-desc">
+                            Upload your profile picture and let artificial intelligence redraw your features as an
+                            Egyptian king.
+                        </p>
+                        <a href="../Pharaoh Transformer/Pharaoh-Transformer.html"> <button class="gold-button"
+                                style="width: 100%; padding: 0.75rem">
+                                Try it now
+                            </button></a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-image-wrapper">
+                        <img alt="Mythical Egyptian Cat" class="card-image" src="unnamed (3).png" />
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Create from your imagination</h4>
+                        <p class="card-desc">
+                            Write a description of any object or scene and let your imagination blend with the grandeur
+                            of Egyptian civilization.
+                        </p>
+                        <a href="../AI Imagination/AI-Imagination.html">
+                            <button class="gold-button" style="width: 100%; padding: 0.75rem">
+                                Try it now
+                            </button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="container">
+
+            <h2 class="ai-section-title">Visitor <span class="gold-text-span">Creations</span></h2>
+
+
+            <div class="gallery-masonry">
+                <div class="gallery-item">
+                    <img class="gallery-img" src="1.png" alt="Gallery 1" />
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="2.png" alt="Gallery 2" />
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="3.png" alt="Gallery 3" />
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="4.png" alt="Gallery 4" />
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="5.png" alt="Gallery 5" />
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="6.png" alt="Gallery 6" />
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="7.png" alt="Gallery 7" />
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="1.png" alt="Gallery 2" />
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- How AI Art Works -->
+    <section class="art-how">
+        <h2 class="ai-section-title">How AI Art <span class="gold-text-span">Creation Works</span></h2>
+        <div class="art-how-grid">
+            <!-- Step 1 -->
+            <div class="art-how-card">
+                <div class="art-how-step-num">01</div>
+                <div class="art-how-icon-box">
+                    <span class="material-symbols-outlined art-how-icon">edit_note</span>
+                </div>
+                <div class="art-how-info">
+                    <h3 class="art-how-title">Describe Your Vision</h3>
+                    <p class="art-how-text">Type a text prompt or upload your photo. Describe the Egyptian art style you
+                        want — pharaonic, hieroglyphic, or mythological.</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="art-how-card">
+                <div class="art-how-step-num">02</div>
+                <div class="art-how-icon-box">
+                    <span class="material-symbols-outlined art-how-icon">auto_awesome</span>
+                </div>
+                <div class="art-how-info">
+                    <h3 class="art-how-title">AI Generates Art</h3>
+                    <p class="art-how-text">Our model, trained on thousands of authentic Egyptian artworks, generates
+                        unique creations blending ancient style with your input.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="art-how-card">
+                <div class="art-how-step-num">03</div>
+                <div class="art-how-icon-box">
+                    <span class="material-symbols-outlined art-how-icon">download</span>
+                </div>
+                <div class="art-how-info">
+                    <h3 class="art-how-title">Save & Share</h3>
+                    <p class="art-how-text">Download your creation in high resolution, share on social media, or submit
+                        it for the Visitor Gallery wall.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Creative Tools -->
+    <section class="creative-tools-section">
+        <h2 class="ai-section-title">Creative <span class="gold-text-span">Tools</span></h2>
+        <div class="creative-tools-grid">
+            <!-- Tool 1 -->
+            <div class="creative-tools-card">
+                <div class="tool-icon-box">
+                    <span class="material-symbols-outlined creative-tools-icon">text_fields</span>
+                </div>
+                <div class="tool-info">
+                    <h3 class="creative-tools-title">Hieroglyph Writer</h3>
+                    <p class="creative-tools-text">Translate your name into authentic hieroglyphic cartouches with royal
+                        styling.</p>
+                </div>
+            </div>
+
+            <!-- Tool 2 -->
+            <div class="creative-tools-card">
+                <div class="tool-icon-box">
+                    <span class="material-symbols-outlined creative-tools-icon">face_retouching_natural</span>
+                </div>
+                <div class="tool-info">
+                    <h3 class="creative-tools-title">Pharaoh Transformer</h3>
+                    <p class="creative-tools-text">Transform your selfie into a pharaonic portrait — complete with crown
+                        and regalia.</p>
+                </div>
+            </div>
+
+            <!-- Tool 3 -->
+            <div class="creative-tools-card">
+                <div class="tool-icon-box">
+                    <span class="material-symbols-outlined creative-tools-icon">brush</span>
+                </div>
+                <div class="tool-info">
+                    <h3 class="creative-tools-title">Free Imagination</h3>
+                    <p class="creative-tools-text">Describe any scene and watch AI render it in ancient Egyptian
+                        artistic style.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Stats -->
+    <section class="stats-section">
+        <h2 class="ai-section-title">Laboratory <span class="gold-text-span">Statistics</span></h2>
+        <div class="stats-grid">
+
+            <div class="stat-item">
+                <span class="stat-value">75K+</span>
+                <span class="stat-label">Artworks Created</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">3</span>
+                <span class="stat-label">Creative Modes</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">4.8/5</span>
+                <span class="stat-label">User Rating</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">12K+</span>
+                <span class="stat-label">Gallery Submissions</span>
+            </div>
+        </div>
+    </section>
+
+    <br /><br /><br />
+
+    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-container">
             <!-- Footer Header -->
@@ -438,9 +451,12 @@
                 </div>
                 <div class="legal-section">
                     <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                        <a href="../Privacy-policy/Privacy-Policy.html"
+                            style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html"
+                            style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html"
+                            style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
                     </div>
                     <div class="copyright">
                         &copy; 2026 Tutora. All rights reserved.
@@ -449,10 +465,10 @@
             </div>
         </div>
     </footer>
-                            
-                                <script src="script.js"></script>
-                                <script src="../global-core.js"></script>
-                                <script src="../animate.js"></script>
-                            </body>
-                            </html>
-                            
+
+    <script src="script.js"></script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
+</body>
+
+</html>

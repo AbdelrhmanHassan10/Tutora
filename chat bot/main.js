@@ -1,3 +1,7 @@
+// ============================================
+// CHATBOT SCRIPT - TUTORA AI
+// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Navigation and Sidebar Toggle (Royal Superstar Sync)
@@ -22,17 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
-    // Dropdown Toggle for Mobile Menu
+    // Dropdown Toggle
     const dropdownToggle = document.querySelector('.mobile-menu .dropdown-toggle');
     const dropdownItems = document.querySelector('.mobile-menu .dropdown-items');
-    
     if (dropdownToggle && dropdownItems) {
         dropdownToggle.addEventListener('click', (e) => {
             e.preventDefault();
             dropdownToggle.classList.toggle('active');
             dropdownItems.classList.toggle('show');
-            
-            // Toggle icon
             const icon = dropdownToggle.querySelector('.material-symbols-outlined');
             if (icon) {
                 icon.textContent = dropdownItems.classList.contains('show') ? 'expand_less' : 'expand_more';
@@ -40,101 +41,231 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close menu when clicking links
-    if (mobileMenu) {
-        mobileMenu.querySelectorAll('.menu-link, .dropdown-item').forEach(link => {
-            if (!link.classList.contains('dropdown-toggle')) {
-                link.addEventListener('click', closeMenu);
-            }
-        });
-    }
-
     // ============================================
-    // DARK MODE TOGGLE
+    // PROFESSIONAL CHAT SYSTEM WITH HISTORY
     // ============================================
-    const body = document.body;
-    const themeBtn = document.getElementById('themeBtn');
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        body.classList.add('light');
-        body.classList.remove('dark');
-    } else {
-        body.classList.add('dark');
-        body.classList.remove('light');
-    }
-    updateThemeIcon();
-
-    themeBtn.addEventListener('click', () => {
-        if (body.classList.contains('dark')) {
-            body.classList.remove('dark');
-            body.classList.add('light');
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.classList.remove('light');
-            body.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
-        updateThemeIcon();
-    });
-
-    function updateThemeIcon() {
-        const icon = themeBtn.querySelector('.material-symbols-outlined');
-        icon.textContent = body.classList.contains('dark') ? 'light_mode' : 'dark_mode';
-    }
-
-    // ============================================
-    // LANGUAGE TOGGLE
-    // ============================================
-    document.querySelectorAll('.language-toggle button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.language-toggle button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            localStorage.setItem('language', btn.getAttribute('data-lang'));
-        });
-    });
-
-    // ============================================
-    // FULL-SCREEN CHAT
-    // ============================================
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+    
+    // UI Elements
     const chatInput = document.getElementById('chatInput');
     const sendBtn = document.getElementById('chatSendBtn');
     const chatMessages = document.getElementById('chatMessages');
     const chatSuggestions = document.getElementById('chatSuggestions');
     const clearChatBtn = document.getElementById('clearChatBtn');
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+    
+    // Sidebar Elements
+    const chatSidebar = document.getElementById('chatSidebar');
+    const openSidebarBtn = document.getElementById('openSidebarBtn');
+    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+    const newChatBtn = document.getElementById('newChatBtn');
+    const chatHistoryList = document.getElementById('chatHistoryList');
 
+    // State
+    let currentSessionId = null;
+    let chatSessions = JSON.parse(localStorage.getItem('tutora_chat_sessions') || '[]');
+
+    // --- Sidebar Toggling ---
+    if (openSidebarBtn) {
+        openSidebarBtn.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                chatSidebar.classList.add('active');
+            } else {
+                chatSidebar.classList.toggle('collapsed');
+            }
+        });
+    }
+
+    if (closeSidebarBtn) {
+        closeSidebarBtn.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                chatSidebar.classList.remove('active');
+            } else {
+                chatSidebar.classList.add('collapsed');
+            }
+        });
+    }
+
+    // --- Helper Functions ---
     function getTime() {
         return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 
-    function addMessage(text, sender) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `chat-msg-container ${sender === 'user' ? 'user-msg' : 'ai-msg'}`;
+    function generateId() {
+        return 'chat_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+    }
 
-        const avatarSrc = sender === 'user' ? './unnamed.png' : '../logo.png';
+    function addMessage(text, sender, save = true) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-msg-container ${sender === 'user' ? 'user-msg' : 'ai-msg'} anim-on-scroll visible`;
+        
+        // Simple Markdown Formatting for AI
+        let formattedText = text;
+        if (sender === 'ai') {
+            formattedText = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                .replace(/^\*\s(.*)/gm, '<li>$1</li>') // Bullets
+                .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>') // Wrap lists
+                .replace(/\n/g, '<br>'); // New lines
+        }
+
+        const avatarSrc = sender === 'user' ? '../Profile/unnamed.png' : '../logo.png';
         msgDiv.innerHTML = `
             <div class="chat-msg-avatar">
                 <img src="${avatarSrc}" alt="${sender}">
             </div>
             <div class="chat-msg-bubble">
-                <p>${text}</p>
+                <div class="msg-content">${formattedText}</div>
                 <span class="chat-msg-time">${getTime()}</span>
             </div>
         `;
         chatMessages.appendChild(msgDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        if (save && currentSessionId) {
+            const session = chatSessions.find(s => s.id === currentSessionId);
+            if (session) {
+                session.messages.push({ text, sender, time: getTime() });
+                
+                // Set title if it's the first user message
+                if (sender === 'user' && session.title === 'New Conversation') {
+                    session.title = text.substring(0, 30) + (text.length > 30 ? '...' : '');
+                    renderSidebar();
+                }
+                saveSessions();
+            }
+        }
     }
 
+    // --- Session Management ---
+    function saveSessions() {
+        localStorage.setItem('tutora_chat_sessions', JSON.stringify(chatSessions));
+    }
+
+    function createNewSession() {
+        const id = generateId();
+        const newSession = {
+            id: id,
+            title: 'New Conversation',
+            timestamp: Date.now(),
+            messages: []
+        };
+        chatSessions.unshift(newSession);
+        saveSessions();
+        loadSession(id);
+        
+        // On mobile, close sidebar when starting new chat
+        if (window.innerWidth <= 768 && chatSidebar) {
+            chatSidebar.classList.remove('active');
+        }
+    }
+
+    function loadSession(id) {
+        currentSessionId = id;
+        chatMessages.innerHTML = '';
+        const session = chatSessions.find(s => s.id === id);
+        
+        if (session && session.messages.length > 0) {
+            session.messages.forEach(m => addMessage(m.text, m.sender, false));
+            if (chatSuggestions) chatSuggestions.style.display = 'none';
+        } else {
+            // Default Welcome
+            addMessage("Welcome to the Grand Egyptian Museum! 🏛️ I'm Tutora, your AI guide. Ask me about pharaohs, artifacts, dynasties, or plan your visit.", 'ai', false);
+            if (chatSuggestions) chatSuggestions.style.display = 'flex';
+        }
+        
+        renderSidebar();
+        
+        // On mobile, close sidebar after selecting a chat
+        if (window.innerWidth <= 768 && chatSidebar) {
+            chatSidebar.classList.remove('active');
+        }
+    }
+
+    function deleteSession(id, event) {
+        event.stopPropagation(); // Prevent loading the session
+        
+        chatSessions = chatSessions.filter(s => s.id !== id);
+        saveSessions();
+        
+        if (currentSessionId === id) {
+            if (chatSessions.length > 0) {
+                loadSession(chatSessions[0].id);
+            } else {
+                createNewSession();
+            }
+        } else {
+            renderSidebar();
+        }
+    }
+
+    function editSession(id, event) {
+        event.stopPropagation();
+        const session = chatSessions.find(s => s.id === id);
+        if (!session) return;
+
+        const item = document.querySelector(`.history-item[data-id="${id}"]`);
+        const titleSpan = item.querySelector('.history-item-title');
+        const currentTitle = session.title;
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'history-edit-input';
+        input.value = currentTitle;
+        
+        titleSpan.replaceWith(input);
+        input.focus();
+        input.select();
+
+        const saveTitle = () => {
+            const newTitle = input.value.trim() || currentTitle;
+            session.title = newTitle;
+            saveSessions();
+            renderSidebar();
+        };
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') saveTitle();
+            if (e.key === 'Escape') renderSidebar();
+        });
+
+        input.addEventListener('blur', saveTitle);
+    }
+
+    window.deleteChatSession = deleteSession;
+    window.editChatSession = editSession;
+
+    function renderSidebar() {
+        if (!chatHistoryList) return;
+        
+        if (chatSessions.length === 0) {
+            chatHistoryList.innerHTML = '<div class="history-empty">No past chats yet.</div>';
+            return;
+        }
+
+        chatHistoryList.innerHTML = chatSessions.map(session => `
+            <div class="history-item ${session.id === currentSessionId ? 'active' : ''}" data-id="${session.id}" onclick="loadSession('${session.id}')">
+                <span class="material-symbols-outlined chat-icon">chat_bubble</span>
+                <span class="history-item-title">${session.title}</span>
+                <div class="history-item-actions">
+                    <button class="history-item-action edit" onclick="editChatSession('${session.id}', event)" title="Rename Chat">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
+                    <button class="history-item-action delete" onclick="deleteChatSession('${session.id}', event)" title="Delete Chat">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // --- Message Sending Logic ---
     function addTypingIndicator() {
         const typing = document.createElement('div');
         typing.className = 'chat-msg-container ai-msg';
         typing.id = 'typingIndicator';
         typing.innerHTML = `
             <div class="chat-msg-avatar"><img src="../logo.png" alt="AI"></div>
-            <div class="chat-msg-bubble">
-                <div class="typing-indicator"><span></span><span></span><span></span></div>
-            </div>
+            <div class="chat-msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>
         `;
         chatMessages.appendChild(typing);
         chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -147,91 +278,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function sendMessage(text) {
         if (!text.trim()) return;
+        
+        if (!currentSessionId) createNewSession();
+
         addMessage(text, 'user');
         chatInput.value = '';
-
-        // Hide suggestions after first message
         if (chatSuggestions) chatSuggestions.style.display = 'none';
 
         addTypingIndicator();
 
         const token = localStorage.getItem('token');
-
-        // API requires authentication
         if (!token) {
             removeTypingIndicator();
-            addMessage("🔐 You need to be logged in to chat with Tutora. Please <a href='../2.login/code.html' style='color:#ecb613;'>sign in</a> to continue.", 'ai');
+            addMessage("🔐 You need to be logged in to chat with Tutora. Please <a href='../2.login/code.html' style='color:#ecb613;'>sign in</a>.", 'ai', false);
             return;
         }
 
         try {
             const response = await fetch(`${API_URL}/ai/ask`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
+                headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ question: text })
             });
 
             removeTypingIndicator();
-
-            // Handle non-JSON responses
-            const contentType = response.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                addMessage("Sorry, the AI server returned an unexpected response. Please try again.", 'ai');
-                return;
-            }
-
             const data = await response.json();
 
             if (response.ok) {
-                // Per API docs: response field is "answer"
-                const aiText = data.answer || data.response || data.message || data.data
-                    || "I found some interesting information, but there was an issue displaying it.";
+                const aiText = data.answer || data.response || data.message || "I have processed your request.";
                 addMessage(aiText, 'ai');
             } else if (response.status === 401 || response.status === 403) {
-                addMessage("🔐 Your session has expired. Please <a href='../2.login/login.html' style='color:#ecb613;'>sign in again</a>.", 'ai');
-                localStorage.removeItem('token');
-            } else if (response.status === 404) {
-                addMessage("The AI service is currently unavailable. Please try again later.", 'ai');
+                addMessage("🔐 Your session has expired. Please <a href='../2.login/login.html' style='color:#ecb613;'>sign in again</a>.", 'ai', false);
             } else {
-                addMessage(data.message || data.error || "Sorry, I encountered an error. Please try again.", 'ai');
+                addMessage(data.message || "Sorry, I encountered an error. Please try again.", 'ai');
             }
         } catch (error) {
             removeTypingIndicator();
             console.error('Chat API Error:', error);
-            addMessage("⚠️ Could not connect to the AI server. Please check your internet connection and try again.", 'ai');
+            addMessage("⚠️ Could not connect to the AI server. Please check your network.", 'ai');
         }
     }
 
-    sendBtn.addEventListener('click', () => sendMessage(chatInput.value));
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage(chatInput.value);
-    });
-
-    // Suggestion buttons
-    document.querySelectorAll('.chat-suggestion-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            sendMessage(btn.getAttribute('data-q'));
-        });
-    });
-
-    // Clear chat
+    // --- Initialization & Event Listeners ---
+    if (sendBtn) sendBtn.addEventListener('click', () => sendMessage(chatInput.value));
+    if (chatInput) chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(chatInput.value); });
+    
+    if (newChatBtn) newChatBtn.addEventListener('click', createNewSession);
+    
     if (clearChatBtn) {
         clearChatBtn.addEventListener('click', () => {
-            chatMessages.innerHTML = `
-                <div class="chat-msg-container ai-msg">
-                    <div class="chat-msg-avatar"><img src="../logo.png" alt="AI"></div>
-                    <div class="chat-msg-bubble">
-                        <p>Welcome to the Grand Egyptian Museum! 🏛️ I'm Tutora, your AI guide. Ask me about pharaohs, artifacts, dynasties, or plan your visit.</p>
-                        <span class="chat-msg-time">${getTime()}</span>
-                    </div>
-                </div>
-            `;
-            if (chatSuggestions) chatSuggestions.style.display = 'flex';
+            if (currentSessionId && confirm('Are you sure you want to clear this conversation?')) {
+                const session = chatSessions.find(s => s.id === currentSessionId);
+                if (session) {
+                    session.messages = [];
+                    session.title = 'New Conversation';
+                    saveSessions();
+                    loadSession(currentSessionId);
+                }
+            }
         });
     }
+
+    document.querySelectorAll('.chat-suggestion-btn').forEach(btn => {
+        btn.addEventListener('click', () => sendMessage(btn.getAttribute('data-q')));
+    });
 
     // Topic cards link to chat
     document.querySelectorAll('.chat-topic-card').forEach(card => {
@@ -242,28 +352,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Load chat history
-    async function loadChatHistory() {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) return;
-            const res = await fetch(`${API_URL}/ai/chats`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            if (res.ok) {
-                const data = await res.json();
-                const history = Array.isArray(data) ? data : data.chats || data.data || [];
-                history.forEach(chat => {
-                    if (chat.question || chat.prompt || chat.userMessage) addMessage(chat.question || chat.prompt || chat.userMessage, 'user');
-                    if (chat.answer || chat.response || chat.aiMessage) addMessage(chat.answer || chat.response || chat.aiMessage, 'ai');
-                });
-                if (history.length > 0 && chatSuggestions) chatSuggestions.style.display = 'none';
-            }
-        } catch (e) {
-            console.error("Failed to load AI history", e);
-        }
+    // Boot up
+    if (chatSessions.length > 0) {
+        // Load most recent session
+        loadSession(chatSessions[0].id);
+    } else {
+        createNewSession();
     }
-    loadChatHistory();
 
     // ============================================
     // SCROLL ANIMATIONS
@@ -280,78 +375,41 @@ document.addEventListener('DOMContentLoaded', () => {
     animElements.forEach(el => observer.observe(el));
 
     // ============================================
-    // COUNT-UP ANIMATION
-    // ============================================
-    const countElements = document.querySelectorAll('[data-count]');
-    const countObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.dataset.counted) {
-                entry.target.dataset.counted = 'true';
-                const target = parseFloat(entry.target.dataset.count);
-                const duration = 2000;
-                const start = performance.now();
-
-                function updateCount(now) {
-                    const elapsed = now - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    const current = target * eased;
-
-                    if (target >= 1000) {
-                        entry.target.textContent = Math.floor(current).toLocaleString() + (target >= 100000 ? '+' : '');
-                    } else if (target < 10) {
-                        entry.target.textContent = current.toFixed(1);
-                    } else {
-                        entry.target.textContent = Math.floor(current) + (target >= 100 ? '%' : '');
-                    }
-
-                    if (progress < 1) requestAnimationFrame(updateCount);
-                }
-                requestAnimationFrame(updateCount);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    countElements.forEach(el => countObserver.observe(el));
-
-    // ============================================
-    
+    // ATMOSPHERE EFFECTS
     // ============================================
     const createAtmosphere = () => {
-        // Royal Dust (150 particles)
-        px;
+        let dustContainer = document.getElementById('dust-container');
+        if (!dustContainer) {
+            dustContainer = document.createElement('div');
+            dustContainer.id = 'dust-container';
+            dustContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; overflow: hidden;';
+            document.body.appendChild(dustContainer);
+        }
+
+        // Royal Dust
+        for (let i = 0; i < 50; i++) {
+            const dust = document.createElement('div');
+            const size = Math.random() * 3 + 1;
+            dust.style.cssText = `
+                position: absolute;
+                background: rgba(212, 175, 55, 0.4);
+                border-radius: 50%;
+                width: ${size}px;
                 height: ${size}px;
                 left: ${Math.random() * 100}vw;
                 top: ${Math.random() * 100}vh;
                 opacity: ${Math.random() * 0.4 + 0.1};
                 animation: float ${Math.random() * 15 + 15}s infinite linear;
                 animation-delay: ${Math.random() * -15}s;
+                pointer-events: none;
             `;
             dustContainer.appendChild(dust);
         }
-
-        // Royal Shapes (12 rotating icons)
-        for (let i = 0; i < 12; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.style.cssText = `
-                position: absolute;
-                width: 40px;
-                height: 40px;
-                border: 1px solid rgba(212, 175, 55, 0.1);
-                left: ${Math.random() * 100}vw;
-                top: ${Math.random() * 100}vh;
-                transform: rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.5 + 0.5});
-                animation: rotateFloat ${Math.random() * 20 + 20}s infinite linear;
-                animation-delay: ${Math.random() * -20}s;
-            `;
-            shapesContainer.appendChild(shape);
-        }
     };
-
     createAtmosphere();
+    
+    // Add global deleteChatSession mapping
+    window.loadSession = loadSession;
 
-    console.log('✓ Chat System Restored & Atmosphericized');
+    console.log('✓ Premium Chat History Integration Active');
 });
-
-

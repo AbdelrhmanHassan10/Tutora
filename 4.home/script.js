@@ -36,60 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. DATA FETCHING (Artifacts & Events)
     // ============================================
     const initData = async () => {
-        try {
-            // Fetch Artifact of the Day
-            const artifactRes = await fetch(`${API_URL}/artifacts`);
-            if (artifactRes.ok) {
-                const artifacts = await artifactRes.json();
-                if (artifacts?.length) {
-                    const item = artifacts[Math.floor(Math.random() * artifacts.length)];
-                    const panel = document.querySelector('.curator-panel');
-                    if (panel) {
-                        const img = panel.querySelector('.curator-image');
-                        const title = panel.querySelector('.highlight-title');
-                        const desc = panel.querySelector('.artifact-desc');
-                        const link = panel.querySelector('a[href*="advanced-3D.html"]');
-
-                        if (img && item.imageUrl) img.style.backgroundImage = `url('${item.imageUrl}')`;
-                        if (title) title.textContent = item.name;
-                        if (desc) desc.textContent = item.description?.substring(0, 150) + '...';
-                        if (link && item._id) link.href = `../Artifact-show/Artifact-show.html?id=${item._id}`;
-                    }
-                }
-            }
-
-            // Fetch Events
-            const eventRes = await fetch(`${API_URL}/events`);
-            if (eventRes.ok) {
-                const events = await eventRes.json();
-                if (events?.length) {
-                    const eventsGrid = document.querySelector('.events-grid');
-                    if (eventsGrid) {
-                        const upcomingEvents = events.slice(0, 3);
-                        eventsGrid.innerHTML = '';
-                        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-                        upcomingEvents.forEach(evt => {
-                            const dateObj = new Date(evt.date);
-                            const monthStr = months[dateObj.getMonth()] || 'TBD';
-                            let dayStr = dateObj.getDate() ? String(dateObj.getDate()).padStart(2, '0') : '--';
-                            
-                            const eventCard = document.createElement('div');
-                            eventCard.className = 'event-card reveal';
-                            eventCard.innerHTML = `
-                                <div class="event-date">${monthStr}<br><strong>${dayStr}</strong></div>
-                                <div class="event-details">
-                                    <h4>${evt.title}</h4>
-                                    <p>${evt.description?.substring(0, 80)}...</p>
-                                </div>
-                            `;
-                            eventCard.addEventListener('click', () => { window.location.href = '../event/event.html'; });
-                            eventsGrid.appendChild(eventCard);
-                        });
-                    }
-                }
-            }
-        } catch (e) { console.error("Data load failed", e); }
+        // Data fetching removed from Home page to keep it static and curated.
+        // Events and Artifacts are now managed in their respective dedicated pages.
     };
 
 

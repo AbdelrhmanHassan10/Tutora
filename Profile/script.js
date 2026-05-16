@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (localData) {
                     try {
                         const parsed = JSON.parse(localData);
-                        user = { ...user, ...parsed };
+                        user = { ...parsed, ...user }; // Server data takes priority
                     } catch(e) {}
                 }
                 
@@ -124,7 +124,34 @@ document.addEventListener('DOMContentLoaded', () => {
              const totalAmount = b.totalPrice || b.totalAmount || 0;
              
              html += `
-             <div class="visit-card" style="margin-bottom: 20// 7. Fetch and Display Favorites
+             <div class="visit-card" style="margin-bottom: 20px;">
+                <div class="visit-image">
+                    <img src="../111.png" alt="GEM">
+                </div>
+                <div class="visit-content">
+                    <div class="visit-header">
+                        <span class="visit-badge">${b.status || 'Confirmed'}</span>
+                        <h3 class="visit-title">${b.ticketType || 'Museum Entry'}</h3>
+                        <p class="visit-subtitle">${itemsTotal} Visitors</p>
+                    </div>
+                    <div class="visit-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Date</span>
+                            <span class="detail-value">${visitDate}</span>
+                        </div>
+                    </div>
+                    <div class="visit-footer">
+                        <a href="../success/success.html">
+                            <button class="btn btn-primary">VIEW TICKET</button>
+                        </a>
+                    </div>
+                </div>
+             </div>`;
+        });
+        listContainer.innerHTML = html;
+    }
+
+    // 7. Fetch and Display Favorites
     async function fetchUserFavorites() {
         try {
             const [favsResponse, countResponse] = await Promise.all([
@@ -201,14 +228,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 option.classList.remove('active');
             }
             
-            option.addEventListener('click', () => {
+            option.addEventListener('click', async () => {
                 const selectedAvatar = option.getAttribute('data-avatar');
                 
                 // Update active state
                 avatarOptions.forEach(opt => opt.classList.remove('active'));
                 option.classList.add('active');
                 
-                // Update User-Specific LocalStorage
+                // Update User-Specific LocalStorage (for offline fallback)
                 const localKey = `localProfileData_${user.email}`;
                 const localData = JSON.parse(localStorage.getItem(localKey) || '{}');
                 localData.profileImage = selectedAvatar;
@@ -224,6 +251,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Trigger global sync
                 if (window.syncGlobalAvatar) {
                     window.syncGlobalAvatar();
+                }
+
+                // --- SYNC WITH SERVER (Unify across devices) ---
+                try {
+                    const response = await fetch(`${API_BASE_URL}/auth/me`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({ profileImage: selectedAvatar })
+                    });
+
+                    if (response.ok) {
+                        if (window.showPremiumToast) {
+                            window.showPremiumToast('Profile identity synced across all devices!', 'success');
+                        }
+                    } else {
+                        console.error('Server sync failed');
+                    }
+                } catch (error) {
+                    console.error('Network error during sync:', error);
                 }
             });
         });
@@ -327,34 +376,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         };
-    }
-
-    // ============================================
-    
-    // ============================================
-    
-
-        // Create 15 royal shapes (Hieroglyphs)
-        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
-        for (let i = 0; i < 15; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-            
-            const size = Math.random() * 20 + 20;
-            shape.style.fontSize = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            shape.style.left = `${left}%`;
-            shape.style.top = `${top}%`;
-            
-            const duration = Math.random() * 20 + 20;
-            const delay = Math.random() * 10;
-            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
-            
-            shapesContainer.appendChild(shape);
-        }
     }
 
     // --- Carousel Scroll Indicator Logic ---

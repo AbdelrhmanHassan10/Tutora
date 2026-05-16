@@ -142,11 +142,42 @@ body.light .logo-circle {
    ATMOSPHERIC ANIMATIONS (Royal Dust & Shapes)
    ============================================ */
 
-body.light @keyframes floatParticle {
+/* Light Mode Visibility Overrides */
+body.light #dust-container div {
+    background: rgba(184, 150, 14, 1) !important; /* Full opacity for maximum density */
+    box-shadow: 0 0 3px 1px rgba(184, 150, 14, 0.6) !important; /* Creates a glow that makes particles look thicker and denser */
+}
+
+body.light .royal-shape {
+    color: rgba(184, 150, 14, 0.4) !important; /* Darker gold for shapes in light mode */
+}
+
+@keyframes floatParticle {
     0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
     20% { opacity: 0.6; }
     80% { opacity: 0.6; }
     100% { transform: translate3d(20px, -100vh, 50px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes floatDust {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(30px); opacity: 0; }
+}
+
+@keyframes rotateFloat {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-50vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes rotateFloat3D {
+    0% { transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(var(--start-scale, 1)); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-30vh) rotateX(360deg) rotateY(360deg) scale(var(--start-scale, 1)); opacity: 0; }
 }
 
 /* Pyramid Geometry */

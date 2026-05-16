@@ -4,10 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Chat with Tutora AI — your personal guide to the Grand Egyptian Museum. Ask about pharaohs, artifacts, dynasties, and plan your visit in real time." />
+    <meta name="description"
+        content="Chat with Tutora AI — your personal guide to the Grand Egyptian Museum. Ask about pharaohs, artifacts, dynasties, and plan your visit in real time." />
     <title>Tutora | AI Chatbot</title>
     <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Cinzel:wght@400;700;900&display=swap"
+        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,7 +54,8 @@
                 <div class="dropdown-items show">
                     <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
                     <a href="../chat bot/chat.html" class="dropdown-item active">AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Scanner</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact
+                        Scanner</a>
                     <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
                     <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
                 </div>
@@ -59,7 +63,7 @@
 
             <a href="../shop/shop.html" class="menu-link">Shop</a>
             <a href="../about/code.html" class="menu-link">About</a>
-  <div class="menu-dropdown">
+            <div class="menu-dropdown">
                 <button class="menu-link dropdown-toggle">
                     Collection
                     <span class="material-symbols-outlined">expand_more</span>
@@ -111,14 +115,16 @@
                     <div class="dropdown-menu">
                         <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
                         <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Scanner</a>
-                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact
+                            Scanner</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling
+                            (3D)</a>
                         <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
                     </div>
                 </div>
                 <a href="../shop/shop.html">Shop</a>
                 <a href="../about/code.html">About</a>
-<div class="nav-dropdown">
+                <div class="nav-dropdown">
                     <button class="nav-link dropdown-trigger">
                         Collection
                         <span class="material-symbols-outlined">expand_more</span>
@@ -162,7 +168,8 @@
                     <span>AI-Powered Museum Guide</span>
                 </div>
                 <h1 class="chat-hero-title">Chat with <span class="gold-text">TUTORA</span></h1>
-                <p class="chat-hero-subtitle">Ask anything about ancient Egypt, explore the Grand Egyptian Museum, and uncover 7,000 years of history — all through a conversation.</p>
+                <p class="chat-hero-subtitle">Ask anything about ancient Egypt, explore the Grand Egyptian Museum, and
+                    uncover 7,000 years of history — all through a conversation.</p>
                 <a href="#chat-section" class="chat-hero-cta">
                     <span class="material-symbols-outlined">forum</span>
                     Start Chatting
@@ -172,61 +179,94 @@
 
         <!-- === FULL CHAT SECTION === -->
         <section class="chat-fullscreen-section anim-on-scroll" id="chat-section">
-            <div class="chat-fullscreen-container">
-                <div class="chat-fs-header">
-                    <div class="chat-fs-status">
-                        <div class="chat-fs-avatar">
-                            <img src="../logo.png" alt="Tutora AI">
-                            <span class="chat-fs-online"></span>
-                        </div>
-                        <div>
-                            <h3>TUTORA AI</h3>
-                            <p><span class="dot-online"></span> Online — Ready to explore</p>
-                        </div>
-                    </div>
-                    <div class="chat-fs-actions">
-                        <button class="chat-fs-action-btn" title="Clear Chat" id="clearChatBtn">
-                            <span class="material-symbols-outlined">delete_sweep</span>
+            <div class="chat-app-wrapper">
+                <!-- Chat History Sidebar -->
+                <aside class="chat-sidebar" id="chatSidebar">
+                    <div class="chat-sidebar-header">
+                        <button class="new-chat-btn" id="newChatBtn">
+                            <span class="material-symbols-outlined">add</span>
+                            <span>New Chat</span>
+                        </button>
+                        <button class="sidebar-toggle-btn" id="closeSidebarBtn">
+                            <span class="material-symbols-outlined">menu_open</span>
                         </button>
                     </div>
-                </div>
-
-                <div class="chat-fs-messages custom-scrollbar" id="chatMessages">
-                    <!-- Welcome message -->
-                    <div class="chat-msg-container ai-msg">
-                        <div class="chat-msg-avatar">
-                            <img src="../logo.png" alt="AI">
-                        </div>
-                        <div class="chat-msg-bubble">
-                            <p>Welcome to the Grand Egyptian Museum! 🏛️ I'm Tutora, your AI guide. Ask me about pharaohs, artifacts, dynasties, or plan your visit.</p>
-                            <span class="chat-msg-time">Just now</span>
+                    
+                    <div class="sidebar-scroll custom-scrollbar">
+                        <div class="history-group">
+                            <div class="history-label">Recent Conversations</div>
+                            <div id="chatHistoryList" class="history-list">
+                                <!-- History items will be injected here -->
+                                <div class="history-empty">No past chats yet</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </aside>
 
-                <div class="chat-fs-suggestions" id="chatSuggestions">
-                    <button class="chat-suggestion-btn" data-q="Tell me about the Mask of Tutankhamun">
-                        <span class="material-symbols-outlined">cruelty_free</span> Mask of Tutankhamun
-                    </button>
-                    <button class="chat-suggestion-btn" data-q="How were the Pyramids built?">
-                        <span class="material-symbols-outlined">architecture</span> Pyramid Construction
-                    </button>
-                    <button class="chat-suggestion-btn" data-q="What is the Rosetta Stone?">
-                        <span class="material-symbols-outlined">auto_stories</span> Rosetta Stone
-                    </button>
-                    <button class="chat-suggestion-btn" data-q="Plan my visit to the GEM">
-                        <span class="material-symbols-outlined">map</span> Plan My Visit
-                    </button>
-                </div>
+                <!-- Main Chat Area -->
+                <div class="chat-main-area">
+                    <div class="chat-fs-header">
+                        <div class="chat-header-left">
+                            <button class="sidebar-toggle-btn" id="openSidebarBtn" title="Toggle Sidebar">
+                                <span class="material-symbols-outlined">menu</span>
+                            </button>
+                            <div class="chat-fs-status">
+                                <div class="chat-fs-avatar">
+                                    <img src="../logo.png" alt="Tutora AI">
+                                    <span class="chat-fs-online"></span>
+                                </div>
+                                <div>
+                                    <h3>TUTORA AI</h3>
+                                    <p><span class="dot-online"></span> Online — Ready to explore</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-fs-actions">
+                            <button class="chat-fs-action-btn" title="Clear Current Chat" id="clearChatBtn">
+                                <span class="material-symbols-outlined">delete_sweep</span>
+                            </button>
+                        </div>
+                    </div>
 
-                <div class="chat-fs-input-area">
-                    <div class="chat-fs-input-wrapper">
-                        <input type="text" class="chat-fs-input" id="chatInput" placeholder="Ask Tutora anything about ancient Egypt..." />
-                        <button class="chat-fs-send" id="chatSendBtn">
-                            <span class="material-symbols-outlined">send</span>
+                    <div class="chat-fs-messages custom-scrollbar" id="chatMessages">
+                        <!-- Welcome message -->
+                        <div class="chat-msg-container ai-msg">
+                            <div class="chat-msg-avatar">
+                                <img src="../logo.png" alt="AI">
+                            </div>
+                            <div class="chat-msg-bubble">
+                                <p>Welcome to the Grand Egyptian Museum! 🏛️ I'm Tutora, your AI guide. Ask me about
+                                    pharaohs, artifacts, dynasties, or plan your visit.</p>
+                                <span class="chat-msg-time">Just now</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-fs-suggestions" id="chatSuggestions">
+                        <button class="chat-suggestion-btn" data-q="Tell me about the Mask of Tutankhamun">
+                            <span class="material-symbols-outlined">cruelty_free</span> Mask of Tutankhamun
+                        </button>
+                        <button class="chat-suggestion-btn" data-q="How were the Pyramids built?">
+                            <span class="material-symbols-outlined">architecture</span> Pyramid Construction
+                        </button>
+                        <button class="chat-suggestion-btn" data-q="What is the Rosetta Stone?">
+                            <span class="material-symbols-outlined">auto_stories</span> Rosetta Stone
+                        </button>
+                        <button class="chat-suggestion-btn" data-q="Plan my visit to the GEM">
+                            <span class="material-symbols-outlined">map</span> Plan My Visit
                         </button>
                     </div>
-                    <p class="chat-fs-disclaimer">Tutora AI may produce inaccurate information. Verify important facts.</p>
+
+                    <div class="chat-fs-input-area">
+                        <div class="chat-fs-input-wrapper">
+                            <input type="text" class="chat-fs-input" id="chatInput"
+                                placeholder="Ask Tutora anything about ancient Egypt..." />
+                            <button class="chat-fs-send" id="chatSendBtn">
+                                <span class="material-symbols-outlined">send</span>
+                            </button>
+                        </div>
+                        <p class="chat-fs-disclaimer">Tutora AI may produce inaccurate information. Verify important facts.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -240,28 +280,32 @@
                         <span class="material-symbols-outlined">history_edu</span>
                     </div>
                     <h3>The Historian</h3>
-                    <p>Expert on every dynasty, pharaoh, and artifact — from the Old Kingdom to the Ptolemaic era. Ask complex historical questions confidently.</p>
+                    <p>Expert on every dynasty, pharaoh, and artifact — from the Old Kingdom to the Ptolemaic era. Ask
+                        complex historical questions confidently.</p>
                 </div>
                 <div class="personality-card">
                     <div class="personality-icon">
                         <span class="material-symbols-outlined">explore</span>
                     </div>
                     <h3>The Navigator</h3>
-                    <p>Knows every gallery, exhibit, and hidden corner of the Grand Egyptian Museum. Get turn-by-turn guidance to any artifact.</p>
+                    <p>Knows every gallery, exhibit, and hidden corner of the Grand Egyptian Museum. Get turn-by-turn
+                        guidance to any artifact.</p>
                 </div>
                 <div class="personality-card">
                     <div class="personality-icon">
                         <span class="material-symbols-outlined">quiz</span>
                     </div>
                     <h3>The Quiz Master</h3>
-                    <p>Challenge yourself with AI-generated quizzes on Egyptian mythology, archaeology, and the museum's 100,000+ artifacts.</p>
+                    <p>Challenge yourself with AI-generated quizzes on Egyptian mythology, archaeology, and the museum's
+                        100,000+ artifacts.</p>
                 </div>
                 <div class="personality-card">
                     <div class="personality-icon">
                         <span class="material-symbols-outlined">family_restroom</span>
                     </div>
                     <h3>The Kids Guide</h3>
-                    <p>Simplified, fun explanations with emoji, animations, and games designed for young explorers aged 6–14.</p>
+                    <p>Simplified, fun explanations with emoji, animations, and games designed for young explorers aged
+                        6–14.</p>
                 </div>
             </div>
         </section>
@@ -278,7 +322,8 @@
                     </div>
                     <div class="chat-cap-info">
                         <h3>Historical Deep Dives</h3>
-                        <p>Ask about any dynasty, pharaoh, or artifact — from the Old Kingdom to the Ptolemaic period — and receive rich, sourced answers.</p>
+                        <p>Ask about any dynasty, pharaoh, or artifact — from the Old Kingdom to the Ptolemaic period —
+                            and receive rich, sourced answers.</p>
                     </div>
                 </div>
 
@@ -289,7 +334,8 @@
                     </div>
                     <div class="chat-cap-info">
                         <h3>Image Recognition</h3>
-                        <p>Upload any photo of an artifact, hieroglyph, or site, and I'll identify it and share its historical context instantly.</p>
+                        <p>Upload any photo of an artifact, hieroglyph, or site, and I'll identify it and share its
+                            historical context instantly.</p>
                     </div>
                 </div>
 
@@ -300,7 +346,8 @@
                     </div>
                     <div class="chat-cap-info">
                         <h3>Interactive Quizzes</h3>
-                        <p>Test your knowledge with AI-generated quizzes about Egyptian mythology, archaeology, and the GEM collection.</p>
+                        <p>Test your knowledge with AI-generated quizzes about Egyptian mythology, archaeology, and the
+                            GEM collection.</p>
                     </div>
                 </div>
 
@@ -311,7 +358,8 @@
                     </div>
                     <div class="chat-cap-info">
                         <h3>Educational Summaries</h3>
-                        <p>Get age-appropriate explanations for students, researchers, or casual visitors with adjustable complexity levels.</p>
+                        <p>Get age-appropriate explanations for students, researchers, or casual visitors with
+                            adjustable complexity levels.</p>
                     </div>
                 </div>
 
@@ -322,7 +370,8 @@
                     </div>
                     <div class="chat-cap-info">
                         <h3>Trip Planning</h3>
-                        <p>Let me help you plan your visit — from must-see galleries to dining recommendations based on your interests.</p>
+                        <p>Let me help you plan your visit — from must-see galleries to dining recommendations based on
+                            your interests.</p>
                     </div>
                 </div>
 
@@ -333,7 +382,8 @@
                     </div>
                     <div class="chat-cap-info">
                         <h3>Multilingual Support</h3>
-                        <p>Chat in Arabic, English, French, Spanish, German, or Japanese — I adapt to your preferred language in real time.</p>
+                        <p>Chat in Arabic, English, French, Spanish, German, or Japanese — I adapt to your preferred
+                            language in real time.</p>
                     </div>
                 </div>
             </div>
@@ -384,10 +434,14 @@
                 <div class="footer-column connect-column">
                     <h3>Connect</h3>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="https://x.com/GrandEGMuseum" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i
+                                class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com/GrandEGMuseum" title="X (Twitter)"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i
+                                class="fa-brands fa-youtube"></i></a>
                     </div>
                     <p>Follow us on social media for updates and behind-the-scenes content.</p>
                 </div>
@@ -411,7 +465,7 @@
     </footer>
 
     <script src="main.js"></script>
-    <!-- <script src="../global-core.js"></script> -->
+    <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
 </body>
 

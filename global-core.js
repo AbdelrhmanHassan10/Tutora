@@ -379,44 +379,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 8. GLOBAL ROYAL ATMOSPHERE (Optimized Dust & Shapes)
     window.initRoyalAtmosphere = function() {
-        const dustContainer = document.getElementById('dust-container');
-        const shapesContainer = document.getElementById('shapes-container');
-        if (!dustContainer || !shapesContainer) return;
+        let dustContainer = document.getElementById('dust-container');
+        if (!dustContainer) {
+            dustContainer = document.createElement('div');
+            dustContainer.id = 'dust-container';
+            dustContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; overflow: hidden;';
+            document.body.appendChild(dustContainer);
+        }
+
+        let shapesContainer = document.getElementById('shapes-container');
+        if (!shapesContainer) {
+            shapesContainer = document.createElement('div');
+            shapesContainer.id = 'shapes-container';
+            shapesContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; overflow: hidden;';
+            document.body.appendChild(shapesContainer);
+        }
 
         const isMobile = window.innerWidth <= 768;
         const path = window.location.pathname;
         
-        // Density Configuration
-        let dustCount = isMobile ? 40 : 100;
-        let shapeCount = isMobile ? 4 : 8;
+        // Density Configuration - Increased for more density while remaining performant
+        let dustCount = isMobile ? 50 : 150;
+        let shapeCount = isMobile ? 6 : 12;
         let shape3DCount = isMobile ? 1 : 2;
 
         const isAuthPage = path.includes('/2.login/') || path.includes('/3.register/');
         if (isAuthPage) {
-            dustCount = 85; 
-            shapeCount = 6;
+            dustCount = 40; 
+            shapeCount = 5;
             shape3DCount = 1;
         }
 
-        // 4. Generate Royal Dust
+        // 4. Generate Royal Dust (Visible, Small, No Blur for Performance)
         for (let i = 0; i < dustCount; i++) {
             const dust = document.createElement('div');
             const duration = Math.random() * 15 + 15;
             const delay = Math.random() * -20;
+            const size = Math.random() * 1.5 + 1.5; // Size between 1.5px and 3px (lighter and smaller)
             
             dust.style.cssText = `
-                width: ${Math.random() * 2 + 1}px;
-                height: ${Math.random() * 2 + 1}px;
+                width: ${size}px;
+                height: ${size}px;
                 left: ${Math.random() * 100}vw;
                 top: ${Math.random() * 100}vh;
                 animation: floatDust ${duration}s infinite linear;
                 animation-delay: ${delay}s;
                 position: absolute;
-                background: rgba(236, 182, 19, 0.6);
+                background: rgba(236, 182, 19, 0.45); /* Lighter opacity to reduce visual heaviness */
                 border-radius: 50%;
-                filter: blur(1.5px);
                 pointer-events: none;
-                will-change: transform;
                 z-index: 10000;
             `;
             dustContainer.appendChild(dust);
@@ -441,7 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 font-size: 3rem;
                 font-family: 'Cinzel', serif;
                 pointer-events: none;
-                will-change: transform;
                 z-index: 9999;
             `;
             shapesContainer.appendChild(shape);

@@ -223,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
             shapesContainer.appendChild(shape);
         }
     }
-
-    });
+)
 
 

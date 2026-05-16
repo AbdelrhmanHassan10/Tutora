@@ -35,6 +35,11 @@ body {
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hide only the "circular rings" while keeping other atmosphere shapes */
+.shape-ring, .ring-pulse, .ring-rotate, .ring-inner-rotate {
+    display: none !important;
+}
+
 body.dark {
     --bg-primary: #121212;
     --text-primary: #FFFFFF;

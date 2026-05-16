@@ -1,10 +1,10 @@
- document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
       // ============================================
       // CONFIGURATION & STATE
       // ============================================
       const CONFIG = {
           API_BASE_URL: 'https://gem-backend-production-1ea2.up.railway.app/api',
-          ITEMS_PER_PAGE: 12,
+          ITEMS_PER_PAGE: 50,
           DEFAULT_GRID_VIEW: 'grid-3'
       };
 
@@ -333,29 +333,12 @@
 
           const sections = document.querySelectorAll('.collection-section');
           const dynamicGallery = document.getElementById('dynamicGallery');
+          const dynamicTitle = document.getElementById('dynamicTitle');
+          const dynamicDesc = document.getElementById('totalResultsText');
           const loadMoreSection = document.querySelector('.load-more-section');
           const noResultsMsg = document.getElementById('noResults');
 
-          if (hasActiveFilters) {
-              sections.forEach(s => s.style.display = 'none');
-              if (dynamicGallery) dynamicGallery.style.display = 'block';
-              
-              // Only show 'Load More' if there are more results than currently showing
-              const totalItems = STATE.filteredArtifacts.length;
-              const showingItems = Math.min(STATE.currentPage * CONFIG.ITEMS_PER_PAGE, totalItems);
-              if (loadMoreSection) {
-                  loadMoreSection.style.display = (showingItems < totalItems) ? 'flex' : 'none';
-              }
-          } else {
-              sections.forEach(s => s.style.display = 'block');
-              if (dynamicGallery) dynamicGallery.style.display = 'none';
-              
-              // In thematic mode, we can either hide the button or make it show more items
-              // For now, let's show it to allow transitioning to a full view
-              if (loadMoreSection) loadMoreSection.style.display = 'flex';
-              if (noResultsMsg) noResultsMsg.style.display = 'none';
-          }
-
+          // Filter logic
           STATE.filteredArtifacts = STATE.allArtifacts.filter(artifact => {
               const matchesDynasty = STATE.filters.dynasty.length === 0 ||
                   STATE.filters.dynasty.includes(artifact.dynasty);
@@ -365,25 +348,55 @@
                   STATE.filters.site.includes(artifact.site);
               const matchesGallery = STATE.filters.gallery.length === 0 ||
                   STATE.filters.gallery.includes(artifact.gallery);
+              
+              const searchLower = STATE.filters.search.toLowerCase();
               const matchesSearch = STATE.filters.search === '' ||
-                  artifact.title.toLowerCase().includes(STATE.filters.search.toLowerCase()) ||
-                  artifact.description.toLowerCase().includes(STATE.filters.search.toLowerCase());
+                  (artifact.title && artifact.title.toLowerCase().includes(searchLower)) ||
+                  (artifact.description && artifact.description.toLowerCase().includes(searchLower));
 
               return matchesDynasty && matchesMaterial && matchesSite && matchesGallery && matchesSearch;
           });
 
+          // UI Switching & Data Selection
+          let displayList = [];
+          
+          if (hasActiveFilters) {
+              sections.forEach(s => s.style.display = 'none');
+              if (dynamicGallery) dynamicGallery.style.display = 'block';
+              if (dynamicTitle) dynamicTitle.textContent = 'Search Results';
+              if (dynamicDesc) dynamicDesc.textContent = `Found ${STATE.filteredArtifacts.length} items matching your criteria`;
+              displayList = STATE.filteredArtifacts;
+          } else {
+              sections.forEach(s => s.style.display = 'block');
+              
+              // Only show the dynamic section if there are actually items from the Admin
+              const adminItems = STATE.allArtifacts.filter(a => !a.id.toString().startsWith('6643') && !a.id.toString().includes('daily-') && !a.id.toString().includes('statue-') && !a.id.toString().includes('jewel-'));
+              
+              if (adminItems.length > 0) {
+                  if (dynamicGallery) dynamicGallery.style.display = 'block';
+                  if (dynamicTitle) dynamicTitle.textContent = 'Recent Discoveries';
+                  if (dynamicDesc) dynamicDesc.textContent = 'New artifacts added by our curators.';
+                  displayList = adminItems;
+              } else {
+                  if (dynamicGallery) dynamicGallery.style.display = 'none';
+              }
+          }
+
           sortArtifacts();
           updateActiveFiltersDisplay();
-          renderArtifacts();
-          
-          // Update details for dynamic view
-          const countText = document.getElementById('totalResultsText');
-          if (countText) countText.textContent = `Found ${STATE.filteredArtifacts.length} items`;
+          renderArtifacts(displayList);
           
           if (hasActiveFilters && STATE.filteredArtifacts.length === 0) {
               if (noResultsMsg) noResultsMsg.style.display = 'block';
           } else if (noResultsMsg) {
               noResultsMsg.style.display = 'none';
+          }
+
+          // Load more logic
+          const totalItems = STATE.filteredArtifacts.length;
+          const showingItems = Math.min(STATE.currentPage * CONFIG.ITEMS_PER_PAGE, totalItems);
+          if (loadMoreSection) {
+              loadMoreSection.style.display = (showingItems < totalItems) ? 'flex' : 'none';
           }
       }
 
@@ -458,17 +471,36 @@
       // ============================================
       // RENDERING
       // ============================================
-      function renderArtifacts() {
+      function renderArtifacts(customList = null) {
           const grid = document.getElementById('artifactGrid');
           const noResults = document.getElementById('noResults');
+          
+          let sourceList = customList;
+          if (!sourceList) {
+              const hasActiveFilters = Object.values(STATE.filters).some(f => 
+                  (Array.isArray(f) && f.length > 0) || (typeof f === 'string' && f !== '')
+              );
+              if (hasActiveFilters) {
+                  sourceList = STATE.filteredArtifacts;
+              } else {
+                  // Default view: ONLY show admin-added items (exclude samples)
+                  sourceList = STATE.allArtifacts.filter(a => 
+                      !a.id.toString().startsWith('6643') && 
+                      !a.id.toString().includes('daily-') && 
+                      !a.id.toString().includes('statue-') && 
+                      !a.id.toString().includes('jewel-')
+                  );
+              }
+          }
+          
           const endIdx = STATE.currentPage * CONFIG.ITEMS_PER_PAGE;
-          const displayArtifacts = STATE.filteredArtifacts.slice(0, endIdx);
+          const displayArtifacts = sourceList.slice(0, endIdx);
           
           // Total items count text
           const countLabel = document.getElementById('totalResultsText');
           const heroCountLabel = document.querySelector('.count-text');
           
-          const totalCount = STATE.filteredArtifacts.length;
+          const totalCount = sourceList.length;
           const displayCount = displayArtifacts.length;
 
           const hasActiveFilters = Object.values(STATE.filters).some(f => 
@@ -488,6 +520,8 @@
 
           grid.className = `artifact-grid ${STATE.viewMode}`;
           grid.innerHTML = ''; // This will be optimized to append only in a real app, but works for the current scale
+
+          console.log(`Rendering ${displayArtifacts.length} artifacts to grid...`);
 
           if (displayArtifacts.length === 0) {
               noResults.style.display = 'block';
@@ -514,31 +548,25 @@
                             <p class="dynasty-label">${artifact.dynasty}</p>
                             <h3 class="artifact-title">${artifact.title}</h3>
                             <p class="card-description">${artifact.description || ''}</p>
-                            <div class="card-footer" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; width: 100%;">
-                                <button class="view-details-btn" style="padding: 0.5rem; justify-content: center;" onclick="window.location.href='../Artifact-show/code.html?id=${artifact.id}'">
+                            <div class="card-footer">
+                                <span class="location-text">
+                                    <span class="material-symbols-outlined" style="font-size:14px">location_on</span> 
+                                    ${artifact.site || 'Grand Gallery'}
+                                </span>
+                                <button class="view-details-btn" onclick="window.location.href='../Artifact-show/code.html?id=${artifact.id}'">
                                     <span>Details</span>
-                                </button>
-                                <button class="view-details-btn ar-btn" style="padding: 0.5rem; justify-content: center; background: linear-gradient(135deg, #40e0d0 0%, #d4af37 100%); color: #000; border: none;" onclick="window.location.href='../advanced 3D model/advanced-3D.html?id=${artifact.id}'">
-                                    <span class="material-symbols-outlined" style="font-size: 1.1rem;">view_in_ar</span>
-                                    <span>AR</span>
+                                    <span class="material-symbols-outlined">arrow_forward</span>
                                 </button>
                             </div>
                         </div>
                     `;
 
               // Click handling
-              card.addEventListener('click', (e) => {
-                  const isArrow = e.target.closest('.arrow-icon');
-                  const isFav = e.target.closest('.favorite-btn');
-                  
-                  if (isArrow) {
-                      e.stopPropagation();
-                      window.location.href = `../Artifact-show/code.html?id=${artifact.id}`;
-                  } else if (!isFav) {
-                      // Click outside heart/arrow opens the modal
-                      if (window.openArtifactModal) window.openArtifactModal(artifact);
-                  }
-              });
+               card.addEventListener('click', (e) => {
+                   if (!e.target.closest('.favorite-btn')) {
+                       window.location.href = `../Artifact-show/code.html?id=${artifact.id}`;
+                   }
+               });
               grid.appendChild(card);
           });
 
@@ -667,19 +695,8 @@
       const loadMoreBtn = document.querySelector('.load-more-btn');
       if (loadMoreBtn) {
           loadMoreBtn.addEventListener('click', () => {
-              // If in thematic mode, clicking 'Load More' transitions to the full catalog
-              const hasActiveFilters = Object.values(STATE.filters).some(f => 
-                  (Array.isArray(f) && f.length > 0) || (typeof f === 'string' && f !== '')
-              );
-              
-              if (!hasActiveFilters) {
-                  // Fake a 'generic' filter to trigger the full grid view
-                  // Or just force-hide the sections
-                  const sections = document.querySelectorAll('.collection-section');
-                  const dynamicGallery = document.getElementById('dynamicGallery');
-                  sections.forEach(s => s.style.display = 'none');
-                  if (dynamicGallery) dynamicGallery.style.display = 'block';
-              }
+              // Since we are always dynamic now, we don't need this transition logic
+              // Just load the next page
 
               STATE.currentPage++;
               renderArtifacts();
@@ -711,21 +728,23 @@
               const res = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/artifacts');
               if (res.ok) {
                   const data = await res.json();
-                  STATE.allArtifacts = Array.isArray(data) ? data : (data.artifacts || data.data || []);
+                  const fetchedData = Array.isArray(data) ? data : (data.artifacts || data.data || []);
                   
-                  // Map standard fields to match frontend expectations
-                  STATE.allArtifacts = STATE.allArtifacts.map(art => ({
+                  const mappedAPI = fetchedData.map(art => ({
                       ...art,
                       id: art._id || art.id,
                       title: art.title || art.name || 'Unknown',
                       image: art.image || art.imageUrl || './unnamed (1).png',
-                      dynasty: art.dynasty || 'Unknown',
+                      dynasty: art.dynasty || art.era || 'Unknown',
                       material: art.material || 'Unknown',
                       site: art.site || 'Unknown',
                       gallery: art.gallery || 'Unknown',
                       description: art.description || '',
                       date: art.date || ''
                   }));
+
+                  // Merge API artifacts with Samples so the page is always rich
+                  STATE.allArtifacts = [...mappedAPI, ...SAMPLE_ARTIFACTS];
               } else {
                   STATE.allArtifacts = SAMPLE_ARTIFACTS;
               }
@@ -733,11 +752,17 @@
               console.warn("Failed to fetch API artifacts, falling back to mock data.", e);
               STATE.allArtifacts = SAMPLE_ARTIFACTS;
           }
-          await initializeFavoriteStates();
+          
+          try {
+              await initializeFavoriteStates();
+          } catch(e) {
+              console.error("Favorites init failed", e);
+          }
+          
           populateFilterOptions();
           applyAllFilters();
           showLoading(false);
-          console.log('✓ Collection Page Initialized Successfully');
+          console.log('✓ Collection Page Initialized with', STATE.allArtifacts.length, 'items');
       }
 
             // ============================================

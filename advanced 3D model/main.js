@@ -450,4 +450,39 @@ document.addEventListener('DOMContentLoaded', () => {
                         generate3dStatus.innerHTML = `
                             <span class="material-symbols-outlined" style="vertical-align: middle;">construction</span>
                             <strong>Coming Soon!</strong><br>
-                            <span style="font-size: 13
+                            <span style="font-size: 13px;">This feature is currently under development. Stay tuned!</span>
+                        `;
+                    } else if (response.ok) {
+                        generate3dStatus.style.background = 'rgba(16,185,129,0.15)';
+                        generate3dStatus.style.border = '1px solid rgba(16,185,129,0.3)';
+                        generate3dStatus.style.color = '#10b981';
+                        generate3dStatus.innerHTML = `
+                            <span class="material-symbols-outlined" style="vertical-align: middle;">check_circle</span>
+                            3D Model generation started! Check your gallery soon.
+                        `;
+                    } else {
+                        throw new Error(data.message || 'Failed to start generation');
+                    }
+                }
+            } catch (err) {
+                console.error('3D Gen Error:', err);
+                if (generate3dStatus) {
+                    generate3dStatus.style.display = 'block';
+                    generate3dStatus.style.background = 'rgba(239,68,68,0.15)';
+                    generate3dStatus.style.border = '1px solid rgba(239,68,68,0.3)';
+                    generate3dStatus.style.color = '#ef4444';
+                    generate3dStatus.innerHTML = `
+                        <span class="material-symbols-outlined" style="vertical-align: middle;">error</span>
+                        ${err.message}
+                    `;
+                }
+            } finally {
+                generate3dBtn.disabled = false;
+                generate3dBtn.innerHTML = `<span class="material-symbols-outlined">view_in_ar</span>`;
+                setTimeout(() => {
+                    if (generate3dStatus) generate3dStatus.style.display = 'none';
+                }, 5000);
+            }
+        });
+    }
+});

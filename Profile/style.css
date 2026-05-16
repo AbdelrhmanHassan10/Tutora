@@ -39,6 +39,11 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Hide only the "circular rings" while keeping other atmosphere shapes */
+.shape-ring, .ring-pulse, .ring-rotate, .ring-inner-rotate, .footer-logo::before, .footer-logo::after {
+    display: none !important;
+}
+
 h1,
 h2,
 h3,

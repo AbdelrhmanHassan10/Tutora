@@ -5,6 +5,43 @@
     document.body.classList.add(savedTheme);
 
     // ============================================
+    // 0. ATMOSPHERIC DUST EFFECT
+    // ============================================
+
+    function initDust() {
+        const dustContainer = document.createElement('div');
+        dustContainer.id = 'dust-container';
+        dustContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden;';
+        document.body.appendChild(dustContainer);
+
+        const isMobile = window.innerWidth <= 768;
+        const dustCount = isMobile ? 30 : 80;
+
+        for (let i = 0; i < dustCount; i++) {
+            const dust = document.createElement('div');
+            const duration = Math.random() * 15 + 15;
+            const delay = Math.random() * -20;
+            const size = Math.random() * 2 + 1.5;
+            
+            dust.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}vw;
+                top: ${Math.random() * 100}vh;
+                animation: floatDust ${duration}s infinite linear;
+                animation-delay: ${delay}s;
+                position: absolute;
+                background: rgba(236, 182, 19, 0.4);
+                border-radius: 50%;
+                pointer-events: none;
+            `;
+            dustContainer.appendChild(dust);
+        }
+    }
+
+    initDust();
+
+    // ============================================
     // 1. LOAD BOOKING DATA FROM LOCAL STORAGE
     // ============================================
 
