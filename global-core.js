@@ -263,18 +263,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 logoImg.style.opacity = '1';
             };
-            // Fallback if cached
-            if (logoImg.complete) logoImg.onload();
+            // Fallback if cached (Safely execute if onload is a function)
+            if (logoImg.complete && typeof logoImg.onload === 'function') {
+                logoImg.onload();
+            }
         }
 
-        // 3. Smooth Snappy Progress Logic (Optimized for Mobile)
+        // 3. Smooth Snappy Progress Logic (Crash-proof & Mobile Optimized)
         let progress = 0;
         const isMobileDevice = window.innerWidth <= 768;
-        const duration = isMobileDevice ? 500 : 1000; // 500ms on mobile for snappier loading, 1s on desktop
-        const startTime = performance.now();
+        const duration = isMobileDevice ? 500 : 1000; // 500ms on mobile, 1000ms on desktop
+        const getTimestamp = () => (window.performance && window.performance.now) ? performance.now() : Date.now();
+        const startTime = getTimestamp();
 
         const updateProgress = (currentTime) => {
-            const elapsed = currentTime - startTime;
+            const now = currentTime || getTimestamp();
+            const elapsed = now - startTime;
             progress = Math.min((elapsed / duration) * 100, 100);
             
             if (fill) fill.style.width = progress + '%';
@@ -287,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         requestAnimationFrame(updateProgress);
 
-        // 4. Snappy Transition-Out (Optimized to prevent locking on slow connections)
+        // 4. Snappy Transition-Out (Prevents locking on slow connections)
         const hideLoader = () => {
              const checkCompletion = setInterval(() => {
                 const isReady = document.readyState === 'complete' || document.readyState === 'interactive';
@@ -297,9 +301,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (loader) {
                             loader.classList.add('hidden');
                         }
-                    }, 80); // Reduced delay for instant responsiveness
+                    }, 80); // Snap close
                 }
-            }, 30); // Faster polling rate
+            }, 30);
         };
 
         // Bind loader dismissal immediately to DOMContentLoaded and window load
