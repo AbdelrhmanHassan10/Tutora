@@ -424,7 +424,7 @@ html:not(.dark) .menu-link:hover {
 
 .desktop-nav {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.35rem;
     align-items: center;
     flex: 1;
     justify-content: center;
@@ -2906,4 +2906,4 @@ body.light .copyright {
 
 .viewer-section:fullscreen .viewer-overlay {
     padding: 2rem;
-}
+}a{text-decoration: none;}

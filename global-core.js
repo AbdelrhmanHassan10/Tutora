@@ -601,9 +601,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // ============================================
+    // 11. GLOBAL CART SYSTEM
+    // ============================================
+    window.updateGlobalCartBadge = function() {
+        const cartItems = JSON.parse(localStorage.getItem('tutora_cart') || '[]');
+        const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        
+        document.querySelectorAll('.cart-badge').forEach(badge => {
+            if (totalItems > 0) {
+                badge.style.display = 'flex';
+                badge.textContent = totalItems > 99 ? '99+' : totalItems;
+            } else {
+                badge.style.display = 'none';
+            }
+        });
+    };
+
     // Initialize All Global Modules
     window.init3DParallax();
     window.initSmoothExperience();
+    window.updateGlobalCartBadge();
 });
 
 

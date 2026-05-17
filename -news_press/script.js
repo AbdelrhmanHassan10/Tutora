@@ -93,13 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     document.querySelectorAll('.anim-on-scroll').forEach(el => observer.observe(el));
-
-    // Initialize Atmosphere
-    });
-
-
-
-    // Generate Small Shapes Only
-    if (shapesContainer) {
-        const shapeCount = 25;
-        
+    
+    // 5. Royal Atmosphere Generator
+    setTimeout(() => {
+        if (window.initRoyalAtmosphere) window.initRoyalAtmosphere();
+    }, 100);
+});

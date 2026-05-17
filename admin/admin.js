@@ -369,11 +369,60 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    // 5. Image Previews
+    // Refresh Bookings Button
+    document.getElementById('refreshBookingsBtn')?.addEventListener('click', () => {
+        const icon = document.querySelector('#refreshBookingsBtn .material-symbols-outlined');
+        if(icon) {
+            icon.style.animation = 'spin 1s linear infinite';
+            setTimeout(() => { icon.style.animation = ''; }, 1000);
+        }
+        app.syncAll(false);
+    });
+
+    // Video Drop Zone Logic
+    const videoDropZone = document.getElementById('videoDropZone');
+    const videoFile = document.getElementById('videoFile');
+    const selectedFileInfo = document.getElementById('selectedFileInfo');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+
+    if (videoDropZone && videoFile) {
+        videoDropZone.addEventListener('click', () => videoFile.click());
+        videoFile.addEventListener('change', () => {
+            if (videoFile.files.length > 0) {
+                fileNameDisplay.textContent = videoFile.files[0].name;
+                selectedFileInfo.style.display = 'block';
+            } else {
+                selectedFileInfo.style.display = 'none';
+            }
+        });
+        
+        videoDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            videoDropZone.style.borderColor = '#ecb613';
+            videoDropZone.style.background = 'rgba(236, 182, 19, 0.1)';
+        });
+        videoDropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            videoDropZone.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            videoDropZone.style.background = 'transparent';
+        });
+        videoDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            videoDropZone.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            videoDropZone.style.background = 'transparent';
+            if (e.dataTransfer.files.length) {
+                videoFile.files = e.dataTransfer.files;
+                videoFile.dispatchEvent(new Event('change'));
+            }
+        });
+    }
+
+    // 5. Image Previews and Uploads
     const setupPreview = (inputId, previewId) => {
         const input = document.getElementById(inputId);
         const preview = document.getElementById(previewId);
         if (input && preview) {
+            // Existing URL input preview logic
             input.addEventListener('input', () => {
                 const img = preview.querySelector('img');
                 if (input.value) {
@@ -382,6 +431,31 @@ document.addEventListener('DOMContentLoaded', async () => {
                     img.onerror = () => preview.classList.remove('has-image');
                 } else {
                     preview.classList.remove('has-image');
+                }
+            });
+
+            // Local file upload logic when clicking preview
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.style.display = 'none';
+            document.body.appendChild(fileInput);
+
+            preview.style.cursor = 'pointer';
+            preview.title = "Click to upload an image";
+
+            preview.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        input.value = e.target.result;
+                        input.dispatchEvent(new Event('input')); // trigger existing preview logic
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
                 }
             });
         }

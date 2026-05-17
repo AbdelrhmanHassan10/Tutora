@@ -251,17 +251,56 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="item-info">
                             <span class="item-name">${addon.name}</span>
                         </div>
-                        <span class="item-price">$${addon.price.toFixed(2)}</span>
+                        <span class="item-price">${currency}${addon.price.toFixed(2)}</span>
                     </div>
                 `;
             }
+        }
+
+        // Shop Items (from cart)
+        const cartData = localStorage.getItem('tutora_cart');
+        if (cartData) {
+            try {
+                const cartItems = JSON.parse(cartData);
+                if (cartItems && cartItems.length > 0) {
+                    cartItems.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        subtotal += itemTotal;
+                        html += `
+                            <div class="summary-item">
+                                <div class="item-info">
+                                    <span class="item-name" style="color: #ecb613;"><span class="material-symbols-outlined" style="font-size: 14px; vertical-align: middle; margin-right: 4px;">shopping_bag</span>${item.name}</span>
+                                    <span class="item-qty">x${item.quantity}</span>
+                                </div>
+                                <span class="item-price">${currency}${itemTotal.toFixed(2)}</span>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (e) {
+                console.error("Failed to parse cart items:", e);
+            }
+        }
+
+        // Dining Reservation
+        if (bookingState.dining) {
+            const diningFee = 5.00;
+            subtotal += diningFee;
+            html += `
+                <div class="summary-item">
+                    <div class="item-info">
+                        <span class="item-name" style="color: #ecb613;"><span class="material-symbols-outlined" style="font-size: 14px; vertical-align: middle; margin-right: 4px;">restaurant</span>${bookingState.dining.venue} Reservation</span>
+                    </div>
+                    <span class="item-price">${currency}${diningFee.toFixed(2)}</span>
+                </div>
+            `;
         }
 
         if (html === '') {
             html = `
                 <div class="summary-empty">
                     <span class="material-symbols-outlined">shopping_cart</span>
-                    <p>No tickets selected yet</p>
+                    <p>No tickets or items selected yet</p>
                 </div>
             `;
         }
@@ -344,22 +383,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkoutBtn?.addEventListener('click', () => {
         // Validation Checks
-        if (!bookingState.date) {
-            showNotification('Please select a visit date from the calendar.', 'error');
-            document.getElementById('step1')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            return;
-        }
-        if (!bookingState.timeSlot) {
-            showNotification('Please select an available time slot.', 'error');
-            document.getElementById('step1')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            return;
-        }
-        
         const hasTickets = Object.values(bookingState.tickets).some(t => t.quantity > 0);
-        if (!hasTickets) {
-            showNotification('Please select at least one ticket to proceed.', 'error');
+        const cartData = localStorage.getItem('tutora_cart');
+        const cartItems = cartData ? JSON.parse(cartData) : [];
+        const hasShopItems = cartItems.length > 0;
+        const hasDining = bookingState.dining != null;
+
+        if (!hasTickets && !hasShopItems && !hasDining) {
+            showNotification('Please select at least one ticket, a dining reservation, or shop items to proceed.', 'error');
             document.getElementById('step2')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             return;
+        }
+
+        if (hasTickets) {
+            if (!bookingState.date) {
+                showNotification('Please select a visit date from the calendar.', 'error');
+                document.getElementById('step1')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            if (!bookingState.timeSlot) {
+                showNotification('Please select an available time slot.', 'error');
+                document.getElementById('step1')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
         }
 
         verifyOverlay.classList.add('active');
@@ -376,6 +422,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 verifyStatus.textContent = stage.text;
                 if (stage.text.includes("Redirecting")) {
                     verifyTitle.textContent = "Success!";
+                    
+                    // Save the current booking state for the payment page
+                    localStorage.setItem('currentBooking', JSON.stringify(bookingState));
+
                     setTimeout(() => {
                         window.location.href = "../payment/payment.html"; // Assuming payment page exists
                     }, 1000);

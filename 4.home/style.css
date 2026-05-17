@@ -564,7 +564,7 @@ body.light .dropdown-item:hover {
     }
     .header-right {
         margin-left: auto !important;
-        gap: .8rem !important;
+        gap: .3rem !important;
     }
 }
 

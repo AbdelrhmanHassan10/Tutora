@@ -103,7 +103,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 4. CART & WISHLIST FEEDBACK ---
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
     addToCartBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+            // Find the product details
+            const card = e.target.closest('.product-card');
+            if (card) {
+                const name = card.querySelector('.product-name').textContent;
+                const priceText = card.querySelector('.product-price').textContent;
+                const price = parseFloat(priceText.replace('$', ''));
+                const image = card.querySelector('.product-image').src;
+                
+                // Add to local storage
+                let cartItems = JSON.parse(localStorage.getItem('tutora_cart') || '[]');
+                
+                const existingItemIndex = cartItems.findIndex(item => item.name === name);
+                if (existingItemIndex > -1) {
+                    cartItems[existingItemIndex].quantity += 1;
+                } else {
+                    cartItems.push({
+                        name: name,
+                        price: price,
+                        image: image,
+                        quantity: 1
+                    });
+                }
+                
+                localStorage.setItem('tutora_cart', JSON.stringify(cartItems));
+                
+                // Update global badge
+                if (typeof window.updateGlobalCartBadge === 'function') {
+                    window.updateGlobalCartBadge();
+                }
+            }
+
             const originalText = btn.innerHTML;
             btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Added';
             btn.style.background = '#28a745';

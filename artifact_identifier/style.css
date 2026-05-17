@@ -778,6 +778,7 @@ body.light .dropdown-menu {
 .dropdown-link:last-child {
     border-radius: 0 0 0.5rem 0.5rem;
 }
+a{text-decoration: none;}
 
 body.dark .dropdown-link:hover {
     background-color: rgba(242, 185, 13, 0.15);

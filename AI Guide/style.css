@@ -592,12 +592,12 @@ body.light .header {
     color: var(--text-white);
 }
 
-
+a{text-decoration: none;}
 /* Desktop Navigation */
 
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: 1.3rem;
     align-items: center;
  }
 

@@ -111,7 +111,7 @@
 
         // Add Dining Logic if present
         if (bookingState.dining) {
-            const deposit = isIntl ? 4 : 200;
+            const deposit = isIntl ? 5.00 : 5.00 * 50; // Use $5.00 as previously set
             subtotal += deposit;
             itemsHTML += `
                 <div class="order-item">
@@ -121,6 +121,33 @@
                     </div>
                 </div>
             `;
+        }
+
+        // Add Shop Items (from cart)
+        const cartData = localStorage.getItem('tutora_cart');
+        if (cartData) {
+            try {
+                const cartItems = JSON.parse(cartData);
+                if (cartItems && cartItems.length > 0) {
+                    cartItems.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        // Shop items are typically priced in $, convert if local
+                        const price = isIntl ? itemTotal : itemTotal * 50; 
+                        subtotal += price;
+                        itemsHTML += `
+                            <div class="order-item">
+                                <img class="item-img" src="${item.image}" alt="Shop Item" onerror="this.src='./unnamed (5).png'">
+                                <div class="item-info">
+                                    <p class="item-name">${item.name}</p>
+                                    <p class="item-details">Qty: ${item.quantity} | ${currencySymbol}${price.toLocaleString()}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } catch (e) {
+                console.error("Failed to parse cart items in payment page:", e);
+            }
         }
 
         const taxes = subtotal * 0.05; // 5% Admin Fee
@@ -282,12 +309,26 @@
                                 }
                             } else {
                                 clearInterval(interval);
+                                
+                                // Clear cart and booking data upon successful checkout
+                                localStorage.removeItem('tutora_cart');
+                                localStorage.removeItem('currentBooking');
+                                if (typeof updateGlobalCartBadge === 'function') {
+                                    updateGlobalCartBadge();
+                                }
+
                                 setTimeout(() => {
                                     window.location.href = '../success/success.html';
                                 }, 500);
                             }
                         }, 1000);
                     } else {
+                        // Clear cart and booking data upon successful checkout
+                        localStorage.removeItem('tutora_cart');
+                        localStorage.removeItem('currentBooking');
+                        if (typeof updateGlobalCartBadge === 'function') {
+                            updateGlobalCartBadge();
+                        }
                         window.location.href = '../success/success.html';
                     }
 

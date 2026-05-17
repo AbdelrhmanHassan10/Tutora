@@ -34,18 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.anim-on-scroll').forEach(el => observer.observe(el));
 
-    // 5. Royal Atmosphere Generator (More Dust & Small Shapes)
-    
+    // 5. Royal Atmosphere Generator
+    setTimeout(() => {
+        if (window.initRoyalAtmosphere) window.initRoyalAtmosphere();
+    }, 100);
 
-        // Generate Small Shapes Only
-        if (shapesContainer) {
-            const shapeCount = 25;
-            function updateThemeIcon(theme) {
-            if (!themeBtn) return;
-            const icon = themeBtn.querySelector('.material-symbols-outlined');
-            if (icon) {
-                icon.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
-            }
+    function updateThemeIcon(theme) {
+        const themeBtn = document.getElementById('themeBtn');
+        if (!themeBtn) return;
+        const icon = themeBtn.querySelector('.material-symbols-outlined');
+        if (icon) {
+            icon.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
         }
     }
 

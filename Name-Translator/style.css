@@ -4308,7 +4308,8 @@ body.light .newsletter-banner {
     transform: translateY(-15px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(236, 182, 19, 0.1);
     z-index: 10;
-}
+}a{text-decoration: none;}
+
 
 /* Logo Section Interactivity */
 .logo-section {
