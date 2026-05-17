@@ -47,11 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ story: prompt })
             });
 
-            const data = await response.json();
+            let data = {};
+            try {
+                data = await response.json();
+            } catch (jsonError) {
+                console.error('Failed to parse JSON from server response:', jsonError);
+            }
             console.log('AI Response:', data);
             
             if(response.ok && (data.imageUrl || data.image)) {
-                const finalUrl = data.imageUrl || data.image;
+                let finalUrl = data.imageUrl || data.image;
+                if (!finalUrl.startsWith('http') && !finalUrl.startsWith('data:')) {
+                    finalUrl = `data:image/png;base64,${finalUrl}`;
+                }
                 const newImg = new Image();
                 newImg.src = finalUrl;
                 
@@ -64,10 +72,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Update metadata
                     if (computeTime) computeTime.textContent = (Math.random() * (4 - 2) + 2).toFixed(1) + ' SECONDS';
                     if (manifestationId) manifestationId.textContent = 'MANIFESTATION ID: ' + Math.floor(1000 + Math.random() * 9000) + '-X';
+                    
+                    // Reset UI
+                    visualizeBtn.innerHTML = originalContent;
+                    visualizeBtn.style.pointerEvents = 'auto';
+                    visualizeBtn.classList.remove('loading');
                 };
                 
                 newImg.onerror = () => {
-                    throw new Error('The manifested image could not be loaded from the void.');
+                    alert('⚠️ The manifested image could not be loaded from the void.');
+                    visualizeBtn.innerHTML = originalContent;
+                    visualizeBtn.style.pointerEvents = 'auto';
+                    visualizeBtn.classList.remove('loading');
+                    mainImg.style.filter = 'none';
+                    mainImg.style.transform = 'scale(1)';
                 };
             } else if (response.status === 401 || response.status === 403) {
                 alert('🔐 Session expired. Please sign in again.');
@@ -76,22 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 const errorMsg = data.message || 'Manifestation failed to conjure image. The AI realm is currently unstable.';
                 alert(`⚠️ ${errorMsg}`);
+                visualizeBtn.innerHTML = originalContent;
+                visualizeBtn.style.pointerEvents = 'auto';
+                visualizeBtn.classList.remove('loading');
+                mainImg.style.filter = 'none';
+                mainImg.style.transform = 'scale(1)';
             }
         } catch (error) {
             console.error('AI Manifestation Error:', error);
             alert('⚠️ Network connection to the AI realm failed. The ritual was interrupted.');
-        } finally {
             visualizeBtn.innerHTML = originalContent;
             visualizeBtn.style.pointerEvents = 'auto';
             visualizeBtn.classList.remove('loading');
-            
-            // Revert visual state if failed or slow
-            setTimeout(() => {
-                if (mainImg.style.filter !== 'none') {
-                    mainImg.style.filter = 'none';
-                    mainImg.style.transform = 'scale(1)';
-                }
-            }, 5000);
+            mainImg.style.filter = 'none';
+            mainImg.style.transform = 'scale(1)';
         }
     });
 

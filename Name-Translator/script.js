@@ -1,49 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Redundant theme and menu logic removed. Handled by global-core.js.
-
-    // ============================================
+     // ============================================
     // HIEROGLYPHIC TRANSLATION
     // ============================================
     const nameInput = document.getElementById('nameInput');
     const generateBtn = document.getElementById('generateBtn');
     const hieroglyphDisplay = document.getElementById('hieroglyphDisplay');
     const phoneticText = document.getElementById('phoneticText');
-
-    const hieroglyphMap = {
-        'a': '𓀀', 'b': '𓀁', 'c': '𓀂', 'd': '𓀃', 'e': '𓀄',
-        'f': '𓀅', 'g': '𓀆', 'h': '𓀇', 'i': '𓀈', 'j': '𓀉',
-        'k': '𓀊', 'l': '𓀋', 'm': '𓀌', 'n': '𓀍', 'o': '𓀎',
-        'p': '𓀏', 'q': '𓀐', 'r': '𓀑', 's': '𓀒', 't': '𓀓',
-        'u': '𓀔', 'v': '𓀕', 'w': '𓀖', 'x': '𓀗', 'y': '𓀘',
-        'z': '𓀙'
-    };
-
-    const phoneticMap = {
-        'a': 'A', 'b': 'B', 'c': 'K', 'd': 'D', 'e': 'E',
-        'f': 'F', 'g': 'G', 'h': 'H', 'i': 'I', 'j': 'J',
-        'k': 'K', 'l': 'L', 'm': 'M', 'n': 'N', 'o': 'O',
-        'p': 'P', 'q': 'Q', 'r': 'R', 's': 'S', 't': 'T',
-        'u': 'U', 'v': 'V', 'w': 'W', 'x': 'X', 'y': 'Y',
-        'z': 'Z'
-    };
-
-    function translateToHieroglyphics(text) {
-        const cleanText = text.toLowerCase().replace(/[^a-z]/g, '');
-        let hieroglyphics = '';
-        let phonetic = '';
-
-        for (let char of cleanText) {
-            if (hieroglyphMap[char]) {
-                hieroglyphics += hieroglyphMap[char] + ' ';
-                phonetic += phoneticMap[char] + '-';
-            }
-        }
-
-        return {
-            hieroglyphics: hieroglyphics.trim(),
-            phonetic: phonetic.slice(0, -1)
-        };
-    }
 
     generateBtn.addEventListener('click', async () => {
         const name = nameInput.value.trim();
@@ -71,38 +33,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ name })
             });
 
-            const data = await response.json();
+            let data = {};
+            try {
+                data = await response.json();
+            } catch (jsonError) {
+                console.error('Failed to parse JSON from server response:', jsonError);
+            }
 
-            setTimeout(() => {
-                if (response.ok && (data.hieroglyphics || data.cartouche)) {
-                    hieroglyphDisplay.textContent = data.hieroglyphics || data.cartouche;
-                    phoneticText.textContent = data.phonetic || name;
-                } else if (response.status === 401 || response.status === 403) {
-                    alert('🔐 Session expired. Please sign in again.');
-                    localStorage.removeItem('token');
-                    window.location.href = '../2.login/code.html';
-                } else {
-                    console.warn('API Error, falling back to local translation:', data.message);
-                    const localGen = translateToHieroglyphics(name);
-                    hieroglyphDisplay.textContent = localGen.hieroglyphics;
-                    phoneticText.textContent = localGen.phonetic;
+            if (response.ok && data.cartouche) {
+                let imgSrc = data.cartouche;
+                if (!imgSrc.startsWith('http') && !imgSrc.startsWith('data:')) {
+                    imgSrc = `data:image/png;base64,${imgSrc}`;
                 }
-                hieroglyphDisplay.style.opacity = '1';
-                phoneticText.style.opacity = '1';
-                generateBtn.innerHTML = 'Generate Inscription';
-                generateBtn.disabled = false;
-            }, 500);
+                hieroglyphDisplay.innerHTML = `<img src="${imgSrc}" alt="Cartouche" style="max-height: 120px; border-radius: 8px;">`;
+                phoneticText.textContent = data.name || name;
+            } else if (response.status === 401 || response.status === 403) {
+                alert('🔐 Session expired. Please sign in again.');
+                localStorage.removeItem('token');
+                window.location.href = '../2.login/code.html';
+            } else {
+                alert(`⚠️ Translation failed: ${data.message || 'The gods are busy, please try again later.'}`);
+            }
         } catch (error) {
-            console.error('API Translation Error, failing back to local:', error);
-            const { hieroglyphics, phonetic } = translateToHieroglyphics(name);
-            setTimeout(() => {
-                hieroglyphDisplay.textContent = hieroglyphics;
-                phoneticText.textContent = phonetic || name;
-                hieroglyphDisplay.style.opacity = '1';
-                phoneticText.style.opacity = '1';
-                generateBtn.innerHTML = 'Generate Inscription';
-                generateBtn.disabled = false;
-            }, 500);
+            console.error('API Translation Error:', error);
+            alert('⚠️ Network connection failed. The ritual was interrupted.');
+        } finally {
+            hieroglyphDisplay.style.opacity = '1';
+            phoneticText.style.opacity = '1';
+            generateBtn.innerHTML = 'Generate Inscription';
+            generateBtn.disabled = false;
         }
     });
 
@@ -183,10 +142,5 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTopBtn.style.opacity = '0';
         scrollTopBtn.style.pointerEvents = 'none';
     }
-
-    // ============================================
-    // INITIALIZATION
-    // ============================================
-    initializeTheme();
 });
 

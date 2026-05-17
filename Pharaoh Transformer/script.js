@@ -55,19 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: formData
             });
 
-            const data = await response.json();
+            let data = {};
+            try {
+                data = await response.json();
+            } catch (jsonError) {
+                console.error('Failed to parse JSON from server response:', jsonError);
+            }
             
-            if (response.ok && (data.imageUrl || data.image)) {
+            if (response.ok && (data.pharaohImage || data.imageUrl || data.image)) {
                 if (previewImg) {
-                    previewImg.src = data.imageUrl || data.image;
+                    let finalImg = data.pharaohImage || data.imageUrl || data.image;
+                    if (!finalImg.startsWith('http') && !finalImg.startsWith('data:')) {
+                        finalImg = `data:image/png;base64,${finalImg}`;
+                    }
+                    previewImg.src = finalImg;
                     previewImg.style.opacity = '1';
                 }
                 if (statusText) statusText.textContent = 'Portal Alignment Complete. You have been Reborn.';
+            } else if (response.status === 401 || response.status === 403) {
+                alert('🔐 Session expired. Please sign in again.');
+                localStorage.removeItem('token');
+                window.location.href = '../2.login/code.html';
             } else {
-                alert('The gods rejected your offering. Please try again.');
+                alert(`⚠️ Transformation failed: ${data.message || 'The gods rejected your offering. Please try again.'}`);
             }
         } catch (error) {
-            alert('Neural link failed. Check your connection to the ether.');
+            console.error('API Pharaoh Transformation Error:', error);
+            alert('⚠️ Neural link failed. Check your connection to the ether.');
         } finally {
             transformBtn.innerHTML = originalBtnText;
             transformBtn.style.pointerEvents = 'auto';
