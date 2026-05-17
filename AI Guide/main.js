@@ -79,7 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!query.trim()) return;
         
         // Visual Thinking State
-        if (welcomeTitle) welcomeTitle.textContent = '"Analyzing neural patterns..."';
+        if (welcomeTitle) {
+            const lang = localStorage.getItem('language') || 'en';
+            welcomeTitle.textContent = lang === 'ar' 
+                ? `"${query}" (جاري البحث...)` 
+                : `"${query}" (Searching...)`;
+        }
         
         try {
             const response = await fetch(`${API_URL}/ai/ask`, {
@@ -94,18 +99,27 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 const data = await response.json();
                 const aiText = data.answer || data.response || "I found some data, but couldn't decode it.";
-                handleTutoraResponse(aiText);
+                handleTutoraResponse(aiText, query);
             } else {
-                handleTutoraResponse("Connection to the central archive failed. Please try again.");
+                handleTutoraResponse("Connection to the central archive failed. Please try again.", query);
             }
         } catch (error) {
             console.error('AI Query Error:', error);
-            handleTutoraResponse("My neural link is currently unstable. Please check your connection.");
+            handleTutoraResponse("My neural link is currently unstable. Please check your connection.", query);
         }
     }
 
-    function handleTutoraResponse(text) {
-        if (welcomeTitle) welcomeTitle.textContent = `"${text}"`;
+    function handleTutoraResponse(text, query) {
+        if (welcomeTitle) {
+            if (query) {
+                welcomeTitle.textContent = `"${query}"`;
+            } else {
+                const lang = localStorage.getItem('language') || 'en';
+                welcomeTitle.textContent = lang === 'ar' 
+                    ? '"تم العثور على الإجابة!"' 
+                    : '"Response generated!"';
+            }
+        }
         addMessage('Tutora', text);
         speakText(text);
     }
@@ -196,33 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ============================================
-    
-    // ============================================
-    
-
-        // Create 15 royal shapes (Hieroglyphs)
-        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
-        for (let i = 0; i < 15; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-            
-            const size = Math.random() * 20 + 20;
-            shape.style.fontSize = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            shape.style.left = `${left}%`;
-            shape.style.top = `${top}%`;
-            
-            const duration = Math.random() * 20 + 20;
-            const delay = Math.random() * 10;
-            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
-            
-            shapesContainer.appendChild(shape);
-        }
-    }
-)
+});
 
 

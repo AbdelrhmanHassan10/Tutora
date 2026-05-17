@@ -1544,8 +1544,7 @@ body.light .tutora-dialogue-section {
 .sidebar-transcription {
     position: absolute;
     right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 25%; /* Anchored from the top to prevent upward expansion */
     width: 320px;
     z-index: 20;
     display: none;
@@ -1605,6 +1604,8 @@ body.light .tutora-dialogue-section {
 .message-text {
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 /* Footer */
 
