@@ -127,34 +127,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const formData = new FormData();
-        formData.append('image', file);
+        formData.append('file', file);
+        const lang = localStorage.getItem('language') || 'en';
 
         try {
-            const response = await fetch(`${API_URL}/ai/detect`, {
+            // Call the new AI Model for prediction
+            const response = await fetch(`https://egyptian-museum-production.up.railway.app/predict?language=${lang}`, {
                 method: 'POST',
-                headers: { 'Authorization': `Bearer ${token}` },
                 body: formData
             });
 
             const data = await response.json();
             
-            if (response.status === 401 || response.status === 403) {
-                resultTitle.textContent = 'Session Expired';
-                resultDesc.innerHTML = '<p>Please <a href="../2.login/code.html" style="color:#ecb613;">login again</a>.</p>';
-                return;
+            // Extract data using the new API format
+            let detected = data.artifact_name || data.class_name || data.detected || data.name || (data.predictions && data.predictions[0]?.className) || "Mysterious Artifact";
+            let confidenceValue = data.confidence || data.probability || (data.predictions && data.predictions[0]?.probability ? (data.predictions[0].probability * 100).toFixed(1) : null);
+            
+            // Format confidence properly
+            let confidence = 'High';
+            if (confidenceValue !== null) {
+                confidence = typeof confidenceValue === 'number' ? confidenceValue.toFixed(1) + '%' : confidenceValue + (String(confidenceValue).includes('%') ? '' : '%');
             }
 
-            let detected = data.detected || (data.predictions && data.predictions[0]?.className) || "Mysterious Artifact";
-            const confidence = data.confidence || (data.predictions && data.predictions[0]?.probability ? (data.predictions[0].probability * 100).toFixed(1) + '%' : 'High');
-
-            if (response.ok && detected) {
+            if (response.ok) {
                 resultTitle.textContent = `Match Found: ${detected}`;
                 resultDesc.innerHTML = `
                     <div class="result-details">
                         <div class="match-meta">
                             <span class="confidence-tag"><span class="material-symbols-outlined">verified</span> ${confidence} Confidence</span>
                         </div>
-                        <p class="artifact-info-text">${data.description || 'This artifact appears to be from the ancient Egyptian archives. Its specific details are being cross-referenced with our digital library.'}</p>
+                        <p class="artifact-info-text">${data.story || data.description || data.text || 'This artifact appears to be from the ancient Egyptian archives. Its specific details are being cross-referenced with our digital library.'}</p>
                         <div class="result-actions" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
                              <button class="btn-primary" id="listenStoryBtn"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
                              <button class="btn-outline" onclick="window.location.href='../collection/collection.html'"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
@@ -162,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
                 
-                document.getElementById('listenStoryBtn')?.addEventListener('click', () => generateStoryAudio(lastAnalyzedFile));
+                document.getElementById('listenStoryBtn')?.addEventListener('click', () => generateStoryAudio(lastAnalyzedFile, data.audio_url));
                 showRelatedStatues(detected);
                 loadDetectionHistory();
             } else {
@@ -176,9 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    async function generateStoryAudio(file) {
-        if (!file) return;
-        const token = localStorage.getItem('token');
+    async function generateStoryAudio(file, audioUrl) {
         const listenBtn = document.getElementById('listenStoryBtn');
         
         if (listenBtn) {
@@ -186,20 +186,36 @@ document.addEventListener('DOMContentLoaded', () => {
             listenBtn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px;"></div> Generating...`;
         }
 
-        const formData = new FormData();
-        formData.append('image', file);
-        formData.append('language', localStorage.getItem('language') || 'en');
-
         try {
-            const response = await fetch(`${API_URL}/ai/text-to-speech`, {
-                method: 'POST',
-                headers: { 'Authorization': `Bearer ${token}` },
-                body: formData
-            });
+            let finalAudioUrl = "";
+            if (audioUrl) {
+                // If API already provided the audio URL endpoint, use it directly.
+                finalAudioUrl = audioUrl.startsWith('http') ? audioUrl : `https://egyptian-museum-production.up.railway.app${audioUrl}`;
+            } else {
+                // Fallback to calling the /predict/audio endpoint
+                const formData = new FormData();
+                formData.append('file', file);
+                const lang = localStorage.getItem('language') || 'en';
 
-            const data = await response.json();
-            if (response.ok && data.audioUrl) {
-                const audio = new Audio(data.audioUrl);
+                const response = await fetch(`https://egyptian-museum-production.up.railway.app/predict/audio?language=${lang}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                const audioSource = data.audioUrl || data.audio || data.url || data.base64;
+                
+                if (response.ok && audioSource) {
+                    finalAudioUrl = audioSource.startsWith('data:') || audioSource.startsWith('http') 
+                                            ? audioSource 
+                                            : `data:audio/mp3;base64,${audioSource}`;
+                } else {
+                    throw new Error('No audio found in response');
+                }
+            }
+
+            if (finalAudioUrl) {
+                const audio = new Audio(finalAudioUrl);
                 audio.play();
                 if (listenBtn) {
                     listenBtn.disabled = false;
@@ -208,8 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Replay Story`;
                     };
                 }
-            } else {
-                throw new Error(data.message || 'Failed to generate audio');
             }
         } catch (error) {
             console.error('TTS Error:', error);

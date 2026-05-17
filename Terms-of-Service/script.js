@@ -91,18 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 6. ROYAL ATMOSPHERE GENERATOR ---
-    
 
-        // Generate Royal Shapes
-        vw;
-                    top: ${Math.random() * 100}vh;
-                    animation: rotateFloat ${duration}s infinite ease-in-out;
-                    animation-delay: ${Math.random() * -20}s;
-                `;
-                shapesContainer.appendChild(shape);
-            }
-        }
-    }
     });
 

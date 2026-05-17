@@ -220,7 +220,7 @@
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>Name</th><th>Era</th><th>Description</th><th>Actions</th></tr>
+                            <tr><th>Name</th><th>Era</th><th>Target Section</th><th>Description</th><th>Actions</th></tr>
                         </thead>
                         <tbody id="artifactsTable">
                             <tr><td colspan="4" class="table-empty">Loading artifacts...</td></tr>
@@ -315,7 +315,17 @@
 
                 <div class="form-group"><label>Name *</label><input type="text" id="artifactName" required placeholder="Golden Mask of Tutankhamun" /></div>
                 <div class="form-group"><label>Description *</label><textarea id="artifactDesc" required placeholder="Description of the artifact..."></textarea></div>
-                <div class="form-group"><label>Era</label><input type="text" id="artifactEra" placeholder="18th Dynasty — New Kingdom" /></div>
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label>Target Section *</label>
+                        <select id="artifactCategory" required>
+                            <option value="collection">Main Collection</option>
+                            <option value="kids">Kids Museum</option>
+                            <option value="both">Both Sections</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Era</label><input type="text" id="artifactEra" placeholder="18th Dynasty — New Kingdom" /></div>
+                </div>
                 <div class="form-group"><label>Image URL</label><input type="text" id="artifactImageUrl" placeholder="https://..." /></div>
                 
                 <div class="form-grid-2">

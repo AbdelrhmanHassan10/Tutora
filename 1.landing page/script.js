@@ -2,20 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.glass-header');
     const heroContent = document.querySelector('.hero-content');
 
-    // 1. Generate Atmospheric Dust Particles (Optimized Counts)
-    };
-
-    // 2. Generate Royal Pharaonic Shapes (Optimized Counts)
-    const createShapes = () => {
-        if (!shapesContainer) return;
-        // Reduced shape count to lighten the DOM
-        const shapeCount = window.innerWidth > 768 ? 6 : 3;
-        )`;
-            shapesContainer.appendChild(shape);
-        }
-    };
-
-    // 3. Cinematic Header Scroll Effect
+    // Cinematic Header Scroll Effect
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.style.background = 'rgba(0, 0, 0, 0.9)';
@@ -28,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true }); // Improved scroll performance
 
-    // 4. Lightweight 3D Parallax
+    // Lightweight 3D Parallax
     if (window.innerWidth > 1024) {
         let ticking = false;
         document.addEventListener('mousemove', (e) => {
@@ -45,7 +32,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // Initialize
-    createShapes();
 });

@@ -198,7 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const styleSheet = document.createElement('style');
     styleSheet.textContent = `
-        .royal-sparkle { position: fixed; top: -10// --- Action Button Logic ---
+        .royal-sparkle { position: fixed; top: -10px; border-radius: 50%; pointer-events: none; z-index: 9999; animation: royalFall linear forwards; }
+        @keyframes royalFall { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(100vh) scale(0); opacity: 0; } }
+    `;
+    document.head.appendChild(styleSheet);
+
+    // --- Action Button Logic ---
     const btnDownload = document.getElementById('btnDownload');
     if (btnDownload) {
         btnDownload.onclick = () => {
@@ -241,33 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // ============================================
-    
-    // ============================================
-    
 
-        // Create 15 royal shapes (Hieroglyphs)
-        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
-        for (let i = 0; i < 15; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-            
-            const size = Math.random() * 20 + 20;
-            shape.style.fontSize = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            shape.style.left = `${left}%`;
-            shape.style.top = `${top}%`;
-            
-            const duration = Math.random() * 20 + 20;
-            const delay = Math.random() * 10;
-            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
-            
-            shapesContainer.appendChild(shape);
-        }
-    }
 
     initializeSuccessPage();
 });

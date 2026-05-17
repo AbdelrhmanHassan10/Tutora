@@ -313,7 +313,17 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="item-date uppercase tracking-widest">${journeyData.date || 'Today'}</span>
                             <h4 class="item-title font-serif">${spot.title}</h4>
                             <p class="item-desc opacity-70">${spot.desc}</p>
-                            <span class="step-time" style="display: inline-block; margin-top: 10// ============================================
+                            <span class="step-time" style="display: inline-block; margin-top: 10px; font-size: 11px; opacity: 0.5;">${spot.time || ''}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        } catch (error) {
+            console.error("Error parsing journey data:", error);
+        }
+    }
+
+    // ============================================
     // 4. THEME & NAVIGATION
     // ============================================
 
@@ -414,24 +424,67 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => notification.remove(), 400);
         }, 3000);
     }
+});
 
-    // ============================================
-    
-    // ============================================
-    
 
-        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
-        for (let i = 0; i < 15; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-            shape.style.fontSize = `${Math.random() * 20 + 20}px`;
-            shape.style.left = `${Math.random() * 100}%`;
-            shape.style.top = `${Math.random() * 100}%`;
-            shape.style.animation = `rotateFloat ${Math.random() * 20 + 20}s infinite ease-in-out ${Math.random() * 10}s`;
-            shapesContainer.appendChild(shape);
-        }
+// Add this to your existing script.js, after the theme toggle script
+
+// ============================================
+// THEME-SPECIFIC BROWSER SYNC
+// ============================================
+
+const ThemeKey = 'egyptTheme'; // Unique key for localStorage
+
+// Function to sync theme to all windows/tabs
+function syncThemeToWindows(theme) {
+    try {
+        localStorage.setItem(ThemeKey, theme);
+    } catch (e) {
+        console.warn('LocalStorage not available, theme sync may be limited');
     }
+}
 
-    });
+// Initialize theme from localStorage
+function initializeTheme() {
+    try {
+        const savedTheme = localStorage.getItem(ThemeKey);
+        if (savedTheme) {
+            // Remove existing theme classes
+            document.body.classList.remove('dark', 'light');
+            // Apply saved theme
+            document.body.classList.add(savedTheme);
+        }
+    } catch (e) {
+        console.warn('LocalStorage not available during initialization');
+    }
+}
 
+// Listen for theme changes in other tabs
+window.addEventListener('storage', (event) => {
+    if (event.key === ThemeKey) {
+        document.body.classList.remove('dark', 'light');
+        document.body.classList.add(event.newValue);
+        
+        // Optional: Update theme-specific variables if needed
+        // const htmlElement = document.documentElement;
+        // if (event.newValue === 'light') {
+        //     htmlElement.style.setProperty('--primary', '#F2D00D');
+        // } else {
+        //     htmlElement.style.setProperty('--primary', '#ecb613');
+        // }
+    }
+});
+
+// Make function globally accessible for theme toggle in nav.html
+window.toggleTheme = function() {
+    const isDark = document.body.classList.contains('dark');
+    const newTheme = isDark ? 'light' : 'dark';
+    
+    document.body.classList.remove('dark', 'light');
+    document.body.classList.add(newTheme);
+    
+    syncThemeToWindows(newTheme);
+};
+
+// Initialize theme on page load
+initializeTheme();

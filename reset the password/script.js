@@ -19,22 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Generate Scattered Dust
-    };
-
-    // 3. Generate Royal Triangles
-    const createShapes = () => {
-        if (!shapesContainer) return;
-        for (let i = 0; i < 10; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.style.left = Math.random() * 100 + 'vw';
-            shape.style.animationDelay = (Math.random() * -20) + 's';
-            shapesContainer.appendChild(shape);
-        }
-    };
-
-    createShapes();
 
     // 4. Interactive Effects
     const magneticBtn = (btn) => {

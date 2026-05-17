@@ -2736,19 +2736,22 @@ body.light .fact-btn:hover {
 }
 
 /* ========== FACTS CONTAINER ========== */
-.facts-container {
+.facts-container, #dynamic-artifacts-container {
     display: flex;
     gap: 1.5rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 1rem 0;
     flex: 1;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important;  /* IE/Edge */
 }
 
-.facts-container::-webkit-scrollbar {
-    display: none;
+.facts-container::-webkit-scrollbar, 
+#dynamic-artifacts-container::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 /* ========== FACT CARD ========== */
@@ -4968,7 +4971,7 @@ body.light .header.scrolled {
 }
 
 /* Interactive Particles (Fixed for full page coverage) */
-body.light @keyframes float {
+@keyframes float {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }

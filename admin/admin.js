@@ -122,6 +122,11 @@ const renderers = {
                     </div>
                 </td>
                 <td><span class="era-badge">${item.era || 'Unknown'}</span></td>
+                <td>
+                    <span class="category-badge ${item.category || 'collection'}">
+                        ${(item.category || 'collection').charAt(0).toUpperCase() + (item.category || 'collection').slice(1)}
+                    </span>
+                </td>
                 <td><p class="table-desc" title="${item.description}">${item.description || ''}</p></td>
                 <td>
                     <div class="table-actions">
@@ -254,6 +259,7 @@ window.app = {
         document.getElementById('artifactName').value = item.name || '';
         document.getElementById('artifactDesc').value = item.description || '';
         document.getElementById('artifactEra').value = item.era || '';
+        document.getElementById('artifactCategory').value = item.category || 'collection';
         document.getElementById('artifactImageUrl').value = item.imageUrl || '';
         document.getElementById('artifactModel3DUrl').value = item.model3DUrl || '';
         document.getElementById('artifactAudioUrl').value = item.audioUrl || '';
@@ -281,6 +287,8 @@ window.app = {
 };
 
 // Attach legacy global references used directly in HTML
+window.app = app;
+window.closeModal = app.closeModal;
 window.actions = { exportBookings: app.exportBookings }; 
 
 // ─── INITIALIZATION SCRIPT ───
@@ -392,6 +400,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             name: document.getElementById('artifactName').value,
             description: document.getElementById('artifactDesc').value,
             era: document.getElementById('artifactEra').value,
+            category: document.getElementById('artifactCategory').value,
             imageUrl: document.getElementById('artifactImageUrl').value,
             model3DUrl: document.getElementById('artifactModel3DUrl').value,
             audioUrl: document.getElementById('artifactAudioUrl').value,

@@ -13,18 +13,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    };
 
-    const createShapes = () => {
-        if (!shapesContainer) return;
-        for (let i = 0; i < 10; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.style.left = Math.random() * 100 + 'vw';
-            shape.style.animationDelay = (Math.random() * -20) + 's';
-            shapesContainer.appendChild(shape);
-        }
-    };
-
-    createShapes();
 });

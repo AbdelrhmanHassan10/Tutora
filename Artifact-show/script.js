@@ -148,54 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     
     // ============================================
-    function initRoyalAtmosphere(color = '#f2b90d') {
-        // Clear existing
-        dustContainer.innerHTML = '';
-        shapesContainer.innerHTML = '';
-
-        px`;
-            particle.style.height = `${size}px`;
-            particle.style.background = color;
-            particle.style.boxShadow = `0 0 10px ${color}`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            particle.style.left = `${left}%`;
-            particle.style.top = `${top}%`;
-            
-            const duration = Math.random() * 10 + 10;
-            const delay = Math.random() * 5;
-            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
-            
-            dustContainer.appendChild(particle);
-        }
-
-        // Create 15 royal shapes (Hieroglyphs)
-        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
-        for (let i = 0; i < 15; i++) {
-            const shape = document.createElement('div');
-            shape.className = 'royal-shape';
-            shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-            shape.style.color = color;
-            shape.style.textShadow = `0 0 15px ${color}`;
-            
-            const size = Math.random() * 20 + 20;
-            shape.style.fontSize = `${size}px`;
-            
-            const left = Math.random() * 100;
-            const top = Math.random() * 100;
-            shape.style.left = `${left}%`;
-            shape.style.top = `${top}%`;
-            
-            const duration = Math.random() * 20 + 20;
-            const delay = Math.random() * 10;
-            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
-            
-            shapesContainer.appendChild(shape);
-        }
-    }
-
-    // ============================================
     // DYNAMIC IMAGE EFFECTS (3D Tilt & Parallax)
     // ============================================
     const imagePanel = document.querySelector('.artifact-image-panel');
@@ -406,8 +358,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize Optimizations
     optimizeExperience();
-
-    // Initialize the atmosphere
-    window.initRoyalAtmosphere = initRoyalAtmosphere;
-    initRoyalAtmosphere();
-    });
+});

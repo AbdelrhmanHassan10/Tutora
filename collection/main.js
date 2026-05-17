@@ -744,7 +744,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   }));
 
                   // Merge API artifacts with Samples so the page is always rich
-                  STATE.allArtifacts = [...mappedAPI, ...SAMPLE_ARTIFACTS];
+                  const collectionArtifacts = mappedAPI.filter(art => !art.category || art.category === 'collection' || art.category === 'both');
+                  STATE.allArtifacts = [...collectionArtifacts, ...SAMPLE_ARTIFACTS];
               } else {
                   STATE.allArtifacts = SAMPLE_ARTIFACTS;
               }

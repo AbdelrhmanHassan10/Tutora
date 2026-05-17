@@ -25,9 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    };
-
     const createShapes = () => {
         if (!shapesContainer) return;
         for (let i = 0; i < 10; i++) {

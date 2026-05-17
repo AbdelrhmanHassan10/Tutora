@@ -2638,7 +2638,7 @@ body.light .newsletter-banner {
 }
 
 /* Interactive Particles (Fixed for full page coverage) */
-body.light @keyframes float {
+ @keyframes float {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }

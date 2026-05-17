@@ -243,7 +243,7 @@ class RoyalKidsAtmosphere {
             
             if (res.ok) {
                 const artifacts = await res.json();
-                selection = artifacts.slice(0, 10).sort(() => 0.5 - Math.random()).slice(0, 6);
+                selection = artifacts.filter(art => art.category === 'kids' || art.category === 'both').slice(0, 10).sort(() => 0.5 - Math.random()).slice(0, 6);
             }
 
             // Combine featured with dynamic
