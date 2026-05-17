@@ -250,7 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             if (response.ok) {
                 const detections = await response.json();
-                const items = Array.isArray(detections) ? detections : (detections.data || []);
+                const allItems = Array.isArray(detections) ? detections : (detections.data || []);
+                const items = allItems.slice(0, 3);
                 if (items.length === 0) {
                     historyContainer.innerHTML = `<p style="opacity:0.5; text-align:center; width:100%;">No recent scans found.</p>`;
                     return;
