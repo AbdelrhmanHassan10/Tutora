@@ -234,6 +234,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function displayScannedDetails(item) {
+        if (!resultContainer) return;
+        
+        resultContainer.style.display = 'block';
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        const detected = item.detected || item.artifact_name || item.name || "Identified Artifact";
+        let confidenceValue = item.confidence || item.probability || null;
+        let confidence = 'High';
+        if (confidenceValue !== null) {
+            confidence = typeof confidenceValue === 'number' ? confidenceValue.toFixed(1) + '%' : confidenceValue + (String(confidenceValue).includes('%') ? '' : '%');
+        }
+        
+        if (resultTitle) {
+            resultTitle.textContent = `Match Found: ${detected}`;
+            resultTitle.style.color = '#ecb613';
+        }
+        
+        if (resultDesc) {
+            resultDesc.innerHTML = `
+                <div class="result-details">
+                    <div class="match-meta">
+                        <span class="confidence-tag"><span class="material-symbols-outlined">verified</span> ${confidence} Confidence</span>
+                    </div>
+                    <p class="artifact-info-text">${item.story || item.description || item.text || 'This artifact appears to be from the ancient Egyptian archives.'}</p>
+                    <div class="result-actions" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+                         <button class="btn-primary" id="listenStoryBtn"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
+                         <button class="btn-outline" onclick="window.location.href='../collection/collection.html'"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
+                if (item.audio_url || item.audioUrl) {
+                    generateStoryAudio(null, item.audio_url || item.audioUrl);
+                } else {
+                    alert("Audio story is preparing. Please try again in a moment.");
+                }
+            });
+        }
+        
+        showRelatedStatues(detected);
+    }
+
     async function loadDetectionHistory() {
         const token = localStorage.getItem('token');
         const historyContainer = document.getElementById('detection-history');
@@ -256,7 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     historyContainer.innerHTML = `<p style="opacity:0.5; text-align:center; width:100%;">No recent scans found.</p>`;
                     return;
                 }
-                historyContainer.innerHTML = items.map(item => {
+                
+                let loadedItems = items;
+                historyContainer.innerHTML = items.map((item, index) => {
                     const name = item.detected || 'Artifact';
                     const dateStr = new Date(item.createdAt || item.date).toLocaleDateString();
                     const imageSrc = item.imageUrl || item.image;
@@ -266,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         : `<span class="material-symbols-outlined">history</span>`;
 
                     return `
-                        <div class="history-item">
+                        <div class="history-item" data-index="${index}">
                             <div class="history-icon">
                                 ${iconContent}
                             </div>
@@ -289,6 +335,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
                 }).join('');
+
+                // Add click listeners to history items
+                historyContainer.querySelectorAll('.history-item').forEach(el => {
+                    el.addEventListener('click', () => {
+                        const index = parseInt(el.getAttribute('data-index'));
+                        const selectedItem = loadedItems[index];
+                        if (selectedItem) {
+                            displayScannedDetails(selectedItem);
+                        }
+                    });
+                });
             } else {
                 historyContainer.innerHTML = `<p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px; grid-column: 1 / -1;">Unable to load scan history.</p>`;
             }
