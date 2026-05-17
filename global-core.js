@@ -267,9 +267,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (logoImg.complete) logoImg.onload();
         }
 
-        // 3. Smooth 1-second Progress Logic
+        // 3. Smooth Snappy Progress Logic (Optimized for Mobile)
         let progress = 0;
-        const duration = 1000; // 1 second
+        const isMobileDevice = window.innerWidth <= 768;
+        const duration = isMobileDevice ? 500 : 1000; // 500ms on mobile for snappier loading, 1s on desktop
         const startTime = performance.now();
 
         const updateProgress = (currentTime) => {
@@ -286,22 +287,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         requestAnimationFrame(updateProgress);
 
-        // 4. Professional Transition-Out
+        // 4. Snappy Transition-Out (Optimized to prevent locking on slow connections)
         const hideLoader = () => {
              const checkCompletion = setInterval(() => {
-                if (progress >= 100 && (document.readyState === 'complete' || document.readyState === 'interactive')) {
+                const isReady = document.readyState === 'complete' || document.readyState === 'interactive';
+                if (progress >= 100 && isReady) {
                     clearInterval(checkCompletion);
                     setTimeout(() => {
                         if (loader) {
                             loader.classList.add('hidden');
                         }
-                    }, 100); 
+                    }, 80); // Reduced delay for instant responsiveness
                 }
-            }, 50);
+            }, 30); // Faster polling rate
         };
 
+        // Bind loader dismissal immediately to DOMContentLoaded and window load
         window.addEventListener('load', hideLoader);
-        if (document.readyState === 'complete') hideLoader();
+        document.addEventListener('DOMContentLoaded', hideLoader);
+        
+        // Optimistically dismiss if DOM is already parsed/interactive/complete
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            hideLoader();
+        }
 
         // 5. Show loader on link clicks (Internal only)
         document.addEventListener('click', (e) => {
@@ -328,9 +336,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     loader.classList.remove('hidden');
                 }
                 
+                const transitionDelay = isMobileDevice ? 250 : 500;
                 setTimeout(() => {
                     window.location.href = anchor.href;
-                }, 500); 
+                }, transitionDelay); 
             }
         });
 
@@ -398,10 +407,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const isMobile = window.innerWidth <= 768;
         const path = window.location.pathname;
         
-        // Density Configuration - Increased for more density while remaining performant
-        let dustCount = isMobile ? 50 : 150;
-        let shapeCount = isMobile ? 6 : 12;
-        let shape3DCount = isMobile ? 1 : 2;
+        // Density Configuration - Optimized for smooth scrolling on mobile
+        let dustCount = isMobile ? 20 : 150;
+        let shapeCount = isMobile ? 3 : 12;
+        let shape3DCount = isMobile ? 0 : 2;
 
         const isAuthPage = path.includes('/2.login/') || path.includes('/3.register/');
         if (isAuthPage) {
