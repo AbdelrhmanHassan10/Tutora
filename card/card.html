@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="Tutora Shop - Review your selected museum products and royal replicas." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUTORA Shop | Your Cart</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shop/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../animate.css" />
+    <link rel="stylesheet" href="../global-theme.css" />
+</head>
+
+<body class="dark">
+    <!-- Royal Atmosphere -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Single Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header" >
+            <div class="menu-logo">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+                <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+              <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
+            </button>
+        </div>
+        <nav class="menu-nav" >
+            <a href="../4.home/code.html" class="menu-link" >Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" >Plan Your Visit</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link" >Kids-Museum</a>
+            <a href="../event/event.html" class="menu-link" >Event</a>
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle" >
+            AI Experience
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item" >AI Tour Guide</a>
+            <a href="../chat bot/chat.html" class="dropdown-item" >AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" >AI Artifact Identifier</a>
+            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D )</a>
+                       <a href="../Ancient-arts/Ancient-art.html"class="dropdown-item">Tutora laboratory</a>
+ </div>
+        </div>
+        <a href="../shop/shop.html" class="menu-link" >Shop</a>
+                    <a href="../about/About.html" class="menu-link" >About</a>
+        <div class="menu-dropdown"><button class="menu-link dropdown-toggle">Collection <span class="material-symbols-outlined">expand_more</span></button><div class="dropdown-items"><a href="../collection/collection.html" class="dropdown-item">Main Gallery</a><a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a></div></div>
+        </nav>
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
+            <a href="../fav/favourite.html" class="menu-icon-link" >
+                <span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+            <button class="menu-icon-link" id="menuLangBtn" >
+          <span class="material-symbols-outlined" >language</span> Language
+        </button>
+        </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header" >
+            <div class="header-container" >
+                <div class="header-left">
+                    <button class="menu-btn" id="menuBtn">
+            <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span
+            >
+                    </button>
+                  <div class="logo-section">
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
+                    <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
+                  </div>
+                </div>
+                <nav class="desktop-nav" >
+                    <a href="../4.home/code.html" >Home</a>
+                    <a href="../plan-your-visit/plan-your-visit.html" >Plan Your Visit</a>
+   <a href="../Kids-Museum/kids-museum.html" >Kids-Museum</a>
+                    <a href="../event/event.html" >Event</a>
+                    <div class="nav-dropdown">
+                        <button class="nav-link dropdown-trigger" >
+              AI Experience
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+                        <div class="dropdown-menu" >
+                            <a href="../AI Guide/guide.html" class="dropdown-link" >AI Tour Guide</a>
+              <a href="../chat bot/chat.html" class="dropdown-link" >AI Chatbot</a>
+              <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" >AI Artifact Identifier</a>
+              <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" >AI Voice Storytelling (3D )</a>
+                         <a href="../Ancient-arts/Ancient-art.html"class="dropdown-link">Tutora laboratory</a>
+ </div>
+          </div>
+          <a href="../shop/shop.html" >Shop</a>
+                            <a href="../about/About.html" >About</a>
+          <div class="nav-dropdown"><button class="nav-link dropdown-trigger">Collection <span class="material-symbols-outlined">expand_more</span></button><div class="dropdown-menu"><a href="../collection/collection.html" class="dropdown-link">Main Gallery</a><a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a></div></div>
+                </nav>
+                <div class="header-right">
+                    <div class="search-box" >
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" placeholder="Search..." />
+                    </div>
+                    <button class="theme-btn" id="theme-toggle">
+            <span class="material-symbols-outlined">dark_mode</span>
+          </button>
+                    <a href="../booking/booking.html" class="btn-booking">booking</a>
+                    <a href="../fav/favourite.html" class="icon-btn" >
+                        <span class="material-symbols-outlined">favorite</span>
+                    </a>
+                    <a href="../card/card.html" class="icon-btn" >
+                        <button class="icon-btn cart-btn" style="position: relative; background: transparent; border: none; cursor: pointer;">
+                            <span class="material-symbols-outlined" style="color: #ECB613;">shopping_cart</span>
+                            <span class="cart-badge" style="display: none;">0</span>
+                        </button>
+                    </a>
+                    <button class="icon-btn" id="langBtn">
+            <span class="material-symbols-outlined">language</span>
+          </button>
+                    <a href="../Profile/profile.html">
+                        <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
+                    </a>
+                </div>
+                </div>
+        </header>
+
+    <!-- Cart Section -->
+    <main style="padding-top: 100px; min-height: 80vh;">
+        <section class="section-padding anim-on-scroll">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Your <span class="gold-text">Cart</span></h2>
+                    <p class="section-subtitle">Review your selected royal treasures before proceeding to checkout.</p>
+                    <div class="luxury-divider"></div>
+                </div>
+
+                <div class="cart-container">
+                    <div class="cart-items" id="cartItemsContainer">
+                        <!-- Dynamic Cart Items Injected Here -->
+                    </div>
+
+                    <div class="cart-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="cartSubtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Taxes & Fees (5%)</span>
+                            <span id="cartTaxes">$0.00</span>
+                        </div>
+                        <div class="summary-separator"></div>
+                        <div class="summary-row summary-total">
+                            <span>Total</span>
+                            <span id="cartTotal">$0.00</span>
+                        </div>
+                        <button class="btn btn-primary btn-checkout" onclick="proceedToCheckout()">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html">Tickets</a></li>
+                        <li><a href="../collection/collection.html">Collection</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition Halls</a></li>
+                        <li><a href="../-membership/code.html">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html">History</a></li>
+                        <li><a href="../event/event.html">Events</a></li>
+                        <li><a href="../-news_press/code.html">News & Press</a></li>
+                        <li><a href="../-branding/code.html">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3>Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                    <p>Follow us on social media for updates and behind-the-scenes content.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                 <div class="language-toggle">
+                     <button class="active" data-lang="en">English</button>
+                     <button data-lang="ar">العربية</button>
+                 </div>
+                <div class="legal-section">
+                   <div class="legal-links">
+                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
+                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
+                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                </div>
+                <div class="copyright">&copy; 2026 Tutora. All rights reserved.</div>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="card.js"></script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
+</body>
+</html>
