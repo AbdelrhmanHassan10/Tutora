@@ -237,7 +237,12 @@ document.addEventListener('DOMContentLoaded', () => {
     async function loadDetectionHistory() {
         const token = localStorage.getItem('token');
         const historyContainer = document.getElementById('detection-history');
-        if (!token || !historyContainer) return;
+        if (!historyContainer) return;
+
+        if (!token) {
+            historyContainer.innerHTML = `<p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px; grid-column: 1 / -1;">Please log in to view your scan history.</p>`;
+            return;
+        }
 
         try {
             const response = await fetch(`${API_URL}/ai/detections`, {
@@ -250,17 +255,46 @@ document.addEventListener('DOMContentLoaded', () => {
                     historyContainer.innerHTML = `<p style="opacity:0.5; text-align:center; width:100%;">No recent scans found.</p>`;
                     return;
                 }
-                historyContainer.innerHTML = items.map(item => `
-                    <div class="history-item anim-on-scroll">
-                        <div class="history-img"><img src="${item.imageUrl || item.image || '../museum.png'}" alt="Scan"></div>
-                        <div class="history-info">
-                            <h5>${item.detected || 'Artifact'}</h5>
-                            <span>${new Date(item.createdAt || item.date).toLocaleDateString()}</span>
+                historyContainer.innerHTML = items.map(item => {
+                    const name = item.detected || 'Artifact';
+                    const dateStr = new Date(item.createdAt || item.date).toLocaleDateString();
+                    const imageSrc = item.imageUrl || item.image;
+                    
+                    const iconContent = imageSrc 
+                        ? `<img src="${imageSrc}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;" alt="${name}">`
+                        : `<span class="material-symbols-outlined">history</span>`;
+
+                    return `
+                        <div class="history-item">
+                            <div class="history-icon">
+                                ${iconContent}
+                            </div>
+                            <div class="history-content">
+                                <div class="history-header">
+                                    <h4 class="history-name">${name}</h4>
+                                    <span class="history-badge">Identified</span>
+                                </div>
+                                <div class="history-meta">
+                                    <span class="history-date">
+                                        <span class="material-symbols-outlined">calendar_today</span>
+                                        ${dateStr}
+                                    </span>
+                                    <span class="history-link">
+                                        Details
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                `).join('');
+                    `;
+                }).join('');
+            } else {
+                historyContainer.innerHTML = `<p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px; grid-column: 1 / -1;">Unable to load scan history.</p>`;
             }
-        } catch (e) { console.error('History Error:', e); }
+        } catch (e) { 
+            console.error('History Error:', e); 
+            historyContainer.innerHTML = `<p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px; grid-column: 1 / -1;">Unable to load scan history.</p>`;
+        }
     }
 
     loadDetectionHistory();
