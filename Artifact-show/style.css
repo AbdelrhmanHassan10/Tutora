@@ -497,6 +497,14 @@ body.light .dropdown-item:hover {
     transition: all 0.4s ease;
 }
 
+.header a {
+    text-decoration: none !important;
+}
+
+.icon-btn {
+    text-decoration: none !important;
+}
+
 /* Navbar Light Mode Fixes */
 body.light .desktop-nav a,
 body.light .nav-link,
