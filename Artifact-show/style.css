@@ -3839,7 +3839,7 @@ html {
     transform: translateY(0) !important;
 }
 /* Optimization for heavy elements */
-.artifact-image, /* Custom smooth scrollbar for the whole page */
+/* Custom smooth scrollbar for the whole page */
 ::-webkit-scrollbar {
     width: 10px;
 }
