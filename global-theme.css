@@ -1039,3 +1039,123 @@ body.light .shape-ring {
         align-items: center !important;
     }
 }
+
+/* ============================================
+   GLOBAL NAVBAR MOBILE SPACING OPTIMIZATION
+   Ensures all elements (menu, logo, and right icons) fit perfectly on small screens
+   ============================================ */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.5rem 0.4rem !important;
+        background: #000 !important;
+        border-bottom: 1px solid rgba(236, 182, 19, 0.2) !important;
+    }
+    .header-container {
+        width: 100% !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 0.25rem !important;
+        max-width: none !important;
+    }
+    .header-left {
+        flex: 0 1 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.25rem !important;
+        min-width: 0 !important;
+    }
+    .menu-btn {
+        display: flex !important;
+        width: 32px !important;
+        height: 32px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        color: #ECB613 !important;
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+        flex-shrink: 0 !important;
+    }
+    .menu-btn span {
+        font-size: 1.4rem !important;
+    }
+    .logo-section {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.35rem !important;
+        min-width: 0 !important;
+    }
+    .logo-circle {
+        width: 28px !important;
+        height: 28px !important;
+        border: 1px solid #ECB613 !important;
+        background: #fff !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        overflow: hidden !important;
+    }
+    .logo-circle img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    .logo-text {
+        font-size: 0.95rem !important;
+        font-family: "Cinzel", serif !important;
+        font-weight: 700 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        color: #ECB613 !important;
+        margin: 0 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        flex-shrink: 1 !important;
+    }
+    .header-right {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.15rem !important;
+        margin-left: auto !important;
+    }
+    .header-right a {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-decoration: none !important;
+    }
+    .theme-btn, .icon-btn, .icon-btn-link button {
+        display: flex !important;
+        width: 32px !important;
+        height: 32px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: transparent !important;
+        border: none !important;
+        color: #fff !important;
+        padding: 0 !important;
+        flex-shrink: 0 !important;
+    }
+    .theme-btn span, .icon-btn span, .icon-btn-link button span {
+        font-size: 1.25rem !important;
+    }
+    .profile-img {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 50% !important;
+        border: 1.5px solid #ECB613 !important;
+        object-fit: cover !important;
+        flex-shrink: 0 !important;
+    }
+    /* Hide desktop-only elements on mobile */
+    .desktop-nav, .search-box, .btn-booking {
+        display: none !important;
+    }
+}

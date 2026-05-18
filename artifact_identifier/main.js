@@ -164,7 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
                 
-                document.getElementById('listenStoryBtn')?.addEventListener('click', () => generateStoryAudio(lastAnalyzedFile, data.audio_url));
+                const audioUrlField = data.audio_url || data.audioUrl || data.audio || data.url;
+                document.getElementById('listenStoryBtn')?.addEventListener('click', () => generateStoryAudio(lastAnalyzedFile, audioUrlField));
                 showRelatedStatues(detected);
                 loadDetectionHistory();
             } else {
@@ -189,48 +190,78 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             let finalAudioUrl = "";
             if (audioUrl) {
-                // If API already provided the audio URL endpoint, use it directly.
-                finalAudioUrl = audioUrl.startsWith('http') ? audioUrl : `https://egyptian-museum-production.up.railway.app${audioUrl}`;
-            } else {
-                // Fallback to calling the /predict/audio endpoint
+                if (audioUrl.startsWith('http') || audioUrl.startsWith('data:')) {
+                    finalAudioUrl = audioUrl;
+                } else {
+                    const cleanPath = audioUrl.startsWith('/') ? audioUrl : `/${audioUrl}`;
+                    const domain = (audioUrl.includes('predict') || cleanPath.includes('predict')) 
+                        ? 'https://egyptian-museum-production.up.railway.app'
+                        : 'https://gem-backend-production-1ea2.up.railway.app';
+                    finalAudioUrl = `${domain}${cleanPath}`;
+                }
+            } else if (file) {
                 const formData = new FormData();
                 formData.append('file', file);
                 const lang = localStorage.getItem('language') || 'en';
+                formData.append('language', lang);
 
-                const response = await fetch(`https://egyptian-museum-production.up.railway.app/predict/audio?language=${lang}`, {
+                const response = await fetch('https://egyptian-museum-production.up.railway.app/predict/audio', {
                     method: 'POST',
                     body: formData
                 });
 
-                const data = await response.json();
-                const audioSource = data.audioUrl || data.audio || data.url || data.base64;
-                
-                if (response.ok && audioSource) {
-                    finalAudioUrl = audioSource.startsWith('data:') || audioSource.startsWith('http') 
-                                            ? audioSource 
-                                            : `data:audio/mp3;base64,${audioSource}`;
+                if (response.ok) {
+                    const contentType = response.headers.get('Content-Type') || '';
+                    if (contentType.includes('application/json')) {
+                        const data = await response.json();
+                        throw new Error(data.message || data.error || 'Server returned JSON error instead of audio file.');
+                    } else {
+                        const blob = await response.blob();
+                        finalAudioUrl = URL.createObjectURL(blob);
+                    }
                 } else {
-                    throw new Error('No audio found in response');
+                    let errMsg = 'Server returned HTTP ' + response.status;
+                    try {
+                        const errJson = await response.json();
+                        if (errJson.message || errJson.error) {
+                            errMsg += ': ' + (errJson.message || errJson.error);
+                        }
+                    } catch(e) {}
+                    throw new Error(errMsg);
                 }
             }
 
             if (finalAudioUrl) {
+                console.log("Playing story audio from URL:", finalAudioUrl);
                 const audio = new Audio(finalAudioUrl);
-                audio.play();
-                if (listenBtn) {
-                    listenBtn.disabled = false;
-                    listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
-                    audio.onended = () => {
-                        listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Replay Story`;
-                    };
-                }
+                audio.play()
+                    .then(() => {
+                        if (listenBtn) {
+                            listenBtn.disabled = false;
+                            listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+                            audio.onended = () => {
+                                listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Replay Story`;
+                            };
+                        }
+                    })
+                    .catch(e => {
+                        console.error('Audio Play Rejection:', e);
+                        if (listenBtn) {
+                            listenBtn.disabled = false;
+                            listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
+                        }
+                        alert("⚠️ Audio playback failed. Details: " + e.message);
+                    });
+            } else {
+                throw new Error('No valid audio source could be determined');
             }
         } catch (error) {
             console.error('TTS Error:', error);
             if (listenBtn) {
                 listenBtn.disabled = false;
-                listenBtn.innerHTML = `<span class="material-symbols-outlined">error</span> Error`;
+                listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
             }
+            alert("⚠️ Failed to generate story audio. Details: " + error.message);
         }
     }
 
