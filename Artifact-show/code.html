@@ -1300,33 +1300,39 @@
                                           async function loadArtifactData() {
                                               let artifact = null;
 
-                                               // 1. Try Custom Data from SessionStorage
-                                              if (ARTIFACT_ID === 'custom') {
-                                                  const customData = sessionStorage.getItem('currentArtifact');
-                                                  if (customData) {
-                                                      artifact = JSON.parse(customData);
-                                                      updateUI(artifact);
-                                                      return;
-                                                  }
+                                              // 1. Instantly attempt to load from SessionStorage for instant navigation
+                                              const customData = sessionStorage.getItem('currentArtifact');
+                                              if (customData) {
+                                                  try {
+                                                      const parsed = JSON.parse(customData);
+                                                      // If IDs match or it's a 'custom' injection, show it immediately
+                                                      if (String(parsed.id) === String(ARTIFACT_ID) || String(parsed._id) === String(ARTIFACT_ID) || ARTIFACT_ID === 'custom') {
+                                                          artifact = parsed;
+                                                          updateUI(artifact);
+                                                      }
+                                                  } catch (e) { console.warn("Session parse error", e); }
                                               }
 
-                                              // 2. Try API
-                                              try {
-                                                  const res = await fetch(`${API_BASE_URL}/artifacts/${ARTIFACT_ID}`);
-                                                  if (res.ok) {
-                                                      const apiData = await res.json();
-                                                      artifact = apiData.data || apiData;
-                                                  }
-                                              } catch (e) {
-                                                  console.warn("API unavailable, using sample data.");
-                                              }
-                                              
-                                              // 3. Fallback to Sample Data
-                                              if (!artifact || !artifact.title) {
+                                              // If not in session, load fallback SAMPLE_DATA instantly so user doesn't wait
+                                              if (!artifact) {
                                                   artifact = SAMPLE_DATA[ARTIFACT_ID] || SAMPLE_DATA["tut-mask"];
+                                                  updateUI(artifact);
                                               }
 
-                                              updateUI(artifact);
+                                              // 2. Fetch the latest dynamic data in the background (Non-blocking)
+                                              if (ARTIFACT_ID !== 'custom') {
+                                                  fetch(`${API_BASE_URL}/artifacts/${ARTIFACT_ID}`)
+                                                      .then(res => res.ok ? res.json() : Promise.reject('Not OK'))
+                                                      .then(apiData => {
+                                                          const freshArtifact = apiData.data || apiData;
+                                                          if (freshArtifact && freshArtifact.title) {
+                                                              updateUI(freshArtifact); // Dynamically update with fresh API data
+                                                          }
+                                                      })
+                                                      .catch(e => {
+                                                          console.warn("API unavailable or artifact not found in DB, keeping current UI.");
+                                                      });
+                                              }
                                           }
 
                                           function updateUI(art) {
@@ -1495,7 +1501,14 @@
                                          window.addEventListener('languageChanged', updateBackBtnText);
                                          
                                          // Wait for DOM dynamically rendered breadcrumbs to bind too
-                                         const observer = new MutationObserver(updateBackBtnText);
+                                         const observer = new MutationObserver((mutations) => {
+                                             // Disconnect temporarily to avoid infinite loop when modifying text
+                                             observer.disconnect();
+                                             updateBackBtnText();
+                                             if (breadcrumbs) {
+                                                 observer.observe(breadcrumbs, { childList: true, subtree: true });
+                                             }
+                                         });
                                          const breadcrumbs = document.querySelector('.info-breadcrumbs');
                                          if (breadcrumbs) {
                                              observer.observe(breadcrumbs, { childList: true, subtree: true });

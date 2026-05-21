@@ -359,5 +359,7 @@ style.textContent = `
         background: #121212;
         border-left: 4px solid var(--primary);
         padding: 1rem 1.5rem;
-        border-radius: 8
-document.head.appendChild(style);`
+        border-radius: 8px;
+    }
+`;
+document.head.appendChild(style);

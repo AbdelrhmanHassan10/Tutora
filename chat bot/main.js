@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const aiText = data.answer || data.response || data.message || "I have processed your request.";
                 addMessage(aiText, 'ai');
             } else if (response.status === 401 || response.status === 403) {
-                addMessage("🔐 Your session has expired. Please <a href='../2.login/login.html' style='color:#ecb613;'>sign in again</a>.", 'ai', false);
+                addMessage("🔐 Your session has expired. Please <a href='../2.login/code.html' style='color:#ecb613;'>sign in again</a>.", 'ai', false);
             } else {
                 addMessage(data.message || "Sorry, I encountered an error. Please try again.", 'ai');
             }

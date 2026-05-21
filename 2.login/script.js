@@ -177,9 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = passwordInput.value;
 
         if (!email) {
+            showError('email', 'Email is required');
             return;
         }
         if (!password) {
+            showError('password', 'Password is required');
             return;
         }
 

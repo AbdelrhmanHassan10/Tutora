@@ -530,6 +530,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (noResults) noResults.style.display = 'none';
 
+          // Helper for XSS sanitization
+          const escapeHTML = (str) => {
+              if (!str) return '';
+              return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+          };
+
           displayArtifacts.forEach(artifact => {
               const card = document.createElement('div');
               card.className = 'artifact-card';
@@ -538,22 +544,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
               card.innerHTML = `
                         <div class="image-container">
-                            <img alt="${artifact.title}" class="artifact-image" src="${artifact.image}" />
+                            <img alt="${escapeHTML(artifact.title)}" class="artifact-image" src="${escapeHTML(artifact.image)}" />
                             <div class="image-overlay"></div>
                             <button class="favorite-btn ${isFavorite ? 'active' : ''}">
                                 <span class="material-symbols-outlined">favorite</span>
                             </button>
                         </div>
                         <div class="card-content">
-                            <p class="dynasty-label">${artifact.dynasty}</p>
-                            <h3 class="artifact-title">${artifact.title}</h3>
-                            <p class="card-description">${artifact.description || ''}</p>
+                            <p class="dynasty-label">${escapeHTML(artifact.dynasty)}</p>
+                            <h3 class="artifact-title">${escapeHTML(artifact.title)}</h3>
+                            <p class="card-description">${escapeHTML(artifact.description || '')}</p>
                             <div class="card-footer">
                                 <span class="location-text">
                                     <span class="material-symbols-outlined" style="font-size:14px">location_on</span> 
-                                    ${artifact.site || 'Grand Gallery'}
+                                    ${escapeHTML(artifact.site || 'Grand Gallery')}
                                 </span>
-                                <button class="view-details-btn" onclick="window.location.href='../Artifact-show/code.html?id=${artifact.id}'">
+                                <button class="view-details-btn">
                                     <span>Details</span>
                                     <span class="material-symbols-outlined">arrow_forward</span>
                                 </button>
@@ -561,12 +567,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     `;
 
-              // Click handling
-               card.addEventListener('click', (e) => {
-                   if (!e.target.closest('.favorite-btn')) {
-                       window.location.href = `../Artifact-show/code.html?id=${artifact.id}`;
-                   }
-               });
               grid.appendChild(card);
           });
 
@@ -724,6 +724,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // ============================================
       async function initialize() {
           showLoading(true);
+          
+          // 1. Instantly load sample data to ensure zero-wait rendering
+          STATE.allArtifacts = [...SAMPLE_ARTIFACTS];
+          populateFilterOptions();
+          applyAllFilters();
+          showLoading(false);
+          
+          // 2. Fetch dynamic API data asynchronously
           try {
               const res = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/artifacts');
               if (res.ok) {
@@ -743,15 +751,16 @@ document.addEventListener('DOMContentLoaded', () => {
                       date: art.date || ''
                   }));
 
-                  // Merge API artifacts with Samples so the page is always rich
+                  // Merge API artifacts with Samples
                   const collectionArtifacts = mappedAPI.filter(art => !art.category || art.category === 'collection' || art.category === 'both');
                   STATE.allArtifacts = [...collectionArtifacts, ...SAMPLE_ARTIFACTS];
-              } else {
-                  STATE.allArtifacts = SAMPLE_ARTIFACTS;
+                  
+                  // Re-apply filters to update grid with new data silently
+                  populateFilterOptions();
+                  applyAllFilters();
               }
           } catch(e) {
-              console.warn("Failed to fetch API artifacts, falling back to mock data.", e);
-              STATE.allArtifacts = SAMPLE_ARTIFACTS;
+              console.warn("API artifacts unavailable, relying on mock data.", e);
           }
           
           try {
@@ -759,10 +768,6 @@ document.addEventListener('DOMContentLoaded', () => {
           } catch(e) {
               console.error("Favorites init failed", e);
           }
-          
-          populateFilterOptions();
-          applyAllFilters();
-          showLoading(false);
           console.log('✓ Collection Page Initialized with', STATE.allArtifacts.length, 'items');
       }
 
@@ -880,8 +885,8 @@ window.openArtifactModal = function(artifact) {
         
         if (!dustContainer || !shapesContainer) return;
 
-        // Create 300 dust particles
-        for (let i = 0; i < 300; i++) {
+        // Create 50 dust particles for optimized performance
+        for (let i = 0; i < 50; i++) {
             const particle = document.createElement('div');
             particle.className = 'dust-particle';
             
@@ -893,14 +898,11 @@ window.openArtifactModal = function(artifact) {
             const top = Math.random() * 100;
             particle.style.left = `${left}%`;
             particle.style.top = `${top}%`;
-            
             const duration = Math.random() * 8 + 12;
             const delay = Math.random() * 5;
-            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
-            
+            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;        
             dustContainer.appendChild(particle);
         }
-
         // Create 15 royal shapes (Hieroglyphs)
         const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
         for (let i = 0; i < 15; i++) {
@@ -923,29 +925,38 @@ window.openArtifactModal = function(artifact) {
             shapesContainer.appendChild(shape);
         }
     }
-
-    // Global listener for Arrow Icons and Favorite Buttons (handles static and dynamic cards)
+    // Clean up all inline onclick attributes from static buttons to prevent double-navigation
+    document.querySelectorAll('.view-details-btn').forEach(btn => {
+        btn.removeAttribute('onclick');
+    });
+    // Unified click listener on .main-content (handles both static and dynamic cards)
     document.querySelector('.main-content')?.addEventListener('click', (e) => {
-        const arrowBtn = e.target.closest('.arrow-icon') || e.target.closest('.view-details-btn');
+        const card = e.target.closest('.artifact-card');
         const favBtn = e.target.closest('.favorite-btn');
-        
-        if (arrowBtn) {
-            const card = arrowBtn.closest('.artifact-card');
-            if (card && card.dataset.id) {
-                e.preventDefault();
-                e.stopPropagation();
-                window.location.href = `../Artifact-show/code.html?id=${card.dataset.id}`;
-            }
-        } else if (favBtn) {
+        if (favBtn) {
             handleFavoriteClick({
                 stopPropagation: () => e.stopPropagation(),
                 currentTarget: favBtn
             });
+            return;
+        }
+        if (card) {
+            const id = card.dataset.id;
+            if (id) {
+                e.preventDefault();
+                e.stopPropagation();
+                // Pass pre-loaded artifact data to Artifact Show page for instant rendering
+                const artifact = STATE.allArtifacts.find(a => String(a.id) === String(id) || String(a._id) === String(id));
+                if (artifact) {
+                    sessionStorage.setItem('currentArtifact', JSON.stringify(artifact));
+                } else {
+                    sessionStorage.removeItem('currentArtifact');
+                }
+                window.location.href = `../Artifact-show/code.html?id=${id}`;
+            }
         }
     });
-
     // START
     initRoyalAtmosphere();
     initialize();
 });
-

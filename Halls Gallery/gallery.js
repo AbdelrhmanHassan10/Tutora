@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <button class="view-3d-btn" title="View in 3D">
                                     <span class="material-symbols-outlined">view_in_ar</span>
                                 </button>
-                                <div class="arrow-icon-link" onclick="window.location.href='../Artifact-show/code.html?id=${art.id || ''}'">
+                                <div class="arrow-icon-link" onclick="viewArtifact('${hall.id}', '${art.name.replace(/'/g, "\\'")}')">
                                     <span class="material-symbols-outlined">arrow_forward</span>
                                 </div>
                             </div>
@@ -618,6 +618,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (headerSearch) {
         headerSearch.addEventListener('input', (e) => handleSearch(e.target.value));
     }
+
+    // --- NAVIGATION LOGIC ---
+    window.viewArtifact = (hallId, artName) => {
+        const hall = hallsData.find(h => h.id === hallId);
+        if (!hall) return;
+        
+        const art = hall.artifacts.find(a => a.name === artName);
+        if (!art) return;
+
+        // Prepare data for Artifact-show page
+        const artifactData = {
+            id: art.id,
+            title: art.name,
+            dynasty: art.period || hall.era,
+            period: hall.era,
+            image: art.image.startsWith('http') ? art.image : `../Halls Gallery/${art.image}`,
+            introHeading: "The Masterpiece Revealed",
+            introText: `${art.desc} This remarkable piece is a testament to the artistic excellence of the ${hall.era}. ${hall.longDesc.substring(0, 150)}...`,
+            detailsHeading: "Historical Context & Artistry",
+            detailsText: `Currently housed in ${hall.name}, this object serves as a vital window into ${hall.shortDesc.toLowerCase()}. Its intricate details and preserved state provide scholars with invaluable insights into the religious and social life of ancient Egyptians during this period.`,
+            stats: [
+                { label: "Material", value: art.material || 'Various' },
+                { label: "Gallery", value: hall.name },
+                { label: "Period", value: art.period || hall.era }
+            ]
+        };
+
+        sessionStorage.setItem('currentArtifact', JSON.stringify(artifactData));
+        window.location.href = `../Artifact-show/code.html?id=${art.id || 'custom'}`;
+    };
 
     // --- INITIAL RENDER ---
     renderHalls();

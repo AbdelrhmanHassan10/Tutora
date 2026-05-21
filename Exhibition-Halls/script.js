@@ -448,6 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Prepare data for Artifact-show page
         const artifactData = {
+            id: art.id || 'custom',
             title: art.name,
             dynasty: art.period || hall.era,
             period: hall.era,
@@ -467,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         sessionStorage.setItem('currentArtifact', JSON.stringify(artifactData));
-        window.location.href = '../Artifact-show/code.html?id=custom';
+        window.location.href = `../Artifact-show/code.html?id=${art.id || 'custom'}`;
     };
 
     // ============================================
@@ -479,8 +480,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!dustContainer || !shapesContainer) return;
 
-        // Create 500 dust particles
-        for (let i = 0; i < 500; i++) {
+        // Create 50 dust particles for optimized performance
+        for (let i = 0; i < 50; i++) {
             const particle = document.createElement('div');
             particle.className = 'dust-particle';
             

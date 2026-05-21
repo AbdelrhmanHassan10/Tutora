@@ -1159,3 +1159,109 @@ body.light .shape-ring {
         display: none !important;
     }
 }
+
+/* ==========================================================================
+   STANDARDIZED PREMIUM FOOTER LOGO RINGS & THEME ADAPTATIONS
+   ========================================================================== */
+.footer-logo-ring, .footer-logo {
+    margin-bottom: 2rem !important;
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100px !important;
+    height: 100px !important;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%) !important;
+    margin: 0 auto !important;
+}
+
+.footer-logo-ring::before, .footer-logo::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: 50% !important;
+    border: 2px solid #d4af37 !important;
+    border-top-color: transparent !important;
+    border-bottom-color: transparent !important;
+    animation: rotateSeal 10s linear infinite !important;
+}
+
+.footer-logo-ring::after, .footer-logo::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 10px !important;
+    border-radius: 50% !important;
+    border: 1px dashed #d4af37 !important;
+    opacity: 0.5 !important;
+    animation: rotateSeal 15s linear infinite reverse !important;
+}
+
+.footer-logo-ring span, .footer-logo span,
+.footer-logo-ring .material-symbols-outlined, .footer-logo .material-symbols-outlined {
+    font-size: 3.5rem !important;
+    color: #d4af37 !important;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4)) !important;
+    animation: pulseIcon 3s ease-in-out infinite !important;
+    z-index: 2 !important;
+}
+
+/* Light Mode Adaptations */
+body.light .footer-logo-ring::before, body.light .footer-logo::before {
+    border-color: #8e7341 !important;
+}
+body.light .footer-logo-ring::after, body.light .footer-logo::after {
+    border-color: rgba(142, 115, 65, 0.5) !important;
+}
+body.light .footer-logo-ring span, body.light .footer-logo span,
+body.light .footer-logo-ring .material-symbols-outlined, body.light .footer-logo .material-symbols-outlined {
+    color: #8e7341 !important;
+    filter: drop-shadow(0 0 15px rgba(142, 115, 65, 0.4)) !important;
+}
+
+@keyframes rotateSeal {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 30px #d4af37); }
+}
+
+.footer-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 4rem !important;
+    text-align: center !important;
+}
+
+.footer-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: 2.2rem !important;
+    letter-spacing: 6px !important;
+    text-transform: uppercase !important;
+    background: linear-gradient(135deg, #fff 0%, #d4af37 50%, #fff 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-align: center !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+body.light .footer-title {
+    background: linear-gradient(135deg, #1a1a1a 0%, #8e7341 50%, #1a1a1a 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.footer-divider {
+    height: 1px !important;
+    width: 200px !important;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent) !important;
+    margin: 2rem auto !important;
+}
+
+body.light .footer-divider {
+    background: linear-gradient(90deg, transparent, #8e7341, transparent) !important;
+}

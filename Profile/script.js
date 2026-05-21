@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e: exhCount
             };
 
-            const encoded = btoa(JSON.stringify(shareData));
+            const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(shareData))));
             
             // Fix file:// protocol for local testing shareability
             const baseUrl = window.location.origin === 'null' || !window.location.origin 
