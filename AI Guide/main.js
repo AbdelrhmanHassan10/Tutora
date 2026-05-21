@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const transcriptionContent = document.querySelector('.transcription-content');
     const hologramAura = document.querySelector('.hologram-aura');
     const welcomeTitle = document.querySelector('.welcome-title');
+    const welcomeSubtitle = document.querySelector('.welcome-subtitle');
+    const stopSpeechBtn = document.getElementById('stopSpeechBtn');
+    let currentTranscript = "";
 
     // 1. Audio Logic (Speech Recognition)
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -15,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (SpeechRecognition) {
         recognition = new SpeechRecognition();
-        recognition.continuous = false;
-        recognition.interimResults = false;
+        recognition.continuous = true; // Stay active even if user is silent
+        recognition.interimResults = true; // Show live feedback
         recognition.lang = localStorage.getItem('language') === 'ar' ? 'ar-EG' : 'en-US';
 
         recognition.onstart = () => {
@@ -26,9 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            addMessage('User', transcript);
-            processAIQuery(transcript);
+            let interimTranscript = '';
+            let finalTranscript = '';
+
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+                if (event.results[i].isFinal) {
+                    finalTranscript += event.results[i][0].transcript;
+                } else {
+                    interimTranscript += event.results[i][0].transcript;
+                }
+            }
+
+            currentTranscript = finalTranscript || interimTranscript;
+            
+            if (welcomeSubtitle && currentTranscript) {
+                welcomeSubtitle.textContent = `"${currentTranscript}"... Click to send`;
+            }
         };
 
         recognition.onerror = (event) => {
@@ -37,14 +53,23 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         recognition.onend = () => {
-            stopListening();
+            if (isListening) {
+                // If it ended naturally without click, handle it
+                stopListening(true);
+            }
         };
     }
 
-    function stopListening() {
+    function stopListening(shouldSend = false) {
         isListening = false;
         if (talkBtn) talkBtn.innerHTML = '<span class="material-icons-outlined">mic</span><span>Talk to me</span>';
         if (hologramAura) hologramAura.classList.remove('listening-pulse');
+        
+        if (shouldSend && currentTranscript) {
+            addMessage('User', currentTranscript);
+            processAIQuery(currentTranscript);
+            currentTranscript = ""; // Clear after sending
+        }
     }
 
     // 2. Interaction Logic
@@ -68,7 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (isListening) {
                 recognition.stop();
+                stopListening(true); // Send when manually clicked to stop
             } else {
+                currentTranscript = ""; // Reset
                 recognition.start();
             }
         });
@@ -140,16 +167,34 @@ document.addEventListener('DOMContentLoaded', () => {
     function speakText(text) {
         if (!window.speechSynthesis) return;
         
-        // Cancel any ongoing speech
         window.speechSynthesis.cancel();
         
         const utterance = new SpeechSynthesisUtterance(text);
         const lang = localStorage.getItem('language') || 'en';
         utterance.lang = lang === 'ar' ? 'ar-EG' : 'en-US';
-        utterance.rate = 0.9; // Friendly guide speed
+        utterance.rate = 0.9;
         utterance.pitch = 1.0;
         
+        utterance.onstart = () => {
+            if (stopSpeechBtn) stopSpeechBtn.style.display = 'flex';
+        };
+
+        utterance.onend = () => {
+            if (stopSpeechBtn) stopSpeechBtn.style.display = 'none';
+        };
+
+        utterance.onerror = () => {
+            if (stopSpeechBtn) stopSpeechBtn.style.display = 'none';
+        };
+        
         window.speechSynthesis.speak(utterance);
+    }
+
+    if (stopSpeechBtn) {
+        stopSpeechBtn.addEventListener('click', () => {
+            window.speechSynthesis.cancel();
+            stopSpeechBtn.style.display = 'none';
+        });
     }
 
     // 5. Quick Actions

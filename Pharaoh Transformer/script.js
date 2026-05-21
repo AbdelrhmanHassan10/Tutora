@@ -1,5 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Redundant navigation and theme logic removed. Now handled by global-core.js.
+    // MOBILE MENU LOGIC
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+
+    const openMenu = () => {
+        if (mobileMenu) mobileMenu.classList.add('active');
+        if (menuOverlay) menuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeMenu = () => {
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        if (menuOverlay) menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    if (menuBtn) menuBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+    // Dropdown Toggle for Mobile Menu
+    const dropdownToggle = document.querySelector('.mobile-menu .dropdown-toggle');
+    const dropdownItems = document.querySelector('.mobile-menu .dropdown-items');
+    
+    if (dropdownToggle && dropdownItems) {
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownToggle.classList.toggle('active');
+            dropdownItems.classList.toggle('show');
+            const icon = dropdownToggle.querySelector('.material-symbols-outlined');
+            if (icon) {
+                icon.textContent = dropdownItems.classList.contains('show') ? 'expand_less' : 'expand_more';
+            }
+        });
+    }
 
     // 3. Transformation Logic
     const uploadZone = document.getElementById('upload-zone');
@@ -107,4 +143,3 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 });
-

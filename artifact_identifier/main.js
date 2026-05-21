@@ -62,9 +62,87 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadBtn.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', handleFile);
     }
-    if (cameraBtn && cameraInput) {
-        cameraBtn.addEventListener('click', () => cameraInput.click());
-        cameraInput.addEventListener('change', handleFile);
+    
+    // Live Camera Handler for Laptop/Desktop
+    if (cameraBtn) {
+        cameraBtn.addEventListener('click', () => {
+            // Check if we are on a mobile device that supports 'capture' attribute better
+            if (/Mobi|Android/i.test(navigator.userAgent) && cameraInput) {
+                cameraInput.click();
+            } else {
+                // On Laptop/Desktop, use MediaDevices API for real camera access
+                openLiveCamera();
+            }
+        });
+        if (cameraInput) cameraInput.addEventListener('change', handleFile);
+    }
+
+    async function openLiveCamera() {
+        // Create camera modal if it doesn't exist
+        let cameraModal = document.getElementById('camera-modal');
+        if (!cameraModal) {
+            cameraModal = document.createElement('div');
+            cameraModal.id = 'camera-modal';
+            cameraModal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.9); z-index: 10000;
+                display: flex; flex-direction: column; align-items: center; justify-content: center;
+                gap: 20px; backdrop-filter: blur(10px);
+            `;
+            cameraModal.innerHTML = `
+                <video id="camera-preview" autoplay playsinline style="width: 100%; max-width: 600px; border-radius: 20px; border: 2px solid #ecb613;"></video>
+                <div style="display:flex; gap:20px;">
+                    <button id="capture-snapshot" class="btn-primary" style="padding: 10px 30px;">
+                        <span class="material-symbols-outlined">photo_camera</span> Capture
+                    </button>
+                    <button id="close-camera" class="btn-secondary" style="padding: 10px 30px; background:rgba(255,255,255,0.1);">
+                        <span class="material-symbols-outlined">close</span> Close
+                    </button>
+                </div>
+                <canvas id="snapshot-canvas" style="display:none;"></canvas>
+            `;
+            document.body.appendChild(cameraModal);
+        } else {
+            cameraModal.style.display = 'flex';
+        }
+
+        const video = document.getElementById('camera-preview');
+        const captureBtn = document.getElementById('capture-snapshot');
+        const closeBtn = document.getElementById('close-camera');
+        let stream = null;
+
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+            video.srcObject = stream;
+        } catch (err) {
+            console.error("Camera access error:", err);
+            alert("⚠️ Camera access denied or not available. Please check your browser permissions.");
+            cameraModal.style.display = 'none';
+            return;
+        }
+
+        const stopCamera = () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            cameraModal.style.display = 'none';
+        };
+
+        captureBtn.onclick = () => {
+            const canvas = document.getElementById('snapshot-canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            canvas.toBlob((blob) => {
+                const file = new File([blob], "camera-snapshot.jpg", { type: "image/jpeg" });
+                analyzeImage(file);
+                stopCamera();
+            }, 'image/jpeg');
+        };
+
+        closeBtn.onclick = stopCamera;
     }
 
     let lastAnalyzedFile = null;
@@ -157,9 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="confidence-tag"><span class="material-symbols-outlined">verified</span> ${confidence} Confidence</span>
                         </div>
                         <p class="artifact-info-text">${data.story || data.description || data.text || 'This artifact appears to be from the ancient Egyptian archives. Its specific details are being cross-referenced with our digital library.'}</p>
-                        <div class="result-actions" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
-                             <button class="btn-primary" id="listenStoryBtn"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
-                             <button class="btn-outline" onclick="window.location.href='../collection/collection.html'"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
+                        <div class="result-actions" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+                             <button class="btn-primary" id="listenStoryBtn" style="padding: 1rem 2.5rem;"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
+                             <button class="btn-secondary" onclick="window.location.href='../collection/collection.html'" style="padding: 1rem 2.5rem; background: rgba(255,255,255,0.05);"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
                         </div>
                     </div>
                 `;
@@ -290,9 +368,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="confidence-tag"><span class="material-symbols-outlined">verified</span> ${confidence} Confidence</span>
                     </div>
                     <p class="artifact-info-text">${item.story || item.description || item.text || 'This artifact appears to be from the ancient Egyptian archives.'}</p>
-                    <div class="result-actions" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
-                         <button class="btn-primary" id="listenStoryBtn"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
-                         <button class="btn-outline" onclick="window.location.href='../collection/collection.html'"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
+                    <div class="result-actions" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+                         <button class="btn-primary" id="listenStoryBtn" style="padding: 1rem 2.5rem;"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
+                         <button class="btn-secondary" onclick="window.location.href='../collection/collection.html'" style="padding: 1rem 2.5rem; background: rgba(255,255,255,0.05);"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
                     </div>
                 </div>
             `;

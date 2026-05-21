@@ -3333,8 +3333,9 @@ body.light .copyright {
     border-radius: 20px;
     transition: var(--transition);
     cursor: default;
-    width: fit-content;
-    min-width: 350px;
+    width: auto;
+    min-width: unset;
+    max-width: 100%;
 }
 
 .staircase-feature:hover {
@@ -3483,8 +3484,8 @@ body.light .guardian-card {
     border-radius: 20px;
     transition: var(--transition);
     cursor: default;
-    width: fit-content;
-    min-width: 350px;
+    width: auto;
+    max-width: 100%;
 }
 
 .staircase-feature:hover {

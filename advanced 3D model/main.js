@@ -202,7 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.style.opacity = '1';
             overlay.style.pointerEvents = 'all';
 
-            mainVid.play().catch(() => {});
+            // REMOVED AUTO-PLAY: Now waits for user click on playMainBtn
+            // mainVid.play().catch(() => {});
         } else {
             mainVid.style.display = 'none';
             mainImg.style.display = 'block';

@@ -127,7 +127,7 @@ body.dark .mobile-menu {
 }
 
 
-.mobile-menu.open {
+.mobile-menu.active {
     left: 0;
 }
 

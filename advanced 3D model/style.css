@@ -345,6 +345,28 @@ html:not(.dark) .menu-link:hover {
     transition: all 0.3s ease;
 }
 
+body.light .header {
+    background: #ffffff !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light .header-container .material-symbols-outlined,
+body.light .header-container i,
+body.light .desktop-nav a,
+body.light .nav-link,
+body.light .logo-text,
+body.light .dropdown-trigger,
+body.light .menu-btn,
+body.light .theme-btn,
+body.light .icon-btn {
+    color: #1a1a1a !important;
+}
+
+body.light .header.scrolled {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-bottom: 1px solid rgba(142, 115, 65, 0.3) !important;
+}
+
 .header-container {
     max-width: 1400px;
     margin:1;
