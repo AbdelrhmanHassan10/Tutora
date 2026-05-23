@@ -491,7 +491,7 @@ body.light .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1.2rem;
+    gap: 1rem;
     align-items: center;
     flex: 1;
     justify-content: center;
@@ -2902,7 +2902,7 @@ body.light .newsletter-banner {
 }
 
 /* Interactive Particles (Fixed for full page coverage) */
-body.light @keyframes float {
+@keyframes float {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }

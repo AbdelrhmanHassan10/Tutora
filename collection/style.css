@@ -604,7 +604,7 @@ body.light .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1.25rem;
+    gap: 1.05rem;
     align-items: center;
  }
 

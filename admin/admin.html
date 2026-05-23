@@ -70,11 +70,27 @@
                     <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a>
                 </div>
             </div>
-        </nav>
+        <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
+        <button class="menu-link dropdown-toggle">
+          <span data-i18n="nav.profile_menu">Profile Menu</span>
+          <span class="material-symbols-outlined">expand_more</span>
+        </button>
+        <div class="dropdown-items">
+          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+        </div>
+      </div>
+
+      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
+        <span class="material-symbols-outlined">login</span>
+        <span data-i18n="nav.login">Login</span>
+      </a>
+    </nav>
 
         <div class="menu-footer">
             <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link">
+            <a href="../fav/favourite.html" class="menu-icon-link" title="Favorites">
                 <span class="material-symbols-outlined">favorite</span> Favorites
             </a>
             <button class="menu-icon-link" id="menuLangBtn">
@@ -91,12 +107,11 @@
                 <button class="menu-btn" id="menuBtn">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
-                <div class="logo-section">
+                <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
                     <div class="logo-circle">
                         <img src="../logo.png" alt="Tutora Logo">
                     </div>
-                    <h2 class="logo-text">Tutora</h2>
-                </div>
+                    <h2 class="logo-text">Tutora</h2></a>
             </div>
 
             <nav class="desktop-nav">
@@ -140,10 +155,10 @@
                 <!-- Admin Identity Badge (Dynamic) -->
                 <div id="adminIdentityArea"></div>
 
-                <button class="theme-btn" id="themeBtn">
+                <button class="theme-btn" id="themeBtn" title="Toggle Theme">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </button>
-                <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;">
+                <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;" title="Favorites">
                     <span class="material-symbols-outlined">favorite</span>
                 </a>
                 <a href="../Profile/profile.html" class="admin-profile-link">

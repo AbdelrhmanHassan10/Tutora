@@ -378,7 +378,7 @@ body {
 /* Desktop Navigation */
 .desktop-nav {
     display: flex;
-    gap: .9rem;
+    gap: 0.7rem;
     align-items: center;
 }
 

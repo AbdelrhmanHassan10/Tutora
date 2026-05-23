@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. GLOBAL AUTHENTICATION CHECK
     window.initializeAuth = async function() {
         const token = localStorage.getItem('token');
+        const navProfileLink = document.getElementById('navProfileLink');
+        const navLoginBtn = document.getElementById('navLoginBtn');
+        const menuProfileLink = document.getElementById('menuProfileLink');
+        const menuLoginBtn = document.getElementById('menuLoginBtn');
         const profileImg = document.querySelector('.profile-img, .profile-image, .nav-profile-image, .user-avatar img');
         const langBtn = document.getElementById('langBtn') || document.getElementById('menuLangBtn');
         const favBtn = document.querySelector('a[href*="fav"], a[href*="favourite"], .icon-btn-favorite, .menu-icon-link-favorite') || 
@@ -17,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const bookingBtn = document.querySelector('.btn-booking, .menu-booking-btn');
 
         if (token) {
+            if (navProfileLink) navProfileLink.style.display = 'block';
+            if (menuProfileLink) menuProfileLink.style.display = 'block';
+            if (navLoginBtn) navLoginBtn.style.display = 'none';
+            if (menuLoginBtn) menuLoginBtn.style.display = 'none';
             if (profileImg) profileImg.style.display = 'block';
             if (favBtn) favBtn.style.display = 'flex';
             try {
@@ -54,6 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             // Logged Out State
+            if (navProfileLink) navProfileLink.style.display = 'none';
+            if (menuProfileLink) menuProfileLink.style.display = 'none';
+            if (navLoginBtn) navLoginBtn.style.display = 'flex';
+            if (menuLoginBtn) menuLoginBtn.style.display = 'flex';
             if (profileImg) profileImg.style.display = 'none';
             if (favBtn) favBtn.style.display = 'none';
 
@@ -412,9 +424,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const path = window.location.pathname;
         
         // Density Configuration - Optimized for smooth scrolling on mobile
-        let dustCount = isMobile ? 20 : 150;
-        let shapeCount = isMobile ? 3 : 12;
-        let shape3DCount = isMobile ? 0 : 2;
+        let dustCount = isMobile ? 80 : 150;
+        let shapeCount = isMobile ? 8 : 12;
+        let shape3DCount = isMobile ? 1 : 2;
 
         const isAuthPage = path.includes('/2.login/') || path.includes('/3.register/');
         if (isAuthPage) {

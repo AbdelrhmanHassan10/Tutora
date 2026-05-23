@@ -524,7 +524,7 @@ body.light .dropdown-item:hover {
 
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
     align-items: center;
  }
 
@@ -688,7 +688,7 @@ body.light .dropdown-link:hover {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0rem;
     margin-left: auto; 
 }
 
@@ -952,7 +952,7 @@ body.dark-mode .hero p {
         width: 120px;
     }
     .header-right {
-        gap: 1rem;
+        gap: 0.5rem;
     }
 }
 
@@ -967,7 +967,7 @@ body.dark-mode .hero p {
         display: none;
     }
     .header-right {
-        gap: 0.75rem;
+        gap: 0.5rem;
     }
     .search-box {
         display: none;
@@ -3454,7 +3454,7 @@ body.light .copyright {
     .header-right {
         display: flex !important;
         align-items: center !important;
-        gap: 0.25rem !important;
+        gap: 0rem !important;
         flex: none !important;
     }
     

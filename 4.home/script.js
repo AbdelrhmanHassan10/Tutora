@@ -44,27 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 3. ATMOSPHERIC EFFECTS & PERFORMANCE
     // ============================================
-    // Define a lighter version specifically for the Home page to optimize performance
-    window.initRoyalAtmosphere = () => {
-        const dustContainer = document.getElementById('dust-container');
-        if (!dustContainer) return;
-
-        // 1. Generate Atmospheric Dust (Mobile Optimized)
-        const particleCount = isMobile ? 60 : 120; 
-        for (let i = 0; i < particleCount; i++) {
-            const dust = document.createElement('div');
-            dust.className = 'dust-particle';
-            const size = Math.random() * 2.5 + 0.5; // Slightly larger for "Royal" feel
-            dust.style.width = size + 'px';
-            dust.style.height = size + 'px';
-            dust.style.left = Math.random() * 100 + 'vw';
-            dust.style.top = Math.random() * 100 + 'vh';
-            dust.style.animationDuration = (Math.random() * 15 + 15) + 's'; // Slower, more majestic
-            dust.style.animationDelay = (Math.random() * -20) + 's';
-            dustContainer.appendChild(dust);
-        }
-
-    };
 
     const initEffects = () => {
         // Initialize Royal Atmosphere

@@ -446,7 +446,7 @@ body.light .header.scrolled {
 
 .desktop-nav {
     display: flex;
-    gap: 1.35rem;
+    gap: 1.15rem;
     align-items: center;
     flex: 1;
     justify-content: center;

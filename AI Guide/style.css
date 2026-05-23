@@ -597,7 +597,7 @@ a{text-decoration: none;}
 
 .desktop-nav {
     display: flex;
-    gap: 1.3rem;
+    gap: 1.05rem;
     align-items: center;
  }
 

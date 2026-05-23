@@ -87,7 +87,7 @@ h1, h2, h3, h4, .font-display {
 }
 
 .desktop-nav {
-    gap: 1rem;
+    gap: 0.8rem;
     flex: 1;
     justify-content: center;
 }
@@ -667,7 +667,7 @@ html:not(.dark) .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: 0.7rem;
     align-items: center;
     flex: 1;
     justify-content: center;

@@ -57,7 +57,7 @@
         </nav>
         <div class="menu-footer">
             <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link" >
+            <a href="../fav/favourite.html" class="menu-icon-link"  title="Favorites">
                 <span class="material-symbols-outlined">favorite</span> Favorites
             </a>
             <button class="menu-icon-link" id="menuLangBtn" >
@@ -111,22 +111,36 @@
                     <button class="theme-btn" id="theme-toggle">
             <span class="material-symbols-outlined">dark_mode</span>
           </button>
-                    <a href="../booking/booking.html" class="btn-booking">booking</a>
-                    <a href="../fav/favourite.html" class="icon-btn" >
+                    <a href="../booking/booking.html" class="btn-booking" title="Book Tickets">booking</a>
+                    <a href="../fav/favourite.html" class="icon-btn"  title="Favorites">
                         <span class="material-symbols-outlined">favorite</span>
                     </a>
-                    <a href="../card/card.html" class="icon-btn" >
+                    <a href="../card/card.html" class="icon-btn"  title="Cart">
                         <button class="icon-btn cart-btn" style="position: relative; background: transparent; border: none; cursor: pointer;">
                             <span class="material-symbols-outlined" style="color: #ECB613;">shopping_cart</span>
                             <span class="cart-badge" style="display: none;">0</span>
                         </button>
                     </a>
-                    <button class="icon-btn" id="langBtn">
+                    <button class="icon-btn" id="langBtn" title="Language">
             <span class="material-symbols-outlined">language</span>
           </button>
-                    <a href="../Profile/profile.html">
-                        <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" />
-                    </a>
+                    <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
+            <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+              <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
+              <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);" />
+            </button>
+            <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
+              <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+              <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+              <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+            </div>
+          </div>
+          
+          <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
+            <button class="icon-btn">
+              <span class="material-symbols-outlined">login</span>
+            </button>
+          </a>
                 </div>
                 </div>
         </header>

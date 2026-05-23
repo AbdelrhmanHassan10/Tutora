@@ -553,7 +553,7 @@ body.light .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1.2rem;
+    gap: 1rem;
     align-items: center;
  }
 

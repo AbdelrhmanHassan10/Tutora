@@ -67,7 +67,7 @@
 /* Desktop Nav */
 .desktop-nav {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.2rem;
     align-items: center;
 }
 
@@ -420,7 +420,7 @@ html:not(.dark) .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.15rem;
     align-items: center;
     flex: 1;
     justify-content: center;

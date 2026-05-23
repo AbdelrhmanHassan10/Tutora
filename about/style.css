@@ -701,7 +701,7 @@ body.light .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: 0.7rem;
     align-items: center;
     flex: 1;
     justify-content: flex-start;

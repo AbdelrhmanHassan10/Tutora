@@ -565,7 +565,7 @@ html:not(.dark) .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: 0.7rem;
     align-items: center;
     justify-content: center;
     flex: 1;

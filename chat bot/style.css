@@ -209,7 +209,7 @@ body.light .icon-btn {
 
 .desktop-nav {
     display: flex;
-    gap: 1rem;
+    gap: 0.7rem;
     align-items: center;
 }
 
@@ -498,7 +498,7 @@ body.light .menu-link {
         gap: 1rem;
     }
     .desktop-nav {
-        gap: 1.5rem;
+        gap: 1rem;
     }
     .search-box input {
         width: 100px;

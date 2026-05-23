@@ -602,7 +602,7 @@ body.light .header {
 
 .desktop-nav {
     display: flex;
-    gap: 1.15rem;
+    gap: 3.15rem;
     align-items: center;
  }
 
@@ -766,7 +766,7 @@ body.light .dropdown-link:hover {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-left: auto; 
 }
 
