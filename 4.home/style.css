@@ -3735,6 +3735,10 @@ body.light .copyright {
         flex: none !important;
     }
     
+    #navLoginBtn {
+        display: none !important;
+    }
+    
     .theme-btn, .icon-btn {
         display: flex !important;
         width: 36px !important;
