@@ -190,6 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const token = localStorage.getItem('token');
         lastAnalyzedFile = file;
 
+        // Stop any currently playing audio
+        if (window.currentAudioInstance && !window.currentAudioInstance.paused) {
+            window.currentAudioInstance.pause();
+            window.currentAudioInstance = null;
+        }
+
         if (!token) {
             alert('🔐 Please login to use the AI Scanner.');
             window.location.href = '../2.login/code.html';
@@ -411,6 +417,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayScannedDetails(item) {
         if (!resultContainer) return;
         
+        // Stop any currently playing audio
+        if (window.currentAudioInstance && !window.currentAudioInstance.paused) {
+            window.currentAudioInstance.pause();
+            window.currentAudioInstance = null;
+        }
+
         resultContainer.style.display = 'block';
         resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
