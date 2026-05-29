@@ -697,7 +697,7 @@ body.light .header {
         border: 2px solid #ecb613 !important;
     }
 
-    .desktop-nav, .search-box, .btn-booking {
+    .desktop-nav, .search-box, .btn-booking, .fav-nav-link {
         display: none !important;
     }
 }

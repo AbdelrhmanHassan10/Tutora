@@ -79,6 +79,7 @@
         </button>
         <div class="dropdown-items">
           <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> <span data-i18n="nav.favorites">Favorites</span></a>
           <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
           <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
         </div>
@@ -92,9 +93,6 @@
                             
                                   <div class="menu-footer">
                                     <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
-                                    <a href="../fav/favourite.html" class="menu-icon-link" title="Favorites">
-                                      <span class="material-symbols-outlined">favorite</span> <span data-i18n="nav.favorites">Favorites</span>
-                                    </a>
                             
                                     <button class="menu-icon-link" id="menuLangBtn">
                                       <span class="material-symbols-outlined">language</span>
@@ -161,7 +159,7 @@
             <span class="material-symbols-outlined">dark_mode</span>
           </button>
           <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
-          <a href="../fav/favourite.html" class="icon-btn-link" title="Favorites">
+          <a href="../fav/favourite.html" class="icon-btn-link fav-nav-link" title="Favorites">
             <button class="icon-btn">
               <span class="material-symbols-outlined">favorite</span>
             </button>

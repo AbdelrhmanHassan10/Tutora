@@ -59,7 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (uploadBtn && fileInput) {
-        uploadBtn.addEventListener('click', () => fileInput.click());
+        uploadBtn.addEventListener('click', () => {
+            fileInput.value = '';
+            fileInput.click();
+        });
         fileInput.addEventListener('change', handleFile);
     }
     
@@ -68,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cameraBtn.addEventListener('click', () => {
             // Check if we are on a mobile device that supports 'capture' attribute better
             if (/Mobi|Android/i.test(navigator.userAgent) && cameraInput) {
+                cameraInput.value = '';
                 cameraInput.click();
             } else {
                 // On Laptop/Desktop, use MediaDevices API for real camera access
@@ -243,7 +247,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 
                 const audioUrlField = data.audio_url || data.audioUrl || data.audio || data.url;
-                document.getElementById('listenStoryBtn')?.addEventListener('click', () => generateStoryAudio(lastAnalyzedFile, audioUrlField));
+                console.log("Audio URL from prediction:", audioUrlField);
+                document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
+                    if (audioUrlField) {
+                        generateStoryAudio(lastAnalyzedFile, audioUrlField);
+                    } else {
+                        console.warn("No audio URL provided by server");
+                        generateStoryAudio(lastAnalyzedFile, null);
+                    }
+                });
                 showRelatedStatues(detected);
                 loadDetectionHistory();
             } else {
@@ -260,86 +272,139 @@ document.addEventListener('DOMContentLoaded', () => {
     async function generateStoryAudio(file, audioUrl) {
         const listenBtn = document.getElementById('listenStoryBtn');
         
+        // Handle play/pause if audio is already active
+        if (window.currentAudioInstance && !window.currentAudioInstance.ended && listenBtn && listenBtn.dataset.cachedUrl) {
+            if (!window.currentAudioInstance.paused) {
+                window.currentAudioInstance.pause();
+                listenBtn.innerHTML = `<span class="material-symbols-outlined">play_arrow</span> Resume Story`;
+                return;
+            } else {
+                window.currentAudioInstance.play();
+                listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+                return;
+            }
+        }
+
+        // Replay using cached blob URL if already generated for this artifact
+        if (listenBtn && listenBtn.dataset.cachedUrl) {
+            window.currentAudioInstance = new Audio(listenBtn.dataset.cachedUrl);
+            window.currentAudioInstance.onended = () => {
+                if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">replay</span> Replay Story`;
+            };
+            listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+            window.currentAudioInstance.play().catch(e => console.error("Replay error", e));
+            return;
+        }
+
         if (listenBtn) {
             listenBtn.disabled = true;
-            listenBtn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px;"></div> Generating...`;
+            listenBtn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px;"></div> Generating (10-15s)...`;
         }
 
         try {
             let finalAudioUrl = "";
-            if (audioUrl) {
-                if (audioUrl.startsWith('http') || audioUrl.startsWith('data:')) {
-                    finalAudioUrl = audioUrl;
-                } else {
-                    const cleanPath = audioUrl.startsWith('/') ? audioUrl : `/${audioUrl}`;
-                    const domain = (audioUrl.includes('predict') || cleanPath.includes('predict')) 
-                        ? 'https://egyptian-museum-production.up.railway.app'
-                        : 'https://gem-backend-production-1ea2.up.railway.app';
-                    finalAudioUrl = `${domain}${cleanPath}`;
-                }
-            } else if (file) {
+            const token = localStorage.getItem('token');
+            const lang = localStorage.getItem('language') || 'en';
+
+            // Strategy 1: If we have the file, ALWAYS use /predict/audio as it returns the binary file directly
+            if (file) {
+                console.log("Using primary binary audio strategy via /predict/audio");
                 const formData = new FormData();
                 formData.append('file', file);
-                const lang = localStorage.getItem('language') || 'en';
-                formData.append('language', lang);
-
-                const response = await fetch('https://egyptian-museum-production.up.railway.app/predict/audio', {
+                
+                const response = await fetch(`https://egyptian-museum-production.up.railway.app/predict/audio?language=${lang}`, {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: token ? { 'Authorization': `Bearer ${token}` } : {}
                 });
 
                 if (response.ok) {
-                    const contentType = response.headers.get('Content-Type') || '';
-                    if (contentType.includes('application/json')) {
-                        const data = await response.json();
-                        throw new Error(data.message || data.error || 'Server returned JSON error instead of audio file.');
-                    } else {
-                        const blob = await response.blob();
+                    const blob = await response.blob();
+                    if (blob.size > 500) { // Valid audio should be reasonably sized
                         finalAudioUrl = URL.createObjectURL(blob);
+                        console.log("✅ Audio blob generated from binary response");
+                    } else {
+                        throw new Error("Audio file received is too small");
                     }
                 } else {
-                    let errMsg = 'Server returned HTTP ' + response.status;
-                    try {
-                        const errJson = await response.json();
-                        if (errJson.message || errJson.error) {
-                            errMsg += ': ' + (errJson.message || errJson.error);
+                    console.warn(`Binary audio strategy failed with status: ${response.status}`);
+                }
+            }
+
+            // Strategy 2: If Strategy 1 failed or we only have audioUrl (from history)
+            if (!finalAudioUrl && audioUrl) {
+                console.log("Using secondary URL strategy for:", audioUrl);
+                let targetUrl = audioUrl;
+                if (!audioUrl.startsWith('http') && !audioUrl.startsWith('data:')) {
+                    const cleanPath = audioUrl.startsWith('/') ? audioUrl : `/${audioUrl}`;
+                    targetUrl = `https://egyptian-museum-production.up.railway.app${cleanPath}`;
+                    
+                    if (cleanPath === '/audio' || cleanPath.startsWith('/audio?')) {
+                        targetUrl = `https://egyptian-museum-production.up.railway.app/predict${cleanPath}`;
+                    }
+                }
+                
+                try {
+                    const response = await fetch(targetUrl, {
+                        method: 'GET',
+                        headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+                    });
+                    
+                    if (response.ok) {
+                        const blob = await response.blob();
+                        if (blob.size > 500) {
+                            finalAudioUrl = URL.createObjectURL(blob);
+                            console.log("✅ Audio blob generated from URL");
                         }
-                    } catch(e) {}
-                    throw new Error(errMsg);
+                    } else {
+                        console.warn("URL strategy returned not ok:", response.status);
+                    }
+                } catch (e) {
+                    console.warn("Failed to fetch audio from URL, falling back...", e);
                 }
             }
 
             if (finalAudioUrl) {
-                console.log("Playing story audio from URL:", finalAudioUrl);
-                const audio = new Audio(finalAudioUrl);
-                audio.play()
-                    .then(() => {
-                        if (listenBtn) {
-                            listenBtn.disabled = false;
-                            listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
-                            audio.onended = () => {
-                                listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Replay Story`;
-                            };
-                        }
-                    })
-                    .catch(e => {
-                        console.error('Audio Play Rejection:', e);
-                        if (listenBtn) {
-                            listenBtn.disabled = false;
-                            listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
-                        }
-                        alert("⚠️ Audio playback failed. Details: " + e.message);
-                    });
+                console.log("Initializing audio playback...");
+                if (listenBtn) {
+                    listenBtn.dataset.cachedUrl = finalAudioUrl; // Cache it!
+                }
+                
+                window.currentAudioInstance = new Audio(finalAudioUrl);
+                
+                window.currentAudioInstance.onended = () => {
+                    if (listenBtn) {
+                        listenBtn.innerHTML = `<span class="material-symbols-outlined">replay</span> Replay Story`;
+                    }
+                };
+
+                window.currentAudioInstance.onerror = () => {
+                    const errCode = window.currentAudioInstance.error ? window.currentAudioInstance.error.code : 'Unknown';
+                    const errMsg = window.currentAudioInstance.error ? window.currentAudioInstance.error.message : 'Format or Network error';
+                    if (listenBtn) {
+                        listenBtn.disabled = false;
+                        listenBtn.innerHTML = `<span class="material-symbols-outlined">error</span> Error playing`;
+                    }
+                    console.error(`Playback failed (Code: ${errCode}): ${errMsg}`);
+                };
+
+                // Play directly without waiting for canplaythrough (since it's a downloaded blob)
+                await window.currentAudioInstance.play();
+                
+                if (listenBtn) {
+                    listenBtn.disabled = false;
+                    listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+                }
             } else {
-                throw new Error('No valid audio source could be determined');
+                throw new Error('No audio source available or server failed to respond');
             }
         } catch (error) {
-            console.error('TTS Error:', error);
+            console.error('TTS Playback Error:', error);
             if (listenBtn) {
                 listenBtn.disabled = false;
                 listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
             }
-            alert("⚠️ Failed to generate story audio. Details: " + error.message);
+            alert("⚠️ Audio Error: " + error.message + "\n\nTry refreshing the page or checking your internet connection.");
         }
     }
 
@@ -375,11 +440,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             
-            document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
-                if (item.audio_url || item.audioUrl) {
-                    generateStoryAudio(null, item.audio_url || item.audioUrl);
+                document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
+                const audioUrl = item.audio_url || item.audioUrl;
+                if (audioUrl) {
+                    console.log("Playing audio from history:", audioUrl);
+                    generateStoryAudio(null, audioUrl);
                 } else {
-                    alert("Audio story is preparing. Please try again in a moment.");
+                    console.warn("No audio URL found for item:", item);
+                    alert("⚠️ Audio story is not available for this artifact. Please try another one.");
                 }
             });
         }
@@ -399,7 +467,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const response = await fetch(`${API_URL}/ai/detections`, {
-                headers: { 'Authorization': `Bearer ${token}` }
+                method: 'GET',
+                headers: { 
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
             });
             if (response.ok) {
                 const detections = await response.json();
