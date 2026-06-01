@@ -188,17 +188,17 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <div class="badge-new">
-                            <span class="material-symbols-outlined">auto_awesome</span>
-                            <span>The Oracle's Greeting</span>
+                            <span class="material-symbols-outlined">auto_awesome</span><span data-i18n="kids.hero_badge">The Oracle's Greeting</span>
                         </div>
-                        <h2 class="hero-title">Welcome, Young <span style="color: #ecb613;">Explorers!</span></h2>
+                        <h2 class="hero-title" data-i18n="kids.hero_title">Welcome, Young <span style="color: #ecb613;">Explorers!</span></h2>
                         <div class="hero-subtitle-container">
                             <p class="hero-subtitle" id="divineGreeting"></p>
                         </div>
                         <div class="hero-btns">
                             <a href="#juniorLab" class="btn-primary-large">
                                 <span class="material-symbols-outlined">rocket_launch</span>
-                                Start Adventure
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                                <span data-i18n="kids.start_adventure">Start Adventure</span>
                             </a>
                         </div>
                     </div>
@@ -228,8 +228,8 @@
         <section class="container section-padding reveal-section" id="juniorLab">
             <div class="section-header">
                 <div>
-                    <p class="section-tag">Interactive Challenges</p>
-                    <h2 class="section-title">Junior Laboratory</h2>
+                    <p class="section-tag" data-i18n="kids.lab_tag">Interactive Challenges</p>
+                    <h2 class="section-title" data-i18n="kids.lab_title">Junior Laboratory</h2>
                 </div>
             </div>
 
@@ -241,10 +241,10 @@
                         <div class="mission-overlay"></div>
                     </div>
                     <div class="mission-content">
-                        <div class="mission-meta"><span class="mission-time">5 MINS</span></div>
-                        <h4 class="mission-name">Turn your picture into a pharaoh</h4>
-                        <p class="mission-type">Quiz Adventure</p>
-                        <a href="../Pharaoh Transformer/Pharaoh-Transformer.html" class="btn-mission">Try it now</a>
+                        <div class="mission-meta"><span class="mission-time">5 <span data-i18n="kids.mission_time">MINS</span></span></div>
+                        <h4 class="mission-name" data-i18n="kids.mission_1_name">Turn your picture into a pharaoh</h4>
+                        <p class="mission-type" data-i18n="kids.mission_1_type">Quiz Adventure</p>
+                        <a href="../Pharaoh Transformer/Pharaoh-Transformer.html" class="btn-mission" data-i18n="kids.try_now">Try it now</a>
                     </div>
                 </div>
 
@@ -255,10 +255,10 @@
                         <div class="mission-overlay"></div>
                     </div>
                     <div class="mission-content">
-                        <div class="mission-meta"><span class="mission-time">10 MINS</span></div>
-                        <h4 class="mission-name">Create from your imagination</h4>
-                        <p class="mission-type">Hidden Objects</p>
-                        <a href="../AI Imagination/AI-Imagination.html" class="btn-mission">Try it now</a>
+                        <div class="mission-meta"><span class="mission-time">10 <span data-i18n="kids.mission_time">MINS</span></span></div>
+                        <h4 class="mission-name" data-i18n="kids.mission_2_name">Create from your imagination</h4>
+                        <p class="mission-type" data-i18n="kids.mission_2_type">Hidden Objects</p>
+                        <a href="../AI Imagination/AI-Imagination.html" class="btn-mission" data-i18n="kids.try_now">Try it now</a>
                     </div>
                 </div>
 
@@ -269,10 +269,10 @@
                         <div class="mission-overlay"></div>
                     </div>
                     <div class="mission-content">
-                        <div class="mission-meta"><span class="mission-time">8 MINS</span></div>
-                        <h4 class="mission-name">Write your name in hieroglyphics</h4>
-                        <p class="mission-type">Secret Language</p>
-                        <a href="../Name-Translator/Name-Translator.html" class="btn-mission">Try it now</a>
+                        <div class="mission-meta"><span class="mission-time">8 <span data-i18n="kids.mission_time">MINS</span></span></div>
+                        <h4 class="mission-name" data-i18n="kids.mission_3_name">Write your name in hieroglyphics</h4>
+                        <p class="mission-type" data-i18n="kids.mission_3_type">Secret Language</p>
+                        <a href="../Name-Translator/Name-Translator.html" class="btn-mission" data-i18n="kids.try_now">Try it now</a>
                     </div>
                 </div>
             </div>
@@ -283,12 +283,12 @@
             <div class="container">
                 <h2 class="section-title">
                     <span class="material-symbols-outlined">toys</span>
-                    Kid-Friendly Artifacts
+                    <span data-i18n="kids.artifacts_title">Kid-Friendly Artifacts</span>
                 </h2>
                 <div class="facts-wrapper">
                     <button class="fact-btn prev" id="artifact-prev-btn" style="z-index: 10;"><span class="material-symbols-outlined">chevron_left</span></button>
                     <div class="facts-container" id="dynamic-artifacts-container">
-                        <p style="color: #94A3B8; text-align: center; width: 100%;">Loading ancient treasures...</p>
+                        <p style="color: #94A3B8; text-align: center; width: 100%;" data-i18n="kids.loading_treasures">Loading ancient treasures...</p>
                     </div>
                     <button class="fact-btn next" id="artifact-next-btn" style="z-index: 10;"><span class="material-symbols-outlined">chevron_right</span></button>
                 </div>
@@ -304,7 +304,7 @@
             <div class="container">
                 <h2 class="section-title">
                     <span class="material-symbols-outlined">lightbulb</span>
-                    Ancient Fun Facts
+                    <span data-i18n="kids.facts_title">Ancient Fun Facts</span>
                 </h2>
                 <div class="facts-wrapper">
                     <button class="fact-btn prev" id="prev-btn">&lt;</button>
@@ -312,10 +312,10 @@
                         <!-- Fact 1: Mummification -->
                         <div class="fact-card micro-lift" data-fact-id="fact-1">
                             <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">science</span></div>
-                            <h4 class="fact-title">Mummification 101</h4>
-                            <p class="fact-text">They believed the heart was the most important organ, while the brain was often thrown away!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact1_title">Mummification 101</h4>
+                            <p class="fact-text" data-i18n="kids.fact1_desc">They believed the heart was the most important organ, while the brain was often thrown away!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Science</span>
+                                <span class="fact-topic" data-i18n="kids.topic_science">Science</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -324,10 +324,10 @@
                         <!-- Fact 2: Hieroglyphs -->
                         <div class="fact-card micro-lift" data-fact-id="fact-2">
                             <div class="fact-icon-box icon-lang"><span class="material-symbols-outlined">edit_note</span></div>
-                            <h4 class="fact-title">Hieroglyph Power</h4>
-                            <p class="fact-text">There are over 700 symbols. Some represent sounds, others represent whole words!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact2_title">Hieroglyph Power</h4>
+                            <p class="fact-text" data-i18n="kids.fact2_desc">There are over 700 symbols. Some represent sounds, others represent whole words!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Language</span>
+                                <span class="fact-topic" data-i18n="kids.topic_language">Language</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -336,10 +336,10 @@
                         <!-- Fact 3: Pyramids -->
                         <div class="fact-card micro-lift" data-fact-id="fact-3">
                             <div class="fact-icon-box icon-history"><span class="material-symbols-outlined">history_edu</span></div>
-                            <h4 class="fact-title">Pyramids Mystery</h4>
-                            <p class="fact-text">The pyramids were built as tombs for pharaohs and remain architectural wonders!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact3_title">Pyramids Mystery</h4>
+                            <p class="fact-text" data-i18n="kids.fact3_desc">The pyramids were built as tombs for pharaohs and remain architectural wonders!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">History</span>
+                                <span class="fact-topic" data-i18n="kids.topic_history">History</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -348,10 +348,10 @@
                         <!-- Fact 4: Ancient Honey -->
                         <div class="fact-card micro-lift" data-fact-id="fact-4">
                             <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">restaurant</span></div>
-                            <h4 class="fact-title">Ancient Honey</h4>
-                            <p class="fact-text">Archaeologists found honey in tombs that is 3,000 years old and STILL perfectly edible!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact4_title">Ancient Honey</h4>
+                            <p class="fact-text" data-i18n="kids.fact4_desc">Archaeologists found honey in tombs that is 3,000 years old and STILL perfectly edible!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Food</span>
+                                <span class="fact-topic" data-i18n="kids.topic_food">Food</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -360,10 +360,10 @@
                         <!-- Fact 5: Calendar -->
                         <div class="fact-card micro-lift" data-fact-id="fact-5">
                             <div class="fact-icon-box icon-lang"><span class="material-symbols-outlined">calendar_month</span></div>
-                            <h4 class="fact-title">365-Day Year</h4>
-                            <p class="fact-text">Egyptians invented the 365-day calendar to predict when the Nile River would flood!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact5_title">365-Day Year</h4>
+                            <p class="fact-text" data-i18n="kids.fact5_desc">Egyptians invented the 365-day calendar to predict when the Nile River would flood!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Science</span>
+                                <span class="fact-topic" data-i18n="kids.topic_science">Science</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -372,10 +372,10 @@
                         <!-- Fact 6: Bread Medicine -->
                         <div class="fact-card micro-lift" data-fact-id="fact-6">
                             <div class="fact-icon-box icon-medicine"><span class="material-symbols-outlined">medication</span></div>
-                            <h4 class="fact-title">Bread Medicine</h4>
-                            <p class="fact-text">They used moldy bread to treat infections—the earliest form of penicillin!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact6_title">Bread Medicine</h4>
+                            <p class="fact-text" data-i18n="kids.fact6_desc">They used moldy bread to treat infections—the earliest form of penicillin!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Medicine</span>
+                                <span class="fact-topic" data-i18n="kids.topic_medicine">Medicine</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -384,10 +384,10 @@
                         <!-- Fact 7: Senet Game -->
                         <div class="fact-card micro-lift" data-fact-id="fact-7">
                             <div class="fact-icon-box icon-art"><span class="material-symbols-outlined">casino</span></div>
-                            <h4 class="fact-title">Senet Game</h4>
-                            <p class="fact-text">Ancient Egyptians loved board games! Senet was their favorite, played for over 3,000 years.</p>
+                            <h4 class="fact-title" data-i18n="kids.fact7_title">Senet Game</h4>
+                            <p class="fact-text" data-i18n="kids.fact7_desc">Ancient Egyptians loved board games! Senet was their favorite, played for over 3,000 years.</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Games</span>
+                                <span class="fact-topic" data-i18n="kids.topic_games">Games</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -396,10 +396,10 @@
                         <!-- Fact 8: Women's Rights -->
                         <div class="fact-card micro-lift" data-fact-id="fact-8">
                             <div class="fact-icon-box icon-religion"><span class="material-symbols-outlined">balance</span></div>
-                            <h4 class="fact-title">Women's Rights</h4>
-                            <p class="fact-text">Egyptian women could own property, sign legal contracts, and even become Pharaohs!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact8_title">Women's Rights</h4>
+                            <p class="fact-text" data-i18n="kids.fact8_desc">Egyptian women could own property, sign legal contracts, and even become Pharaohs!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Society</span>
+                                <span class="fact-topic" data-i18n="kids.topic_society">Society</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -408,10 +408,10 @@
                         <!-- Fact 9: Paid Builders -->
                         <div class="fact-card micro-lift" data-fact-id="fact-9">
                             <div class="fact-icon-box icon-history"><span class="material-symbols-outlined">groups</span></div>
-                            <h4 class="fact-title">Paid Builders</h4>
-                            <p class="fact-text">The pyramids weren't built by slaves, but by respected workers who were paid in bread and beer!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact9_title">Paid Builders</h4>
+                            <p class="fact-text" data-i18n="kids.fact9_desc">The pyramids weren't built by slaves, but by respected workers who were paid in bread and beer!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">History</span>
+                                <span class="fact-topic" data-i18n="kids.topic_history">History</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -420,10 +420,10 @@
                         <!-- Fact 10: First Police -->
                         <div class="fact-card micro-lift" data-fact-id="fact-10">
                             <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">policy</span></div>
-                            <h4 class="fact-title">First Police</h4>
-                            <p class="fact-text">Egyptians had the first police force! They used trained dogs and even monkeys to catch criminals.</p>
+                            <h4 class="fact-title" data-i18n="kids.fact10_title">First Police</h4>
+                            <p class="fact-text" data-i18n="kids.fact10_desc">Egyptians had the first police force! They used trained dogs and even monkeys to catch criminals.</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Society</span>
+                                <span class="fact-topic" data-i18n="kids.topic_society">Society</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -432,10 +432,10 @@
                         <!-- Fact 11: Hair Secrets -->
                         <div class="fact-card micro-lift" data-fact-id="fact-11">
                             <div class="fact-icon-box icon-art"><span class="material-symbols-outlined">content_cut</span></div>
-                            <h4 class="fact-title">Hair Secrets</h4>
-                            <p class="fact-text">To stay cool, children often shaved their heads except for one long 'lock of youth' on the side!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact11_title">Hair Secrets</h4>
+                            <p class="fact-text" data-i18n="kids.fact11_desc">To stay cool, children often shaved their heads except for one long 'lock of youth' on the side!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Culture</span>
+                                <span class="fact-topic" data-i18n="kids.topic_culture">Culture</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -444,10 +444,10 @@
                         <!-- Fact 12: Sacred Animals -->
                         <div class="fact-card micro-lift" data-fact-id="fact-12">
                             <div class="fact-icon-box icon-religion"><span class="material-symbols-outlined">pets</span></div>
-                            <h4 class="fact-title">Sacred Animals</h4>
-                            <p class="fact-text">It wasn't just cats! Crocodiles, ibises, and even baboons were considered sacred and respected.</p>
+                            <h4 class="fact-title" data-i18n="kids.fact12_title">Sacred Animals</h4>
+                            <p class="fact-text" data-i18n="kids.fact12_desc">It wasn't just cats! Crocodiles, ibises, and even baboons were considered sacred and respected.</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Religion</span>
+                                <span class="fact-topic" data-i18n="kids.topic_religion">Religion</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -456,10 +456,10 @@
                         <!-- Fact 13: Dentistry -->
                         <div class="fact-card micro-lift" data-fact-id="fact-13">
                             <div class="fact-icon-box icon-medicine"><span class="material-symbols-outlined">dentistry</span></div>
-                            <h4 class="fact-title">First Dentists</h4>
-                            <p class="fact-text">Ancient Egyptians were the first to have dentists. They even used gold wire to fix loose teeth!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact13_title">First Dentists</h4>
+                            <p class="fact-text" data-i18n="kids.fact13_desc">Ancient Egyptians were the first to have dentists. They even used gold wire to fix loose teeth!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Medicine</span>
+                                <span class="fact-topic" data-i18n="kids.topic_medicine">Medicine</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -468,10 +468,10 @@
                         <!-- Fact 14: Cleopatra -->
                         <div class="fact-card micro-lift" data-fact-id="fact-14">
                             <div class="fact-icon-box icon-history"><span class="material-symbols-outlined">person</span></div>
-                            <h4 class="fact-title">Cleopatra's Secret</h4>
-                            <p class="fact-text">Cleopatra VII, the most famous Queen of Egypt, was actually Greek, from a family named Ptolemy.</p>
+                            <h4 class="fact-title" data-i18n="kids.fact14_title">Cleopatra's Secret</h4>
+                            <p class="fact-text" data-i18n="kids.fact14_desc">Cleopatra VII, the most famous Queen of Egypt, was actually Greek, from a family named Ptolemy.</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">History</span>
+                                <span class="fact-topic" data-i18n="kids.topic_history">History</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -480,10 +480,10 @@
                         <!-- Fact 15: Giant Sphinx -->
                         <div class="fact-card micro-lift" data-fact-id="fact-15">
                             <div class="fact-icon-box icon-art"><span class="material-symbols-outlined">architecture</span></div>
-                            <h4 class="fact-title">Giant Sphinx</h4>
-                            <p class="fact-text">The Sphinx is carved from a single giant piece of limestone. It guards the pyramids with a lion's body!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact15_title">Giant Sphinx</h4>
+                            <p class="fact-text" data-i18n="kids.fact15_desc">The Sphinx is carved from a single giant piece of limestone. It guards the pyramids with a lion's body!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Architecture</span>
+                                <span class="fact-topic" data-i18n="kids.topic_architecture">Architecture</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -492,10 +492,10 @@
                         <!-- Fact 16: Peace Treaty -->
                         <div class="fact-card micro-lift" data-fact-id="fact-16">
                             <div class="fact-icon-box icon-lang"><span class="material-symbols-outlined">handshake</span></div>
-                            <h4 class="fact-title">Peace Treaty</h4>
-                            <p class="fact-text">Ramses II signed the first peace treaty in history with the Hittite Empire 3,000 years ago.</p>
+                            <h4 class="fact-title" data-i18n="kids.fact16_title">Peace Treaty</h4>
+                            <p class="fact-text" data-i18n="kids.fact16_desc">Ramses II signed the first peace treaty in history with the Hittite Empire 3,000 years ago.</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">History</span>
+                                <span class="fact-topic" data-i18n="kids.topic_history">History</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -504,10 +504,10 @@
                         <!-- Fact 17: Makeup Power -->
                         <div class="fact-card micro-lift" data-fact-id="fact-17">
                             <div class="fact-icon-box icon-science"><span class="material-symbols-outlined">visibility</span></div>
-                            <h4 class="fact-title">Makeup Power</h4>
-                            <p class="fact-text">Both men and women wore eye makeup! It protected their eyes from the sun's glare and biting flies.</p>
+                            <h4 class="fact-title" data-i18n="kids.fact17_title">Makeup Power</h4>
+                            <p class="fact-text" data-i18n="kids.fact17_desc">Both men and women wore eye makeup! It protected their eyes from the sun's glare and biting flies.</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Culture</span>
+                                <span class="fact-topic" data-i18n="kids.topic_culture">Culture</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -516,10 +516,10 @@
                         <!-- Fact 18: Surgical Tools -->
                         <div class="fact-card micro-lift" data-fact-id="fact-18">
                             <div class="fact-icon-box icon-medicine"><span class="material-symbols-outlined">hardware</span></div>
-                            <h4 class="fact-title">Surgical Tools</h4>
-                            <p class="fact-text">Ancient doctors used copper scalpels and needles to perform surgeries, much like today!</p>
+                            <h4 class="fact-title" data-i18n="kids.fact18_title">Surgical Tools</h4>
+                            <p class="fact-text" data-i18n="kids.fact18_desc">Ancient doctors used copper scalpels and needles to perform surgeries, much like today!</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Medicine</span>
+                                <span class="fact-topic" data-i18n="kids.topic_medicine">Medicine</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -528,10 +528,10 @@
                         <!-- Fact 19: Golden Ratio -->
                         <div class="fact-card micro-lift" data-fact-id="fact-19">
                             <div class="fact-icon-box icon-lang"><span class="material-symbols-outlined">calculate</span></div>
-                            <h4 class="fact-title">Golden Ratio</h4>
-                            <p class="fact-text">Architects used advanced math to build the Great Pyramid, which is perfectly aligned with the stars.</p>
+                            <h4 class="fact-title" data-i18n="kids.fact19_title">Golden Ratio</h4>
+                            <p class="fact-text" data-i18n="kids.fact19_desc">Architects used advanced math to build the Great Pyramid, which is perfectly aligned with the stars.</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Science</span>
+                                <span class="fact-topic" data-i18n="kids.topic_science">Science</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -540,10 +540,10 @@
                         <!-- Fact 20: Toothpaste -->
                         <div class="fact-card micro-lift" data-fact-id="fact-20">
                             <div class="fact-icon-box icon-medicine"><span class="material-symbols-outlined">clean_hands</span></div>
-                            <h4 class="fact-title">First Toothpaste</h4>
-                            <p class="fact-text">Egyptians invented toothpaste! They used a mix of rock salt, pepper, mint, and dried iris flowers.</p>
+                            <h4 class="fact-title" data-i18n="kids.fact20_title">First Toothpaste</h4>
+                            <p class="fact-text" data-i18n="kids.fact20_desc">Egyptians invented toothpaste! They used a mix of rock salt, pepper, mint, and dried iris flowers.</p>
                             <div class="fact-footer">
-                                <span class="fact-topic">Medicine</span>
+                                <span class="fact-topic" data-i18n="kids.topic_medicine">Medicine</span>
                                 <button class="save-fact-btn" title="Save Fact">
                                     <span class="material-symbols-outlined">bookmark</span>
                                 </button>
@@ -564,45 +564,45 @@
             <div class="section-header" style="text-align: center;">
                 <h2 class="section-title" style="justify-content: center; display: flex; gap: 10px;">
                     <span class="material-symbols-outlined" style="color: #ecb613; font-size: 2.5rem;">quiz</span>
-                    Pharaoh's Quiz
+                    <span data-i18n="kids.quiz_title">Pharaoh's Quiz</span>
                 </h2>
-                <p style="color: #94A3B8; margin-top: 10px;">Hover over the cards to reveal the ancient answers!</p>
+                <p style="color: #94A3B8; margin-top: 10px;"><span data-i18n="kids.quiz_desc">Hover over the cards to reveal the ancient answers!</span></p>
             </div>
             <div class="flip-grid">
                 <div class="flip-card micro-lift">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">pets</span><h3>Which animal was sacred?</h3></div>
-                        <div class="flip-card-back"><h3>The Cat!</h3><p>Cats were deeply respected and even mummified like humans!</p></div>
+                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">pets</span><h3 data-i18n="kids.quiz1_q">Which animal was sacred?</h3></div>
+                        <div class="flip-card-back"><h3 data-i18n="kids.quiz1_a">The Cat!</h3><p data-i18n="kids.quiz1_desc">Cats were deeply respected and even mummified like humans!</p></div>
                     </div>
                 </div>
                 <div class="flip-card micro-lift">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">child_care</span><h3>Who was the boy king?</h3></div>
-                        <div class="flip-card-back"><h3>Tutankhamun!</h3><p>He became Pharaoh at age 9 and is famous for his golden mask.</p></div>
+                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">child_care</span><h3 data-i18n="kids.quiz2_q">Who was the boy king?</h3></div>
+                        <div class="flip-card-back"><h3 data-i18n="kids.quiz2_a">Tutankhamun!</h3><p data-i18n="kids.quiz2_desc">He became Pharaoh at age 9 and is famous for his golden mask.</p></div>
                     </div>
                 </div>
                 <div class="flip-card micro-lift">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">edit_square</span><h3>What did they write on?</h3></div>
-                        <div class="flip-card-back"><h3>Papyrus!</h3><p>A plant-based paper made from the reeds growing along the Nile.</p></div>
+                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">edit_square</span><h3 data-i18n="kids.quiz3_q">What did they write on?</h3></div>
+                        <div class="flip-card-back"><h3 data-i18n="kids.quiz3_a">Papyrus!</h3><p data-i18n="kids.quiz3_desc">A plant-based paper made from the reeds growing along the Nile.</p></div>
                     </div>
                 </div>
                 <div class="flip-card micro-lift">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">account_balance</span><h3>Biggest pyramid?</h3></div>
-                        <div class="flip-card-back"><h3>Great Pyramid of Giza</h3><p>It was the tallest man-made structure for over 3,800 years!</p></div>
+                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">account_balance</span><h3 data-i18n="kids.quiz4_q">Biggest pyramid?</h3></div>
+                        <div class="flip-card-back"><h3 data-i18n="kids.quiz4_a">Great Pyramid of Giza</h3><p data-i18n="kids.quiz4_desc">It was the tallest man-made structure for over 3,800 years!</p></div>
                     </div>
                 </div>
                 <div class="flip-card micro-lift">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">directions_boat</span><h3>Which river?</h3></div>
-                        <div class="flip-card-back"><h3>The Nile River</h3><p>It's the longest river in the world, stretching over 6,600 kilometers!</p></div>
+                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">directions_boat</span><h3 data-i18n="kids.quiz5_q">Which river?</h3></div>
+                        <div class="flip-card-back"><h3 data-i18n="kids.quiz5_a">The Nile River</h3><p data-i18n="kids.quiz5_desc">It's the longest river in the world, stretching over 6,600 kilometers!</p></div>
                     </div>
                 </div>
                 <div class="flip-card micro-lift">
                     <div class="flip-card-inner">
-                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">theater_comedy</span><h3>What is a Sarcophagus?</h3></div>
-                        <div class="flip-card-back"><h3>A Stone Coffin!</h3><p>Often decorated with beautiful paintings and magical spells.</p></div>
+                        <div class="flip-card-front"><span class="material-symbols-outlined flip-icon">theater_comedy</span><h3 data-i18n="kids.quiz6_q">What is a Sarcophagus?</h3></div>
+                        <div class="flip-card-back"><h3 data-i18n="kids.quiz6_a">A Stone Coffin!</h3><p data-i18n="kids.quiz6_desc">Often decorated with beautiful paintings and magical spells.</p></div>
                     </div>
                 </div>
             </div>
@@ -613,9 +613,9 @@
             <div class="section-header" style="text-align: center;">
                 <h2 class="section-title" style="justify-content: center; display: flex; gap: 10px;">
                     <span class="material-symbols-outlined" style="color: #ecb613; font-size: 2.5rem;">hardware</span>
-                    Virtual Sandpit
+                    <span data-i18n="kids.sandpit_title">Virtual Sandpit</span>
                 </h2>
-                <p style="color: #94A3B8; margin-top: 10px;">Hover over the sand to "dig" and uncover hidden artifacts!</p>
+                <p style="color: #94A3B8; margin-top: 10px;"><span data-i18n="kids.sandpit_desc">Hover over the sand to "dig" and uncover hidden artifacts!</span></p>
             </div>
             <div class="sandpit-wrapper">
                 <div class="sandpit-layer">
@@ -629,11 +629,11 @@
         <!-- Kids' Workshop Board -->
         <section class="container section-padding reveal-section">
             <div class="board-container">
-                <h2 class="board-title">Today's Awesome Activities!</h2>
+                <h2 class="board-title" data-i18n="kids.board_title">Today's Awesome Activities!</h2>
                 <div class="board-grid">
-                    <div class="board-note note-yellow micro-lift"><div class="pin"></div><h4>Lego Pyramids</h4><p>10:00 AM - 12:00 PM</p></div>
-                    <div class="board-note note-pink micro-lift"><div class="pin"></div><h4>Papyrus Art</h4><p>1:00 PM - 3:00 PM</p></div>
-                    <div class="board-note note-blue micro-lift"><div class="pin"></div><h4>Mummy Wrapping</h4><p>4:00 PM - 5:00 PM</p></div>
+                    <div class="board-note note-yellow micro-lift"><div class="pin"></div><h4 data-i18n="kids.board_activity1">Lego Pyramids</h4><p>10:00 AM - 12:00 PM</p></div>
+                    <div class="board-note note-pink micro-lift"><div class="pin"></div><h4 data-i18n="kids.board_activity2">Papyrus Art</h4><p>1:00 PM - 3:00 PM</p></div>
+                    <div class="board-note note-blue micro-lift"><div class="pin"></div><h4 data-i18n="kids.board_activity3">Mummy Wrapping</h4><p>4:00 PM - 5:00 PM</p></div>
                 </div>
             </div>
         </section>
@@ -644,10 +644,10 @@
                 <div class="cta-inner">
                     <span class="material-symbols-outlined cta-deco deco-left">shield</span>
                     <span class="material-symbols-outlined cta-deco deco-right">award_star</span>
-                    <h2 class="cta-title">Ready to earn your <span style="color: #ecb613;">Golden Sarcophagus</span> badge?</h2>
-                    <p class="cta-desc">Create your explorer profile today and track your progress.</p>
+                    <h2 class="cta-title" data-i18n="kids.cta_title">Ready to earn your <span style="color: #ecb613;">Golden Sarcophagus</span> badge?</h2>
+                    <p class="cta-desc" data-i18n="kids.cta_desc">Create your explorer profile today and track your progress.</p>
                     <div class="cta-btns">
-                        <button class="btn-cta-primary">Sign Up Now</button>
+                        <button class="btn-cta-primary" data-i18n="kids.cta_btn">Sign Up Now</button>
                     </div>
                 </div>
             </div>
@@ -662,42 +662,42 @@
                                                 <div class="footer-logo">
                                                     <span class="material-symbols-outlined">account_balance</span>
                                                 </div>
-                                                <h2 class="footer-title">Grand Egyptian Museum</h2>
+                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
                                                 <div class="footer-divider"></div>
                                             </div>
                             
                                             <!-- Footer Grid -->
                                             <div class="footer-grid">
                                                 <div class="footer-column">
-                                                    <h3>Explore</h3>
+                                                    <h3 data-i18n="footer.explore">Explore</h3>
                                                     <ul>
-                                                        <li><a href="../booking/booking.html">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html">Collection</a></li>
-                                                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition-Halls</a></li>
-                                                        <li><a href="../-membership/code.html">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
+                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
+                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="footer-column">
-                                                    <h3>About</h3>
+                                                    <h3 data-i18n="footer.about">About</h3>
                                                     <ul>
-                                                        <li><a href="../About us/About-us.html">History</a></li>
-                                                        <li><a href="../event/event.html">Events</a></li>
-                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
-                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="footer-column">
-                                                    <h3>Support</h3>
+                                                    <h3 data-i18n="footer.support">Support</h3>
                                                     <ul>
-                                                        <li><a href="../visitor help/help.html">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="footer-column connect-column">
-                                                    <h3>Connect</h3>
+                                                    <h3 data-i18n="footer.connect">Connect</h3>
                                                     <div class="social-links">
                                                         <!-- Facebook -->
                                                         <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
@@ -720,30 +720,31 @@
                                                         </a>
                                                     </div>
                             
-                                                    <p>Follow us on social media for updates and behind-the-scenes content.</p>
+                                                    <p>
+                                                        Follow us on social media for updates and behind-the-scenes content.
+                                                    </p>
                                                 </div>
                                             </div>
-                            
-                            
-                                            <!-- Footer Bottom -->
-                                            <div class="footer-bottom">
-                                                <div class="language-toggle">
-                                                    <button class="active" data-lang="en">English</button>
-                                                    <button data-lang="ar">العربية</button>
-                                                </div>
-                                                <div class="legal-section">
-                                                   <div class="legal-links">
-                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
-                                                </div>
-                                        <div class="copyright">
-                                          © 2026 Tutora. All rights reserved.
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                    </footer>
+                             
+                                                   <!-- Footer Bottom -->
+                                             <div class="footer-bottom">
+                                                 <div class="language-toggle">
+                                                     <button class="active" data-lang="en">English</button>
+                                                     <button data-lang="ar">العربية</button>
+                                                 </div>
+                                                 <div class="legal-section">
+                                                    <div class="legal-links">
+                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
+                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
+                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
+                                                 </div>
+                                         <div class="copyright">
+                                           &copy; 2026 Tutora. All rights reserved.
+                                         </div>
+                                       </div>
+                                     </div>
+                                   </div>
+                                     </footer>
 
     <!-- Floating Interactive Assistant -->
     <a href="../chat bot/chat.html"><div class="floating-assistant-wrap" style="width: 35px;" >

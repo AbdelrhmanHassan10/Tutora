@@ -2923,4 +2923,68 @@ body.light .copyright {
     .legal-links a {
         margin-right: 0;
     }
+}\n
+/* ============================================
+   LIGHT THEME OVERRIDES
+   ============================================ */
+body.light {
+    --bg-dark: #F8F8F5;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --text-white: #0F172A;
+    --text-gray: #475569;
+    --primary-glow: rgba(142, 115, 65, 0.2);
+    --primary: #8e7341;
+}
+body.light .hero-title, body.light .form-title {
+    background: linear-gradient(to bottom, #0F172A, #8e7341);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body.light .brand-namee {
+    background: linear-gradient(to bottom, #8e7341 20%, #d4af37 50%, #8e7341 80%);
+    -webkit-background-clip: text;
+}
+body.light .hero-overlay {
+    background: linear-gradient(to right, rgba(248, 248, 245, 0.6), var(--bg-dark));
+}
+body.light .form-card-inner {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+}
+body.light .form-input {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #0F172A;
+}
+body.light .form-input:focus {
+    background: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(142, 115, 65, 0.2);
+}
+body.light .social-btn {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #0F172A;
+}
+body.light .apple-btn .social-icon {
+    color: #000;
+}
+body.light .divider-line {
+    background: rgba(0, 0, 0, 0.1);
+}
+body.light .nav-actions span {
+    background: linear-gradient(90deg, #475569, #0F172A, #475569);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+}
+body.light #themeBtn, body.light #langBtn {
+    background: rgba(0,0,0,0.05) !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    color: #0F172A !important;
+}
+body.light .nav-logo img, body.light .mobile-logo img {
+    background: #fff;
+    border-color: #8e7341;
+    box-shadow: 0 0 15px rgba(142, 115, 65, 0.2);
 }

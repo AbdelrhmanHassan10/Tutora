@@ -40,9 +40,12 @@
                         <img src="../logo.png" alt="Tutora Logo">
                     </a>
                 </div>
-                <div class="nav-actions">
+                <div class="nav-actions" style="display: flex; align-items: center;">
                     <!-- <span class="hidden-mobile">Already have an account?</span> -->
-                    <a class="login-link-btn" href="../2.login/code.html">Log In</a>
+                    <button id="langBtn" class="lang-switch-btn" title="Change Language" style="background: none; border: none; color: inherit; cursor: pointer; display: flex; align-items: center; margin-right: 15px; font-size: 1.2rem;">
+                        <span class="material-symbols-outlined">language</span>
+                    </button>
+                    <a class="login-link-btn" href="../2.login/code.html" data-i18n="auth.login">Log In</a>
                 </div>
             </nav>
         </header>
@@ -53,8 +56,8 @@
                 <div class="hero-panel" style="background-image: url('../69.jpg');">
                     <div class="hero-overlay"></div>
                     <div class="hero-content">
-                        <h1 class="hero-title">Awaken Your<br>Pharaonic Legacy</h1>
-                        <p class="hero-subtitle">Step into eternity. <span class="brand-namee">Tutora</span> awaits to guide you through the wisdom of ancestors.</p>
+                        <h1 class="hero-title" data-i18n="register.hero_title">Awaken Your<br>Pharaonic Legacy</h1>
+                        <p class="hero-subtitle" data-i18n="register.hero_subtitle">Step into eternity. <span class="brand-namee">Tutora</span> awaits to guide you through the wisdom of ancestors.</p>
                     </div>
                 </div>
 
@@ -69,8 +72,8 @@
                                 </div>
 
                                 <div class="form-header" style="padding-top: 10px;">
-                                    <h1 class="form-title">Join the Dynasty</h1>
-                                    <p class="form-subtitle">Your royal journey through history begins here.</p>
+                                    <h1 class="form-title" data-i18n="register.form_title">Join the Dynasty</h1>
+                                    <p class="form-subtitle" data-i18n="register.form_subtitle">Your royal journey through history begins here.</p>
                                 </div>
 
                                 <div class="social-group">
@@ -81,27 +84,27 @@
                                             <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
                                             <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                                         </svg>
-                                        <span>Google</span>
+                                        <span data-i18n="auth.google">Google</span>
                                     </button>
                                     <button class="social-btn apple-btn" type="button">
                                         <svg class="social-icon" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-39-19.9-54.7-46-54.7-82.9zm-37.9-150.7c32.6-40.3 27-78.5 25.4-82 0 0-33.3 3-64.5 32.3-31.1 29.3-28.2 65.5-26.8 69.2 0 0 33.4 0.8 65.9-39.5z" fill="currentColor"/>
                                         </svg>
-                                        <span>Apple</span>
+                                        <span data-i18n="auth.apple">Apple</span>
                                     </button>
                                 </div>
 
                                 <div class="divider">
                                     <div class="divider-line"></div>
-                                    <span class="divider-text">Or</span>
+                                    <span class="divider-text" data-i18n="auth.or">Or</span>
                                     <div class="divider-line"></div>
                                 </div>
 
                                 <form class="registration-form" id="registrationForm">
                                     <div class="field-group">
-                                        <p class="field-label">Full Name</p>
+                                        <p class="field-label" data-i18n="auth.fullname_label">Full Name</p>
                                         <div class="input-wrapper">
-                                            <input class="form-input" id="fullName" placeholder="Enter your full name" type="text" required />
+                                            <input class="form-input" id="fullName" placeholder="Enter your full name" data-i18n-placeholder="auth.fullname_placeholder" type="text" required />
                                             <div class="star-error" id="fullNameError">
                                                 <span class="error-icon"></span>
                                                 <span class="error-text"></span>
@@ -109,9 +112,9 @@
                                         </div>
                                     </div>
                                     <div class="field-group">
-                                        <p class="field-label">Email Address</p>
+                                        <p class="field-label" data-i18n="auth.email_label">Email Address</p>
                                         <div class="input-wrapper">
-                                            <input class="form-input" id="email" placeholder="Enter your email" type="email" required />
+                                            <input class="form-input" id="email" placeholder="Enter your email" data-i18n-placeholder="auth.email_placeholder" type="email" required />
                                             <div class="star-error" id="emailError">
                                                 <span class="error-icon"></span>
                                                 <span class="error-text"></span>
@@ -119,9 +122,9 @@
                                         </div>
                                     </div>
                                     <div class="field-group">
-                                        <p class="field-label">Password</p>
+                                        <p class="field-label" data-i18n="auth.password_label">Password</p>
                                         <div class="input-wrapper">
-                                            <input class="form-input" id="password" placeholder="Create a password" type="password" required />
+                                            <input class="form-input" id="password" placeholder="Create a password" data-i18n-placeholder="auth.password_placeholder" type="password" required />
                                             <div class="icon-addon" id="passwordToggle">
                                                 <span class="material-symbols-outlined">visibility</span>
                                             </div>
@@ -132,9 +135,9 @@
                                         </div>
                                     </div>
                                     <div class="field-group">
-                                        <p class="field-label">Confirm Password</p>
+                                        <p class="field-label" data-i18n="auth.confirm_password_label">Confirm Password</p>
                                         <div class="input-wrapper">
-                                            <input class="form-input" id="confirmPassword" placeholder="Confirm your password" type="password" required />
+                                            <input class="form-input" id="confirmPassword" placeholder="Confirm your password" data-i18n-placeholder="auth.confirm_password_placeholder" type="password" required />
                                             <div class="icon-addon" id="confirmPasswordToggle">
                                                 <span class="material-symbols-outlined">visibility_off</span>
                                             </div>
@@ -151,11 +154,11 @@
                                 </form>
 
                                 <div class="login-footer-mobile">
-                                    <span>Already a member?</span>
-                                    <a href="../2.login/code.html" class="signup-link">Log In</a>
+                                    <span data-i18n="register.already_member">Already a member?</span>
+                                    <a href="../2.login/code.html" class="signup-link" data-i18n="auth.login">Log In</a>
                                 </div>
 
-                                <p class="footer-text">
+                                <p class="footer-text" data-i18n="register.terms">
                                     By signing up, you agree to our <a href="../Terms-of-Service/term-of-service.html" class="signup-link"> <br> Terms of Service</a> <br> and <a href="../Privacy-policy/Privacy-Policy.html" class="signup-link">Privacy Policy</a>.
                                 </p>
                             </div>

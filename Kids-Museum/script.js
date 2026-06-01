@@ -175,61 +175,61 @@ class RoyalKidsAtmosphere {
         // Local featured artifacts for kids
         const featuredArtifacts = [
             {
-                name: "Golden Tut Mask",
+                name: "Golden Tut Mask", nameKey: "kids.art1_name", descKey: "kids.art1_desc",
                 description: "The most famous mask in the world, now with a friendly smile for young explorers!",
                 imageUrl: "tut-mask-kids.png",
                 _id: "featured-tut-mask"
             },
             {
-                name: "Ramses the Great",
+                name: "Ramses the Great", nameKey: "kids.art2_name", descKey: "kids.art2_desc",
                 description: "Meet the mightiest Pharaoh! He built giant statues and was a great leader of Egypt.",
                 imageUrl: "ramses-kids.png",
                 _id: "featured-ramses"
             },
             {
-                name: "The Smiling Sphinx",
+                name: "The Smiling Sphinx", nameKey: "kids.art3_name", descKey: "kids.art3_desc",
                 description: "A lion with a human head! He guards the pyramids and loves solving riddles with kids.",
                 imageUrl: "sphinx-kids.png",
                 _id: "featured-sphinx"
             },
             {
-                name: "Queen Nefertari",
+                name: "Queen Nefertari", nameKey: "kids.art4_name", descKey: "kids.art4_desc",
                 description: "The most beautiful queen! She was very kind and lived in a palace full of magic and art.",
                 imageUrl: "nefertari-kids.png",
                 _id: "featured-nefertari"
             },
             {
-                name: "Magical Blue Hippo",
+                name: "Magical Blue Hippo", nameKey: "kids.art5_name", descKey: "kids.art5_desc",
                 description: "This little blue hippo is named William. He loves swimming in the Nile and hiding in flowers!",
                 imageUrl: "blue-hippo-kids.png",
                 _id: "featured-blue-hippo"
             },
             {
-                name: "Anubis the Puppy",
+                name: "Anubis the Puppy", nameKey: "kids.art6_name", descKey: "kids.art6_desc",
                 description: "The guardian of secrets! He looks like a friendly puppy but he's actually a powerful protector.",
                 imageUrl: "anubis-kids.png",
                 _id: "featured-anubis"
             },
             {
-                name: "Bastet the Cat",
+                name: "Bastet the Cat", nameKey: "kids.art7_name", descKey: "kids.art7_desc",
                 description: "Meet the goddess of joy and protection! She's a very fast and smart cat who loves to play.",
                 imageUrl: "bastet-kids.png",
                 _id: "featured-bastet"
             },
             {
-                name: "Queen Hatshepsut",
+                name: "Queen Hatshepsut", nameKey: "kids.art8_name", descKey: "kids.art8_desc",
                 description: "One of the most powerful female Pharaohs! She built the most beautiful temple and led a peaceful time of building and trading.",
                 imageUrl: "hatshepsut-kids.png",
                 _id: "featured-hatshepsut"
             },
             {
-                name: "King Khufu",
+                name: "King Khufu", nameKey: "kids.art9_name", descKey: "kids.art9_desc",
                 description: "The builder of the Great Pyramid! He was a very wise king who built the tallest building in the ancient world. It's made of millions of stones!",
                 imageUrl: "khufu-kids.png",
                 _id: "featured-khufu"
             },
             {
-                name: "Thutmose the Brave",
+                name: "Thutmose the Brave", nameKey: "kids.art10_name", descKey: "kids.art10_desc",
                 description: "The Napoleon of Ancient Egypt! He was a brave warrior king who won 17 battles and never lost once. He was super smart!",
                 imageUrl: "thutmose-kids.png",
                 _id: "featured-thutmose"
@@ -255,13 +255,14 @@ class RoyalKidsAtmosphere {
                 card.className = 'kid-artifact-card micro-lift';
                 const isFeatured = item._id && item._id.toString().startsWith('featured');
                 
+                
                 card.innerHTML = `
-                    <div class="artifact-badge">${isFeatured ? "Explorer's Pick" : "Ancient Treasure"}</div>
+                    <div class="artifact-badge" data-i18n="${isFeatured ? 'kids.badge_explorer' : 'kids.badge_ancient'}">${isFeatured ? "Explorer's Pick" : "Ancient Treasure"}</div>
                     <div class="artifact-img" style="background-image: url('${item.imageUrl || '../4.home/images/hero-1.jpg'}')"></div>
                     <div class="artifact-info">
-                        <h3>${item.name}</h3>
-                        <p>${item.description?.substring(0, 100) || 'An ancient wonder waiting for you to discover its magical story!'}...</p>
-                        <a href="../Artifact-show/code.html?id=${item._id}" class="btn-artifact-view">Discover More</a>
+                        <h3 ${item.nameKey ? 'data-i18n="' + item.nameKey + '"' : ''}>${item.name}</h3>
+                        <p ${item.descKey ? 'data-i18n="' + item.descKey + '"' : ''}>${item.description?.substring(0, 100) || '<span data-i18n="kids.desc_default">An ancient wonder waiting for you to discover its magical story!...</span>'}</p>
+                        <a href="../Artifact-show/code.html?id=${item._id}" class="btn-artifact-view" data-i18n="kids.btn_discover">Discover More</a>
                     </div>
                 `;
                 container.appendChild(card);
@@ -269,25 +270,28 @@ class RoyalKidsAtmosphere {
 
             const totalCount = document.getElementById('artifact-total-count');
             if (totalCount) totalCount.textContent = allArtifacts.length;
+            if (window.TutoraLang) window.TutoraLang.applyTranslations();
         } catch (e) {
             // Fallback to featured artifacts only
             container.innerHTML = '';
             featuredArtifacts.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'kid-artifact-card micro-lift';
+                
                 card.innerHTML = `
-                    <div class="artifact-badge">Explorer's Pick</div>
-                    <div class="artifact-img" style="background-image: url('${item.imageUrl}')"></div>
+                    <div class="artifact-badge" data-i18n="${isFeatured ? 'kids.badge_explorer' : 'kids.badge_ancient'}">${isFeatured ? "Explorer's Pick" : "Ancient Treasure"}</div>
+                    <div class="artifact-img" style="background-image: url('${item.imageUrl || '../4.home/images/hero-1.jpg'}')"></div>
                     <div class="artifact-info">
-                        <h3>${item.name}</h3>
-                        <p>${item.description}</p>
-                        <a href="../Artifact-show/code.html?id=${item._id}" class="btn-artifact-view">Discover More</a>
+                        <h3 ${item.nameKey ? 'data-i18n="' + item.nameKey + '"' : ''}>${item.name}</h3>
+                        <p ${item.descKey ? 'data-i18n="' + item.descKey + '"' : ''}>${item.description?.substring(0, 100) || '<span data-i18n="kids.desc_default">An ancient wonder waiting for you to discover its magical story!...</span>'}</p>
+                        <a href="../Artifact-show/code.html?id=${item._id}" class="btn-artifact-view" data-i18n="kids.btn_discover">Discover More</a>
                     </div>
                 `;
                 container.appendChild(card);
             });
             const totalCount = document.getElementById('artifact-total-count');
             if (totalCount) totalCount.textContent = featuredArtifacts.length;
+            if (window.TutoraLang) window.TutoraLang.applyTranslations();
         }
     }
 

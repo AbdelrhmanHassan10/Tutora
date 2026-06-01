@@ -7,15 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilter = 'All Events';
 
     const STATIC_EVENTS = [
-        { title: "The Golden King: Artifacts of a Legend", category: "Exhibitions", date: "2023-10-12", description: "A rare collection of personal jewelry and protective amulets recovered from the royal valley.", image: "../gettyimages-2177866414-612x612.jpg", location: "Gallery 4 • Premium", badge: "Selling Fast" },
-        { title: "Papyrus Making Workshop", category: "Workshops", date: "Every Saturday", description: "Learn the ancient art of paper production using Nile River reeds under expert guidance.", image: "../gettyimages-2245643012-594x594.jpg", location: "Education Center", badge: "Selling Fast" },
-        { title: "Sphinx Sound & Light Show", category: "Cultural Nights", date: "Nightly • 8:00 PM", description: "A spectacular journey through 5,000 years of history projected onto the ancient monuments.", image: "../10.jpg", location: "Main Plaza • Outdoor", badge: "Selling Fast" },
-        { title: "Ramses the Great: Life & Legacy", category: "Exhibitions", date: "Permanent Collection", description: "Dedicated to Egypt's longest-reigning pharaoh, featuring the colossal statue from Memphis.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg", location: "Atrium • Historic", badge: "Selling Fast" },
-        { title: "Egyptian Hieroglyphs 101", category: "Workshops", date: "Nov 05 • 2:00 PM", description: "An introductory lecture on deciphering the sacred carvings of the Old Kingdom.", image: "../pexels-meryemmeva-35270037.jpg", location: "Library Wing", badge: "Selling Fast" },
-        { title: "Nile Sunset Jazz Sessions", category: "Cultural Nights", date: "Nov 10 • 6:30 PM", description: "Enjoy contemporary jazz fusion as the sun sets over the pyramids from our garden terrace.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_7.jpg", location: "Museum Gardens", badge: "Selling Fast" },
-        { title: "The Grand Discovery Tour", category: "Exhibitions", date: "Every Friday", description: "Join our expert archaeologists on an exclusive behind-the-scenes look at newly excavated pharaonic treasures.", image: "../8.jpg", location: "The Grand Hall", badge: "Exclusive" },
-        { title: "Ancient Board Games Tournament", category: "Workshops", date: "Dec 01 • 9:00 AM", description: "Challenge yourself and learn the rules of Senet and Mehen in this interactive historical gaming event.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg", location: "Children's Museum" },
-        { title: "Sunrise Yoga by the Pyramids", category: "Workshops", date: "Sunday • 5:30 AM", description: "Find inner peace with a guided yoga session facing the Great Pyramids at dawn.", image: "../10.jpg", location: "Outdoor Terrace", badge: "Limited" }
+        { title: "The Golden King: Artifacts of a Legend", titleKey: "evt.c1_title", descKey: "evt.c1_desc", locKey: "evt.c1_loc", badgeKey: "evt.c1_badge", dateKey: "evt.c1_date", category: "Exhibitions", date: "2023-10-12", description: "A rare collection of personal jewelry and protective amulets recovered from the royal valley.", image: "../gettyimages-2177866414-612x612.jpg", location: "Gallery 4 • Premium", badge: "Selling Fast" },
+        { title: "Papyrus Making Workshop", titleKey: "evt.c2_title", descKey: "evt.c2_desc", locKey: "evt.c2_loc", badgeKey: "evt.c2_badge", dateKey: "evt.c2_date", category: "Workshops", date: "Every Saturday", description: "Learn the ancient art of paper production using Nile River reeds under expert guidance.", image: "../gettyimages-2245643012-594x594.jpg", location: "Education Center", badge: "Selling Fast" },
+        { title: "Sphinx Sound & Light Show", titleKey: "evt.c3_title", descKey: "evt.c3_desc", locKey: "evt.c3_loc", badgeKey: "evt.c3_badge", dateKey: "evt.c3_date", category: "Cultural Nights", date: "Nightly • 8:00 PM", description: "A spectacular journey through 5,000 years of history projected onto the ancient monuments.", image: "../10.jpg", location: "Main Plaza • Outdoor", badge: "Selling Fast" },
+        { title: "Ramses the Great: Life & Legacy", titleKey: "evt.c4_title", descKey: "evt.c4_desc", locKey: "evt.c4_loc", badgeKey: "evt.c4_badge", category: "Exhibitions", date: "Permanent Collection", description: "Dedicated to Egypt's longest-reigning pharaoh, featuring the colossal statue from Memphis.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg", location: "Atrium • Historic", badge: "Selling Fast" },
+        { title: "Egyptian Hieroglyphs 101", titleKey: "evt.c5_title", descKey: "evt.c5_desc", locKey: "evt.c5_loc", badgeKey: "evt.c5_badge", dateKey: "evt.c5_date", category: "Workshops", date: "Nov 05 • 2:00 PM", description: "An introductory lecture on deciphering the sacred carvings of the Old Kingdom.", image: "../pexels-meryemmeva-35270037.jpg", location: "Library Wing", badge: "Selling Fast" },
+        { title: "Nile Sunset Jazz Sessions", titleKey: "evt.c6_title", descKey: "evt.c6_desc", locKey: "evt.c6_loc", badgeKey: "evt.c6_badge", dateKey: "evt.c6_date", category: "Cultural Nights", date: "Nov 10 • 6:30 PM", description: "Enjoy contemporary jazz fusion as the sun sets over the pyramids from our garden terrace.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_7.jpg", location: "Museum Gardens", badge: "Selling Fast" },
+        { title: "The Grand Discovery Tour", titleKey: "evt.c7_title", descKey: "evt.c7_desc", locKey: "evt.c7_loc", badgeKey: "evt.c7_badge", dateKey: "evt.c7_date", category: "Exhibitions", date: "Every Friday", description: "Join our expert archaeologists on an exclusive behind-the-scenes look at newly excavated pharaonic treasures.", image: "../8.jpg", location: "The Grand Hall", badge: "Exclusive" },
+        { title: "Ancient Board Games Tournament", titleKey: "evt.c8_title", descKey: "evt.c8_desc", locKey: "evt.c8_loc", dateKey: "evt.c8_date", category: "Workshops", date: "Dec 01 • 9:00 AM", description: "Challenge yourself and learn the rules of Senet and Mehen in this interactive historical gaming event.", image: "../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg", location: "Children's Museum" },
+        { title: "Sunrise Yoga by the Pyramids", titleKey: "evt.c9_title", descKey: "evt.c9_desc", locKey: "evt.c9_loc", badgeKey: "evt.c9_badge", dateKey: "evt.c9_date", category: "Workshops", date: "Sunday • 5:30 AM", description: "Find inner peace with a guided yoga session facing the Great Pyramids at dawn.", image: "../10.jpg", location: "Outdoor Terrace", badge: "Limited" }
     ];
 
     function renderEvents() {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'event-card'; // Removed reveal class to fix visibility
             card.innerHTML = `
                 <div class="card-image-wrapper">
-                    ${event.badge ? `<div class="badge-selling">${event.badge}</div>` : ''}
+                    ${event.badge ? `<div class="badge-selling" ${event.badgeKey ? 'data-i18n="' + event.badgeKey + '"' : ''}>${event.badge}</div>` : ''}
                     <button class="btn-favorite">
                         <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
                     </button>
@@ -55,17 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-body">
                     <div class="event-date">
                         <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>
-                        ${dateDisplay}
+                        <span ${event.dateKey ? 'data-i18n="' + event.dateKey + '"' : ''}>${dateDisplay}</span>
                     </div>
-                    <h3 class="event-title">${event.title}</h3>
-                    <p class="event-desc">${event.description || ''}</p>
+                    <h3 class="event-title" ${event.titleKey ? 'data-i18n="' + event.titleKey + '"' : ''}>${event.title}</h3>
+                    <p class="event-desc" ${event.descKey ? 'data-i18n="' + event.descKey + '"' : ''}>${event.description || ''}</p>
                     <div class="card-footer">
                         <span class="event-location">
                             <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>
-                            ${event.location || 'Main Hall'}
+                            <span ${event.locKey ? 'data-i18n="' + event.locKey + '"' : ''}>${event.location || 'Main Hall'}</span>
                         </span>
                         <button class="btn-details">
-                            View Details
+                            <span data-i18n="evt.btn_view_details">View Details</span>
                             <span class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
                         </button>
                     </div>
@@ -73,6 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             eventGrid.appendChild(card);
         });
+        
+        if (window.TutoraLang && typeof window.TutoraLang.applyTranslations === 'function') {
+            window.TutoraLang.applyTranslations();
+        }
     }
 
     async function initializeEvents() {
@@ -105,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             filterTabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            currentFilter = tab.textContent.trim();
+            currentFilter = tab.dataset.filter || tab.textContent.trim();
             renderEvents();
         });
     });

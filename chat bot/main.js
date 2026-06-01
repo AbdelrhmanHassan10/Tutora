@@ -100,7 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Simple Markdown Formatting for AI
         let formattedText = text;
-        if (sender === 'ai') {
+        if (text === "Welcome to the Grand Egyptian Museum! 🏛️ I'm Tutora, your AI guide. Ask me about pharaohs, artifacts, dynasties, or plan your visit.") {
+            formattedText = '<span data-i18n="cb.welcome_msg">' + text + '</span>';
+        } else if (sender === 'ai') {
             formattedText = text
                 .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
                 .replace(/^\*\s(.*)/gm, '<li>$1</li>') // Bullets
@@ -130,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (sender === 'user' && session.title === 'New Conversation') {
                     session.title = text.substring(0, 30) + (text.length > 30 ? '...' : '');
                     renderSidebar();
+        setTimeout(triggerTranslation, 50);
                 }
                 saveSessions();
             }
@@ -174,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         renderSidebar();
+        setTimeout(triggerTranslation, 50);
         
         // On mobile, close sidebar after selecting a chat
         if (window.innerWidth <= 768 && chatSidebar) {
@@ -195,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             renderSidebar();
+        setTimeout(triggerTranslation, 50);
         }
     }
 
@@ -221,31 +226,39 @@ document.addEventListener('DOMContentLoaded', () => {
             session.title = newTitle;
             saveSessions();
             renderSidebar();
+        setTimeout(triggerTranslation, 50);
         };
 
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') saveTitle();
             if (e.key === 'Escape') renderSidebar();
+        setTimeout(triggerTranslation, 50);
         });
 
         input.addEventListener('blur', saveTitle);
     }
 
     window.deleteChatSession = deleteSession;
+    const triggerTranslation = () => {
+        if (window.TutoraLang && typeof window.TutoraLang.applyTranslations === 'function') {
+            window.TutoraLang.applyTranslations();
+        }
+    };
+
     window.editChatSession = editSession;
 
     function renderSidebar() {
         if (!chatHistoryList) return;
         
         if (chatSessions.length === 0) {
-            chatHistoryList.innerHTML = '<div class="history-empty">No past chats yet.</div>';
+            chatHistoryList.innerHTML = '<div class="history-empty" data-i18n="cb.no_past_chats">No past chats yet.</div>';
             return;
         }
 
         chatHistoryList.innerHTML = chatSessions.map(session => `
             <div class="history-item ${session.id === currentSessionId ? 'active' : ''}" data-id="${session.id}" onclick="loadSession('${session.id}')">
                 <span class="material-symbols-outlined chat-icon">chat_bubble</span>
-                <span class="history-item-title">${session.title}</span>
+                <span class="history-item-title" ${session.title === 'New Conversation' ? 'data-i18n="cb.new_chat"' : ''}>${session.title}</span>
                 <div class="history-item-actions">
                     <button class="history-item-action edit" onclick="editChatSession('${session.id}', event)" title="Rename Chat">
                         <span class="material-symbols-outlined">edit</span>
@@ -300,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ question: text })
             });
+        setTimeout(triggerTranslation, 50);
 
             removeTypingIndicator();
             const data = await response.json();

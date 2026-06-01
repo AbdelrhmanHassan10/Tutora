@@ -191,14 +191,13 @@
             <div class="chat-hero-content hero-content">
                 <div class="chat-hero-badge">
                     <span class="material-symbols-outlined">smart_toy</span>
-                    <span>AI-Powered Museum Guide</span>
+                    <span data-i18n="cb.hero_badge">AI-Powered Museum Guide</span>
                 </div>
-                <h1 class="chat-hero-title">Chat with <span class="gold-text">TUTORA</span></h1>
-                <p class="chat-hero-subtitle">Ask anything about ancient Egypt, explore the Grand Egyptian Museum, and
-                    uncover 7,000 years of history — all through a conversation.</p>
+                <h1 class="chat-hero-title" data-i18n="cb.hero_title">Chat with <span class="gold-text" data-i18n="cb.hero_title_span">TUTORA</span></h1>
+                <p class="chat-hero-subtitle" data-i18n="cb.hero_sub">Ask anything about ancient Egypt, explore the Grand Egyptian Museum, and uncover 7,000 years of history — all through a conversation.</p>
                 <a href="#chat-section" class="chat-hero-cta">
                     <span class="material-symbols-outlined">forum</span>
-                    Start Chatting
+                    <span data-i18n="cb.hero_cta">Start Chatting</span>
                 </a>
             </div>
         </section>
@@ -211,7 +210,7 @@
                     <div class="chat-sidebar-header">
                         <button class="new-chat-btn" id="newChatBtn">
                             <span class="material-symbols-outlined">add</span>
-                            <span>New Chat</span>
+                            <span data-i18n="cb.new_chat">New Chat</span>
                         </button>
                         <button class="sidebar-toggle-btn" id="closeSidebarBtn">
                             <span class="material-symbols-outlined">menu_open</span>
@@ -220,7 +219,7 @@
                     
                     <div class="sidebar-scroll custom-scrollbar">
                         <div class="history-group">
-                            <div class="history-label">Recent Conversations</div>
+                            <div class="history-label" data-i18n="cb.recent_conv">Recent Conversations</div>
                             <div id="chatHistoryList" class="history-list">
                                 <!-- History items will be injected here -->
                                 <div class="history-empty">No past chats yet</div>
@@ -242,8 +241,8 @@
                                     <span class="chat-fs-online"></span>
                                 </div>
                                 <div>
-                                    <h3>TUTORA AI</h3>
-                                    <p><span class="dot-online"></span> Online — Ready to explore</p>
+                                    <h3 data-i18n="cb.ai_name">TUTORA AI</h3>
+                                    <p><span class="dot-online"></span><span data-i18n="cb.ai_status">Online — Ready to explore</span></p>
                                 </div>
                             </div>
                         </div>
@@ -270,28 +269,27 @@
 
                     <div class="chat-fs-suggestions" id="chatSuggestions">
                         <button class="chat-suggestion-btn" data-q="Tell me about the Mask of Tutankhamun">
-                            <span class="material-symbols-outlined">cruelty_free</span> Mask of Tutankhamun
+                            <span class="material-symbols-outlined">cruelty_free</span><span data-i18n="cb.sug_1">Mask of Tutankhamun</span>
                         </button>
                         <button class="chat-suggestion-btn" data-q="How were the Pyramids built?">
-                            <span class="material-symbols-outlined">architecture</span> Pyramid Construction
+                            <span class="material-symbols-outlined">architecture</span><span data-i18n="cb.sug_2">Pyramid Construction</span>
                         </button>
                         <button class="chat-suggestion-btn" data-q="What is the Rosetta Stone?">
-                            <span class="material-symbols-outlined">auto_stories</span> Rosetta Stone
+                            <span class="material-symbols-outlined">auto_stories</span><span data-i18n="cb.sug_3">Rosetta Stone</span>
                         </button>
                         <button class="chat-suggestion-btn" data-q="Plan my visit to the GEM">
-                            <span class="material-symbols-outlined">map</span> Plan My Visit
+                            <span class="material-symbols-outlined">map</span><span data-i18n="cb.sug_4">Plan My Visit</span>
                         </button>
                     </div>
 
                     <div class="chat-fs-input-area">
                         <div class="chat-fs-input-wrapper">
-                            <input type="text" class="chat-fs-input" id="chatInput"
-                                placeholder="Ask Tutora anything about ancient Egypt..." />
+                            <input type="text" class="chat-fs-input" id="chatInput" data-i18n-placeholder="cb.input_placeholder" placeholder="Ask Tutora anything about ancient Egypt..." />
                             <button class="chat-fs-send" id="chatSendBtn">
                                 <span class="material-symbols-outlined">send</span>
                             </button>
                         </div>
-                        <p class="chat-fs-disclaimer">Tutora AI may produce inaccurate information. Verify important facts.</p>
+                        <p class="chat-fs-disclaimer" data-i18n="cb.disclaimer">Tutora AI may produce inaccurate information. Verify important facts.</p>
                     </div>
                 </div>
             </div>
