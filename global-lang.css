@@ -13,22 +13,6 @@ html[dir="rtl"] body {
 }
 
 /* ── Navigation RTL ────────────────────────── */
-html[dir="rtl"] .header-container {
-    flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .header-left {
-    flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .header-right {
-    flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .desktop-nav {
-    flex-direction: row-reverse;
-}
-
 html[dir="rtl"] .desktop-nav a,
 html[dir="rtl"] .desktop-nav button {
     direction: rtl;
@@ -46,7 +30,6 @@ html[dir="rtl"] .mobile-menu.active {
 }
 
 html[dir="rtl"] .menu-header {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .menu-nav {
@@ -64,7 +47,6 @@ html[dir="rtl"] .menu-footer {
 
 /* ── Search Box RTL ────────────────────────── */
 html[dir="rtl"] .search-box {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .search-box input {
@@ -77,13 +59,11 @@ html[dir="rtl"] .hero-content {
 }
 
 html[dir="rtl"] .hero-buttons {
-    flex-direction: row-reverse;
     justify-content: flex-start;
 }
 
 /* ── Info Bar RTL ──────────────────────────── */
 html[dir="rtl"] .quick-info-bar .info-item {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .quick-info-bar .info-item div {
@@ -96,7 +76,6 @@ html[dir="rtl"] .tour-info {
 }
 
 html[dir="rtl"] .event-card {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .event-details {
@@ -105,7 +84,6 @@ html[dir="rtl"] .event-details {
 
 /* ── Artifact Panel RTL ────────────────────── */
 html[dir="rtl"] .artifact-panel {
-    flex-direction: row-reverse !important;
 }
 
 html[dir="rtl"] .artifact-content {
@@ -113,7 +91,6 @@ html[dir="rtl"] .artifact-content {
 }
 
 html[dir="rtl"] .artifact-actions {
-    flex-direction: row-reverse;
 }
 
 /* ── Section Headers RTL ───────────────────── */
@@ -122,12 +99,10 @@ html[dir="rtl"] .section-title {
 }
 
 html[dir="rtl"] .section-header-flex {
-    flex-direction: row-reverse;
 }
 
 /* ── Membership RTL ────────────────────────── */
 html[dir="rtl"] .membership-content {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .membership-text {
@@ -135,7 +110,6 @@ html[dir="rtl"] .membership-text {
 }
 
 html[dir="rtl"] .membership-perks li {
-    flex-direction: row-reverse;
     text-align: right;
 }
 
@@ -150,7 +124,6 @@ html[dir="rtl"] .newsletter-content {
 }
 
 html[dir="rtl"] .newsletter-form {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .newsletter-form input {
@@ -159,7 +132,6 @@ html[dir="rtl"] .newsletter-form input {
 
 /* ── Location RTL ──────────────────────────── */
 html[dir="rtl"] .location-header {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .location-title,
@@ -172,7 +144,6 @@ html[dir="rtl"] .visit-card {
 }
 
 html[dir="rtl"] .visit-info .info-item {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .info-content {
@@ -193,11 +164,9 @@ html[dir="rtl"] .footer-column ul {
 }
 
 html[dir="rtl"] .legal-links {
-    flex-direction: row-reverse;
 }
 
 html[dir="rtl"] .footer-bottom {
-    flex-direction: row-reverse;
 }
 
 /* ── Dropdown RTL ──────────────────────────── */
@@ -306,31 +275,6 @@ html[dir="rtl"] .scroll-progress-bar {
 
 
 /* ── RTL Navigation Mirroring (FORCE FLIP) ─── */
-/* This ensures the Logo moves to the right in Arabic regardless of local styles */
-
-/* Home Page Header */
-html[dir="rtl"] .header-container {
-    flex-direction: row-reverse !important;
-    display: flex !important;
-}
-
-/* Login/Register Page Header */
-html[dir="rtl"] .nav-container,
-html[dir="rtl"] .main-header {
-    flex-direction: row-reverse !important;
-    display: flex !important;
-}
-
-/* Sections inside headers */
-html[dir="rtl"] .header-left,
-html[dir="rtl"] .header-right,
-html[dir="rtl"] .desktop-nav,
-html[dir="rtl"] .logo-side,
-html[dir="rtl"] .logo-section,
-html[dir="rtl"] .nav-links {
-    flex-direction: row-reverse !important;
-}
-
 /* Ensure flow alignment */
 html[dir="rtl"] .desktop-nav,
 html[dir="rtl"] .nav-links {

@@ -1542,3 +1542,32 @@ body.light .ai-section-title {
     margin: 2rem auto;
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
+
+/* ============================================
+   LIGHT MODE FIXES FOR ANCIENT ARTS
+   ============================================ */
+body.light .hero-title,
+body.light .ai-section-title,
+body.light .art-how-title,
+body.light .creative-tools-title {
+    color: #8e7341 !important;
+    -webkit-text-fill-color: #8e7341 !important;
+    text-shadow: none !important;
+}
+
+body.light .hero-subtitle {
+    color: var(--text-secondary) !important;
+}
+
+body.light .card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light .card-title {
+    color: var(--text-primary) !important;
+}
+
+body.light .card-desc {
+    color: var(--text-secondary) !important;
+}

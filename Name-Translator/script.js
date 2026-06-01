@@ -7,62 +7,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const hieroglyphDisplay = document.getElementById('hieroglyphDisplay');
     const phoneticText = document.getElementById('phoneticText');
 
-    generateBtn.addEventListener('click', async () => {
+    const hieroglyphMap = {
+        'a': '𓄿', 'b': '𓃀', 'c': '𓎡', 'd': '𓂧', 'e': '𓇋', 
+        'f': '𓆑', 'g': '𓎼', 'h': '𓉔', 'i': '𓇋', 'j': '𓆓', 
+        'k': '𓎡', 'l': '𓃭', 'm': '𓅓', 'n': '𓈖', 'o': '𓍯', 
+        'p': '𓊪', 'q': '𓈎', 'r': '𓂋', 's': '𓋴', 't': '𓏏', 
+        'u': '𓅱', 'v': '𓆑', 'w': '𓅱', 'x': '𓎡𓋴', 'y': '𓇋𓇋', 
+        'z': '𓊃', ' ': ' '
+    };
+
+    generateBtn.addEventListener('click', () => {
         const name = nameInput.value.trim();
         if (!name) { alert('Please enter a name to translate!'); return; }
-
-        const token = localStorage.getItem('token');
-        if (!token) {
-            alert('🔐 Authentication required. Please login to use the Royal Cartouche generator.');
-            window.location.href = '../2.login/code.html';
-            return;
-        }
 
         hieroglyphDisplay.style.opacity = '0';
         phoneticText.style.opacity = '0';
         generateBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Carving...';
         generateBtn.disabled = true;
 
-        try {
-            const response = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/ai/name-to-cartouche', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ name })
-            });
-
-            let data = {};
-            try {
-                data = await response.json();
-            } catch (jsonError) {
-                console.error('Failed to parse JSON from server response:', jsonError);
+        setTimeout(() => {
+            let translated = '';
+            for (let char of name.toLowerCase()) {
+                translated += hieroglyphMap[char] ? hieroglyphMap[char] + ' ' : char + ' ';
             }
 
-            if (response.ok && data.cartouche) {
-                let imgSrc = data.cartouche;
-                if (!imgSrc.startsWith('http') && !imgSrc.startsWith('data:')) {
-                    imgSrc = `data:image/png;base64,${imgSrc}`;
-                }
-                hieroglyphDisplay.innerHTML = `<img src="${imgSrc}" alt="Cartouche" style="max-height: 120px; border-radius: 8px;">`;
-                phoneticText.textContent = data.name || name;
-            } else if (response.status === 401 || response.status === 403) {
-                alert('🔐 Session expired. Please sign in again.');
-                localStorage.removeItem('token');
-                window.location.href = '../2.login/code.html';
-            } else {
-                alert(`⚠️ Translation failed: ${data.message || 'The gods are busy, please try again later.'}`);
-            }
-        } catch (error) {
-            console.error('API Translation Error:', error);
-            alert('⚠️ Network connection failed. The ritual was interrupted.');
-        } finally {
+            hieroglyphDisplay.textContent = translated.trim();
+            phoneticText.textContent = name;
+
             hieroglyphDisplay.style.opacity = '1';
             phoneticText.style.opacity = '1';
             generateBtn.innerHTML = 'Generate Inscription';
             generateBtn.disabled = false;
-        }
+        }, 800);
     });
 
     nameInput.addEventListener('keypress', e => {

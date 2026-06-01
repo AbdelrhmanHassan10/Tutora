@@ -4758,3 +4758,82 @@ body.light .copyright {
         margin-right: 0;
     }
 }
+
+/* ============================================
+   INFO CONTEXT STYLES
+   ============================================ */
+.footer-context {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.context-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(236, 182, 19, 0.05);
+    border: 1px solid rgba(236, 182, 19, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.context-info:hover {
+    background: rgba(236, 182, 19, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(236, 182, 19, 0.1);
+}
+
+.context-info .material-symbols-outlined {
+    color: #ecb613;
+    font-size: 1.25rem;
+}
+
+.context-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   LIGHT MODE FIXES FOR NAME TRANSLATOR
+   ============================================ */
+body.light .hero-title {
+    color: #8e7341 !important;
+    -webkit-text-fill-color: #8e7341 !important;
+    text-shadow: none !important;
+}
+
+body.light .input-field {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+body.light .input-field:-webkit-autofill,
+body.light .input-field:-webkit-autofill:hover,
+body.light .input-field:-webkit-autofill:focus,
+body.light .input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 50px var(--bg-secondary) inset !important;
+    -webkit-text-fill-color: var(--text-primary) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+body.light .phonetic-label,
+body.light .artifact-ref,
+body.light .input-label,
+body.light .hero-description {
+    color: var(--text-secondary) !important;
+}
+
+body.light .phonetic-text,
+body.light .radio-label,
+body.light .hieroglyph-display {
+    color: var(--text-primary) !important;
+}

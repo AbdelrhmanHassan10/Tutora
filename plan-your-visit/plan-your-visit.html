@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+    <meta name="description"
+        content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <title>TUTORA Plan Your Visit | Organize Your Museum Trip</title>
-     <link rel="icon" type="image/png" href="../museum.png">
-                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-                                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-                                <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
-                                <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../animate.css" />
     <link rel="stylesheet" href="../global-theme.css" />
     <link rel="stylesheet" href="../global-lang.css" />
@@ -38,49 +41,58 @@
             </button>
         </div>
         <nav class="menu-nav">
-            <a href="../4.home/code.html" class="menu-link">Home</a>
-            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link">Plan Your Visit</a>
-            <a href="../Kids-Museum/kids-museum.html" class="menu-link">Kids-Museum</a>
-            <a href="../event/event.html" class="menu-link">Event</a>
+            <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
+            <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
             <div class="menu-dropdown">
                 <button class="menu-link dropdown-toggle">
-                    AI Experience
+                    <span data-i18n="nav.ai_experience">AI Experience</span>
                     <span class="material-symbols-outlined">expand_more</span>
                 </button>
                 <div class="dropdown-items">
-                    <a href="../AI Guide/guide.html" class="dropdown-item">AI Tour Guide</a>
-                    <a href="../chat bot/chat.html" class="dropdown-item">AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item">AI Artifact Identifier</a>
-                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D)</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora laboratory</a>
+                    <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact
+                        Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
                 </div>
             </div>
-            <a href="../shop/shop.html" class="menu-link">Shop</a>
-            <a href="../about/About.html" class="menu-link">About</a>
+            <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
+            <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
             <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle">Collection <span class="material-symbols-outlined">expand_more</span></button>
+                <button class="menu-link dropdown-toggle"><span data-i18n="nav.collection">Collection</span> <span
+                        class="material-symbols-outlined">expand_more</span></button>
                 <div class="dropdown-items">
-                    <a href="../collection/collection.html" class="dropdown-item">Main Gallery</a>
-                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition Halls</a>
+                    <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
                 </div>
             </div>
-        <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="nav.profile_menu">Profile Menu</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
-      </div>
+            <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="nav.profile_menu">Profile Menu</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../Profile/profile.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined"
+                            style="font-size: 18px;">person</span> Profile</a>
+                    <a href="../setting/setting.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined"
+                            style="font-size: 18px;">settings</span> Settings</a>
+                    <a href="#" class="dropdown-item" onclick="handleLogout(); return false;"
+                        style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+                </div>
+            </div>
 
-      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
-        <span class="material-symbols-outlined">login</span>
-        <span data-i18n="nav.login">Login</span>
-      </a>
-    </nav>
+            <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn"
+                style="display: none; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined">login</span>
+                <span data-i18n="nav.login">Login</span>
+            </a>
+        </nav>
         <div class="menu-footer">
             <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
             <a href="../fav/favourite.html" class="menu-icon-link" title="Favorites">
@@ -93,7 +105,9 @@
     </div>
 
     <header class="header">
-        <div class="scroll-progress-container"><div class="scroll-progress-bar" id="scrollProgress"></div></div>
+        <div class="scroll-progress-container">
+            <div class="scroll-progress-bar" id="scrollProgress"></div>
+        </div>
         <div class="header-container">
             <div class="header-left">
                 <button class="menu-btn" id="menuBtn">
@@ -103,33 +117,37 @@
                     <div class="logo-circle">
                         <img src="../logo.png" alt="Tutora Logo">
                     </div>
-                    <h2 class="logo-text">Tutora</h2></a>
+                    <h2 class="logo-text">Tutora</h2>
+                </a>
             </div>
             <nav class="desktop-nav">
-                <a href="../4.home/code.html">Home</a>
-                <a href="../plan-your-visit/plan-your-visit.html">Plan Your Visit</a>
-                <a href="../Kids-Museum/kids-museum.html">Kids-Museum</a>
-                <a href="../event/event.html">Event</a>
+                <a href="../4.home/code.html" data-i18n="nav.home">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids-Museum</a>
+                <a href="../event/event.html" data-i18n="nav.event">Event</a>
                 <div class="nav-dropdown">
                     <button class="nav-link dropdown-trigger">
-                        AI Experience
+                        <span data-i18n="nav.ai_experience">AI Experience</span>
                         <span class="material-symbols-outlined">expand_more</span>
                     </button>
                     <div class="dropdown-menu">
-                        <a href="../AI Guide/guide.html" class="dropdown-link">AI Tour Guide</a>
-                        <a href="../chat bot/chat.html" class="dropdown-link">AI Chatbot</a>
-                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Identifier</a>
-                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D)</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora laboratory</a>
+                        <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact
+                            Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice Storytelling
+                            (3D)</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora laboratory</a>
                     </div>
                 </div>
-                <a href="../shop/shop.html">Shop</a>
-                <a href="../about/About.html">About</a>
+                <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
+                <a href="../about/About.html" data-i18n="nav.about">About</a>
                 <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger">Collection <span class="material-symbols-outlined">expand_more</span></button>
+                    <button class="nav-link dropdown-trigger"><span data-i18n="nav.collection">Collection</span> <span
+                            class="material-symbols-outlined">expand_more</span></button>
                     <div class="dropdown-menu">
-                        <a href="../collection/collection.html" class="dropdown-link">Main Gallery</a>
-                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link">Exhibition Halls</a>
+                        <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
+                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
                     </div>
                 </div>
             </nav>
@@ -141,141 +159,178 @@
                 <button class="theme-btn" id="theme-toggle">
                     <span class="material-symbols-outlined">dark_mode</span>
                 </button>
-                <a href="../booking/booking.html" class="btn-booking" data-i18n="nav.booking" title="Book Tickets">booking</a>
+                <a href="../booking/booking.html" class="btn-booking" data-i18n="nav.booking"
+                    title="Book Tickets">booking</a>
                 <a href="../fav/favourite.html" class="icon-btn" style="text-decoration: none;" title="Favorites">
                     <span class="material-symbols-outlined">favorite</span>
                 </a>
-                
-                    <a href="../card/card.html" class="icon-btn"  title="Cart">
-                        <button class="icon-btn cart-btn" style="position: relative; background: transparent; border: none; cursor: pointer;">
-                            <span class="material-symbols-outlined" style="color: #ECB613;">shopping_cart</span>
-                            <span class="cart-badge" style="display: none;">0</span>
-                        </button>
-                    </a>
-                    <button class="icon-btn" id="langBtn" title="Language">
+
+                <a href="../card/card.html" class="icon-btn" title="Cart">
+                    <button class="icon-btn cart-btn"
+                        style="position: relative; background: transparent; border: none; cursor: pointer;">
+                        <span class="material-symbols-outlined" style="color: #ECB613;">shopping_cart</span>
+                        <span class="cart-badge" style="display: none;">0</span>
+                    </button>
+                </a>
+                <button class="icon-btn" id="langBtn" title="Language">
                     <span class="material-symbols-outlined">language</span>
                 </button>
-                <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-            <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
-              <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-              <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);" />
-            </button>
-            <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-              <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-              <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-              <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-            </div>
-          </div>
-          
-          <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
-            <button class="icon-btn">
-              <span class="material-symbols-outlined">login</span>
-            </button>
-          </a>
+                <div class="nav-dropdown profile-dropdown" id="navProfileLink"
+                    style="display: none; margin-right: 15px;" title="Profile">
+                    <button class="nav-link dropdown-trigger profile-trigger"
+                        style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                        <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
+                        <img src="../Profile/unnamed.png" alt="Profile" class="profile-img"
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);" />
+                    </button>
+                    <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
+                        <a href="../Profile/profile.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+                        <a href="../setting/setting.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+                        <a href="#" class="dropdown-link" onclick="handleLogout(); return false;"
+                            style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+                    </div>
+                </div>
+
+                <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;"
+                    title="Login">
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined">login</span>
+                    </button>
+                </a>
             </div>
         </div>
     </header>
 
     <main>
-        <section class="hero" style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg');">
+        <section class="hero"
+            style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg');">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h1 class="hero-title" style="color: white;" data-i18n="plan.hero_title">Your Journey Through Time Begins Here.</h1>
+                <h1 class="hero-title" style="color: white;" data-i18n="plan.hero_title">Your Journey Through Time
+                    Begins Here.</h1>
                 <p class="hero-subtitle" id="divineGreeting" style="color: white; min-height: 1.5em;"></p>
-                <a href="../booking/booking.html"> <button class="btn-primary" style="padding: 1rem 2rem; font-size: 1.125rem;" data-i18n="plan.hero_btn">Book Your Ticket Now</button></a>
+                <a href="../booking/booking.html"> <button class="btn-primary"
+                        style="padding: 1rem 2rem; font-size: 1.125rem;" data-i18n="plan.hero_btn">Book Your Ticket
+                        Now</button></a>
             </div>
         </section>
 
         <section class="container section">
-            <h2 class="section-title">Purchase Your Tickets</h2>
+            <h2 class="section-title" data-i18n="plan.tickets_title">Purchase Your Tickets</h2>
             <div class="pricing-switcher">
-                <button class="switch-btn active" data-type="international">International Visitors</button>
-                <button class="switch-btn" data-type="egyptian">Egyptian / Arab Nationals</button>
+                <button class="switch-btn active" data-type="international" data-i18n="plan.intl_visitors">International
+                    Visitors</button>
+                <button class="switch-btn" data-type="egyptian" data-i18n="plan.local_nationals">Egyptian / Arab
+                    Nationals</button>
             </div>
             <div class="ticket-grid">
                 <div class="ticket-card" id="ticket-general">
-                    <h3 class="ticket-name">General Admission</h3>
-                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;">Access to Grand Staircase & Main Galleries</p>
+                    <h3 class="ticket-name" data-i18n="plan.ticket_general">General Admission</h3>
+                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;"
+                        data-i18n="plan.ticket_general_desc">Access to Grand Staircase & Main Galleries</p>
                     <div class="price-tag">
                         <span class="price-value" data-intl="$25" data-local="200 EGP">$25</span>
-                        <span class="price-unit">per adult</span>
+                        <span class="price-unit" data-i18n="plan.per_adult">per adult</span>
                     </div>
-                    <a href="../booking/booking.html"> <button class="btn-secondary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button></a>
+                    <a href="../booking/booking.html"> <button class="btn-secondary"
+                            style="width: 100%; margin-bottom: 2rem;" data-i18n="plan.buy_tickets">Buy
+                            Tickets</button></a>
                     <ul class="feature-list">
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Grand Staircase & Statues</li>
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Main Exhibition Halls</li>
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Valid for one full day</li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> <span data-i18n="plan.feat_staircase">Grand
+                            Staircase & Statues</span></li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> <span data-i18n="plan.feat_halls">Main
+                            Exhibition Halls</span></li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> <span data-i18n="plan.feat_valid">Valid
+                            for one full day</span></li>
                     </ul>
                 </div>
                 <div class="ticket-card popular" id="ticket-guided">
-                    <div class="popular-badge">Recommended for Explorers</div>
-                    <h3 class="ticket-name">Guided Experience</h3>
-                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;">Expert-led journey through the ages</p>
+                    <div class="popular-badge" data-i18n="plan.recommended_badge">Recommended for Explorers</div>
+                    <h3 class="ticket-name" data-i18n="plan.ticket_guided">Guided Experience</h3>
+                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;"
+                        data-i18n="plan.ticket_guided_desc">Expert-led journey through the ages</p>
                     <div class="price-tag">
                         <span class="price-value" data-intl="$38" data-local="350 EGP">$38</span>
-                        <span class="price-unit">per adult</span>
+                        <span class="price-unit" data-i18n="plan.per_adult">per adult</span>
                     </div>
-                    <a href="../booking/booking.html"> <button class="btn-primary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button></a>
+                    <a href="../booking/booking.html"> <button class="btn-primary"
+                            style="width: 100%; margin-bottom: 2rem;" data-i18n="plan.buy_tickets">Buy
+                            Tickets</button></a>
                     <ul class="feature-list">
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> 2-hour expert human guide</li>
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Priority Access to Galleries</li>
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Includes General Admission</li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span>
+                            <span data-i18n="plan.feat_guide">2-hour expert human guide</span></li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span>
+                            <span data-i18n="plan.feat_priority">Priority Access to Galleries</span></li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span>
+                            <span data-i18n="plan.feat_includes">Includes General Admission</span></li>
                     </ul>
                 </div>
                 <div class="ticket-card" id="ticket-special">
-                    <h3 class="ticket-name">Tutankhamun Pass</h3>
-                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;">The ultimate historical immersion</p>
+                    <h3 class="ticket-name" data-i18n="plan.ticket_tut">Tutankhamun Pass</h3>
+                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: -1rem; margin-bottom: 1.5rem;"
+                        data-i18n="plan.ticket_tut_desc">The ultimate historical immersion</p>
                     <div class="price-tag">
                         <span class="price-value" data-intl="$42" data-local="450 EGP">$42</span>
-                        <span class="price-unit">per adult</span>
+                        <span class="price-unit" data-i18n="plan.per_adult">per adult</span>
                     </div>
-                    <a href="../booking/booking.html"> <button class="btn-secondary" style="width: 100%; margin-bottom: 2rem;">Buy Tickets</button></a>
+                    <a href="../booking/booking.html"> <button class="btn-secondary"
+                            style="width: 100%; margin-bottom: 2rem;" data-i18n="plan.buy_tickets">Buy
+                            Tickets</button></a>
                     <ul class="feature-list">
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Tutankhamun Immersive Gallery</li>
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> All Main Halls & Staircase</li>
-                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> Access to Kids Museum</li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span>
+                            <span data-i18n="plan.feat_tut_gallery">Tutankhamun Immersive Gallery</span></li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span> <span data-i18n="plan.feat_all_halls">All
+                            Main Halls & Staircase</span></li>
+                        <li class="feature-item"><span class="material-symbols-outlined feature-icon">check</span>
+                            <span data-i18n="plan.feat_kids">Access to Kids Museum</span></li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section class="container section" id="itineraries">
-            <h2 class="section-title">Recommended Itineraries</h2>
-            <p style="color: #94A3B8; margin-bottom: 2rem;">Make the most of your time with our curated guides.</p>
+            <h2 class="section-title" data-i18n="plan.itineraries_title">Recommended Itineraries</h2>
+            <p style="color: #94A3B8; margin-bottom: 2rem;" data-i18n="plan.itineraries_subtitle">Make the most of your
+                time with our curated guides.</p>
             <div class="itinerary-grid">
                 <div class="itinerary-card">
-                    <div class="itinerary-time">2 Hours</div>
-                    <h3>The Highlights Tour</h3>
-                    <p>Perfect for those on a tight schedule. See the essential masterpieces.</p>
+                    <div class="itinerary-time" data-i18n="plan.itin1_time">2 Hours</div>
+                    <h3 data-i18n="plan.itin1_title">The Highlights Tour</h3>
+                    <p data-i18n="plan.itin1_desc">Perfect for those on a tight schedule. See the essential masterpieces.</p>
                     <ul class="timeline">
-                        <li><strong>Start:</strong> The Grand Staircase</li>
-                        <li><strong>Middle:</strong> Tutankhamun's Mask</li>
-                        <li><strong>End:</strong> Royal Mummies Hall</li>
+                        <li><strong data-i18n="plan.itin_start">Start:</strong> <span data-i18n="plan.itin1_start">The Grand Staircase</span></li>
+                        <li><strong data-i18n="plan.itin_middle">Middle:</strong> <span data-i18n="plan.itin1_mid">Tutankhamun's Mask</span></li>
+                        <li><strong data-i18n="plan.itin_end">End:</strong> <span data-i18n="plan.itin1_end">Royal Mummies Hall</span></li>
                     </ul>
-                    <a href="#ticket-general" class="itin-link">Choose General Admission</a>
+                    <a href="#ticket-general" class="itin-link" data-i18n="plan.itin1_btn">Choose General Admission</a>
                 </div>
                 <div class="itinerary-card popular-itin">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="itinerary-time">Half Day (4-5 Hours)</div>
-                    <h3>The Explorer Experience</h3>
-                    <p>Dive deeper into the history with time for relaxation.</p>
+                    <div class="popular-badge" data-i18n="plan.itin_popular">Most Popular</div>
+                    <div class="itinerary-time" data-i18n="plan.itin2_time">Half Day (4-5 Hours)</div>
+                    <h3 data-i18n="plan.itin2_title">The Explorer Experience</h3>
+                    <p data-i18n="plan.itin2_desc">Dive deeper into the history with time for relaxation.</p>
                     <ul class="timeline">
-                        <li><strong>Morning:</strong> Main Exhibition Galleries</li>
-                        <li><strong>Lunch:</strong> Pyramid View Restaurant</li>
-                        <li><strong>Afternoon:</strong> Pharaoh Transformer Exhibit</li>
+                        <li><strong data-i18n="plan.itin_morning">Morning:</strong> <span data-i18n="plan.itin2_morn">Main Exhibition Galleries</span></li>
+                        <li><strong data-i18n="plan.itin_lunch">Lunch:</strong> <span data-i18n="plan.itin2_lunch">Pyramid View Restaurant</span></li>
+                        <li><strong data-i18n="plan.itin_afternoon">Afternoon:</strong> <span data-i18n="plan.itin2_aft">Pharaoh Transformer Exhibit</span></li>
                     </ul>
-                    <a href="#ticket-guided" class="itin-link">Choose Guided Experience</a>
+                    <a href="#ticket-guided" class="itin-link" data-i18n="plan.itin2_btn">Choose Guided Experience</a>
                 </div>
                 <div class="itinerary-card">
-                    <div class="itinerary-time">Full Day</div>
-                    <h3>The Complete GEM</h3>
-                    <p>Immerse yourself completely. Includes all special exhibitions.</p>
+                    <div class="itinerary-time" data-i18n="plan.itin3_time">Full Day</div>
+                    <h3 data-i18n="plan.itin3_title">The Complete GEM</h3>
+                    <p data-i18n="plan.itin3_desc">Immerse yourself completely. Includes all special exhibitions.</p>
                     <ul class="timeline">
-                        <li><strong>Morning:</strong> All Main Galleries</li>
-                        <li><strong>Lunch:</strong> Grand Cafe & Gift Shop</li>
-                        <li><strong>Afternoon:</strong> Kids Museum & Interactive 3D Voice</li>
+                        <li><strong data-i18n="plan.itin_morning">Morning:</strong> <span data-i18n="plan.itin3_morn">All Main Galleries</span></li>
+                        <li><strong data-i18n="plan.itin_lunch">Lunch:</strong> <span data-i18n="plan.itin3_lunch">Grand Cafe & Gift Shop</span></li>
+                        <li><strong data-i18n="plan.itin_afternoon">Afternoon:</strong> <span data-i18n="plan.itin3_aft">Kids Museum & Interactive 3D Voice</span></li>
                     </ul>
-                    <a href="#ticket-special" class="itin-link">Choose Tutankhamun Pass</a>
+                    <a href="#ticket-special" class="itin-link" data-i18n="plan.itin3_btn">Choose Tutankhamun Pass</a>
                 </div>
             </div>
         </section>
@@ -283,11 +338,12 @@
         <section class="container section" id="route-planner">
             <div class="ai-planner">
                 <div class="planner-content">
-                    <h3>AI-Powered Route Planner</h3>
-                    <p>Tell us what you're interested in, and our AI will craft the perfect route through the museum for you. Discover hidden gems and make the most of your visit.</p>
+                    <h3 data-i18n="plan.planner_title">AI-Powered Route Planner</h3>
+                    <p data-i18n="plan.planner_desc">Tell us what you're interested in, and our AI will craft the perfect route through the museum for
+                        you. Discover hidden gems and make the most of your visit.</p>
                     <div class="planner-form">
-                        <input class="planner-input" placeholder="e.g., Pharaohs, Mummies, Jewelry" type="text">
-                        <button class="btn-primary" id="generateRouteBtn">Generate My Route</button>
+                        <input class="planner-input" placeholder="e.g., Pharaohs, Mummies, Jewelry" data-i18n-placeholder="plan.planner_placeholder" type="text">
+                        <button class="btn-primary" id="generateRouteBtn" data-i18n="plan.planner_btn">Generate My Route</button>
                     </div>
                 </div>
                 <img class="planner-img" src="planner-visual.png" alt="AI Planner">
@@ -302,22 +358,22 @@
         </section>
 
         <section class="container section">
-            <h2 class="section-title">Visitor Information</h2>
+            <h2 class="section-title" data-i18n="plan.visitor_info">Visitor Information</h2>
             <div class="info-grid">
                 <div class="info-card">
                     <span class="material-symbols-outlined info-icon">schedule</span>
-                    <h3>Opening Hours</h3>
-                    <p>Daily: 9:00 AM - 5:00 PM</p>
+                    <h3 data-i18n="plan.opening_hours">Opening Hours</h3>
+                    <p data-i18n="location.hours_value">Daily: 9:00 AM - 5:00 PM</p>
                 </div>
                 <div class="info-card">
                     <span class="material-symbols-outlined info-icon">location_on</span>
-                    <h3>Location</h3>
-                    <p>Giza, Egypt</p>
+                    <h3 data-i18n="plan.location">Location</h3>
+                    <p data-i18n="location.address">Giza, Egypt</p>
                 </div>
                 <div class="info-card">
                     <span class="material-symbols-outlined info-icon">accessible</span>
-                    <h3>Accessibility</h3>
-                    <p>Fully accessible for all visitors</p>
+                    <h3 data-i18n="info.access_title">Accessibility</h3>
+                    <p data-i18n="info.access_value">Fully accessible for all visitors</p>
                 </div>
             </div>
         </section>
@@ -325,27 +381,27 @@
         <section class="container section getting-here">
             <div class="transit-split">
                 <div class="transit-content">
-                    <h2 class="section-title">Getting Here & Parking</h2>
+                    <h2 class="section-title" data-i18n="plan.getting_here">Getting Here & Parking</h2>
                     <ul class="transit-list">
                         <li>
                             <span class="material-symbols-outlined icon" style="color: #ECB613;">directions_bus</span>
                             <div>
-                                <h4 style="color: white; margin-bottom: 5px;">Public Transit</h4>
-                                <p style="color: #94A3B8;">Take Metro Line 3 to the GEM station. Direct shuttle buses available from Tahrir Square.</p>
+                                <h4 style="color: white; margin-bottom: 5px;" data-i18n="plan.public_transit">Public Transit</h4>
+                                <p style="color: #94A3B8;" data-i18n="plan.transit_desc">Take Metro Line 3 to the GEM station. Direct shuttle buses available from Tahrir Square.</p>
                             </div>
                         </li>
                         <li>
                             <span class="material-symbols-outlined icon" style="color: #ECB613;">local_taxi</span>
                             <div>
-                                <h4 style="color: white; margin-bottom: 5px;">Taxi & Ride Share</h4>
-                                <p style="color: #94A3B8;">Uber and taxis have a dedicated drop-off point at the Main Entrance.</p>
+                                <h4 style="color: white; margin-bottom: 5px;" data-i18n="plan.taxi">Taxi & Ride Share</h4>
+                                <p style="color: #94A3B8;" data-i18n="plan.taxi_desc">Uber and taxis have a dedicated drop-off point at the Main Entrance.</p>
                             </div>
                         </li>
                         <li>
                             <span class="material-symbols-outlined icon" style="color: #ECB613;">local_parking</span>
                             <div>
-                                <h4 style="color: white; margin-bottom: 5px;">Parking</h4>
-                                <p style="color: #94A3B8;">Secure underground parking available. $5 for half-day, $10 for full day. EV charging included.</p>
+                                <h4 style="color: white; margin-bottom: 5px;" data-i18n="plan.parking">Parking</h4>
+                                <p style="color: #94A3B8;" data-i18n="plan.parking_desc">Secure underground parking available. $5 for half-day, $10 for full day. EV charging included.</p>
                             </div>
                         </li>
                     </ul>
@@ -354,50 +410,68 @@
             </div>
         </section>
 
-        <section class="container section guidelines-section">
-            <h2 class="section-title" style="text-align: center;">Before You Arrive</h2>
+        <section class="container section rules-section">
+            <h2 class="section-title" style="text-align: center;" data-i18n="plan.before_arrive">Before You Arrive</h2>
             <div class="rules-grid">
                 <div class="rule-item">
                     <span class="material-symbols-outlined">no_photography</span>
-                    <p>No Flash Photography</p>
+                    <p data-i18n="plan.no_flash">No Flash Photography</p>
                 </div>
                 <div class="rule-item">
-                    <span class="material-symbols-outlined">no_backpack</span>
-                    <p>No Large Bags</p>
+                    <span class="material-symbols-outlined">luggage</span>
+                    <p data-i18n="plan.no_bags">No Large Bags</p>
                 </div>
                 <div class="rule-item">
                     <span class="material-symbols-outlined">restaurant</span>
-                    <p>Food in Cafes Only</p>
+                    <p data-i18n="plan.food_cafes">Food in Cafes Only</p>
                 </div>
                 <div class="rule-item">
                     <span class="material-symbols-outlined">stroller</span>
-                    <p>Strollers Allowed</p>
+                    <p data-i18n="plan.strollers">Strollers Allowed</p>
                 </div>
             </div>
         </section>
 
         <section class="container section faq-section">
-            <h2 class="section-title" style="text-align: center;">Frequently Asked Questions</h2>
+            <h2 class="section-title" style="text-align: center;" data-i18n="plan.faq_title">Frequently Asked Questions</h2>
             <div class="faq-container">
                 <div class="faq-item">
-                    <button class="faq-question">Can I buy tickets at the door? <span class="material-symbols-outlined">add</span></button>
-                    <div class="faq-answer"><p>Yes, but we highly recommend purchasing online to skip the line. General admission tickets are subject to availability.</p></div>
+                    <button class="faq-question"><span data-i18n="plan.faq_q1">Can I buy tickets at the door?</span> <span
+                            class="material-symbols-outlined">add</span></button>
+                    <div class="faq-answer">
+                        <p data-i18n="plan.faq_a1">Yes, but we highly recommend purchasing online to skip the line. General admission tickets
+                            are subject to availability.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Are guided tours available? <span class="material-symbols-outlined">add</span></button>
-                    <div class="faq-answer"><p>Yes! Our expert human guides and AI guides support over 12 languages including English and Arabic.</p></div>
+                    <button class="faq-question"><span data-i18n="plan.faq_q2">Are guided tours available?</span> <span
+                            class="material-symbols-outlined">add</span></button>
+                    <div class="faq-answer">
+                        <p data-i18n="plan.faq_a2">Yes! Our expert human guides and AI guides support over 12 languages including English and
+                            Arabic.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Are there discounts for students? <span class="material-symbols-outlined">add</span></button>
-                    <div class="faq-answer"><p>Yes, students with a valid ISIC or local ID enjoy a 50% discount on general admission.</p></div>
+                    <button class="faq-question"><span data-i18n="plan.faq_q3">Are there discounts for students?</span> <span
+                            class="material-symbols-outlined">add</span></button>
+                    <div class="faq-answer">
+                        <p data-i18n="plan.faq_a3">Yes, students with a valid ISIC or local ID enjoy a 50% discount on general admission.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Do children need tickets? <span class="material-symbols-outlined">add</span></button>
-                    <div class="faq-answer"><p>Children under 6 enter free. Those aged 6-12 require a discounted child ticket.</p></div>
+                    <button class="faq-question"><span data-i18n="plan.faq_q4">Do children need tickets?</span> <span
+                            class="material-symbols-outlined">add</span></button>
+                    <div class="faq-answer">
+                        <p data-i18n="plan.faq_a4">Children under 6 enter free. Those aged 6-12 require a discounted child ticket.</p>
+                    </div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">What is the policy on photography? <span class="material-symbols-outlined">add</span></button>
-                    <div class="faq-answer"><p>Personal non-flash mobile photography is free. Professional cameras and tripods require a permit.</p></div>
+                    <button class="faq-question"><span data-i18n="plan.faq_q5">What is the policy on photography?</span> <span
+                            class="material-symbols-outlined">add</span></button>
+                    <div class="faq-answer">
+                        <p data-i18n="plan.faq_a5">Personal non-flash mobile photography is free. Professional cameras and tripods require a
+                            permit.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -417,35 +491,35 @@
             <!-- Footer Grid -->
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>Explore</h3>
+                    <h3 data-i18n="footer.explore">Explore</h3>
                     <ul>
-                        <li><a href="../booking/booking.html">Tickets</a></li>
-                        <li><a href="../collection/collection.html">Collection</a></li>
-                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition-Halls</a></li>
-                        <li><a href="../-membership/code.html">Membership</a></li>
-                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                        <li><a href="../booking/booking.html" data-i18n="footer.link_tickets">Tickets</a></li>
+                        <li><a href="../collection/collection.html" data-i18n="footer.link_collection">Collection</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.link_exhibition">Exhibition-Halls</a></li>
+                        <li><a href="../-membership/code.html" data-i18n="footer.link_membership">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html" data-i18n="footer.link_dining">Museum Dining</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>About</h3>
+                    <h3 data-i18n="footer.about">About</h3>
                     <ul>
-                        <li><a href="../About us/About-us.html">History</a></li>
-                        <li><a href="../event/event.html">Events</a></li>
-                        <li><a href="../-news_press/code.html">News & Press</a></li>
-                        <li><a href="../-branding/code.html">Branding</a></li>
+                        <li><a href="../About us/About-us.html" data-i18n="footer.link_history">History</a></li>
+                        <li><a href="../event/event.html" data-i18n="footer.link_events">Events</a></li>
+                        <li><a href="../-news_press/code.html" data-i18n="footer.link_news">News & Press</a></li>
+                        <li><a href="../-branding/code.html" data-i18n="footer.link_branding">Branding</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Support</h3>
+                    <h3 data-i18n="footer.support">Support</h3>
                     <ul>
-                        <li><a href="../visitor help/help.html">Help</a></li>
-                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                        <li><a href="../visitor help/help.html" data-i18n="footer.link_help">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.link_get_in_touch">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.link_feedback">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html" data-i18n="footer.link_accessibility">Accessibility</a></li>
                     </ul>
                 </div>
                 <div class="footer-column connect-column">
-                    <h3>Connect</h3>
+                    <h3 data-i18n="footer.connect">Connect</h3>
                     <div class="social-links">
                         <!-- Facebook -->
                         <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
@@ -468,7 +542,7 @@
                         </a>
                     </div>
 
-                    <p>Follow us on social media for updates and behind-the-scenes content.</p>
+                    <p data-i18n="footer.social_desc">Follow us on social media for updates and behind-the-scenes content.</p>
                 </div>
             </div>
 
@@ -480,11 +554,14 @@
                 </div>
                 <div class="legal-section">
                     <div class="legal-links">
-                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                        <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                        <a href="../Privacy-policy/Privacy-Policy.html"
+                            style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html"
+                            style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html"
+                            style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
                     </div>
-                    <div class="copyright">
+                    <div class="copyright" data-i18n="footer.copyright">
                         © 2026 Tutora. All rights reserved.
                     </div>
                 </div>
@@ -497,4 +574,5 @@
     <script src="../global-lang.js"></script>
     <script src="../animate.js"></script>
 </body>
+
 </html>

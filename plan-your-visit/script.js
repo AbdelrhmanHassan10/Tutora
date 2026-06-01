@@ -308,13 +308,29 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 
 // 1. The Oracle's Greeting (Typewriter Effect)
-const greetings = [
-    "The Pharaohs await your arrival...",
-    "Unlock the secrets of the Boy King...",
-    "Walk the path of the Ancients...",
-    "Where history meets eternity...",
-    "Your golden passage is ready..."
-];
+const greetingsData = {
+    en: [
+        "The Pharaohs await your arrival...",
+        "Unlock the secrets of the Boy King...",
+        "Walk the path of the Ancients...",
+        "Where history meets eternity...",
+        "Your golden passage is ready..."
+    ],
+    ar: [
+        "الفراعنة في انتظار وصولك...",
+        "اكتشف أسرار الملك الصغير...",
+        "امشِ على درب الأجداد...",
+        "حيث يلتقي التاريخ بالخلود...",
+        "ممرك الذهبي جاهز..."
+    ]
+};
+
+function getCurrentGreetings() {
+    const lang = document.documentElement.getAttribute('lang') || localStorage.getItem('tutora-lang') || 'en';
+    return greetingsData[lang] || greetingsData['en'];
+}
+
+let greetings = getCurrentGreetings();
 
 let greetingIndex = 0;
 const greetingElement = document.getElementById('divineGreeting');
@@ -336,6 +352,7 @@ function eraseGreeting() {
         greetingElement.textContent = text.substring(0, text.length - 1);
         setTimeout(eraseGreeting, 30);
     } else {
+        greetings = getCurrentGreetings();
         greetingIndex = (greetingIndex + 1) % greetings.length;
         setTimeout(() => typeGreeting(greetings[greetingIndex]), 500);
     }

@@ -2813,6 +2813,7 @@ body.light .hero-subtitle {
     border: 1px solid rgba(212, 175, 55, 0.2);
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     margin-top: -50px;
+    margin-bottom: 50px;
     position: relative;
     z-index: 10;
     border-radius: 20px;
@@ -3605,7 +3606,7 @@ body.light .copyright {
     .hero-buttons { flex-direction: column; gap: 1.2rem; width: 100%; max-width: 280px; margin: 0 auto; }
     .btn-primary, .btn-accent { width: 100%; min-width: auto; padding: 1rem !important; font-size: 0.95rem !important; border-radius: 0.8rem !important; }
     
-    .quick-info-bar { gap: 1rem; padding: 2rem 1.5rem; margin-top: -30px; }
+    .quick-info-bar { gap: 1rem; padding: 2rem 1.5rem; margin-top: -30px; margin-bottom: 30px; }
     .info-item { min-width: 100%; }
     
     .section-title { font-size: 2rem; letter-spacing: 2px; }

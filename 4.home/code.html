@@ -12,12 +12,12 @@
                                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
                                 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
                                 <link rel="stylesheet" href="../global-theme.css" />
-    <!-- Lottie Player -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                                 <link rel="stylesheet" href="style.css" />
                                 <link rel="stylesheet" href="../animate.css" />
                               	<link rel="stylesheet" href="../global-lang.css" />
                                 <link rel="stylesheet" href="../smooth-experience.css" />
+                                <!-- Lottie Player -->
+                                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                             </head>
                             
                               <body>
@@ -216,7 +216,7 @@
                                         <span class="discover-tag" data-i18n="hero.discover">Discover</span>
                                         <span class="museum-name" data-i18n="hero.museum_name">The Grand Egyptian Museum</span>
                                       </h1>
-                                      <p class="hero-subtitle" style="color: rgb(255, 255, 255);">
+                                      <p class="hero-subtitle" style="color: rgb(255, 255, 255);" data-i18n="hero.subtitle">
                                         Explore the world's largest collection of ancient Egyptian artifacts
                                         with your personal AI guide.
                                       </p>
@@ -268,12 +268,12 @@
                                       <div class="tour-card">
                                         <div class="tour-image" style="background-image: url('../ai-tour-guide.png')"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">AI Tour Guide</p>
-                                          <p class="tour-desc">
+                                          <p class="tour-name" data-i18n="tour.ai_guide_name">AI Tour Guide</p>
+                                          <p class="tour-desc" data-i18n="tour.ai_guide_desc">
                                             Your personal interactive curator. Experience the museum with an AI that knows every secret of the pharaohs.
                                           </p>
                                           <a href="../AI Guide/guide.html">
-                                            <button class="btn-learn">Start Tour</button>
+                                            <button class="btn-learn" data-i18n="tour.ai_guide_btn">Start Tour</button>
                                           </a>
                                         </div>
                                       </div>
@@ -282,12 +282,12 @@
                                       <div class="tour-card">
                                         <div class="tour-image" style="background-image: url('../pharaoh-transformer.png')"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">Pharaoh Transformer</p>
-                                          <p class="tour-desc">
+                                          <p class="tour-name" data-i18n="tour.pharaoh_name">Pharaoh Transformer</p>
+                                          <p class="tour-desc" data-i18n="tour.pharaoh_desc">
                                             Ever wondered how you'd look as a King or Queen? Transform your image into an ancient Egyptian masterpiece.
                                           </p>
                                           <a href="../Pharaoh Transformer/Pharaoh-Transformer.html">
-                                            <button class="btn-learn">Transform Me</button>
+                                            <button class="btn-learn" data-i18n="tour.pharaoh_btn">Transform Me</button>
                                           </a>
                                         </div>
                                       </div>
@@ -295,12 +295,12 @@
                                       <div class="tour-card">
                                         <div class="tour-image" style="background-image: url('../ai-chatbot.png')"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">Knowledge Chatbot</p>
-                                          <p class="tour-desc">
+                                          <p class="tour-name" data-i18n="tour.chatbot_name">Knowledge Chatbot</p>
+                                          <p class="tour-desc" data-i18n="tour.chatbot_desc">
                                             Have a specific question? Our AI chatbot is available 24/7 to provide in-depth answers about the GEM.
                                           </p>
                                           <a href="../chat bot/chat.html">
-                                            <button class="btn-learn">Ask Tutora</button>
+                                            <button class="btn-learn" data-i18n="tour.chatbot_btn">Ask Tutora</button>
                                           </a>
                                         </div>
                                       </div>
@@ -308,12 +308,12 @@
                                       <div class="tour-card">
                                         <div class="tour-image" style="background-image: url('../cat.png');background-position: top;"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">AI Art Imagination</p>
-                                          <p class="tour-desc">
+                                          <p class="tour-name" data-i18n="tour.imagination_name">AI Art Imagination</p>
+                                          <p class="tour-desc" data-i18n="tour.imagination_desc">
                                             Manifest your own ancient visions. Generate stunning artwork inspired by Egyptian mythology and aesthetics.
                                           </p>
                                           <a href="../AI Imagination/AI-Imagination.html">
-                                            <button class="btn-learn">Manifest Art</button>
+                                            <button class="btn-learn" data-i18n="tour.imagination_btn">Manifest Art</button>
                                           </a>
                                         </div>
                                       </div>
@@ -321,12 +321,12 @@
                                       <div class="tour-card">
                                         <div class="tour-image" style="background-image: url('../tutora-lab.png')"></div>
                                         <div class="tour-info">
-                                          <p class="tour-name">Tutora Laboratory</p>
-                                          <p class="tour-desc">
+                                          <p class="tour-name" data-i18n="tour.lab_name">Tutora Laboratory</p>
+                                          <p class="tour-desc" data-i18n="tour.lab_desc">
                                             Step into our digital lab. Use advanced AI tools to analyze, restore, and study ancient artworks in detail.
                                           </p>
                                           <a href="../Ancient-arts/Ancient-art.html">
-                                            <button class="btn-learn">Enter Lab</button>
+                                            <button class="btn-learn" data-i18n="tour.lab_btn">Enter Lab</button>
                                           </a>
                                         </div>
                                       </div>
@@ -337,15 +337,15 @@
                                   <section class="section-container">
                                     <div class="curator-panel">
                                       <div class="curator-image" style="background-image: url('../The-Grand-Egyptian-Museum.webp');">
-                                        <div class="curator-badge">Curator's Choice</div>
+                                        <div class="curator-badge" data-i18n="section.curators_choice">Curator's Choice</div>
                                       </div>
                                       <div class="curator-content">
-                                        <h2 class="artifact-title">The Grand Egyptian Museum</h2>
-                                        <p class="artifact-desc">
+                                        <h2 class="artifact-title" data-i18n="section.gem_title">The Grand Egyptian Museum</h2>
+                                        <p class="artifact-desc" data-i18n="section.gem_desc">
                                           The Grand Egyptian Museum, also known as the Giza Museum, is a new archaeological museum in Giza, Egypt, that is set to become the largest archaeological museum in the world. It will house artifacts of ancient Egypt, including the complete Tutankhamun collection.
                                         </p>
                                         <a href="../about/About.html">
-                                          <button class="btn-primary" style="margin-top: 1.5rem;">
+                                          <button class="btn-primary" style="margin-top: 1.5rem;" data-i18n-html="section.learn_more">
                                             Learn More
                                             <span class="material-symbols-outlined" style="vertical-align: middle; margin-left: 10px;">arrow_forward</span>
                                           </button>
@@ -357,29 +357,29 @@
                                   <!-- News & Upcoming Events (New) -->
                                   <section class="section-container" style="background-color: rgba(236, 182, 19, 0.05); padding: 3rem 1.5rem; border-radius: 12px;">
                                     <div class="section-header-flex">
-                                      <h2 class="section-title" style="margin-bottom:0;">What's Happening</h2>
-                                      <a href="../event/event.html" class="view-all-link">View All Events <span class="material-symbols-outlined">arrow_forward</span></a>
+                                      <h2 class="section-title" style="margin-bottom:0;" data-i18n="section.whats_happening">What's Happening</h2>
+                                      <a href="../event/event.html" class="view-all-link" data-i18n-html="section.view_all">View All Events <span class="material-symbols-outlined">arrow_forward</span></a>
                                     </div>
                                     <div class="events-grid">
                                       <div class="event-card">
-                                        <div class="event-date">Oct<br><strong>15</strong></div>
+                                        <div class="event-date"><span data-i18n="event.month_oct">Oct</span><br><strong>15</strong></div>
                                         <div class="event-details">
-                                          <h4>New Kingdom Exhibition Opens</h4>
-                                          <p>Explore newly uncovered artifacts from the Valley of the Kings.</p>
+                                          <h4 data-i18n="event.e1_title">New Kingdom Exhibition Opens</h4>
+                                          <p data-i18n="event.e1_desc">Explore newly uncovered artifacts from the Valley of the Kings.</p>
                                         </div>
                                       </div>
                                       <div class="event-card">
-                                        <div class="event-date">Oct<br><strong>22</strong></div>
+                                        <div class="event-date"><span data-i18n="event.month_oct">Oct</span><br><strong>22</strong></div>
                                         <div class="event-details">
-                                          <h4>Kids Workshop: Papyrus Making</h4>
-                                          <p>A hands-on experience for children to learn ancient Egyptian crafts.</p>
+                                          <h4 data-i18n="event.e2_title">Kids Workshop: Papyrus Making</h4>
+                                          <p data-i18n="event.e2_desc">A hands-on experience for children to learn ancient Egyptian crafts.</p>
                                         </div>
                                       </div>
                                       <div class="event-card">
-                                        <div class="event-date">Nov<br><strong>05</strong></div>
+                                        <div class="event-date"><span data-i18n="event.month_nov">Nov</span><br><strong>05</strong></div>
                                         <div class="event-details">
-                                          <h4>Curator Talk: Life of Ramses II</h4>
-                                          <p>Join Dr. Zahi Hawass for an exclusive evening discussing Ramses the Great.</p>
+                                          <h4 data-i18n="event.e3_title">Curator Talk: Life of Ramses II</h4>
+                                          <p data-i18n="event.e3_desc">Join Dr. Zahi Hawass for an exclusive evening discussing Ramses the Great.</p>
                                         </div>
                                       </div>
                                     </div>
@@ -389,20 +389,20 @@
                                   <section class="section-container">
                                     <div class="artifact-panel">
                                       <div class="artifact-content">
-                                        <h2 class="artifact-title">Identify Artifacts with <span class="tutora"> Tutora</span></h2>
-                                        <p class="artifact-desc">
+                                        <h2 class="artifact-title" data-i18n-html="section.identify">Identify Artifacts with <span class="tutora"> Tutora</span></h2>
+                                        <p class="artifact-desc" data-i18n="section.identify_desc">
                                           Use our AI guide to learn more about the ancient wonders around
                                           you. Just take a photo or upload an image to start your discovery.
                                         </p>
                                         <div class="artifact-actions">
                                           <a href="../artifact_identifier/artifact-identifier.html">
-                                            <button class="btn-action-gold">
+                                            <button class="btn-action-gold" data-i18n-html="section.take_photo">
                                               <span class="material-symbols-outlined">photo_camera</span>
                                               Take a Photo
                                             </button>
                                           </a>
                                           <a href="../artifact_identifier/artifact-identifier.html">
-                                            <button class="btn-action-turquoise">
+                                            <button class="btn-action-turquoise" data-i18n-html="section.upload_photo">
                                               <span class="material-symbols-outlined">upload_file</span>
                                               Upload a Photo
                                             </button>
@@ -423,8 +423,8 @@
                                   <section class="section-container">
                                     <div class="artifact-panel" style="flex-direction: row-reverse">
                                       <div class="artifact-content">
-                                        <h2 class="artifact-title">The Grand Egyptian Museum</h2>
-                                        <p class="artifact-desc">
+                                        <h2 class="artifact-title" data-i18n="section.gem_title">The Grand Egyptian Museum</h2>
+                                        <p class="artifact-desc" data-i18n="section.gem_desc">
                                           The Grand Egyptian Museum, also known as the Giza Museum, is a new
                                           archaeological museum in Giza, Egypt, that is set to become the
                                           largest archaeological museum in the world. It will house
@@ -432,7 +432,7 @@
                                           collection.
                                         </p>
                                         <a href="../about/About.html">
-                                          <button class="btn-action-gold" style="background-color: rgba(236, 182, 19, 0.2); color: #ecb613; width: fit-content;">
+                                          <button class="btn-action-gold" style="background-color: rgba(236, 182, 19, 0.2); color: #ecb613; width: fit-content;" data-i18n-html="section.learn_more">
                                             Learn More
                                             <span class="material-symbols-outlined">arrow_forward</span>
                                           </button>
@@ -444,29 +444,29 @@
                             
                                   <!-- Museum Amenities & Dining (New) -->
                                   <section class="section-container">
-                                    <h2 class="section-title" style="text-align: center;">Dine & Shop</h2>
-                                    <p class="section-subtitle" style="text-align: center; color: var(--muted-gold); margin-bottom: 2rem;">Complete your experience with world-class facilities</p>
+                                    <h2 class="section-title" style="text-align: center;" data-i18n="section.dine_shop">Dine & Shop</h2>
+                                    <p class="section-subtitle" style="text-align: center; color: var(--muted-gold); margin-bottom: 2rem;" data-i18n="section.dine_subtitle">Complete your experience with world-class facilities</p>
                                     
                                     <div class="amenities-grid">
                                       <div class="amenity-card">
                                         <div class="amenity-img" style="background-image: url('../445.jpg');"></div>
                                         <div class="amenity-info">
-                                          <h3>Pyramid View Restaurant</h3>
-                                          <p>Enjoy a premium dining experience with an unobstructed view of the Giza Pyramids.</p>
+                                          <h3 data-i18n="amenity.restaurant">Pyramid View Restaurant</h3>
+                                          <p data-i18n="amenity.restaurant_desc">Enjoy a premium dining experience with an unobstructed view of the Giza Pyramids.</p>
                                         </div>
                                       </div>
                                       <div class="amenity-card">
                                         <div class="amenity-img" style="background-image: url('../-museum_dining/4.jpg');"></div>
                                         <div class="amenity-info">
-                                          <h3>The Grand Cafe</h3>
-                                          <p>Relax with freshly brewed coffee and pastries beside the Ramses II statue.</p>
+                                          <h3 data-i18n="amenity.cafe">The Grand Cafe</h3>
+                                          <p data-i18n="amenity.cafe_desc">Relax with freshly brewed coffee and pastries beside the Ramses II statue.</p>
                                         </div>
                                       </div>
                                       <div class="amenity-card">
                                         <div class="amenity-img" style="background-image: url('../-museum_dining/9.jpg');"></div>
                                         <div class="amenity-info">
-                                          <h3>Official Gift Shop</h3>
-                                          <p>Take home a piece of history with our exclusive replicas and authentic souvenirs.</p>
+                                          <h3 data-i18n="amenity.gift">Official Gift Shop</h3>
+                                          <p data-i18n="amenity.gift_desc">Take home a piece of history with our exclusive replicas and authentic souvenirs.</p>
                                         </div>
                                       </div>
                                     </div>
@@ -476,17 +476,17 @@
                                   <section class="membership-section">
                                     <div class="membership-content">
                                       <div class="membership-text">
-                                        <h2>Become a GEM Member</h2>
-                                        <p>Join a community of history enthusiasts. Enjoy unlimited free admission, exclusive previews of new exhibitions, and discounts at our shops and restaurants.</p>
+                                        <h2 data-i18n="membership.title">Become a GEM Member</h2>
+                                        <p data-i18n="membership.desc">Join a community of history enthusiasts. Enjoy unlimited free admission, exclusive previews of new exhibitions, and discounts at our shops and restaurants.</p>
                                         <a href="../-membership/code.html">
-                                        <button class="btn-primary" style="margin-top: 1rem;">Join Today</button>
+                                        <button class="btn-primary" style="margin-top: 1rem;" data-i18n="membership.btn">Join Today</button>
                                         </a>
                                       </div>
                                       <div class="membership-perks">
                                         <ul>
-                                          <li><span class="material-symbols-outlined check">check_circle</span> Unlimited yearly access</li>
-                                          <li><span class="material-symbols-outlined check">check_circle</span> VIP fast-track entry</li>
-                                          <li><span class="material-symbols-outlined check">check_circle</span> 20% discount on dining & shop</li>
+                                          <li data-i18n-html="membership.perk1"><span class="material-symbols-outlined check">check_circle</span> Unlimited yearly access</li>
+                                          <li data-i18n-html="membership.perk2"><span class="material-symbols-outlined check">check_circle</span> VIP fast-track entry</li>
+                                          <li data-i18n-html="membership.perk3"><span class="material-symbols-outlined check">check_circle</span> 20% discount on dining & shop</li>
                                         </ul>
                                       </div>
                                     </div>
@@ -495,11 +495,11 @@
                                   <!-- Newsletter Banner (New) -->
                                   <section class="newsletter-banner">
                                     <div class="newsletter-content">
-                                      <h2>Join the Royal Legacy</h2>
-                                      <p>Subscribe to our newsletter and be the first to receive exclusive insights, world-class exhibition previews, and royal updates from the Grand Egyptian Museum.</p>
+                                      <h2 data-i18n="newsletter.title">Join the Royal Legacy</h2>
+                                      <p data-i18n="newsletter.desc">Subscribe to our newsletter and be the first to receive exclusive insights, world-class exhibition previews, and royal updates from the Grand Egyptian Museum.</p>
                                       <form class="newsletter-form">
-                                        <input type="email" placeholder="Enter your email address" required>
-                                        <button type="submit" class="btn-accent">Subscribe</button>
+                                        <input type="email" placeholder="Enter your email address" data-i18n-placeholder="newsletter.placeholder" required>
+                                        <button type="submit" class="btn-accent" data-i18n="newsletter.btn">Subscribe</button>
                                       </form>
                                     </div>
                                   </section>
@@ -507,10 +507,10 @@
                                   <section class="section-container location-section">
                                     <div class="location-header">
                                       <div>
-                                        <h2 class="location-title">Visit the GEM</h2>
-                                        <p class="location-subtitle">Experience the dawn of history at the foot of the Giza Pyramids.</p>
+                                        <h2 class="location-title" data-i18n="location.title">Visit the GEM</h2>
+                                        <p class="location-subtitle" data-i18n="location.subtitle">Experience the dawn of history at the foot of the Giza Pyramids.</p>
                                       </div>
-                                      <a href="https://www.google.com/maps/place/Grand+Egyptian+Museum/@29.9931986,31.1244409,17z/data=!3m1!4b1!4m6!3m5!1s0x14584534984a8ad1:0x45764c5bc4ec261a!8m2!3d29.9931986!4d31.1244409!16zL20vMGRoOTN3?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-directions" style="text-decoration: none;">
+                                      <a href="https://www.google.com/maps/place/Grand+Egyptian+Museum/@29.9931986,31.1244409,17z/data=!3m1!4b1!4m6!3m5!1s0x14584534984a8ad1:0x45764c5bc4ec261a!8m2!3d29.9931986!4d31.1244409!16zL20vMGRoOTN3?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-directions" style="text-decoration: none;" data-i18n-html="location.plan_route">
                                         View Location
                                         <span class="material-symbols-outlined">arrow_forward</span>
                                       </a>
@@ -519,20 +519,20 @@
                                       <div class="map-overlay"></div>
                                       
                                       <div class="visit-card">
-                                        <h3>Visitor Info</h3>
+                                        <h3 data-i18n="location.visitor_info">Visitor Info</h3>
                                         <div class="visit-info">
                                           <div class="info-item">
                                             <span class="material-symbols-outlined">location_on</span>
                                             <div class="info-content">
-                                              <p>Our Location</p>
-                                              <p>Alexandria Desert Road, Giza Plateau, Cairo, Egypt</p>
+                                              <p data-i18n="location.our_location">Our Location</p>
+                                              <p data-i18n="location.address">Alexandria Desert Road, Giza Plateau, Cairo, Egypt</p>
                                             </div>
                                           </div>
                                           <div class="info-item">
                                             <span class="material-symbols-outlined">schedule</span>
                                             <div class="info-content">
-                                              <p>Visiting Hours</p>
-                                              <p>Open Daily: 9:00 AM – 6:00 PM</p>
+                                              <p data-i18n="location.visiting_hours">Visiting Hours</p>
+                                              <p data-i18n="location.hours_value">Open Daily: 9:00 AM – 6:00 PM</p>
                                             </div>
                                           </div>
                                         </div>
@@ -561,35 +561,35 @@
                                             <!-- Footer Grid -->
                                             <div class="footer-grid">
                                                 <div class="footer-column">
-                                                    <h3>Explore</h3>
+                                                    <h3 data-i18n="footer.explore">Explore</h3>
                                                     <ul>
-                                                        <li><a href="../booking/booking.html">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html">Collection</a></li>
-                                                        <li><a href="../Exhibition-Halls/exhibition-halls.html">Exhibition-Halls</a></li>
-                                                        <li><a href="../-membership/code.html">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html">Museum Dining</a></li>
+                                                        <li><a href="../booking/booking.html" data-i18n="footer.link_tickets">Tickets</a></li>
+                                                        <li><a href="../collection/collection.html" data-i18n="footer.link_collection">Collection</a></li>
+                                                        <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.link_exhibition">Exhibition-Halls</a></li>
+                                                        <li><a href="../-membership/code.html" data-i18n="footer.link_membership">Membership</a></li>
+                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.link_dining">Museum Dining</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="footer-column">
-                                                    <h3>About</h3>
+                                                    <h3 data-i18n="footer.about">About</h3>
                                                     <ul>
-                                                        <li><a href="../About us/About-us.html">History</a></li>
-                                                        <li><a href="../event/event.html">Events</a></li>
-                                                        <li><a href="../-news_press/code.html">News & Press</a></li>
-                                                        <li><a href="../-branding/code.html">Branding</a></li>
+                                                        <li><a href="../About us/About-us.html" data-i18n="footer.link_history">History</a></li>
+                                                        <li><a href="../event/event.html" data-i18n="footer.link_events">Events</a></li>
+                                                        <li><a href="../-news_press/code.html" data-i18n="footer.link_news">News & Press</a></li>
+                                                        <li><a href="../-branding/code.html" data-i18n="footer.link_branding">Branding</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="footer-column">
-                                                    <h3>Support</h3>
+                                                    <h3 data-i18n="footer.support">Support</h3>
                                                     <ul>
-                                                        <li><a href="../visitor help/help.html">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html">Accessibility</a></li>
+                                                        <li><a href="../visitor help/help.html" data-i18n="footer.link_help">Help</a></li>
+                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.link_get_in_touch">Get In Touch</a></li>
+                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.link_feedback">Feedback</a></li>
+                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.link_accessibility">Accessibility</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="footer-column connect-column">
-                                                    <h3>Connect</h3>
+                                                    <h3 data-i18n="footer.connect">Connect</h3>
                                                     <div class="social-links">
                                                         <!-- Facebook -->
                                                         <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
@@ -612,7 +612,7 @@
                                                         </a>
                                                     </div>
                             
-                                                    <p>Follow us on social media for updates and behind-the-scenes content.</p>
+                                                    <p data-i18n="footer.social_desc">Follow us on social media for updates and behind-the-scenes content.</p>
                                                 </div>
                                             </div>
                             
@@ -625,11 +625,11 @@
                                                 </div>
                                                 <div class="legal-section">
                                                    <div class="legal-links">
-                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;">Privacy Policy</a>
-                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;">Terms of Service</a>
-                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;">Cookie Settings</a>
+                                                    <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
+                                                    <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
+                                                    <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
                                                 </div>
-                                        <div class="copyright">
+                                        <div class="copyright" data-i18n="footer.copyright">
                                           © 2026 Tutora. All rights reserved.
                                         </div>
                                       </div>

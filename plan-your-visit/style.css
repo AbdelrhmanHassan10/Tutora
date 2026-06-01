@@ -1110,11 +1110,21 @@ body.light .btn-secondary {
 .price-value {
     font-size: 3rem;
     font-weight: 800;
+    transition: color 0.3s ease;
 }
 
 .price-unit {
     font-size: 1rem;
     font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+body.light .price-value, body.light .price-unit {
+    color: #8e7341 !important;
+}
+
+body.dark .price-value, body.dark .price-unit {
+    color: #ECB613 !important;
 }
 
 .feature-list {
@@ -2641,18 +2651,57 @@ body.light .newsletter-banner {
 }
 
 /* Global Button Refinement */
-.btn-primary, .btn-accent, .btn-learn, .btn-action-gold {
+.btn-primary, .btn-secondary, .btn-accent, .btn-learn, .btn-action-gold {
     border-radius: 50px !important;
     text-transform: uppercase !important;
     letter-spacing: 2px !important;
-    font-weight: 700 !important;
+    font-weight: 800 !important;
     padding: 1rem 2.5rem !important;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
-.btn-primary:hover, .btn-accent:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(242, 185, 13, 0.4);
+/* Dark Mode (Default) */
+body.dark .btn-primary, body.dark .btn-action-gold, .btn-primary, .btn-action-gold {
+    box-shadow: 0 10px 25px rgba(236, 182, 19, 0.4) !important;
+    background-color: #ECB613 !important;
+    color: #181611 !important;
+    border: 2px solid #ECB613 !important;
+}
+
+body.dark .btn-secondary, .btn-secondary {
+    border: 2px solid #ECB613 !important;
+    color: #ECB613 !important;
+    background: rgba(236, 182, 19, 0.05) !important;
+    box-shadow: 0 10px 25px rgba(236, 182, 19, 0.15) !important;
+}
+
+body.dark .btn-primary:hover, body.dark .btn-accent:hover, body.dark .btn-secondary:hover, .btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-8px) scale(1.05) !important;
+    box-shadow: 0 20px 40px rgba(242, 185, 13, 0.6) !important;
+    background-color: #ECB613 !important;
+    color: #181611 !important;
+}
+
+/* Light Mode */
+body.light .btn-primary, body.light .btn-action-gold {
+    box-shadow: 0 10px 25px rgba(142, 115, 65, 0.3) !important;
+    background-color: #8e7341 !important;
+    color: #ffffff !important;
+    border: 2px solid #8e7341 !important;
+}
+
+body.light .btn-secondary {
+    border: 2px solid #8e7341 !important;
+    color: #8e7341 !important;
+    background: rgba(142, 115, 65, 0.05) !important;
+    box-shadow: 0 10px 25px rgba(142, 115, 65, 0.1) !important;
+}
+
+body.light .btn-primary:hover, body.light .btn-accent:hover, body.light .btn-secondary:hover {
+    transform: translateY(-8px) scale(1.05) !important;
+    box-shadow: 0 20px 40px rgba(142, 115, 65, 0.4) !important;
+    background-color: #8e7341 !important;
+    color: #ffffff !important;
 }
 
 /* Ticket Card Button Specifics */
@@ -2729,12 +2778,24 @@ body.light .newsletter-banner {
 .itinerary-card.popular-itin {
     border-color: var(--primary-color);
     background: rgba(242, 208, 13, 0.03);
+    z-index: 2;
 }
 
 .itinerary-card:hover {
     transform: translateY(-15px) rotateX(3deg) rotateY(3deg);
     border-color: var(--primary-color);
     box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 25px rgba(242, 208, 13, 0.15);
+    z-index: 3;
+}
+
+@media (min-width: 992px) {
+    .itinerary-card:not(.popular-itin) {
+        transform: scale(0.92) translateY(25px);
+    }
+    
+    .itinerary-card:not(.popular-itin):hover {
+        transform: scale(0.92) translateY(10px) rotateX(3deg) rotateY(3deg);
+    }
 }
 
 .itinerary-time {
@@ -2808,25 +2869,70 @@ body.light .newsletter-banner {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    white-space: nowrap;
     margin-top: 1.5rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--primary-color);
-    border: 1px solid rgba(242, 208, 13, 0.3);
-    border-radius: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
+    border-radius: 50px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-weight: 800 !important;
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.85rem !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.itin-link:hover {
-    background: var(--primary-color);
-    color: #000;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(242, 208, 13, 0.3);
+/* Secondary Button Look (Default for itineraries) */
+body.dark .itin-link, .itin-link {
+    border: 2px solid #ECB613 !important;
+    color: #ECB613 !important;
+    background: rgba(236, 182, 19, 0.05) !important;
+    box-shadow: 0 10px 25px rgba(236, 182, 19, 0.15) !important;
+}
+
+body.light .itin-link {
+    border: 2px solid #8e7341 !important;
+    color: #8e7341 !important;
+    background: rgba(142, 115, 65, 0.05) !important;
+    box-shadow: 0 10px 25px rgba(142, 115, 65, 0.1) !important;
+}
+
+/* Hover effect */
+body.dark .itin-link:hover, .itin-link:hover {
+    transform: translateY(-8px) scale(1.05) !important;
+    box-shadow: 0 20px 40px rgba(242, 185, 13, 0.6) !important;
+    background-color: #ECB613 !important;
+    color: #181611 !important;
+}
+
+body.light .itin-link:hover {
+    transform: translateY(-8px) scale(1.05) !important;
+    box-shadow: 0 20px 40px rgba(142, 115, 65, 0.4) !important;
+    background-color: #8e7341 !important;
+    color: #ffffff !important;
+}
+
+/* Primary Button Look (For the Popular itinerary) */
+body.dark .popular-itin .itin-link, .popular-itin .itin-link {
+    box-shadow: 0 10px 25px rgba(236, 182, 19, 0.4) !important;
+    background-color: #ECB613 !important;
+    color: #181611 !important;
+    border: 2px solid #ECB613 !important;
+}
+
+body.light .popular-itin .itin-link {
+    box-shadow: 0 10px 25px rgba(142, 115, 65, 0.3) !important;
+    background-color: #8e7341 !important;
+    color: #ffffff !important;
+    border: 2px solid #8e7341 !important;
+}
+
+/* Itinerary Headings */
+body.light .itinerary-card h3 {
+    color: #8e7341 !important;
+}
+body.dark .itinerary-card h3 {
+    color: #ECB613 !important;
 }
 
 /* Cinematic Hero Slider */
@@ -3021,8 +3127,19 @@ body.light .timeline::after {
     opacity: 0.2 !important;
 }
 
-body.light .price-value {
-    color: #1a1a1a !important;
+body.light .timeline li::before {
+    background: #8e7341 !important;
+    box-shadow: 0 0 12px rgba(142, 115, 65, 0.6) !important;
+}
+
+body.light .itinerary-time {
+    color: #8e7341 !important;
+    background: rgba(142, 115, 65, 0.1) !important;
+    border-color: rgba(142, 115, 65, 0.3) !important;
+}
+
+body.light .price-value, body.light .price-unit {
+    color: #8e7341 !important;
 }
 
 body.light .btn-accent {
