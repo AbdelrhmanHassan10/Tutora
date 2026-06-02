@@ -4753,10 +4753,8 @@
             });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
-            // Expecting { en: {...}, ar: {...} } or { translations: { en: {...}, ar: {...} } }
             const apiData = data.translations || data;
             
-            // Merge API data over local fallback so missing keys are still available
             translationsCache = {
                 en: { ...LOCAL_TRANSLATIONS.en, ...(apiData.en || {}) },
                 ar: { ...LOCAL_TRANSLATIONS.ar, ...(apiData.ar || {}) }
