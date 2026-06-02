@@ -158,8 +158,8 @@ const arStrings = `
         "privacy.sec3_p2": "تتم مراجعة أنظمتنا بانتظام من قبل شركات أمنية خارجية لضمان الامتثال لمعايير حماية البيانات الدولية (GDPR وقانون حماية البيانات المصري).",
 `;
 
-langJs = langJs.replace(/(const\s+enStrings\s*=\s*{)/, \`$1\\n\${enStrings}\`);
-langJs = langJs.replace(/(const\s+arStrings\s*=\s*{)/, \`$1\\n\${arStrings}\`);
+langJs = langJs.replace(/(const\s+enStrings\s*=\s*{)/, '$1\n' + enStrings);
+langJs = langJs.replace(/(const\s+arStrings\s*=\s*{)/, '$1\n' + arStrings);
 
 fs.writeFileSync(langJsPath, langJs, 'utf8');
 
