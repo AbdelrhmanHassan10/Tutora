@@ -17,7 +17,7 @@
     // ─── LOCAL FALLBACK TRANSLATIONS ──────────────────────────────
     const LOCAL_TRANSLATIONS = {
         en: {
-        "branding.title": "TUTORA | Branding & Identity",
+"edit_profile.title": "ملف توتورا الشخصي | تعديل الملف الشخصي",
         "branding.sovereign": "SOVEREIGN",
         "branding.identity": "IDENTITY",
         "branding.fusion": "The Fusion of Ancient Soul & Modern Intelligence",
@@ -346,7 +346,7 @@
         "edit_profile.customize_artifact": "Customize Artifact",
         "edit_profile.cancel": "Cancel",
         "edit_profile.apply_selection": "Apply Selection",
-        "edit_profile.title": "TUTORA Profile |"edit_profile.title": "TUTORA Profile | Edit Profile",
+        "edit_profile.title": "TUTORA Profile | Edit Profile",
         "help.title": "TUTORA Visitor Help | Support & Assistance",
         "help.help_center_bc": "Help Center",
         "help.visitor_help_title": "Visitor Help & FAQ",
@@ -2556,7 +2556,7 @@
         "edit_profile.customize_artifact": "تخصيص القطعة الأثرية",
         "edit_profile.cancel": "إلغاء",
         "edit_profile.apply_selection": "تطبيق الاختيار",
-        "edit_profile.title": "ملف توتورا الشخصي |"edit_profile.title": "ملف توتورا الشخصي | تعديل الملف الشخصي",
+        "edit_profile.title": "ملف توتورا الشخصي | تعديل الملف الشخصي",
         "help.title": "مساعدة زوار توتورا | الدعم والمساعدة",
         "help.help_center_bc": "مركز المساعدة",
         "help.visitor_help_title": "مساعدة الزوار والأسئلة الشائعة",
