@@ -49,7 +49,7 @@
         "acc.srv_induction": "Induction Loops",
         "acc.srv_induction_desc": "Enhanced audio support for hearing aids is integrated into all cinema and lecture halls.",
         "acc.srv_quiet": "Quiet Zones",
-        "acc.srv_quiet_desc": "Sensory-friendly rest areas with acoustic insulation and soft lighting for tranquility."
+        "acc.srv_quiet_desc": "Sensory-friendly rest areas with acoustic insulation and soft lighting for tranquility.",
         "feedback.hero_title": "Share Your Journey",
         "feedback.hero_subtitle": "Your insights help us preserve and perfect the legacy of the Pharaohs. We value every detail of your experience at the Grand Egyptian Museum.",
         "feedback.step1_title": "How would you rate your visit?",
@@ -2403,7 +2403,7 @@
         "acc.srv_induction": "حلقات الحث",
         "acc.srv_induction_desc": "تم دمج دعم صوتي محسن لأجهزة السمع في جميع قاعات السينما والمحاضرات.",
         "acc.srv_quiet": "مناطق هادئة",
-        "acc.srv_quiet_desc": "مناطق استراحة ملائمة للحواس مع عزل صوتي وإضاءة خافتة للهدوء."
+        "acc.srv_quiet_desc": "مناطق استراحة ملائمة للحواس مع عزل صوتي وإضاءة خافتة للهدوء.",
         "feedback.hero_title": "شاركنا رحلتك",
         "feedback.hero_subtitle": "رؤيتك تساعدنا في الحفاظ على إرث الفراعنة وإتقانه. نحن نقدر كل تفاصيل تجربتك في المتحف المصري الكبير.",
         "feedback.step1_title": "كيف تقيم زيارتك؟",
