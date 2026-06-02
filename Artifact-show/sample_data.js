@@ -1,0 +1,1198 @@
+module.exports = {
+          "tut-mask": {
+            title: "Golden Mask of Tutankhamun",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/tut_mask.png",
+            introHeading: "The Face of Eternity",
+            introText:
+              "Crafted from two layers of high-karat gold and inlaid with semi-precious stones, this mask is the ultimate symbol of ancient Egyptian royalty. It was placed directly over the mummified face of the king to ensure his eternal protection.",
+            detailsHeading: "Artistry in Gold",
+            detailsText:
+              "The mask features lapis lazuli for the eye surrounds and eyebrows, quartz and obsidian for the eyes, and carnelian, feldspar, and glass inlays. The back is inscribed with a protective spell from the Book of the Dead.",
+            stats: [
+              { label: "Material", value: "Solid Gold" },
+              { label: "Weight", value: "10.23 kg" },
+            ],
+            quote: "Gold—everywhere the glint of gold.",
+            quoteAuthor: "Howard Carter",
+          },
+          "senet-board": {
+            title: "Senet Game Board",
+            dynasty: "New Kingdom",
+            period: "18th Dynasty",
+            image: "../Halls Gallery/images/senet_board.png",
+            introHeading: "The Game of Passing",
+            introText:
+              "Senet was the most popular strategy game in ancient Egypt, played by both royalty and commoners for over 3,000 years.",
+            detailsHeading: "Spiritual Significance",
+            detailsText:
+              "The game was not just a pastime but a symbolic ritual representing the journey of the soul through the underworld.",
+            stats: [
+              { label: "Material", value: "Ivory & Wood" },
+              { label: "Squares", value: "30" },
+            ],
+          },
+          "tut-chariot": {
+            title: "Ceremonial Chariot",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/tut_chariot.png",
+            introHeading: "The Royal Vehicle",
+            introText:
+              "One of the most complex items in the tomb, this chariot shows the Pharaoh as a warrior. It was found in pieces and painstakingly restored to show its full golden glory.",
+            detailsHeading: "Warrior Symbolism",
+            detailsText:
+              "Covered in gold foil and decorated with scenes of the Pharaoh crushing enemies, it served both a practical and symbolic role in royal state ceremonies.",
+            stats: [
+              { label: "Type", value: "State Chariot" },
+              { label: "Material", value: "Gold & Wood" },
+            ],
+          },
+          "tut-throne": {
+            title: "Golden Throne of Tutankhamun",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/tut_throne.png",
+            introHeading: "The Seat of Power",
+            introText:
+              "A magnificent throne made of wood covered in gold and silver, inlaid with semi-precious stones and colored glass.",
+            detailsHeading: "Royal Intimacy",
+            detailsText:
+              "The backrest depicts the king and his queen, Ankhesenamun, in a scene of domestic affection. Above them, the Aten sun disk spreads its protective rays.",
+            stats: [
+              { label: "Material", value: "Gold & Wood" },
+              { label: "Found in", value: "Tomb KV62" },
+            ],
+          },
+          "tut-shrine": {
+            title: "Golden Shrine",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/tut_shrine.png",
+            introHeading: "The Golden Enclosure",
+            introText:
+              "The outermost of four gilded shrines that nested together to protect the king's sarcophagus.",
+            detailsHeading: "Sacred Protection",
+            detailsText:
+              "Decorated with scenes from the Book of the Dead and the Amduat to guide the king through the hours of the night.",
+            stats: [
+              { label: "Material", value: "Gilded Wood" },
+              { label: "Function", value: "Sarcophagus Cover" },
+            ],
+          },
+          "anubis-shrine": {
+            title: "Anubis Shrine",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/anubis_shrine.png",
+            introHeading: "Guardian of the Treasury",
+            introText:
+              "A jackal figure of Anubis mounted on a portable gilded shrine, found guarding the entrance to the Treasury.",
+            detailsHeading: "The Sacred Jackal",
+            detailsText:
+              "Carved from wood and covered in black resin with gilded details, it represents the god of mummification.",
+            stats: [
+              { label: "Material", value: "Wood & Resin" },
+              { label: "God", value: "Anubis" },
+            ],
+          },
+          "tut-pectoral": {
+            title: "Pectoral with Solar Scarab",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/tut_pectoral.png",
+            introHeading: "Celestial Jewelry",
+            introText:
+              "A complex piece of jewelry symbolizing the sun god's journey and the king's rebirth.",
+            detailsHeading: "Master Goldsmithing",
+            detailsText:
+              "Features a scarab carved from Libyan desert glass, a rare material formed by a meteor impact millions of years ago.",
+            stats: [
+              { label: "Material", value: "Gold & Desert Glass" },
+              { label: "Symbol", value: "Rebirth" },
+            ],
+          },
+          "ramses-colossus": {
+            title: "Colossus of Ramses II",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Halls Gallery/images/grand.png",
+            introHeading: "The Great Sun King",
+            introText:
+              "Standing as the centerpiece of the Grand Egyptian Museum, this 11-meter-high statue of Ramses II was moved from Ramses Square to its new home in a feat of modern engineering.",
+            detailsHeading: "Eternal Presence",
+            detailsText:
+              "Carved from a single block of red granite, the statue captures the Pharaoh in a classic posture of strength. It is oriented so that the sun illuminates it twice a year, as it did in the Great Temple of Abu Simbel.",
+            stats: [
+              { label: "Height", value: "11 Meters" },
+              { label: "Weight", value: "82 Tons" },
+            ],
+          },
+          "tut-fan": {
+            title: "Golden Fan (Flabellum)",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Halls Gallery/images/golden_fan.png",
+            introHeading: "The Royal Breeze",
+            introText:
+              "Found in the burial chamber, this fan was once used to cool the boy king. It originally held 42 ostrich feathers, representing the Pharaoh's luxury even in the afterlife.",
+            detailsHeading: "The Royal Hunt",
+            detailsText:
+              "The gold foil decorations show King Tutankhamun hunting the very ostriches that provided the feathers for this fan, showcasing his prowess as a hunter and provider.",
+            stats: [
+              { label: "Material", value: "Gilded Wood" },
+              { label: "Feathers", value: "42 Ostrich" },
+            ],
+          },
+          "victory-stele": {
+            title: "Victory Stele of Amenhotep III",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Halls Gallery/images/victory_stele.png",
+            introHeading: "Monuments of Might",
+            introText:
+              "A massive black granite slab documenting the peak of 18th Dynasty power. It records the many temples and palaces built by the Sun King, Amenhotep III.",
+            detailsHeading: "Records of Grandeur",
+            detailsText:
+              "The stele reflects the incredible wealth and artistic peak of the New Kingdom, before the religious revolution of Akhenaten.",
+            stats: [
+              { label: "Material", value: "Black Granite" },
+              { label: "Significance", value: "Historical Record" },
+            ],
+          },
+          "makeup-kit": {
+            title: "Royal Makeup Kit",
+            dynasty: "Middle Kingdom",
+            period: "12th Dynasty",
+            image: "../Halls Gallery/images/makeup_kit.png",
+            introHeading: "Ancient Elegance",
+            introText:
+              "A luxury vanity box belonging to a Middle Kingdom noblewoman, showcasing the advanced cosmetic practices of ancient Egypt.",
+            detailsHeading: "Secrets of Beauty",
+            detailsText:
+              "Contains jars for scented oils, mirrors of polished bronze, and tools for applying the famous black kohl eye paint.",
+            stats: [
+              { label: "Material", value: "Cedar & Ivory" },
+              { label: "Includes", value: "Mirror & Jars" },
+            ],
+          },
+          "khafre-statue": {
+            title: "Statue of King Khafre",
+            dynasty: "4th Dynasty",
+            period: "Old Kingdom",
+            image: "../Halls Gallery/images/khafre_statue.png",
+            introHeading: "The Builder of Giza",
+            introText:
+              "A monumental diorite statue of the builder of the second pyramid, capturing the king in a pose of eternal divine protection.",
+            detailsHeading: "The Falcon's Embrace",
+            detailsText:
+              "The falcon god Horus perches behind the king's head, symbolizing the divine nature of the Pharaonic office.",
+            stats: [
+              { label: "Material", value: "Diorite" },
+              { label: "Found at", value: "Giza" },
+            ],
+          },
+          "menkaure-statue": {
+            title: "Group Statue of Menkaure",
+            dynasty: "4th Dynasty",
+            period: "Old Kingdom",
+            image: "../Halls Gallery/images/menkaure_statue.png",
+            introHeading: "The Triad of Power",
+            introText:
+              "One of the famous greywacke triads showing King Menkaure with the goddess Hathor and a provincial deity.",
+            detailsHeading: "Old Kingdom Perfection",
+            detailsText:
+              "The statue exemplifies the peak of Old Kingdom artistic proportions and the relationship between the king and the divine.",
+            stats: [
+              { label: "Material", value: "Greywacke" },
+              { label: "Found at", value: "Giza" },
+            ],
+          },
+          "scribe-palette": {
+            title: "Scribe's Palette and Pens",
+            dynasty: "Middle Kingdom",
+            period: "12th Dynasty",
+            image: "../Halls Gallery/images/scribe_palette.png",
+            introHeading: "The Power of the Pen",
+            introText:
+              "The essential tools of the ancient Egyptian intellectual, used to record everything from taxes to sacred texts.",
+            detailsHeading: "The Scribe's Craft",
+            detailsText:
+              "The palette features wells for black and red ink, made from carbon and ochre.",
+            stats: [
+              { label: "Material", value: "Wood" },
+              { label: "Ink Colors", value: "Black & Red" },
+            ],
+          },
+          "cosmetic-palette": {
+            title: "Cosmetic Palette",
+            dynasty: "Predynastic",
+            period: "Naqada II",
+            image: "../Halls Gallery/images/cosmetic_palette.png",
+            introHeading: "Rituals of Beauty",
+            introText:
+              "An ancient siltstone palette used for grinding minerals like malachite into cosmetic eye paint.",
+            detailsHeading: "Symbolic Design",
+            detailsText:
+              "The animal-shaped design reflects the spiritual connection between the user and the natural world.",
+            stats: [
+              { label: "Material", value: "Siltstone" },
+              { label: "Period", value: "Predynastic" },
+            ],
+          },
+          "mummy-mask": {
+            title: "Gilded Mummy Mask",
+            dynasty: "Late Period",
+            period: "7th-4th Century BCE",
+            image: "../Halls Gallery/images/mummy_mask.png",
+            introHeading: "The Divine Face",
+            introText:
+              "A stunning gilded mask used to protect the identity of the deceased and grant them a god-like appearance for eternity.",
+            detailsHeading: "Cartonnage Craft",
+            detailsText:
+              "Made from cartonnage—layers of linen and plaster—and meticulously covered in gold foil.",
+            stats: [
+              { label: "Material", value: "Cartonnage & Gold" },
+              { label: "Purpose", value: "Divine Identity" },
+            ],
+          },
+          "ancient-sandals": {
+            title: "Ancient Egyptian Sandals",
+            dynasty: "New Kingdom",
+            period: "18th-20th Dynasty",
+            image: "../Halls Gallery/images/ancient_sandals.png",
+            introHeading: "Stepping into the Past",
+            introText:
+              "Remarkably preserved sandals made from organic materials, showing the high skill of ancient weavers.",
+            detailsHeading: "Sophisticated Fashion",
+            detailsText:
+              "Woven from papyrus and palm leaves, these sandals provided comfort in the desert heat and were often buried with their owners.",
+            stats: [
+              { label: "Material", value: "Papyrus & Palm" },
+              { label: "Age", value: "c. 1300 BCE" },
+            ],
+          },
+          "column-merneptah": {
+            title: "Granite Column of Merneptah",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Halls Gallery/images/column_merneptah.png",
+            introHeading: "Monolithic Triumph",
+            introText:
+              "This massive 5.6-meter column originally stood in the temple of Ptah at Memphis, serving as a monumental record of royal power.",
+            detailsHeading: "Royal Inscriptions",
+            detailsText:
+              "The column is inscribed with the titles and triumphs of King Merneptah, celebrating his military victories and his role as the chosen one of the gods.",
+            stats: [
+              { label: "Material", value: "Red Granite" },
+              { label: "Height", value: "5.6 Meters" },
+            ],
+          },
+          "ptolemaic-king": {
+            title: "Colossus of a Ptolemaic King",
+            dynasty: "Ptolemaic Period",
+            period: "Late Period",
+            image: "../Halls Gallery/images/ptolemaic_king.png",
+            introHeading: "The Greek Pharaoh",
+            introText:
+              "Recovered from the sunken city of Heracleion, this statue represents a Ptolemaic ruler presenting himself in the traditional style of an Egyptian Pharaoh.",
+            detailsHeading: "Cultural Fusion",
+            detailsText:
+              "The statue bridges the gap between Hellenistic leadership and ancient Egyptian tradition, carved from a single block of red granite.",
+            stats: [
+              { label: "Discovery", value: "Underwater" },
+              { label: "Material", value: "Red Granite" },
+            ],
+          },
+          "ptolemaic-queen": {
+            title: "Colossus of a Ptolemaic Queen",
+            dynasty: "Ptolemaic Period",
+            period: "Late Period",
+            image: "../Halls Gallery/images/ptolemaic_queen.png",
+            introHeading: "Divine Majesty",
+            introText:
+              "A dark granite masterpiece representing a Ptolemaic queen as the goddess Isis, showcasing the intricate blending of Greek and Egyptian religious iconography.",
+            detailsHeading: "Artistic Detail",
+            detailsText:
+              "The queen holds a cornucopia and wears a traditional Egyptian wig, symbolizing her role as a source of abundance and divine favor for the kingdom.",
+            stats: [
+              { label: "Representing", value: "Ptolemaic Queen" },
+              { label: "Material", value: "Dark Granite" },
+            ],
+          },
+          "sarcophagus-seti": {
+            title: "Sarcophagus of Seti I",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Halls Gallery/images/sarcophagus_seti.png",
+            introHeading: "The Alabaster Masterpiece",
+            introText:
+              "This translucent sarcophagus is widely considered the finest example of Egyptian stone carving ever discovered.",
+            detailsHeading: "Book of Gates",
+            detailsText:
+              "Covered in delicate hieroglyphic inscriptions and scenes from the Book of Gates, the sarcophagus guided the king through the hours of the night into the afterlife.",
+            stats: [
+              { label: "Material", value: "Translucent Alabaster" },
+              { label: "Technique", value: "Micro-carving" },
+            ],
+          },
+          "canopic-hetepheres": {
+            title: "Canopic Chest of Queen Hetepheres",
+            dynasty: "4th Dynasty",
+            period: "Old Kingdom",
+            image: "../Halls Gallery/images/canopic_chest_hetepheres.png",
+            introHeading: "Origins of Eternity",
+            introText:
+              "Found in a secret shaft at Giza, this chest is one of the oldest surviving examples of the specialized funerary equipment used to preserve the internal organs.",
+            detailsHeading: "Old Kingdom Craft",
+            detailsText:
+              "The calcite chest contains four distinct compartments, reflecting the early development of mummification rituals that would persist for thousands of years.",
+            stats: [
+              { label: "Found in", value: "Giza" },
+              { label: "Material", value: "Calcite" },
+            ],
+          },
+          "mask-psusennes": {
+            title: "Golden Mask of Psusennes I",
+            dynasty: "21st Dynasty",
+            period: "Late Period",
+            image: "../Halls Gallery/images/mask_psusennes.png",
+            introHeading: "The Silver Pharaoh's Gold",
+            introText:
+              "While his coffin was made of silver, Psusennes I's mask is solid gold, proving the wealth of the Tanite kings during a time once thought to be in decline.",
+            detailsHeading: "Exquisite Craftsmanship",
+            detailsText:
+              "The mask features detailed engraving and glass paste inlays, rivaling the artistry of the 18th Dynasty while maintaining a distinct 21st Dynasty style.",
+            stats: [
+              { label: "Found at", value: "Tanis" },
+              { label: "Material", value: "Solid Gold" },
+            ],
+          },
+          "statue-1": {
+            title: "The Seated Scribe",
+            dynasty: "5th Dynasty",
+            period: "Old Kingdom",
+            image: "../collection/The Seated Scribewebp.webp",
+            introHeading: "A Moment of Focus",
+            introText:
+              "One of the most important works of Ancient Egyptian art, this statue depicts a scribe at work, capturing a lifelike and individualistic expression rare for the period.",
+            detailsHeading: "Seeing the Soul",
+            detailsText:
+              "The eyes are inlaid with rock crystal, magnesite, and copper-arsenic alloy, giving them a startlingly realistic appearance that seems to follow the viewer.",
+            stats: [
+              { label: "Material", value: "Painted Limestone" },
+              { label: "Eyes", value: "Rock Crystal" },
+            ],
+            quote:
+              "Be a scribe! Thy limbs will be sleek, thy hands will grow soft.",
+            quoteAuthor: "The Satire of the Trades",
+          },
+
+          "narmer-palette": {
+            title: "Narmer Palette (Replica)",
+            dynasty: "Protodynastic",
+            period: "c. 3100 BCE",
+            image: "../Halls Gallery/images/narmer_palette.png",
+            introHeading: "The Unification of Egypt",
+            introText:
+              "Considered the first historical document in the world, this palette commemorates the unification of Upper and Lower Egypt under King Narmer.",
+            detailsHeading: "Foundations of Art",
+            detailsText:
+              "It establishes the artistic conventions—such as hierarchical scale and registers—that would define Egyptian art for the next 3,000 years.",
+            stats: [
+              { label: "Material", value: "Siltstone" },
+              { label: "Age", value: "5,000+ Years" },
+            ],
+          },
+          "predynastic-vessel": {
+            title: "Painted Predynastic Vessel",
+            dynasty: "Naqada II",
+            period: "Pre-dynastic",
+            image: "../Halls Gallery/images/predynastic_vessel.png",
+            introHeading: "The Nile Highway",
+            introText:
+              "This Gerzean pottery vessel is decorated with ochre-red paint depicting multi-oared boats, mountain ranges, and flamingos.",
+            detailsHeading: "Early Communication",
+            detailsText:
+              "It illustrates the importance of the Nile as a highway for trade and communication even before the dawn of the Pharaonic state.",
+            stats: [
+              { label: "Type", value: "Pottery" },
+              { label: "Discovery", value: "Naqada" },
+            ],
+          },
+          "flint-knife": {
+            title: "Ritual Flint Knife",
+            dynasty: "Predynastic",
+            period: "Naqada III",
+            image: "../Halls Gallery/images/flint_knife.png",
+            introHeading: "Mastery of Stone",
+            introText:
+              "Known as the Gebel el-Arak knife style, this object features a ripple-flaked flint blade of incredible sharpness.",
+            detailsHeading: "Ivory Detail",
+            detailsText:
+              "The ivory handle is carved with microscopic detail, showing complex battle scenes and mythological motifs.",
+            stats: [
+              { label: "Material", value: "Flint & Ivory" },
+              { label: "Use", value: "Ritual" },
+            ],
+          },
+          "featured-tut-mask": {
+            title: "Golden Tut Mask",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Kids-Museum/tut-mask-kids.png",
+            introHeading: "The Boy King's Treasure",
+            introText:
+              "A friendly version of the most famous mask in the world, perfect for young explorers to learn about King Tut!",
+            detailsHeading: "Fun Fact",
+            detailsText:
+              "Did you know this mask was made of real solid gold? It helped the Pharaoh shine like the sun!",
+            stats: [
+              { label: "Material", value: "Solid Gold" },
+              { label: "Weight", value: "Heavy!" },
+            ],
+          },
+          "featured-ramses": {
+            title: "Ramses the Great",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Kids-Museum/ramses-kids.png",
+            introHeading: "The Mighty Builder",
+            introText:
+              "Meet King Ramses II! He was one of Egypt's longest-ruling and most powerful Pharaohs.",
+            detailsHeading: "Giant Statues",
+            detailsText:
+              "Ramses loved building giant statues of himself so people would remember his greatness forever.",
+            stats: [
+              { label: "Rule", value: "66 Years" },
+              { label: "Statues", value: "Many!" },
+            ],
+          },
+          "featured-sphinx": {
+            title: "The Smiling Sphinx",
+            dynasty: "4th Dynasty",
+            period: "Old Kingdom",
+            image: "../Kids-Museum/sphinx-kids.png",
+            introHeading: "The Riddle Master",
+            introText:
+              "A lion with a human head! The Sphinx has been guarding the Pyramids for thousands of years.",
+            detailsHeading: "Can you solve it?",
+            detailsText:
+              "The Sphinx loves riddles. Can you guess why he has a lion's body? It's because lions are strong and brave!",
+            stats: [
+              { label: "Body", value: "Lion" },
+              { label: "Head", value: "Human" },
+            ],
+          },
+          "featured-nefertari": {
+            title: "Queen Nefertari",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Kids-Museum/nefertari-kids.png",
+            introHeading: "The Queen of Magic",
+            introText:
+              "Nefertari was a very special queen who was loved for her kindness and wisdom.",
+            detailsHeading: "Beautiful Walls",
+            detailsText:
+              "Her tomb is one of the most beautiful in Egypt, filled with colorful paintings that tell her story.",
+            stats: [
+              { label: "Role", value: "Great Queen" },
+              { label: "Known for", value: "Kindness" },
+            ],
+          },
+          "featured-blue-hippo": {
+            title: "Magical Blue Hippo",
+            dynasty: "Middle Kingdom",
+            period: "12th Dynasty",
+            image: "../Kids-Museum/blue-hippo-kids.png",
+            introHeading: "William the Hippo",
+            introText:
+              "Meet William! He's a small blue hippo made of a special material called faience.",
+            detailsHeading: "Flower Power",
+            detailsText:
+              "He is covered in drawings of lotus flowers, which remind us of the beautiful Nile river where he lived.",
+            stats: [
+              { label: "Material", value: "Faience" },
+              { label: "Color", value: "Bright Blue" },
+            ],
+          },
+          "featured-anubis": {
+            title: "Anubis the Puppy",
+            dynasty: "Various",
+            period: "Ancient Egypt",
+            image: "../Kids-Museum/anubis-kids.png",
+            introHeading: "The Friendly Protector",
+            introText:
+              "Anubis looks like a puppy, but he's a very smart guardian who helps souls find their way.",
+            detailsHeading: "Super Senses",
+            detailsText:
+              "With his big ears and sharp nose, he can hear and smell things from very far away!",
+            stats: [
+              { label: "Animal", value: "Jackal" },
+              { label: "Job", value: "Guardian" },
+            ],
+          },
+          "featured-bastet": {
+            title: "Bastet the Cat",
+            dynasty: "Various",
+            period: "Ancient Egypt",
+            image: "../Kids-Museum/bastet-kids.png",
+            introHeading: "The Joyful Goddess",
+            introText:
+              "Bastet is a cat goddess who brings music, dance, and joy to everyone she meets.",
+            detailsHeading: "Home Guardian",
+            detailsText:
+              "Ancient Egyptians loved cats because they were smart and kept their homes safe and happy.",
+            stats: [
+              { label: "Animal", value: "Cat" },
+              { label: "Brings", value: "Joy & Fun" },
+            ],
+          },
+          "featured-hatshepsut": {
+            title: "Queen Hatshepsut",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Kids-Museum/hatshepsut-kids.png",
+            introHeading: "The Great Queen",
+            introText:
+              "Hatshepsut was one of the most successful Pharaohs ever! She was a woman who ruled as a King and brought great peace and wealth to Egypt.",
+            detailsHeading: "A Peaceful Empire",
+            detailsText:
+              "Instead of fighting wars, she sent big ships to a land called Punt to bring back trees, gold, and exotic animals. She also built the stunning Temple of Deir el-Bahari.",
+            stats: [
+              { label: "Role", value: "Female Pharaoh" },
+              { label: "Known for", value: "Trade & Peace" },
+            ],
+          },
+          "featured-khufu": {
+            title: "King Khufu",
+            dynasty: "4th Dynasty",
+            period: "Old Kingdom",
+            image: "../Kids-Museum/khufu-kids.png",
+            introHeading: "The Great Builder",
+            introText:
+              "King Khufu built the Great Pyramid of Giza! It was the tallest building on Earth for over 3,800 years. That's a really long time!",
+            detailsHeading: "A Huge Puzzle",
+            detailsText:
+              "It's made of more than 2 million giant stone blocks. Some stones are as heavy as an elephant! He must have been a very organized king to build something so big.",
+            stats: [
+              { label: "Built", value: "Great Pyramid" },
+              { label: "Fun Fact", value: "Tallest for ages!" },
+            ],
+          },
+          "featured-thutmose": {
+            title: "Thutmose the Brave",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Kids-Museum/thutmose-kids.png",
+            introHeading: "The Warrior King",
+            introText:
+              "Thutmose III was a super-brave leader! He won every single battle he fought—that's 17 wins and 0 losses! He's like the MVP of ancient Egypt.",
+            detailsHeading: "The Empire Builder",
+            detailsText:
+              "He made Egypt very large and powerful. He was also a very kind king who loved his people and built many beautiful temples for them.",
+            stats: [
+              { label: "Battles Won", value: "17" },
+              { label: "Title", value: "Empire Maker" },
+            ],
+          },
+          "anubis-statue": {
+            title: "Anubis Guardian Statue",
+            dynasty: "New Kingdom",
+            period: "18th Dynasty",
+            image: "../Halls Gallery/images/anubis_guardian.png",
+            introHeading: "Guardian of the Dead",
+            introText:
+              "This recumbent jackal represents Anubis, the god of mummification and the protector of tombs.",
+            detailsHeading: "Lord of the Sacred Land",
+            detailsText:
+              "Carved from wood and covered in black resin, Anubis guided the deceased through the hall of Maat to their final judgment.",
+            stats: [
+              { label: "Material", value: "Wood & Resin" },
+              { label: "God", value: "Anubis" },
+            ],
+          },
+          "6643b109558a239478145f0c": {
+            title: "Book of the Dead Fragment",
+            dynasty: "New Kingdom",
+            period: "19th Dynasty",
+            image: "../collection/Hunefer Papyrus.jpg",
+            introHeading: "Guide to the Duat",
+            introText:
+              "This papyrus fragment is part of a personalized collection of spells intended to guide the deceased through the dangers of the underworld.",
+            detailsHeading: "Negative Confession",
+            detailsText:
+              "It includes instructions for the critical 'weighing of the heart' ceremony, ensuring the soul passes into paradise.",
+            stats: [
+              { label: "Type", value: "Papyrus" },
+              { label: "Language", value: "Hieroglyphic" },
+            ],
+          },
+          "shabti-tut": {
+            title: "Shabti Figures of Tutankhamun",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image:
+              "https://images.unsplash.com/photo-1544620347-c4fd4a3d5947?q=80&w=2069&auto=format&fit=crop",
+            introHeading: "Magical Workers",
+            introText:
+              "These blue faience figurines were meant to perform manual labor for the king in the afterlife if he were called upon to do so.",
+            detailsHeading: "The Shabti Spell",
+            detailsText:
+              "Each is inscribed with a spell ensuring that when the king is called to work, the shabti will stand and say, 'Here I am!'",
+            stats: [
+              { label: "Material", value: "Faience" },
+              { label: "Found in", value: "KV62" },
+            ],
+          },
+          "6643b109558a239478145f0a": {
+            title: "Rosetta Stone (Replica)",
+            dynasty: "Ptolemaic Period",
+            period: "196 BCE",
+            image: "../collection/rosetta_stone_real.jpg",
+            introHeading: "The Key to History",
+            introText:
+              "This high-fidelity replica represents the stone that allowed modern scholars to finally decipher ancient Egyptian hieroglyphs.",
+            detailsHeading: "Three Scripts",
+            detailsText:
+              "Inscribed with a decree in three scripts—Hieroglyphic, Demotic, and Greek—it provided the vital link needed for translation.",
+            stats: [
+              { label: "Period", value: "Ptolemaic" },
+              { label: "Discovery", value: "1799" },
+            ],
+          },
+          "fayum-portrait": {
+            title: "Fayum Mummy Portrait",
+            dynasty: "Roman Era",
+            period: "1st-3rd Century CE",
+            image:
+              "https://images.unsplash.com/photo-1626084300762-5f72382e379a?q=80&w=2069&auto=format&fit=crop",
+            introHeading: "The Fusion of Styles",
+            introText:
+              "These encaustic-on-wood paintings represent a unique cultural crossroads between Egyptian burial tradition and Roman artistic realism.",
+            detailsHeading: "Vivid Glimpse",
+            detailsText:
+              "They provide the most lifelike portraits of the people who lived in Egypt during the Roman period, preserving their memory for two millennia.",
+            stats: [
+              { label: "Style", value: "Encaustic" },
+              { label: "Region", value: "Fayum Basin" },
+            ],
+          },
+          "sarapis-statue": {
+            title: "Statue of Sarapis",
+            dynasty: "Ptolemaic Era",
+            period: "3rd Century BCE",
+            image:
+              "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop",
+            introHeading: "The Universal God",
+            introText:
+              "Sarapis was a synthetic deity created to unite Greek and Egyptian worshippers under the Ptolemaic kings.",
+            detailsHeading: "Iconographic Blend",
+            detailsText:
+              "The statue combines the physical appearance of the Greek Zeus with the spiritual attributes of Osiris and Apis.",
+            stats: [
+              { label: "Material", value: "Granite" },
+              { label: "Origin", value: "Alexandria" },
+            ],
+          },
+          "terracotta-figure": {
+            title: "Terra-cotta Female Figure",
+            dynasty: "Naqada I",
+            period: "Predynastic",
+            image:
+              "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop",
+            introHeading: "Dawn of Art",
+            introText:
+              "A rare Predynastic figure representing the very beginnings of Egyptian sculptural tradition.",
+            detailsHeading: "Mystical Origins",
+            detailsText:
+              "Likely a ritual object associated with fertility or dance, found in the earliest settlements along the Nile.",
+            stats: [
+              { label: "Material", value: "Terra-cotta" },
+              { label: "Age", value: "c. 3500 BCE" },
+            ],
+          },
+          "featured-tut-mask": {
+            title: "Golden Tut Mask",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Kids-Museum/tut-mask-kids.png",
+            introHeading: "The Boy King's Gold!",
+            introText:
+              "Hi explorer! This is the most famous mask in the world. It belonged to King Tut, who became Pharaoh when he was only 9 years old! That's probably your age!",
+            detailsHeading: "What's it made of?",
+            detailsText:
+              "It's made of solid gold and decorated with beautiful blue stones called Lapis Lazuli. It was meant to protect the King in the afterlife and help him find his way.",
+            stats: [
+              { label: "Material", value: "Shiny Gold" },
+              { label: "Fun Fact", value: "Worn by a kid king!" },
+            ],
+          },
+          "featured-ramses": {
+            title: "Ramses the Great",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Kids-Museum/ramses-kids.png",
+            introHeading: "The Mightiest Pharaoh",
+            introText:
+              "Meet Ramses II! He was a super-strong leader who built huge statues of himself all over Egypt. He wanted everyone to know how brave he was!",
+            detailsHeading: "Giant Statues",
+            detailsText:
+              "He lived for a very long time (over 90 years!) and had many children. He even signed the first peace treaty in the world to stop a war.",
+            stats: [
+              { label: "Superpower", value: "Brave Leader" },
+              { label: "Favorite color", value: "Royal Gold" },
+            ],
+          },
+          "featured-sphinx": {
+            title: "The Smiling Sphinx",
+            dynasty: "Old Kingdom",
+            period: "4th Dynasty",
+            image: "../Kids-Museum/sphinx-kids.png",
+            introHeading: "Riddle Master",
+            introText:
+              "I have the body of a lion and the head of a human! I guard the Great Pyramids and I love to solve riddles. Can you solve mine?",
+            detailsHeading: "One Big Rock",
+            detailsText:
+              "I'm not built from many blocks—I'm carved out of one giant piece of limestone mountain! I've been sitting in the sand for over 4,500 years.",
+            stats: [
+              { label: "Body", value: "Lion (Strong!)" },
+              { label: "Head", value: "Human (Smart!)" },
+            ],
+          },
+          "featured-nefertari": {
+            title: "Queen Nefertari",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Kids-Museum/nefertari-kids.png",
+            introHeading: "The Star of Egypt",
+            introText:
+              "Nefertari was a very important Queen. Her name means 'The Most Beautiful.' She was a very smart advisor to King Ramses II.",
+            detailsHeading: "Her Magical Tomb",
+            detailsText:
+              "Her tomb is the most beautiful one ever found! It's full of bright paintings that look like they were painted yesterday. They show her playing games and meeting gods.",
+            stats: [
+              { label: "Role", value: "Great Royal Wife" },
+              { label: "Specialty", value: "Peace Maker" },
+            ],
+          },
+          "featured-blue-hippo": {
+            title: "Magical Blue Hippo",
+            dynasty: "Middle Kingdom",
+            period: "12th Dynasty",
+            image: "../Kids-Museum/blue-hippo-kids.png",
+            introHeading: "William the Hippo",
+            introText:
+              "This cute little hippo is made of a blue material called 'faience.' He was found in a tomb and was meant to bring life and joy to the owner.",
+            detailsHeading: "Flower Power",
+            detailsText:
+              "Look closely at his back—you can see paintings of lotus flowers! Hippos love to swim in the Nile among these beautiful flowers.",
+            stats: [
+              { label: "Nickname", value: "William" },
+              { label: "Color", value: "Egyptian Blue" },
+            ],
+          },
+          "alexander-statue": {
+            title: "Bust of Alexander the Great",
+            dynasty: "Ptolemaic Era",
+            period: "Early Ptolemaic",
+            image:
+              "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop",
+            introHeading: "The Macedonian Pharaoh",
+            introText:
+              "Alexander the Great, the founder of Alexandria, depicted in the heroic style of late classical sculpture.",
+            detailsHeading: "Imperial Vision",
+            detailsText:
+              "This bust captures Alexander's distinctive features and his role as the conqueror who united Greece and Egypt.",
+            stats: [
+              { label: "Material", value: "Marble" },
+              { label: "Origin", value: "Alexandria" },
+            ],
+          },
+          "djoser-statue": {
+            title: "Statue of King Djoser",
+            dynasty: "3rd Dynasty",
+            period: "Old Kingdom",
+            image:
+              "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop",
+            introHeading: "The First Colossus",
+            introText:
+              "The oldest life-size statue of an Egyptian king, found in the Step Pyramid complex at Saqqara.",
+            detailsHeading: "Eternal Vigil",
+            detailsText:
+              "The statue was placed in a sealed chamber with two eye-holes, allowing the king's spirit to look out and receive offerings.",
+            stats: [
+              { label: "Material", value: "Limestone" },
+              { label: "Found at", value: "Saqqara" },
+            ],
+          },
+          "6643b109558a239478145f08": {
+            title: "Painted Sarcophagus",
+            dynasty: "21st Dynasty",
+            period: "Third Intermediate Period",
+            image: "../collection/unnamed (2).png",
+            introHeading: "The Eternal Vessel",
+            introText:
+              "Beautifully decorated with intricate hieroglyphics and scenes from the Book of the Dead, this sarcophagus was designed to protect the soul on its journey to the afterlife.",
+            detailsHeading: "Sacred Artistry",
+            detailsText:
+              "The vibrant colors were made from natural minerals, and the detailed scenes depict the deceased being presented to Osiris, the god of the underworld.",
+            stats: [
+              { label: "Material", value: "Polychrome Wood" },
+              { label: "Origin", value: "Thebes" },
+            ],
+          },
+          "6643b109558a239478145f0b": {
+            title: "Canopic Jars",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../collection/Canopic Jarspng.png",
+            introHeading: "Guardians of the Organs",
+            introText:
+              "Four limestone jars used to store mummified organs, each guarded by one of the four sons of Horus.",
+            detailsHeading: "Divine Protection",
+            detailsText:
+              "Each jar has a different head representing a son of Horus: human, baboon, jackal, and falcon, protecting the liver, lungs, stomach, and intestines.",
+            stats: [
+              { label: "Material", value: "Alabaster/Limestone" },
+              { label: "Set", value: "4 Jars" },
+            ],
+          },
+          "6643b109558a239478145f0d": {
+            title: "Sphinx Model",
+            dynasty: "Old Kingdom",
+            period: "4th Dynasty",
+            image: "../collection/Sphinx Model.webp",
+            introHeading: "The Royal Guardian",
+            introText:
+              "A miniature guardian figure modeled after the Great Sphinx, symbolizing divine protection of sacred sites.",
+            detailsHeading: "Lion's Strength",
+            detailsText:
+              "Carved with the body of a lion and the head of a Pharaoh, it represents the union of physical power and royal wisdom.",
+            stats: [
+              { label: "Material", value: "Limestone" },
+              { label: "Style", value: "Old Kingdom" },
+            ],
+          },
+          "6643b109558a239478145f0e": {
+            title: "Rosetta Stone Replica",
+            dynasty: "Ptolemaic Period",
+            period: "196 BCE",
+            image: "../collection/the-rosetta-stone.jpg",
+            introHeading: "The Gift of Language",
+            introText:
+              "An exact replica preserving the three scripts—Hieroglyphic, Demotic, and Greek—used for the vital work of translation.",
+            detailsHeading: "Historical Milestone",
+            detailsText:
+              "A precise representation of the decree that unlocked the mysteries of ancient Egyptian writing for the modern world.",
+            stats: [
+              { label: "Material", value: "Resin Cast" },
+              { label: "Significance", value: "Decipherment" },
+            ],
+          },
+          "daily-1": {
+            title: "Inlaid Wooden Chair",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../collection/daily_life_chair.png",
+            introHeading: "Royal Comfort",
+            introText:
+              "A remarkably preserved chair with ebony and ivory inlays, showcasing the luxury of Egyptian furniture.",
+            detailsHeading: "Master Carpentry",
+            detailsText:
+              "The intricate patterns and ergonomic design demonstrate the advanced woodworking skills of the craftsmen of Deir el-Medina.",
+            stats: [
+              { label: "Material", value: "Ebony & Ivory" },
+              { label: "Origin", value: "Deir el-Medina" },
+            ],
+          },
+          "ptah-sokar-osiris": {
+            title: "Ptah-Sokar-Osiris Figure",
+            dynasty: "Late Period to Ptolemaic",
+            period: "Late Period",
+            image: "../Exhibition-Halls/images/artifacts/ptah_sokar_osiris.png",
+            introHeading: "Guardian of Rebirth",
+            introText:
+              "This wooden statuette represents the synthesis of three powerful funerary deities: Ptah, Sokar, and Osiris.",
+            detailsHeading: "Funerary Magic",
+            detailsText:
+              "Often containing a small papyrus with spells or a mummified piece of the deceased, these figures ensured protection and resurrection.",
+            stats: [
+              { label: "Material", value: "Painted Wood" },
+              { label: "Role", value: "Funerary Protection" },
+            ],
+          },
+          "shabti-box": {
+            title: "Shabti Box of Sennedjem",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/shabti_box.png",
+            introHeading: "The Servant's Vessel",
+            introText:
+              "A beautifully painted container designed to hold Shabti figurines—magical servants for the afterlife.",
+            detailsHeading: "Daily Life in Eternity",
+            detailsText:
+              "Decorated with scenes showing the deceased worshipping gods, this box reflects the vibrant artistic style of the Deir el-Medina artisans.",
+            stats: [
+              { label: "Material", value: "Polychrome Wood" },
+              { label: "Origin", value: "Deir el-Medina" },
+            ],
+          },
+          "papyrus-ani": {
+            title: "Papyrus of Ani",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/papyrus_ani.png",
+            introHeading: "The Book of the Dead",
+            introText:
+              "The most famous and beautifully illustrated funerary scroll ever discovered.",
+            detailsHeading: "The Final Judgment",
+            detailsText:
+              "This section shows the Weighing of the Heart ceremony, where the deceased's heart is balanced against the feather of Maat (Truth).",
+            stats: [
+              { label: "Material", value: "Papyrus" },
+              { label: "Length", value: "23.8 meters (original)" },
+            ],
+          },
+          "victory-stele": {
+            title: "Victory Stele of Merneptah",
+            dynasty: "19th Dynasty",
+            period: "c. 1208 BCE",
+            image: "../Exhibition-Halls/images/Victory Stele of Merneptah.png",
+            introHeading: "The Israel Stele",
+            introText:
+              "A monumental black granite slab commemorating King Merneptah's military victories in Libya and Canaan.",
+            detailsHeading: "Historical Milestone",
+            detailsText:
+              "This artifact is globally famous for containing the first known historical mention of the people of Israel.",
+            stats: [
+              { label: "Material", value: "Black Granite" },
+              { label: "Weight", value: "3.1 Tons" },
+            ],
+          },
+          "senusret-statue": {
+            title: "Statue of Senusret I",
+            dynasty: "12th Dynasty",
+            period: "Middle Kingdom",
+            image: "../Exhibition-Halls/images/Statue of Senusret I.png",
+            introHeading: "Royal Majesty",
+            introText:
+              "A seated colossus of one of the Middle Kingdom's most powerful and productive pharaohs.",
+            detailsHeading: "Artistic Perfection",
+            detailsText:
+              "The statue showcases the refined proportions and serene expression characteristic of 12th Dynasty royal portraiture.",
+            stats: [
+              { label: "Material", value: "Painted Limestone" },
+              { label: "Found at", value: "Lisht" },
+            ],
+          },
+          "thutmose-statue": {
+            title: "Statue of Thutmose III",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/thutmose_statue.png",
+            introHeading: "The Warrior King",
+            introText:
+              "A powerful schist statue of Egypt's greatest military commander, known as the Napoleon of Egypt.",
+            detailsHeading: "Imperial Presence",
+            detailsText:
+              "The statue depicts the pharaoh with a serene yet authoritative expression.",
+            stats: [
+              { label: "Material", value: "Schist" },
+              { label: "Role", value: "Pharaoh" },
+            ],
+          },
+          "memnon-fragment": {
+            title: "Colossi of Memnon Fragment",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/memnon_fragment.png",
+            introHeading: "Massive Monument",
+            introText:
+              "A giant fragment from one of the two colossal statues that stood before the mortuary temple of Amenhotep III.",
+            detailsHeading: "Quartzite Giants",
+            detailsText:
+              "Carved from a single block of quartzite, these statues were originally 18 meters tall.",
+            stats: [
+              { label: "Material", value: "Quartzite" },
+              { label: "Location", value: "Luxor" },
+            ],
+          },
+          "weighing-heart-afterlife": {
+            title: "Weighing of the Heart Papyrus",
+            dynasty: "New Kingdom",
+            period: "19th Dynasty",
+            image: "../Exhibition-Halls/images/artifacts/weighing_heart.png",
+            introHeading: "The Final Judgment",
+            introText:
+              "A critical scene from the Book of the Dead depicting the weighing of the soul's heart against the feather of truth.",
+            detailsHeading: "Moral Accountability",
+            detailsText:
+              "Anubis leads the deceased to the scales, while Thoth stands ready to record the divine verdict.",
+            stats: [
+              { label: "Material", value: "Papyrus" },
+              { label: "Scene", value: "Judgment Hall of Osiris" },
+            ],
+          },
+          "seqenenre-mummy": {
+            title: "Mummy of Seqenenre Tao II",
+            dynasty: "17th Dynasty",
+            period: "Second Intermediate Period",
+            image: "../Exhibition-Halls/images/artifacts/seqenenre_mummy.png",
+            introHeading: "The Martyr King",
+            introText:
+              "The mummy of the brave pharaoh who fell in battle against the Hyksos, with clear wounds visible on his skull.",
+            detailsHeading: "Warrior's Legacy",
+            detailsText:
+              "His death sparked the final war of liberation that eventually drove the Hyksos out of Egypt.",
+            stats: [
+              { label: "Cause of Death", value: "Battle Wounds" },
+              { label: "Dynasty", value: "17th" },
+            ],
+          },
+          "seti-mummy": {
+            title: "Mummy of Seti I",
+            dynasty: "19th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/seti_mummy.png",
+            introHeading: "The Face of Royalty",
+            introText:
+              "Widely considered the most majestic and well-preserved of all royal mummies.",
+            detailsHeading: "Masterful Preservation",
+            detailsText:
+              "The pharaoh's face remains remarkably intact, showing a noble and calm expression.",
+            stats: [
+              { label: "Condition", value: "Pristine" },
+              { label: "Tomb", value: "KV17" },
+            ],
+          },
+          "tiye-mummy": {
+            title: "Mummy of Queen Tiye",
+            dynasty: "18th Dynasty",
+            period: "New Kingdom",
+            image: "../Exhibition-Halls/images/artifacts/tiye_mummy.png",
+            introHeading: "The Elder Lady",
+            introText:
+              "The mummy of the powerful Queen Tiye, famous for her beautifully preserved long hair.",
+            detailsHeading: "Famous Locks",
+            detailsText:
+              "She remains easily identified by her striking reddish-brown hair.",
+            stats: [
+              { label: "Role", value: "Great Royal Wife" },
+              { label: "Identity", value: "Elder Lady (KV35)" },
+            ],
+          },
+          "rosetta-replica-gr": {
+            title: "Rosetta Stone Replica",
+            dynasty: "Ptolemaic Period",
+            period: "196 BCE",
+            image: "../Exhibition-Halls/images/artifacts/rosetta_stone.png",
+            introHeading: "The Key to History",
+            introText:
+              "A high-fidelity replica of the stone that allowed modern scholars to finally decipher ancient Egyptian hieroglyphs.",
+            detailsHeading: "Three Scripts",
+            detailsText:
+              "Inscribed with a decree in three scripts—Hieroglyphic, Demotic, and Greek—it provided the vital link needed for translation.",
+            stats: [
+              { label: "Period", value: "Ptolemaic" },
+              { label: "Discovery", value: "1799" },
+            ],
+          },
+          "fayum-portrait-gr": {
+            title: "Fayum Mummy Portrait",
+            dynasty: "Roman Era",
+            period: "1st-3rd Century CE",
+            image: "../Exhibition-Halls/images/artifacts/fayum_portrait.png",
+            introHeading: "The Fusion of Styles",
+            introText:
+              "These encaustic-on-wood paintings represent a unique cultural crossroads between Egyptian burial tradition and Roman artistic realism.",
+            detailsHeading: "Vivid Glimpse",
+            detailsText:
+              "They provide the most lifelike portraits of the people who lived in Egypt during the Roman period, preserving their memory for two millennia.",
+            stats: [
+              { label: "Style", value: "Encaustic" },
+              { label: "Region", value: "Fayum Basin" },
+            ],
+          },
+          "sarapis-statue-gr": {
+            title: "Statue of Sarapis",
+            dynasty: "Ptolemaic Era",
+            period: "3rd Century BCE",
+            image: "../Exhibition-Halls/images/artifacts/sarapis_statue.png",
+            introHeading: "The Universal God",
+            introText:
+              "Sarapis was a synthetic deity created to unite Greek and Egyptian worshippers under the Ptolemaic kings.",
+            detailsHeading: "Iconographic Blend",
+            detailsText:
+              "The statue combines the physical appearance of the Greek Zeus with the spiritual attributes of Osiris and Apis.",
+            stats: [
+              { label: "Material", value: "Granite" },
+              { label: "Origin", value: "Alexandria" },
+            ],
+          },
+          "pompeys-pillar": {
+            title: "Pompey's Pillar",
+            dynasty: "Roman Era",
+            period: "297 CE",
+            image: "../Exhibition-Halls/images/artifacts/pompeys_pillar.png",
+            introHeading: "Monolithic Triumph",
+            introText:
+              "A massive Roman triumphal column, one of the largest ancient monoliths ever erected, standing as a landmark of Alexandria.",
+            detailsHeading: "Commemorative Victory",
+            detailsText:
+              "Built in honor of the Emperor Diocletian, the column is carved from a single block of Aswan red granite.",
+            stats: [
+              { label: "Height", value: "26.85 Meters" },
+              { label: "Material", value: "Red Granite" },
+            ],
+          },
+          "crocodile-mummy": {
+            title: "Crocodile Mummy",
+            dynasty: "Greco-Roman",
+            period: "1st Century BCE",
+            image: "../Exhibition-Halls/images/artifacts/crocodile_mummy.png",
+            introHeading: "The Sacred Reptile",
+            introText:
+              "A mummified crocodile representing the god Sobek, the protector of the Nile and the Pharaoh.",
+            detailsHeading: "Divine Animal Cults",
+            detailsText:
+              "During the Greco-Roman period, animal mummification reached its peak, with thousands of crocodiles preserved in honor of the divine.",
+            stats: [
+              { label: "God", value: "Sobek" },
+              { label: "Material", value: "Linen & Resin" },
+            ],
+          },
+          "roman-emperor-pharaoh": {
+            title: "Roman Emperor as Pharaoh",
+            dynasty: "Roman Era",
+            period: "1st Century CE",
+            image: "../Exhibition-Halls/images/artifacts/roman_pharaoh.png",
+            introHeading: "Imperial Synthesis",
+            introText:
+              "A statue depicting a Roman ruler in traditional Egyptian pharaonic dress, demonstrating the continuity of royal iconography.",
+            detailsHeading: "Political Legitimacy",
+            detailsText:
+              "Roman emperors adopted Egyptian titles and styles to be seen as legitimate successors to the Pharaohs by the local population.",
+            stats: [
+              { label: "Style", value: "Egyptian-Roman" },
+              { label: "Material", value: "Basalt" },
+            ],
+          },
+          "mummy-cartonnage": {
+            title: "Mummy Cartonnage",
+            dynasty: "New Kingdom",
+            period: "20th Dynasty",
+            image: "../Exhibition-Halls/images/artifacts/mummy_cartonnage.png",
+            introHeading: "Protective Shell",
+            introText:
+              "A beautifully painted funerary casing made of linen and plaster, designed to enclose and protect the mummy.",
+            detailsHeading: "Symbolic Protection",
+            detailsText:
+              "The cartonnage is decorated with various protective deities and magical symbols to ensure safe passage to the afterlife.",
+            stats: [
+              { label: "Material", value: "Linen and Plaster" },
+              { label: "Technique", value: "Polychrome Painting" },
+            ],
+          },
+        }

@@ -186,11 +186,10 @@
             <div class="hero-container">
                 <!-- Header -->
                 <div class="hero-header" style="padding-top: 70px;">
-                    <span class="hero-label">Ancient Scriptorium</span>
-                    <h1 class="hero-title">Inscribe Your Name</h1>
+                    <span class="hero-label" data-i18n="name_trans.hero_label">Ancient Scriptorium</span>
+                    <h1 class="hero-title" data-i18n="name_trans.hero_title">Inscribe Your Name</h1>
                     <p class="hero-description">
-                        Translate your modern identity into the sacred symbols of the Old Kingdom. Every character is a
-                        vessel of eternal spirit.
+                        <span data-i18n="name_trans.hero_desc">Translate your modern identity into the sacred symbols of the Old Kingdom. Every character is a vessel of eternal spirit.</span>
                     </p>
                 </div>
 
@@ -206,33 +205,33 @@
                         <!-- Input Section -->
                         <div class="input-section">
                             <div class="input-group">
-                                <label class="input-label">The Subject Name</label>
-                                <input type="text" class="input-field" id="nameInput" placeholder="Enter your name...">
+                                <label class="input-label" data-i18n="name_trans.input_label">The Subject Name</label>
+                                <input type="text" class="input-field" id="nameInput" placeholder="Enter your name..." data-i18n-placeholder="name_trans.input_placeholder">
                             </div>
 
                             <div class="options-group">
                                 <div class="radio-option">
                                     <input type="radio" id="cartoucheStyle" name="style" checked>
-                                    <label for="cartoucheStyle" class="radio-label">Royal Cartouche Style</label>
+                                    <label for="cartoucheStyle" class="radio-label" data-i18n="name_trans.style_cartouche">Royal Cartouche Style</label>
                                 </div>
                                 <div class="radio-option disabled">
                                     <input type="radio" id="demoticScript" name="style" disabled>
-                                    <label for="demoticScript" class="radio-label">Demotic Script</label>
+                                    <label for="demoticScript" class="radio-label" data-i18n="name_trans.style_demotic">Demotic Script</label>
                                 </div>
                             </div>
 
-                            <button class="generate-btn" id="generateBtn">Generate Inscription</button>
+                            <button class="generate-btn" id="generateBtn" data-i18n="name_trans.btn_generate">Generate Inscription</button>
                         </div>
 
                         <!-- Display Section -->
                         <div class="display-section">
-                            <div class="artifact-ref">Artifact Ref: #4092-A</div>
+                            <div class="artifact-ref" data-i18n="name_trans.artifact_ref">Artifact Ref: #4092-A</div>
                             <div class="hieroglyph-display" id="hieroglyphDisplay" style="font-family: 'Noto Sans Egyptian Hieroglyphs', sans-serif; font-size: 3.5rem; text-align: center; margin: 1rem 0; color: #ecb613;">
                                 𓀀 𓃠 𓅓 𓏏
                             </div>
                             <div class="phonetic-section">
                                 <div class="divider"></div>
-                                <p class="phonetic-label">Phonetic Rendering</p>
+                                <p class="phonetic-label" data-i18n="name_trans.phonetic_label">Phonetic Rendering</p>
                                 <p class="phonetic-text" id="phoneticText">Amun-Ra-Te</p>
                             </div>
                             <div class="action-buttons">
@@ -251,7 +250,7 @@
                 <div class="footer-context" style="padding-bottom: 150px;">
                     <div class="context-info">
                         <span class="material-symbols-outlined">info</span>
-                        <p>Translation based on Middle Kingdom grammar conventions.</p>
+                        <p data-i18n="name_trans.context_info">Translation based on Middle Kingdom grammar conventions.</p>
                     </div>
 
                 </div>
@@ -353,7 +352,7 @@
     <script src="script.js"></script>
     <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
-<script src="../global-lang.js"></script>
+<script src="../global-lang.js?v=1780353971499"></script>
 </body>
 
 </html>

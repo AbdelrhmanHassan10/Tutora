@@ -49,15 +49,15 @@
 
             <div class="menu-dropdown">
                 <button class="menu-link dropdown-toggle active">
-                    AI Experience
+                    <span data-i18n="nav.ai_experience">AI Experience</span>
                     <span class="material-symbols-outlined">expand_less</span>
                 </button>
                 <div class="dropdown-items show">
                     <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
                     <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item active">AI Artifact Scanner</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item active" data-i18n="nav.ai_identifier">AI Artifact Scanner</a>
                     <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora Laboratory</a>
                 </div>
             </div>
 
@@ -124,9 +124,9 @@
                     <div class="dropdown-menu">
                         <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
                         <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link">AI Artifact Scanner</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Scanner</a>
                         <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora Laboratory</a>
                     </div>
                 </div>
                 <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
@@ -189,18 +189,18 @@
             <div class="hero-content">
                 <div class="ident-hero-badge">
                     <span class="material-symbols-outlined">center_focus_strong</span>
-                    <span>Neural Recognition Protocol</span>
+                    <span data-i18n="ident.badge">Neural Recognition Protocol</span>
                 </div>
-                <h1 class="hero-title">Tutora AI: <span class="gold-text">The Living Scanner</span></h1>
-                <h2 class="hero-subtitle">Experience the future of archaeology. Instantly identify and decode the stories of ancient treasures with our state-of-the-art neural recognition engine.</h2>
+                <h1 class="hero-title"><span data-i18n="ident.hero_title">Tutora AI:</span> <span class="gold-text" data-i18n="ident.hero_title_span">The Living Scanner</span></h1>
+                <h2 class="hero-subtitle" data-i18n="ident.hero_subtitle">Experience the future of archaeology. Instantly identify and decode the stories of ancient treasures with our state-of-the-art neural recognition engine.</h2>
                 <div class="hero-buttons">
                     <button id="upload-photo-btn" class="btn-primary">
                         <span class="material-symbols-outlined">upload_file</span>
-                        Analyze Gallery Image
+                        <span data-i18n="ident.btn_upload">Analyze Gallery Image</span>
                     </button>
                     <button id="use-camera-btn" class="btn-secondary">
                         <span class="material-symbols-outlined">photo_camera</span>
-                        Launch Live Scanner
+                        <span data-i18n="ident.btn_camera">Launch Live Scanner</span>
                     </button>
                     <input type="file" id="scan-upload" accept="image/*" style="display: none;" />
                     <input type="file" id="camera-upload" accept="image/*" capture="environment" style="display: none;" />
@@ -208,7 +208,7 @@
                 <div id="scan-result-container" style="display:none;">
                     <div class="scan-loading">
                         <div class="scan-spinner"></div>
-                        <h3 id="scan-result-title">Analyzing Artifact...</h3>
+                        <h3 id="scan-result-title" data-i18n="ident.scan_loading">Analyzing Artifact...</h3>
                     </div>
                     <p id="scan-result-desc"></p>
                 </div>
@@ -219,10 +219,10 @@
         <section id="related-statues-section" style="display:none; margin: 4rem auto; max-width: 1400px; padding: 0 2rem;">
             <div class="related-header">
                 <div class="related-line"></div>
-                <h2 class="related-title">Historical <span class="gold-text">Siblings</span></h2>
+                <h2 class="related-title"><span data-i18n="ident.related_title">Historical</span> <span class="gold-text" data-i18n="ident.related_title_span">Siblings</span></h2>
                 <div class="related-line"></div>
             </div>
-            <p class="related-subtitle">Neural patterns suggest these historically related treasures may also interest you.</p>
+            <p class="related-subtitle" data-i18n="ident.related_subtitle">Neural patterns suggest these historically related treasures may also interest you.</p>
             <div id="related-statues-grid" class="related-grid">
                 <!-- Dynamically populated -->
             </div>
@@ -231,7 +231,7 @@
 
         <!-- How It Works Section -->
         <section class="how-it-works anim-on-scroll">
-            <h2 class="ai-section-title">How It <span class="gold-text">Works</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.hiw_title">How It</span> <span class="gold-text" data-i18n="ident.hiw_title_span">Works</span></h2>
             <div class="cards-grid">
                 <!-- Step 1 -->
                 <div class="card">
@@ -239,8 +239,8 @@
                         <span class="material-symbols-outlined">upload_file</span>
                     </div>
                     <div class="card-info">
-                        <h3>1. Capture</h3>
-                        <p>Select a clear photo of the artifact from your device or use your live camera.</p>
+                        <h3 data-i18n="ident.hiw_step1_title">1. Capture</h3>
+                        <p data-i18n="ident.hiw_step1_desc">Select a clear photo of the artifact from your device or use your live camera.</p>
                     </div>
                 </div>
 
@@ -250,8 +250,8 @@
                         <span class="material-symbols-outlined">psychology</span>
                     </div>
                     <div class="card-info">
-                        <h3>2. Analyze</h3>
-                        <p>Our neural network identifies historical markers, materials, and hieroglyphic patterns.</p>
+                        <h3 data-i18n="ident.hiw_step2_title">2. Analyze</h3>
+                        <p data-i18n="ident.hiw_step2_desc">Our neural network identifies historical markers, materials, and hieroglyphic patterns.</p>
                     </div>
                 </div>
 
@@ -261,8 +261,8 @@
                         <span class="material-symbols-outlined">history_edu</span>
                     </div>
                     <div class="card-info">
-                        <h3>3. Discover</h3>
-                        <p>Receive a comprehensive report on the artifact's dynasty, usage, and cultural significance.</p>
+                        <h3 data-i18n="ident.hiw_step3_title">3. Discover</h3>
+                        <p data-i18n="ident.hiw_step3_desc">Receive a comprehensive report on the artifact's dynasty, usage, and cultural significance.</p>
                     </div>
                 </div>
             </div>
@@ -272,15 +272,15 @@
 
         <!-- Powered by AI -->
         <section class="ident-tech anim-on-scroll">
-            <h2 class="ai-section-title">Powered by <span class="gold-text">Advanced AI</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.tech_title">Powered by</span> <span class="gold-text" data-i18n="ident.tech_title_span">Advanced AI</span></h2>
             <div class="ident-tech-grid">
                 <div class="ident-tech-card">
                     <div class="tech-icon-box">
                         <span class="material-symbols-outlined">visibility</span>
                     </div>
                     <div class="tech-info">
-                        <h3>Computer Vision</h3>
-                        <p>Our model is trained on 100,000+ images of Egyptian artifacts across museums worldwide, achieving 97% accuracy.</p>
+                        <h3 data-i18n="ident.tech_1_title">Computer Vision</h3>
+                        <p data-i18n="ident.tech_1_desc">Our model is trained on 100,000+ images of Egyptian artifacts across museums worldwide, achieving 97% accuracy.</p>
                     </div>
                 </div>
                 <div class="ident-tech-card">
@@ -288,8 +288,8 @@
                         <span class="material-symbols-outlined">database</span>
                     </div>
                     <div class="tech-info">
-                        <h3>GEM Knowledge Base</h3>
-                        <p>Connected to the museum's full digital catalogue — including unpublished conservation notes and research.</p>
+                        <h3 data-i18n="ident.tech_2_title">GEM Knowledge Base</h3>
+                        <p data-i18n="ident.tech_2_desc">Connected to the museum's full digital catalogue — including unpublished conservation notes and research.</p>
                     </div>
                 </div>
                 <div class="ident-tech-card">
@@ -297,8 +297,8 @@
                         <span class="material-symbols-outlined">speed</span>
                     </div>
                     <div class="tech-info">
-                        <h3>Real-Time Processing</h3>
-                        <p>Identification takes under 2 seconds using edge computing — providing instant historical context as you walk.</p>
+                        <h3 data-i18n="ident.tech_3_title">Real-Time Processing</h3>
+                        <p data-i18n="ident.tech_3_desc">Identification takes under 2 seconds using edge computing — providing instant historical context as you walk.</p>
                     </div>
                 </div>
             </div>
@@ -308,39 +308,39 @@
         <!-- Stats -->
         <section class="ident-stats anim-on-scroll">
             <div class="ident-stats-grid">
-                <div class="ident-stat-item"><span class="ident-stat-number">97%</span><span class="ident-stat-label">Accuracy</span></div>
-                <div class="ident-stat-item"><span class="ident-stat-number">100K+</span><span class="ident-stat-label">Training Data</span></div>
-                <div class="ident-stat-item"><span class="ident-stat-number">&lt;2s</span><span class="ident-stat-label">Response Time</span></div>
-                <div class="ident-stat-item"><span class="ident-stat-number">35K+</span><span class="ident-stat-label">Scans Today</span></div>
+                <div class="ident-stat-item"><span class="ident-stat-number">97%</span><span class="ident-stat-label" data-i18n="ident.stat_1_label">Accuracy</span></div>
+                <div class="ident-stat-item"><span class="ident-stat-number">100K+</span><span class="ident-stat-label" data-i18n="ident.stat_2_label">Training Data</span></div>
+                <div class="ident-stat-item"><span class="ident-stat-number">&lt;2s</span><span class="ident-stat-label" data-i18n="ident.stat_3_label">Response Time</span></div>
+                <div class="ident-stat-item"><span class="ident-stat-number">35K+</span><span class="ident-stat-label" data-i18n="ident.stat_4_label">Scans Today</span></div>
             </div>
         </section>
 
         <!-- Recently Identified -->
         <section class="ident-recent anim-on-scroll">
-            <h2 class="ai-section-title">Recently <span class="gold-text">Identified</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.recent_title">Recently</span> <span class="gold-text" data-i18n="ident.recent_title_span">Identified</span></h2>
             <div class="ident-recent-grid">
                 <div class="ident-recent-card">
                     <img src="./unnamed (1).png" alt="Tutankhamun Mask">
                     <div class="ident-recent-overlay">
-                        <span class="ident-recent-badge">98.7% Match</span>
-                        <h3>Mask of Tutankhamun</h3>
-                        <p>18th Dynasty • Gold & Lapis Lazuli</p>
+                        <span class="ident-recent-badge" data-i18n="ident.recent_1_badge">98.7% Match</span>
+                        <h3 data-i18n="ident.recent_1_title">Mask of Tutankhamun</h3>
+                        <p data-i18n="ident.recent_1_desc">18th Dynasty • Gold & Lapis Lazuli</p>
                     </div>
                 </div>
                 <div class="ident-recent-card">
                     <img src="./unnamed 3.png" alt="Rosetta Stone">
                     <div class="ident-recent-overlay">
-                        <span class="ident-recent-badge">96.2% Match</span>
-                        <h3>Rosetta Stone</h3>
-                        <p>Ptolemaic Period • Granodiorite</p>
+                        <span class="ident-recent-badge" data-i18n="ident.recent_2_badge">96.2% Match</span>
+                        <h3 data-i18n="ident.recent_2_title">Rosetta Stone</h3>
+                        <p data-i18n="ident.recent_2_desc">Ptolemaic Period • Granodiorite</p>
                     </div>
                 </div>
                 <div class="ident-recent-card">
                     <img src="./unnamed (2).png" alt="Canopic Jar">
                     <div class="ident-recent-overlay">
-                        <span class="ident-recent-badge">94.8% Match</span>
-                        <h3>Canopic Jar of Imsety</h3>
-                        <p>New Kingdom • Calcite Alabaster</p>
+                        <span class="ident-recent-badge" data-i18n="ident.recent_3_badge">94.8% Match</span>
+                        <h3 data-i18n="ident.recent_3_title">Canopic Jar of Imsety</h3>
+                        <p data-i18n="ident.recent_3_desc">New Kingdom • Calcite Alabaster</p>
                     </div>
                 </div>
             </div>
@@ -348,7 +348,7 @@
 
         <!-- Live Scan Demo -->
         <section class="ident-scan-demo anim-on-scroll">
-            <h2 class="ai-section-title">Visual <span class="gold-text">Recognition</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.demo_title">Visual</span> <span class="gold-text" data-i18n="ident.demo_title_span">Recognition</span></h2>
             <div class="scan-demo-container">
                 <div class="scan-demo-visual">
                     <div class="scan-demo-frame">
@@ -368,22 +368,22 @@
                     <div class="scan-info-step">
                         <span class="scan-step-num">01</span>
                         <div>
-                            <h4>Point & Capture</h4>
-                            <p>Aim your camera at any artifact inside or outside the museum galleries.</p>
+                            <h4 data-i18n="ident.demo_step1_title">Point & Capture</h4>
+                            <p data-i18n="ident.demo_step1_desc">Aim your camera at any artifact inside or outside the museum galleries.</p>
                         </div>
                     </div>
                     <div class="scan-info-step">
                         <span class="scan-step-num">02</span>
                         <div>
-                            <h4>AI Processing</h4>
-                            <p>Neural network analyzes shape, texture, and historical markers in real-time.</p>
+                            <h4 data-i18n="ident.demo_step2_title">AI Processing</h4>
+                            <p data-i18n="ident.demo_step2_desc">Neural network analyzes shape, texture, and historical markers in real-time.</p>
                         </div>
                     </div>
                     <div class="scan-info-step">
                         <span class="scan-step-num">03</span>
                         <div>
-                            <h4>Full Report</h4>
-                            <p>Receive dynasty, materials, symbolism, and conservation status instantly.</p>
+                            <h4 data-i18n="ident.demo_step3_title">Full Report</h4>
+                            <p data-i18n="ident.demo_step3_desc">Receive dynasty, materials, symbolism, and conservation status instantly.</p>
                         </div>
                     </div>
                 </div>
@@ -392,38 +392,38 @@
 
         <!-- Previous Scans History (from API) -->
         <section class="ident-recent anim-on-scroll" style="margin-top: 40px;">
-            <h2 class="ai-section-title">Your Previous <span class="gold-text">Scans</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.history_title">Your Previous</span> <span class="gold-text" data-i18n="ident.history_title_span">Scans</span></h2>
             <div id="detection-history" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; padding: 0 20px;">
                 <p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px; grid-column: 1 / -1;">
-                    Loading scan history...
+                    <span data-i18n="ident.history_loading">Loading scan history...</span>
                 </p>
             </div>
         </section>
 
         <!-- FAQ Section -->
         <section class="faq-section anim-on-scroll">
-            <h2 class="ai-section-title">Scanner <span class="gold-text">FAQ</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.faq_title">Scanner</span> <span class="gold-text" data-i18n="ident.faq_title_span">FAQ</span></h2>
             <div class="faq-container">
                 <details class="faq-item">
                     <summary class="faq-summary">
-                        <span>What kind of image quality is required?</span>
+                        <span data-i18n="ident.faq_1_q">What kind of image quality is required?</span>
                         <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </summary>
-                    <p class="faq-answer">For best results, please use a clear, well-lit photo where the artifact is the main subject. Avoid heavy shadows, reflections, or obstructions.</p>
+                    <p class="faq-answer" data-i18n="ident.faq_1_a">For best results, please use a clear, well-lit photo where the artifact is the main subject. Avoid heavy shadows, reflections, or obstructions.</p>
                 </details>
                 <details class="faq-item">
                     <summary class="faq-summary">
-                        <span>Is my data and photo kept private?</span>
+                        <span data-i18n="ident.faq_2_q">Is my data and photo kept private?</span>
                         <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </summary>
-                    <p class="faq-answer">Yes. We are committed to your privacy. Images are processed anonymously and are not stored on our servers after the analysis is complete.</p>
+                    <p class="faq-answer" data-i18n="ident.faq_2_a">Yes. We are committed to your privacy. Images are processed anonymously and are not stored on our servers after the analysis is complete.</p>
                 </details>
                 <details class="faq-item">
                     <summary class="faq-summary">
-                        <span>How accurate is the AI?</span>
+                        <span data-i18n="ident.faq_3_q">How accurate is the AI?</span>
                         <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </summary>
-                    <p class="faq-answer">Tutora AI has a 97% accuracy rate for artifacts within our database. We are constantly updating our model with new archaeological discoveries.</p>
+                    <p class="faq-answer" data-i18n="ident.faq_3_a">Tutora AI has a 97% accuracy rate for artifacts within our database. We are constantly updating our model with new archaeological discoveries.</p>
                 </details>
             </div>
         </section>
@@ -524,7 +524,7 @@
     <script src="../global-core.js"></script>
     <script src="../smooth-reveal.js"></script>
     <script src="../animate.js"></script>
-<script src="../global-lang.js"></script>
+<script src="../global-lang.js?v=1780353971499"></script>
 </body>
 
 </html>

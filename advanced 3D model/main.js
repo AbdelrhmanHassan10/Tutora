@@ -178,8 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
         currentArtifactId = id;
         
         // Update Main Info
-        document.querySelector('.artifact-name').textContent = data.name;
-        document.querySelector('.dynasty-tag').textContent = data.dynasty;
+        const nameEl = document.querySelector('.artifact-name');
+        const dynastyEl = document.querySelector('.dynasty-tag');
+        nameEl.setAttribute('data-i18n', 'model.art_' + id + '_name');
+        dynastyEl.setAttribute('data-i18n', 'model.art_' + id + '_dynasty');
+        nameEl.textContent = (window.TutoraLang ? window.TutoraLang.translate('model.art_' + id + '_name') : data.name) || data.name;
+        dynastyEl.textContent = (window.TutoraLang ? window.TutoraLang.translate('model.art_' + id + '_dynasty') : data.dynasty) || data.dynasty;
         document.querySelector('.catalog-id').textContent = `ID: ${data.id}`;
         document.querySelector('.artifact-desc').textContent = data.desc;
 
@@ -267,8 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="play-overlay"><span class="material-symbols-outlined">play_circle</span></div>
                 </div>
                 <div class="card-info">
-                    <h3>${data.name}</h3>
-                    <p>${data.dynasty}</p>
+                    <h3 data-i18n="model.art_${id}_name">${data.name}</h3>\n                    <p data-i18n="model.art_${id}_dynasty">${data.dynasty}</p>
                 </div>
             `;
 
@@ -486,4 +489,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
+    window.addEventListener('languageChanged', () => {
+        if (window.TutoraLang && window.TutoraLang.applyTranslations) {
+            window.TutoraLang.applyTranslations();
+        }
+    }); 
+    }); 

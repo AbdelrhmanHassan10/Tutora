@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>TUTORA Favorites | Your Saved Items | Tutora</title>
+    <title data-i18n="fav.page_title">TUTORA Favorites | <span data-i18n="fav.saved_items_title">Your Saved Items</span><| <span data-i18n="fav.saved_items_title">Your Saved Items</span> | Tutora</title>
     <meta name="description" content="Tutora Favorites - Your curated collection of ancient Egyptian treasures and your personal museum journey." />
     
     <!-- Favicon -->
@@ -52,7 +52,7 @@
                   <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
                   <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
                   <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
-                  <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
+                  <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora Laboratory</a>
               </div>
           </div>
 
@@ -122,7 +122,7 @@
                       <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
                       <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
                       <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
-                      <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
+                      <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora Laboratory</a>
                   </div>
               </div>
               
@@ -184,17 +184,17 @@
     <main class="main-content">
         <header class="dashboard-header anim-on-scroll">
             <div class="header-text">
-                <p class="subtitle uppercase tracking-[0.2em] font-bold">Guardian Dashboard</p>
-                <h1 class="title font-serif">Welcome back, Abdelrhman</h1>
+                <p class="subtitle uppercase tracking-[0.2em] font-bold" data-i18n="fav.guardian_dash"><span data-i18n="fav.guardian_dash">Guardian Dashboard</span></p>
+                <h1 class="title font-serif"><span data-i18n="fav.welcome_back"><span data-i18n="fav.welcome_back">Welcome back</span></span>, Abdelrhman</h1>
                 <p class="description max-w-2xl opacity-80">
-                    Your curated space for Egyptian wonders and your personal journey through the Grand Egyptian Museum's history.
+                    <span data-i18n="fav.subtitle">Your curated space for Egyptian wonders and your personal journey through the Grand Egyptian Museum's history.</span>
                 </p>
             </div>
 
             <div class="member-badge premium-card">
                 <div class="badge-content">
-                    <span class="badge-label uppercase tracking-widest text-[10px] opacity-60">Member Level</span>
-                    <span class="badge-value font-serif font-bold text-lg">Gold Patron</span>
+                    <span class="badge-label uppercase tracking-widest text-[10px] opacity-60" data-i18n="fav.member_level"><span data-i18n="fav.member_level">Member Level</span></span>
+                    <span class="badge-value font-serif font-bold text-lg" data-i18n="fav.gold_patron"><span data-i18n="fav.gold_patron">Gold Patron</span></span>
                 </div>
                 <div class="badge-icon-box">
                     <span class="material-symbols-outlined">workspace_premium</span>
@@ -206,16 +206,16 @@
         <div class="tabs-container anim-on-scroll">
             <div class="tabs">
                 <button class="tab active" data-tab="saved">
-                    <span class="material-symbols-outlined">favorite</span>
-                    Saved Treasures
+                    <span class="material-symbols-outlined">favorite</span data-i18n="fav.saved_treasures">
+                    <span data-i18n="fav.saved_treasures">Saved Treasures</span>
                 </button>
                 <button class="tab" data-tab="journey">
-                    <span class="material-symbols-outlined">timeline</span>
-                    My Journey
+                    <span class="material-symbols-outlined">timeline</span data-i18n="fav.my_journey">
+                    <span data-i18n="fav.my_journey">My Journey</span>
                 </button>
                 <button class="tab" data-tab="facts">
-                    <span class="material-symbols-outlined">lightbulb</span>
-                    Saved Fun Facts
+                    <span class="material-symbols-outlined">lightbulb</span data-i18n="fav.saved_facts">
+                    <span data-i18n="fav.saved_facts">Saved Fun Facts</span>
                     <span id="factsCount" class="tab-badge" style="display:none">0</span>
                 </button>
             </div>
@@ -226,9 +226,9 @@
             <!-- Saved Section -->
             <section class="dashboard-section active" id="saved">
                 <div class="section-header anim-on-scroll">
-                    <h2 class="section-title font-serif">Your Collection</h2>
-                    <a href="../Exhibition-Halls/exhibition-halls.html" class="btn-view-all font-bold">
-                        EXPLORE MORE
+                    <h2 class="section-title font-serif" data-i18n="fav.your_collection"><span data-i18n="fav.your_collection">Your Collection</span></h2>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="btn-view-all font-bold" data-i18n="fav.explore_more">
+                        <span data-i18n="fav.explore_more">EXPLORE MORE</span>
                         <span class="material-symbols-outlined">arrow_right_alt</span>
                     </a>
                 </div>
@@ -237,7 +237,7 @@
                     <!-- Dynamic Loading Placeholder -->
                     <div class="loading-state">
                         <span class="material-symbols-outlined animate-spin-slow">history_edu</span>
-                        <p>Loading your treasures...</p>
+                        <p data-i18n="fav.loading_treasures"><span data-i18n="fav.loading_treasures">Loading your treasures...</span></p>
                     </div>
                 </div>
             </section>
@@ -245,7 +245,7 @@
             <!-- Journey Section -->
             <section class="dashboard-section" id="journey">
                 <div class="section-header anim-on-scroll">
-                    <h2 class="section-title font-serif">Journey History</h2>
+                    <h2 class="section-title font-serif" data-i18n="fav.journey_history"><span data-i18n="fav.journey_history">Journey History</span></h2>
                 </div>
 
                 <div class="timeline-wrapper anim-on-scroll" id="journeyTimelineWrapper" style="display: none;">
@@ -258,11 +258,11 @@
                 <!-- Empty State -->
                 <div id="journeyEmptyState" class="loading-state anim-on-scroll">
                     <span class="material-symbols-outlined">map</span>
-                    <p style="margin-bottom: 10px;">It's empty! You haven't created a journey yet.</p>
+                    <p style="margin-bottom: 10px;" data-i18n="fav.empty_journey"><span data-i18n="fav.empty_journey">It's empty! You haven't created a journey yet.</span></p>
                     <p style="font-size: 0.9em; opacity: 0.7; margin-bottom: 20px;">If you want to add something, go create your personalized route.</p>
                     <a href="../plan-your-visit/plan-your-visit.html#route-planner" class="btn-booking" style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none; padding: 10px 20px; font-weight: bold;">
-                        <span class="material-symbols-outlined" style="margin-right: 8px; font-size: 1.2em;">add_location_alt</span>
-                        Create My Journey
+                        <span class="material-symbols-outlined" style="margin-right: 8px; font-size: 1.2em;">add_location_alt</span data-i18n="fav.create_journey">
+                        Create <span data-i18n="fav.my_journey">My Journey</span>
                     </a>
                 </div>
             </section>
@@ -270,16 +270,16 @@
             <!-- Fun Facts Section -->
             <section class="dashboard-section" id="facts">
                 <div class="section-header anim-on-scroll">
-                    <h2 class="section-title font-serif">Collected Ancient Wisdom</h2>
-                    <a href="../Kids-Museum/kids-museum.html" class="btn-view-all font-bold">
-                        LEARN MORE FACTS
+                    <h2 class="section-title font-serif" data-i18n="fav.collected_wisdom"><span data-i18n="fav.collected_wisdom">Collected Ancient Wisdom</span></h2>
+                    <a href="../Kids-Museum/kids-museum.html" class="btn-view-all font-bold" data-i18n="fav.learn_more_facts">
+                        <span data-i18n="fav.learn_more_facts">LEARN MORE FACTS</span>
                         <span class="material-symbols-outlined">arrow_right_alt</span>
                     </a>
                 </div>
                 <div class="facts-grid anim-on-scroll" id="savedFactsGrid">
                     <div class="loading-state">
                         <span class="material-symbols-outlined">inventory_2</span>
-                        <p>You haven't saved any fun facts yet.</p>
+                        <p data-i18n="fav.empty_facts"><span data-i18n="fav.empty_facts">You haven't saved any fun facts yet.</span></p>
                     </div>
                 </div>
             </section>
@@ -300,7 +300,7 @@
                                             <!-- Footer Grid -->
                                             <div class="footer-grid">
                                                 <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
+                                                    <h3 data-i18n="footer.explore" data-i18n="fav.explore"><span data-i18n="fav.explore">Explore</span></h3>
                                                     <ul>
                                                         <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
                                                         <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
@@ -383,7 +383,7 @@
     </a>
 
     <script src="script.js"></script>
-<script src="../global-lang.js"></script>
+<script src="../global-lang.js?v=1780353971499"></script>
 </body>
 
 </html>

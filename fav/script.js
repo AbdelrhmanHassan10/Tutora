@@ -1,3 +1,40 @@
+
+function tFav(key, defaultText) {
+    if (window.TutoraLang && typeof window.TutoraLang.getCurrentLang === 'function') {
+        const lang = window.TutoraLang.getCurrentLang();
+        if (lang === 'ar' && window.FAV_AR && window.FAV_AR[key]) {
+            return window.FAV_AR[key];
+        }
+    }
+    return defaultText;
+}
+
+window.FAV_AR = {
+    "guardian_dash": "لوحة تحكم الوصي",
+    "welcome_back": "مرحباً بعودتك",
+    "member_level": "مستوى العضوية",
+    "gold_patron": "راعي ذهبي",
+    "saved_treasures": "الكنوز المحفوظة",
+    "my_journey": "رحلتي",
+    "saved_facts": "معلومات ممتعة محفوظة",
+    "your_collection": "مجموعتك",
+    "explore_more": "اكتشف المزيد",
+    "loading_treasures": "جاري تحميل كنوزك...",
+    "journey_history": "سجل الرحلة",
+    "empty_journey": "إنها فارغة! لم تقم بإنشاء رحلة بعد.",
+    "create_journey": "إنشاء رحلتي",
+    "collected_wisdom": "الحكمة القديمة المجمعة",
+    "learn_more_facts": "تعلم المزيد من الحقائق",
+    "empty_facts": "لم تقم بحفظ أي حقائق ممتعة بعد.",
+    "saved_items_title": "عناصرك المحفوظة",
+    "page_title": "مفضلات TUTORA | عناصرك المحفوظة",
+    "explore": "استكشف",
+    "read_more": "اقرأ المزيد",
+    "remove": "إزالة",
+    "view_details": "عرض التفاصيل",
+    "no_treasures": "لم تحفظ أي كنوز بعد."
+};
+
 // Immediately-invoked function to set the theme before DOM loads.
 (function() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -70,11 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = favoriteItem._itemData || favoriteItem.artifact || favoriteItem.event || favoriteItem.item || favoriteItem;
         if (!item || !item._id && !item.id) return '';
 
-        const title = item.name || item.title || 'Untitled';
+        const title = item.name || item.title || '\${tFav("untitled", "Untitled")}';
         const image = item.image || item.imageUrl || '../collection/unnamed (1).png';
         const subtitle = isEvent 
             ? (item.date ? new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Upcoming Event')
-            : (item.material || 'Artifact Detail');
+            : (item.material || '\${tFav("artifact_detail", "Artifact Detail")}');
         const badge = isEvent ? 'Event' : (item.dynasty || 'New Kingdom');
 
         return `
@@ -488,3 +525,5 @@ window.toggleTheme = function() {
 
 // Initialize theme on page load
 initializeTheme();
+
+window.addEventListener('languageChanged', () => { if(typeof renderArtifacts === 'function') renderArtifacts(); if(typeof updateDashboardStats === 'function') updateDashboardStats(); });

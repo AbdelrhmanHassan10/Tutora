@@ -43,7 +43,7 @@
                     <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
                     <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
                     <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora Laboratory</a>
                     <a href="../Pharaoh Transformer/Pharaoh-Transformer.html" class="dropdown-item">Pharaoh Transformer</a>
                     <a href="../AI Imagination/AI-Imagination.html" class="dropdown-item">AI Art Generator</a>
                 </div>
@@ -115,7 +115,7 @@
                         <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
                         <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
                         <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora Laboratory</a>
                     </div>
                 </div>
                 
@@ -179,10 +179,10 @@
         <div class="container">
             <!-- Hero Section -->
             <section class="hero-section anim-on-scroll">
-                <span class="hero-label">The Alchemy of Identity</span>
-                <h1 class="hero-title">Become <span class="gold-text-span">Eternal.</span></h1>
+                <span class="hero-label" data-i18n="pharaoh.hero_label">The Alchemy of Identity</span>
+                <h1 class="hero-title"><span data-i18n="pharaoh.hero_title">Become</span> <span class="gold-text-span" data-i18n="pharaoh.hero_title_span">Eternal.</span></h1>
                 <p class="hero-description">
-                    Our neural engines weave your likeness into the royal iconography of the New Kingdom. Upload a portrait to begin your transformation into an artifact of history.
+                    <span data-i18n="pharaoh.hero_desc">Our neural engines weave your likeness into the royal iconography of the New Kingdom. Upload a portrait to begin your transformation into an artifact of history.</span>
                 </p>
             </section>
 
@@ -190,20 +190,20 @@
             <div class="tool-grid">
                 <!-- Upload Module -->
                 <div class="artifact-frame anim-on-scroll">
-                    <span class="module-label">Module: Pharaoh_01</span>
+                    <span class="module-label" data-i18n="pharaoh.module_label">Module: Pharaoh_01</span>
                     <div id="upload-zone" class="upload-zone">
                         <span class="material-symbols-outlined upload-icon">add_a_photo</span>
-                        <h3 class="upload-title">Sacrifice your portrait</h3>
-                        <p id="upload-status" class="upload-status">High-resolution front-facing photography yields the most divine results.</p>
+                        <h3 class="upload-title" data-i18n="pharaoh.upload_title">Sacrifice your portrait</h3>
+                        <p id="upload-status" class="upload-status"><span data-i18n="pharaoh.upload_desc">High-resolution front-facing photography yields the most divine results.</span></p>
                         <input id="pharaoh-upload" style="display: none;" type="file" accept="image/*"/>
                     </div>
                     <div class="transform-actions">
                         <div class="format-info">
-                            <span class="format-label">Accepted Formats</span>
-                            <span class="format-value">PNG, JPEG, HEIC (Max 25MB)</span>
+                            <span class="format-label" data-i18n="pharaoh.format_label">Accepted Formats</span>
+                            <span class="format-value" data-i18n="pharaoh.format_val">PNG, JPEG, HEIC (Max 25MB)</span>
                         </div>
                         <button id="transform-btn" class="transform-btn">
-                            Transform Likeness
+                            <span data-i18n="pharaoh.btn_transform">Transform Likeness</span>
                         </button>
                     </div>
                 </div>
@@ -213,16 +213,16 @@
                     <div class="preview-frame">
                         <img id="pharaoh-preview" alt="Pharaoh Transformation Preview" class="preview-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlbA4vB5ISLrkmAv30oW9jwq9oVJRchtZGWGHtmf-aAYB_rtHScYnhRFnEOiM8DQpL6Ps52fKmZu4lI74O1T74smdefEv5AHEAmm34qnwxMmqOErSqKMXuRYRd_e7UIjxuFZrkmQYmVHK7g91OFXXkjFxjcie4I3BIItTO6PZ2dEo9yJjCHyTC2mu99eNwihZCXsucUsDmRvs4wFRCW8HQuKPfmIEfuEJD-5vAYnbR8DKwGhtzvvKkaLfygqMEHmXKTArz7baJ4HqZ"/>
                         <div class="preview-overlay">
-                            <span class="preview-label">Live Rendering</span>
-                            <h4 class="preview-title">The Sun Disc Vessel</h4>
+                            <span class="preview-label" data-i18n="pharaoh.preview_label">Live Rendering</span>
+                            <h4 class="preview-title" data-i18n="pharaoh.preview_title">The Sun Disc Vessel</h4>
                         </div>
                     </div>
                     <div class="curator-note">
                         <span class="material-symbols-outlined note-icon">info</span>
                         <div class="note-content">
-                            <span class="preview-label" style="margin-bottom: 0.25rem;">Curator's Note</span>
+                            <span class="preview-label" style="margin-bottom: 0.25rem;" data-i18n="pharaoh.note_title">Curator's Note</span>
                             <p class="note-text">
-                                Each transformation leverages deep latent diffusion to map facial geometry to authentic 18th Dynasty basalt textures. Lighting is automatically adjusted to replicate the interior of the Temple of Dendur at sunrise.
+                                <span data-i18n="pharaoh.note_desc">Each transformation leverages deep latent diffusion to map facial geometry to authentic 18th Dynasty basalt textures. Lighting is automatically adjusted to replicate the interior of the Temple of Dendur at sunrise.</span>
                             </p>
                         </div>
                     </div>
@@ -233,11 +233,11 @@
             <section class="gallery-section anim-on-scroll">
                 <div class="gallery-header">
                     <div>
-                        <span class="hero-label" style="margin-bottom: 0.5rem;">Public Records</span>
-                        <h2 class="gallery-title">The Reborn Archive</h2>
+                        <span class="hero-label" style="margin-bottom: 0.5rem;" data-i18n="pharaoh.gal_label">Public Records</span>
+                        <h2 class="gallery-title" data-i18n="pharaoh.gal_title">The Reborn Archive</h2>
                     </div>
                     <a class="view-archive" href="../collection/collection.html">
-                        View Archive <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
+                        <span data-i18n="pharaoh.view_archive">View Archive</span> <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
                     </a>
                 </div>
                 <div class="gallery-grid">
@@ -351,6 +351,6 @@
     <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
     <script src="script.js"></script>
-<script src="../global-lang.js"></script>
+<script src="../global-lang.js?v=1780353971499"></script>
 </body>
 </html>

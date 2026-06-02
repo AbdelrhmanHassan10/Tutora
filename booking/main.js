@@ -1,3 +1,11 @@
+
+const MONTHS_AR = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+function getMonthName(idx) {
+    const MONTHS_EN = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    if (window.TutoraLang && window.TutoraLang.getCurrentLang() === 'ar') return MONTHS_AR[idx];
+    return MONTHS_EN[idx];
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // 1. STATE MANAGEMENT
@@ -307,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.innerHTML = html;
 
-        // Totals
+        // ${tBook("total", "Total")}s
         const tax = subtotal * 0.07;
         const total = subtotal + tax;
 

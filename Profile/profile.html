@@ -5,7 +5,7 @@
                                 <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
                                 <meta charset="UTF-8">
                                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title>TUTORA Profile | Manage Your Account</title>
+                                <title data-i18n="profile.title">TUTORA Profile | Manage Your Account</title>
                                 <link rel="icon" type="image/png" href="../museum.png">
                                 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
                                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -39,23 +39,23 @@
                                                 </a>
                                                 <a href="../success/success.html" class="nav-item">
                                                     <span class="material-symbols-outlined">confirmation_number</span>
-                                                    <span>My Tickets</span>
+                                                    <span data-i18n="profile.my_tickets"><span data-i18n="profile.my_tickets">My Tickets</span></span>
                                                 </a>
                                                 <a href="#" class="nav-item">
                                                     <span class="material-symbols-outlined">bookmark</span>
-                                                    <span>Saved Treasures</span>
+                                                    <span data-i18n="profile.saved_treasures"><span data-i18n="profile.saved_treasures">Saved Treasures</span></span>
                                                 </a>
                                                 <a href="#" class="nav-item">
                                                     <span class="material-symbols-outlined">history_edu</span>
-                                                    <span>AI History</span>
+                                                    <span data-i18n="profile.ai_history"><span data-i18n="profile.ai_history">AI History</span></span>
                                                 </a>
                                                 <a href="../admin/admin.html" class="nav-item" id="adminLink" style="display: none;">
                                                     <span class="material-symbols-outlined">dashboard_customize</span>
-                                                    <span>Admin Dashboard</span>
+                                                    <span data-i18n="profile.admin_dashboard"><span data-i18n="profile.admin_dashboard">Admin Dashboard</span></span>
                                                 </a>
                                                 <a href="../setting/setting.html" class="nav-item">
                                                     <span class="material-symbols-outlined">settings</span>
-                                                    <span>Settings</span>
+                                                    <span data-i18n="profile.settings"><span data-i18n="profile.settings">Settings</span></span>
                                                 </a>
                                             </nav>
                                         </div>
@@ -64,7 +64,7 @@
                                         <a href="../1.landing page/index.html" style="text-decoration: none;">
                                             <button class="logout-btn">
                                                 <span class="material-symbols-outlined">logout</span>
-                                                <span>Logout</span>
+                                                <span data-i18n="profile.logout"><span data-i18n="profile.logout">Logout</span></span>
                                             </button>
                                         </a>
                                     </aside>
@@ -111,28 +111,28 @@
                                             <section class="hero-profile">
                                                 <div class="profile-image-wrapper">
                                                     <img src="./profile-placeholder.svg" class="profile-image" alt="Profile Picture">
-                                                    <span class="verified-badge">Verified</span>
+                                                    <span class="verified-badge" data-i18n="profile.verified"><span data-i18n="profile.verified">Verified</span></span>
                                                 </div>
                             
                                                 <div class="profile-info">
                                                     <h1 class="profile-name">Abdelrhman Hassan</h1>
                                                     <div class="profile-meta">
-                                                        <span class="profile-title">Pharaonic Historian</span>
+                                                        <span class="profile-title" data-i18n="profile.pharaonic_historian"><span data-i18n="profile.pharaonic_historian">Pharaonic Historian</span></span>
                                                         <span class="meta-divider"></span>
-                                                        <span class="join-date" id="profile-join-date">Joined December 2022</span>
+                                                        <span class="join-date" id="profile-join-date" data-i18n="profile.joined"><span data-i18n="profile.joined">Joined December 2022</span></span>
                                                     </div>
                                                 </div>
                             
                                                 <div class="profile-actions">
-                                                   <a href="../Edit-profile/code.html"> <button class="btn btn-primary">Edit Profile</button></a>
-                                                    <button class="btn btn-secondary" id="shareStatusBtn">Share Status</button>
+                                                   <a href="../Edit-profile/code.html"> <button class="btn btn-primary" data-i18n="profile.edit_profile"><span data-i18n="profile.edit_profile">Edit Profile</span></button></a>
+                                                    <button class="btn btn-secondary" id="shareStatusBtn" data-i18n="profile.share_status"><span data-i18n="profile.share_status">Share Status</span></button>
                                                 </div>
                                             </section>
                                             
                                             <!-- Pharaonic Avatar Collection -->
                                             <section class="avatar-collection-section">
                                                 <div class="section-header">
-                                                    <h2 class="section-title">Guardian Avatars</h2>
+                                                    <h2 class="section-title" data-i18n="profile.guardian_avatars"><span data-i18n="profile.guardian_avatars">Guardian Avatars</span></h2>
                                                     <p class="section-subtitle">Choose your pharaonic identity to represent you in the Tutora universe.</p>
                                                 </div>
                                                 <div class="avatar-grid">
@@ -163,8 +163,8 @@
                                             <div class="dashboard-grid">
                                                 <div class="left-column">
                                                     <div class="section-header">
-                                                        <h2 class="section-title">Upcoming Visits</h2>
-                                                        <a href="#" class="view-all-link">View All History</a>
+                                                        <h2 class="section-title" data-i18n="profile.upcoming_visits"><span data-i18n="profile.upcoming_visits">Upcoming Visits</span></h2>
+                                                        <a href="#" class="view-all-link" data-i18n="profile.view_all_history"><span data-i18n="profile.view_all_history">View All History</span></a>
                                                     </div>
                                                     <div class="visit-card">
                                                         <div class="visit-image">
@@ -172,23 +172,23 @@
                                                         </div>
                                                         <div class="visit-content">
                                                             <div class="visit-header">
-                                                                <span class="visit-badge">General Admission</span>
-                                                                <h3 class="visit-title">Grand Egyptian Museum Entry</h3>
-                                                                <p class="visit-subtitle">Main Hall & Tutankhamun Gallery</p>
+                                                                <span class="visit-badge" data-i18n="profile.general_admission"><span data-i18n="profile.general_admission">General Admission</span></span>
+                                                                <h3 class="visit-title" data-i18n="profile.museum_entry"><span data-i18n="profile.museum_entry">Grand Egyptian Museum Entry</span></h3>
+                                                                <p class="visit-subtitle" data-i18n="profile.main_hall"><span data-i18n="profile.main_hall">Main Hall & Tutankhamun Gallery</span></p>
                                                             </div>
                                                             <div class="visit-details">
                                                                 <div class="detail-item">
-                                                                    <span class="detail-label">Date</span>
+                                                                    <span class="detail-label" data-i18n="profile.date"><span data-i18n="profile.date">Date</span></span>
                                                                     <span class="detail-value">Dec 14, 2023</span>
                                                                 </div>
                                                                 <div class="detail-item">
-                                                                    <span class="detail-label">Time</span>
+                                                                    <span class="detail-label" data-i18n="profile.time"><span data-i18n="profile.time">Time</span></span>
                                                                     <span class="detail-value">10:00 AM</span>
                                                                 </div>
                                                             </div>
                                                             <div class="visit-footer">
                                                                 <div class="visitor-count">+2</div>
-                                                                <a href="../success/success.html"> <button class="btn btn-primary">VIEW TICKET</button>
+                                                                <a href="../success/success.html"> <button class="btn btn-primary" data-i18n="profile.view_ticket"><span data-i18n="profile.view_ticket">VIEW TICKET</span></button>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -196,23 +196,23 @@
                                                 </div>
                             
                                                 <div class="right-column">
-                                                    <h2 class="section-title">Explorer Stats</h2>
+                                                    <h2 class="section-title" data-i18n="profile.explorer_stats"><span data-i18n="profile.explorer_stats">Explorer Stats</span></h2>
                                                     <div class="stats-card">
                                                         <div class="stat-item">
                                                             <div class="stat-icon"><span class="material-symbols-outlined">visibility</span></div>
                                                             <div class="stat-info">
-                                                                <p class="stat-label">Artifacts Viewed</p>
+                                                                <p class="stat-label" data-i18n="profile.artifacts_viewed"><span data-i18n="profile.artifacts_viewed">Artifacts Viewed</span></p>
                                                                 <p class="stat-value" id="artifacts-stat">0</p>
                                                             </div>
                                                         </div>
                                                         <div class="stat-item">
                                                             <div class="stat-icon"><span class="material-symbols-outlined">map</span></div>
                                                             <div class="stat-info">
-                                                                <p class="stat-label">Exhibitions Toured</p>
+                                                                <p class="stat-label" data-i18n="profile.exhibitions_toured"><span data-i18n="profile.exhibitions_toured">Exhibitions Toured</span></p>
                                                                 <p class="stat-value" id="exhibitions-stat">0</p>
                                                             </div>
                                                         </div>
-                                                        <button class="btn btn-outline">View Leaderboard</button>
+                                                        <button class="btn btn-outline" data-i18n="profile.view_leaderboard"><span data-i18n="profile.view_leaderboard">View Leaderboard</span></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,7 +220,7 @@
                                             <!-- Artifacts -->
                                             <section class="carousel-section">
                                                 <div class="section-header">
-                                                    <h2 class="section-title">Recently Viewed Artifacts</h2>
+                                                    <h2 class="section-title" data-i18n="profile.recently_viewed"><span data-i18n="profile.recently_viewed">Recently Viewed Artifacts</span></h2>
                                                 </div>
                                                 <div class="carousel-container">
                                                     <div class="artifact-card">
@@ -279,11 +279,11 @@
                                                         <div class="artifact-image explore-more-bg">
                                                             <div class="explore-content">
                                                                 <span class="material-symbols-outlined">arrow_forward</span>
-                                                                <span>Explore All</span>
+                                                                <span data-i18n="profile.explore_all"><span data-i18n="profile.explore_all">Explore All</span></span>
                                                             </div>
                                                         </div>
-                                                        <h3 class="artifact-name">View More</h3>
-                                                        <p class="artifact-period">Your Full History</p>
+                                                        <h3 class="artifact-name" data-i18n="profile.view_more"><span data-i18n="profile.view_more">View More</span></h3>
+                                                        <p class="artifact-period" data-i18n="profile.full_history"><span data-i18n="profile.full_history">Your Full History</span></p>
                                                     </div>
                                                 </div>
                                                 <div class="carousel-scroll-indicator">
@@ -441,7 +441,7 @@
                                 <script src="script.js "></script>
                                 <script src="../global-core.js"></script>
                                 <script src="../animate.js"></script>
-                            <script src="../global-lang.js"></script>
+                            <script src="../global-lang.js?v=1780353971499"></script>
 </body>
                             
                             </html>

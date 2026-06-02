@@ -176,3 +176,11 @@
     font-size: 1.5rem;
     margin: 1rem 0;
 }
+/* RTL Cart */
+[dir="rtl"] body { text-align: right; }
+[dir="rtl"] .cart-container { flex-direction: row-reverse; }
+[dir="rtl"] .cart-item { flex-direction: row-reverse; text-align: right; }
+[dir="rtl"] .cart-item-info { margin-right: 1.5rem; margin-left: 0; }
+[dir="rtl"] .summary-row { flex-direction: row-reverse; }
+[dir="rtl"] .quantity-controls { flex-direction: row-reverse; margin-left: 2rem; margin-right: 0; }
+[dir="rtl"] .cart-item-total { text-align: left; }

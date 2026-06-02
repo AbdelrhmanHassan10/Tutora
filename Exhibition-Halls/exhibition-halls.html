@@ -46,7 +46,7 @@
                     <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
                     <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
                     <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item">Tutora Laboratory</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora Laboratory</a>
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                 <button class="menu-link dropdown-toggle"><span data-i18n="nav.collection">Collection</span> <span class="material-symbols-outlined">expand_more</span></button>
                 <div class="dropdown-items">
                     <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
-                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="exhibition.bread_halls" data-i18n="exhibition.bread_halls">Exhibition Halls</a>
                 </div>
             </div>
         <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
@@ -116,7 +116,7 @@
                         <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
                         <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
                         <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice Storytelling (3D)</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link">Tutora Laboratory</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora Laboratory</a>
                     </div>
                 </div>
                 
@@ -185,11 +185,11 @@
                                         </div>
                                         <div class="hero-overlay"></div>
                                         <div class="hero-content anim-reveal">
-                                            <span class="gold-accent-text">The Gateway to Eternity</span>
-                                            <h1 class="hero-title">Exhibition <br>Halls</h1>
-                                            <p style="max-width: 700px; margin: 0 auto; opacity: 0.9; font-size: 1.2rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 300; line-height: 1.6;">Where the echoes of five millennia resonate through glass and stone. Experience the world's largest archaeological treasury.</p>
+                                            <span class="gold-accent-text" data-i18n="exhibition.hero_accent">The Gateway to Eternity</span>
+                                            <h1 class="hero-title" data-i18n="exhibition.hero_title">Exhibition <br>Halls</h1>
+                                            <p style="max-width: 700px; margin: 0 auto; opacity: 0.9; font-size: 1.2rem; color: #cbd5e1; letter-spacing: 2px; font-weight: 300; line-height: 1.6;" data-i18n="exhibition.hero_desc">Where the echoes of five millennia resonate through glass and stone. Experience the world's largest archaeological treasury.</p>
                                             <div style="margin-top: 3rem;">
-                                                <a href="#halls-grid" class="filter-btn active" style="text-decoration: none;">Begin Journey</a>
+                                                <a href="#halls-grid" class="filter-btn active" style="text-decoration: none;" data-i18n="exhibition.hero_btn">Begin Journey</a>
                                             </div>
                                         </div>
                                     </section>
@@ -199,27 +199,27 @@
                                         <div class="container">
                                             <div class="staircase-flex">
                                                 <div class="staircase-content anim-reveal">
-                                                    <span class="section-label">Vertical History</span>
-                                                    <h2 class="section-title">The Grand <span style="color: var(--hall-gold);">Staircase</span></h2>
-                                                    <p style="margin-top: 2rem; line-height: 1.8; color: var(--text-secondary);">Ascend through time on a monumental staircase featuring over 87 colossal statues, architectural remnants, and stelae. This vertical gallery tells the story of kingship and the divine in ancient Egypt, leading you to an unparalleled view of the Great Pyramids.</p>
+                                                    <span class="section-label" data-i18n="exhibition.stair_label">Vertical History</span>
+                                                    <h2 class="section-title" data-i18n="exhibition.stair_title">The Grand <span style="color: var(--hall-gold);">Staircase</span></h2>
+                                                    <p style="margin-top: 2rem; line-height: 1.8; color: var(--text-secondary);" data-i18n="exhibition.stair_desc">Ascend through time on a monumental staircase featuring over 87 colossal statues, architectural remnants, and stelae. This vertical gallery tells the story of kingship and the divine in ancient Egypt, leading you to an unparalleled view of the Great Pyramids.</p>
                                                     <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 0.5rem;">
                                                          <div class="staircase-feature">
                                                              <div class="feature-icon-wrapper">
                                                                  <span class="material-symbols-outlined">temple_hindu</span>
                                                              </div>
-                                                             <span class="feature-text">Royal Statues from the Old Kingdom</span>
+                                                             <span class="feature-text" data-i18n="exhibition.stair_feat1">Royal Statues from the Old Kingdom</span>
                                                          </div>
                                                          <div class="staircase-feature">
                                                              <div class="feature-icon-wrapper">
                                                                  <span class="material-symbols-outlined">rebase</span>
                                                              </div>
-                                                             <span class="feature-text">Chronological Ascension (4 Levels)</span>
+                                                             <span class="feature-text" data-i18n="exhibition.stair_feat2">Chronological Ascension (4 Levels)</span>
                                                          </div>
                                                      </div>
                                                 </div>
                                                 <div class="staircase-visual anim-reveal">
                                                     <img src="../stairs.avif" alt="Grand Staircase Statues" class="visual-main">
-                                                    <div class="monument-badge">87+ MONUMENTS</div>
+                                                    <div class="monument-badge" data-i18n="exhibition.stair_badge">87+ MONUMENTS</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,15 +230,15 @@
                                         <div class="container">
                                             <div class="controls-wrapper">
                                                 <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                                                    <button class="filter-btn active" data-filter="all">All Halls</button>
-                                                    <button class="filter-btn" data-filter="Old Kingdom">Old Kingdom</button>
-                                                    <button class="filter-btn" data-filter="Middle Kingdom">Middle Kingdom</button>
-                                                    <button class="filter-btn" data-filter="New Kingdom">New Kingdom</button>
-                                                    <button class="filter-btn" data-filter="Greco-Roman">Greco-Roman</button>
+                                                    <button class="filter-btn active" data-filter="all" data-i18n="exhibition.filter_all">All Halls</button>
+                                                    <button class="filter-btn" data-filter="Old Kingdom" data-i18n="exhibition.filter_old">Old Kingdom</button>
+                                                    <button class="filter-btn" data-filter="Middle Kingdom" data-i18n="exhibition.filter_middle">Middle Kingdom</button>
+                                                    <button class="filter-btn" data-filter="New Kingdom" data-i18n="exhibition.filter_new">New Kingdom</button>
+                                                    <button class="filter-btn" data-filter="Greco-Roman" data-i18n="exhibition.filter_greco">Greco-Roman</button>
                                                 </div>
                                                 <div style="position: relative; width: 100%; max-width: 350px;">
                                                     <span class="material-symbols-outlined" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary);">search</span>
-                                                    <input type="text" id="hallSearch" placeholder="Search treasures..." style="width: 100%; padding: 1rem 1rem 1rem 3.5rem; border-radius: 50px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary);">
+                                                    <input type="text" id="hallSearch" placeholder="Search treasures..." data-i18n-placeholder="exhibition.search_placeholder" data-i18n-placeholder="exhibition.search_placeholder" style="width: 100%; padding: 1rem 1rem 1rem 3.5rem; border-radius: 50px; background: var(--bg-secondary); border: 1px solid var(--border-color); color: var(--text-primary);">
                                                 </div>
                                             </div>
                                         </div>
@@ -248,13 +248,13 @@
                                     <section style="background-color: var(--bg-secondary); padding: 8rem 0;" id="halls-grid">
                                         <div class="container">
                                             <div class="section-header anim-reveal">
-                                                <span class="section-label">Masterpiece Gallery</span>
-                                                <h2 class="section-title">Tutankhamun & <br><span style="color: var(--hall-gold);">Royal Treasures</span></h2>
-                                                <p style="max-width: 800px; margin: 2rem auto; color: var(--text-secondary);">Over 5,000 artifacts from the boy king's tomb are displayed in one immersive space for the first time in history.</p>
+                                                <span class="section-label" data-i18n="exhibition.master_label">Masterpiece Gallery</span>
+                                                <h2 class="section-title" data-i18n="exhibition.master_title">Tutankhamun & <br><span style="color: var(--hall-gold);">Royal Treasures</span></h2>
+                                                <p style="max-width: 800px; margin: 2rem auto; color: var(--text-secondary);" data-i18n="exhibition.master_desc">Over 5,000 artifacts from the boy king's tomb are displayed in one immersive space for the first time in history.</p>
                                             </div>
                                             <div id="hallsStatus" class="status-message hidden">
                                                 <span class="material-symbols-outlined">search_off</span>
-                                                <p>No treasures found matching your search. Please try a different period or keyword.</p>
+                                                <p data-i18n="exhibition.no_results">No treasures found matching your search. Please try a different period or keyword.</p>
                                             </div>
                                             <div class="halls-grid" id="hallsGrid">
                                                 <!-- Dynamic Halls Generated by JS -->
@@ -265,29 +265,29 @@
                                     <!-- Sequential Discovery Halls -->
                                     <section class="container" style="padding: 10rem 0;">
                                         <div class="section-header anim-reveal">
-                                            <span class="section-label">Sequential Discovery</span>
-                                            <h2 class="section-title">The Main <span style="color: var(--hall-gold);">Galleries</span></h2>
+                                            <span class="section-label" data-i18n="exhibition.seq_label">Sequential Discovery</span>
+                                            <h2 class="section-title" data-i18n="exhibition.seq_title">The Main <span style="color: var(--hall-gold);">Galleries</span></h2>
                                         </div>
                                         <div class="main-galleries-grid">
                                             <div class="hall-box anim-reveal">
                                                 <span class="hall-number">01-03</span>
-                                                <h4>Dawn & Old Kingdom</h4>
-                                                <p>Explore the origins of society and beliefs. Witness the mysterious <strong>Reserve Head</strong> and the protective <strong>Ptah-Sokar-Osiris figure</strong> from the age of the Pyramid Builders.</p>
+                                                <h4 data-i18n="exhibition.hall1_title">Dawn & Old Kingdom</h4>
+                                                <p data-i18n="exhibition.hall1_desc">Explore the origins of society and beliefs. Witness the mysterious <strong>Reserve Head</strong> and the protective <strong>Ptah-Sokar-Osiris figure</strong> from the age of the Pyramid Builders.</p>
                                             </div>
                                             <div class="hall-box anim-reveal">
                                                 <span class="hall-number">04-06</span>
-                                                <h4>The Middle Kingdom</h4>
-                                                <p>A period of cultural renaissance. Witness the majestic <strong>Statue of Senusret I</strong> and explore the daily lives, royal power, and spirituality of a reunified Egypt.</p>
+                                                <h4 data-i18n="exhibition.hall2_title">The Middle Kingdom</h4>
+                                                <p data-i18n="exhibition.hall2_desc">A period of cultural renaissance. Witness the majestic <strong>Statue of Senusret I</strong> and explore the daily lives, royal power, and spirituality of a reunified Egypt.</p>
                                             </div>
                                             <div class="hall-box anim-reveal">
                                                 <span class="hall-number">07-09</span>
-                                                <h4>The New Kingdom</h4>
-                                                <p>The golden age of empire. Witness the <strong>Victory Stele</strong>, the exquisite <strong>Shabti Box</strong>, and the <strong>Papyrus of Ani</strong> alongside the warrior statues of <strong>Thutmose III</strong>.</p>
+                                                <h4 data-i18n="exhibition.hall3_title">The New Kingdom</h4>
+                                                <p data-i18n="exhibition.hall3_desc">The golden age of empire. Witness the <strong>Victory Stele</strong>, the exquisite <strong>Shabti Box</strong>, and the <strong>Papyrus of Ani</strong> alongside the warrior statues of <strong>Thutmose III</strong>.</p>
                                             </div>
                                             <div class="hall-box anim-reveal">
                                                 <span class="hall-number">10-12</span>
-                                                <h4>Late & Greco-Roman</h4>
-                                                <p>The transformation of Egypt through the Third Intermediate Period, culminating in the cultural synthesis of the <strong>Greco-Roman</strong> era and the <strong>Pompey's Pillar</strong>.</p>
+                                                <h4 data-i18n="exhibition.hall4_title">Late & Greco-Roman</h4>
+                                                <p data-i18n="exhibition.hall4_desc">The transformation of Egypt through the Third Intermediate Period, culminating in the cultural synthesis of the <strong>Greco-Roman</strong> era and the <strong>Pompey's Pillar</strong>.</p>
                                             </div>
                                         </div>
                                     </section>
@@ -298,10 +298,10 @@
                                             <img src="images/grand.png" alt="Ramses Colossus" style="width: 100%; height: 100%; object-fit: cover;">
                                         </div>
                                         <div class="container anim-reveal" style="position: relative; z-index: 2;">
-                                            <span class="gold-accent-text">The Living Sun King</span>
-                                            <h2 class="section-title" style="color: #fff; font-size: 4rem;">Colossus of <br>Ramses II</h2>
-                                            <p style="max-width: 700px; margin: 3rem auto; font-size: 1.25rem; opacity: 0.9;">Standing 11 meters tall and weighing 83 tons, the 3,200-year-old red granite statue of Ramses II welcomes every visitor. Standing exactly where the sun rays illuminate it twice a year.</p>
-                                            <div style="display: inline-block; padding: 1rem 3rem; border: 2px solid var(--hall-gold); color: var(--hall-gold); font-weight: 700; letter-spacing: 4px; text-transform: uppercase;">The Great Atrium</div>
+                                            <span class="gold-accent-text" data-i18n="exhibition.ramses_label">The Living Sun King</span>
+                                            <h2 class="section-title" style="color: #fff; font-size: 4rem;" data-i18n="exhibition.ramses_title" data-i18n-html="exhibition.ramses_title">Colossus of <br>Ramses II</h2>
+                                            <p style="max-width: 700px; margin: 3rem auto; font-size: 1.25rem; opacity: 0.9;" data-i18n="exhibition.ramses_desc">Standing 11 meters tall and weighing 83 tons, the 3,200-year-old red granite statue of Ramses II welcomes every visitor. Standing exactly where the sun rays illuminate it twice a year.</p>
+                                            <div style="display: inline-block; padding: 1rem 3rem; border: 2px solid var(--hall-gold); color: var(--hall-gold); font-weight: 700; letter-spacing: 4px; text-transform: uppercase;" data-i18n="exhibition.ramses_atrium">The Great Atrium</div>
                                         </div>
                                     </section>
                              
@@ -309,9 +309,9 @@
                                     <section style="background-color: var(--bg-secondary); padding: 10rem 0;">
                                         <div class="container">
                                             <div class="section-header anim-reveal">
-                                                <span class="section-label">Atrium Masterpieces</span>
-                                                <h2 class="section-title">Guardians of <br><span style="color: var(--hall-gold);">The Great Hall</span></h2>
-                                                <p style="max-width: 800px; margin: 2rem auto; color: var(--text-secondary);">Beyond the colossal Ramses, the Grand Hall houses treasures that define the spiritual and military history of Egypt.</p>
+                                                <span class="section-label" data-i18n="exhibition.guardians_label">Atrium Masterpieces</span>
+                                                <h2 class="section-title" data-i18n="exhibition.guardians_title">Guardians of <br><span style="color: var(--hall-gold);">The Great Hall</span></h2>
+                                                <p style="max-width: 800px; margin: 2rem auto; color: var(--text-secondary);" data-i18n="exhibition.guardians_desc">Beyond the colossal Ramses, the Grand Hall houses treasures that define the spiritual and military history of Egypt.</p>
                                             </div>
                                             
                                             <div style="display: flex; justify-content: center; margin-top: 5rem;">
@@ -320,11 +320,11 @@
                                                      <div class="guardian-img-container" style="height: 500px;">
                                                          <img src="images/ptolemaic_pair.png" alt="Ptolemaic Royal Pair" style="width: auto; max-width: 100%;">
                                                      </div>
-                                                     <h3 class="guardian-title">The Ptolemaic Royal Pair</h3>
-                                                     <p class="guardian-desc">These monumental colossi of a Ptolemaic King and Queen were retrieved from the depths of the Mediterranean. Standing side-by-side in the Grand Hall, they guard the entrance with a unique blend of Hellenistic artistry and ancient Egyptian divine authority.</p>
+                                                     <h3 class="guardian-title" data-i18n="exhibition.ptolemaic_title">The Ptolemaic Royal Pair</h3>
+                                                     <p class="guardian-desc" data-i18n="exhibition.ptolemaic_desc">These monumental colossi of a Ptolemaic King and Queen were retrieved from the depths of the Mediterranean. Standing side-by-side in the Grand Hall, they guard the entrance with a unique blend of Hellenistic artistry and ancient Egyptian divine authority.</p>
                                                      <div style="display: flex; gap: 1rem; justify-content: center;">
-                                                         <div class="dynasty-badge">Ptolemaic Period</div>
-                                                         <div class="dynasty-badge">5-Meter Colossi</div>
+                                                         <div class="dynasty-badge" data-i18n="exhibition.ptolemaic_badge1">Ptolemaic Period</div>
+                                                         <div class="dynasty-badge" data-i18n="exhibition.ptolemaic_badge2">5-Meter Colossi</div>
                                                      </div>
                                                  </div>
                                              </div>
@@ -334,13 +334,13 @@
                                     <section class="artifacts-section hidden" id="artifactsSection">
                                         <div class="container">
                                             <nav class="artifacts-breadcrumb">
-                                                <a href="#" id="breadcrumbLink">Exhibition Halls</a> <span>&rsaquo;</span> <span id="breadcrumbCurrent">Gallery Name</span>
+                                                <a href="#" id="breadcrumbLink" data-i18n="nav.exhibitions">Exhibition Halls</a> <span>&rsaquo;</span> <span id="breadcrumbCurrent" data-i18n="exhibition.bread_curr">Gallery Name</span>
                                             </nav>
                                             <div class="artifacts-header">
                                                 <button class="back-to-halls" id="backToHalls">
-                                                    <span class="material-symbols-outlined">arrow_back</span> Back to Halls
+                                                    <span class="material-symbols-outlined">arrow_back</span> <span data-i18n="exhibition.back_btn"><span data-i18n="exhibition.back_btn">Back to Halls</span></span>
                                                 </button>
-                                                <h2 id="currentHallName" class="section-title">Hall Name</h2>
+                                                <h2 id="currentHallName" class="section-title" data-i18n="exhibition.hall_name">Hall Name</h2>
                                                 <p id="currentHallDesc" class="hall-long-desc"></p>
                                             </div>
                                             <div class="artifacts-grid" id="artifactsGrid">
@@ -446,7 +446,7 @@
                                 <script src="../global-core.js"></script>
                                 <script src="../standardize_theme.js"></script>
                                 <script src="script.js"></script>
-                            <script src="../global-lang.js"></script>
+                            <script src="../global-lang.js?v=1780360345372"></script>
 </body>
                             </html>
                             

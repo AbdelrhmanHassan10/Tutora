@@ -1,3 +1,20 @@
+
+function tCart(key, defaultText) {
+    if (window.TutoraLang && typeof window.TutoraLang.getCurrentLang === 'function') {
+        const lang = window.TutoraLang.getCurrentLang();
+        if (lang === 'ar' && window.CART_AR && window.CART_AR[key]) {
+            return window.CART_AR[key];
+        }
+    }
+    return defaultText;
+}
+
+window.CART_AR = {
+    "empty_cart": "عربة التسوق الخاصة بك فارغة.",
+    "return_shop": "العودة للمتجر",
+    "item_removed": "تمت إزالة العنصر من العربة",
+    "cart_empty_toast": "عربة التسوق فارغة"
+};
 document.addEventListener('DOMContentLoaded', () => {
     const cartItemsContainer = document.getElementById('cartItemsContainer');
     const cartSubtotal = document.getElementById('cartSubtotal');
@@ -14,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="empty-cart-msg">
                     <span class="material-symbols-outlined" style="font-size: 3rem; color: var(--color-muted);">shopping_cart</span>
                     <p>Your cart is empty.</p>
-                    <a href="../shop/shop.html"><button class="btn btn-outline" style="margin-top: 1rem;">Return to Shop</button></a>
+                    <a href="../shop/shop.html"><button class="btn btn-outline" style="margin-top: 1rem;">${tCart("return_shop", "Return to Shop")}</button></a>
                 </div>
             `;
             updateSummary(cartItems);
@@ -89,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 if (typeof window.showPremiumToast === 'function') {
-                    window.showPremiumToast("Item removed from cart");
+                    window.showPremiumToast(tCart("item_removed", "Item removed from cart"));
                 }
             });
         });
@@ -110,9 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let cartItems = JSON.parse(localStorage.getItem('tutora_cart') || '[]');
         if (cartItems.length === 0) {
             if (typeof window.showPremiumToast === 'function') {
-                window.showPremiumToast("Your cart is empty", "error");
+                window.showPremiumToast(tCart("cart_empty_toast", "Your cart is empty"), "error");
             } else {
-                alert("Your cart is empty");
+                alert(tCart("cart_empty_toast", "Your cart is empty"));
             }
             return;
         }
@@ -124,3 +141,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render
     renderCart();
 });
+
+window.addEventListener('languageChanged', () => { if(typeof renderCart === 'function') renderCart(); });

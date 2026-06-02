@@ -3651,3 +3651,16 @@ body.light .copyright {
     margin: 2rem auto;
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
+/* RTL Favourites */
+[dir="rtl"] body { text-align: right; }
+[dir="rtl"] .dashboard-header { flex-direction: row-reverse; }
+[dir="rtl"] .user-info { text-align: right; margin-right: 1.5rem; margin-left: 0; }
+[dir="rtl"] .dashboard-stats { flex-direction: row-reverse; }
+[dir="rtl"] .stat-card { flex-direction: row-reverse; border-left: none; border-right: 3px solid rgba(212, 175, 55, 0.5); }
+[dir="rtl"] .section-header { flex-direction: row-reverse; }
+[dir="rtl"] .section-header h2 i { margin-left: 0.5rem; margin-right: 0; }
+[dir="rtl"] .artifact-card { text-align: right; }
+[dir="rtl"] .card-actions { flex-direction: row-reverse; }
+[dir="rtl"] .remove-btn { margin-right: auto; margin-left: 0; }
+[dir="rtl"] .fact-card { border-left: none; border-right: 4px solid var(--primary-gold); padding-right: 1.5rem; padding-left: 1rem; }
+[dir="rtl"] .fact-header { flex-direction: row-reverse; }

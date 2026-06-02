@@ -1,0 +1,20 @@
+
+/* RTL Overrides for Description Widget */
+html[dir="rtl"] .hall-long-desc {
+    padding-left: 0;
+    padding-right: 3rem;
+    border-left: none;
+    border-right: 3px solid var(--hall-gold);
+    text-align: right;
+}
+
+html[dir="rtl"] .hall-long-desc::first-letter {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    float: none;
+    margin: 0;
+    line-height: inherit;
+    background: none;
+    -webkit-text-fill-color: inherit;
+}

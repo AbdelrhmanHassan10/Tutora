@@ -282,8 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <img src="${hall.image}" alt="${hall.name}" class="hall-card-img">
                 <div class="hall-card-info">
-                    <h3>${hall.name}</h3>
-                    <p>${hall.shortDesc}</p>
+                    <h3 data-i18n="exhibition.halls.${hall.id}.name">${typeof window.TutoraLang?.translate === "function" ? window.TutoraLang?.translate("exhibition.halls."+hall.id+".name") || hall.name : hall.name}</h3>
+                    <p data-i18n="exhibition.halls.${hall.id}.shortDesc">${typeof window.TutoraLang?.translate === "function" ? window.TutoraLang?.translate("exhibition.halls."+hall.id+".shortDesc") || hall.shortDesc : hall.shortDesc}</p>
                 </div>
             `;
 
@@ -310,8 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const hall = hallsData.find(h => h.id === hallId);
         if (!hall) return;
 
-        currentHallName.innerText = hall.name;
-        currentHallDesc.innerHTML = hall.longDesc;
+        currentHallName.setAttribute('data-i18n', 'exhibition.halls.' + hall.id + '.name');
+        currentHallName.innerText = typeof window.TutoraLang?.translate === 'function' ? window.TutoraLang?.translate('exhibition.halls.' + hall.id + '.name') || hall.name : hall.name;
+        
+        currentHallDesc.setAttribute('data-i18n-html', 'exhibition.halls.' + hall.id + '.longDesc');
+        currentHallDesc.innerHTML = typeof window.TutoraLang?.translate === 'function' ? window.TutoraLang?.translate('exhibition.halls.' + hall.id + '.longDesc') || hall.longDesc : hall.longDesc;
         
         artifactsGrid.innerHTML = '';
         hall.artifacts.forEach(art => {
@@ -319,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
             artCard.className = 'artifact-card anim-reveal';
             
             const periodText = (art.period || hall.era).toUpperCase();
+            const artId = art.id || art.name.replace(/\s+/g, '_');
             
             artCard.innerHTML = `
                 <div class="artifact-img-box">
@@ -329,8 +333,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="artifact-info">
                     <span class="artifact-period">${periodText}</span>
-                    <h4 class="artifact-name">${art.name}</h4>
-                    <p class="artifact-desc">${art.desc}</p>
+                    <h4 class="artifact-name" data-i18n="exhibition.artifacts.${artId}.name">${typeof window.TutoraLang?.translate === "function" ? window.TutoraLang?.translate("exhibition.artifacts."+artId+".name") || art.name : art.name}</h4>
+                    <p class="artifact-desc" data-i18n="exhibition.artifacts.${artId}.desc">${typeof window.TutoraLang?.translate === "function" ? window.TutoraLang?.translate("exhibition.artifacts."+artId+".desc") || art.desc : art.desc}</p>
                 </div>
                 <div class="artifact-actions">
                     <div class="artifact-location">
@@ -350,6 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             artifactsGrid.appendChild(artCard);
         });
+        if (window.TutoraLang && typeof window.TutoraLang.applyTranslations === 'function') window.TutoraLang.applyTranslations();
 
         // Observe new artifacts
         document.querySelectorAll('.artifact-card').forEach(el => {

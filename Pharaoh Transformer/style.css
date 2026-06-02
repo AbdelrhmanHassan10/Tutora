@@ -301,7 +301,7 @@ html:not(.dark) .menu-link:hover {
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
     width: 100%;
-    text-align: left;
+    text-align: start;
 }
 
 html.dark .dropdown-toggle:hover {
@@ -920,7 +920,7 @@ main {
 
 @media (min-width: 768px) {
     .hero-section {
-        text-align: left;
+        text-align: start;
     }
 }
 
@@ -2694,7 +2694,7 @@ body.light .newsletter-banner {
     
     .amenities-grid { grid-template-columns: 1fr; }
     .membership-content { flex-direction: column; text-align: center; }
-    .membership-perks ul { display: inline-block; text-align: left; margin-top: 1.5rem; }
+    .membership-perks ul { display: inline-block; text-align: start; margin-top: 1.5rem; }
     
     .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
 }

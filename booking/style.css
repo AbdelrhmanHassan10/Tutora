@@ -4403,3 +4403,24 @@ body.light .copyright {
         display: none !important; 
     }
 }
+
+/* RTL Booking */
+[dir="rtl"] body { text-align: right; }
+[dir="rtl"] .booking-hero-content { align-items: flex-end; text-align: right; }
+[dir="rtl"] .progress-step { flex-direction: row-reverse; }
+[dir="rtl"] .step-info { text-align: right; margin-right: 1rem; margin-left: 0; }
+[dir="rtl"] .booking-main { flex-direction: row-reverse; }
+[dir="rtl"] .summary-row, [dir="rtl"] .summary-total { flex-direction: row-reverse; }
+[dir="rtl"] .ticket-controls { flex-direction: row-reverse; }
+[dir="rtl"] .feature-item { flex-direction: row-reverse; }
+[dir="rtl"] .feature-item i { margin-left: 1rem; margin-right: 0; }
+[dir="rtl"] .radio-custom { margin-left: 1rem; margin-right: 0; }
+[dir="rtl"] .calendar-header { flex-direction: row-reverse; }
+[dir="rtl"] .time-slots { justify-content: flex-end; }
+[dir="rtl"] .addon-card { text-align: right; }
+[dir="rtl"] .ticket-card { text-align: right; }
+[dir="rtl"] .ticket-info { margin-right: 1rem; margin-left: 0; }
+[dir="rtl"] .checkout-section { text-align: right; }
+[dir="rtl"] .input-group input, [dir="rtl"] .input-group select { text-align: right; padding-right: 1rem; padding-left: 3rem; }
+[dir="rtl"] .input-icon { right: 1rem; left: auto; }
+[dir="rtl"] .faq-question { flex-direction: row-reverse; }
