@@ -4648,8 +4648,14 @@
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             // Expecting { en: {...}, ar: {...} } or { translations: { en: {...}, ar: {...} } }
-            translationsCache = data.translations || data;
-            console.log('✓ Translations loaded from API (all)');
+            const apiData = data.translations || data;
+            
+            // Merge API data over local fallback so missing keys are still available
+            translationsCache = {
+                en: { ...LOCAL_TRANSLATIONS.en, ...(apiData.en || {}) },
+                ar: { ...LOCAL_TRANSLATIONS.ar, ...(apiData.ar || {}) }
+            };
+            console.log('✓ Translations loaded from API (all, merged with local fallback)');
             return translationsCache;
         } catch (err) {
             console.warn('⚠ /api/lang/all/translations failed, using local fallback:', err.message);
@@ -4667,10 +4673,14 @@
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             // Expecting { key: value, ... } or { translations: { key: value } } or { lang: "en", data: {...} }
-            const translations = data.translations || data.data || data;
-            translationsCache[langCode] = translations;
-            console.log(`✓ Translations loaded from API for: ${langCode}`);
-            return translations;
+            const apiTranslations = data.translations || data.data || data;
+            
+            translationsCache[langCode] = {
+                ...(LOCAL_TRANSLATIONS[langCode] || LOCAL_TRANSLATIONS.en),
+                ...apiTranslations
+            };
+            console.log(`✓ Translations loaded from API for: ${langCode} (merged with local fallback)`);
+            return translationsCache[langCode];
         } catch (err) {
             console.warn(`⚠ /api/lang/${langCode} failed, using local fallback:`, err.message);
             translationsCache[langCode] = LOCAL_TRANSLATIONS[langCode] || LOCAL_TRANSLATIONS.en;
