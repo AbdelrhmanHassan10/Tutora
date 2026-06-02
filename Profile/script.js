@@ -59,13 +59,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Standardize Bio if present
         const bioText = document.querySelector('.profile-title');
-        if (bioText && user.bio) bioText.textContent = user.bio;
+        if (bioText && user.bio) { bioText.innerHTML = `<span data-i18n="profile.pharaonic_historian">${user.bio}</span>`; }
 
         // Update Join Date in Hero Section
         if (user.createdAt) {
             const date = new Date(user.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
             const heroJoinDate = document.getElementById('profile-join-date');
-            if (heroJoinDate) heroJoinDate.textContent = `Joined ${date}`;
+            if (heroJoinDate) {
+                const lang = localStorage.getItem('preferredLanguage') || 'en';
+                const dateOpts = { month: 'long', year: 'numeric' };
+                const formattedDate = new Date(user.createdAt).toLocaleDateString(lang === 'ar' ? 'ar-EG' : 'en-US', dateOpts);
+                const prefix = lang === 'ar' ? 'انضم في ' : 'Joined ';
+                heroJoinDate.removeAttribute('data-i18n');
+                heroJoinDate.innerHTML = `${prefix}${formattedDate}`;
+                
+                // Add listener to update date dynamically when language changes
+                document.addEventListener('languageChanged', (e) => {
+                    const newLang = e.detail.language || localStorage.getItem('preferredLanguage') || 'en';
+                    const newFormattedDate = new Date(user.createdAt).toLocaleDateString(newLang === 'ar' ? 'ar-EG' : 'en-US', dateOpts);
+                    const newPrefix = newLang === 'ar' ? 'انضم في ' : 'Joined ';
+                    heroJoinDate.innerHTML = `${newPrefix}${newFormattedDate}`;
+                });
+            }
         }
 
         // Sync and Display Avatar

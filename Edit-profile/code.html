@@ -5,7 +5,7 @@
                                 <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
                                 <meta charset="UTF-8">
                                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title>TUTORA Profile | Edit Profile</title>
+                                <title data-i18n="edit_profile.title">TUTORA Profile | Edit Profile</title>
                                 <link rel="icon" type="image/png" href="../museum.png">
                                 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
                                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -36,23 +36,23 @@
                                             <nav class="nav-menu">
                                                 <a href="../Profile/profile.html" class="nav-item active">
                                                     <span class="material-symbols-outlined">person</span>
-                                                    <span>Profile</span>
+                                                    <span><span data-i18n="nav.profile">Profile</span></span>
                                                 </a>
                                                 <a href="../success/success.html" class="nav-item">
                                                     <span class="material-symbols-outlined">confirmation_number</span>
-                                                    <span>My Tickets</span>
+                                                    <span><span data-i18n="profile.my_tickets">My Tickets</span></span>
                                                 </a>
                                                 <a href="#" class="nav-item">
                                                     <span class="material-symbols-outlined">bookmark</span>
-                                                    <span>Saved Treasures</span>
+                                                    <span><span data-i18n="profile.saved_treasures">Saved Treasures</span></span>
                                                 </a>
                                                 <a href="#" class="nav-item">
                                                     <span class="material-symbols-outlined">history_edu</span>
-                                                    <span>AI History</span>
+                                                    <span><span data-i18n="profile.ai_history">AI History</span></span>
                                                 </a>
                                                 <a href="../setting/setting.html" class="nav-item">
                                                     <span class="material-symbols-outlined">settings</span>
-                                                    <span>Settings</span>
+                                                    <span><span data-i18n="profile.settings">Settings</span></span>
                                                 </a>
                                             </nav>
                                         </div>
@@ -61,7 +61,7 @@
                                         <a href="../1.landing page/code!!!!!!!!!!!!.html" style="text-decoration: none;">
                                             <button class="logout-btn">
                                                 <span class="material-symbols-outlined">logout</span>
-                                                <span>Logout</span>
+                                                <span><span data-i18n="profile.logout">Logout</span></span>
                                             </button>
                                         </a>
                                     </aside>
@@ -94,6 +94,9 @@
                                                     </div>
                                                 </div>
                             
+                                                <button class="icon-btn" id="langBtn" title="Language" style="background: none; border: none; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; transition: background-color 0.3s ease; margin-right: 10px;">
+                                                    <span class="material-symbols-outlined">language</span>
+                                                </button>
                                                 <button class="theme-toggle" id="themeToggle">
                                                     <span class="material-symbols-outlined">light_mode</span>
                                                 </button>
@@ -103,8 +106,8 @@
                                         <!-- Main Content Area: Edit Profile -->
                                         <div class="content-wrapper">
                                             <header class="page-header">
-                                                <span class="header-subtitle">Account Management</span>
-                                                <h1 class="header-title">Edit Profile</h1>
+                                                <span class="header-subtitle" data-i18n="edit_profile.account_management"><span data-i18n="edit_profile.account_management">Account Management</span></span>
+                                                <h1 class="header-title" data-i18n="edit_profile.edit_profile"><span data-i18n="edit_profile.edit_profile">Edit Profile</span></h1>
                                             </header>
                             
                                             <div class="edit-profile-layout">
@@ -118,15 +121,15 @@
                                                         <input type="file" id="avatarUpload" accept="image/*" class="hidden-input">
                                                     </div>
                                                     <div class="avatar-info">
-                                                        <p class="avatar-hint">Recommended: 400x400px</p>
+                                                        <p class="avatar-hint" data-i18n="edit_profile.recommended_size"><span data-i18n="edit_profile.recommended_size">Recommended: 400x400px</span></p>
                                                         <div class="avatar-action-group" style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; margin-top: 1rem;">
                                                             <button type="button" class="btn-save" style="width: 100%; font-size: 0.75rem; padding: 0.8rem;" onclick="document.getElementById('avatarUpload').click()">
-                                                                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 5px;">upload</span>
-                                                                Upload New Photo
+                                                                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 5px;">upload</span data-i18n="edit_profile.upload_photo">
+                                                                <span data-i18n="edit_profile.upload_photo">Upload New Photo</span>
                                                             </button>
                                                             <button type="button" class="btn-discard" id="adjustCurrentAvatar" style="display: none; border: 1px solid var(--primary); color: var(--primary); padding: 0.8rem 1.5rem; border-radius: 4px; width: 100%; transition: all 0.3s ease;">
-                                                                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 5px;">crop_free</span>
-                                                                Adjust Current
+                                                                <span class="material-symbols-outlined" style="font-size: 1.2rem; vertical-align: middle; margin-right: 5px;">crop_free</span data-i18n="edit_profile.adjust_current">
+                                                                <span data-i18n="edit_profile.adjust_current">Adjust Current</span>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -137,28 +140,28 @@
                                                     <form id="editProfileForm" class="edit-form">
                                                         <div class="form-row">
                                                             <div class="form-group">
-                                                                <label for="first_name">First Name</label>
-                                                                <input type="text" id="first_name" placeholder="Enter first name" required>
+                                                                <label for="first_name" data-i18n="edit_profile.first_name"><span data-i18n="edit_profile.first_name">First Name</span></label>
+                                                                <input type="text" id="first_name" placeholder="Enter first name" data-i18n-placeholder="edit_profile.first_name_ph" required>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="last_name">Last Name</label>
-                                                                <input type="text" id="last_name" placeholder="Enter last name" required>
+                                                                <label for="last_name" data-i18n="edit_profile.last_name"><span data-i18n="edit_profile.last_name">Last Name</span></label>
+                                                                <input type="text" id="last_name" placeholder="Enter last name" data-i18n-placeholder="edit_profile.last_name_ph" required>
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group">
-                                                            <label for="email">Email Address</label>
+                                                            <label for="email" data-i18n="edit_profile.email_address"><span data-i18n="edit_profile.email_address">Email Address</span></label>
                                                             <input type="email" id="email" placeholder="example@gemuseum.eg" readonly title="Email cannot be changed">
                                                         </div>
                                                         
                                                         <div class="form-group">
-                                                            <label for="bio">Professional Bio</label>
-                                                            <textarea id="bio" rows="5" placeholder="Specializing in Ptolemaic period artifacts..."></textarea>
+                                                            <label for="bio" data-i18n="edit_profile.professional_bio"><span data-i18n="edit_profile.professional_bio">Professional Bio</span></label>
+                                                            <textarea id="bio" rows="5" placeholder="Specializing in Ptolemaic period artifacts..." data-i18n-placeholder="edit_profile.bio_ph"></textarea>
                                                         </div>
                                                         
                                                         <div class="form-actions">
-                                                            <button type="button" class="btn-discard" onclick="window.location.href='../Profile/profile.html'">Discard Changes</button>
-                                                            <button type="submit" class="btn-save">Save Changes</button>
+                                                            <button type="button" class="btn-discard" onclick="window.location.href='../Profile/profile.html'" data-i18n="edit_profile.discard_changes"><span data-i18n="edit_profile.discard_changes">Discard Changes</span></button>
+                                                            <button type="submit" class="btn-save" data-i18n="edit_profile.save_changes"><span data-i18n="edit_profile.save_changes">Save Changes</span></button>
                                                         </div>
                                                     </form>
                             
@@ -167,9 +170,9 @@
                                                         <div class="membership-icon">
                                                             <span class="material-symbols-outlined">auto_awesome</span>
                                                         </div>
-                                                        <h4 class="membership-title">Membership Status</h4>
+                                                        <h4 class="membership-title" data-i18n="edit_profile.membership_status"><span data-i18n="edit_profile.membership_status">Membership Status</span></h4>
                                                         <p class="membership-desc">Your 'Premium Curator' status provides access to high-resolution 3D scans of the Tutankhamun collection and priority invitations to private gallery previews.</p>
-                                                        <a href="../-membership/code.html" class="membership-link">Review Membership Details</a>
+                                                        <a href="../-membership/code.html" class="membership-link" data-i18n="edit_profile.review_membership"><span data-i18n="edit_profile.review_membership">Review Membership Details</span></a>
                                                     </div>
                                                 </section>
                                             </div>
@@ -181,15 +184,15 @@
                                 <div class="crop-modal" id="cropModal">
                                     <div class="crop-container">
                                         <div class="crop-header">
-                                            <h3>Customize Artifact</h3>
+                                            <h3 data-i18n="edit_profile.customize_artifact"><span data-i18n="edit_profile.customize_artifact">Customize Artifact</span></h3>
                                             <span class="material-symbols-outlined" style="cursor:pointer" id="closeCropModal">close</span>
                                         </div>
                                         <div class="crop-body">
                                             <img id="imageToCrop" src="" alt="To Crop">
                                         </div>
                                         <div class="crop-footer">
-                                            <button class="btn-crop-cancel" id="cancelCrop">Cancel</button>
-                                            <button class="btn-crop-confirm" id="confirmCrop">Apply Selection</button>
+                                            <button class="btn-crop-cancel" id="cancelCrop" data-i18n="edit_profile.cancel"><span data-i18n="edit_profile.cancel">Cancel</span></button>
+                                            <button class="btn-crop-confirm" id="confirmCrop" data-i18n="edit_profile.apply_selection"><span data-i18n="edit_profile.apply_selection">Apply Selection</span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +208,7 @@
                             <link rel="stylesheet" href="../animate.css" />
                             <script src="../global-core.js"></script>
                             <script src="../animate.js"></script>
-                            <script src="../global-lang.js?v=1780353971499"></script>
+                            <script src="../global-lang.js?v=1780413066048"></script>
 </body>
                             
                             </html>
