@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'z': '𓊃', ' ': ' '
     };
 
-    generateBtn.addEventListener('click', () => {
+    generateBtn.addEventListener('click', async () => {
         const name = nameInput.value.trim();
         if (!name) { alert('Please enter a name to translate!'); return; }
 
@@ -25,20 +25,36 @@ document.addEventListener('DOMContentLoaded', () => {
         generateBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Carving...';
         generateBtn.disabled = true;
 
-        setTimeout(() => {
+        try {
+            const API_BASE_URL = (typeof window.API_BASE_URL !== 'undefined') ? window.API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+            const response = await fetch(`${API_BASE_URL}/ai/name-to-cartouche`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name })
+            });
+
+            if (!response.ok) throw new Error('Failed to generate cartouche');
+            const data = await response.json();
+
+            // Display image result
+            hieroglyphDisplay.innerHTML = `<img src="${data.cartouche}" alt="${data.name} Cartouche" style="max-width:100%; height:auto; border-radius:10px;">`;
+            phoneticText.textContent = data.name || name;
+
+        } catch (error) {
+            console.error('Error generating cartouche:', error);
+            // Fallback to basic mapping if API fails
             let translated = '';
             for (let char of name.toLowerCase()) {
                 translated += hieroglyphMap[char] ? hieroglyphMap[char] + ' ' : char + ' ';
             }
-
             hieroglyphDisplay.textContent = translated.trim();
             phoneticText.textContent = name;
-
+        } finally {
             hieroglyphDisplay.style.opacity = '1';
             phoneticText.style.opacity = '1';
             generateBtn.innerHTML = 'Generate Inscription';
             generateBtn.disabled = false;
-        }, 800);
+        }
     });
 
     nameInput.addEventListener('keypress', e => {

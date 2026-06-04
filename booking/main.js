@@ -1,4 +1,3 @@
-
 const MONTHS_AR = ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
 function getMonthName(idx) {
     const MONTHS_EN = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -160,6 +159,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 priceEl.textContent = `${currency}${price.toFixed(2)}`;
             }
         }
+        
+        document.querySelectorAll('.addon-card').forEach(card => {
+            const addonKey = card.getAttribute('data-addon');
+            if (bookingState.addons[addonKey]) {
+                const priceEl = card.querySelector('.addon-price');
+                if (priceEl) {
+                    priceEl.textContent = `${currency}${bookingState.addons[addonKey].price.toFixed(2)}`;
+                }
+            }
+        });
     }
 
     // ============================================
@@ -604,10 +613,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function fetchDynamicPrices() {
+        try {
+            const res = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/settings');
+            if (res.ok) {
+                const settings = await res.json();
+                
+                if (settings.ticketPrices) {
+                    const tp = settings.ticketPrices;
+                    if (tp.general) {
+                        bookingState.tickets.general_adult.price = { intl: tp.general.intl.adult, local: tp.general.local.adult };
+                        bookingState.tickets.general_student.price = { intl: tp.general.intl.student, local: tp.general.local.student };
+                    }
+                    if (tp.guided) {
+                        bookingState.tickets.guided_adult.price = { intl: tp.guided.intl.adult, local: tp.guided.local.adult };
+                        bookingState.tickets.guided_student.price = { intl: tp.guided.intl.student, local: tp.guided.local.student };
+                    }
+                    if (tp.tut) {
+                        bookingState.tickets.tut_adult.price = { intl: tp.tut.intl.adult, local: tp.tut.local.adult };
+                        bookingState.tickets.tut_student.price = { intl: tp.tut.intl.student, local: tp.tut.local.student };
+                    }
+                    if (tp.kids) {
+                        bookingState.tickets.kids_adult.price = { intl: tp.kids.intl.adult, local: tp.kids.local.adult };
+                        bookingState.tickets.kids_child.price = { intl: tp.kids.intl.child, local: tp.kids.local.child };
+                    }
+                }
+                if (settings.addons) {
+                    const ad = settings.addons;
+                    if (ad.audio) bookingState.addons.audio.price = ad.audio;
+                    if (ad.ramses) bookingState.addons.ramses.price = ad.ramses;
+                    if (ad.photo) bookingState.addons.photo.price = ad.photo;
+                    if (ad.vip) bookingState.addons.vip.price = ad.vip;
+                }
+                
+                updateTicketPrices();
+                updateOrderSummary();
+            }
+        } catch (e) {
+            console.error("Could not load dynamic prices:", e);
+        }
+    }
+
     hydrateDiningData();
     renderCalendar();
-    updateOrderSummary();
-    updateProgressSteps();
+    fetchDynamicPrices().then(() => {
+        updateTicketPrices();
+        updateOrderSummary();
+        updateProgressSteps();
+    });
 
     console.log('✓ Booking page initialized successfully.');
 

@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const resendBtn = document.getElementById('resendBtn');
     const cursorGlow = document.getElementById('cursorGlow');
     const formCard = document.getElementById('formCard');
+    
+    // 👇 السطر ده اللي كان ناقص وبيعمل المشكلة
+    const shapesContainer = document.querySelector('.shapes-container') || document.getElementById('shapesContainer');
 
     // 1. Session Protection
     const resetEmail = localStorage.getItem('resetEmail');
@@ -26,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     const createShapes = () => {
-        if (!shapesContainer) return;
+        if (!shapesContainer) return; // دلوقتي لو مش موجودة هترجع عادي من غير Error
         for (let i = 0; i < 10; i++) {
             const shape = document.createElement('div');
             shape.className = 'royal-shape';
@@ -119,4 +122,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-

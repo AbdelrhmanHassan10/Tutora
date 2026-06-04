@@ -169,28 +169,52 @@
             </div>
         </section>
 
-        <!-- Stats Section -->
+        <!-- Stats Section (Real from /api/admin/stats) -->
         <section class="admin-stats anim-on-scroll">
             <div class="admin-stats-grid">
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #3b82f6; font-size: 28px;">group</span>
+                    <span class="admin-stat-number" id="statUsers">—</span>
+                    <span class="admin-stat-label">Total Users</span>
+                    <small class="stat-sub" id="statUsersGrowth"></small>
+                </div>
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #10b981; font-size: 28px;">confirmation_number</span>
+                    <span class="admin-stat-number" id="statBookings">—</span>
+                    <span class="admin-stat-label">Bookings</span>
+                    <small class="stat-sub" id="statBookingsPaid"></small>
+                </div>
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #ecb613; font-size: 28px;">payments</span>
+                    <span class="admin-stat-number" id="statRevenue">—</span>
+                    <span class="admin-stat-label">Revenue (EGP)</span>
+                    <small class="stat-sub" id="statRevenueMonth"></small>
+                </div>
                 <div class="admin-stat-item">
                     <span class="material-symbols-outlined" style="color: #ecb613; font-size: 28px;">museum</span>
                     <span class="admin-stat-number" id="statArtifacts">—</span>
                     <span class="admin-stat-label">Artifacts</span>
                 </div>
                 <div class="admin-stat-item">
-                    <span class="material-symbols-outlined" style="color: #3b82f6; font-size: 28px;">event</span>
+                    <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 28px;">smart_toy</span>
+                    <span class="admin-stat-number" id="statAI">—</span>
+                    <span class="admin-stat-label">AI Interactions</span>
+                    <small class="stat-sub" id="statAISub"></small>
+                </div>
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #f59e0b; font-size: 28px;">event</span>
                     <span class="admin-stat-number" id="statEvents">—</span>
                     <span class="admin-stat-label">Events</span>
                 </div>
                 <div class="admin-stat-item">
-                    <span class="material-symbols-outlined" style="color: #10b981; font-size: 28px;">confirmation_number</span>
-                    <span class="admin-stat-number" id="statBookings">—</span>
-                    <span class="admin-stat-label">Bookings</span>
-                </div>
-                <div class="admin-stat-item">
-                    <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 28px;">video_library</span>
+                    <span class="material-symbols-outlined" style="color: #ef4444; font-size: 28px;">video_library</span>
                     <span class="admin-stat-number" id="statVideos">—</span>
                     <span class="admin-stat-label">Videos</span>
+                </div>
+                <div class="admin-stat-item">
+                    <span class="material-symbols-outlined" style="color: #ec4899; font-size: 28px;">favorite</span>
+                    <span class="admin-stat-number" id="statFavorites">—</span>
+                    <span class="admin-stat-label">Top Favorites</span>
                 </div>
             </div>
         </section>
@@ -209,6 +233,21 @@
                 </button>
                 <button class="admin-tab" data-tab="videos">
                     <span class="material-symbols-outlined">video_library</span> Videos
+                </button>
+                <button class="admin-tab" data-tab="users">
+                    <span class="material-symbols-outlined">group</span> Users
+                </button>
+                <button class="admin-tab" data-tab="ai">
+                    <span class="material-symbols-outlined">smart_toy</span> AI
+                </button>
+                <button class="admin-tab" data-tab="settings">
+                    <span class="material-symbols-outlined">settings</span> Settings
+                </button>
+                <button class="admin-tab" data-tab="logs">
+                    <span class="material-symbols-outlined">history</span> Logs
+                </button>
+                <button class="admin-tab" data-tab="notifications">
+                    <span class="material-symbols-outlined">notifications</span> Notify
                 </button>
             </div>
 
@@ -256,20 +295,33 @@
             <div class="admin-tab-content" id="tab-bookings">
                 <div class="tab-header">
                     <h2 class="ai-section-title">All <span class="gold-text">Bookings</span></h2>
-                    <button class="btn-secondary" id="refreshBookingsBtn">
-                        <span class="material-symbols-outlined">refresh</span> Refresh
-                    </button>
+                    <div class="tab-header-actions">
+                        <select id="bookingStatusFilter" class="admin-filter-select">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="paid">Paid</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="failed">Failed</option>
+                        </select>
+                        <button class="btn-secondary" id="refreshBookingsBtn">
+                            <span class="material-symbols-outlined">refresh</span> Refresh
+                        </button>
+                        <button class="btn-secondary" onclick="app.exportBookings()">
+                            <span class="material-symbols-outlined">download</span> Export CSV
+                        </button>
+                    </div>
                 </div>
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>User</th><th>Date</th><th>Nationality</th><th>Total</th><th>Status</th></tr>
+                            <tr><th>User</th><th>Date</th><th>Nationality</th><th>Total</th><th>Status</th><th>Actions</th></tr>
                         </thead>
                         <tbody id="bookingsTable">
-                            <tr><td colspan="5" class="table-empty">Loading bookings...</td></tr>
+                            <tr><td colspan="6" class="table-empty">Loading bookings...</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <div class="pagination-controls" id="bookingsPagination"></div>
             </div>
 
             <!-- ═══ Videos Tab ═══ -->
@@ -290,6 +342,222 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+
+            <!-- ═══ Users Tab (NEW) ═══ -->
+            <div class="admin-tab-content" id="tab-users">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">Manage <span class="gold-text">Users</span></h2>
+                    <div class="tab-header-actions">
+                        <input type="text" id="userSearchInput" class="admin-filter-input" placeholder="Search users..." />
+                        <select id="userRoleFilter" class="admin-filter-select">
+                            <option value="">All Roles</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        <select id="userBanFilter" class="admin-filter-select">
+                            <option value="">All Status</option>
+                            <option value="false">Active</option>
+                            <option value="true">Banned</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>User</th><th>Email</th><th>Role</th><th>Status</th><th>Joined</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="usersTable">
+                            <tr><td colspan="6" class="table-empty">Loading users...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-controls" id="usersPagination"></div>
+            </div>
+
+            <!-- ═══ AI Tab (NEW) ═══ -->
+            <div class="admin-tab-content" id="tab-ai">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">AI <span class="gold-text">Management</span></h2>
+                    <div class="tab-header-actions">
+                        <select id="aiViewSelect" class="admin-filter-select">
+                            <option value="chats">Chatbot Conversations</option>
+                            <option value="detections">Artifact Detections</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin-table-wrap" id="aiChatsSection">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>User</th><th>Question</th><th>Answer</th><th>Date</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="aiChatsTable">
+                            <tr><td colspan="5" class="table-empty">Loading chats...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="admin-table-wrap" id="aiDetectionsSection" style="display:none;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>User</th><th>Image</th><th>Detected Artifact</th><th>Confidence</th><th>Date</th></tr>
+                        </thead>
+                        <tbody id="aiDetectionsTable">
+                            <tr><td colspan="5" class="table-empty">Loading detections...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-controls" id="aiPagination"></div>
+            </div>
+
+            <!-- ═══ Settings Tab (NEW) ═══ -->
+            <div class="admin-tab-content" id="tab-settings">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">System <span class="gold-text">Settings</span></h2>
+                </div>
+                <form id="settingsForm" class="settings-form">
+                    <div class="settings-section">
+                        <h3><span class="material-symbols-outlined">payments</span> Ticket Prices (General)</h3>
+                        <div class="settings-grid">
+                            <div class="form-group"><label>Intl Adult ($)</label><input type="number" id="priceGenIntlAdult" /></div>
+                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number" id="priceGenIntlStudent" /></div>
+                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number" id="priceGenLocalAdult" /></div>
+                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number" id="priceGenLocalStudent" /></div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3><span class="material-symbols-outlined">interpreter_mode</span> Ticket Prices (Guided)</h3>
+                        <div class="settings-grid">
+                            <div class="form-group"><label>Intl Adult ($)</label><input type="number" id="priceGuideIntlAdult" /></div>
+                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number" id="priceGuideIntlStudent" /></div>
+                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number" id="priceGuideLocalAdult" /></div>
+                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number" id="priceGuideLocalStudent" /></div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3><span class="material-symbols-outlined">diamond</span> Ticket Prices (Tut Pass)</h3>
+                        <div class="settings-grid">
+                            <div class="form-group"><label>Intl Adult ($)</label><input type="number" id="priceTutIntlAdult" /></div>
+                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number" id="priceTutIntlStudent" /></div>
+                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number" id="priceTutLocalAdult" /></div>
+                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number" id="priceTutLocalStudent" /></div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3><span class="material-symbols-outlined">child_care</span> Ticket Prices (Kids Museum)</h3>
+                        <div class="settings-grid">
+                            <div class="form-group"><label>Intl Child ($)</label><input type="number" id="priceKidsIntlChild" /></div>
+                            <div class="form-group"><label>Intl Adult ($)</label><input type="number" id="priceKidsIntlAdult" /></div>
+                            <div class="form-group"><label>Local Child (EGP)</label><input type="number" id="priceKidsLocalChild" /></div>
+                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number" id="priceKidsLocalAdult" /></div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3><span class="material-symbols-outlined">auto_awesome</span> Add-ons ($/EGP combined)</h3>
+                        <div class="settings-grid">
+                            <div class="form-group"><label>Audio Guide</label><input type="number" id="priceAddonAudio" /></div>
+                            <div class="form-group"><label>Ramses Exhibition</label><input type="number" id="priceAddonRamses" /></div>
+                            <div class="form-group"><label>Photography Pass</label><input type="number" id="priceAddonPhoto" /></div>
+                            <div class="form-group"><label>VIP Fast-Track</label><input type="number" id="priceAddonVip" /></div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3><span class="material-symbols-outlined">tune</span> General Settings</h3>
+                        <div class="settings-grid">
+                            <div class="form-group"><label>Tax Rate</label><input type="number" step="0.01" id="settingTaxRate" /></div>
+                            <div class="form-group"><label>Max Bookings/Day</label><input type="number" id="settingMaxBookings" /></div>
+                            <div class="form-group"><label>Museum Open Time</label><input type="time" id="settingOpenTime" /></div>
+                            <div class="form-group"><label>Museum Close Time</label><input type="time" id="settingCloseTime" /></div>
+                            <div class="form-group">
+                                <label>Maintenance Mode</label>
+                                <select id="settingMaintenance">
+                                    <option value="false">Off</option>
+                                    <option value="true">On</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary" id="settingsSaveBtn">
+                            <span class="material-symbols-outlined">save</span> Save Settings
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- ═══ Logs Tab (NEW) ═══ -->
+            <div class="admin-tab-content" id="tab-logs">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">Activity <span class="gold-text">Logs</span></h2>
+                    <div class="tab-header-actions">
+                        <select id="logActionFilter" class="admin-filter-select">
+                            <option value="">All Actions</option>
+                            <option value="update_user">Update User</option>
+                            <option value="delete_user">Delete User</option>
+                            <option value="ban_user">Ban User</option>
+                            <option value="unban_user">Unban User</option>
+                            <option value="update_booking_status">Update Booking</option>
+                            <option value="update_settings">Update Settings</option>
+                            <option value="send_notification">Send Notification</option>
+                            <option value="broadcast_notification">Broadcast</option>
+                            <option value="delete_chat">Delete Chat</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>Admin</th><th>Action</th><th>Target</th><th>Details</th><th>Date</th></tr>
+                        </thead>
+                        <tbody id="logsTable">
+                            <tr><td colspan="5" class="table-empty">Loading logs...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-controls" id="logsPagination"></div>
+            </div>
+
+            <!-- ═══ Notifications Tab (NEW) ═══ -->
+            <div class="admin-tab-content" id="tab-notifications">
+                <div class="tab-header">
+                    <h2 class="ai-section-title">Send <span class="gold-text">Notifications</span></h2>
+                    <button class="btn-primary" id="sendNotificationBtn">
+                        <span class="material-symbols-outlined">send</span> New Notification
+                    </button>
+                </div>
+                <form id="notificationForm" class="notification-form" style="margin-bottom:20px;">
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label>Recipient (leave empty for broadcast)</label>
+                            <input type="text" id="notifRecipientId" placeholder="User ID (optional)" />
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select id="notifType">
+                                <option value="info">Info</option>
+                                <option value="warning">Warning</option>
+                                <option value="promo">Promo</option>
+                                <option value="system">System</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group"><label>Title *</label><input type="text" id="notifTitle" required placeholder="Notification title" /></div>
+                    <div class="form-group"><label>Message *</label><textarea id="notifMessage" required placeholder="Notification message..."></textarea></div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary"><span class="material-symbols-outlined">send</span> Send</button>
+                    </div>
+                </form>
+                <h3 style="margin-bottom:10px; color: var(--primary);">Sent Notifications</h3>
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr><th>Title</th><th>Message</th><th>Type</th><th>Recipient</th><th>Date</th></tr>
+                        </thead>
+                        <tbody id="notificationsTable">
+                            <tr><td colspan="5" class="table-empty">Loading notifications...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-controls" id="notificationsPagination"></div>
             </div>
         </section>
     </main>
@@ -355,6 +623,7 @@
                 </button>
             </div>
             <form id="eventForm">
+                <input type="hidden" id="eventId" />
                 <div class="image-preview-container" id="eventPreview">
                     <div class="placeholder">
                         <span class="material-symbols-outlined" style="font-size: 48px;">calendar_today</span>
@@ -373,7 +642,10 @@
                     </select>
                 </div>
                 <div class="form-group"><label>Description *</label><textarea id="eventDesc" required placeholder="Event details..."></textarea></div>
-                <div class="form-group"><label>Date *</label><input type="datetime-local" id="eventDate" required /></div>
+                <div class="form-grid-2">
+                    <div class="form-group"><label>Date *</label><input type="datetime-local" id="eventDate" required /></div>
+                    <div class="form-group"><label>Location</label><input type="text" id="eventLocation" placeholder="Main Hall" /></div>
+                </div>
                 <div class="form-group"><label>Image URL</label><input type="text" id="eventImageUrl" placeholder="https://..." /></div>
                 <div class="form-actions">
                     <button type="button" class="btn-secondary" onclick="closeModal('eventModal')">Cancel</button>
