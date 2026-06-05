@@ -13,7 +13,7 @@
  */
 
 const CONFIG = {
-    API_URL: 'http://localhost:5000/api',
+    API_URL: 'https://gem-backend-production-1ea2.up.railway.app/api',
     REFRESH_RATE: 45000,
     ENDPOINTS: {
         auth: '/auth/me',

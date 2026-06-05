@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (user.bio) document.getElementById('bio').value = user.bio;
                 
                 // Sync Image
-                const avatar = user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar');
+                const avatar = user.avatar || user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar');
                 if (avatar) {
                     document.getElementById('profileImagePreview').src = avatar;
                     localStorage.setItem('currentAvatar', avatar);
