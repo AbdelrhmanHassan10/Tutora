@@ -567,18 +567,37 @@
                 const data = await res.json();
                 const fetchedData = Array.isArray(data) ? data : (data.artifacts || data.data || []);
                 
-                const mappedAPI = fetchedData.map(art => ({
-                    ...art,
-                    id: art._id || art.id,
-                    title: art.title || art.name || 'Unknown',
-                    image: art.image || art.imageUrl || '../suzi-kim-AVUvVdVKcSg-unsplash.jpg',
-                    dynasty: art.dynasty || art.era || 'Unknown',
-                    material: art.material || 'Unknown',
-                    site: art.site || 'Unknown',
-                    gallery: art.gallery || 'Unknown',
-                    description: art.description || '',
-                    date: art.date || ''
-                }));
+                const mappedAPI = fetchedData.map(art => {
+                    let artImage = art.image || art.imageUrl || '../suzi-kim-AVUvVdVKcSg-unsplash.jpg';
+                    const artTitle = art.title || art.name || 'Unknown';
+                    
+                    // Override images for specific statues from the Halls Gallery
+                    const lowerTitle = artTitle.toLowerCase();
+                    if (lowerTitle.includes('khafre')) {
+                        artImage = '../Halls Gallery/images/khafre_statue.png';
+                    } else if (lowerTitle.includes('menkaure')) {
+                        artImage = '../Halls Gallery/images/menkaure_statue.png';
+                    } else if (lowerTitle.includes('nefertiti')) {
+                        artImage = '../Halls Gallery/images/nefertiti_bust.png';
+                    } else if (lowerTitle.includes('scribe')) {
+                        artImage = '../Halls Gallery/images/seated_scribe.png';
+                    } else if (lowerTitle.includes('senusret')) {
+                        artImage = '../Halls Gallery/images/Statue of Senusret I.png';
+                    }
+
+                    return {
+                        ...art,
+                        id: art._id || art.id,
+                        title: artTitle,
+                        image: artImage,
+                        dynasty: art.dynasty || art.era || 'Unknown',
+                        material: art.material || 'Unknown',
+                        site: art.site || 'Unknown',
+                        gallery: art.gallery || 'Unknown',
+                        description: art.description || '',
+                        date: art.date || ''
+                    };
+                });
 
                 STATE.allArtifacts = mappedAPI;
                 
