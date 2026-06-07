@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('language', lang);
 
         try {
-            // Call the text-to-speech AI API
+            // Call the text-to-speech AI API to get detection, story, and audio
             const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/text-to-speech`, {
                 method: 'POST',
                 headers: token ? { 'Authorization': `Bearer ${token}` } : {},
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="result-actions" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
                              <button class="btn-primary" id="listenStoryBtn" style="padding: 1rem 2.5rem;"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
                              <button class="btn-secondary" onclick="window.location.href='../collection/collection.html'" style="padding: 1rem 2.5rem; background: rgba(255,255,255,0.05);"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
-                             ${data.model_3d_url || data.model3dUrl || data.model_url || data.model3d_url ? `<button class="btn-primary" onclick="window.open('${data.model_3d_url || data.model3dUrl || data.model_url || data.model3d_url}', '_blank')" style="padding: 1rem 2.5rem; background: #8b5cf6; border-color: #8b5cf6;"><span class="material-symbols-outlined">view_in_ar</span> View 3D Model</button>` : ''}
+                             <button class="btn-primary" id="generate3dBtn" style="padding: 1rem 2.5rem; background: #8b5cf6; border-color: #8b5cf6;"><span class="material-symbols-outlined">view_in_ar</span> Generate 3D Model</button>
                         </div>
                     </div>
                 `;
@@ -259,12 +259,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Audio URL from prediction:", audioUrlField);
                 document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
                     if (audioUrlField) {
-                        // We already have the audio URL from full-analysis, don't pass the file so it doesn't regenerate
+                        // We already have the audio URL from text-to-speech, don't pass the file so it doesn't regenerate
                         generateStoryAudio(null, audioUrlField);
                     } else {
                         console.warn("No audio URL provided by server");
                         // Fallback
                         generateStoryAudio(lastAnalyzedFile, null);
+                    }
+                });
+
+                document.getElementById('generate3dBtn')?.addEventListener('click', async (e) => {
+                    const btn = e.target.closest('button');
+                    btn.disabled = true;
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px; margin-right: 8px;"></div> Generating 3D...`;
+                    
+                    try {
+                        const token = localStorage.getItem('token');
+                        const formData3d = new FormData();
+                        formData3d.append('image', file);
+                        
+                        const response3d = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/ai/image-to-3d', {
+                            method: 'POST',
+                            headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+                            body: formData3d
+                        });
+                        
+                        const data3d = await response3d.json();
+                        const modelUrl = data3d.model_3d_url || data3d.model3dUrl || data3d.model_url || data3d.model3d_url || data3d['3d_model_url'] || data3d['3d_url'] || data3d.model || (data3d.model_3d && data3d.model_3d.url);
+                        
+                        if (response3d.ok && modelUrl) {
+                            window.open(modelUrl, '_blank');
+                            btn.innerHTML = `<span class="material-symbols-outlined">check_circle</span> 3D Ready`;
+                            setTimeout(() => { btn.disabled = false; btn.innerHTML = originalText; }, 3000);
+                        } else {
+                            throw new Error(data3d.message || data3d.error || 'No 3D model URL returned by the server');
+                        }
+                    } catch (err) {
+                        console.error('3D generation error:', err);
+                        alert('Could not generate 3D model: ' + err.message);
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
                     }
                 });
                 showRelatedStatues(detected);
@@ -296,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Replay using cached blob URL if already generated for this artifact
+        // Replay using cached URL if already generated for this artifact
         if (listenBtn && listenBtn.dataset.cachedUrl) {
             window.currentAudioInstance = new Audio(listenBtn.dataset.cachedUrl);
             window.currentAudioInstance.onended = () => {
@@ -309,74 +344,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (listenBtn) {
             listenBtn.disabled = true;
-            listenBtn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px;"></div> Generating (10-15s)...`;
+            listenBtn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px;"></div> Preparing Audio...`;
         }
 
         try {
             let finalAudioUrl = "";
-            const token = localStorage.getItem('token');
-            const lang = localStorage.getItem('language') || 'en';
 
-            // Strategy 1: If we have the file, ALWAYS use /predict/audio as it returns the binary file directly
-            if (file) {
-                console.log("Using primary binary audio strategy via /predict/audio");
-                const formData = new FormData();
-                formData.append('file', file);
-                
-                const response = await fetch(`https://egyptian-museum-production.up.railway.app/predict/audio?language=${lang}`, {
-                    method: 'POST',
-                    body: formData,
-                    headers: token ? { 'Authorization': `Bearer ${token}` } : {}
-                });
-
-                if (response.ok) {
-                    const blob = await response.blob();
-                    if (blob.size > 500) { // Valid audio should be reasonably sized
-                        finalAudioUrl = URL.createObjectURL(blob);
-                        console.log("✅ Audio blob generated from binary response");
-                    } else {
-                        throw new Error("Audio file received is too small");
-                    }
-                } else {
-                    console.warn(`Binary audio strategy failed with status: ${response.status}`);
-                }
-            }
-
-            // Strategy 2: If Strategy 1 failed or we only have audioUrl (from history)
-            if (!finalAudioUrl && audioUrl) {
-                console.log("Using secondary URL strategy for:", audioUrl);
+            if (audioUrl) {
                 if (audioUrl.startsWith('http') || audioUrl.startsWith('data:')) {
-                    // Absolute URL from Cloudinary or external source
                     finalAudioUrl = audioUrl;
-                    console.log("✅ Using absolute Audio URL directly");
+                } else if (audioUrl.length > 500) {
+                    // Likely a raw base64 string
+                    finalAudioUrl = `data:audio/mp3;base64,${audioUrl}`;
                 } else {
-                    let targetUrl = audioUrl;
+                    // Relative path from backend
                     const cleanPath = audioUrl.startsWith('/') ? audioUrl : `/${audioUrl}`;
-                    targetUrl = `https://egyptian-museum-production.up.railway.app${cleanPath}`;
-                    
-                    if (cleanPath === '/audio' || cleanPath.startsWith('/audio?')) {
-                        targetUrl = `https://egyptian-museum-production.up.railway.app/predict${cleanPath}`;
-                    }
-                    
-                    try {
-                        const response = await fetch(targetUrl, {
-                            method: 'GET',
-                            headers: token ? { 'Authorization': `Bearer ${token}` } : {}
-                        });
-                        
-                        if (response.ok) {
-                            const blob = await response.blob();
-                            if (blob.size > 500) {
-                                finalAudioUrl = URL.createObjectURL(blob);
-                                console.log("✅ Audio blob generated from URL");
-                            }
-                        } else {
-                            console.warn("URL strategy returned not ok:", response.status);
-                        }
-                    } catch (e) {
-                        console.warn("Failed to fetch audio from URL, falling back...", e);
-                    }
+                    finalAudioUrl = `https://gem-backend-production-1ea2.up.railway.app${cleanPath}`;
                 }
+            } else {
+                throw new Error("No audio provided by the server. Please try scanning again.");
             }
 
             if (finalAudioUrl) {
@@ -394,24 +380,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 window.currentAudioInstance.onerror = () => {
-                    const errCode = window.currentAudioInstance.error ? window.currentAudioInstance.error.code : 'Unknown';
-                    const errMsg = window.currentAudioInstance.error ? window.currentAudioInstance.error.message : 'Format or Network error';
                     if (listenBtn) {
                         listenBtn.disabled = false;
                         listenBtn.innerHTML = `<span class="material-symbols-outlined">error</span> Error playing`;
                     }
-                    console.error(`Playback failed (Code: ${errCode}): ${errMsg}`);
+                    console.error('Playback failed');
                 };
 
-                // Play directly without waiting for canplaythrough (since it's a downloaded blob)
                 await window.currentAudioInstance.play();
                 
                 if (listenBtn) {
                     listenBtn.disabled = false;
                     listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
                 }
-            } else {
-                throw new Error('No audio source available or server failed to respond');
             }
         } catch (error) {
             console.error('TTS Playback Error:', error);
@@ -419,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 listenBtn.disabled = false;
                 listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
             }
-            alert("⚠️ Audio Error: " + error.message + "\n\nTry refreshing the page or checking your internet connection.");
+            alert("⚠️ Audio Error: " + error.message);
         }
     }
 
