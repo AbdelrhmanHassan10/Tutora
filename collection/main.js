@@ -602,7 +602,9 @@
                     "rosetta stone (replica)": "../Halls Gallery/images/rosetta_stone.png",
                     "fayum mummy portrait": "../Halls Gallery/images/fayum_portrait.png",
                     "statue of sarapis": "../Halls Gallery/images/sarapis_statue.png",
-                    "bust of alexander the great": "../Halls Gallery/images/alexander_bust.png"
+                    "bust of alexander the great": "../Halls Gallery/images/alexander_bust.png",
+                    "تمثال حجرى ضخم للملك رمسيس الثاني": "../Halls Gallery/images/ramses_colossal.png",
+                    "تمثال على هيئة أبي الهول للملك تحتمس الثالث": "../Halls Gallery/images/thutmose_sphinx.png"
                 };
 
                 const mappedAPI = fetchedData.map(art => {
