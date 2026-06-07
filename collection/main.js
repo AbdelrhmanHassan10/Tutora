@@ -605,7 +605,10 @@
                     "bust of alexander the great": "../Halls Gallery/images/alexander_bust.png",
                     "تمثال حجرى ضخم للملك رمسيس الثاني": "../Halls Gallery/images/ramses_colossal.png",
                     "تمثال على هيئة أبي الهول للملك تحتمس الثالث": "../Halls Gallery/images/thutmose_sphinx.png",
-                    "مسلة الملك رمسيس الثاني": "../Halls Gallery/images/obelisk_ramses.png"
+                    "مسلة الملك رمسيس الثاني": "../Halls Gallery/images/obelisk_ramses.png",
+                    "عمود الملك مرنبتاح": "../Halls Gallery/images/merenptah_column.png",
+                    "تمثال لملك بطلمي": "../Halls Gallery/images/ptolemaic_king.png",
+                    "تمثال لملكة بطلمية": "../Halls Gallery/images/ptolemaic_queen.png"
                 };
 
                 const mappedAPI = fetchedData.map(art => {
