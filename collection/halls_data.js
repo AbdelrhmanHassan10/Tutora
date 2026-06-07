@@ -250,7 +250,7 @@ const HALLS_DATA = [
         "gallery": "Sculpture & Statues Hall",
         "description": "The oldest life-size Egyptian statue known, found in a small chamber (Serdab) next to the Step Pyramid. The king's eyes are focused upward, looking toward the eternal stars through two small holes in the chamber wall.",
         "date": "",
-        "image": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop"
+        "image": "../Halls Gallery/images/djoser_statue.png"
     },
     {
         "id": "6643b109558a239478145f1d",

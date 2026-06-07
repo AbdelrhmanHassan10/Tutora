@@ -590,7 +590,7 @@
                     "statue of king khafre": "../Halls Gallery/images/khafre_statue.png",
                     "group statue of menkaure": "../Halls Gallery/images/menkaure_statue.png",
                     "bust of nefertiti (replica)": "../Halls Gallery/images/nefertiti_bust.png",
-                    "statue of king djoser": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop",
+                    "statue of king djoser": "../Halls Gallery/images/djoser_statue.png",
                     "narmer palette (replica)": "../Halls Gallery/images/narmer_palette.png",
                     "painted predynastic vessel": "../Halls Gallery/images/predynastic_vessel.png",
                     "ritual flint knife": "../Halls Gallery/images/flint_knife.png",
