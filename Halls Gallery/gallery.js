@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     period: "Naqada I",
                     material: "Terra-cotta",
                     desc: "A stylized female figure with upraised arms, likely representing a dancer or a goddess. This early form of sculptural expression showcases the beginning of the spiritual and artistic journey of the Nile Valley inhabitants.",
-                    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop"
+                    image: "images/terracotta_figure.png"
                 }
             ]
         },
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     period: "New Kingdom",
                     material: "Papyrus",
                     desc: "This papyrus scroll fragment is a personalized collection of hymns, spells, and instructions to help the deceased navigate the dangers of the Duat (underworld). It includes the critical 'negative confession' needed to pass the weighing of the heart.",
-                    image: "https://images.unsplash.com/photo-1618172193622-ae2d025f4158?q=80&w=2064&auto=format&fit=crop"
+                    image: "images/book_of_dead.png"
                 },
                 {
                     id: "6643b109558a239478145f23",
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     period: "18th Dynasty",
                     material: "Blue Faience",
                     desc: "These blue faience figurines were magical workers for the afterlife. Each is inscribed with a spell from the Book of the Dead, ensuring that if the king were called upon to perform any manual labor in the next world, the shabti would stand and say, 'Here I am!'",
-                    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5947?q=80&w=2069&auto=format&fit=crop"
+                    image: "images/tut_shabti.png"
                 },
                 {
                     id: "6643b109558a239478145f24",
@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     period: "Roman Era",
                     material: "Encaustic on Wood",
                     desc: "These encaustic-on-wood paintings represent a unique cultural crossroads. While the subjects were mummified in the Egyptian tradition, their portraits were painted in a realistic Roman style, providing the most vivid glimpses we have of the people who lived 2,000 years ago.",
-                    image: "https://images.unsplash.com/photo-1626084300762-5f72382e379a?q=80&w=2069&auto=format&fit=crop"
+                    image: "images/fayum_portrait.png"
                 },
                 {
                     id: "6643b109558a239478145f27",
@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     period: "Ptolemaic Era",
                     material: "Marble",
                     desc: "Sarapis was a synthetic deity created by Ptolemy I to unite his Greek and Egyptian subjects. This statue combines the physical appearance of the Greek Zeus with the spiritual attributes of the Egyptian Osiris and Apis, symbolizing the multicultural peak of the era.",
-                    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop"
+                    image: "images/sarapis_statue.png"
                 },
                 {
                     id: "6643b109558a239478145f28",
@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     period: "Early Ptolemaic",
                     material: "Marble",
                     desc: "A marble portrait of the Macedonian conqueror who founded Alexandria and was crowned Pharaoh. It captures his characteristic 'anastole' (upward-sweeping hair) and intense gaze, marking the beginning of a new chapter in Egyptian history.",
-                    image: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop"
+                    image: "images/alexander_bust.png"
                 }
             ]
         }

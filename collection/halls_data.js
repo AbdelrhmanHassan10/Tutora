@@ -294,7 +294,7 @@ const HALLS_DATA = [
         "gallery": "Pre-Dynastic Period Hall",
         "description": "A stylized female figure with upraised arms, likely representing a dancer or a goddess. This early form of sculptural expression showcases the beginning of the spiritual and artistic journey of the Nile Valley inhabitants.",
         "date": "",
-        "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop"
+        "image": "../Halls Gallery/images/terracotta_figure.png"
     },
     {
         "id": "6643b109558a239478145f21",
@@ -316,7 +316,7 @@ const HALLS_DATA = [
         "gallery": "Beliefs in the Afterlife",
         "description": "This papyrus scroll fragment is a personalized collection of hymns, spells, and instructions to help the deceased navigate the dangers of the Duat (underworld). It includes the critical 'negative confession' needed to pass the weighing of the heart.",
         "date": "",
-        "image": "https://images.unsplash.com/photo-1618172193622-ae2d025f4158?q=80&w=2064&auto=format&fit=crop"
+        "image": "../Halls Gallery/images/book_of_dead.png"
     },
     {
         "id": "6643b109558a239478145f23",
@@ -327,7 +327,7 @@ const HALLS_DATA = [
         "gallery": "Beliefs in the Afterlife",
         "description": "These blue faience figurines were magical workers for the afterlife. Each is inscribed with a spell from the Book of the Dead, ensuring that if the king were called upon to perform any manual labor in the next world, the shabti would stand and say, 'Here I am!'",
         "date": "",
-        "image": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5947?q=80&w=2069&auto=format&fit=crop"
+        "image": "../Halls Gallery/images/tut_shabti.png"
     },
     {
         "id": "6643b109558a239478145f24",
@@ -360,7 +360,7 @@ const HALLS_DATA = [
         "gallery": "Greco-Roman Period Hall",
         "description": "These encaustic-on-wood paintings represent a unique cultural crossroads. While the subjects were mummified in the Egyptian tradition, their portraits were painted in a realistic Roman style, providing the most vivid glimpses we have of the people who lived 2,000 years ago.",
         "date": "",
-        "image": "https://images.unsplash.com/photo-1626084300762-5f72382e379a?q=80&w=2069&auto=format&fit=crop"
+        "image": "../Halls Gallery/images/fayum_portrait.png"
     },
     {
         "id": "6643b109558a239478145f27",
@@ -371,7 +371,7 @@ const HALLS_DATA = [
         "gallery": "Greco-Roman Period Hall",
         "description": "Sarapis was a synthetic deity created by Ptolemy I to unite his Greek and Egyptian subjects. This statue combines the physical appearance of the Greek Zeus with the spiritual attributes of the Egyptian Osiris and Apis, symbolizing the multicultural peak of the era.",
         "date": "",
-        "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop"
+        "image": "../Halls Gallery/images/sarapis_statue.png"
     },
     {
         "id": "6643b109558a239478145f28",
@@ -382,6 +382,6 @@ const HALLS_DATA = [
         "gallery": "Greco-Roman Period Hall",
         "description": "A marble portrait of the Macedonian conqueror who founded Alexandria and was crowned Pharaoh. It captures his characteristic 'anastole' (upward-sweeping hair) and intense gaze, marking the beginning of a new chapter in Egyptian history.",
         "date": "",
-        "image": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop"
+        "image": "../Halls Gallery/images/alexander_bust.png"
     }
 ];

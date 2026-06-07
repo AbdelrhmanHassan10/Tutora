@@ -594,15 +594,15 @@
                     "narmer palette (replica)": "../Halls Gallery/images/narmer_palette.png",
                     "painted predynastic vessel": "../Halls Gallery/images/predynastic_vessel.png",
                     "ritual flint knife": "../Halls Gallery/images/flint_knife.png",
-                    "terra-cotta female figure": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop",
+                    "terra-cotta female figure": "../Halls Gallery/images/terracotta_figure.png",
                     "anubis guardian statue": "../Halls Gallery/images/anubis_guardian.png",
-                    "book of the dead fragment": "https://images.unsplash.com/photo-1618172193622-ae2d025f4158?q=80&w=2064&auto=format&fit=crop",
-                    "shabti figures of tutankhamun": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5947?q=80&w=2069&auto=format&fit=crop",
+                    "book of the dead fragment": "../Halls Gallery/images/book_of_dead.png",
+                    "shabti figures of tutankhamun": "../Halls Gallery/images/tut_shabti.png",
                     "gilded mummy mask": "../Halls Gallery/images/mummy_mask.png",
                     "rosetta stone (replica)": "../Halls Gallery/images/rosetta_stone.png",
-                    "fayum mummy portrait": "https://images.unsplash.com/photo-1626084300762-5f72382e379a?q=80&w=2069&auto=format&fit=crop",
-                    "statue of sarapis": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop",
-                    "bust of alexander the great": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop"
+                    "fayum mummy portrait": "../Halls Gallery/images/fayum_portrait.png",
+                    "statue of sarapis": "../Halls Gallery/images/sarapis_statue.png",
+                    "bust of alexander the great": "../Halls Gallery/images/alexander_bust.png"
                 };
 
                 const mappedAPI = fetchedData.map(art => {
