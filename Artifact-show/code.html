@@ -1723,16 +1723,29 @@
           // Details Section
           const detailsSection = document.querySelectorAll(".info-section")[1];
           if (detailsSection) {
-            if (art.detailsHeading || art.detailsText) {
+            // Synthesize details and stats if missing (for artifacts loaded dynamically from DB or halls_data)
+            if (!art.detailsHeading && !art.detailsText && !art.stats) {
+              art.detailsHeading = getTranslated("Details", "Artifact Details");
+              art.detailsText = "These are the documented specifics and structural information for this historical piece.";
+              art.stats = [];
+              if (art.material && art.material !== 'Unknown') art.stats.push({ label: getTranslated("Material", "Material"), value: art.material });
+              if (art.site && art.site !== 'Unknown') art.stats.push({ label: getTranslated("Location", "Location"), value: art.site });
+              if (art.gallery && art.gallery !== 'Unknown') art.stats.push({ label: "Gallery", value: art.gallery });
+              if (art.dynasty && art.dynasty !== 'Unknown') art.stats.push({ label: getTranslated("Dynasty", "Dynasty"), value: art.dynasty });
+              if (art.date && art.date !== 'Unknown') art.stats.push({ label: "Date", value: art.date });
+            }
+
+            if (art.detailsHeading || art.detailsText || (art.stats && art.stats.length > 0)) {
               detailsSection.style.display = "block";
               detailsSection.querySelector(".info-heading").textContent =
-                art.detailsHeading || "Details";
+                art.detailsHeading || getTranslated("Details", "Details");
               detailsSection.querySelector(".info-text").textContent =
                 art.detailsText || "";
 
               // Stats
               const statsGrid = detailsSection.querySelector(".stats-grid");
-              if (statsGrid && art.stats) {
+              if (statsGrid && art.stats && art.stats.length > 0) {
+                statsGrid.style.display = "grid";
                 statsGrid.innerHTML = art.stats
                   .map(
                     (s) => `
