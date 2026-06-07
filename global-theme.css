@@ -1304,3 +1304,8 @@ body.light .footer-title {
 body.light .footer-divider {
     background: linear-gradient(90deg, transparent, #8e7341, transparent) !important;
 }
+
+
+@media (max-width: 768px) { #langBtn { display: none !important; } }
+
+@media (min-width: 769px) { .mobile-lang-item { display: none !important; } }

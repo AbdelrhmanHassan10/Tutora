@@ -28,7 +28,8 @@
     --font-serif: 'Cinzel', serif;
     --hero-overlay: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85));
 }
-
+a{
+text-decoration: none !important;}
 body.light {
     /* Base Colors (Light Theme) */
     --bg-body: #fcfaf7;

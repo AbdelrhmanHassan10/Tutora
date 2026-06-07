@@ -1,4 +1,7 @@
- document.addEventListener('DOMContentLoaded', () => {
+const fs = require('fs');
+const path = require('path');
+
+const jsContent = ` document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // CONFIGURATION & STATE
     // ============================================
@@ -30,7 +33,7 @@
     // ============================================
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
+        notification.className = \`notification notification-\${type}\`;
         notification.textContent = message;
         document.body.appendChild(notification);
         setTimeout(() => {
@@ -62,7 +65,7 @@
             'Content-Type': 'application/json'
         };
         if (token) {
-            headers['Authorization'] = `Bearer ${token}`;
+            headers['Authorization'] = \`Bearer \${token}\`;
         }
 
         const config = { method, headers };
@@ -71,17 +74,17 @@
         }
 
         try {
-            const response = await fetch(`${CONFIG.API_BASE_URL}${endpoint}`, config);
+            const response = await fetch(\`\${CONFIG.API_BASE_URL}\${endpoint}\`, config);
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.message || `API Error: ${response.status}`);
+                throw new Error(errorData.message || \`API Error: \${response.status}\`);
             }
             if (response.status === 204 || response.headers.get('content-length') === '0') {
                 return { success: true };
             }
             return await response.json();
         } catch (error) {
-            console.error(`API Request Failed: ${method} ${endpoint}`, error);
+            console.error(\`API Request Failed: \${method} \${endpoint}\`, error);
             showNotification(error.message, 'error');
             throw error;
         }
@@ -89,9 +92,9 @@
 
     const api = {
         getMyFavorites: () => makeApiRequest('/favorites/my'),
-        addFavorite: (id) => makeApiRequest(`/favorites/${id}`, 'POST', { type: "Artifact" }),
-        removeFavorite: (id) => makeApiRequest(`/favorites/${id}?type=Artifact`, 'DELETE'),
-        toggleFavorite: (id) => makeApiRequest(`/favorites/toggle/${id}`, 'POST', { type: "Artifact" })
+        addFavorite: (id) => makeApiRequest(\`/favorites/\${id}\`, 'POST', { type: "Artifact" }),
+        removeFavorite: (id) => makeApiRequest(\`/favorites/\${id}?type=Artifact\`, 'DELETE'),
+        toggleFavorite: (id) => makeApiRequest(\`/favorites/toggle/\${id}\`, 'POST', { type: "Artifact" })
     };
 
     // ============================================
@@ -180,18 +183,18 @@
             const isChecked = STATE.filters[filterType].includes(option);
             const div = document.createElement('label');
             div.className = 'filter-option-custom';
-            div.innerHTML = `
-                <input type="checkbox" id="${filterType}_${option}" value="${option}" 
-                       ${isChecked ? 'checked' : ''} data-filter-type="${filterType}">
+            div.innerHTML = \`
+                <input type="checkbox" id="\${filterType}_\${option}" value="\${option}" 
+                       \${isChecked ? 'checked' : ''} data-filter-type="\${filterType}">
                 <span class="custom-checkbox"></span>
-                <span class="option-label">${option}</span>
-            `;
+                <span class="option-label">\${option}</span>
+            \`;
             container.appendChild(div);
         });
     }
 
     window.applyFilter = function(filterType) {
-        const checkboxes = document.querySelectorAll(`input[data-filter-type="${filterType}"]:checked`);
+        const checkboxes = document.querySelectorAll(\`input[data-filter-type="\${filterType}"]:checked\`);
         STATE.filters[filterType] = Array.from(checkboxes).map(cb => cb.value);
         const wrapper = document.getElementById(filterType + 'DropdownWrapper');
         if (wrapper) wrapper.classList.remove('active');
@@ -240,7 +243,7 @@
             sections.forEach(s => s.style.display = 'none');
             if (dynamicGallery) dynamicGallery.style.display = 'block';
             if (dynamicTitle) dynamicTitle.textContent = 'Search Results';
-            if (dynamicDesc) dynamicDesc.textContent = `Found ${STATE.filteredArtifacts.length} items matching your criteria`;
+            if (dynamicDesc) dynamicDesc.textContent = \`Found \${STATE.filteredArtifacts.length} items matching your criteria\`;
         } else {
             sections.forEach(s => s.style.display = 'block');
             if (dynamicGallery) dynamicGallery.style.display = 'block';
@@ -308,13 +311,13 @@
                 value.forEach(v => {
                     const badge = document.createElement('span');
                     badge.className = 'filter-badge';
-                    badge.innerHTML = `${v} <span class="remove-filter" onclick="removeFilter('${key}', '${v}')">×</span>`;
+                    badge.innerHTML = \`\${v} <span class="remove-filter" onclick="removeFilter('\${key}', '\${v}')">×</span>\`;
                     list.appendChild(badge);
                 });
             } else if (typeof value === 'string' && value !== '') {
                 const badge = document.createElement('span');
                 badge.className = 'filter-badge';
-                badge.innerHTML = `Search: "${value}" <span class="remove-filter" onclick="clearSearch()">×</span>`;
+                badge.innerHTML = \`Search: "\${value}" <span class="remove-filter" onclick="clearSearch()">×</span>\`;
                 list.appendChild(badge);
             }
         });
@@ -352,10 +355,10 @@
         const totalCount = sourceList.length;
         const displayCount = displayArtifacts.length;
 
-        if (countLabel) countLabel.textContent = `Showing ${displayCount} of ${totalCount} results`;
-        if (heroCountLabel) heroCountLabel.textContent = `Showing ${displayCount} of ${totalCount} artifacts`;
+        if (countLabel) countLabel.textContent = \`Showing \${displayCount} of \${totalCount} results\`;
+        if (heroCountLabel) heroCountLabel.textContent = \`Showing \${displayCount} of \${totalCount} artifacts\`;
 
-        grid.className = `artifact-grid ${STATE.viewMode}`;
+        grid.className = \`artifact-grid \${STATE.viewMode}\`;
         grid.innerHTML = ''; 
 
         if (displayArtifacts.length === 0) {
@@ -377,22 +380,22 @@
             card.dataset.id = artifact.id;
             const isFavorite = STATE.favorites.has(artifact.id);
 
-            card.innerHTML = `
+            card.innerHTML = \`
                       <div class="image-container">
-                          <img alt="${escapeHTML(artifact.title)}" class="artifact-image" src="${escapeHTML(artifact.image)}" />
+                          <img alt="\${escapeHTML(artifact.title)}" class="artifact-image" src="\${escapeHTML(artifact.image)}" />
                           <div class="image-overlay"></div>
-                          <button class="favorite-btn ${isFavorite ? 'active' : ''}">
+                          <button class="favorite-btn \${isFavorite ? 'active' : ''}">
                               <span class="material-symbols-outlined">favorite</span>
                           </button>
                       </div>
                       <div class="card-content">
-                          <p class="dynasty-label">${escapeHTML(artifact.dynasty)}</p>
-                          <h3 class="artifact-title">${escapeHTML(artifact.title)}</h3>
-                          <p class="card-description">${escapeHTML(artifact.description || '')}</p>
+                          <p class="dynasty-label">\${escapeHTML(artifact.dynasty)}</p>
+                          <h3 class="artifact-title">\${escapeHTML(artifact.title)}</h3>
+                          <p class="card-description">\${escapeHTML(artifact.description || '')}</p>
                           <div class="card-footer">
                               <span class="location-text">
                                   <span class="material-symbols-outlined" style="font-size:14px">location_on</span> 
-                                  ${escapeHTML(artifact.site || 'Grand Gallery')}
+                                  \${escapeHTML(artifact.site || 'Grand Gallery')}
                               </span>
                               <button class="view-details-btn">
                                   <span>Details</span>
@@ -400,7 +403,7 @@
                               </button>
                           </div>
                       </div>
-                  `;
+                  \`;
 
             grid.appendChild(card);
         });
@@ -417,7 +420,7 @@
 
         if (prevBtn) prevBtn.disabled = STATE.currentPage === 1;
         if (nextBtn) nextBtn.disabled = STATE.currentPage === totalPages;
-        if (pageInfo) pageInfo.textContent = `Page ${STATE.currentPage} of ${totalPages}`;
+        if (pageInfo) pageInfo.textContent = \`Page \${STATE.currentPage} of \${totalPages}\`;
     }
 
     function updateStats() {
@@ -427,7 +430,7 @@
         const endIdx = Math.min(startIdx + CONFIG.ITEMS_PER_PAGE, STATE.filteredArtifacts.length);
 
         if (totalResults) totalResults.textContent = STATE.filteredArtifacts.length;
-        if (showingResults) showingResults.textContent = `${startIdx + 1}-${endIdx}`;
+        if (showingResults) showingResults.textContent = \`\${startIdx + 1}-\${endIdx}\`;
     }
 
     // ============================================
@@ -562,7 +565,7 @@
         showLoading(true);
         
         try {
-            const res = await fetch(`${CONFIG.API_BASE_URL}/artifacts`);
+            const res = await fetch(\`\${CONFIG.API_BASE_URL}/artifacts\`);
             if (res.ok) {
                 const data = await res.json();
                 const fetchedData = Array.isArray(data) ? data : (data.artifacts || data.data || []);
@@ -665,12 +668,12 @@
 
         const viewBtn = document.getElementById('modalViewBtn');
         viewBtn.onclick = () => {
-            window.location.href = `../Artifact-show/code.html?id=${artifact.id}`;
+            window.location.href = \`../Artifact-show/code.html?id=\${artifact.id}\`;
         };
 
         const shareBtn = document.getElementById('modalShareBtn');
         shareBtn.onclick = () => {
-            navigator.clipboard.writeText(window.location.href + `?artifact=${artifact.id}`);
+            navigator.clipboard.writeText(window.location.href + \`?artifact=\${artifact.id}\`);
             showNotification('Link copied!', 'success');
         };
 
@@ -703,16 +706,16 @@
             particle.className = 'dust-particle';
             
             const size = Math.random() * 2 + 1;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
+            particle.style.width = \`\${size}px\`;
+            particle.style.height = \`\${size}px\`;
             
             const left = Math.random() * 100;
             const top = Math.random() * 100;
-            particle.style.left = `${left}%`;
-            particle.style.top = `${top}%`;
+            particle.style.left = \`\${left}%\`;
+            particle.style.top = \`\${top}%\`;
             const duration = Math.random() * 8 + 12;
             const delay = Math.random() * 5;
-            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;        
+            particle.style.animation = \`float \${duration}s infinite linear \${delay}s\`;        
             dustContainer.appendChild(particle);
         }
         
@@ -723,16 +726,16 @@
             shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
             
             const size = Math.random() * 15 + 15;
-            shape.style.fontSize = `${size}px`;
+            shape.style.fontSize = \`\${size}px\`;
             
             const left = Math.random() * 100;
             const top = Math.random() * 100;
-            shape.style.left = `${left}%`;
-            shape.style.top = `${top}%`;
+            shape.style.left = \`\${left}%\`;
+            shape.style.top = \`\${top}%\`;
             
             const duration = Math.random() * 15 + 25;
             const delay = Math.random() * 15;
-            shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
+            shape.style.animation = \`rotateFloat \${duration}s infinite ease-in-out \${delay}s\`;
             
             shapesContainer.appendChild(shape);
         }
@@ -763,7 +766,7 @@
                 } else {
                     sessionStorage.removeItem('currentArtifact');
                 }
-                window.location.href = `../Artifact-show/code.html?id=${id}`;
+                window.location.href = \`../Artifact-show/code.html?id=\${id}\`;
             }
         }
     });
@@ -772,3 +775,7 @@
     initRoyalAtmosphere();
     initialize();
 });
+`;
+
+fs.writeFileSync(path.join(__dirname, 'collection', 'main.js'), jsContent);
+console.log('Restored main.js successfully.');

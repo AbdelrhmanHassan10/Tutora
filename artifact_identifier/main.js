@@ -215,12 +215,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('image', file);
         const lang = localStorage.getItem('language') || 'en';
+        formData.append('language', lang);
 
         try {
-            // Call the new AI API for artifact detection
-            const response = await fetch(`${API_URL}/ai/detect?language=${lang}`, {
+            // Call the text-to-speech AI API
+            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/text-to-speech`, {
                 method: 'POST',
                 headers: token ? { 'Authorization': `Bearer ${token}` } : {},
                 body: formData
@@ -249,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="result-actions" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
                              <button class="btn-primary" id="listenStoryBtn" style="padding: 1rem 2.5rem;"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
                              <button class="btn-secondary" onclick="window.location.href='../collection/collection.html'" style="padding: 1rem 2.5rem; background: rgba(255,255,255,0.05);"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
+                             ${data.model_3d_url || data.model3dUrl || data.model_url || data.model3d_url ? `<button class="btn-primary" onclick="window.open('${data.model_3d_url || data.model3dUrl || data.model_url || data.model3d_url}', '_blank')" style="padding: 1rem 2.5rem; background: #8b5cf6; border-color: #8b5cf6;"><span class="material-symbols-outlined">view_in_ar</span> View 3D Model</button>` : ''}
                         </div>
                     </div>
                 `;
@@ -257,9 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Audio URL from prediction:", audioUrlField);
                 document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
                     if (audioUrlField) {
-                        generateStoryAudio(lastAnalyzedFile, audioUrlField);
+                        // We already have the audio URL from full-analysis, don't pass the file so it doesn't regenerate
+                        generateStoryAudio(null, audioUrlField);
                     } else {
                         console.warn("No audio URL provided by server");
+                        // Fallback
                         generateStoryAudio(lastAnalyzedFile, null);
                     }
                 });
@@ -341,33 +345,37 @@ document.addEventListener('DOMContentLoaded', () => {
             // Strategy 2: If Strategy 1 failed or we only have audioUrl (from history)
             if (!finalAudioUrl && audioUrl) {
                 console.log("Using secondary URL strategy for:", audioUrl);
-                let targetUrl = audioUrl;
-                if (!audioUrl.startsWith('http') && !audioUrl.startsWith('data:')) {
+                if (audioUrl.startsWith('http') || audioUrl.startsWith('data:')) {
+                    // Absolute URL from Cloudinary or external source
+                    finalAudioUrl = audioUrl;
+                    console.log("✅ Using absolute Audio URL directly");
+                } else {
+                    let targetUrl = audioUrl;
                     const cleanPath = audioUrl.startsWith('/') ? audioUrl : `/${audioUrl}`;
                     targetUrl = `https://egyptian-museum-production.up.railway.app${cleanPath}`;
                     
                     if (cleanPath === '/audio' || cleanPath.startsWith('/audio?')) {
                         targetUrl = `https://egyptian-museum-production.up.railway.app/predict${cleanPath}`;
                     }
-                }
-                
-                try {
-                    const response = await fetch(targetUrl, {
-                        method: 'GET',
-                        headers: token ? { 'Authorization': `Bearer ${token}` } : {}
-                    });
                     
-                    if (response.ok) {
-                        const blob = await response.blob();
-                        if (blob.size > 500) {
-                            finalAudioUrl = URL.createObjectURL(blob);
-                            console.log("✅ Audio blob generated from URL");
+                    try {
+                        const response = await fetch(targetUrl, {
+                            method: 'GET',
+                            headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+                        });
+                        
+                        if (response.ok) {
+                            const blob = await response.blob();
+                            if (blob.size > 500) {
+                                finalAudioUrl = URL.createObjectURL(blob);
+                                console.log("✅ Audio blob generated from URL");
+                            }
+                        } else {
+                            console.warn("URL strategy returned not ok:", response.status);
                         }
-                    } else {
-                        console.warn("URL strategy returned not ok:", response.status);
+                    } catch (e) {
+                        console.warn("Failed to fetch audio from URL, falling back...", e);
                     }
-                } catch (e) {
-                    console.warn("Failed to fetch audio from URL, falling back...", e);
                 }
             }
 
@@ -449,6 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="result-actions" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
                          <button class="btn-primary" id="listenStoryBtn" style="padding: 1rem 2.5rem;"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
                          <button class="btn-secondary" onclick="window.location.href='../collection/collection.html'" style="padding: 1rem 2.5rem; background: rgba(255,255,255,0.05);"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
+                         ${item.model_3d_url || item.model3dUrl || item.model_url || item.model3d_url ? `<button class="btn-primary" onclick="window.open('${item.model_3d_url || item.model3dUrl || item.model_url || item.model3d_url}', '_blank')" style="padding: 1rem 2.5rem; background: #8b5cf6; border-color: #8b5cf6;"><span class="material-symbols-outlined">view_in_ar</span> View 3D Model</button>` : ''}
                     </div>
                 </div>
             `;
@@ -479,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`${API_URL}/ai/detections`, {
+            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/detections`, {
                 method: 'GET',
                 headers: { 
                     'Authorization': `Bearer ${token}`,

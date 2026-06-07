@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`${API_URL}/ai/ask`, {
+            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/ask`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ question: text })

@@ -35,10 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mainImg.style.transition = 'all 2s cubic-bezier(0.4, 0, 0.2, 1)';
 
         try {
-            // Using the established API URL
-            const API_BASE = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
-            
-            const response = await fetch(`${API_BASE}/ai/story-to-image`, {
+            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/story-to-image`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

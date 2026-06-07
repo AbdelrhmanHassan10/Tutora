@@ -268,29 +268,6 @@ html[dir="rtl"] .scroll-progress-bar {
     font-weight: 600;
 }
 
-/* ── Language Switch Indicator on Lang Button ── */
-#langBtn::after {
-
-    content: attr(data-current-lang);
-    font-size: 0.6rem;
-    position: absolute;
-    bottom: -2px;
-    right: -2px;
-    background: #ECB613;
-    color: #0a0a0a;
-    padding: 1px 4px;
-    border-radius: 4px;
-    font-weight: 700;
-    text-transform: uppercase;
-    pointer-events: none;
-}
-
-#langBtn,
-#menuLangBtn {
-    position: relative;
-}
-
-
 /* ── RTL Navigation Mirroring (FORCE FLIP) ─── */
 /* Ensure flow alignment */
 html[dir="rtl"] .desktop-nav,
@@ -326,4 +303,39 @@ html[dir="rtl"] .search-box span {
     .header-left, .header-right { flex: 0 0 auto !important; display: flex !important; align-items: center !important; }
     .header-right { margin-left: 0 !important; gap: .6rem !important; }
     .desktop-nav { flex: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 2.5rem !important; padding-left: 0 !important; margin: 0 !important; }
+}
+
+/* Fix Dropdown link hover animation for RTL */
+html[dir='rtl'] .dropdown-link:hover {
+    transform: translateX(-8px) !important;
+}
+
+html[dir='rtl'] .dropdown-link::after {
+    left: 200%;
+    transform: skewX(25deg);
+}
+
+html[dir='rtl'] .dropdown-link:hover::after {
+    left: -100%;
+}
+
+/* Language Badge for Standalone Icon Button */
+.nav-lang-btn-standalone::after {
+    content: attr(data-current-lang);
+    font-size: 0.6rem;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    background: #ECB613;
+    color: #0a0a0a;
+    padding: 1px 4px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    pointer-events: none;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%);
+    top: auto;
+    right: auto;
 }

@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formData = new FormData();
                 formData.append('image', file);
 
-                const response = await fetch(`${API_URL}/ai/image-to-3d`, {
+                const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/image-to-3d`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`

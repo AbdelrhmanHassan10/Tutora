@@ -64,19 +64,54 @@ document.addEventListener('DOMContentLoaded', () => {
             // Logged Out State
             if (navProfileLink) navProfileLink.style.display = 'none';
             if (menuProfileLink) menuProfileLink.style.display = 'none';
-            if (navLoginBtn) navLoginBtn.style.display = 'flex';
-            if (menuLoginBtn) menuLoginBtn.style.display = 'flex';
+            if (navLoginBtn) {
+                navLoginBtn.style.setProperty('display', 'inline-flex', 'important');
+            }
+            if (menuLoginBtn) {
+                menuLoginBtn.style.setProperty('display', 'flex', 'important');
+            }
             if (profileImg) profileImg.style.display = 'none';
             if (favBtn) favBtn.style.display = 'none';
 
-            // Change Lang button to Login (only if language system is NOT active)
-            if (langBtn && !window.TutoraLang) {
-                langBtn.innerHTML = `<span class="material-symbols-outlined" style="color: white;">login</span>`;
-                langBtn.title = "Login";
-                langBtn.onclick = (e) => {
-                    e.preventDefault();
-                    window.location.href = '../2.login/code.html';
-                };
+            // 1. Hide the Cart
+            const cartBtnDesktop = document.querySelector('.header-right a[href*="card.html"], .header-right .cart-btn');
+            const cartBtnMobile = document.querySelector('.mobile-menu a[href*="card.html"], .mobile-menu .cart-btn');
+            if (cartBtnDesktop) cartBtnDesktop.style.display = 'none';
+            if (cartBtnMobile) cartBtnMobile.style.display = 'none';
+
+            // 2. Show Language Button in Navbar (Move it out of the hidden Profile dropdown)
+            const desktopLangBtn = document.getElementById('langBtn');
+            if (desktopLangBtn && navLoginBtn) {
+                const navRight = navLoginBtn.parentElement;
+                if (desktopLangBtn.parentElement.classList.contains('dropdown-menu') || desktopLangBtn.parentElement.classList.contains('dropdown-items')) {
+                    navRight.insertBefore(desktopLangBtn, navLoginBtn);
+                    
+                    desktopLangBtn.className = ''; // Remove any old classes
+                    desktopLangBtn.innerHTML = '<button class="icon-btn" style="pointer-events: none;"><span class="material-symbols-outlined">language</span></button>';
+                    desktopLangBtn.style.marginRight = '10px';
+                    desktopLangBtn.style.display = 'inline-flex';
+                    desktopLangBtn.style.alignItems = 'center';
+                    desktopLangBtn.style.justifyContent = 'center';
+                    desktopLangBtn.style.position = 'relative';
+                    desktopLangBtn.style.width = '40px';
+                    desktopLangBtn.style.height = '40px';
+                    desktopLangBtn.style.textDecoration = 'none';
+                    desktopLangBtn.style.border = 'none';
+                    desktopLangBtn.style.outline = 'none';
+                    desktopLangBtn.style.background = 'transparent';
+                    desktopLangBtn.removeAttribute('data-i18n-html');
+                    // Add a special class for the badge
+                    desktopLangBtn.classList.add('nav-lang-btn-standalone');
+                }
+            }
+
+            const mobileLangBtn = document.getElementById('menuLangBtn');
+            if (mobileLangBtn && menuLoginBtn) {
+                const mobileNav = menuLoginBtn.parentElement;
+                if (mobileLangBtn.parentElement.classList.contains('dropdown-items')) {
+                    mobileNav.insertBefore(mobileLangBtn, menuLoginBtn);
+                    mobileLangBtn.className = 'menu-link';
+                }
             }
         }
     };
@@ -650,3 +685,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+// Add Mobile Language Option to Profile Dropdown globally
+function injectMobileLang() {
+    const profileDropdowns = document.querySelectorAll('.profile-dropdown .dropdown-menu, #navProfileLink .dropdown-menu, #menuProfileLink .dropdown-items, .dropdown-items');
+    profileDropdowns.forEach(dropdown => {
+        // Only target dropdowns that have Settings or Logout to ensure it's a Profile dropdown
+        const isProfileMenu = Array.from(dropdown.children).some(el => el.textContent.includes('Settings') || el.textContent.includes('Logout') || el.textContent.includes('الإعدادات'));
+        if (isProfileMenu && !dropdown.querySelector('.mobile-lang-item')) {
+            const langItem = document.createElement('a');
+            langItem.href = '#';
+            langItem.className = 'dropdown-link dropdown-item mobile-lang-item';
+            langItem.style.display = 'flex';
+            langItem.style.alignItems = 'center';
+            langItem.style.gap = '8px';
+            langItem.innerHTML = '<span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language';
+            langItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                const mainLangBtn = document.getElementById('langBtn') || document.getElementById('menuLangBtn');
+                if (mainLangBtn) mainLangBtn.click();
+            });
+            const settingsLink = Array.from(dropdown.children).find(el => el.textContent.includes('Settings') || el.textContent.includes('الإعدادات'));
+            if (settingsLink) {
+                dropdown.insertBefore(langItem, settingsLink);
+            } else {
+                dropdown.appendChild(langItem);
+            }
+        }
+    });
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectMobileLang);
+} else {
+    injectMobileLang();
+}

@@ -153,6 +153,9 @@
         <button class="theme-btn" id="themeBtn" title="Toggle Theme">
           <span class="material-symbols-outlined">dark_mode</span>
         </button>
+        <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
+          <span class="material-symbols-outlined">language</span>
+        </button>
         <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
 
         <a href="../card/card.html" class="icon-btn-link" title="Cart">
@@ -163,9 +166,7 @@
         </a>
         
         
-        <button class="icon-btn" id="langBtn" style="margin-right: 5px;" title="Language">
-          <span class="material-symbols-outlined">language</span>
-        </button>
+        
         <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
           <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
             <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
@@ -197,7 +198,7 @@
             <span data-i18n="collection.badge">Grand Egyptian Museum</span>
         </div>
         <p class="section-subtitle" data-i18n="collection.subtitle">Explore the Legacy</p>
-        <h1 class="hero-title" data-i18n="collection.title">Digital Collection</h1>
+        <h1 class="hero-title" data-i18n="collection.title" style="font-size: 20px;">Digital Collection</h1>
         <p class="hero-description" data-i18n="collection.desc">Discover our fully dynamic artifacts spanning five millennia of ancient Egyptian civilization. Explore humanity's most remarkable cultural heritage.</p>
 
         <div class="search-container">
@@ -225,26 +226,59 @@
     <!-- Filters Section -->
     <section class="filters-section">
         <div class="filters-container">
-            <button class="filter-btn" id="dynastyFilterBtn">
-                <span class="material-symbols-outlined" style="font-size: 1rem">crown</span>
-                <span>Dynasty</span>
-                <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
-            </button>
-            <button class="filter-btn" id="materialFilterBtn">
-                <span class="material-symbols-outlined" style="font-size: 1rem">diamond</span>
-                <span>Material</span>
-                <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
-            </button>
-            <button class="filter-btn" id="siteFilterBtn">
-                <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>
-                <span>Discovery Site</span>
-                <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
-            </button>
-            <button class="filter-btn" id="galleryFilterBtn">
-                <span class="material-symbols-outlined" style="font-size: 1rem">photo_library</span>
-                <span>Gallery</span>
-                <span class="material-symbols-outlined" style="font-size: 1rem">keyboard_arrow_down</span>
-            </button>
+            
+            <div class="filter-dropdown" id="dynastyDropdownWrapper">
+                <button class="filter-btn" id="dynastyFilterBtn">
+                    <span class="material-symbols-outlined" style="font-size: 1rem">crown</span>
+                    <span>Dynasty</span>
+                    <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
+                </button>
+                <div class="filter-dropdown-menu">
+                    <div class="filter-options-scroll" id="dynastyFilterOptions"></div>
+                    <div class="filter-actions">
+                        <button class="apply-filter-btn" onclick="applyFilter('dynasty')">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="materialDropdownWrapper">
+                <button class="filter-btn" id="materialFilterBtn">
+                    <span class="material-symbols-outlined" style="font-size: 1rem">diamond</span>
+                    <span>Material</span>
+                    <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
+                </button>
+                <div class="filter-dropdown-menu">
+                    <div class="filter-options-scroll" id="materialFilterOptions"></div>
+                    <div class="filter-actions">
+                        <button class="apply-filter-btn" onclick="applyFilter('material')">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="siteDropdownWrapper">
+                <button class="filter-btn" id="siteFilterBtn">
+                    <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>
+                    <span>Discovery Site</span>
+                    <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
+                </button>
+                <div class="filter-dropdown-menu">
+                    <div class="filter-options-scroll" id="siteFilterOptions"></div>
+                    <div class="filter-actions">
+                        <button class="apply-filter-btn" onclick="applyFilter('site')">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="galleryDropdownWrapper">
+                <button class="filter-btn" id="galleryFilterBtn">
+                    <span class="material-symbols-outlined" style="font-size: 1rem">photo_library</span>
+                    <span>Gallery</span>
+                    <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
+                </button>
+                <div class="filter-dropdown-menu">
+                    <div class="filter-options-scroll" id="galleryFilterOptions"></div>
+                    <div class="filter-actions">
+                        <button class="apply-filter-btn" onclick="applyFilter('gallery')">Apply</button>
+                    </div>
+                </div>
+            </div>
             <div class="filter-divider"></div>
             <button class="reset-btn" id="resetFiltersBtn">
                 <span class="material-symbols-outlined" style="font-size: 1rem">restart_alt</span>

@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const API_BASE_URL = (typeof window.API_BASE_URL !== 'undefined') ? window.API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
-            const response = await fetch(`${API_BASE_URL}/ai/name-to-cartouche`, {
+            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/name-to-cartouche`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
