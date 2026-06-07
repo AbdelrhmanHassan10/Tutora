@@ -567,22 +567,60 @@
                 const data = await res.json();
                 const fetchedData = Array.isArray(data) ? data : (data.artifacts || data.data || []);
                 
+                const HALL_IMAGES = {
+                    "tutankhamun's mask": "../Halls Gallery/images/tut.png",
+                    "golden throne": "../Halls Gallery/images/golden_throne.png",
+                    "ceremonial chariot": "../Halls Gallery/images/ceremonial_chariot.png",
+                    "golden fan (flabellum)": "../Halls Gallery/images/golden_fan.png",
+                    "colossal ramses ii": "../Halls Gallery/images/grand.png",
+                    "victory stele of merneptah": "../Halls Gallery/images/Victory Stele of Merneptah.png",
+                    "statue of senusret i": "../Halls Gallery/images/Statue of Senusret I.png",
+                    "granite column of merneptah": "../Halls Gallery/images/column_merneptah.png",
+                    "colossus of a ptolemaic king": "../Halls Gallery/images/ptolemaic_king.png",
+                    "colossus of a ptolemaic queen": "../Halls Gallery/images/ptolemaic_queen.png",
+                    "sarcophagus of seti i": "../Halls Gallery/images/sarcophagus_seti.png",
+                    "canopic chest of queen hetepheres": "../Halls Gallery/images/canopic_chest_hetepheres.png",
+                    "golden mask of psusennes i": "../Halls Gallery/images/mask_psusennes.png",
+                    "senet game board": "../Halls Gallery/images/senet_board.png",
+                    "scribe's palette and pens": "../Halls Gallery/images/scribe_palette.png",
+                    "cosmetic palette": "../Halls Gallery/images/cosmetic_palette.png",
+                    "ancient egyptian sandals": "../Halls Gallery/images/ancient_sandals.png",
+                    "royal makeup kit": "../Halls Gallery/images/makeup_kit.png",
+                    "the seated scribe": "../Halls Gallery/images/seated_scribe.png",
+                    "statue of king khafre": "../Halls Gallery/images/khafre_statue.png",
+                    "group statue of menkaure": "../Halls Gallery/images/menkaure_statue.png",
+                    "bust of nefertiti (replica)": "../Halls Gallery/images/nefertiti_bust.png",
+                    "statue of king djoser": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop",
+                    "narmer palette (replica)": "../Halls Gallery/images/narmer_palette.png",
+                    "painted predynastic vessel": "../Halls Gallery/images/predynastic_vessel.png",
+                    "ritual flint knife": "../Halls Gallery/images/flint_knife.png",
+                    "terra-cotta female figure": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop",
+                    "anubis guardian statue": "../Halls Gallery/images/anubis_guardian.png",
+                    "book of the dead fragment": "https://images.unsplash.com/photo-1618172193622-ae2d025f4158?q=80&w=2064&auto=format&fit=crop",
+                    "shabti figures of tutankhamun": "https://images.unsplash.com/photo-1544620347-c4fd4a3d5947?q=80&w=2069&auto=format&fit=crop",
+                    "gilded mummy mask": "../Halls Gallery/images/mummy_mask.png",
+                    "rosetta stone (replica)": "../Halls Gallery/images/rosetta_stone.png",
+                    "fayum mummy portrait": "https://images.unsplash.com/photo-1626084300762-5f72382e379a?q=80&w=2069&auto=format&fit=crop",
+                    "statue of sarapis": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2000&auto=format&fit=crop",
+                    "bust of alexander the great": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop"
+                };
+
                 const mappedAPI = fetchedData.map(art => {
                     let artImage = art.image || art.imageUrl || '../suzi-kim-AVUvVdVKcSg-unsplash.jpg';
                     const artTitle = art.title || art.name || 'Unknown';
+                    const lowerTitle = artTitle.toLowerCase();
                     
                     // Override images for specific statues from the Halls Gallery
-                    const lowerTitle = artTitle.toLowerCase();
-                    if (lowerTitle.includes('khafre')) {
-                        artImage = '../Halls Gallery/images/khafre_statue.png';
-                    } else if (lowerTitle.includes('menkaure')) {
-                        artImage = '../Halls Gallery/images/menkaure_statue.png';
-                    } else if (lowerTitle.includes('nefertiti')) {
-                        artImage = '../Halls Gallery/images/nefertiti_bust.png';
-                    } else if (lowerTitle.includes('scribe')) {
-                        artImage = '../Halls Gallery/images/seated_scribe.png';
-                    } else if (lowerTitle.includes('senusret')) {
-                        artImage = '../Halls Gallery/images/Statue of Senusret I.png';
+                    if (HALL_IMAGES[lowerTitle]) {
+                        artImage = HALL_IMAGES[lowerTitle];
+                    } else {
+                        // Fallback partial matching just in case names differ slightly
+                        for (const [key, value] of Object.entries(HALL_IMAGES)) {
+                            if (lowerTitle.includes(key) || key.includes(lowerTitle)) {
+                                artImage = value;
+                                break;
+                            }
+                        }
                     }
 
                     return {
@@ -599,7 +637,14 @@
                     };
                 });
 
-                STATE.allArtifacts = mappedAPI;
+                // Get array of names from HALLS_DATA (ignoring case)
+                const hallNames = (typeof HALLS_DATA !== 'undefined' ? HALLS_DATA : []).map(h => h.title.toLowerCase());
+                
+                // Filter out any API items that share a name with our injected Halls items to avoid duplicates
+                const uniqueMappedAPI = mappedAPI.filter(art => !hallNames.includes(art.title.toLowerCase()));
+
+                // Prepend Halls artifacts to the beginning of the list
+                STATE.allArtifacts = [...(typeof HALLS_DATA !== 'undefined' ? HALLS_DATA : []), ...uniqueMappedAPI];
                 
                 populateFilterOptions();
                 applyAllFilters();
