@@ -1,0 +1,24 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "animate.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbdelrhmanHassan10/Tutora.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AbdelrhmanHassan10/Tutora/issues"
+  },
+  "homepage": "https://github.com/AbdelrhmanHassan10/Tutora#readme",
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}
