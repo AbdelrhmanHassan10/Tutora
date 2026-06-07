@@ -25,11 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
         generateBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Carving...';
         generateBtn.disabled = true;
 
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('🔐 Authentication required. Please login to use this feature.');
+            window.location.href = '../2.login/code.html';
+            return;
+        }
+
         try {
             const API_BASE_URL = (typeof window.API_BASE_URL !== 'undefined') ? window.API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
             const response = await fetch(`${API_BASE_URL}/ai/name-to-cartouche`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
                 body: JSON.stringify({ name })
             });
 

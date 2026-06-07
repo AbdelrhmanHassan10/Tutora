@@ -163,36 +163,76 @@ document.addEventListener('DOMContentLoaded', () => {
         transcriptionContent.scrollTop = transcriptionContent.scrollHeight;
     }
 
-    // 4. Text-to-Speech (TTS)
-    function speakText(text) {
+    // 4. Text-to-Speech (TTS) via API
+    async function speakText(text) {
+        if (!text) return;
+        
+        // Stop any currently playing audio
+        if (window.currentAIAudio) {
+            window.currentAIAudio.pause();
+            window.currentAIAudio = null;
+        }
+        
+        if (stopSpeechBtn) stopSpeechBtn.style.display = 'flex';
+
+        try {
+            const lang = localStorage.getItem('language') || 'en';
+            const response = await fetch(`${API_URL}/ai/text-to-speech`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ text: text, language: lang })
+            });
+
+            if (!response.ok) throw new Error('TTS API failed');
+
+            const blob = await response.blob();
+            const audioUrl = URL.createObjectURL(blob);
+            window.currentAIAudio = new Audio(audioUrl);
+            
+            window.currentAIAudio.onended = () => {
+                if (stopSpeechBtn) stopSpeechBtn.style.display = 'none';
+            };
+
+            window.currentAIAudio.onerror = () => {
+                if (stopSpeechBtn) stopSpeechBtn.style.display = 'none';
+                console.error("Audio playback error");
+            };
+
+            await window.currentAIAudio.play();
+
+        } catch (error) {
+            console.error('TTS Error:', error);
+            if (stopSpeechBtn) stopSpeechBtn.style.display = 'none';
+            // Fallback to browser TTS if API fails
+            fallbackSpeakText(text);
+        }
+    }
+
+    function fallbackSpeakText(text) {
         if (!window.speechSynthesis) return;
-        
         window.speechSynthesis.cancel();
-        
         const utterance = new SpeechSynthesisUtterance(text);
         const lang = localStorage.getItem('language') || 'en';
         utterance.lang = lang === 'ar' ? 'ar-EG' : 'en-US';
         utterance.rate = 0.9;
-        utterance.pitch = 1.0;
         
-        utterance.onstart = () => {
-            if (stopSpeechBtn) stopSpeechBtn.style.display = 'flex';
-        };
-
-        utterance.onend = () => {
-            if (stopSpeechBtn) stopSpeechBtn.style.display = 'none';
-        };
-
-        utterance.onerror = () => {
-            if (stopSpeechBtn) stopSpeechBtn.style.display = 'none';
-        };
+        utterance.onstart = () => { if (stopSpeechBtn) stopSpeechBtn.style.display = 'flex'; };
+        utterance.onend = () => { if (stopSpeechBtn) stopSpeechBtn.style.display = 'none'; };
+        utterance.onerror = () => { if (stopSpeechBtn) stopSpeechBtn.style.display = 'none'; };
         
         window.speechSynthesis.speak(utterance);
     }
 
     if (stopSpeechBtn) {
         stopSpeechBtn.addEventListener('click', () => {
-            window.speechSynthesis.cancel();
+            if (window.currentAIAudio) {
+                window.currentAIAudio.pause();
+                window.currentAIAudio = null;
+            }
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
             stopSpeechBtn.style.display = 'none';
         });
     }

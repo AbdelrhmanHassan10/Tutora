@@ -97,6 +97,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializePage();
 
+    // ============================================
+    // FULL AI ANALYSIS
+    // ============================================
+    const fullAnalysisBtn = document.getElementById('fullAnalysisBtn');
+    if (fullAnalysisBtn) {
+        fullAnalysisBtn.addEventListener('click', async () => {
+            if (!token) {
+                alert('Please login to use AI features.');
+                window.location.href = '../2.login/code.html';
+                return;
+            }
+
+            const imgEl = document.querySelector('.artifact-image');
+            if (!imgEl || !imgEl.src) return;
+
+            fullAnalysisBtn.innerHTML = '<span class="material-symbols-outlined">hourglass_empty</span> Analyzing...';
+            fullAnalysisBtn.disabled = true;
+
+            try {
+                // Fetch the image as a Blob
+                const imgRes = await fetch(imgEl.src);
+                const blob = await imgRes.blob();
+
+                const formData = new FormData();
+                formData.append('image', blob, 'artifact.jpg');
+
+                const response = await fetch(`${API_URL}/ai/full-analysis`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error('Analysis failed');
+
+                const result = await response.json();
+                
+                // Present the analysis in the UI
+                const infoSection = document.querySelector('.info-section');
+                if (infoSection) {
+                    infoSection.innerHTML = `
+                        <h2 class="info-heading" style="color: var(--primary-gold);">AI Full Analysis</h2>
+                        <p class="info-text"><strong>Detection:</strong> ${JSON.stringify(result.analysis || result.detection || 'Object found')}</p>
+                        <p class="info-text"><strong>Story:</strong> ${result.story || 'A fascinating artifact from ancient times.'}</p>
+                    `;
+                    // Play audio if available
+                    if (result.audio) {
+                        try {
+                            const audioData = result.audio.startsWith('data:') ? result.audio : `data:audio/mp3;base64,${result.audio}`;
+                            const audio = new Audio(audioData);
+                            audio.play();
+                        } catch (e) {
+                            console.error("Could not play audio", e);
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error("Full analysis error:", error);
+                alert("Failed to perform AI analysis. Please try again.");
+            } finally {
+                fullAnalysisBtn.innerHTML = '<span class="material-symbols-outlined">analytics</span> Full AI Analysis';
+                fullAnalysisBtn.disabled = false;
+            }
+        });
+    }
 
     // ============================================
     // 2. ORIGINAL UI SCRIPT (PRESERVED)

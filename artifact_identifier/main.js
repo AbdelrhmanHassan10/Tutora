@@ -219,9 +219,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const lang = localStorage.getItem('language') || 'en';
 
         try {
-            // Call the new AI Model for prediction
-            const response = await fetch(`https://egyptian-museum-production.up.railway.app/predict?language=${lang}`, {
+            // Call the new AI API for artifact detection
+            const response = await fetch(`${API_URL}/ai/detect?language=${lang}`, {
                 method: 'POST',
+                headers: token ? { 'Authorization': `Bearer ${token}` } : {},
                 body: formData
             });
 
