@@ -1044,7 +1044,7 @@ body.light .shape-ring {
    GLOBAL NAVBAR MOBILE SPACING OPTIMIZATION
    Ensures all elements (menu, logo, and right icons) fit perfectly on small screens
    ============================================ */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .header {
         padding: 0.5rem 0.4rem !important;
         background: #000 !important;
@@ -1057,11 +1057,13 @@ body.light .shape-ring {
         flex-wrap: nowrap !important;
         align-items: center !important;
         justify-content: space-between !important;
-        gap: 0.25rem !important;
+        gap: 0.5rem !important;
         max-width: none !important;
+        /* removed overflow hidden to allow dropdown */
     }
     .header-left {
-        flex: 0 1 auto !important;
+        flex: 1 1 auto !important;
+        overflow: hidden !important;
         display: flex !important;
         align-items: center !important;
         gap: 0.25rem !important;
@@ -1080,17 +1082,18 @@ body.light .shape-ring {
         flex-shrink: 0 !important;
     }
     .menu-btn span {
-        font-size: 1.4rem !important;
+        font-size: 1.8rem !important;
     }
     .logo-section {
         display: flex !important;
         align-items: center !important;
         gap: 0.35rem !important;
         min-width: 0 !important;
+        text-decoration: none !important;
     }
     .logo-circle {
-        width: 28px !important;
-        height: 28px !important;
+        width: 32px !important;
+        height: 32px !important;
         border: 1px solid #ECB613 !important;
         background: #fff !important;
         flex-shrink: 0 !important;
@@ -1099,6 +1102,7 @@ body.light .shape-ring {
         justify-content: center !important;
         border-radius: 50% !important;
         overflow: hidden !important;
+        box-shadow: 0 0 15px rgba(236, 182, 19, 0.5) !important;
     }
     .logo-circle img {
         width: 100% !important;
@@ -1106,7 +1110,10 @@ body.light .shape-ring {
         object-fit: cover !important;
     }
     .logo-text {
-        font-size: 0.95rem !important;
+        max-width: none !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        font-size: 1.1rem !important;
         font-family: "Cinzel", serif !important;
         font-weight: 700 !important;
         letter-spacing: 1px !important;
@@ -1114,19 +1121,18 @@ body.light .shape-ring {
         color: #ECB613 !important;
         margin: 0 !important;
         white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
+        text-shadow: 0 0 8px rgba(236, 182, 19, 0.6) !important;
         flex-shrink: 1 !important;
     }
     .header-right {
         flex: 0 0 auto !important;
         display: flex !important;
         align-items: center !important;
-        gap: 0.15rem !important;
+        gap: 0.35rem !important;
         margin-left: auto !important;
     }
     .header-right a {
-        display: inline-flex !important;
+        /* Removed display important to respect JS hide/show */
         align-items: center !important;
         justify-content: center !important;
         text-decoration: none !important;
@@ -1144,18 +1150,51 @@ body.light .shape-ring {
         flex-shrink: 0 !important;
     }
     .theme-btn span, .icon-btn span, .icon-btn-link button span {
-        font-size: 1.25rem !important;
+        font-size: 1.4rem !important;
     }
+    
+    .btn-booking {
+        display: flex !important;
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 50% !important;
+        background: #ECB613 !important;
+        color: #000 !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0 !important;
+        box-shadow: 0 0 15px rgba(236, 182, 19, 0.5) !important;
+        margin: 0 0.2rem !important;
+    }
+    .btn-booking .booking-text {
+        display: none !important;
+    }
+    .btn-booking .booking-icon {
+        display: block !important;
+        font-size: 1.3rem !important;
+        color: #000 !important;
+    }
+    
+    .cart-btn span.material-symbols-outlined {
+        color: #fff !important;
+    }
+
+    /* langBtn is now in dropdown */
+
     .profile-img {
-        width: 30px !important;
-        height: 30px !important;
+        width: 32px !important;
+        height: 32px !important;
         border-radius: 50% !important;
         border: 1.5px solid #ECB613 !important;
         object-fit: cover !important;
         flex-shrink: 0 !important;
     }
-    /* Hide desktop-only elements on mobile */
-    .desktop-nav, .search-box, .btn-booking {
+    
+    .profile-trigger {
+        gap: 2px !important;
+    }
+
+    .desktop-nav, .search-box {
         display: none !important;
     }
 }

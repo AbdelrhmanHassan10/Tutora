@@ -501,7 +501,7 @@ body.light .dropdown-item:hover {
 
 .desktop-nav {
     display: flex;
-    gap: 0.9rem;
+    gap: 3rem;
     align-items: center;
  }
 

@@ -129,14 +129,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateBookingsUI(bookings) {
-        const listContainer = document.querySelector('.left-column');
+        const listContainer = document.getElementById('bookingsList');
         if (!listContainer || bookings.length === 0) return;
         
-        let html = `<div class="section-header"><h2 class="section-title">My Bookings</h2></div>`;
+        let html = '';
         bookings.forEach(b => {
-             const itemsTotal = (b.items || []).reduce((acc, item) => acc + item.quantity, 0);
-             const visitDate = b.date || b.createdAt ? new Date(b.date || b.createdAt).toLocaleDateString() : 'N/A';
-             const totalAmount = b.totalPrice || b.totalAmount || 0;
+             let itemsTotal = 0;
+             if (b.tickets && Array.isArray(b.tickets)) {
+                 itemsTotal = b.tickets.reduce((acc, tk) => acc + (tk.quantity || 0), 0);
+             } else if (b.items && Array.isArray(b.items)) {
+                 itemsTotal = b.items.reduce((acc, tk) => acc + (tk.quantity || 0), 0);
+             }
+             const visitDateObj = b.visitDate || b.date || b.createdAt;
+             const visitDate = visitDateObj ? new Date(visitDateObj).toLocaleDateString() : 'N/A';
              
              html += `
              <div class="visit-card" style="margin-bottom: 20px;">
@@ -146,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="visit-content">
                     <div class="visit-header">
                         <span class="visit-badge">${b.status || 'Confirmed'}</span>
-                        <h3 class="visit-title">${b.ticketType || 'Museum Entry'}</h3>
+                        <h3 class="visit-title">${b.ticketType || 'Grand Egyptian Museum Entry'}</h3>
                         <p class="visit-subtitle">${itemsTotal} Visitors</p>
                     </div>
                     <div class="visit-details">

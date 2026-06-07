@@ -29,6 +29,10 @@ button {
     font-family: inherit;
     transition: all 0.3s ease;
 }
+
+.mobile-only-lang {
+    display: none !important;
+}
 .logo-section {
     display: flex;
     align-items: center;
@@ -76,9 +80,10 @@ button {
 }.logo-text,
 .menu-logo-text {
     font-family: 'Cinzel', serif;
-    font-size: 24px;
+    font-size: 15px;
     font-weight: 900;
     letter-spacing: 5px;
+    padding-left: 10px;
     background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #ffffff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -286,10 +291,11 @@ body.light .close-btn:hover {
 }
 
 .menu-logo-text {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 900;
     letter-spacing: -0.02em;
     color: var(--text-white);
+    padding-left: 10px;
 }
 
 .close-btn {
@@ -556,7 +562,7 @@ body.light .dropdown-item:hover {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 1.5rem; /* Restore gap for readability */
+        gap: 2rem; /* Restore gap for readability */
     }
     .header-left, .header-right {
         flex: 0 0 auto !important;
@@ -565,7 +571,7 @@ body.light .dropdown-item:hover {
     }
     .header-right {
         margin-left: auto !important;
-        gap: .3rem !important;
+        gap: 1rem !important;
     }
 }
 
@@ -657,44 +663,36 @@ body.light .header {
     .header-right {
         display: flex !important;
         align-items: center !important;
-        gap: 0.6rem !important;
+        gap: 0.8rem !important; /* Widened gap between items */
         flex: 0 0 auto !important;
     }
 
     .header-right .icon-btn, 
     .header-right .theme-btn {
-        width: 32px !important;
-        height: 32px !important;
+        width: 36px !important;
+        height: 36px !important;
         padding: 0 !important;
         color: #fff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     .header-right .material-symbols-outlined {
-        font-size: 1.5rem !important;
+        font-size: 1.35rem !important;
     }
 
     /* Language Badge (EN) */
-    #langBtn {
-        position: relative;
-    }
-    #langBtn::after {
-        content: 'EN';
-        position: absolute;
-        bottom: -2px;
-        right: -4px;
-        background: #ecb613;
-        color: #000;
-        font-size: 7px;
-        font-weight: 900;
-        padding: 1px 2px;
-        border-radius: 2px;
-        line-height: 1;
-    }
+    /* removed #langBtn hide */
 
     .profile-img {
-        width: 34px !important;
-        height: 34px !important;
+        width: 36px !important;
+        height: 36px !important;
         border: 2px solid #ecb613 !important;
+    }
+
+    .mobile-only-lang {
+        display: flex !important;
     }
 
     .desktop-nav, .search-box, .btn-booking, .fav-nav-link {
@@ -752,7 +750,7 @@ body.light .header {
 
 .desktop-nav {
     display: flex;
-    gap: 0.7rem;
+    gap:2rem;
     align-items: center;
  }
 
@@ -1331,7 +1329,7 @@ body.light .hero-content {
 
 .btn-accent {
     background: transparent;
-    color: var(--primary);
+    color: white;
     padding: 1rem 2rem;
     border-radius: 0.75rem;
     font-weight: 900;
@@ -2064,12 +2062,7 @@ body.dark-mode .btn-primary {
     background-color: #d4a512;
     color: #000;
 }
-
-body.dark-mode .btn-accent {
-    background-color: #2cc5b8;
-    color: #000;
-}
-
+ 
 body.dark-mode .btn-icon {
     background-color: #2a2a2a;
 }
@@ -3583,7 +3576,7 @@ body.light .copyright {
 
 @media (max-width: 1024px) {
     .header-container { padding: 0 2rem; }
-    .desktop-nav { gap: 1rem; }
+    .desktop-nav { gap: 1.5rem; }
     .search-box input { width: 120px; }
     .hero-title { font-size: 3rem; }
     .footer-grid { grid-template-columns: repeat(2, 1fr); }
@@ -3703,7 +3696,7 @@ body.light .copyright {
         color: #ECB613 !important;
         background: transparent !important;
         border: none !important;
-        margin-left: -8px !important;
+        margin-left: 8px !important;
     }
 
     .logo-circle {

@@ -184,3 +184,34 @@
 [dir="rtl"] .summary-row { flex-direction: row-reverse; }
 [dir="rtl"] .quantity-controls { flex-direction: row-reverse; margin-left: 2rem; margin-right: 0; }
 [dir="rtl"] .cart-item-total { text-align: left; }
+
+/* --- Header Overrides for Cart --- */
+@media (min-width: 768px) {
+    .header { padding: 0.8rem 2rem !important; }
+    .header-container { padding: 0 !important; display: flex !important; justify-content: space-between !important; align-items: center !important; gap: 2rem !important; }
+    .header-left, .header-right { flex: 0 0 auto !important; display: flex !important; align-items: center !important; }
+    .header-right { margin-left: 0 !important; gap: 0.6rem !important; }
+    .desktop-nav { flex: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 2.5rem !important; padding-left: 0 !important; margin: 0 !important; }
+}
+
+html[dir="rtl"] .dropdown-menu,
+html[dir="rtl"] .profile-dropdown .dropdown-menu {
+    text-align: right;
+    right: auto !important;
+    left: 0 !important;
+}
+
+.icon-btn-link .icon-btn,
+a.icon-btn .icon-btn {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+a.icon-btn {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

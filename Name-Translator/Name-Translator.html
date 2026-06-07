@@ -1,77 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+<!DOCTYPE html><html lang="en"><head>
+    <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHARAOH LAB | Hieroglyphics Translator</title>
     <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Egyptian+Hieroglyphs&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../animate.css" />
-    <link rel="stylesheet" href="../global-theme.css" />
+    <link rel="stylesheet" href="../animate.css">
+    <link rel="stylesheet" href="../global-theme.css">
+  <link rel="stylesheet" href="../global-lang.css">
 </head>
 
 <body class="dark">
     <!-- Overlay for Mobile Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- Single Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="menu-header">
-            <div class="menu-logo">
-
-                <div class="logo-circle">
-                    <img src="../logo.png" alt="Tutora Logo">
-                </div>
-
-                <h3 class="menu-logo-text" style="color: #ecb613;">Tutora</h3>
-            </div>
-            <button class="close-btn" id="closeBtn">
-                <span class="material-symbols-outlined" style="color: #ecb613;">close</span>
-            </button>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="menu-header">
+      <div class="menu-logo">
+        <div class="logo-circle">
+          <img src="../logo.png" alt="Tutora Logo">
         </div>
-        <nav class="menu-nav">
-            <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
-            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a> <a
-                href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
 
-            <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
-            <div class="menu-dropdown">
-                <button class="menu-link dropdown-toggle"><span data-i18n="nav.ai_experience">AI Experience</span><span class="material-symbols-outlined">expand_more</span></button>
-                <div class="dropdown-items">
-                    <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
-                    <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
-                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item">AI Voice Storytelling (3D
-                        )</a>
-                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
-                </div>
-            </div>
-            <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
-            <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
-            <div class="menu-dropdown"><button class="menu-link dropdown-toggle"><span data-i18n="nav.collection">Collection</span> <span
-                        class="material-symbols-outlined">expand_more</span></button>
-                <div class="dropdown-items"><a href="../collection/collection.html" class="dropdown-item">Main
-                        Gallery</a><a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item">Exhibition
-                        Halls</a></div>
-            </div>
-        <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
+        <h3 class="menu-logo-text">Tutora</h3>
+      </div>
+      <button class="close-btn" id="closeBtn">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <nav class="menu-nav">
+      <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
+      <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a>
+      <a href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
+
+      <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
+
+      <div class="menu-dropdown">
         <button class="menu-link dropdown-toggle">
-          <span data-i18n="nav.profile_menu">Profile Menu</span>
+          <span data-i18n="nav.ai_experience">AI Experience</span>
           <span class="material-symbols-outlined">expand_more</span>
         </button>
         <div class="dropdown-items">
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
+          <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice
+            Storytelling (3D)</a>
+          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
+        </div>
+      </div>
+
+      <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
+      <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
+      <div class="menu-dropdown">
+        <button class="menu-link dropdown-toggle">
+          <span data-i18n="nav.collection">Collection</span>
+          <span class="material-symbols-outlined">expand_more</span>
+        </button>
+        <div class="dropdown-items">
+          <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
+          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
+        </div>
+      </div>
+      <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
+
+      <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
+        <button class="menu-link dropdown-toggle">
+          <span data-i18n="profile menu">Profile Menu</span>
+          <span class="material-symbols-outlined">expand_more</span>
+        </button>
+        <div class="dropdown-items">
+          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
+          
+          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
+          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
         </div>
       </div>
 
@@ -80,100 +91,105 @@
         <span data-i18n="nav.login">Login</span>
       </a>
     </nav>
-        <div class="menu-footer">
-            <a href="../booking/booking.html" class="menu-booking-btn">Booking</a>
-            <a href="../fav/favourite.html" class="menu-icon-link" title="Favorites">
-                <span class="material-symbols-outlined">favorite</span> Favorites
-            </a>
-            <button class="menu-icon-link" id="menuLangBtn">
-                <span class="material-symbols-outlined">language</span> Language
-            </button>
-        </div>
+
+    <div class="menu-footer">
+      <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
+
+      
     </div>
+  </div>
 
     <!-- Header -->
     <header class="header">
-        <div class="header-container">
-            <div class="header-left">
-                <button class="menu-btn" id="menuBtn">
-                    <span class="material-symbols-outlined" style="color:  #ecb613;padding-top: 5px;">menu</span>
-                </button>
-                <div class="logo-section">
-
-                    <div class="logo-circle">
-                        <img src="../logo.png" alt="Tutora Logo">
-                    </div>
-
-                    <h2 class="logo-text" style="color: #ecb613;;font-size: 20px;">Tutora</h2>
-                </div>
-            </div>
-            <nav class="desktop-nav">
-                <a href="../4.home/code.html" data-i18n="nav.home">Home</a>
-                <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
-                <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids-Museum</a>
-                <a href="../event/event.html" data-i18n="nav.event">Event</a>
-                <div class="nav-dropdown">
-                    <button class="nav-link dropdown-trigger"><span data-i18n="nav.ai_experience">AI Experience</span><span class="material-symbols-outlined">expand_more</span></button>
-                    <div class="dropdown-menu">
-                        <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
-                        <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link " data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
-                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link">AI Voice Storytelling (3D
-                            )</a>
-                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora laboratory</a>
-                    </div>
-                </div>
-                <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
-                <a href="../about/About.html" data-i18n="nav.about">About</a>
-                <div class="nav-dropdown"><button class="nav-link dropdown-trigger"><span data-i18n="nav.collection">Collection</span> <span
-                            class="material-symbols-outlined">expand_more</span></button>
-                    <div class="dropdown-menu"><a href="../collection/collection.html" class="dropdown-link">Main
-                            Gallery</a><a href="../Exhibition-Halls/exhibition-halls.html"
-                            class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a></div>
-                </div>
-            </nav>
-            <div class="header-right">
-                <div class="search-box">
-                    <span class="material-symbols-outlined">search</span>
-                    <input type="text" placeholder="Search..." />
-                </div>
-                <button class="theme-btn" id="theme-toggle">
-                    <span class="material-symbols-outlined">dark_mode</span>
-                </button>
-                <a href="../booking/booking.html" class="btn-booking" title="Book Tickets">booking</a>
-                <a href="../fav/favourite.html" class="icon-btn" style="   text-decoration: none;" title="Favorites">
-                    <span class="material-symbols-outlined">favorite</span>
-                </a>
-                
-                    <a href="../card/card.html" class="icon-btn"  title="Cart">
-                        <button class="icon-btn cart-btn" style="position: relative; background: transparent; border: none; cursor: pointer;">
-                            <span class="material-symbols-outlined" style="color: #ECB613;">shopping_cart</span>
-                            <span class="cart-badge" style="display: none;">0</span>
-                        </button>
-                    </a>
-                    <button class="icon-btn" id="langBtn" title="Language">
-                    <span class="material-symbols-outlined">language</span>
-                </button>
-                <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-            <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
-              <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-              <img src="../Profile/unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);" />
-            </button>
-            <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-              <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-              <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-              <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-            </div>
+    <div class="scroll-progress-container">
+      <div class="scroll-progress-bar" id="scrollProgress"></div>
+    </div>
+    <div class="header-container">
+      <div class="header-left">
+        <button class="menu-btn" id="menuBtn">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+        <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
+          <div class="logo-circle">
+            <img src="../logo.png" alt="Tutora Logo">
           </div>
-          
-          <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
-            <button class="icon-btn">
-              <span class="material-symbols-outlined">login</span>
-            </button>
-          </a>
-            </div>
+          <h2 class="logo-text">Tutora</h2>
+        </a>
+      </div>
+
+      <nav class="desktop-nav">
+        <a href="../4.home/code.html" class="active" data-i18n="nav.home">Home</a>
+        <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
+        <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids Museum</a>
+        <a href="../event/event.html" data-i18n="nav.event">Event</a>
+        <div class="nav-dropdown">
+          <button class="nav-link dropdown-trigger">
+            <span data-i18n="nav.ai_experience">AI Experience</span>
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
+            <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice
+              Storytelling (3D)</a>
+            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
+              Laboratory</a>
+          </div>
         </div>
-    </header>
+        <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
+        <a href="../about/About.html" data-i18n="nav.about">About</a>
+        <div class="nav-dropdown">
+          <button class="nav-link dropdown-trigger">
+            <span data-i18n="nav.collection">Collection</span>
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-right">
+        <button class="theme-btn" id="themeBtn" title="Toggle Theme">
+          <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
+
+        <a href="../card/card.html" class="icon-btn-link" title="Cart">
+          <button class="icon-btn cart-btn" style="position: relative;">
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <span class="cart-badge" style="display: none;">0</span>
+          </button>
+        </a>
+        
+        
+        <button class="icon-btn" id="langBtn" style="margin-right: 5px;" title="Language">
+          <span class="material-symbols-outlined">language</span>
+        </button>
+        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
+          <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+            <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
+            <img src="./unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
+          </button>
+          <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
+          
+          <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+          <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
+          <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+          <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+        </div>
+        </div>
+
+        <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
+          <button class="icon-btn">
+            <span class="material-symbols-outlined">login</span>
+          </button>
+        </a>
+      </div>
+    </div>
+  </header>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -211,11 +227,11 @@
 
                             <div class="options-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="cartoucheStyle" name="style" checked>
+                                    <input type="radio" id="cartoucheStyle" name="style" checked="">
                                     <label for="cartoucheStyle" class="radio-label" data-i18n="name_trans.style_cartouche">Royal Cartouche Style</label>
                                 </div>
                                 <div class="radio-option disabled">
-                                    <input type="radio" id="demoticScript" name="style" disabled>
+                                    <input type="radio" id="demoticScript" name="style" disabled="">
                                     <label for="demoticScript" class="radio-label" data-i18n="name_trans.style_demotic">Demotic Script</label>
                                 </div>
                             </div>
@@ -286,7 +302,7 @@
                                                     <ul>
                                                         <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
                                                         <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News & Press</a></li>
+                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
                                                         <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
                                                     </ul>
                                                 </div>
@@ -342,7 +358,7 @@
                                                      <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
                                                  </div>
                                          <div class="copyright">
-                                           &copy; 2026 Tutora. All rights reserved.
+                                           © 2026 Tutora. All rights reserved.
                                          </div>
                                        </div>
                                      </div>
@@ -353,6 +369,6 @@
     <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
 <script src="../global-lang.js?v=1780353971499"></script>
-</body>
 
-</html>
+
+</body></html>

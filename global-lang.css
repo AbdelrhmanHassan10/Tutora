@@ -18,6 +18,17 @@ html[dir="rtl"] .desktop-nav button {
     direction: rtl;
 }
 
+/* ── Profile Dropdown RTL ──────────────────── */
+html[dir="rtl"] .profile-dropdown .dropdown-menu {
+    right: auto !important;
+    left: 0 !important;
+}
+
+html[dir="rtl"] .profile-dropdown {
+    margin-right: 0 !important;
+    margin-left: 15px !important;
+}
+
 /* ── Mobile Menu RTL ───────────────────────── */
 html[dir="rtl"] .mobile-menu {
     left: 0;
@@ -170,9 +181,15 @@ html[dir="rtl"] .footer-bottom {
 }
 
 /* ── Dropdown RTL ──────────────────────────── */
-html[dir="rtl"] .dropdown-menu {
+html[dir="rtl"] .desktop-nav .dropdown-menu {
     left: auto;
     right: 0;
+}
+
+/* Ensure profile dropdown on the left side of the screen in RTL expands to the right */
+html[dir="rtl"] .header-right .dropdown-menu {
+    left: 0 !important;
+    right: auto !important;
 }
 
 html[dir="rtl"] .dropdown-items {
@@ -252,8 +269,8 @@ html[dir="rtl"] .scroll-progress-bar {
 }
 
 /* ── Language Switch Indicator on Lang Button ── */
-#langBtn::after,
-#menuLangBtn::after {
+#langBtn::after {
+
     content: attr(data-current-lang);
     font-size: 0.6rem;
     position: absolute;
@@ -299,4 +316,14 @@ html[dir="rtl"] .search-box span {
 /* Print Support */
 @media print {
     html[dir="rtl"] * { direction: rtl; text-align: right; }
+}
+
+
+/* Desktop Header Spacing Overrides */
+@media (min-width: 768px) {
+    .header { padding: 0.8rem 2rem !important; }
+    .header-container { padding: 0 !important; display: flex !important; justify-content: space-between !important; align-items: center !important; gap: 2rem !important; }
+    .header-left, .header-right { flex: 0 0 auto !important; display: flex !important; align-items: center !important; }
+    .header-right { margin-left: 0 !important; gap: .6rem !important; }
+    .desktop-nav { flex: 1 !important; display: flex !important; align-items: center !important; justify-content: center !important; gap: 2.5rem !important; padding-left: 0 !important; margin: 0 !important; }
 }

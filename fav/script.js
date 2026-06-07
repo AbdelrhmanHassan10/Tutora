@@ -45,20 +45,24 @@ window.FAV_AR = {
 document.addEventListener('DOMContentLoaded', () => {
     const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
     const artifactGrid = document.querySelector('.saved-section .artifact-grid') || document.querySelector('.artifact-grid');
-    const welcomeTitle = document.querySelector('.dashboard-header .title');
+    const userNameDisplay = document.getElementById('userNameDisplay');
 
     // --- Immediate Profile Sync ---
     try {
         let storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+        let userName = localStorage.getItem('userName'); // Fallback from login page
+        
         if (storedUser && storedUser.email) {
             const localOverride = localStorage.getItem(`localProfileData_${storedUser.email}`);
             if (localOverride) {
                 storedUser = { ...storedUser, ...JSON.parse(localOverride) };
             }
         }
-        if (storedUser.name && welcomeTitle) {
-            const firstName = storedUser.name.split(' ')[0];
-            welcomeTitle.textContent = `Welcome back, ${firstName}`;
+        
+        let finalName = storedUser.name || userName;
+        if (finalName && userNameDisplay) {
+            const firstName = finalName.split(' ')[0];
+            userNameDisplay.textContent = firstName;
         }
     } catch(e) {}
 
@@ -417,9 +421,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 api.getMyFavorites('Event').catch(() => null)
             ]);
 
-            if (userResponse && userResponse.data && welcomeTitle) {
-                const firstName = userResponse.data.name.split(' ')[0];
-                welcomeTitle.textContent = `Welcome back, ${firstName}`;
+            let userObj = userResponse ? (userResponse.user || userResponse) : null;
+            if (userObj && userObj.email) {
+                const localData = localStorage.getItem(`localProfileData_${userObj.email}`);
+                if (localData) {
+                    try { userObj = { ...JSON.parse(localData), ...userObj }; } catch(e) {}
+                }
+            }
+            if (userObj && userObj.name && userNameDisplay) {
+                const firstName = userObj.name.split(' ')[0];
+                userNameDisplay.textContent = firstName;
             }
 
             const allFavs = [];

@@ -17,6 +17,8 @@
     // ─── LOCAL FALLBACK TRANSLATIONS ──────────────────────────────
     const LOCAL_TRANSLATIONS = {
         en: {
+        "cart-badge": "Cart",
+        "profile menu": "Profile Menu",
         "acc.hero_title": "INCLUSIVE <br><span class=\"gold-text\">EXCELLENCE</span>",
         "acc.hero_sub": "A Sanctuary of Heritage, Accessible to All Souls",
         "acc.badge_elevation": "Seamless Elevation",
@@ -553,6 +555,7 @@
         "help.get_in_touch_btn": "Get In Touch",
         "help.chat_with_tutora": "Chat with Tutora", "profile.manage_account": "Manage Your Account", "profile.my_tickets": "My Tickets", "profile.saved_treasures": "Saved Treasures", "profile.ai_history": "AI History", "profile.admin_dashboard": "Admin Dashboard", "profile.settings": "Settings", "profile.logout": "Logout", "profile.verified": "Verified", "profile.pharaonic_historian": "Pharaonic Historian", "profile.joined": "Joined December 2022", "profile.edit_profile": "Edit Profile", "profile.share_status": "Share Status", "profile.guardian_avatars": "Guardian Avatars", "profile.upcoming_visits": "Upcoming Visits", "profile.view_all_history": "View All History", "profile.general_admission": "General Admission", "profile.museum_entry": "Grand Egyptian Museum Entry", "profile.main_hall": "Main Hall & Tutankhamun Gallery", "profile.date": "Date", "profile.time": "Time", "profile.view_ticket": "VIEW TICKET", "profile.explorer_stats": "Explorer Stats", "profile.artifacts_viewed": "Artifacts Viewed", "profile.exhibitions_toured": "Exhibitions Toured", "profile.view_leaderboard": "View Leaderboard", "profile.recently_viewed": "Recently Viewed Artifacts", "profile.explore_all": "Explore All", "profile.view_more": "View More", "profile.full_history": "Your Full History", "profile.title": "TUTORA Profile | Manage Your Account",
         "cart.title": "Your Cart",
+        "cart.subtitle": "Review your selected royal treasures before proceeding to checkout.",
         "cart.order_summary": "Order Summary",
         "cart.subtotal": "Subtotal",
         "cart.total": "Total",
@@ -1806,6 +1809,9 @@
             "nav.favorites": "Favorites",
             "nav.language": "Language",
             "nav.search": "Search...",
+            "nav.profile": "Profile",
+            "nav.settings": "Settings",
+            "nav.logout": "Logout",
 
             // ── Hero ──
             "hero.discover": "Discover",
@@ -2399,6 +2405,8 @@
 
         },
         ar: {
+        "cart-badge": "السلة",
+        "profile menu": "الحساب",
         "acc.hero_title": "التميز <br><span class=\"gold-text\">الشامل</span>",
         "acc.hero_sub": "ملاذ التراث، متاح لجميع الأرواح",
         "acc.badge_elevation": "ارتقاء سلس",
@@ -4198,6 +4206,9 @@
             "nav.favorites": "المفضلة",
             "nav.language": "اللغة",
             "nav.search": "بحث...",
+            "nav.profile": "الملف الشخصي",
+            "nav.settings": "الإعدادات",
+            "nav.logout": "تسجيل الخروج",
 
             // ── البطل ──
             "hero.discover": "اكتشف",
