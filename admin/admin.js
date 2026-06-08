@@ -37,6 +37,15 @@ const CONFIG = {
 };
 
 // ─── UTILITIES & NOTIFICATIONS ───
+window.parseSafeDate = function(d) {
+    if (!d) return new Date();
+    let parsed = new Date(d);
+    if (isNaN(parsed.getTime()) && typeof d === 'string') {
+        parsed = new Date(d.replace(/-/g, '/').replace('T', ' '));
+    }
+    return isNaN(parsed.getTime()) ? new Date() : parsed;
+};
+
 const getToken = () => localStorage.getItem('token');
 
 const notify = {
@@ -199,7 +208,7 @@ const renderers = {
                         </div>
                     </div>
                 </td>
-                <td>${new Date(item.date).toLocaleDateString()}</td>
+                <td>${parseSafeDate(item.date).toLocaleDateString()}</td>
                 <td>
                     <div style="max-width:200px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${item.description}">
                         ${item.description}
@@ -221,7 +230,7 @@ const renderers = {
         tbody.innerHTML = state.videos.map(item => `
             <tr class="fade-in">
                 <td><span class="gold-text">${item.title || 'Artifact Video'}</span></td>
-                <td>${new Date(item.createdAt || Date.now()).toLocaleDateString()}</td>
+                <td>${parseSafeDate(item.createdAt || Date.now()).toLocaleDateString()}</td>
                 <td><p class="table-desc">${item.url || ''}</p></td>
                 <td>
                     <button class="btn-delete" onclick="app.deleteItem('videos', '${item._id}')" title="Delete"><span class="material-symbols-outlined">delete</span></button>
@@ -237,7 +246,7 @@ const renderers = {
         tbody.innerHTML = state.bookings.map(item => `
             <tr class="fade-in">
                 <td><strong>${item.user?.name || 'Guest'}</strong><br><small>${item.user?.email || ''}</small></td>
-                <td>${new Date(item.visitDate).toLocaleDateString()}</td>
+                <td>${parseSafeDate(item.visitDate).toLocaleDateString()}</td>
                 <td>${item.nationalityType || 'N/A'}</td>
                 <td class="gold-text">£${item.total || 0}</td>
                 <td><span class="status-badge ${(item.paymentStatus || item.status || 'pending').toLowerCase()}">${item.paymentStatus || item.status || 'Pending'}</span></td>
@@ -396,7 +405,7 @@ window.app = {
             return notify.error('No booking data to export.');
         }
         const csv = 'Guest,Date,Nationality,Total,Status\n' + state.bookings.map(b => 
-            `"${b.user?.name || 'N/A'}",${new Date(b.visitDate).toLocaleDateString()},${b.nationalityType},${b.total},${b.paymentStatus || b.status || 'Pending'}`
+            `"${b.user?.name || 'N/A'}",${parseSafeDate(b.visitDate).toLocaleDateString()},${b.nationalityType},${b.total},${b.paymentStatus || b.status || 'Pending'}`
         ).join('\n');
         
         const a = document.createElement('a');
@@ -456,7 +465,7 @@ window.app = {
                 <td>${u.email}</td>
                 <td><span class="role-badge ${u.role}">${u.role}</span></td>
                 <td><span class="status-badge ${u.isBanned ? 'banned' : 'active'}">${u.isBanned ? '🚫 Banned' : '✅ Active'}</span></td>
-                <td>${new Date(u.createdAt).toLocaleDateString()}</td>
+                <td>${parseSafeDate(u.createdAt).toLocaleDateString()}</td>
                 <td>
                     <div class="table-actions">
                         <button class="btn-edit" onclick="app.toggleBanUser('${u._id}')" title="${u.isBanned ? 'Unban' : 'Ban'}">
@@ -530,7 +539,7 @@ window.app = {
                 <td><strong>${c.user?.name || 'Unknown'}</strong><br><small>${c.user?.email || ''}</small></td>
                 <td><p class="table-desc">${c.question || ''}</p></td>
                 <td><p class="table-desc">${(c.answer || '').substring(0, 120)}...</p></td>
-                <td>${new Date(c.createdAt).toLocaleDateString()}</td>
+                <td>${parseSafeDate(c.createdAt).toLocaleDateString()}</td>
                 <td>
                     <button class="btn-delete" onclick="app.deleteChat('${c._id}')" title="Delete">
                         <span class="material-symbols-outlined">delete</span>
@@ -559,7 +568,7 @@ window.app = {
                 <td><span class="gold-text">${d.imageName || 'N/A'}</span></td>
                 <td>${d.details?.artifact_name || d.detectedArtifact || 'Unknown'}</td>
                 <td><span class="confidence-badge">${(d.confidence || 0).toFixed(1)}%</span></td>
-                <td>${new Date(d.createdAt).toLocaleDateString()}</td>
+                <td>${parseSafeDate(d.createdAt).toLocaleDateString()}</td>
             </tr>
         `).join('');
 
@@ -712,7 +721,7 @@ window.app = {
                 <td><span class="action-badge">${(log.action || '').replace(/_/g, ' ')}</span></td>
                 <td>${log.targetModel || ''} <small>${log.targetId ? '#' + String(log.targetId).slice(-6) : ''}</small></td>
                 <td><p class="table-desc">${JSON.stringify(log.details || {}).substring(0, 80)}</p></td>
-                <td>${new Date(log.createdAt).toLocaleString()}</td>
+                <td>${parseSafeDate(log.createdAt).toLocaleString()}</td>
             </tr>
         `).join('');
 
@@ -761,7 +770,7 @@ window.app = {
                 <td><p class="table-desc">${n.message}</p></td>
                 <td><span class="type-badge ${n.type}">${n.type}</span></td>
                 <td>${n.recipient?.name || '<em>📢 Broadcast</em>'}</td>
-                <td>${new Date(n.createdAt).toLocaleString()}</td>
+                <td>${parseSafeDate(n.createdAt).toLocaleString()}</td>
             </tr>
         `).join('');
 
@@ -779,7 +788,7 @@ window.app = {
             document.getElementById('eventCategory').value = item.category || 'Exhibitions';
             document.getElementById('eventDesc').value = item.description || '';
             if (item.date) {
-                const dateObj = new Date(item.date);
+                const dateObj = parseSafeDate(item.date);
                 const localStr = new Date(dateObj.getTime() - dateObj.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
                 document.getElementById('eventDate').value = localStr;
             }
