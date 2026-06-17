@@ -4679,3 +4679,33 @@ html[dir="rtl"] .location-title::after {
 html[dir="rtl"] .narrative-text {
     text-align: right;
 }
+
+/* =========================================================
+   👑 QUICK FIXES (ABOUT US) 👑
+   ========================================================= */
+
+/* Fix Navbar Z-Index and Size */
+.header {
+    z-index: 1000 !important;
+    height: 65px !important;
+    display: block !important;
+}
+.header-container {
+    padding: 0 1.5rem !important;
+    margin: 0 auto !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+@media (max-width: 768px) {
+    .header {
+        height: 60px !important;
+    }
+}
+.logo-section {
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+    display: flex !important;
+}

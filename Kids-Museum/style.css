@@ -2266,8 +2266,8 @@ body.light .badge-new {
 /* ========== PHARAOH'S QUIZ (FLIP CARDS) ========== */
 .flip-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
     padding: 2rem 0;
 }
 
@@ -2366,8 +2366,8 @@ body.light .badge-new {
 
 .sandpit-layer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
     position: relative;
     z-index: 1;
 }
@@ -2457,8 +2457,8 @@ body.light .badge-new {
 
 .board-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
 .board-note {
@@ -5926,4 +5926,42 @@ body.light .artifact-badge {
         flex: 0 0 auto !important;
         gap: 0rem !important;
     }
+}
+
+/* =========================================================
+   👑 QUICK FIXES (KIDS MUSEUM) 👑
+   ========================================================= */
+
+/* Fix Navbar Z-Index and Size */
+.header {
+    z-index: 1000 !important;
+    height: 75px !important;
+    display: block !important;
+}
+.header-container {
+    padding: 0 1.5rem !important;
+    margin: 0 auto !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+@media (max-width: 768px) {
+    .header {
+        height: 60px !important;
+        padding: 0 1rem !important;
+    }
+}
+.logo-section {
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+    display: flex !important;
+}
+
+/* Reduce Quiz Questions Font Size */
+.flip-card-front h3 {
+    font-size: 1.15rem !important;
+    line-height: 1.4 !important;
+    margin-top: 0.5rem !important;
 }

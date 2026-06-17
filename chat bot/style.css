@@ -519,7 +519,8 @@ body.light .menu-link {
         justify-content: space-between;
     }
     .logo-text {
-        display: none; /* Hide text to save space */
+        display: block; /* Show text */
+        font-size: 1.2rem;
     }
     .logo-circle {
         width: 32px !important;

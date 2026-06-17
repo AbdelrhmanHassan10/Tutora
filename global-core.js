@@ -692,7 +692,9 @@ function injectMobileLang() {
     profileDropdowns.forEach(dropdown => {
         // Only target dropdowns that have Settings or Logout to ensure it's a Profile dropdown
         const isProfileMenu = Array.from(dropdown.children).some(el => el.textContent.includes('Settings') || el.textContent.includes('Logout') || el.textContent.includes('الإعدادات'));
-        if (isProfileMenu && !dropdown.querySelector('.mobile-lang-item')) {
+        const hasLangAlready = Array.from(dropdown.children).some(el => el.textContent.includes('Language') || el.textContent.includes('اللغة') || el.id === 'menuLangBtn');
+        
+        if (isProfileMenu && !dropdown.querySelector('.mobile-lang-item') && !hasLangAlready) {
             const langItem = document.createElement('a');
             langItem.href = '#';
             langItem.className = 'dropdown-link dropdown-item mobile-lang-item';

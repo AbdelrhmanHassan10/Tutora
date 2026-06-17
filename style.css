@@ -761,91 +761,45 @@ a:focus {
 /* Mobile (480px - 768px) */
 
 @media (max-width: 768px) {
-    .header {
-        padding: 0.5rem 0.75rem !important;
-        background: #000 !important;
-        border-bottom: 1px solid rgba(236, 182, 19, 0.2) !important;
+    .glass-header {
+        padding: 0.8rem 1rem !important;
+        background: rgba(10, 10, 10, 0.9) !important;
     }
     
-    .header-container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
+    .header-inner {
         width: 100% !important;
-        gap: 0.25rem !important;
-        padding: 0 !important;
     }
     
-    .header-left {
-        display: flex !important;
-        align-items: center !important;
-        gap: 0.5rem !important;
-        flex: none !important;
-    }
-    
-    .menu-btn {
-        display: flex !important;
-        width: 40px !important;
-        height: 40px !important;
-        justify-content: center !important;
-        align-items: center !important;
-        color: #ECB613 !important;
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-    }
-
     .logo-section {
         display: flex !important;
         align-items: center !important;
         gap: 0.5rem !important;
     }
     
-    .logo-circle {
-        width: 32px !important;
-        height: 32px !important;
-        border: 1px solid #ECB613 !important;
-        background: #fff !important;
-    }
-    
-    .logo-text {
-        font-size: 1.1rem !important;
-        font-family: "Cinzel", serif !important;
-        font-weight: 700 !important;
-        letter-spacing: 2px !important;
-        text-transform: uppercase !important;
-        color: #ECB613 !important;
-        margin: 0 !important;
-    }
-    
-    .header-right {
-        display: flex !important;
-        align-items: center !important;
-        gap: 0.25rem !important;
-        flex: none !important;
-    }
-    
-    .theme-btn, .icon-btn {
-        display: flex !important;
+    .logo-container {
         width: 36px !important;
         height: 36px !important;
-        justify-content: center !important;
+    }
+    
+    .brand-name {
+        font-size: 1.2rem !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .header-actions {
+        display: flex !important;
         align-items: center !important;
-        background: transparent !important;
-        border: none !important;
-        color: #fff !important;
+        gap: 0.5rem !important;
     }
     
-    .theme-btn span, .icon-btn span {
+    .nav-login-btn {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .lang-switch-btn {
+        margin-right: 5px !important;
         font-size: 1.4rem !important;
-    }
-    
-    .profile-img {
-        width: 34px !important;
-        height: 34px !important;
-        border-radius: 50% !important;
-        border: 2px solid #ECB613 !important;
-        object-fit: cover !important;
     }
 
     /* Dropdowns Open Always */

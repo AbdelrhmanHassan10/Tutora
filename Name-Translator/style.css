@@ -769,32 +769,117 @@ html:not(.dark) .dropdown-link:hover {
 /* Mobile (480px - 768px) */
 
 @media (max-width: 768px) {
-    .menu-btn {
+    .header {
+        padding: 0.6rem 0.8rem !important;
+        background: #000 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-bottom: 1px solid rgba(236, 182, 19, 0.2) !important;
+    }
+    .header-container {
+        padding: 0 !important;
         display: flex;
-    }
-    .desktop-nav {
-        display: none;
-    }
-    .search-box,
-    .search-btn {
-        display: none !important;
-    }
-    .header-right {
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
         gap: 0.5rem;
     }
-    .btn-booking {
-        display: none;
-    }
     .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem !important;
         flex: 1;
     }
+    .menu-btn {
+        display: flex !important;
+        color: #ecb613 !important;
+        font-size: 1.8rem !important;
+    }
+    .logo-section {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.6rem !important;
+    }
+    .logo-circle {
+        width: 42px !important;
+        height: 42px !important;
+        box-shadow: 0 0 15px rgba(236, 182, 19, 0.4) !important;
+        border: 1px solid #ecb613 !important;
+    }
+    .logo-text {
+        font-family: 'Cinzel', serif !important;
+        font-size: 1.1rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 3px !important;
+        color: #fff !important;
+        text-transform: uppercase !important;
+        margin-top: 2px !important;
+    }
     .header-right {
-        flex: 0;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.8rem !important;
+        flex: 0 0 auto !important;
+    }
+    .header-right .icon-btn, 
+    .header-right .theme-btn {
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0 !important;
+        color: #fff !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .header-right .material-symbols-outlined {
+        font-size: 1.35rem !important;
+    }
+    .lang-btn-responsive {
+        display: none !important;
     }
     .profile-img {
-        width: 36px;
-        height: 36px;
+        width: 36px !important;
+        height: 36px !important;
+        border: 2px solid #ecb613 !important;
     }
+    .desktop-nav, .search-box, .btn-booking {
+        display: none !important;
+    }
+    
+    /* Mobile Booking Icon (Option 2) */
+    .btn-booking {
+        display: flex !important;
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0 !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: #ECB613 !important;
+        border-radius: 50% !important;
+        color: #000 !important;
+        min-width: auto !important;
+        box-shadow: 0 4px 12px rgba(236, 182, 19, 0.3) !important;
+    }
+    .btn-booking .booking-text {
+        display: none !important;
+    }
+    .btn-booking .booking-icon {
+        display: block !important;
+        font-size: 20px !important;
+    }
+    body.light .btn-booking {
+        background: #ECB613 !important;
+        color: #fff !important;
+    }
+    body.light .header {
+        background: #fff !important;
+        border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    body.light .theme-btn, body.light .icon-btn {
+        color: #333 !important;
+    }
+    
     /* Auto-expand dropdown on mobile */
     .dropdown-items {
         max-height: 600px !important;
@@ -805,43 +890,10 @@ html:not(.dark) .dropdown-link:hover {
     }
 }
 
-
 /* Small Mobile (< 480px) */
-
 @media (max-width: 480px) {
-    .header {
-        padding: 0.75rem 1rem;
-    }
-    .header-container {
-        gap: 0.5rem;
-    }
-    .logo-text {
-        font-size: 1rem;
-    }
-    .menu-btn {
-        width: 36px;
-        height: 36px;
-    }
-    .theme-btn,
-    .icon-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 1.1rem;
-    }
-    .profile-img {
-        width: 32px;
-        height: 32px;
-    }
     .mobile-menu {
         max-width: 100%;
-    }
-    /* Auto-expand dropdown on mobile */
-    .dropdown-items {
-        max-height: 600px !important;
-        opacity: 1 !important;
-    }
-    .dropdown-toggle {
-        cursor: default;
     }
 }
 
@@ -1187,6 +1239,8 @@ body.light .display-section {
 .hieroglyph-display {
     font-family: var(--font-serif);
     font-size: 4rem;
+    word-wrap: break-word;
+    word-break: break-word;
     letter-spacing: 0.3em;
     color: var(--accent-primary);
     filter: drop-shadow(0 0 20px rgba(236, 182, 19, 0.4));
@@ -4836,4 +4890,435 @@ body.light .phonetic-text,
 body.light .radio-label,
 body.light .hieroglyph-display {
     color: var(--text-primary) !important;
+}
+
+/* =========================================================
+   👑 ULTRA PREMIUM DYNAMIC REDESIGN (APPENDED) 👑
+   ========================================================= */
+
+/* 1. Animated Background Orbs for Main Content */
+.main-content {
+    position: relative;
+    overflow: hidden;
+}
+.main-content::before,
+.main-content::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(150px);
+    z-index: 0;
+    pointer-events: none;
+    animation: floatGlow 15s ease-in-out infinite alternate;
+}
+.main-content::before {
+    background: radial-gradient(circle, rgba(236,182,19,0.15) 0%, transparent 70%);
+    top: -10%;
+    left: -10%;
+}
+.main-content::after {
+    background: radial-gradient(circle, rgba(236,182,19,0.1) 0%, transparent 70%);
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -7s;
+}
+
+@keyframes floatGlow {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(100px, 50px) scale(1.2); }
+}
+
+/* Ensure foreground content is above orbs */
+.hero-section, .main-card, .footer-context {
+    position: relative;
+    z-index: 5;
+}
+
+/* Fix Navbar Z-Index to always stay on top */
+.header {
+    z-index: 1000 !important;
+}
+
+/* 2. Hero Section Refinements */
+.hero-section {
+    padding-top: 150px !important;
+}
+.hero-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.hero-label {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(236, 182, 19, 0.1);
+    border: 1px solid rgba(236, 182, 19, 0.3);
+    border-radius: 50px;
+    color: #ECB613 !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(236, 182, 19, 0.2);
+}
+.hero-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: clamp(3rem, 6vw, 5.5rem) !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    background: linear-gradient(135deg, #ffffff 0%, #ecb613 50%, #ffffff 100%) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: shimmerText 5s linear infinite !important;
+    text-shadow: 0 15px 35px rgba(0,0,0,0.8) !important;
+    margin-bottom: 1.5rem !important;
+}
+
+@keyframes shimmerText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.hero-description {
+    font-size: 1.15rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* 3. Glassmorphism Main Card */
+.main-card {
+    background: rgba(15, 15, 15, 0.5) !important;
+    backdrop-filter: blur(25px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(150%) !important;
+    border: 1px solid rgba(236, 182, 19, 0.15) !important;
+    border-radius: 24px !important;
+    padding: 3rem !important;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.6), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.05), 
+        inset 0 0 20px rgba(236, 182, 19, 0.02) !important;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.main-card:hover {
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.8), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1), 
+        inset 0 0 30px rgba(236, 182, 19, 0.05) !important;
+    border-color: rgba(236, 182, 19, 0.3) !important;
+}
+
+/* 4. Layout of Card Content */
+.card-content {
+    display: grid !important;
+    grid-template-columns: 1fr 1.2fr !important;
+    gap: 4rem !important;
+    align-items: center !important;
+}
+@media (max-width: 992px) {
+    .card-content {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+}
+
+/* 5. Input Section (Left) */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.artifact-header {
+    margin-bottom: 0.5rem;
+}
+.artifact-header .hero-label {
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+    background: transparent;
+    border-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5) !important;
+    box-shadow: none !important;
+}
+.artifact-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: 1.5rem !important;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+}
+
+/* Premium Input Field */
+.input-group {
+    position: relative;
+    width: 100%;
+}
+.input-field {
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 1rem 0 !important;
+    font-size: 1.5rem !important;
+    color: #ecb613 !important;
+    font-family: 'Cinzel', serif !important;
+    transition: all 0.3s ease !important;
+    border-radius: 0 !important;
+}
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.2) !important;
+}
+.input-field:focus {
+    outline: none !important;
+    border-bottom-color: #ecb613 !important;
+    box-shadow: 0 10px 20px -10px rgba(236, 182, 19, 0.3) !important;
+}
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ecb613;
+    transition: width 0.4s ease;
+}
+.input-field:focus ~ .input-line {
+    width: 100%;
+}
+
+/* Custom Radio Buttons */
+.style-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 2px !important;
+    transition: color 0.3s ease;
+}
+.radio-label:hover {
+    color: #fff !important;
+}
+.radio-input {
+    display: none !important;
+}
+.radio-custom {
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    position: relative;
+    transition: all 0.3s ease !important;
+}
+.radio-input:checked + .radio-custom {
+    border-color: #ecb613 !important;
+    box-shadow: 0 0 15px rgba(236, 182, 19, 0.4) !important;
+}
+.radio-input:checked + .radio-custom::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 10px;
+    height: 10px;
+    background: #ecb613;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ecb613;
+}
+.radio-input:checked ~ span {
+    color: #ecb613 !important;
+    font-weight: 700;
+}
+
+/* Dynamic Gold Button */
+.btn-action-gold {
+    background: linear-gradient(45deg, #b8860b, #ffd700, #b8860b) !important;
+    background-size: 200% 200% !important;
+    border: none !important;
+    color: #000 !important;
+    font-family: 'Cinzel', serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 3px !important;
+    padding: 1.2rem 2rem !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.4s ease !important;
+    box-shadow: 0 10px 20px rgba(236, 182, 19, 0.3) !important;
+    animation: gradientFlow 3s ease infinite !important;
+    text-transform: uppercase !important;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.btn-action-gold:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(236, 182, 19, 0.5) !important;
+    letter-spacing: 4px !important;
+}
+
+/* 6. Display Section (Right) */
+.display-section {
+    position: relative;
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.display-frame {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(236, 182, 19, 0.2) !important;
+    border-radius: 16px !important;
+    padding: 3rem 2rem !important;
+    width: 100%;
+    position: relative;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.8) !important;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+.display-frame:hover {
+    border-color: rgba(236, 182, 19, 0.5) !important;
+    box-shadow: inset 0 0 80px rgba(0,0,0,0.9), 0 0 30px rgba(236, 182, 19, 0.1) !important;
+}
+
+/* Hieroglyphs Display */
+.hieroglyph-display {
+    font-size: clamp(3rem, 5vw, 5rem) !important;
+    color: #ecb613 !important;
+    text-align: center !important;
+    text-shadow: 0 0 20px rgba(236, 182, 19, 0.6), 0 0 40px rgba(236, 182, 19, 0.2) !important;
+    margin: 3rem 0 !important;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 15px !important;
+    word-break: break-word;
+    animation: floatSlow 4s ease-in-out infinite alternate !important;
+}
+@keyframes floatSlow {
+    0% { transform: translateY(-5px); text-shadow: 0 0 15px rgba(236, 182, 19, 0.4); }
+    100% { transform: translateY(5px); text-shadow: 0 0 30px rgba(236, 182, 19, 0.8), 0 0 60px rgba(236, 182, 19, 0.3); }
+}
+
+/* Phonetic Text */
+.phonetic-section {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+}
+.phonetic-label {
+    display: block;
+    color: rgba(255, 255, 255, 0.4) !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 4px !important;
+    margin-bottom: 0.5rem;
+}
+.phonetic-text {
+    font-family: 'Cinzel', serif !important;
+    font-style: italic !important;
+    font-size: 1.8rem !important;
+    color: #fff !important;
+    letter-spacing: 3px !important;
+}
+
+/* Actions Row */
+.actions-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.action-btn {
+    background: transparent !important;
+    border: 1px solid rgba(236, 182, 19, 0.3) !important;
+    color: #ecb613 !important;
+    width: 45px !important;
+    height: 45px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+.action-btn:hover {
+    background: rgba(236, 182, 19, 0.15) !important;
+    border-color: #ecb613 !important;
+    transform: translateY(-3px) scale(1.1) !important;
+    box-shadow: 0 5px 15px rgba(236, 182, 19, 0.2) !important;
+}
+
+/* Light Mode Overrides for these specific elements */
+body.light .main-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(142, 115, 65, 0.3) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1) !important;
+}
+body.light .hero-title {
+    background: linear-gradient(135deg, #8e7341 0%, #d4af37 50%, #8e7341 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+}
+body.light .hero-description {
+    color: #555 !important;
+}
+body.light .hero-label {
+    background: rgba(142, 115, 65, 0.1) !important;
+    border-color: rgba(142, 115, 65, 0.3) !important;
+    color: #8e7341 !important;
+}
+body.light .input-field {
+    color: #8e7341 !important;
+    border-bottom-color: rgba(0,0,0,0.1) !important;
+}
+body.light .radio-label, body.light .artifact-title, body.light .phonetic-text {
+    color: #333 !important;
+}
+body.light .display-frame {
+    background: rgba(250, 245, 235, 0.9) !important;
+    border-color: rgba(142, 115, 65, 0.2) !important;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.05) !important;
+}
+body.light .hieroglyph-display {
+    color: #8e7341 !important;
+    text-shadow: 0 0 15px rgba(142, 115, 65, 0.3) !important;
+}
+body.light .phonetic-label {
+    color: #888 !important;
+}
+body.light .action-btn {
+    border-color: rgba(142, 115, 65, 0.3) !important;
+    color: #8e7341 !important;
+}
+body.light .action-btn:hover {
+    background: rgba(142, 115, 65, 0.1) !important;
+    border-color: #8e7341 !important;
+}
+
+/* Fix Navbar Size and Logo Alignment */
+@media (min-width: 768px) {
+    .header {
+        padding: 0.8rem 1.5rem !important;
+    }
+}
+.logo-section {
+    margin-bottom: 0 !important;
+    align-items: center !important;
 }

@@ -3215,3 +3215,281 @@ body.light .copyright {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* =========================================================
+   👑 ULTRA PREMIUM DYNAMIC REDESIGN (PHARAOH TRANSFORMER) 👑
+   ========================================================= */
+
+/* 1. Animated Background Orbs */
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(150px);
+    z-index: -1;
+    pointer-events: none;
+    animation: floatGlow 15s ease-in-out infinite alternate;
+}
+body::before {
+    background: radial-gradient(circle, rgba(236,182,19,0.15) 0%, transparent 70%);
+    top: -10%;
+    left: -10%;
+}
+body::after {
+    background: radial-gradient(circle, rgba(236,182,19,0.1) 0%, transparent 70%);
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -7s;
+}
+
+@keyframes floatGlow {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(100px, 50px) scale(1.2); }
+}
+
+/* Ensure foreground content is above orbs */
+.container, .hero-section, .tool-grid {
+    position: relative;
+    z-index: 10;
+}
+
+/* Fix Navbar Z-Index and Size */
+.header {
+    z-index: 1000 !important;
+    height: 75px !important;
+    display: block !important;
+}
+.header-container {
+    padding: 0 1.5rem !important;
+    margin: 0 auto !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+@media (max-width: 768px) {
+    .header {
+        height: 60px !important;
+        padding: 0 1rem !important;
+    }
+}
+.logo-section {
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+    display: flex !important;
+}
+
+/* 2. Hero Section Refinements */
+.hero-section {
+    padding-top: 150px !important;
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+.hero-label {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(236, 182, 19, 0.1);
+    border: 1px solid rgba(236, 182, 19, 0.3);
+    border-radius: 50px;
+    color: #ECB613 !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(236, 182, 19, 0.2);
+}
+.hero-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: clamp(3rem, 6vw, 5.5rem) !important;
+    font-weight: 900 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    background: linear-gradient(135deg, #ffffff 0%, #ecb613 50%, #ffffff 100%) !important;
+    background-size: 200% auto !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: shimmerText 5s linear infinite !important;
+    text-shadow: 0 15px 35px rgba(0,0,0,0.8) !important;
+    margin: 1rem 0 !important;
+}
+.gold-text-span {
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+@keyframes shimmerText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.hero-description {
+    font-size: 1.15rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* 3. Glassmorphism Cards */
+.artifact-frame, .preview-container {
+    background: rgba(15, 15, 15, 0.5) !important;
+    backdrop-filter: blur(25px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(150%) !important;
+    border: 1px solid rgba(236, 182, 19, 0.15) !important;
+    border-radius: 24px !important;
+    padding: 3rem !important;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.6), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.05), 
+        inset 0 0 20px rgba(236, 182, 19, 0.02) !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.artifact-frame:hover, .preview-container:hover {
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.8), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1), 
+        inset 0 0 30px rgba(236, 182, 19, 0.05) !important;
+    border-color: rgba(236, 182, 19, 0.3) !important;
+}
+
+/* 4. Layout */
+.tool-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1.2fr !important;
+    gap: 4rem !important;
+    align-items: start !important;
+    margin-top: 2rem;
+}
+@media (max-width: 992px) {
+    .tool-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+}
+
+/* 5. Upload Zone & Buttons */
+.upload-zone {
+    border: 2px dashed rgba(236, 182, 19, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 3rem 2rem !important;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0,0,0,0.3) !important;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+.upload-zone:hover {
+    border-color: #ecb613 !important;
+    background: rgba(236, 182, 19, 0.05) !important;
+    box-shadow: 0 0 25px rgba(236, 182, 19, 0.15) !important;
+    transform: translateY(-2px);
+}
+.upload-icon {
+    font-size: 3rem !important;
+    color: #ecb613 !important;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+.upload-zone:hover .upload-icon {
+    transform: scale(1.1);
+}
+.upload-title {
+    font-family: 'Cinzel', serif !important;
+    color: #fff !important;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+.upload-status {
+    color: rgba(255,255,255,0.5) !important;
+    font-size: 0.9rem;
+}
+
+.transform-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.format-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
+
+.transform-btn {
+    background: linear-gradient(45deg, #b8860b, #ffd700, #b8860b) !important;
+    background-size: 200% 200% !important;
+    border: none !important;
+    color: #000 !important;
+    font-family: 'Cinzel', serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 3px !important;
+    padding: 1.2rem 2rem !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.4s ease !important;
+    box-shadow: 0 10px 20px rgba(236, 182, 19, 0.3) !important;
+    animation: gradientFlow 3s ease infinite !important;
+    text-transform: uppercase !important;
+    width: 100%;
+}
+.transform-btn:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(236, 182, 19, 0.5) !important;
+    letter-spacing: 4px !important;
+}
+
+/* 6. Display Panel */
+.preview-img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.5s ease;
+    object-fit: cover;
+}
+.preview-img:hover {
+    transform: scale(1.02);
+}
+
+/* Light Mode Overrides */
+body.light .artifact-frame, body.light .preview-container {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(142, 115, 65, 0.3) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1) !important;
+}
+body.light .hero-title {
+    background: linear-gradient(135deg, #8e7341 0%, #d4af37 50%, #8e7341 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+}
+body.light .hero-description { color: #555 !important; }
+body.light .hero-label {
+    background: rgba(142, 115, 65, 0.1) !important;
+    border-color: rgba(142, 115, 65, 0.3) !important;
+    color: #8e7341 !important;
+}
+body.light .upload-zone {
+    background: rgba(255,255,255,0.5) !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+body.light .upload-title { color: #333 !important; }
+body.light .upload-status, body.light .format-info { color: #666 !important; border-color: rgba(0,0,0,0.1); }

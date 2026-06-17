@@ -136,13 +136,29 @@ body {
 }
 
 .nav-actions {
-    display: flex;
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    display: flex !important; /* Force display even on mobile */
     align-items: center;
-    gap: 1.5rem;
-    animation: floatActions 5s infinite ease-in-out;
+    gap: 0.8rem;
+    color: #ffffff; /* Explicit color so language icon is visible */
+    background: rgba(15, 18, 22, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    padding: 0.4rem 0.4rem 0.4rem 1rem;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
-.nav-actions span {
+.nav-actions:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.nav-actions span.hidden-mobile {
     color: var(--text-gray);
     font-size: 0.95rem;
     letter-spacing: 1px;
@@ -153,25 +169,20 @@ body {
     animation: shineText 6s linear infinite;
 }
 
-@keyframes floatActions {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
 @keyframes shineText {
     0% { background-position: 0% center; }
     100% { background-position: 200% center; }
 }
 
 .login-link-btn {
-    color: var(--primary);
+    color: var(--bg-dark);
     text-decoration: none;
-    font-weight: 600;
-    padding: 0.8rem 1.8rem;
-    border: 1px solid var(--primary);
+    font-weight: 700;
+    padding: 0.6rem 1.5rem;
+    border: none;
     border-radius: 50px;
+    background: var(--primary);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: rgba(212, 175, 55, 0.05);
     position: relative;
     overflow: hidden;
 }
@@ -183,7 +194,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
     transition: 0.5s;
 }
 
@@ -192,10 +203,8 @@ body {
 }
 
 .login-link-btn:hover {
-    background: var(--primary);
-    color: var(--bg-dark);
-    box-shadow: 0 0 30px var(--primary-glow);
     transform: scale(1.05);
+    box-shadow: 0 0 15px var(--primary-glow);
 }
 
 /* Layout */
@@ -778,7 +787,9 @@ body {
         margin: 0 !important;
     }
     .nav-actions {
-        display: none; /* Hide redundant Sign Up at top on mobile */
+        top: 1rem !important;
+        right: 1rem !important;
+        /* Keep visible on mobile for the language toggle */
     }
     .hero-panel {
         display: none !important;

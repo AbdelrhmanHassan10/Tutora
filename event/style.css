@@ -1335,29 +1335,27 @@ body.light .filter-bar {
 @media (max-width: 768px) {
     .filter-bar {
         top: 64px; /* Smaller header on mobile */
+        padding: 0 1.5rem;
     }
 
     .filter-tabs {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding: 0.5rem 1.5rem 1rem;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        /* Visual indicator for more items */
-        mask-image: linear-gradient(to right, black 80%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
-    }
-    
-    .filter-tabs::-webkit-scrollbar {
-        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 0.75rem;
+        border-radius: 15px;
+        mask-image: none;
+        -webkit-mask-image: none;
+        overflow: visible;
+        width: 100%;
     }
 
     .filter-tab {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.8rem;
-        scroll-snap-align: start;
-        flex-shrink: 0;
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+        text-align: center;
+        border-radius: 10px;
+        width: 100%;
     }
 }
 
