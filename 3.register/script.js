@@ -17,7 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (res.ok) {
                 localStorage.setItem('token', data.token);
-                if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+                const userObj = data.data || data.user;
+                if (userObj) {
+                    localStorage.setItem('user', JSON.stringify(userObj));
+                    const avatar = userObj.avatar || userObj.profileImage || userObj.profilePicture;
+                    if (avatar) localStorage.setItem('currentAvatar', avatar);
+                    if (window.sendSystemNotification) {
+                        window.sendSystemNotification('Welcome to the Dynasty!', 'Your lineage has been recorded in the halls of eternity. Welcome to GEM.', 'success', userObj.email);
+                    }
+                }
                 
                 showPremiumToast('Welcome to the Dynasty! Entering the Sanctuary...', 'success');
                 
@@ -257,6 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             
             if (response.ok) {
+                if (window.sendSystemNotification) {
+                    window.sendSystemNotification('Welcome to the Dynasty!', 'Your lineage has been recorded in the halls of eternity. Welcome to GEM.', 'success', inputs.email.value.trim());
+                }
                 // Royal Success Sequence
                 submitBtn.innerHTML = '<span>Journey Authenticated</span>';
                 submitBtn.style.background = 'var(--success-green)';

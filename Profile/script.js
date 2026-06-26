@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Sync and Display Avatar
-        const avatar = user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar');
+        const avatar = user.avatar || user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar');
         if (avatar) {
             localStorage.setItem('currentAvatar', avatar);
             if (window.syncGlobalAvatar) window.syncGlobalAvatar();
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerAvatar = document.querySelector('.user-avatar img');
         
         // Get current avatar (prioritize user specific)
-        const currentAvatar = user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar') || './profile-placeholder.svg';
+        const currentAvatar = user.avatar || user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar') || './profile-placeholder.svg';
         
         // Set active state in collection
         avatarOptions.forEach(option => {
@@ -417,6 +417,125 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Initial positioning
         thumb.style.transition = 'transform 0.1s ease-out';
+    }
+
+    // ============================================
+    // NOTIFICATIONS SYSTEM
+    // ============================================
+    const notifBtn = document.getElementById('notifBtn');
+    const notifDropdown = document.getElementById('notifDropdown');
+    const notifBadge = document.getElementById('notifBadge');
+    const notifList = document.getElementById('notifList');
+    const markAllReadBtn = document.getElementById('markAllReadBtn');
+
+    if (notifBtn && notifDropdown) {
+        // Toggle dropdown
+        notifBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            notifDropdown.classList.toggle('active');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!notifBtn.contains(e.target) && !notifDropdown.contains(e.target)) {
+                notifDropdown.classList.remove('active');
+            }
+        });
+
+        // Prevent closing when clicking inside the dropdown
+        notifDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        const loadNotifications = () => {
+            const localUser = JSON.parse(localStorage.getItem('user') || '{}');
+            const userId = localUser._id;
+            const userEmail = localUser.email;
+            
+            if (!userId) return;
+
+            // Get global notifications
+            const globalNotifs = JSON.parse(localStorage.getItem('gem_global_notifications') || '[]');
+            
+            // Filter notifications meant for this user or broadcasts
+            const myNotifs = globalNotifs.filter(n => {
+                if (!n.recipientId) return true; // broadcast
+                return n.recipientId === userId || n.recipientId === userEmail; // direct
+            });
+
+            // Get read state
+            const readNotifs = JSON.parse(localStorage.getItem(`gem_read_notifications_${userId}`) || '[]');
+            
+            let unreadCount = 0;
+            
+            if (myNotifs.length === 0) {
+                notifList.innerHTML = '<div class="notif-empty">No notifications</div>';
+                notifBadge.style.display = 'none';
+                return;
+            }
+
+            notifList.innerHTML = '';
+            myNotifs.forEach(n => {
+                const isRead = readNotifs.includes(n._id);
+                if (!isRead) unreadCount++;
+
+                const div = document.createElement('div');
+                div.className = `notif-item type-${n.type || 'info'} ${isRead ? 'read' : 'unread'}`;
+                
+                const dateObj = new Date(n.createdAt);
+                const dateStr = dateObj.toLocaleDateString() + ' ' + dateObj.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+                div.innerHTML = `
+                    <div class="notif-item-header">
+                        <span class="notif-title">${n.title}</span>
+                        <span class="notif-date">${dateStr}</span>
+                    </div>
+                    <p class="notif-msg">${n.message}</p>
+                `;
+
+                // Mark specific notification as read
+                div.addEventListener('click', () => {
+                    if (!isRead) {
+                        readNotifs.push(n._id);
+                        localStorage.setItem(`gem_read_notifications_${userId}`, JSON.stringify(readNotifs));
+                        loadNotifications();
+                    }
+                });
+
+                notifList.appendChild(div);
+            });
+
+            if (unreadCount > 0) {
+                notifBadge.textContent = unreadCount > 9 ? '9+' : unreadCount;
+                notifBadge.style.display = 'flex';
+            } else {
+                notifBadge.style.display = 'none';
+            }
+        };
+
+        // Mark all as read
+        if (markAllReadBtn) {
+            markAllReadBtn.addEventListener('click', () => {
+                const localUser = JSON.parse(localStorage.getItem('user') || '{}');
+                const userId = localUser._id;
+                const globalNotifs = JSON.parse(localStorage.getItem('gem_global_notifications') || '[]');
+                const myNotifs = globalNotifs.filter(n => !n.recipientId || n.recipientId === userId || n.recipientId === localUser.email);
+                
+                const allIds = myNotifs.map(n => n._id);
+                localStorage.setItem(`gem_read_notifications_${userId}`, JSON.stringify(allIds));
+                loadNotifications();
+            });
+        }
+
+        // Initialize
+        loadNotifications();
+        
+        // Listen for updates from admin tab
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'gem_global_notifications') {
+                loadNotifications();
+            }
+        });
     }
 });
 

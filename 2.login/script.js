@@ -17,7 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (res.ok) {
                 localStorage.setItem('token', data.token);
-                if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+                const userObj = data.data || data.user;
+                if (userObj) {
+                    localStorage.setItem('user', JSON.stringify(userObj));
+                    const avatar = userObj.avatar || userObj.profileImage || userObj.profilePicture;
+                    if (avatar) localStorage.setItem('currentAvatar', avatar);
+                }
                 
                 showPremiumToast('Welcome Back! Entering the Sanctuary...', 'success');
                 
@@ -201,7 +206,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (response.ok) {
                 localStorage.setItem('token', data.token);
-                if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+                const userObj = data.data || data.user;
+                if (userObj) {
+                    localStorage.setItem('user', JSON.stringify(userObj));
+                    const avatar = userObj.avatar || userObj.profileImage || userObj.profilePicture;
+                    if (avatar) localStorage.setItem('currentAvatar', avatar);
+                }
                 
                 showPremiumToast('Welcome Back! Entering the Sanctuary...', 'success');
                 

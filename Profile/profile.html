@@ -81,10 +81,21 @@
                                              </div>
                             
                                             <div class="header-actions">
-                                                <button class="notification-btn">
-                                                    <span class="material-symbols-outlined">notifications</span>
-                                                    <span class="notification-badge"></span>
-                                                </button>
+                                                <div class="notification-container">
+                                                    <button class="notification-btn" id="notifBtn">
+                                                        <span class="material-symbols-outlined">notifications</span>
+                                                        <span class="notification-badge" id="notifBadge" style="display: none;"></span>
+                                                    </button>
+                                                    <div class="notification-dropdown" id="notifDropdown">
+                                                        <div class="notif-header">
+                                                            <h3>Notifications</h3>
+                                                            <button class="mark-all-read" id="markAllReadBtn">Mark all read</button>
+                                                        </div>
+                                                        <div class="notif-body" id="notifList">
+                                                            <div class="notif-empty">No notifications</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                             
                                                 <div class="divider"></div>
                             

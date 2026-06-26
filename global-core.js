@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    const user = data.user || data;
+                    const user = data.data || data.user || data;
                     
                     // Update Avatar with user-specific logic
-                    let avatar = user.profileImage || user.profilePicture;
+                    let avatar = user.avatar || user.profileImage || user.profilePicture || localStorage.getItem('currentAvatar');
                     
                     // Check user-specific local storage if backend is empty
                     if (!avatar) {
@@ -721,3 +721,25 @@ if (document.readyState === 'loading') {
 } else {
     injectMobileLang();
 }
+
+// ============================================
+// GLOBAL SYSTEM NOTIFICATIONS
+// ============================================
+window.sendSystemNotification = function(title, message, type = 'info', recipientId) {
+    try {
+        const localNotifs = JSON.parse(localStorage.getItem('gem_global_notifications') || '[]');
+        const newNotif = {
+            _id: 'local_sys_' + Date.now() + Math.random().toString(36).substr(2, 9),
+            title,
+            message,
+            type,
+            recipientId,
+            createdAt: new Date().toISOString()
+        };
+        localNotifs.unshift(newNotif);
+        localStorage.setItem('gem_global_notifications', JSON.stringify(localNotifs));
+        window.dispatchEvent(new Event('storage'));
+    } catch(e) {
+        console.error('Failed to dispatch system notification', e);
+    }
+};

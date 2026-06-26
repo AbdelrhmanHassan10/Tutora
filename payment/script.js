@@ -316,6 +316,10 @@
                                 if (typeof updateGlobalCartBadge === 'function') {
                                     updateGlobalCartBadge();
                                 }
+                                
+                                if (window.sendSystemNotification) {
+                                    window.sendSystemNotification('Purchase Successful!', 'Your booking and purchases have been confirmed. Thank you for your royal visit.', 'success', user.email);
+                                }
 
                                 setTimeout(() => {
                                     window.location.href = '../success/success.html';
@@ -328,6 +332,9 @@
                         localStorage.removeItem('currentBooking');
                         if (typeof updateGlobalCartBadge === 'function') {
                             updateGlobalCartBadge();
+                        }
+                        if (window.sendSystemNotification) {
+                            window.sendSystemNotification('Purchase Successful!', 'Your booking and purchases have been confirmed. Thank you for your royal visit.', 'success', user.email);
                         }
                         window.location.href = '../success/success.html';
                     }

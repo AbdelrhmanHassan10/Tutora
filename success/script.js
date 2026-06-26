@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (nameElement) nameElement.textContent = finalUserData.name || "Abdelrhman Hassan";
         if (userGreeting) userGreeting.textContent = (finalUserData.name || "Explorer").split(' ')[0];
         
-        const avatar = finalUserData.profileImage || finalUserData.profilePicture || localStorage.getItem('currentAvatar');
+        const avatar = finalUserData.avatar || finalUserData.profileImage || finalUserData.profilePicture || localStorage.getItem('currentAvatar');
         if (avatar && headerAvatar) headerAvatar.src = avatar;
 
         if (!bookingDataString && !verifiedBooking) {

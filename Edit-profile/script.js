@@ -279,6 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         alert(msg);
                     }
                     
+                    if (window.sendSystemNotification) {
+                        window.sendSystemNotification('Profile Updated', 'Your profile information has been successfully updated.', 'success', email);
+                    }
+                    
                     if (window.syncGlobalAvatar) window.syncGlobalAvatar();
                     
                     setTimeout(() => {

@@ -60,6 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.background = '#10b981'; // Green success
                 btn.style.color = '#fff';
 
+                const userEmail = contactForm.querySelector('input[type="email"]')?.value || JSON.parse(localStorage.getItem('user') || '{}').email;
+                if (window.sendSystemNotification && userEmail) {
+                    window.sendSystemNotification('Message Received', 'We have received your inquiry and will contact you shortly.', 'success', userEmail);
+                }
+
                 setTimeout(() => {
                     btn.textContent = originalText;
                     btn.disabled = false;
@@ -88,6 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.innerHTML = '<span class="material-symbols-outlined">done</span> Welcome!';
                 btn.style.background = '#10b981';
                 
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                const userEmail = emailInput ? emailInput.value : JSON.parse(localStorage.getItem('user') || '{}').email;
+                if (window.sendSystemNotification && userEmail) {
+                    window.sendSystemNotification('Subscribed!', 'Welcome to the Royal Newsletter. You will receive exclusive updates.', 'success', userEmail);
+                }
+
                 setTimeout(() => {
                     btn.textContent = originalText;
                     btn.disabled = false;
