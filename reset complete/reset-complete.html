@@ -7,11 +7,15 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Journey Restored | Tutora</title>
     <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cinzel:wght@400;700;900&display=swap"
+        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="../3.register/style.css">
     <link rel="stylesheet" href="../animate.css" />
     <link rel="stylesheet" href="../global-theme.css" />
+    <link rel="stylesheet" href="../responsive-core.css">
+
     <style>
         .cursor-glow {
             position: fixed;
@@ -23,19 +27,31 @@
             z-index: 0;
             transform: translate(-50%, -50%);
         }
+
         .success-icon {
             font-size: 6rem;
             color: var(--primary);
             filter: drop-shadow(0 0 20px var(--primary-glow));
             animation: successReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
+
         @keyframes successReveal {
-            0% { transform: scale(0.5) rotate(-20deg); opacity: 0; }
-            50% { transform: scale(1.2) rotate(10deg); }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
+            0% {
+                transform: scale(0.5) rotate(-20deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2) rotate(10deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
         }
     </style>
-  <link rel="stylesheet" href="../global-lang.css" />
+    <link rel="stylesheet" href="../global-lang.css" />
 </head>
 
 <body>
@@ -59,7 +75,8 @@
                     <div class="hero-overlay"></div>
                     <div class="hero-content">
                         <h1 class="hero-title">Journey<br>Restored</h1>
-                        <p class="hero-subtitle">The stars have aligned. Your sanctuary is secure once more. Eternity awaits your return.</p>
+                        <p class="hero-subtitle">The stars have aligned. Your sanctuary is secure once more. Eternity
+                            awaits your return.</p>
                     </div>
                 </div>
 
@@ -75,7 +92,8 @@
                                 <div class="form-header" style="margin-bottom: 2.5rem;">
                                     <span class="material-symbols-outlined success-icon">verified</span>
                                     <h1 class="form-title">Success!</h1>
-                                    <p class="form-subtitle">Your password has been successfully restored. You may now enter the museum sanctuary.</p>
+                                    <p class="form-subtitle">Your password has been successfully restored. You may now
+                                        enter the museum sanctuary.</p>
                                 </div>
 
                                 <a href="../2.login/code.html" style="text-decoration: none; width: 100%;">
@@ -95,6 +113,7 @@
     <script src="script.js"></script>
     <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
-<script src="../global-lang.js?v=1780353971499"></script>
+    <script src="../global-lang.js?v=1780353971499"></script>
 </body>
+
 </html>

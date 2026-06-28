@@ -1,23 +1,33 @@
-<!DOCTYPE html><html lang="en"><head>
-     <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts.">
-     <meta charset="utf-8">
-     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-     <title>TUTORA Collection | Explore Museum Artifacts</title>
-     <link rel="icon" type="image/png" href="../museum.png">
-     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="style.css">
-     <link rel="stylesheet" href="../animate.css">
-     <link rel="stylesheet" href="../global-theme.css">
-   <link rel="stylesheet" href="../global-lang.css">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description"
+    content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts.">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>TUTORA Collection | Explore Museum Artifacts</title>
+  <link rel="icon" type="image/png" href="../museum.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../animate.css">
+  <link rel="stylesheet" href="../global-theme.css">
+  <link rel="stylesheet" href="../global-lang.css">
+  <link rel="stylesheet" href="../responsive-core.css">
+
 </head>
- 
- <body class="dark">
-     <!-- -->
-                                 <!-- Mobile Menu Overlay -->
-                                <div class="menu-overlay" id="menuOverlay"></div>
+
+<body class="dark">
+  <!-- -->
+  <!-- Mobile Menu Overlay -->
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
@@ -48,7 +58,8 @@
         <div class="dropdown-items">
           <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
           <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"
+            data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
           <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice
             Storytelling (3D)</a>
           <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
@@ -64,7 +75,8 @@
         </button>
         <div class="dropdown-items">
           <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
-          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
+          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item"
+            data-i18n="nav.exhibition">Exhibition Halls</a>
         </div>
       </div>
       <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
@@ -75,16 +87,27 @@
           <span class="material-symbols-outlined">expand_more</span>
         </button>
         <div class="dropdown-items">
-          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
-          
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.language"><span class="material-symbols-outlined"
+              style="font-size: 18px;">language</span> Language</a>
+
+          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+            Profile</a>
+          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.favorites"><span class="material-symbols-outlined"
+              style="font-size: 18px;">favorite</span> Favorites</a>
+          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.settings"><span class="material-symbols-outlined"
+              style="font-size: 18px;">settings</span> Settings</a>
+          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;"
+            style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span
+              class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
         </div>
       </div>
 
-      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
+      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn"
+        style="display: none; align-items: center; gap: 8px;">
         <span class="material-symbols-outlined">login</span>
         <span data-i18n="nav.login">Login</span>
       </a>
@@ -93,12 +116,12 @@
     <div class="menu-footer">
       <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
 
-      
+
     </div>
   </div>
-                            
-                                <!-- Header -->
-                                <header class="header">
+
+  <!-- Header -->
+  <header class="header">
     <div class="scroll-progress-container">
       <div class="scroll-progress-bar" id="scrollProgress"></div>
     </div>
@@ -128,7 +151,8 @@
           <div class="dropdown-menu">
             <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
             <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link"
+              data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
             <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice
               Storytelling (3D)</a>
             <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
@@ -144,7 +168,8 @@
           </button>
           <div class="dropdown-menu">
             <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
-            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link"
+              data-i18n="nav.exhibition">Exhibition Halls</a>
           </div>
         </div>
       </nav>
@@ -156,7 +181,9 @@
         <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
           <span class="material-symbols-outlined">language</span>
         </button>
-        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
+        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text"
+            data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon"
+            style="display: none;">confirmation_number</span></a>
 
         <a href="../card/card.html" class="icon-btn-link" title="Cart">
           <button class="icon-btn cart-btn" style="position: relative;">
@@ -164,21 +191,32 @@
             <span class="cart-badge" style="display: none;">0</span>
           </button>
         </a>
-        
-        
-        
-        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-          <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+
+
+
+        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;"
+          title="Profile">
+          <button class="nav-link dropdown-trigger profile-trigger"
+            style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
             <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-            <img src="./unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
+            <img src="./unnamed.png" alt="Profile" class="profile-img"
+              style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
           </button>
           <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-          
-          <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
+
+            <a href="../Profile/profile.html" class="dropdown-link"
+              style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+            <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"
+              data-i18n-html="nav.favorites"><span class="material-symbols-outlined"
+                style="font-size: 18px;">favorite</span> Favorites</a>
+            <a href="../setting/setting.html" class="dropdown-link"
+              style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+            <a href="#" class="dropdown-link" onclick="handleLogout(); return false;"
+              style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span
+                class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          </div>
         </div>
 
         <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
@@ -189,335 +227,343 @@
       </div>
     </div>
   </header>
-                            
-                                <main class="main-content">
+
+  <main class="main-content">
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-badge">
-            <span class="material-symbols-outlined">museum</span>
-            <span data-i18n="collection.badge">Grand Egyptian Museum</span>
-        </div>
-        <p class="section-subtitle" data-i18n="collection.subtitle">Explore the Legacy</p>
-        <h1 class="hero-title" data-i18n="collection.title">Digital Collection</h1>
-        <p class="hero-description" data-i18n="collection.desc">Discover our fully dynamic artifacts spanning five millennia of ancient Egyptian civilization. Explore humanity's most remarkable cultural heritage.</p>
+      <div class="hero-badge">
+        <span class="material-symbols-outlined">museum</span>
+        <span data-i18n="collection.badge">Grand Egyptian Museum</span>
+      </div>
+      <p class="section-subtitle" data-i18n="collection.subtitle">Explore the Legacy</p>
+      <h1 class="hero-title" data-i18n="collection.title">Digital Collection</h1>
+      <p class="hero-description" data-i18n="collection.desc">Discover our fully dynamic artifacts spanning five
+        millennia of ancient Egyptian civilization. Explore humanity's most remarkable cultural heritage.</p>
 
-        <div class="search-container">
-            <div class="hero-search-box">
-                <div class="search-icon">
-                    <span class="material-symbols-outlined">search</span>
-                </div>
-                <input id="mainSearch" class="search-input" data-i18n-placeholder="collection.search_placeholder" placeholder="Search artifacts, dynasties, or galleries..." type="text">
-            </div>
+      <div class="search-container">
+        <div class="hero-search-box">
+          <div class="search-icon">
+            <span class="material-symbols-outlined">search</span>
+          </div>
+          <input id="mainSearch" class="search-input" data-i18n-placeholder="collection.search_placeholder"
+            placeholder="Search artifacts, dynasties, or galleries..." type="text">
         </div>
+      </div>
 
-        <!-- Stats Row -->
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <span class="stat-number count-text" id="totalResultsText">Loading...</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat">
-                <span class="stat-number">5,000</span>
-                <span class="stat-label-text" data-i18n="collection.stat_years">Years of History</span>
-            </div>
+      <!-- Stats Row -->
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-number count-text" id="totalResultsText">Loading...</span>
         </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="stat-number">5,000</span>
+          <span class="stat-label-text" data-i18n="collection.stat_years">Years of History</span>
+        </div>
+      </div>
     </section>
 
     <!-- Filters Section -->
     <section class="filters-section">
-        <div class="filters-container">
-            
-            <div class="filter-dropdown" id="dynastyDropdownWrapper">
-                <button class="filter-btn" id="dynastyFilterBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">crown</span>
-                    <span>Dynasty</span>
-                    <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
-                </button>
-                <div class="filter-dropdown-menu">
-                    <div class="filter-options-scroll" id="dynastyFilterOptions"></div>
-                    <div class="filter-actions">
-                        <button class="apply-filter-btn" onclick="applyFilter('dynasty')">Apply</button>
-                    </div>
-                </div>
+      <div class="filters-container">
+
+        <div class="filter-dropdown" id="dynastyDropdownWrapper">
+          <button class="filter-btn" id="dynastyFilterBtn">
+            <span class="material-symbols-outlined" style="font-size: 1rem">crown</span>
+            <span>Dynasty</span>
+            <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
+          </button>
+          <div class="filter-dropdown-menu">
+            <div class="filter-options-scroll" id="dynastyFilterOptions"></div>
+            <div class="filter-actions">
+              <button class="apply-filter-btn" onclick="applyFilter('dynasty')">Apply</button>
             </div>
-            <div class="filter-dropdown" id="materialDropdownWrapper">
-                <button class="filter-btn" id="materialFilterBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">diamond</span>
-                    <span>Material</span>
-                    <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
-                </button>
-                <div class="filter-dropdown-menu">
-                    <div class="filter-options-scroll" id="materialFilterOptions"></div>
-                    <div class="filter-actions">
-                        <button class="apply-filter-btn" onclick="applyFilter('material')">Apply</button>
-                    </div>
-                </div>
-            </div>
-            <div class="filter-dropdown" id="siteDropdownWrapper">
-                <button class="filter-btn" id="siteFilterBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>
-                    <span>Discovery Site</span>
-                    <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
-                </button>
-                <div class="filter-dropdown-menu">
-                    <div class="filter-options-scroll" id="siteFilterOptions"></div>
-                    <div class="filter-actions">
-                        <button class="apply-filter-btn" onclick="applyFilter('site')">Apply</button>
-                    </div>
-                </div>
-            </div>
-            <div class="filter-dropdown" id="galleryDropdownWrapper">
-                <button class="filter-btn" id="galleryFilterBtn">
-                    <span class="material-symbols-outlined" style="font-size: 1rem">photo_library</span>
-                    <span>Gallery</span>
-                    <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
-                </button>
-                <div class="filter-dropdown-menu">
-                    <div class="filter-options-scroll" id="galleryFilterOptions"></div>
-                    <div class="filter-actions">
-                        <button class="apply-filter-btn" onclick="applyFilter('gallery')">Apply</button>
-                    </div>
-                </div>
-            </div>
-            <div class="filter-divider"></div>
-            <button class="reset-btn" id="resetFiltersBtn">
-                <span class="material-symbols-outlined" style="font-size: 1rem">restart_alt</span>
-                Reset Filters
-            </button>
+          </div>
         </div>
-        <div id="activeFiltersContainer" class="active-filters-container" style="display:none;">
-            <div id="activeFiltersList" class="active-filters-list"></div>
+        <div class="filter-dropdown" id="materialDropdownWrapper">
+          <button class="filter-btn" id="materialFilterBtn">
+            <span class="material-symbols-outlined" style="font-size: 1rem">diamond</span>
+            <span>Material</span>
+            <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
+          </button>
+          <div class="filter-dropdown-menu">
+            <div class="filter-options-scroll" id="materialFilterOptions"></div>
+            <div class="filter-actions">
+              <button class="apply-filter-btn" onclick="applyFilter('material')">Apply</button>
+            </div>
+          </div>
         </div>
+        <div class="filter-dropdown" id="siteDropdownWrapper">
+          <button class="filter-btn" id="siteFilterBtn">
+            <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>
+            <span>Discovery Site</span>
+            <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
+          </button>
+          <div class="filter-dropdown-menu">
+            <div class="filter-options-scroll" id="siteFilterOptions"></div>
+            <div class="filter-actions">
+              <button class="apply-filter-btn" onclick="applyFilter('site')">Apply</button>
+            </div>
+          </div>
+        </div>
+        <div class="filter-dropdown" id="galleryDropdownWrapper">
+          <button class="filter-btn" id="galleryFilterBtn">
+            <span class="material-symbols-outlined" style="font-size: 1rem">photo_library</span>
+            <span>Gallery</span>
+            <span class="material-symbols-outlined arrow-icon" style="font-size: 1rem">keyboard_arrow_down</span>
+          </button>
+          <div class="filter-dropdown-menu">
+            <div class="filter-options-scroll" id="galleryFilterOptions"></div>
+            <div class="filter-actions">
+              <button class="apply-filter-btn" onclick="applyFilter('gallery')">Apply</button>
+            </div>
+          </div>
+        </div>
+        <div class="filter-divider"></div>
+        <button class="reset-btn" id="resetFiltersBtn">
+          <span class="material-symbols-outlined" style="font-size: 1rem">restart_alt</span>
+          Reset Filters
+        </button>
+      </div>
+      <div id="activeFiltersContainer" class="active-filters-container" style="display:none;">
+        <div id="activeFiltersList" class="active-filters-list"></div>
+      </div>
     </section>
 
     <!-- Dynamic Gallery Section -->
     <section class="collection-section" id="dynamicGallery" style="padding-top: 30px;">
-        <div class="section-header-block">
-            <div class="section-icon-wrapper">
-                <span class="material-symbols-outlined">grid_view</span>
-            </div>
-            <div class="section-header-text">
-                <h2 class="section-title" id="dynamicTitle">All Artifacts</h2>
-            </div>
-            <div class="section-line"></div>
+      <div class="section-header-block">
+        <div class="section-icon-wrapper">
+          <span class="material-symbols-outlined">grid_view</span>
         </div>
-        
-        <!-- هنا الجافاسكريبت هيحط الكروت كلها من الداتابيز -->
-        <div id="artifactGrid" class="artifact-grid grid-3"></div>
-        
-        <!-- في حالة مفيش نتائج -->
-        <div id="noResults" class="no-results" style="display: none; text-align: center; padding: 40px;">
-            <span class="material-symbols-outlined" style="font-size: 48px; color: #ECB613;">search_off</span>
-            <h3>No artifacts found</h3>
-            <p>Try adjusting your search or filters.</p>
+        <div class="section-header-text">
+          <h2 class="section-title" id="dynamicTitle">All Artifacts</h2>
         </div>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- هنا الجافاسكريبت هيحط الكروت كلها من الداتابيز -->
+      <div id="artifactGrid" class="artifact-grid grid-3"></div>
+
+      <!-- في حالة مفيش نتائج -->
+      <div id="noResults" class="no-results" style="display: none; text-align: center; padding: 40px;">
+        <span class="material-symbols-outlined" style="font-size: 48px; color: #ECB613;">search_off</span>
+        <h3>No artifacts found</h3>
+        <p>Try adjusting your search or filters.</p>
+      </div>
     </section>
 
     <!-- Load More Pagination -->
     <div class="load-more-section" style="display: none;">
-        <button class="load-more-btn">
-            Load More <span class="material-symbols-outlined">expand_more</span>
-        </button>
+      <button class="load-more-btn">
+        Load More <span class="material-symbols-outlined">expand_more</span>
+      </button>
     </div>
-</main>
+  </main>
 
-                            
-                                <!-- ============================================ -->
-                                <!--  ARTIFACT DETAIL PANEL (In-Page modal)   -->
-                                <!-- ============================================ -->
-                                <div id="artifactModal" class="artifact-modal-overlay">
-                                <div class="artifact-modal-container">
-                            
-                                    <button id="closeArtifactModal" class="close-modal-btn">
-                                        <span class="material-symbols-outlined">close</span>
-                                    </button>
-                            
-                                    <div class="modal-content">
-                            
-                                        <!-- Image -->
-                                        <div class="modal-image-col">
-                                            <img id="modalImg" src="" alt="Artifact" class="modal-image">
-                                            <div class="modal-image-overlay"></div>
-                                            <div class="modal-image-badge" id="modalBadge" style="display:none;"></div>
-                                        </div>
-                            
-                                        <!-- Info -->
-                                        <div class="modal-info-col">
-                            
-                                            <div class="modal-breadcrumbs">
-                                                <span id="modalDynasty" class="modal-dynasty"></span>
-                                                <span class="breadcrumb-dot">•</span>
-                                                <span id="modalPeriod" class="modal-period"></span>
-                                            </div>
-                            
-                                            <h2 id="modalTitle" class="modal-title"></h2>
-                            
-                                            <p id="modalDesc" class="modal-description"></p>
-                            
-                                            <div class="modal-meta-grid">
-                            
-                                                <div class="modal-meta-item">
-                                                    <span class="material-symbols-outlined">calendar_today</span>
-                                                    <div>
-                                                        <span class="meta-label" data-i18n="collection.meta_date">Date</span>
-                                                        <span id="modalDate" class="meta-value"></span>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="modal-meta-item">
-                                                    <span class="material-symbols-outlined">diamond</span>
-                                                    <div>
-                                                        <span class="meta-label" data-i18n="collection.meta_material">Material</span>
-                                                        <span id="modalMaterial" class="meta-value"></span>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="modal-meta-item">
-                                                    <span class="material-symbols-outlined">location_on</span>
-                                                    <div>
-                                                        <span class="meta-label" data-i18n="collection.meta_site">Discovery Site</span>
-                                                        <span id="modalSite" class="meta-value"></span>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="modal-meta-item">
-                                                    <span class="material-symbols-outlined">photo_library</span>
-                                                    <div>
-                                                        <span class="meta-label" data-i18n="collection.meta_gallery">Gallery</span>
-                                                        <span id="modalGallery" class="meta-value"></span>
-                                                    </div>
-                                                </div>
-                            
-                                            </div>
-                            
-                                            <!-- Significance -->
-                                            <div class="modal-significance" id="modalSignificanceBlock">
-                                                <h3 class="significance-title">
-                                                    <span class="material-symbols-outlined">history_edu</span>
-                                                    <span data-i18n="collection.historical_sig">Historical Significance</span>
-                                                </h3>
-                                                <p id="modalSignificance" class="significance-text"></p>
-                                            </div>
-                            
-                                            <!-- Actions -->
-                                            <div class="modal-actions">
-                                                <button class="btn-action-view" id="modalViewBtn">
-                                                    <span class="material-symbols-outlined">visibility</span>
-                                                    <span data-i18n="collection.interactive_view">Interactive View</span>
-                                                </button>
-                            
-                                                <button class="btn-action-fav" id="modalFavBtn">
-                                                    <span class="material-symbols-outlined">favorite</span>
-                                                    <span data-i18n="collection.add_fav">Add to Favorites</span>
-                                                </button>
-                            
-                                                <button class="btn-action-fav" id="modalShareBtn">
-                                                    <span class="material-symbols-outlined">share</span>
-                                                </button>
-                                            </div>
-                            
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                            
-                            
-                                <!-- Footer -->
-                                <footer class="site-footer">
-                                        <div class="footer-container">
-                                            <!-- Footer Header -->
-                                            <div class="footer-header">
-                                                <div class="footer-logo">
-                                                    <span class="material-symbols-outlined">account_balance</span>
-                                                </div>
-                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
-                                                <div class="footer-divider"></div>
-                                            </div>
-                            
-                                            <!-- Footer Grid -->
-                                            <div class="footer-grid">
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
-                                                    <ul>
-                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
-                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.about">About</h3>
-                                                    <ul>
-                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
-                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
-                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.support">Support</h3>
-                                                    <ul>
-                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column connect-column">
-                                                    <h3 data-i18n="footer.connect">Connect</h3>
-                                                    <div class="social-links">
-                                                        <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                            <i class="fa-brands fa-facebook"></i>
-                                                        </a>
-                            
-                                                        <!-- Twitter (X ) -->
-                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                                            <i class="fa-brands fa-x-twitter"></i>
-                                                        </a>
-                            
-                                                        <!-- Instagram -->
-                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                            <i class="fa-brands fa-instagram"></i>
-                                                        </a>
-                            
-                                                        <!-- YouTube -->
-                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                            <i class="fa-brands fa-youtube"></i>
-                                                        </a>
-                                                    </div>
-                            
-                                                    <p>
-                                                        Follow us on social media for updates and behind-the-scenes content.
-                                                    </p>
-                                                </div>
-                                            </div>
-                             
-                                                   <!-- Footer Bottom -->
-                                             <div class="footer-bottom">
-                                                 <div class="language-toggle">
-                                                     <button class="active" data-lang="en">English</button>
-                                                     <button data-lang="ar">العربية</button>
-                                                 </div>
-                                                 <div class="legal-section">
-                                                    <div class="legal-links">
-                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
-                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
-                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
-                                                 </div>
-                                         <div class="copyright">
-                                           © 2026 Tutora. All rights reserved.
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                     </footer>
-                                
-                                 <script src="halls_data.js"></script>
-                                 <script src="main.js"></script>
-                                 <script src="../global-core.js"></script>
-                                 <script src="../animate.js"></script>
-                             <script src="../global-lang.js?v=1780354196678"></script>
 
-                             </body></html>
+  <!-- ============================================ -->
+  <!--  ARTIFACT DETAIL PANEL (In-Page modal)   -->
+  <!-- ============================================ -->
+  <div id="artifactModal" class="artifact-modal-overlay">
+    <div class="artifact-modal-container">
+
+      <button id="closeArtifactModal" class="close-modal-btn">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+
+      <div class="modal-content">
+
+        <!-- Image -->
+        <div class="modal-image-col">
+          <img id="modalImg" src="" alt="Artifact" class="modal-image">
+          <div class="modal-image-overlay"></div>
+          <div class="modal-image-badge" id="modalBadge" style="display:none;"></div>
+        </div>
+
+        <!-- Info -->
+        <div class="modal-info-col">
+
+          <div class="modal-breadcrumbs">
+            <span id="modalDynasty" class="modal-dynasty"></span>
+            <span class="breadcrumb-dot">•</span>
+            <span id="modalPeriod" class="modal-period"></span>
+          </div>
+
+          <h2 id="modalTitle" class="modal-title"></h2>
+
+          <p id="modalDesc" class="modal-description"></p>
+
+          <div class="modal-meta-grid">
+
+            <div class="modal-meta-item">
+              <span class="material-symbols-outlined">calendar_today</span>
+              <div>
+                <span class="meta-label" data-i18n="collection.meta_date">Date</span>
+                <span id="modalDate" class="meta-value"></span>
+              </div>
+            </div>
+
+            <div class="modal-meta-item">
+              <span class="material-symbols-outlined">diamond</span>
+              <div>
+                <span class="meta-label" data-i18n="collection.meta_material">Material</span>
+                <span id="modalMaterial" class="meta-value"></span>
+              </div>
+            </div>
+
+            <div class="modal-meta-item">
+              <span class="material-symbols-outlined">location_on</span>
+              <div>
+                <span class="meta-label" data-i18n="collection.meta_site">Discovery Site</span>
+                <span id="modalSite" class="meta-value"></span>
+              </div>
+            </div>
+
+            <div class="modal-meta-item">
+              <span class="material-symbols-outlined">photo_library</span>
+              <div>
+                <span class="meta-label" data-i18n="collection.meta_gallery">Gallery</span>
+                <span id="modalGallery" class="meta-value"></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Significance -->
+          <div class="modal-significance" id="modalSignificanceBlock">
+            <h3 class="significance-title">
+              <span class="material-symbols-outlined">history_edu</span>
+              <span data-i18n="collection.historical_sig">Historical Significance</span>
+            </h3>
+            <p id="modalSignificance" class="significance-text"></p>
+          </div>
+
+          <!-- Actions -->
+          <div class="modal-actions">
+            <button class="btn-action-view" id="modalViewBtn">
+              <span class="material-symbols-outlined">visibility</span>
+              <span data-i18n="collection.interactive_view">Interactive View</span>
+            </button>
+
+            <button class="btn-action-fav" id="modalFavBtn">
+              <span class="material-symbols-outlined">favorite</span>
+              <span data-i18n="collection.add_fav">Add to Favorites</span>
+            </button>
+
+            <button class="btn-action-fav" id="modalShareBtn">
+              <span class="material-symbols-outlined">share</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- Footer Header -->
+      <div class="footer-header">
+        <div class="footer-logo">
+          <span class="material-symbols-outlined">account_balance</span>
+        </div>
+        <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
+        <div class="footer-divider"></div>
+      </div>
+
+      <!-- Footer Grid -->
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+            <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
+            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a>
+            </li>
+            <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+            <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer.about">About</h3>
+          <ul>
+            <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+            <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+            <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
+            <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer.support">Support</h3>
+          <ul>
+            <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+            <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
+            <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+            <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="footer-column connect-column">
+          <h3 data-i18n="footer.connect">Connect</h3>
+          <div class="social-links">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <!-- Twitter (X ) -->
+            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+
+          <p>
+            Follow us on social media for updates and behind-the-scenes content.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="language-toggle">
+          <button class="active" data-lang="en">English</button>
+          <button data-lang="ar">العربية</button>
+        </div>
+        <div class="legal-section">
+          <div class="legal-links">
+            <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.terms">Terms of Service</a>
+            <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.cookies">Cookie Settings</a>
+          </div>
+          <div class="copyright">
+            © 2026 Tutora. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="halls_data.js"></script>
+  <script src="main.js"></script>
+  <script src="../global-core.js"></script>
+  <script src="../animate.js"></script>
+  <script src="../global-lang.js?v=1780354196678"></script>
+
+</body>
+
+</html>

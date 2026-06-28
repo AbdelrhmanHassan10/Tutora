@@ -1,0 +1,108 @@
+/* ============================================
+   RESPONSIVE CORE SYSTEM
+   ============================================ */
+
+/* 1. FLUID TYPOGRAPHY (Clamp) */
+:root {
+    --fs-h1: clamp(2rem, 5vw + 1rem, 6rem);
+    --fs-h2: clamp(1.75rem, 4vw + 1rem, 4rem);
+    --fs-h3: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+    --fs-p: clamp(1rem, 2vw + 0.5rem, 1.25rem);
+    --fs-small: clamp(0.75rem, 1.5vw + 0.5rem, 1rem);
+    
+    --spacing-xs: clamp(0.5rem, 1vw, 0.75rem);
+    --spacing-sm: clamp(0.75rem, 2vw, 1.5rem);
+    --spacing-md: clamp(1.5rem, 4vw, 3rem);
+    --spacing-lg: clamp(2.5rem, 6vw, 5rem);
+    --spacing-xl: clamp(4rem, 10vw, 8rem);
+}
+
+/* 2. BASE RESET & ACCESSIBILITY */
+html {
+    /* Prevent text zooming issues on mobile */
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 3. LAYOUT UTILITIES */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+}
+
+.container-fluid {
+    width: 100%;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+}
+
+/* Flexbox utilities */
+.d-flex { display: flex; }
+.flex-column { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.flex-wrap { flex-wrap: wrap; }
+.justify-content-center { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+
+/* Visibility utilities */
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+
+/* 4. RESPONSIVE BREAKPOINTS */
+
+/* --- SMALL MOBILE (< 480px) --- */
+@media (max-width: 480px) {
+    .d-sm-none { display: none !important; }
+    .d-sm-block { display: block !important; }
+    .d-sm-flex { display: flex !important; }
+    
+    .flex-sm-column { flex-direction: column !important; }
+    
+    .container {
+        padding-left: var(--spacing-xs);
+        padding-right: var(--spacing-xs);
+    }
+}
+
+/* --- TABLET (481px to 768px) --- */
+@media (max-width: 768px) {
+    .d-md-none { display: none !important; }
+    .d-md-block { display: block !important; }
+    .d-md-flex { display: flex !important; }
+    
+    .flex-md-column { flex-direction: column !important; }
+    
+    .w-md-100 { width: 100% !important; }
+}
+
+/* --- LAPTOP (769px to 1024px) --- */
+@media (max-width: 1024px) {
+    .d-lg-none { display: none !important; }
+    .d-lg-block { display: block !important; }
+    .d-lg-flex { display: flex !important; }
+}
+
+/* --- DESKTOP (1025px and up) --- */
+@media (min-width: 1025px) {
+    /* Large screen specific enhancements */
+}
+
+/* 5. FIX OVERFLOWING ELEMENTS */
+/* Ensures nothing breaks the horizontal scroll on mobile */
+body {
+    overflow-x: hidden;
+    width: 100%;
+}

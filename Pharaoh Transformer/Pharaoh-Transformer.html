@@ -1,95 +1,106 @@
-<!DOCTYPE html><html lang="en"><head>
-    <!-- AUTH GUARD -->
-    <script>
-        if (!localStorage.getItem('token')) {
-            document.addEventListener('DOMContentLoaded', () => {
-                const overlay = document.createElement('div');
-                overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); animation: fadeIn 0.3s ease;';
-                
-                const style = document.createElement('style');
-                style.textContent = `
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- AUTH GUARD -->
+  <script>
+    if (!localStorage.getItem('token')) {
+      document.addEventListener('DOMContentLoaded', () => {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); animation: fadeIn 0.3s ease;';
+
+        const style = document.createElement('style');
+        style.textContent = `
                     @keyframes fadeIn { from { opacity: 0; backdrop-filter: blur(0px); } to { opacity: 1; backdrop-filter: blur(10px); } }
                     @keyframes slideUp { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
                     @keyframes pulseGlow { 0% { text-shadow: 0 0 10px rgba(236,182,19,0.2); } 50% { text-shadow: 0 0 20px rgba(236,182,19,0.6); } 100% { text-shadow: 0 0 10px rgba(236,182,19,0.2); } }
                 `;
-                document.head.appendChild(style);
+        document.head.appendChild(style);
 
-                const modal = document.createElement('div');
-                modal.style.cssText = 'background: linear-gradient(145deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98)); border: 1px solid rgba(236, 182, 19, 0.15); padding: 40px; border-radius: 20px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1); font-family: "Plus Jakarta Sans", "Inter", sans-serif; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative; overflow: hidden;';
-                
-                const glowTop = document.createElement('div');
-                glowTop.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #ECB613, transparent); opacity: 0.8;';
-                
-                const icon = document.createElement('span');
-                icon.className = 'material-symbols-outlined';
-                icon.textContent = 'lock';
-                icon.style.cssText = 'font-size: 48px; color: #ECB613; margin-bottom: 20px; display: inline-block; padding: 15px; background: rgba(236, 182, 19, 0.1); border-radius: 50%; animation: pulseGlow 2s infinite;';
-                
-                const title = document.createElement('h2');
-                title.textContent = 'Authentication Required';
-                title.style.cssText = 'color: #ffffff; margin-bottom: 12px; font-size: 1.5rem; font-weight: 700; margin-top: 0; letter-spacing: -0.02em;';
-                
-                const message = document.createElement('p');
-                message.textContent = 'Please log in to your account to unlock this feature and enjoy the full experience.';
-                message.style.cssText = 'color: #a0a0a0; margin-bottom: 32px; font-size: 1.05rem; line-height: 1.5; font-weight: 400;';
-                
-                const btnContainer = document.createElement('div');
-                btnContainer.style.cssText = 'display: flex; gap: 12px; justify-content: center;';
-                
-                const cancelBtn = document.createElement('button');
-                cancelBtn.textContent = 'Cancel';
-                cancelBtn.style.cssText = 'background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 600; flex: 1; font-size: 1rem; transition: all 0.2s ease;';
-                
-                const loginBtn = document.createElement('button');
-                loginBtn.textContent = 'Log In';
-                loginBtn.style.cssText = 'background: #ECB613; color: #000; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 700; flex: 1.5; font-size: 1rem; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(236, 182, 19, 0.3);';
-                
-                loginBtn.onclick = () => window.location.href = '../2.login/code.html';
-                cancelBtn.onclick = () => {
-                    if (document.referrer && document.referrer.includes(window.location.host)) {
-                        window.history.back();
-                    } else {
-                        window.location.href = '../4.home/code.html';
-                    }
-                };
-                
-                loginBtn.onmouseover = () => { loginBtn.style.transform = 'translateY(-2px)'; loginBtn.style.boxShadow = '0 6px 20px rgba(236, 182, 19, 0.4)'; loginBtn.style.background = '#fcd030'; };
-                loginBtn.onmouseout = () => { loginBtn.style.transform = 'translateY(0)'; loginBtn.style.boxShadow = '0 4px 15px rgba(236, 182, 19, 0.3)'; loginBtn.style.background = '#ECB613'; };
-                
-                cancelBtn.onmouseover = () => { cancelBtn.style.background = 'rgba(255, 255, 255, 0.1)'; };
-                cancelBtn.onmouseout = () => { cancelBtn.style.background = 'rgba(255, 255, 255, 0.05)'; };
+        const modal = document.createElement('div');
+        modal.style.cssText = 'background: linear-gradient(145deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98)); border: 1px solid rgba(236, 182, 19, 0.15); padding: 40px; border-radius: 20px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1); font-family: "Plus Jakarta Sans", "Inter", sans-serif; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative; overflow: hidden;';
 
-                btnContainer.appendChild(cancelBtn);
-                btnContainer.appendChild(loginBtn);
-                
-                modal.appendChild(glowTop);
-                modal.appendChild(icon);
-                modal.appendChild(title);
-                modal.appendChild(message);
-                modal.appendChild(btnContainer);
-                
-                overlay.appendChild(modal);
-                document.body.appendChild(overlay);
-                document.body.style.overflow = 'hidden';
-            });
-        }
-    </script>
+        const glowTop = document.createElement('div');
+        glowTop.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #ECB613, transparent); opacity: 0.8;';
 
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Pharaoh Lab | AI Neural Transformation | Tutora</title>
-    <meta name="description" content="Tutora Pharaoh Lab - Transform your likeness into ancient Egyptian royalty using advanced AI neural engines.">
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../animate.css">
-    <link rel="stylesheet" href="../global-theme.css">
+        const icon = document.createElement('span');
+        icon.className = 'material-symbols-outlined';
+        icon.textContent = 'lock';
+        icon.style.cssText = 'font-size: 48px; color: #ECB613; margin-bottom: 20px; display: inline-block; padding: 15px; background: rgba(236, 182, 19, 0.1); border-radius: 50%; animation: pulseGlow 2s infinite;';
+
+        const title = document.createElement('h2');
+        title.textContent = 'Authentication Required';
+        title.style.cssText = 'color: #ffffff; margin-bottom: 12px; font-size: 1.5rem; font-weight: 700; margin-top: 0; letter-spacing: -0.02em;';
+
+        const message = document.createElement('p');
+        message.textContent = 'Please log in to your account to unlock this feature and enjoy the full experience.';
+        message.style.cssText = 'color: #a0a0a0; margin-bottom: 32px; font-size: 1.05rem; line-height: 1.5; font-weight: 400;';
+
+        const btnContainer = document.createElement('div');
+        btnContainer.style.cssText = 'display: flex; gap: 12px; justify-content: center;';
+
+        const cancelBtn = document.createElement('button');
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.style.cssText = 'background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 600; flex: 1; font-size: 1rem; transition: all 0.2s ease;';
+
+        const loginBtn = document.createElement('button');
+        loginBtn.textContent = 'Log In';
+        loginBtn.style.cssText = 'background: #ECB613; color: #000; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 700; flex: 1.5; font-size: 1rem; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(236, 182, 19, 0.3);';
+
+        loginBtn.onclick = () => window.location.href = '../2.login/code.html';
+        cancelBtn.onclick = () => {
+          if (document.referrer && document.referrer.includes(window.location.host)) {
+            window.history.back();
+          } else {
+            window.location.href = '../4.home/code.html';
+          }
+        };
+
+        loginBtn.onmouseover = () => { loginBtn.style.transform = 'translateY(-2px)'; loginBtn.style.boxShadow = '0 6px 20px rgba(236, 182, 19, 0.4)'; loginBtn.style.background = '#fcd030'; };
+        loginBtn.onmouseout = () => { loginBtn.style.transform = 'translateY(0)'; loginBtn.style.boxShadow = '0 4px 15px rgba(236, 182, 19, 0.3)'; loginBtn.style.background = '#ECB613'; };
+
+        cancelBtn.onmouseover = () => { cancelBtn.style.background = 'rgba(255, 255, 255, 0.1)'; };
+        cancelBtn.onmouseout = () => { cancelBtn.style.background = 'rgba(255, 255, 255, 0.05)'; };
+
+        btnContainer.appendChild(cancelBtn);
+        btnContainer.appendChild(loginBtn);
+
+        modal.appendChild(glowTop);
+        modal.appendChild(icon);
+        modal.appendChild(title);
+        modal.appendChild(message);
+        modal.appendChild(btnContainer);
+
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+      });
+    }
+  </script>
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Pharaoh Lab | AI Neural Transformation | Tutora</title>
+  <meta name="description"
+    content="Tutora Pharaoh Lab - Transform your likeness into ancient Egyptian royalty using advanced AI neural engines.">
+  <link rel="icon" type="image/png" href="../museum.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../animate.css">
+  <link rel="stylesheet" href="../global-theme.css">
   <link rel="stylesheet" href="../global-lang.css">
+  <link rel="stylesheet" href="../responsive-core.css">
+
 </head>
+
 <body class="dark"><!-- Navigation Infrastructure -->
-    <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
@@ -120,7 +131,8 @@
         <div class="dropdown-items">
           <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
           <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"
+            data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
           <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice
             Storytelling (3D)</a>
           <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
@@ -136,7 +148,8 @@
         </button>
         <div class="dropdown-items">
           <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
-          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
+          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item"
+            data-i18n="nav.exhibition">Exhibition Halls</a>
         </div>
       </div>
       <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
@@ -147,16 +160,27 @@
           <span class="material-symbols-outlined">expand_more</span>
         </button>
         <div class="dropdown-items">
-          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
-          
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.language"><span class="material-symbols-outlined"
+              style="font-size: 18px;">language</span> Language</a>
+
+          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+            Profile</a>
+          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.favorites"><span class="material-symbols-outlined"
+              style="font-size: 18px;">favorite</span> Favorites</a>
+          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.settings"><span class="material-symbols-outlined"
+              style="font-size: 18px;">settings</span> Settings</a>
+          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;"
+            style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span
+              class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
         </div>
       </div>
 
-      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
+      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn"
+        style="display: none; align-items: center; gap: 8px;">
         <span class="material-symbols-outlined">login</span>
         <span data-i18n="nav.login">Login</span>
       </a>
@@ -165,10 +189,10 @@
     <div class="menu-footer">
       <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
 
-      
+
     </div>
   </div>
-    <header class="header">
+  <header class="header">
     <div class="scroll-progress-container">
       <div class="scroll-progress-bar" id="scrollProgress"></div>
     </div>
@@ -198,7 +222,8 @@
           <div class="dropdown-menu">
             <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
             <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link"
+              data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
             <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice
               Storytelling (3D)</a>
             <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
@@ -214,7 +239,8 @@
           </button>
           <div class="dropdown-menu">
             <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
-            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link"
+              data-i18n="nav.exhibition">Exhibition Halls</a>
           </div>
         </div>
       </nav>
@@ -226,7 +252,9 @@
         <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
           <span class="material-symbols-outlined">language</span>
         </button>
-        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
+        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text"
+            data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon"
+            style="display: none;">confirmation_number</span></a>
 
         <a href="../card/card.html" class="icon-btn-link" title="Cart">
           <button class="icon-btn cart-btn" style="position: relative;">
@@ -234,21 +262,32 @@
             <span class="cart-badge" style="display: none;">0</span>
           </button>
         </a>
-        
-        
-        
-        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-          <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+
+
+
+        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;"
+          title="Profile">
+          <button class="nav-link dropdown-trigger profile-trigger"
+            style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
             <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-            <img src="./unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
+            <img src="./unnamed.png" alt="Profile" class="profile-img"
+              style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
           </button>
           <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-          
-          <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
+
+            <a href="../Profile/profile.html" class="dropdown-link"
+              style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+            <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"
+              data-i18n-html="nav.favorites"><span class="material-symbols-outlined"
+                style="font-size: 18px;">favorite</span> Favorites</a>
+            <a href="../setting/setting.html" class="dropdown-link"
+              style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+            <a href="#" class="dropdown-link" onclick="handleLogout(); return false;"
+              style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span
+                class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          </div>
         </div>
 
         <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
@@ -259,185 +298,203 @@
       </div>
     </div>
   </header>
-                            
 
-    <main>
-        <div class="container">
-            <!-- Hero Section -->
-            <section class="hero-section anim-on-scroll">
-                <span class="hero-label" data-i18n="pharaoh.hero_label">The Alchemy of Identity</span>
-                <h1 class="hero-title"><span data-i18n="pharaoh.hero_title">Become</span> <span class="gold-text-span" data-i18n="pharaoh.hero_title_span">Eternal.</span></h1>
-                <p class="hero-description">
-                    <span data-i18n="pharaoh.hero_desc">Our neural engines weave your likeness into the royal iconography of the New Kingdom. Upload a portrait to begin your transformation into an artifact of history.</span>
-                </p>
-            </section>
 
-            <!-- Tool Grid -->
-            <div class="tool-grid">
-                <!-- Upload Module -->
-                <div class="artifact-frame anim-on-scroll">
-                    <span class="module-label" data-i18n="pharaoh.module_label">Module: Pharaoh_01</span>
-                    <div id="upload-zone" class="upload-zone">
-                        <span class="material-symbols-outlined upload-icon">add_a_photo</span>
-                        <h3 class="upload-title" data-i18n="pharaoh.upload_title">Sacrifice your portrait</h3>
-                        <p id="upload-status" class="upload-status"><span data-i18n="pharaoh.upload_desc">High-resolution front-facing photography yields the most divine results.</span></p>
-                        <input id="pharaoh-upload" style="display: none;" type="file" accept="image/*">
-                    </div>
-                    <div class="transform-actions">
-                        <div class="format-info">
-                            <span class="format-label" data-i18n="pharaoh.format_label">Accepted Formats</span>
-                            <span class="format-value" data-i18n="pharaoh.format_val">PNG, JPEG, HEIC (Max 25MB)</span>
-                        </div>
-                        <button id="transform-btn" class="transform-btn">
-                            <span data-i18n="pharaoh.btn_transform">Transform Likeness</span>
-                        </button>
-                    </div>
-                </div>
+  <main>
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="hero-section anim-on-scroll">
+        <span class="hero-label" data-i18n="pharaoh.hero_label">The Alchemy of Identity</span>
+        <h1 class="hero-title"><span data-i18n="pharaoh.hero_title">Become</span> <span class="gold-text-span"
+            data-i18n="pharaoh.hero_title_span">Eternal.</span></h1>
+        <p class="hero-description">
+          <span data-i18n="pharaoh.hero_desc">Our neural engines weave your likeness into the royal iconography of the
+            New Kingdom. Upload a portrait to begin your transformation into an artifact of history.</span>
+        </p>
+      </section>
 
-                <!-- Preview/Result Module -->
-                <div class="preview-container anim-on-scroll">
-                    <div class="preview-frame">
-                        <img id="pharaoh-preview" alt="Pharaoh Transformation Preview" class="preview-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlbA4vB5ISLrkmAv30oW9jwq9oVJRchtZGWGHtmf-aAYB_rtHScYnhRFnEOiM8DQpL6Ps52fKmZu4lI74O1T74smdefEv5AHEAmm34qnwxMmqOErSqKMXuRYRd_e7UIjxuFZrkmQYmVHK7g91OFXXkjFxjcie4I3BIItTO6PZ2dEo9yJjCHyTC2mu99eNwihZCXsucUsDmRvs4wFRCW8HQuKPfmIEfuEJD-5vAYnbR8DKwGhtzvvKkaLfygqMEHmXKTArz7baJ4HqZ">
-                        <div class="preview-overlay">
-                            <span class="preview-label" data-i18n="pharaoh.preview_label">Live Rendering</span>
-                            <h4 class="preview-title" data-i18n="pharaoh.preview_title">The Sun Disc Vessel</h4>
-                        </div>
-                    </div>
-                    <div class="curator-note">
-                        <span class="material-symbols-outlined note-icon">info</span>
-                        <div class="note-content">
-                            <span class="preview-label" style="margin-bottom: 0.25rem;" data-i18n="pharaoh.note_title">Curator's Note</span>
-                            <p class="note-text">
-                                <span data-i18n="pharaoh.note_desc">Each transformation leverages deep latent diffusion to map facial geometry to authentic 18th Dynasty basalt textures. Lighting is automatically adjusted to replicate the interior of the Temple of Dendur at sunrise.</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+      <!-- Tool Grid -->
+      <div class="tool-grid">
+        <!-- Upload Module -->
+        <div class="artifact-frame anim-on-scroll">
+          <span class="module-label" data-i18n="pharaoh.module_label">Module: Pharaoh_01</span>
+          <div id="upload-zone" class="upload-zone">
+            <span class="material-symbols-outlined upload-icon">add_a_photo</span>
+            <h3 class="upload-title" data-i18n="pharaoh.upload_title">Sacrifice your portrait</h3>
+            <p id="upload-status" class="upload-status"><span data-i18n="pharaoh.upload_desc">High-resolution
+                front-facing photography yields the most divine results.</span></p>
+            <input id="pharaoh-upload" style="display: none;" type="file" accept="image/*">
+          </div>
+          <div class="transform-actions">
+            <div class="format-info">
+              <span class="format-label" data-i18n="pharaoh.format_label">Accepted Formats</span>
+              <span class="format-value" data-i18n="pharaoh.format_val">PNG, JPEG, HEIC (Max 25MB)</span>
             </div>
-
-            <!-- Gallery -->
-            <section class="gallery-section anim-on-scroll">
-                <div class="gallery-header">
-                    <div>
-                        <span class="hero-label" style="margin-bottom: 0.5rem;" data-i18n="pharaoh.gal_label">Public Records</span>
-                        <h2 class="gallery-title" data-i18n="pharaoh.gal_title">The Reborn Archive</h2>
-                    </div>
-                    <a class="view-archive" href="../collection/collection.html">
-                        <span data-i18n="pharaoh.view_archive">View Archive</span> <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
-                    </a>
-                </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img alt="Pharaoh AI Art" class="gallery-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Ted9VNGfhy5Vxq6JLbjfFcUYlX18QEswC7i1wEYEmD-evEkc--GS0AfoeyBzSP5PQ8LyX2kQ2koY2tsRri8X-aQ5P7hiYrsAdmrVsIKbr1WflYbLHp_InPO7VexoXhRB26EpnZPiUylQspis2xP7dcg9RI1dLWXKR8lZNj7gm35Fqy0RjDMVpUK9hxGzAVJB5WkxL6NT7m921whTLT5zdElRRe8Ep8xzdqUqbocyHkJG9xXDk8iwZIMW3sJaG2J32QqdxbLRefQR">
-                    </div>
-                    <div class="gallery-item">
-                        <img alt="Pharaoh AI Art" class="gallery-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaDfDZ8XwlGND5NINl7Cz3R3GgfLbl-LcmupyeB0GjAqiSzjxtRV6vTivT5j4kqRxhXxmZr6xNCfzXWjauJENSgK3ygGKbJmNQZs4KfO2rSWbrFaGntKMkvrY1-m9s9X3ctVnCXDKln1uYlabjwDIi9TAxLIE6jZ3yXJ6IDpAQ31E8euKwlVnd2UASwREyTjYmjiu5U19lT7RdO8_7Yqpmb7e9z-m2LCyCZ8psh7SZQ1Gr2pdqRvVy6Gj9S90mi92Y5vR53mnYNSHX">
-                    </div>
-                    <div class="gallery-item">
-                        <img alt="Pharaoh AI Art" class="gallery-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtZFyjs3-tM2p_b0E-0WQYBQn-m_zhdPuXkfGkmUUqQky5Cn2cb5p1W68hCo4m6095SHAINRE4UbbB8yBowJCbKxdTzLhaM2bvphtJys-gxOGTTzKkCQmDzEuXYLq0NYt82z4jyrOvJFxFBvYnVbpL3ju_LWU-Ts0_Qk5JDHfXUKcgo31fck8HWvtbS-ABYPTqRmanbVJ_PKpoAb-MfnAN3nqjmbDrkI8EfkerQVoQVU_xdcXfu1n_dNv6zcjIjmZKQD6UMSH_NAUG">
-                    </div>
-                    <div class="gallery-item">
-                        <img alt="Pharaoh AI Art" class="gallery-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN9AOhGwyPwsZOXT6Ppbqfw0oo_wwcFQL4pK7ZUEfG4oy-Tcn_X69ZbroIH5Ep2ogZlKTZOniuYtybS0rFJfLSkeVRHowQ3vrnWR6WSA1qh51kPo4dRbrn1mL1wghtjfSgiXrtKTldhre5psp1DSLPQT6lm5HvRb1EnCQAYTmN_w_3dYmrbhWya7GD_6Iz6_gmqvmaGvv6ACobU6YPqBW2ZL4yN9F-WgbxFtvlLGo7SCfC43BgCMgBCYTQh0RqlwfRLgEYH0T6tY9Q">
-                    </div>
-                </div>
-            </section>
+            <button id="transform-btn" class="transform-btn">
+              <span data-i18n="pharaoh.btn_transform">Transform Likeness</span>
+            </button>
+          </div>
         </div>
-    </main>
+
+        <!-- Preview/Result Module -->
+        <div class="preview-container anim-on-scroll">
+          <div class="preview-frame">
+            <img id="pharaoh-preview" alt="Pharaoh Transformation Preview" class="preview-img"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlbA4vB5ISLrkmAv30oW9jwq9oVJRchtZGWGHtmf-aAYB_rtHScYnhRFnEOiM8DQpL6Ps52fKmZu4lI74O1T74smdefEv5AHEAmm34qnwxMmqOErSqKMXuRYRd_e7UIjxuFZrkmQYmVHK7g91OFXXkjFxjcie4I3BIItTO6PZ2dEo9yJjCHyTC2mu99eNwihZCXsucUsDmRvs4wFRCW8HQuKPfmIEfuEJD-5vAYnbR8DKwGhtzvvKkaLfygqMEHmXKTArz7baJ4HqZ">
+            <div class="preview-overlay">
+              <span class="preview-label" data-i18n="pharaoh.preview_label">Live Rendering</span>
+              <h4 class="preview-title" data-i18n="pharaoh.preview_title">The Sun Disc Vessel</h4>
+            </div>
+          </div>
+          <div class="curator-note">
+            <span class="material-symbols-outlined note-icon">info</span>
+            <div class="note-content">
+              <span class="preview-label" style="margin-bottom: 0.25rem;" data-i18n="pharaoh.note_title">Curator's
+                Note</span>
+              <p class="note-text">
+                <span data-i18n="pharaoh.note_desc">Each transformation leverages deep latent diffusion to map facial
+                  geometry to authentic 18th Dynasty basalt textures. Lighting is automatically adjusted to replicate
+                  the interior of the Temple of Dendur at sunrise.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <section class="gallery-section anim-on-scroll">
+        <div class="gallery-header">
+          <div>
+            <span class="hero-label" style="margin-bottom: 0.5rem;" data-i18n="pharaoh.gal_label">Public Records</span>
+            <h2 class="gallery-title" data-i18n="pharaoh.gal_title">The Reborn Archive</h2>
+          </div>
+          <a class="view-archive" href="../collection/collection.html">
+            <span data-i18n="pharaoh.view_archive">View Archive</span> <span class="material-symbols-outlined"
+              style="font-size: 1rem;">arrow_forward</span>
+          </a>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img alt="Pharaoh AI Art" class="gallery-img"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Ted9VNGfhy5Vxq6JLbjfFcUYlX18QEswC7i1wEYEmD-evEkc--GS0AfoeyBzSP5PQ8LyX2kQ2koY2tsRri8X-aQ5P7hiYrsAdmrVsIKbr1WflYbLHp_InPO7VexoXhRB26EpnZPiUylQspis2xP7dcg9RI1dLWXKR8lZNj7gm35Fqy0RjDMVpUK9hxGzAVJB5WkxL6NT7m921whTLT5zdElRRe8Ep8xzdqUqbocyHkJG9xXDk8iwZIMW3sJaG2J32QqdxbLRefQR">
+          </div>
+          <div class="gallery-item">
+            <img alt="Pharaoh AI Art" class="gallery-img"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaDfDZ8XwlGND5NINl7Cz3R3GgfLbl-LcmupyeB0GjAqiSzjxtRV6vTivT5j4kqRxhXxmZr6xNCfzXWjauJENSgK3ygGKbJmNQZs4KfO2rSWbrFaGntKMkvrY1-m9s9X3ctVnCXDKln1uYlabjwDIi9TAxLIE6jZ3yXJ6IDpAQ31E8euKwlVnd2UASwREyTjYmjiu5U19lT7RdO8_7Yqpmb7e9z-m2LCyCZ8psh7SZQ1Gr2pdqRvVy6Gj9S90mi92Y5vR53mnYNSHX">
+          </div>
+          <div class="gallery-item">
+            <img alt="Pharaoh AI Art" class="gallery-img"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtZFyjs3-tM2p_b0E-0WQYBQn-m_zhdPuXkfGkmUUqQky5Cn2cb5p1W68hCo4m6095SHAINRE4UbbB8yBowJCbKxdTzLhaM2bvphtJys-gxOGTTzKkCQmDzEuXYLq0NYt82z4jyrOvJFxFBvYnVbpL3ju_LWU-Ts0_Qk5JDHfXUKcgo31fck8HWvtbS-ABYPTqRmanbVJ_PKpoAb-MfnAN3nqjmbDrkI8EfkerQVoQVU_xdcXfu1n_dNv6zcjIjmZKQD6UMSH_NAUG">
+          </div>
+          <div class="gallery-item">
+            <img alt="Pharaoh AI Art" class="gallery-img"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN9AOhGwyPwsZOXT6Ppbqfw0oo_wwcFQL4pK7ZUEfG4oy-Tcn_X69ZbroIH5Ep2ogZlKTZOniuYtybS0rFJfLSkeVRHowQ3vrnWR6WSA1qh51kPo4dRbrn1mL1wghtjfSgiXrtKTldhre5psp1DSLPQT6lm5HvRb1EnCQAYTmN_w_3dYmrbhWya7GD_6Iz6_gmqvmaGvv6ACobU6YPqBW2ZL4yN9F-WgbxFtvlLGo7SCfC43BgCMgBCYTQh0RqlwfRLgEYH0T6tY9Q">
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
   <footer class="site-footer">
-                                        <div class="footer-container">
-                                            <!-- Footer Header -->
-                                            <div class="footer-header">
-                                                <div class="footer-logo">
-                                                    <span class="material-symbols-outlined">account_balance</span>
-                                                </div>
-                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
-                                                <div class="footer-divider"></div>
-                                            </div>
-                            
-                                            <!-- Footer Grid -->
-                                            <div class="footer-grid">
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
-                                                    <ul>
-                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
-                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.about">About</h3>
-                                                    <ul>
-                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
-                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
-                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.support">Support</h3>
-                                                    <ul>
-                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column connect-column">
-                                                    <h3 data-i18n="footer.connect">Connect</h3>
-                                                    <div class="social-links">
-                                                        <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                            <i class="fa-brands fa-facebook"></i>
-                                                        </a>
-                            
-                                                        <!-- Twitter (X ) -->
-                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                                            <i class="fa-brands fa-x-twitter"></i>
-                                                        </a>
-                            
-                                                        <!-- Instagram -->
-                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                            <i class="fa-brands fa-instagram"></i>
-                                                        </a>
-                            
-                                                        <!-- YouTube -->
-                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                            <i class="fa-brands fa-youtube"></i>
-                                                        </a>
-                                                    </div>
-                            
-                                                    <p>
-                                                        Follow us on social media for updates and behind-the-scenes content.
-                                                    </p>
-                                                </div>
-                                            </div>
-                             
-                                                   <!-- Footer Bottom -->
-                                             <div class="footer-bottom">
-                                                 <div class="language-toggle">
-                                                     <button class="active" data-lang="en">English</button>
-                                                     <button data-lang="ar">العربية</button>
-                                                 </div>
-                                                 <div class="legal-section">
-                                                    <div class="legal-links">
-                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
-                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
-                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
-                                                 </div>
-                                         <div class="copyright">
-                                           © 2026 Tutora. All rights reserved.
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                     </footer>
+    <div class="footer-container">
+      <!-- Footer Header -->
+      <div class="footer-header">
+        <div class="footer-logo">
+          <span class="material-symbols-outlined">account_balance</span>
+        </div>
+        <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
+        <div class="footer-divider"></div>
+      </div>
 
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-    <script src="script.js"></script>
-<script src="../global-lang.js?v=1780353971499"></script>
+      <!-- Footer Grid -->
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+            <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
+            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a>
+            </li>
+            <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+            <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer.about">About</h3>
+          <ul>
+            <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+            <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+            <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
+            <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer.support">Support</h3>
+          <ul>
+            <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+            <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
+            <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+            <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="footer-column connect-column">
+          <h3 data-i18n="footer.connect">Connect</h3>
+          <div class="social-links">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <!-- Twitter (X ) -->
+            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+
+          <p>
+            Follow us on social media for updates and behind-the-scenes content.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="language-toggle">
+          <button class="active" data-lang="en">English</button>
+          <button data-lang="ar">العربية</button>
+        </div>
+        <div class="legal-section">
+          <div class="legal-links">
+            <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.terms">Terms of Service</a>
+            <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.cookies">Cookie Settings</a>
+          </div>
+          <div class="copyright">
+            © 2026 Tutora. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../global-core.js"></script>
+  <script src="../animate.js"></script>
+  <script src="script.js"></script>
+  <script src="../global-lang.js?v=1780353971499"></script>
 
 
-</body></html>
+</body>
+
+</html>

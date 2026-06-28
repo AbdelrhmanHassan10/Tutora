@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+import { useThemeLang } from '../context/ThemeLangContext';
 
 const HomePage = () => {
+    const { language } = useThemeLang();
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [artifactOfTheDay, setArtifactOfTheDay] = useState(null);
-    const [events, setEvents] = useState([]);
 
     const slides = [
         '/artifact.jpg',
@@ -22,37 +20,8 @@ const HomePage = () => {
         return () => clearInterval(interval);
     }, [slides.length]);
 
-    // Data fetching
-    useEffect(() => {
-        const fetchHomeData = async () => {
-            try {
-                const artRes = await fetch(`${API_URL}/artifacts`);
-                if (artRes.ok) {
-                    const artifacts = await artRes.json();
-                    if (artifacts && artifacts.length > 0) {
-                        const randomArtifact = artifacts[Math.floor(Math.random() * artifacts.length)];
-                        setArtifactOfTheDay(randomArtifact);
-                    }
-                }
-                
-                const evtRes = await fetch(`${API_URL}/events`);
-                if (evtRes.ok) {
-                    const evts = await evtRes.json();
-                    if (evts && evts.length > 0) {
-                        setEvents(evts.slice(0, 3));
-                    }
-                }
-            } catch (err) {
-                console.error("Failed to fetch home data", err);
-            }
-        };
-        fetchHomeData();
-    }, []);
-
     const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     return (
         <div className="home-wrapper">
@@ -77,16 +46,17 @@ const HomePage = () => {
                 </button>
                 <div className="hero-overlay"></div>
                 <div className="hero-content">
-                    <h1 className="hero-title" style={{ color: "white" }}>
-                        Discover the Grand Egyptian Museum
+                    <h1 className="hero-title">
+                        <span className="discover-tag">Discover</span>
+                        <span className="museum-name">The Grand Egyptian Museum</span>
                     </h1>
-                    <p className="hero-subtitle" style={{ color: "white" }}>
+                    <p className="hero-subtitle" style={{ color: "rgb(255, 255, 255)" }}>
                         Explore the world's largest collection of ancient Egyptian artifacts
                         with your personal AI guide.
                     </p>
                     <div className="hero-buttons">
-                        <Link to="/plan-your-visit" className="btn-primary">Explore Tours</Link>
-                        <Link to="/booking" className="btn-accent">Buy Tickets</Link>
+                        <Link to="/plan-your-visit" className="btn-accent" style={{ color: "#ecb613", backgroundColor: "#0b0b0b" }}>Explore Tours</Link>
+                        <Link to="/booking" className="btn-primary">Buy Tickets</Link>
                     </div>
                 </div>
             </section>
@@ -149,7 +119,7 @@ const HomePage = () => {
                             <p className="tour-desc">
                                 Ever wondered how you'd look as a King or Queen? Transform your image into an ancient Egyptian masterpiece.
                             </p>
-                            <Link to="/tutora-lab">
+                            <Link to="/pharaoh-transformer">
                                 <button className="btn-learn">Transform Me</button>
                             </Link>
                         </div>
@@ -163,7 +133,7 @@ const HomePage = () => {
                             <p className="tour-desc">
                                 Have a specific question? Our AI chatbot is available 24/7 to provide in-depth answers about the GEM.
                             </p>
-                            <Link to="/ai-chatbot">
+                            <Link to="/chat-bot">
                                 <button className="btn-learn">Ask Tutora</button>
                             </Link>
                         </div>
@@ -177,7 +147,7 @@ const HomePage = () => {
                             <p className="tour-desc">
                                 Manifest your own ancient visions. Generate stunning artwork inspired by Egyptian mythology and aesthetics.
                             </p>
-                            <Link to="/tutora-lab">
+                            <Link to="/ai-imagination">
                                 <button className="btn-learn">Manifest Art</button>
                             </Link>
                         </div>
@@ -202,19 +172,20 @@ const HomePage = () => {
             {/* Curator's Choice / Daily Discovery (New) */}
             <section className="section-container">
                 <div className="curator-panel">
-                    <div className="curator-image" style={{ backgroundImage: `url('${artifactOfTheDay ? artifactOfTheDay.imageUrl : "/4.jpg"}')` }}>
+                    <div className="curator-image" style={{ backgroundImage: "url('/The-Grand-Egyptian-Museum.webp')" }}>
                         <div className="curator-badge">Curator's Choice</div>
                     </div>
                     <div className="curator-content">
-                        <h2 className="artifact-title">Artifact of the Day</h2>
-                        <h3 className="highlight-title">{artifactOfTheDay ? artifactOfTheDay.name : "The Golden Mask of Tutankhamun"}</h3>
+                        <h2 className="artifact-title">The Grand Egyptian Museum</h2>
                         <p className="artifact-desc">
-                            {artifactOfTheDay ? artifactOfTheDay.description : "Discover the intricate details and history behind one of the most iconic artifacts in human history. Learn how ancient artisans crafted this masterpiece using solid gold and precious stones over 3000 years ago."}
+                            The Grand Egyptian Museum, also known as the Giza Museum, is a new archaeological museum in Giza, Egypt,
+                            that is set to become the largest archaeological museum in the world. It will house artifacts of ancient
+                            Egypt, including the complete Tutankhamun collection.
                         </p>
-                        <Link to={artifactOfTheDay ? `/artifact-identifier?id=${artifactOfTheDay._id}` : "/artifact-identifier"}>
-                            <button className="btn-action-gold mt-4">
-                                {artifactOfTheDay ? 'Explore Artifact' : 'Explore in 3D'}
-                                <span className="material-symbols-outlined">{artifactOfTheDay ? 'arrow_forward' : 'view_in_ar'}</span>
+                        <Link to="/about">
+                            <button className="btn-primary" style={{ marginTop: "1.5rem" }}>
+                                Learn More
+                                <span className="material-symbols-outlined" style={{ verticalAlign: "middle", marginLeft: "10px" }}>arrow_forward</span>
                             </button>
                         </Link>
                     </div>
@@ -228,47 +199,27 @@ const HomePage = () => {
                     <Link to="/events" className="view-all-link">View All Events <span className="material-symbols-outlined">arrow_forward</span></Link>
                 </div>
                 <div className="events-grid">
-                    {events.length > 0 ? events.map((evt, idx) => {
-                        const dateObj = new Date(evt.date);
-                        const monthStr = months[dateObj.getMonth()] || 'TBD';
-                        let dayStr = dateObj.getDate() ? String(dateObj.getDate()).padStart(2, '0') : '--';
-                        if (isNaN(dateObj.getTime())) dayStr = '--';
-                        const shortDesc = evt.description ? (evt.description.length > 80 ? evt.description.substring(0, 80) + '...' : evt.description) : '';
-
-                        return (
-                            <div key={idx} className="event-card" style={{ cursor: 'pointer' }} onClick={() => window.location.href='/events'}>
-                                <div className="event-date">{monthStr}<br /><strong>{dayStr}</strong></div>
-                                <div className="event-details">
-                                    <h4>{evt.title}</h4>
-                                    <p>{shortDesc}</p>
-                                </div>
-                            </div>
-                        )
-                    }) : (
-                        <>
-                            <div className="event-card">
-                                <div className="event-date">Oct<br /><strong>15</strong></div>
-                                <div className="event-details">
-                                    <h4>New Kingdom Exhibition Opens</h4>
-                                    <p>Explore newly uncovered artifacts from the Valley of the Kings.</p>
-                                </div>
-                            </div>
-                            <div className="event-card">
-                                <div className="event-date">Oct<br /><strong>22</strong></div>
-                                <div className="event-details">
-                                    <h4>Kids Workshop: Papyrus Making</h4>
-                                    <p>A hands-on experience for children to learn ancient Egyptian crafts.</p>
-                                </div>
-                            </div>
-                            <div className="event-card">
-                                <div className="event-date">Nov<br /><strong>05</strong></div>
-                                <div className="event-details">
-                                    <h4>Curator Talk: Life of Ramses II</h4>
-                                    <p>Join Dr. Zahi Hawass for an exclusive evening discussing Ramses the Great.</p>
-                                </div>
-                            </div>
-                        </>
-                    )}
+                    <div className="event-card">
+                        <div className="event-date"><span>Oct</span><br /><strong>15</strong></div>
+                        <div className="event-details">
+                            <h4>New Kingdom Exhibition Opens</h4>
+                            <p>Explore newly uncovered artifacts from the Valley of the Kings.</p>
+                        </div>
+                    </div>
+                    <div className="event-card">
+                        <div className="event-date"><span>Oct</span><br /><strong>22</strong></div>
+                        <div className="event-details">
+                            <h4>Kids Workshop: Papyrus Making</h4>
+                            <p>A hands-on experience for children to learn ancient Egyptian crafts.</p>
+                        </div>
+                    </div>
+                    <div className="event-card">
+                        <div className="event-date"><span>Nov</span><br /><strong>05</strong></div>
+                        <div className="event-details">
+                            <h4>Curator Talk: Life of Ramses II</h4>
+                            <p>Join Dr. Zahi Hawass for an exclusive evening discussing Ramses the Great.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -365,7 +316,9 @@ const HomePage = () => {
                     <div className="membership-text">
                         <h2>Become a GEM Member</h2>
                         <p>Join a community of history enthusiasts. Enjoy unlimited free admission, exclusive previews of new exhibitions, and discounts at our shops and restaurants.</p>
-                        <button className="btn-primary" style={{ marginTop: "1rem" }}>Join Today</button>
+                        <Link to="/membership">
+                            <button className="btn-primary" style={{ marginTop: "1rem" }}>Join Today</button>
+                        </Link>
                     </div>
                     <div className="membership-perks">
                         <ul>
@@ -380,8 +333,8 @@ const HomePage = () => {
             {/* Newsletter Banner */}
             <section className="newsletter-banner">
                 <div className="newsletter-content">
-                    <h2>Stay Connected</h2>
-                    <p>Subscribe to our newsletter for the latest discoveries, events, and exclusive offers.</p>
+                    <h2>Join the Royal Legacy</h2>
+                    <p>Subscribe to our newsletter and be the first to receive exclusive insights, world-class exhibition previews, and royal updates from the Grand Egyptian Museum.</p>
                     <form className="newsletter-form">
                         <input type="email" placeholder="Enter your email address" required />
                         <button type="submit" className="btn-accent">Subscribe</button>
@@ -396,12 +349,12 @@ const HomePage = () => {
                         <h2 className="location-title">Visit the GEM</h2>
                         <p className="location-subtitle">Experience the dawn of history at the foot of the Giza Pyramids.</p>
                     </div>
-                    <a href="https://maps.app.goo.gl/3A7D6fQzXy7sU7W4A" target="_blank" rel="noopener noreferrer" className="btn-directions" style={{ textDecoration: "none" }}>
-                        Plan Your Route
+                    <a href="https://www.google.com/maps/place/Grand+Egyptian+Museum/@29.9931986,31.1244409,17z/data=!3m1!4b1!4m6!3m5!1s0x14584534984a8ad1:0x45764c5bc4ec261a!8m2!3d29.9931986!4d31.1244409!16zL20vMGRoOTN3?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="btn-directions" style={{ textDecoration: "none" }}>
+                        View Location
                         <span className="material-symbols-outlined">arrow_forward</span>
                     </a>
                 </div>
-                <div className="map-container" style={{ backgroundImage: "url('/map.png')" }}>
+                <div className="map-container" style={{ backgroundImage: "url('/unnamed 1.png')" }}>
                     <div className="map-overlay"></div>
                     
                     <div className="visit-card">
@@ -435,4 +388,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-

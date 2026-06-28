@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useThemeLang } from '../context/ThemeLangContext';
 
-const Header = ({ onMenuClick, onThemeToggle, isDarkTheme }) => {
+const Header = ({ onMenuClick }) => {
     const [profileImg, setProfileImg] = useState('/unnamed.png');
+    const { isDarkTheme, toggleTheme, language, toggleLanguage } = useThemeLang();
 
     useEffect(() => {
         // Fetch saved avatar from localStorage or fallback to default
@@ -73,7 +75,7 @@ const Header = ({ onMenuClick, onThemeToggle, isDarkTheme }) => {
                         <span className="material-symbols-outlined">search</span>
                         <input type="text" placeholder="Search..." />
                     </div>
-                    <button className="theme-btn" id="themeBtn" onClick={onThemeToggle}>
+                    <button className="theme-btn" id="themeBtn" onClick={toggleTheme}>
                         <span className="material-symbols-outlined">{isDarkTheme ? 'light_mode' : 'dark_mode'}</span>
                     </button>
                     <Link to="/booking" className="btn-booking" style={{ color: '#ffffff' }}>booking</Link>
@@ -82,7 +84,7 @@ const Header = ({ onMenuClick, onThemeToggle, isDarkTheme }) => {
                             <span className="material-symbols-outlined">favorite</span>
                         </button>
                     </Link>
-                    <button className="icon-btn" id="langBtn">
+                    <button className="icon-btn" id="langBtn" onClick={toggleLanguage}>
                         <span className="material-symbols-outlined">language</span>
                     </button>
                     <Link to="/profile">

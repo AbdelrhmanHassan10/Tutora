@@ -1,465 +1,520 @@
 <!DOCTYPE html>
-                            <html lang="en">
-                            
-                            <head>
-                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
-                                <meta charset="UTF-8">
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title data-i18n="profile.title">TUTORA Profile | Manage Your Account</title>
-                                <link rel="icon" type="image/png" href="../museum.png">
-                                <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-                                <link rel="stylesheet" href="style.css">
-                                <link rel="stylesheet" href="../animate.css" />
-                            	<link rel="stylesheet" href="../global-theme.css" />
-                            </head>
-                            
-                            <body class="dark">
-                            
-                                <div class="container-wrapper">
-                                    <!-- Sidebar Navigation (RESTORED) -->
-                                    <aside class="sidebar" id="sidebar">
-                                        <div class="sidebar-content">
-                            <div class="logo-section">
-                                
-                                <a href="../4.home/code.html"><div class="logo-circle">
-                                    <img src="../logo.png" alt="Tutora Logo">
-                                </div></a>
-                            <a href="../4.home/code.html" style="text-decoration: none;">  
-                              <h2 class="logo-text" style="color: #ecb613;;font-size: 20px; padding-left: 15px;">Tutora</h2>
-                            </a>
-                            <button id="closeSidebar" class="mobile-close-btn"><span class="material-symbols-outlined">close</span></button>
-                                              </div>
-                                            <!-- Logo -->
-                                            <nav class="nav-menu">
-                                                <a href="../Profile/profile.html" class="nav-item active">
-                                                    <span class="material-symbols-outlined">person</span>
-                                                    <span>Profile</span>
-                                                </a>
-                                                <a href="../success/success.html" class="nav-item">
-                                                    <span class="material-symbols-outlined">confirmation_number</span>
-                                                    <span data-i18n="profile.my_tickets"><span data-i18n="profile.my_tickets">My Tickets</span></span>
-                                                </a>
-                                                <a href="../fav/favourite.html" class="nav-item">
-                                                    <span class="material-symbols-outlined">bookmark</span>
-                                                    <span data-i18n="profile.saved_treasures"><span data-i18n="profile.saved_treasures">Saved Treasures</span></span>
-                                                </a>
-                                                <a href="../chat bot/chat.html" class="nav-item">
-                                                    <span class="material-symbols-outlined">smart_toy</span>
-                                                    <span data-i18n="nav.ai_chatbot"><span data-i18n="nav.ai_chatbot">AI Chatbot</span></span>
-                                                </a>
-                                                <a href="../admin/admin.html" class="nav-item" id="adminLink" style="display: none;">
-                                                    <span class="material-symbols-outlined">dashboard_customize</span>
-                                                    <span data-i18n="profile.admin_dashboard"><span data-i18n="profile.admin_dashboard">Admin Dashboard</span></span>
-                                                </a>
-                                                <a href="../setting/setting.html" class="nav-item">
-                                                    <span class="material-symbols-outlined">settings</span>
-                                                    <span data-i18n="profile.settings"><span data-i18n="profile.settings">Settings</span></span>
-                                                </a>
-                                            </nav>
-                                        </div>
-                            
-                                        <!-- Logout Button (Restored) -->
-                                        <a href="../1.landing page/index.html" style="text-decoration: none;">
-                                            <button class="logout-btn">
-                                                <span class="material-symbols-outlined">logout</span>
-                                                <span data-i18n="profile.logout"><span data-i18n="profile.logout">Logout</span></span>
-                                            </button>
-                                        </a>
-                                    </aside>
-                            
-                                    <!-- Main Content -->
-                                    <main class="main-content">
-                                        <!-- Header/Navbar -->
-                                        <header class="header">
-                                            <div class="header-left">
-                                                <!-- Mobile Menu Button -->
-                                                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                                                    <span class="material-symbols-outlined">menu</span>
-                                                </button>
-                                             </div>
-                            
-                                            <div class="header-actions">
-                                                <div class="notification-container">
-                                                    <button class="notification-btn" id="notifBtn">
-                                                        <span class="material-symbols-outlined">notifications</span>
-                                                        <span class="notification-badge" id="notifBadge" style="display: none;"></span>
-                                                    </button>
-                                                    <div class="notification-dropdown" id="notifDropdown">
-                                                        <div class="notif-header">
-                                                            <h3>Notifications</h3>
-                                                            <button class="mark-all-read" id="markAllReadBtn">Mark all read</button>
-                                                        </div>
-                                                        <div class="notif-body" id="notifList">
-                                                            <div class="notif-empty">No notifications</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="divider"></div>
-                            
-                                                <div class="user-info">
-                                                    
-                                                    <div class="user-avatar">
-                                                        <img src="./profile-placeholder.svg" class="profile-img" alt="User Profile">
-                                                    </div>
-                                                </div>
-                            
-                                                
-                                                <button class="theme-toggle" id="themeToggle">
-                                                    <span class="material-symbols-outlined">light_mode</span>
-                                                </button>
-                                            </div>
-                                        </header>
-                            
-                                        <!-- Main Content Area -->
-                                        <div class="content-wrapper">
-                                            <!-- Hero Profile Section -->
-                                            <section class="hero-profile">
-                                                <div class="profile-image-wrapper">
-                                                    <img src="./profile-placeholder.svg" class="profile-image" alt="Profile Picture">
-                                                    <span class="verified-badge" data-i18n="profile.verified"><span data-i18n="profile.verified">Verified</span></span>
-                                                </div>
-                            
-                                                <div class="profile-info">
-                                                    <h1 class="profile-name">Abdelrhman Hassan</h1>
-                                                    <div class="profile-meta">
-                                                        <span class="profile-title" data-i18n="profile.pharaonic_historian"><span data-i18n="profile.pharaonic_historian">Pharaonic Historian</span></span>
-                                                        <span class="meta-divider"></span>
-                                                        <span class="join-date" id="profile-join-date" data-i18n="profile.joined"><span data-i18n="profile.joined">Joined December 2022</span></span>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="profile-actions">
-                                                   <a href="../Edit-profile/code.html"> <button class="btn btn-primary" data-i18n="profile.edit_profile"><span data-i18n="profile.edit_profile">Edit Profile</span></button></a>
-                                                    <button class="btn btn-secondary" id="shareStatusBtn" data-i18n="profile.share_status"><span data-i18n="profile.share_status">Share Status</span></button>
-                                                </div>
-                                            </section>
-                                            
-                                            <!-- Pharaonic Avatar Collection -->
-                                            <section class="avatar-collection-section">
-                                                <div class="section-header">
-                                                    <h2 class="section-title" data-i18n="profile.guardian_avatars"><span data-i18n="profile.guardian_avatars">Guardian Avatars</span></h2>
-                                                    <p class="section-subtitle">Choose your pharaonic identity to represent you in the Tutora universe.</p>
-                                                </div>
-                                                <div class="avatar-grid">
-                                                    <div class="avatar-option active" data-avatar="./unnamed.png">
-                                                        <img src="./unnamed.png" alt="Anubis Avatar">
-                                                        <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
-                                                    </div>
-                                                    <div class="avatar-option" data-avatar="./unnamed (1).png">
-                                                        <img src="./unnamed (1).png" alt="Tutankhamun Avatar">
-                                                        <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
-                                                    </div>
-                                                    <div class="avatar-option" data-avatar="./unnamed (2).png">
-                                                        <img src="./unnamed (2).png" alt="Nefertiti Avatar">
-                                                        <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
-                                                    </div>
-                                                    <div class="avatar-option" data-avatar="./unnamed (3).png">
-                                                        <img src="./unnamed (3).png" alt="Horus Avatar">
-                                                        <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
-                                                    </div>
-                                                    <div class="avatar-option" data-avatar="./unnamed (4).png">
-                                                        <img src="./unnamed (4).png" alt="Bastet Avatar">
-                                                        <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span></div>
-                                                    </div>
-                                                </div>
-                                            </section>
-                            
-                                            <!-- Dashboard Grid -->
-                                            <div class="dashboard-grid">
-                                                <div class="left-column">
-                                                    <div class="section-header">
-                                                        <h2 class="section-title" data-i18n="profile.upcoming_visits"><span data-i18n="profile.upcoming_visits">Upcoming Visits</span></h2>
-                                                        <a href="#" class="view-all-link" data-i18n="profile.view_all_history"><span data-i18n="profile.view_all_history">View All History</span></a>
-                                                    </div>
-                                                    <div id="bookingsList">
-                                                        <div class="visit-card">
-                                                            <div class="visit-image">
-                                                                <img src="../111.png" alt="GEM">
-                                                            </div>
-                                                            <div class="visit-content">
-                                                                <div class="visit-header">
-                                                                    <span class="visit-badge" data-i18n="profile.general_admission"><span data-i18n="profile.general_admission">General Admission</span></span>
-                                                                    <h3 class="visit-title" data-i18n="profile.museum_entry"><span data-i18n="profile.museum_entry">Grand Egyptian Museum Entry</span></h3>
-                                                                    <p class="visit-subtitle" data-i18n="profile.main_hall"><span data-i18n="profile.main_hall">Main Hall & Tutankhamun Gallery</span></p>
-                                                                </div>
-                                                                <div class="visit-details">
-                                                                    <div class="detail-item">
-                                                                        <span class="detail-label" data-i18n="profile.date"><span data-i18n="profile.date">Date</span></span>
-                                                                        <span class="detail-value">Dec 14, 2023</span>
-                                                                    </div>
-                                                                    <div class="detail-item">
-                                                                        <span class="detail-label" data-i18n="profile.time"><span data-i18n="profile.time">Time</span></span>
-                                                                        <span class="detail-value">10:00 AM</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="visit-footer">
-                                                                    <div class="visitor-count">+2</div>
-                                                                    <a href="../success/success.html"> <button class="btn btn-primary" data-i18n="profile.view_ticket"><span data-i18n="profile.view_ticket">VIEW TICKET</span></button>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="right-column">
-                                                    <h2 class="section-title" data-i18n="profile.explorer_stats"><span data-i18n="profile.explorer_stats">Explorer Stats</span></h2>
-                                                    <div class="stats-card">
-                                                        <div class="stat-item">
-                                                            <div class="stat-icon"><span class="material-symbols-outlined">visibility</span></div>
-                                                            <div class="stat-info">
-                                                                <p class="stat-label" data-i18n="profile.artifacts_viewed"><span data-i18n="profile.artifacts_viewed">Artifacts Viewed</span></p>
-                                                                <p class="stat-value" id="artifacts-stat">0</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="stat-item">
-                                                            <div class="stat-icon"><span class="material-symbols-outlined">map</span></div>
-                                                            <div class="stat-info">
-                                                                <p class="stat-label" data-i18n="profile.exhibitions_toured"><span data-i18n="profile.exhibitions_toured">Exhibitions Toured</span></p>
-                                                                <p class="stat-value" id="exhibitions-stat">0</p>
-                                                            </div>
-                                                        </div>
-                                                        <button class="btn btn-outline" data-i18n="profile.view_leaderboard"><span data-i18n="profile.view_leaderboard">View Leaderboard</span></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                            
-                                            <!-- Artifacts -->
-                                            <section class="carousel-section">
-                                                <div class="section-header">
-                                                    <h2 class="section-title" data-i18n="profile.recently_viewed"><span data-i18n="profile.recently_viewed">Recently Viewed Artifacts</span></h2>
-                                                </div>
-                                                <div class="carousel-container">
-                                                    <div class="artifact-card">
-                                                        <div class="artifact-image">
-                                                            <img src="./unnamed (1).png" alt="Artifact">
-                                                            <button class="wishlist-btn"><span class="material-symbols-outlined">favorite</span></button>
-                                                        </div>
-                                                        <a href="../Artifact-show/code.html?id=tut-mask" style="text-decoration: none;">
-                                                            <h3 class="artifact-name">Tutankhamun's Mask</h3>
-                                                        </a>
-                                                        <p class="artifact-period ">New Kingdom, 18th Dynasty</p>
-                                                    </div>
-                                                    <div class="artifact-card ">
-                                                        <div class="artifact-image ">
-                                                            <img src="./unnamed (2).png " alt="Artifact ">
-                                                            <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
-                                                        </div>
-                                                        <a href="../Artifact-show/code.html?id=rosetta-replica-gr" style="text-decoration: none;">
-                                                            <h3 class="artifact-name" style=" color: #ecb613;">The Rosetta Stone</h3>
-                                                        </a>
-                                                        <p class="artifact-period ">Ptolemaic Period, 196 BC</p>
-                                                    </div>
-                                                    <div class="artifact-card ">
-                                                        <div class="artifact-image ">
-                                                            <img src="./unnamed (3).png " alt="Artifact ">
-                                                            <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
-                                                        </div>
-                                                        <a href="../Artifact-show/code.html?id=nefertiti-bust" style="text-decoration: none;">
-                                                            <h3 class="artifact-name" style=" color: #ecb613;">Bust of Nefertiti</h3>
-                                                        </a>
-                                                        <p class="artifact-period ">Amarna Period, 1345 BC</p>
-                                                    </div>
-                                                    <div class="artifact-card ">
-                                                        <div class="artifact-image ">
-                                                            <img src="./unnamed (4).png " alt="Artifact ">
-                                                            <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
-                                                        </div>
-                                                        <h3 class="artifact-name" style=" color: #ecb613;">The Great Sphinx
-                                                        </h3>
-                                                        <p class="artifact-period ">Old Kingdom, 4th Dynasty
-                            
-                                                        </p>
-                                                    </div>
-                                                    <div class="artifact-card ">
-                                                        <div class="artifact-image ">
-                                                            <img src="./unnamed (1).png " alt="Artifact ">
-                                                            <button class="wishlist-btn "><span class="material-symbols-outlined ">favorite</span></button>
-                                                        </div>
-                                                        <h3 class="artifact-name" style=" color: #ecb613;">Golden Canopic Jars
-                                                        </h3>
-                                                        <p class="artifact-period ">New Kingdom, 19th Dynasty
-                            
-                                                        </p>
-                                                    </div>
-                                                    <div class="artifact-card more-artifacts">
-                                                        <div class="artifact-image explore-more-bg">
-                                                            <div class="explore-content">
-                                                                <span class="material-symbols-outlined">arrow_forward</span>
-                                                                <span data-i18n="profile.explore_all"><span data-i18n="profile.explore_all">Explore All</span></span>
-                                                            </div>
-                                                        </div>
-                                                        <h3 class="artifact-name" data-i18n="profile.view_more"><span data-i18n="profile.view_more">View More</span></h3>
-                                                        <p class="artifact-period" data-i18n="profile.full_history"><span data-i18n="profile.full_history">Your Full History</span></p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-scroll-indicator">
-                                                    <div class="scroll-track">
-                                                        <div class="scroll-thumb"></div>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </div>
-                                        <footer class="site-footer">
-                                        <div class="footer-container">
-                                            <!-- Footer Header -->
-                                            <div class="footer-header">
-                                                <div class="footer-logo">
-                                                    <span class="material-symbols-outlined">account_balance</span>
-                                                </div>
-                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
-                                                <div class="footer-divider"></div>
-                                            </div>
-                            
-                                            <!-- Footer Grid -->
-                                            <div class="footer-grid">
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
-                                                    <ul>
-                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
-                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.about">About</h3>
-                                                    <ul>
-                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
-                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News & Press</a></li>
-                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.support">Support</h3>
-                                                    <ul>
-                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column connect-column">
-                                                    <h3 data-i18n="footer.connect">Connect</h3>
-                                                    <div class="social-links">
-                                                        <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                            <i class="fa-brands fa-facebook"></i>
-                                                        </a>
-                            
-                                                        <!-- Twitter (X ) -->
-                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                                            <i class="fa-brands fa-x-twitter"></i>
-                                                        </a>
-                            
-                                                        <!-- Instagram -->
-                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                            <i class="fa-brands fa-instagram"></i>
-                                                        </a>
-                            
-                                                        <!-- YouTube -->
-                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                            <i class="fa-brands fa-youtube"></i>
-                                                        </a>
-                                                    </div>
-                            
-                                                    <p>
-                                                        Follow us on social media for updates and behind-the-scenes content.
-                                                    </p>
-                                                </div>
-                                            </div>
-                             
-                                                   <!-- Footer Bottom -->
-                                             <div class="footer-bottom">
-                                                 <div class="language-toggle">
-                                                     <button class="active" data-lang="en">English</button>
-                                                     <button data-lang="ar">العربية</button>
-                                                 </div>
-                                                 <div class="legal-section">
-                                                    <div class="legal-links">
-                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
-                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
-                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
-                                                 </div>
-                                         <div class="copyright">
-                                           &copy; 2026 Tutora. All rights reserved.
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                     </footer>
-                                    </main>
+<html lang="en">
+
+<head>
+    <meta name="description"
+        content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="profile.title">TUTORA Profile | Manage Your Account</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../animate.css" />
+    <link rel="stylesheet" href="../global-theme.css" />
+    <link rel="stylesheet" href="../responsive-core.css">
+
+</head>
+
+<body class="dark">
+
+    <div class="container-wrapper">
+        <!-- Sidebar Navigation (RESTORED) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <div class="logo-section">
+
+                    <a href="../4.home/code.html">
+                        <div class="logo-circle">
+                            <img src="../logo.png" alt="Tutora Logo">
+                        </div>
+                    </a>
+                    <a href="../4.home/code.html" style="text-decoration: none;">
+                        <h2 class="logo-text" style="color: #ecb613;;font-size: 20px; padding-left: 15px;">Tutora</h2>
+                    </a>
+                    <button id="closeSidebar" class="mobile-close-btn"><span
+                            class="material-symbols-outlined">close</span></button>
+                </div>
+                <!-- Logo -->
+                <nav class="nav-menu">
+                    <a href="../Profile/profile.html" class="nav-item active">
+                        <span class="material-symbols-outlined">person</span>
+                        <span>Profile</span>
+                    </a>
+                    <a href="../success/success.html" class="nav-item">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <span data-i18n="profile.my_tickets"><span data-i18n="profile.my_tickets">My
+                                Tickets</span></span>
+                    </a>
+                    <a href="../fav/favourite.html" class="nav-item">
+                        <span class="material-symbols-outlined">bookmark</span>
+                        <span data-i18n="profile.saved_treasures"><span data-i18n="profile.saved_treasures">Saved
+                                Treasures</span></span>
+                    </a>
+                    <a href="../chat bot/chat.html" class="nav-item">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                        <span data-i18n="nav.ai_chatbot"><span data-i18n="nav.ai_chatbot">AI Chatbot</span></span>
+                    </a>
+                    <a href="../admin/admin.html" class="nav-item" id="adminLink" style="display: none;">
+                        <span class="material-symbols-outlined">dashboard_customize</span>
+                        <span data-i18n="profile.admin_dashboard"><span data-i18n="profile.admin_dashboard">Admin
+                                Dashboard</span></span>
+                    </a>
+                    <a href="../setting/setting.html" class="nav-item">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span data-i18n="profile.settings"><span data-i18n="profile.settings">Settings</span></span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Logout Button (Restored) -->
+            <a href="../1.landing page/index.html" style="text-decoration: none;">
+                <button class="logout-btn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span data-i18n="profile.logout"><span data-i18n="profile.logout">Logout</span></span>
+                </button>
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header/Navbar -->
+            <header class="header">
+                <div class="header-left">
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <div class="notification-container">
+                        <button class="notification-btn" id="notifBtn">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span class="notification-badge" id="notifBadge" style="display: none;"></span>
+                        </button>
+                        <div class="notification-dropdown" id="notifDropdown">
+                            <div class="notif-header">
+                                <h3>Notifications</h3>
+                                <button class="mark-all-read" id="markAllReadBtn">Mark all read</button>
+                            </div>
+                            <div class="notif-body" id="notifList">
+                                <div class="notif-empty">No notifications</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="user-info">
+
+                        <div class="user-avatar">
+                            <img src="./profile-placeholder.svg" class="profile-img" alt="User Profile">
+                        </div>
+                    </div>
+
+
+                    <button class="theme-toggle" id="themeToggle">
+                        <span class="material-symbols-outlined">light_mode</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <div class="content-wrapper">
+                <!-- Hero Profile Section -->
+                <section class="hero-profile">
+                    <div class="profile-image-wrapper">
+                        <img src="./profile-placeholder.svg" class="profile-image" alt="Profile Picture">
+                        <span class="verified-badge" data-i18n="profile.verified"><span
+                                data-i18n="profile.verified">Verified</span></span>
+                    </div>
+
+                    <div class="profile-info">
+                        <h1 class="profile-name">Abdelrhman Hassan</h1>
+                        <div class="profile-meta">
+                            <span class="profile-title" data-i18n="profile.pharaonic_historian"><span
+                                    data-i18n="profile.pharaonic_historian">Pharaonic Historian</span></span>
+                            <span class="meta-divider"></span>
+                            <span class="join-date" id="profile-join-date" data-i18n="profile.joined"><span
+                                    data-i18n="profile.joined">Joined December 2022</span></span>
+                        </div>
+                    </div>
+
+                    <div class="profile-actions">
+                        <a href="../Edit-profile/code.html"> <button class="btn btn-primary"
+                                data-i18n="profile.edit_profile"><span data-i18n="profile.edit_profile">Edit
+                                    Profile</span></button></a>
+                        <button class="btn btn-secondary" id="shareStatusBtn" data-i18n="profile.share_status"><span
+                                data-i18n="profile.share_status">Share Status</span></button>
+                    </div>
+                </section>
+
+                <!-- Pharaonic Avatar Collection -->
+                <section class="avatar-collection-section">
+                    <div class="section-header">
+                        <h2 class="section-title" data-i18n="profile.guardian_avatars"><span
+                                data-i18n="profile.guardian_avatars">Guardian Avatars</span></h2>
+                        <p class="section-subtitle">Choose your pharaonic identity to represent you in the Tutora
+                            universe.</p>
+                    </div>
+                    <div class="avatar-grid">
+                        <div class="avatar-option active" data-avatar="./unnamed.png">
+                            <img src="./unnamed.png" alt="Anubis Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                        </div>
+                        <div class="avatar-option" data-avatar="./unnamed (1).png">
+                            <img src="./unnamed (1).png" alt="Tutankhamun Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                        </div>
+                        <div class="avatar-option" data-avatar="./unnamed (2).png">
+                            <img src="./unnamed (2).png" alt="Nefertiti Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                        </div>
+                        <div class="avatar-option" data-avatar="./unnamed (3).png">
+                            <img src="./unnamed (3).png" alt="Horus Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                        </div>
+                        <div class="avatar-option" data-avatar="./unnamed (4).png">
+                            <img src="./unnamed (4).png" alt="Bastet Avatar">
+                            <div class="selection-overlay"><span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Dashboard Grid -->
+                <div class="dashboard-grid">
+                    <div class="left-column">
+                        <div class="section-header">
+                            <h2 class="section-title" data-i18n="profile.upcoming_visits"><span
+                                    data-i18n="profile.upcoming_visits">Upcoming Visits</span></h2>
+                            <a href="#" class="view-all-link" data-i18n="profile.view_all_history"><span
+                                    data-i18n="profile.view_all_history">View All History</span></a>
+                        </div>
+                        <div id="bookingsList">
+                            <div class="visit-card">
+                                <div class="visit-image">
+                                    <img src="../111.png" alt="GEM">
                                 </div>
-
-                                <!-- Share Status Modal -->
-                                <div class="share-modal" id="shareStatusModal">
-                                    <div class="modal-overlay" id="modalOverlay"></div>
-                                    <div class="passport-card">
-
-    <button class="theme-toggle" id="themeToggle">
-        <span class="material-symbols-outlined">light_mode</span>
-    </button>
-                                        <button class="close-modal" id="closeShareModal"><span class="material-symbols-outlined">close</span></button>
-                                        <div class="passport-header">
-                                            <div class="passport-logo">
-                                                <img src="../logo.png" alt="GEM">
-                                            </div>
-                                            <div class="passport-title">
-                                                <h3>GRAND EGYPTIAN MUSEUM</h3>
-                                                <p>Explorer Official Status</p>
-                                            </div>
+                                <div class="visit-content">
+                                    <div class="visit-header">
+                                        <span class="visit-badge" data-i18n="profile.general_admission"><span
+                                                data-i18n="profile.general_admission">General Admission</span></span>
+                                        <h3 class="visit-title" data-i18n="profile.museum_entry"><span
+                                                data-i18n="profile.museum_entry">Grand Egyptian Museum Entry</span></h3>
+                                        <p class="visit-subtitle" data-i18n="profile.main_hall"><span
+                                                data-i18n="profile.main_hall">Main Hall & Tutankhamun Gallery</span></p>
+                                    </div>
+                                    <div class="visit-details">
+                                        <div class="detail-item">
+                                            <span class="detail-label" data-i18n="profile.date"><span
+                                                    data-i18n="profile.date">Date</span></span>
+                                            <span class="detail-value">Dec 14, 2023</span>
                                         </div>
-                                        <div class="passport-body">
-                                            <div class="passport-user">
-                                                <div class="p-avatar">
-                                                    <img src="./profile-placeholder.svg" id="modal-avatar" alt="Avatar">
-                                                </div>
-                                                <div class="p-info">
-                                                    <h2 id="modal-name">Explorer</h2>
-                                                    <p class="p-rank" id="modal-rank">Honorary Curator</p>
-                                                </div>
-                                            </div>
-                                            <div class="p-stats-grid">
-                                                <div class="p-stat">
-                                                    <span class="p-label">Treasures Found</span>
-                                                    <span class="p-value" id="modal-artifacts">0</span>
-                                                </div>
-                                                <div class="p-stat">
-                                                    <span class="p-label">Galley Tours</span>
-                                                    <span class="p-value" id="modal-exhibitions">0</span>
-                                                </div>
-                                            </div>
-                                            <div class="p-validity">
-                                                <span>Status Class: A-1</span>
-                                                <span id="modal-issued-date">Issued: 2026-04</span>
-                                            </div>
-                                        </div>
-                                        <div class="passport-footer">
-                                            <button class="share-btn-action" id="copyShareLink">
-                                                <span class="material-symbols-outlined">content_copy</span>
-                                                Copy Status Link
-                                            </button>
-                                            <div class="social-share-icons">
-                                                <button title="Share on X"><i class="fa-brands fa-x-twitter"></i></button>
-                                                <button title="Share on Facebook"><i class="fa-brands fa-facebook"></i></button>
-                                            </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label" data-i18n="profile.time"><span
+                                                    data-i18n="profile.time">Time</span></span>
+                                            <span class="detail-value">10:00 AM</span>
                                         </div>
                                     </div>
+                                    <div class="visit-footer">
+                                        <div class="visitor-count">+2</div>
+                                        <a href="../success/success.html"> <button class="btn btn-primary"
+                                                data-i18n="profile.view_ticket"><span
+                                                    data-i18n="profile.view_ticket">VIEW TICKET</span></button>
+                                        </a>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                <script src="script.js "></script>
-                                <script src="../global-core.js"></script>
-                                <script src="../animate.js"></script>
-                            <script src="../global-lang.js?v=1780353971499"></script>
+                    <div class="right-column">
+                        <h2 class="section-title" data-i18n="profile.explorer_stats"><span
+                                data-i18n="profile.explorer_stats">Explorer Stats</span></h2>
+                        <div class="stats-card">
+                            <div class="stat-item">
+                                <div class="stat-icon"><span class="material-symbols-outlined">visibility</span></div>
+                                <div class="stat-info">
+                                    <p class="stat-label" data-i18n="profile.artifacts_viewed"><span
+                                            data-i18n="profile.artifacts_viewed">Artifacts Viewed</span></p>
+                                    <p class="stat-value" id="artifacts-stat">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon"><span class="material-symbols-outlined">map</span></div>
+                                <div class="stat-info">
+                                    <p class="stat-label" data-i18n="profile.exhibitions_toured"><span
+                                            data-i18n="profile.exhibitions_toured">Exhibitions Toured</span></p>
+                                    <p class="stat-value" id="exhibitions-stat">0</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" data-i18n="profile.view_leaderboard"><span
+                                    data-i18n="profile.view_leaderboard">View Leaderboard</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artifacts -->
+                <section class="carousel-section">
+                    <div class="section-header">
+                        <h2 class="section-title" data-i18n="profile.recently_viewed"><span
+                                data-i18n="profile.recently_viewed">Recently Viewed Artifacts</span></h2>
+                    </div>
+                    <div class="carousel-container">
+                        <div class="artifact-card">
+                            <div class="artifact-image">
+                                <img src="./unnamed (1).png" alt="Artifact">
+                                <button class="wishlist-btn"><span
+                                        class="material-symbols-outlined">favorite</span></button>
+                            </div>
+                            <a href="../Artifact-show/code.html?id=tut-mask" style="text-decoration: none;">
+                                <h3 class="artifact-name">Tutankhamun's Mask</h3>
+                            </a>
+                            <p class="artifact-period ">New Kingdom, 18th Dynasty</p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (2).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span
+                                        class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <a href="../Artifact-show/code.html?id=rosetta-replica-gr" style="text-decoration: none;">
+                                <h3 class="artifact-name" style=" color: #ecb613;">The Rosetta Stone</h3>
+                            </a>
+                            <p class="artifact-period ">Ptolemaic Period, 196 BC</p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (3).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span
+                                        class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <a href="../Artifact-show/code.html?id=nefertiti-bust" style="text-decoration: none;">
+                                <h3 class="artifact-name" style=" color: #ecb613;">Bust of Nefertiti</h3>
+                            </a>
+                            <p class="artifact-period ">Amarna Period, 1345 BC</p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (4).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span
+                                        class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <h3 class="artifact-name" style=" color: #ecb613;">The Great Sphinx
+                            </h3>
+                            <p class="artifact-period ">Old Kingdom, 4th Dynasty
+
+                            </p>
+                        </div>
+                        <div class="artifact-card ">
+                            <div class="artifact-image ">
+                                <img src="./unnamed (1).png " alt="Artifact ">
+                                <button class="wishlist-btn "><span
+                                        class="material-symbols-outlined ">favorite</span></button>
+                            </div>
+                            <h3 class="artifact-name" style=" color: #ecb613;">Golden Canopic Jars
+                            </h3>
+                            <p class="artifact-period ">New Kingdom, 19th Dynasty
+
+                            </p>
+                        </div>
+                        <div class="artifact-card more-artifacts">
+                            <div class="artifact-image explore-more-bg">
+                                <div class="explore-content">
+                                    <span class="material-symbols-outlined">arrow_forward</span>
+                                    <span data-i18n="profile.explore_all"><span data-i18n="profile.explore_all">Explore
+                                            All</span></span>
+                                </div>
+                            </div>
+                            <h3 class="artifact-name" data-i18n="profile.view_more"><span
+                                    data-i18n="profile.view_more">View More</span></h3>
+                            <p class="artifact-period" data-i18n="profile.full_history"><span
+                                    data-i18n="profile.full_history">Your Full History</span></p>
+                        </div>
+                    </div>
+                    <div class="carousel-scroll-indicator">
+                        <div class="scroll-track">
+                            <div class="scroll-thumb"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <footer class="site-footer">
+                <div class="footer-container">
+                    <!-- Footer Header -->
+                    <div class="footer-header">
+                        <div class="footer-logo">
+                            <span class="material-symbols-outlined">account_balance</span>
+                        </div>
+                        <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
+                        <div class="footer-divider"></div>
+                    </div>
+
+                    <!-- Footer Grid -->
+                    <div class="footer-grid">
+                        <div class="footer-column">
+                            <h3 data-i18n="footer.explore">Explore</h3>
+                            <ul>
+                                <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+                                <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a>
+                                </li>
+                                <li><a href="../Exhibition-Halls/exhibition-halls.html"
+                                        data-i18n="footer.exhibition">Exhibition Halls</a></li>
+                                <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+                                <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h3 data-i18n="footer.about">About</h3>
+                            <ul>
+                                <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+                                <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+                                <li><a href="../-news_press/code.html" data-i18n="footer.news">News & Press</a></li>
+                                <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h3 data-i18n="footer.support">Support</h3>
+                            <ul>
+                                <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+                                <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In
+                                        Touch</a></li>
+                                <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+                                <li><a href="../-accessibility/code.html"
+                                        data-i18n="footer.accessibility">Accessibility</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column connect-column">
+                            <h3 data-i18n="footer.connect">Connect</h3>
+                            <div class="social-links">
+                                <!-- Facebook -->
+                                <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+
+                                <!-- Twitter (X ) -->
+                                <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                                    <i class="fa-brands fa-x-twitter"></i>
+                                </a>
+
+                                <!-- Instagram -->
+                                <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+
+                                <!-- YouTube -->
+                                <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                            </div>
+
+                            <p>
+                                Follow us on social media for updates and behind-the-scenes content.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer Bottom -->
+                    <div class="footer-bottom">
+                        <div class="language-toggle">
+                            <button class="active" data-lang="en">English</button>
+                            <button data-lang="ar">العربية</button>
+                        </div>
+                        <div class="legal-section">
+                            <div class="legal-links">
+                                <a href="../Privacy-policy/Privacy-Policy.html"
+                                    style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy
+                                    Policy</a>
+                                <a href="../Terms-of-Service/term-of-service.html"
+                                    style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of
+                                    Service</a>
+                                <a href="../Cookie-Settings/Cookie-Settings.html"
+                                    style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie
+                                    Settings</a>
+                            </div>
+                            <div class="copyright">
+                                &copy; 2026 Tutora. All rights reserved.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Share Status Modal -->
+    <div class="share-modal" id="shareStatusModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="passport-card">
+
+            <button class="theme-toggle" id="themeToggle">
+                <span class="material-symbols-outlined">light_mode</span>
+            </button>
+            <button class="close-modal" id="closeShareModal"><span
+                    class="material-symbols-outlined">close</span></button>
+            <div class="passport-header">
+                <div class="passport-logo">
+                    <img src="../logo.png" alt="GEM">
+                </div>
+                <div class="passport-title">
+                    <h3>GRAND EGYPTIAN MUSEUM</h3>
+                    <p>Explorer Official Status</p>
+                </div>
+            </div>
+            <div class="passport-body">
+                <div class="passport-user">
+                    <div class="p-avatar">
+                        <img src="./profile-placeholder.svg" id="modal-avatar" alt="Avatar">
+                    </div>
+                    <div class="p-info">
+                        <h2 id="modal-name">Explorer</h2>
+                        <p class="p-rank" id="modal-rank">Honorary Curator</p>
+                    </div>
+                </div>
+                <div class="p-stats-grid">
+                    <div class="p-stat">
+                        <span class="p-label">Treasures Found</span>
+                        <span class="p-value" id="modal-artifacts">0</span>
+                    </div>
+                    <div class="p-stat">
+                        <span class="p-label">Galley Tours</span>
+                        <span class="p-value" id="modal-exhibitions">0</span>
+                    </div>
+                </div>
+                <div class="p-validity">
+                    <span>Status Class: A-1</span>
+                    <span id="modal-issued-date">Issued: 2026-04</span>
+                </div>
+            </div>
+            <div class="passport-footer">
+                <button class="share-btn-action" id="copyShareLink">
+                    <span class="material-symbols-outlined">content_copy</span>
+                    Copy Status Link
+                </button>
+                <div class="social-share-icons">
+                    <button title="Share on X"><i class="fa-brands fa-x-twitter"></i></button>
+                    <button title="Share on Facebook"><i class="fa-brands fa-facebook"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js "></script>
+    <script src="../global-core.js"></script>
+    <script src="../animate.js"></script>
+    <script src="../global-lang.js?v=1780353971499"></script>
 </body>
-                            
-                            </html>
-                            
-                            
-                            
-                            
+
+</html>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeLangProvider } from './context/ThemeLangContext';
 
 // Global Styles
 import './styles/global-theme.css';
@@ -37,10 +38,11 @@ import {
 
 const App = () => {
   return (
-    <Router>
-      <GlobalLoader />
-      <Layout>
-        <Routes>
+    <ThemeLangProvider>
+      <Router>
+        <GlobalLoader />
+        <Layout>
+          <Routes>
           <Route path="/" element={<HomePage />} />
           
           {/* Main Journeys */}
@@ -86,7 +88,8 @@ const App = () => {
           <Route path="*" element={<div style={{ textAlign: 'center', padding: '100px', color: 'var(--text-primary)' }}><h2>404 - Page not found</h2></div>} />
         </Routes>
       </Layout>
-    </Router>
+      </Router>
+    </ThemeLangProvider>
   );
 };
 

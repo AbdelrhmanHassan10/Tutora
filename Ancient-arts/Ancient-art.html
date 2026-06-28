@@ -1,22 +1,28 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>TUTORA Pharaoh Lab | Professional Unified Edition</title>
-    <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../animate.css">
-    <link rel="stylesheet" href="../global-theme.css">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>TUTORA Pharaoh Lab | Professional Unified Edition</title>
+  <link rel="icon" type="image/png" href="../museum.png">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../animate.css">
+  <link rel="stylesheet" href="../global-theme.css">
   <link rel="stylesheet" href="../global-lang.css">
+  <link rel="stylesheet" href="../responsive-core.css">
+
 </head>
 
 <body class="dark">
-    <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
@@ -47,7 +53,8 @@
         <div class="dropdown-items">
           <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
           <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"
+            data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
           <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice
             Storytelling (3D)</a>
           <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
@@ -63,7 +70,8 @@
         </button>
         <div class="dropdown-items">
           <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
-          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
+          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item"
+            data-i18n="nav.exhibition">Exhibition Halls</a>
         </div>
       </div>
       <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
@@ -74,16 +82,27 @@
           <span class="material-symbols-outlined">expand_more</span>
         </button>
         <div class="dropdown-items">
-          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
-          
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.language"><span class="material-symbols-outlined"
+              style="font-size: 18px;">language</span> Language</a>
+
+          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+            Profile</a>
+          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.favorites"><span class="material-symbols-outlined"
+              style="font-size: 18px;">favorite</span> Favorites</a>
+          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.settings"><span class="material-symbols-outlined"
+              style="font-size: 18px;">settings</span> Settings</a>
+          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;"
+            style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span
+              class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
         </div>
       </div>
 
-      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
+      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn"
+        style="display: none; align-items: center; gap: 8px;">
         <span class="material-symbols-outlined">login</span>
         <span data-i18n="nav.login">Login</span>
       </a>
@@ -92,12 +111,12 @@
     <div class="menu-footer">
       <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
 
-      
+
     </div>
   </div>
 
-    <!-- Header -->
-    <header class="header">
+  <!-- Header -->
+  <header class="header">
     <div class="scroll-progress-container">
       <div class="scroll-progress-bar" id="scrollProgress"></div>
     </div>
@@ -127,7 +146,8 @@
           <div class="dropdown-menu">
             <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
             <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link"
+              data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
             <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice
               Storytelling (3D)</a>
             <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
@@ -143,7 +163,8 @@
           </button>
           <div class="dropdown-menu">
             <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
-            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link"
+              data-i18n="nav.exhibition">Exhibition Halls</a>
           </div>
         </div>
       </nav>
@@ -155,7 +176,9 @@
         <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
           <span class="material-symbols-outlined">language</span>
         </button>
-        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
+        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text"
+            data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon"
+            style="display: none;">confirmation_number</span></a>
 
         <a href="../card/card.html" class="icon-btn-link" title="Cart">
           <button class="icon-btn cart-btn" style="position: relative;">
@@ -163,21 +186,32 @@
             <span class="cart-badge" style="display: none;">0</span>
           </button>
         </a>
-        
-        
-        
-        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-          <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+
+
+
+        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;"
+          title="Profile">
+          <button class="nav-link dropdown-trigger profile-trigger"
+            style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
             <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-            <img src="./unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
+            <img src="./unnamed.png" alt="Profile" class="profile-img"
+              style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
           </button>
           <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-          
-          <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
+
+            <a href="../Profile/profile.html" class="dropdown-link"
+              style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+            <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"
+              data-i18n-html="nav.favorites"><span class="material-symbols-outlined"
+                style="font-size: 18px;">favorite</span> Favorites</a>
+            <a href="../setting/setting.html" class="dropdown-link"
+              style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+            <a href="#" class="dropdown-link" onclick="handleLogout(); return false;"
+              style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span
+                class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          </div>
         </div>
 
         <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
@@ -188,325 +222,348 @@
       </div>
     </div>
   </header>
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-bg"></div>
-            <div class="container hero-content">
-                <h1 class="display-font hero-title">
-                    <span data-i18n="artlab.hero_title">Revive Ancient Egyptian</span> <span class="gold-text-span" data-i18n="artlab.hero_title_span">Art with AI</span>
-                </h1>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-content">
+        <h1 class="display-font hero-title">
+          <span data-i18n="artlab.hero_title">Revive Ancient Egyptian</span> <span class="gold-text-span"
+            data-i18n="artlab.hero_title_span">Art with AI</span>
+        </h1>
 
-                <h2 class="hero-subtitle">
-                    <span data-i18n="artlab.hero_sub">Reviving ancient Egyptian art with generative artificial intelligence</span>
-                </h2>
-                <button class="gold-button" data-i18n="artlab.btn_start">Start creating now</button>
-            </div>
-        </section>
-        <br><br>
-        <!-- Creation Styles Section -->
-        <section class="container">
+        <h2 class="hero-subtitle">
+          <span data-i18n="artlab.hero_sub">Reviving ancient Egyptian art with generative artificial intelligence</span>
+        </h2>
+        <button class="gold-button" data-i18n="artlab.btn_start">Start creating now</button>
+      </div>
+    </section>
+    <br><br>
+    <!-- Creation Styles Section -->
+    <section class="container">
 
-            <h2 class="ai-section-title"><span data-i18n="artlab.style_title">Choose a</span> <span class="gold-text-span" data-i18n="artlab.style_title_span">Creative Style</span></h2>
-
-
-            <div class="cards-grid">
-                <!-- Card 1 -->
-                <div class="card">
-                    <div class="card-image-wrapper">
-                        <img alt="Hieroglyphic Cartouche" class="card-image" src="unnamed 1.png">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h4 class="card-title" data-i18n="artlab.card1_title">Write your name in hieroglyphics</h4>
-                        <p class="card-desc">
-                            <span data-i18n="artlab.card1_desc">Transform your name into a royal name using the symbols of authentic Egyptian art.</span>
-                        </p>
-                        <a href="../Name-Translator/Name-Translator.html"><button class="gold-button" style="width: 100%; padding: 0.75rem">
-                                <span data-i18n="artlab.btn_try">Try it now</span>
-                            </button></a>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="card" style="transform: translateY(-1rem)">
-                    <div class="card-image-wrapper">
-                        <img alt="Pharaonic Portrait" class="card-image" src="unnamed (2).png">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h4 class="card-title" data-i18n="artlab.card2_title">Turn your picture into a pharaoh</h4>
-                        <p class="card-desc">
-                            <span data-i18n="artlab.card2_desc">Upload your profile picture and let artificial intelligence redraw your features as an Egyptian king.</span>
-                        </p>
-                        <a href="../Pharaoh Transformer/Pharaoh-Transformer.html"> <button class="gold-button" style="width: 100%; padding: 0.75rem">
-                                <span data-i18n="artlab.btn_try">Try it now</span>
-                            </button></a>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="card">
-                    <div class="card-image-wrapper">
-                        <img alt="Mythical Egyptian Cat" class="card-image" src="unnamed (3).png">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h4 class="card-title" data-i18n="artlab.card3_title">Create from your imagination</h4>
-                        <p class="card-desc">
-                            <span data-i18n="artlab.card3_desc">Write a description of any object or scene and let your imagination blend with the grandeur of Egyptian civilization.</span>
-                        </p>
-                        <a href="../AI Imagination/AI-Imagination.html">
-                            <button class="gold-button" style="width: 100%; padding: 0.75rem">
-                                <span data-i18n="artlab.btn_try">Try it now</span>
-                            </button></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section class="container">
-
-            <h2 class="ai-section-title"><span data-i18n="artlab.gal_title">Visitor</span> <span class="gold-text-span" data-i18n="artlab.gal_title_span">Creations</span></h2>
+      <h2 class="ai-section-title"><span data-i18n="artlab.style_title">Choose a</span> <span class="gold-text-span"
+          data-i18n="artlab.style_title_span">Creative Style</span></h2>
 
 
-            <div class="gallery-masonry">
-                <div class="gallery-item">
-                    <img class="gallery-img" src="1.png" alt="Gallery 1">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-img" src="2.png" alt="Gallery 2">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-img" src="3.png" alt="Gallery 3">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-img" src="4.png" alt="Gallery 4">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-img" src="5.png" alt="Gallery 5">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-img" src="6.png" alt="Gallery 6">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-img" src="7.png" alt="Gallery 7">
-                </div>
-                <div class="gallery-item">
-                    <img class="gallery-img" src="1.png" alt="Gallery 2">
-                </div>
-            </div>
-        </section>
-    </main>
-
-
-    <!-- How AI Art Works -->
-    <section class="art-how">
-        <h2 class="ai-section-title"><span data-i18n="artlab.how_title">How AI Art</span> <span class="gold-text-span" data-i18n="artlab.how_title_span">Creation Works</span></h2>
-        <div class="art-how-grid">
-            <!-- Step 1 -->
-            <div class="art-how-card">
-                <div class="art-how-step-num">01</div>
-                <div class="art-how-icon-box">
-                    <span class="material-symbols-outlined art-how-icon">edit_note</span>
-                </div>
-                <div class="art-how-info">
-                    <h3 class="art-how-title" data-i18n="artlab.how1_title">Describe Your Vision</h3>
-                    <p class="art-how-text"><span data-i18n="artlab.how1_desc">Type a text prompt or upload your photo. Describe the Egyptian art style you want — pharaonic, hieroglyphic, or mythological.</span></p>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="art-how-card">
-                <div class="art-how-step-num">02</div>
-                <div class="art-how-icon-box">
-                    <span class="material-symbols-outlined art-how-icon">auto_awesome</span>
-                </div>
-                <div class="art-how-info">
-                    <h3 class="art-how-title" data-i18n="artlab.how2_title">AI Generates Art</h3>
-                    <p class="art-how-text"><span data-i18n="artlab.how2_desc">Our model, trained on thousands of authentic Egyptian artworks, generates unique creations blending ancient style with your input.</span></p>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="art-how-card">
-                <div class="art-how-step-num">03</div>
-                <div class="art-how-icon-box">
-                    <span class="material-symbols-outlined art-how-icon">download</span>
-                </div>
-                <div class="art-how-info">
-                    <h3 class="art-how-title" data-i18n="artlab.how3_title">Save &amp; Share</h3>
-                    <p class="art-how-text"><span data-i18n="artlab.how3_desc">Download your creation in high resolution, share on social media, or submit it for the Visitor Gallery wall.</span></p>
-                </div>
-            </div>
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-image-wrapper">
+            <img alt="Hieroglyphic Cartouche" class="card-image" src="unnamed 1.png">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h4 class="card-title" data-i18n="artlab.card1_title">Write your name in hieroglyphics</h4>
+            <p class="card-desc">
+              <span data-i18n="artlab.card1_desc">Transform your name into a royal name using the symbols of authentic
+                Egyptian art.</span>
+            </p>
+            <a href="../Name-Translator/Name-Translator.html"><button class="gold-button"
+                style="width: 100%; padding: 0.75rem">
+                <span data-i18n="artlab.btn_try">Try it now</span>
+              </button></a>
+          </div>
         </div>
+
+        <!-- Card 2 -->
+        <div class="card" style="transform: translateY(-1rem)">
+          <div class="card-image-wrapper">
+            <img alt="Pharaonic Portrait" class="card-image" src="unnamed (2).png">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h4 class="card-title" data-i18n="artlab.card2_title">Turn your picture into a pharaoh</h4>
+            <p class="card-desc">
+              <span data-i18n="artlab.card2_desc">Upload your profile picture and let artificial intelligence redraw
+                your features as an Egyptian king.</span>
+            </p>
+            <a href="../Pharaoh Transformer/Pharaoh-Transformer.html"> <button class="gold-button"
+                style="width: 100%; padding: 0.75rem">
+                <span data-i18n="artlab.btn_try">Try it now</span>
+              </button></a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card-image-wrapper">
+            <img alt="Mythical Egyptian Cat" class="card-image" src="unnamed (3).png">
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h4 class="card-title" data-i18n="artlab.card3_title">Create from your imagination</h4>
+            <p class="card-desc">
+              <span data-i18n="artlab.card3_desc">Write a description of any object or scene and let your imagination
+                blend with the grandeur of Egyptian civilization.</span>
+            </p>
+            <a href="../AI Imagination/AI-Imagination.html">
+              <button class="gold-button" style="width: 100%; padding: 0.75rem">
+                <span data-i18n="artlab.btn_try">Try it now</span>
+              </button></a>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section class="container">
+
+      <h2 class="ai-section-title"><span data-i18n="artlab.gal_title">Visitor</span> <span class="gold-text-span"
+          data-i18n="artlab.gal_title_span">Creations</span></h2>
 
 
-    <!-- Creative Tools -->
-    <section class="creative-tools-section">
-        <h2 class="ai-section-title"><span data-i18n="artlab.tools_title">Creative</span> <span class="gold-text-span" data-i18n="artlab.tools_title_span">Tools</span></h2>
-        <div class="creative-tools-grid">
-            <!-- Tool 1 -->
-            <div class="creative-tools-card">
-                <div class="tool-icon-box">
-                    <span class="material-symbols-outlined creative-tools-icon">text_fields</span>
-                </div>
-                <div class="tool-info">
-                    <h3 class="creative-tools-title" data-i18n="artlab.tool1_title">Hieroglyph Writer</h3>
-                    <p class="creative-tools-text"><span data-i18n="artlab.tool1_desc">Translate your name into authentic hieroglyphic cartouches with royal styling.</span></p>
-                </div>
-            </div>
-
-            <!-- Tool 2 -->
-            <div class="creative-tools-card">
-                <div class="tool-icon-box">
-                    <span class="material-symbols-outlined creative-tools-icon">face_retouching_natural</span>
-                </div>
-                <div class="tool-info">
-                    <h3 class="creative-tools-title" data-i18n="artlab.tool2_title">Pharaoh Transformer</h3>
-                    <p class="creative-tools-text"><span data-i18n="artlab.tool2_desc">Transform your selfie into a pharaonic portrait — complete with crown and regalia.</span></p>
-                </div>
-            </div>
-
-            <!-- Tool 3 -->
-            <div class="creative-tools-card">
-                <div class="tool-icon-box">
-                    <span class="material-symbols-outlined creative-tools-icon">brush</span>
-                </div>
-                <div class="tool-info">
-                    <h3 class="creative-tools-title" data-i18n="artlab.tool3_title">Free Imagination</h3>
-                    <p class="creative-tools-text"><span data-i18n="artlab.tool3_desc">Describe any scene and watch AI render it in ancient Egyptian artistic style.</span></p>
-                </div>
-            </div>
+      <div class="gallery-masonry">
+        <div class="gallery-item">
+          <img class="gallery-img" src="1.png" alt="Gallery 1">
         </div>
-    </section>
-
-
-    <!-- Stats -->
-    <section class="stats-section">
-        <h2 class="ai-section-title"><span data-i18n="artlab.stat_title">Laboratory</span> <span class="gold-text-span" data-i18n="artlab.stat_title_span">Statistics</span></h2>
-        <div class="stats-grid">
-
-            <div class="stat-item">
-                <span class="stat-value">75K+</span>
-                <span class="stat-label" data-i18n="artlab.stat1_label">Artworks Created</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value">3</span>
-                <span class="stat-label" data-i18n="artlab.stat2_label">Creative Modes</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value">4.8/5</span>
-                <span class="stat-label" data-i18n="artlab.stat3_label">User Rating</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value">12K+</span>
-                <span class="stat-label" data-i18n="artlab.stat4_label">Gallery Submissions</span>
-            </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="2.png" alt="Gallery 2">
         </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="3.png" alt="Gallery 3">
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="4.png" alt="Gallery 4">
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="5.png" alt="Gallery 5">
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="6.png" alt="Gallery 6">
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="7.png" alt="Gallery 7">
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="1.png" alt="Gallery 2">
+        </div>
+      </div>
     </section>
-
-    <br><br><br>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-                                        <div class="footer-container">
-                                            <!-- Footer Header -->
-                                            <div class="footer-header">
-                                                <div class="footer-logo">
-                                                    <span class="material-symbols-outlined">account_balance</span>
-                                                </div>
-                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
-                                                <div class="footer-divider"></div>
-                                            </div>
-                            
-                                            <!-- Footer Grid -->
-                                            <div class="footer-grid">
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
-                                                    <ul>
-                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
-                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.about">About</h3>
-                                                    <ul>
-                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
-                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
-                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.support">Support</h3>
-                                                    <ul>
-                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column connect-column">
-                                                    <h3 data-i18n="footer.connect">Connect</h3>
-                                                    <div class="social-links">
-                                                        <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                            <i class="fa-brands fa-facebook"></i>
-                                                        </a>
-                            
-                                                        <!-- Twitter (X ) -->
-                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                                            <i class="fa-brands fa-x-twitter"></i>
-                                                        </a>
-                            
-                                                        <!-- Instagram -->
-                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                            <i class="fa-brands fa-instagram"></i>
-                                                        </a>
-                            
-                                                        <!-- YouTube -->
-                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                            <i class="fa-brands fa-youtube"></i>
-                                                        </a>
-                                                    </div>
-                            
-                                                    <p>
-                                                        Follow us on social media for updates and behind-the-scenes content.
-                                                    </p>
-                                                </div>
-                                            </div>
-                             
-                                                   <!-- Footer Bottom -->
-                                             <div class="footer-bottom">
-                                                 <div class="language-toggle">
-                                                     <button class="active" data-lang="en">English</button>
-                                                     <button data-lang="ar">العربية</button>
-                                                 </div>
-                                                 <div class="legal-section">
-                                                    <div class="legal-links">
-                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
-                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
-                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
-                                                 </div>
-                                         <div class="copyright">
-                                           © 2026 Tutora. All rights reserved.
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                     </footer>
-
-    <script src="script.js"></script>
-    <script src="../global-core.js"></script>
-    <script src="../animate.js"></script>
-<script src="../global-lang.js?v=1780353971499"></script>
+  </main>
 
 
-</body></html>
+  <!-- How AI Art Works -->
+  <section class="art-how">
+    <h2 class="ai-section-title"><span data-i18n="artlab.how_title">How AI Art</span> <span class="gold-text-span"
+        data-i18n="artlab.how_title_span">Creation Works</span></h2>
+    <div class="art-how-grid">
+      <!-- Step 1 -->
+      <div class="art-how-card">
+        <div class="art-how-step-num">01</div>
+        <div class="art-how-icon-box">
+          <span class="material-symbols-outlined art-how-icon">edit_note</span>
+        </div>
+        <div class="art-how-info">
+          <h3 class="art-how-title" data-i18n="artlab.how1_title">Describe Your Vision</h3>
+          <p class="art-how-text"><span data-i18n="artlab.how1_desc">Type a text prompt or upload your photo. Describe
+              the Egyptian art style you want — pharaonic, hieroglyphic, or mythological.</span></p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="art-how-card">
+        <div class="art-how-step-num">02</div>
+        <div class="art-how-icon-box">
+          <span class="material-symbols-outlined art-how-icon">auto_awesome</span>
+        </div>
+        <div class="art-how-info">
+          <h3 class="art-how-title" data-i18n="artlab.how2_title">AI Generates Art</h3>
+          <p class="art-how-text"><span data-i18n="artlab.how2_desc">Our model, trained on thousands of authentic
+              Egyptian artworks, generates unique creations blending ancient style with your input.</span></p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="art-how-card">
+        <div class="art-how-step-num">03</div>
+        <div class="art-how-icon-box">
+          <span class="material-symbols-outlined art-how-icon">download</span>
+        </div>
+        <div class="art-how-info">
+          <h3 class="art-how-title" data-i18n="artlab.how3_title">Save &amp; Share</h3>
+          <p class="art-how-text"><span data-i18n="artlab.how3_desc">Download your creation in high resolution, share on
+              social media, or submit it for the Visitor Gallery wall.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Creative Tools -->
+  <section class="creative-tools-section">
+    <h2 class="ai-section-title"><span data-i18n="artlab.tools_title">Creative</span> <span class="gold-text-span"
+        data-i18n="artlab.tools_title_span">Tools</span></h2>
+    <div class="creative-tools-grid">
+      <!-- Tool 1 -->
+      <div class="creative-tools-card">
+        <div class="tool-icon-box">
+          <span class="material-symbols-outlined creative-tools-icon">text_fields</span>
+        </div>
+        <div class="tool-info">
+          <h3 class="creative-tools-title" data-i18n="artlab.tool1_title">Hieroglyph Writer</h3>
+          <p class="creative-tools-text"><span data-i18n="artlab.tool1_desc">Translate your name into authentic
+              hieroglyphic cartouches with royal styling.</span></p>
+        </div>
+      </div>
+
+      <!-- Tool 2 -->
+      <div class="creative-tools-card">
+        <div class="tool-icon-box">
+          <span class="material-symbols-outlined creative-tools-icon">face_retouching_natural</span>
+        </div>
+        <div class="tool-info">
+          <h3 class="creative-tools-title" data-i18n="artlab.tool2_title">Pharaoh Transformer</h3>
+          <p class="creative-tools-text"><span data-i18n="artlab.tool2_desc">Transform your selfie into a pharaonic
+              portrait — complete with crown and regalia.</span></p>
+        </div>
+      </div>
+
+      <!-- Tool 3 -->
+      <div class="creative-tools-card">
+        <div class="tool-icon-box">
+          <span class="material-symbols-outlined creative-tools-icon">brush</span>
+        </div>
+        <div class="tool-info">
+          <h3 class="creative-tools-title" data-i18n="artlab.tool3_title">Free Imagination</h3>
+          <p class="creative-tools-text"><span data-i18n="artlab.tool3_desc">Describe any scene and watch AI render it
+              in ancient Egyptian artistic style.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <h2 class="ai-section-title"><span data-i18n="artlab.stat_title">Laboratory</span> <span class="gold-text-span"
+        data-i18n="artlab.stat_title_span">Statistics</span></h2>
+    <div class="stats-grid">
+
+      <div class="stat-item">
+        <span class="stat-value">75K+</span>
+        <span class="stat-label" data-i18n="artlab.stat1_label">Artworks Created</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">3</span>
+        <span class="stat-label" data-i18n="artlab.stat2_label">Creative Modes</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">4.8/5</span>
+        <span class="stat-label" data-i18n="artlab.stat3_label">User Rating</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">12K+</span>
+        <span class="stat-label" data-i18n="artlab.stat4_label">Gallery Submissions</span>
+      </div>
+    </div>
+  </section>
+
+  <br><br><br>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- Footer Header -->
+      <div class="footer-header">
+        <div class="footer-logo">
+          <span class="material-symbols-outlined">account_balance</span>
+        </div>
+        <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
+        <div class="footer-divider"></div>
+      </div>
+
+      <!-- Footer Grid -->
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+            <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
+            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a>
+            </li>
+            <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+            <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer.about">About</h3>
+          <ul>
+            <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+            <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+            <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
+            <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer.support">Support</h3>
+          <ul>
+            <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+            <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
+            <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+            <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="footer-column connect-column">
+          <h3 data-i18n="footer.connect">Connect</h3>
+          <div class="social-links">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <!-- Twitter (X ) -->
+            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+
+          <p>
+            Follow us on social media for updates and behind-the-scenes content.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="language-toggle">
+          <button class="active" data-lang="en">English</button>
+          <button data-lang="ar">العربية</button>
+        </div>
+        <div class="legal-section">
+          <div class="legal-links">
+            <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.terms">Terms of Service</a>
+            <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.cookies">Cookie Settings</a>
+          </div>
+          <div class="copyright">
+            © 2026 Tutora. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="../global-core.js"></script>
+  <script src="../animate.js"></script>
+  <script src="../global-lang.js?v=1780353971499"></script>
+
+
+</body>
+
+</html>

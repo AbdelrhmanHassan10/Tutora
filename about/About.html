@@ -1,613 +1,734 @@
-<!DOCTYPE html><html lang="en"><head>
-                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts.">
-                                <meta charset="UTF-8">
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title>About Tutora | Discover Our Vision</title>
-                                <link rel="icon" type="image/png" href="../museum.png">
-                                 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-                                <link rel="preconnect" href="https://fonts.googleapis.com">
-                                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-                                <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&amp;family=Newsreader:opsz,wght@6..72,200..800&amp;display=swap" rel="stylesheet">
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet">
-                                <link rel="stylesheet" href="style.css">
-                                <link rel="stylesheet" href="../animate.css">
-                            	  <link rel="stylesheet" href="../global-theme.css">
-                                <link rel="stylesheet" href="../global-lang.css">
-                            </head>
-                            
-                            <body class="dark">
-                                <!-- Royal Atmosphere & Interactivity -->
-                                <div id="scrollProgress"></div>
-                                <!-- Overlay for Mobile Menu -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description"
+        content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Tutora | Discover Our Vision</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&amp;family=Newsreader:opsz,wght@6..72,200..800&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../animate.css">
+    <link rel="stylesheet" href="../global-theme.css">
+    <link rel="stylesheet" href="../global-lang.css">
+    <link rel="stylesheet" href="../responsive-core.css">
+
+</head>
+
+<body class="dark">
+    <!-- Royal Atmosphere & Interactivity -->
+    <div id="scrollProgress"></div>
+    <!-- Overlay for Mobile Menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="menu-header">
-      <div class="menu-logo">
-        <div class="logo-circle">
-          <img src="../logo.png" alt="Tutora Logo">
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
         </div>
 
-        <h3 class="menu-logo-text">Tutora</h3>
-      </div>
-      <button class="close-btn" id="closeBtn">
-        <span class="material-symbols-outlined">close</span>
-      </button>
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
+
+            <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="nav.ai_experience">AI Experience</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"
+                        data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI
+                        Voice
+                        Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora
+                        laboratory</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
+            <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="nav.collection">Collection</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main
+                        Gallery</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item"
+                        data-i18n="nav.exhibition">Exhibition Halls</a>
+                </div>
+            </div>
+            <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
+
+            <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="profile menu">Profile Menu</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="#" class="dropdown-item" id="menuLangBtn"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
+
+                    <a href="../Profile/profile.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+                    <a href="../fav/favourite.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
+                    <a href="../setting/setting.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+                    <a href="#" class="dropdown-item" onclick="handleLogout(); return false;"
+                        style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"
+                        data-i18n-html="nav.logout"><span class="material-symbols-outlined"
+                            style="font-size: 18px;">logout</span> Logout</a>
+                </div>
+            </div>
+
+            <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn"
+                style="display: none; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined">login</span>
+                <span data-i18n="nav.login">Login</span>
+            </a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
+
+
+        </div>
     </div>
-
-    <nav class="menu-nav">
-      <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
-      <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a>
-      <a href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
-
-      <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
-
-      <div class="menu-dropdown">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="nav.ai_experience">AI Experience</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
-          <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
-          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice
-            Storytelling (3D)</a>
-          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
-        </div>
-      </div>
-
-      <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
-      <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
-      <div class="menu-dropdown">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="nav.collection">Collection</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
-          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
-        </div>
-      </div>
-      <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
-
-      <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="profile menu">Profile Menu</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
-          
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
-      </div>
-
-      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
-        <span class="material-symbols-outlined">login</span>
-        <span data-i18n="nav.login">Login</span>
-      </a>
-    </nav>
-
-    <div class="menu-footer">
-      <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
-
-      
-    </div>
-  </div>
 
     <header class="header">
-    <div class="scroll-progress-container">
-      <div class="scroll-progress-bar" id="scrollProgress"></div>
-    </div>
-    <div class="header-container">
-      <div class="header-left">
-        <button class="menu-btn" id="menuBtn">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
-        <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
-          <div class="logo-circle">
-            <img src="../logo.png" alt="Tutora Logo">
-          </div>
-          <h2 class="logo-text">Tutora</h2>
-        </a>
-      </div>
-
-      <nav class="desktop-nav">
-        <a href="../4.home/code.html" class="active" data-i18n="nav.home">Home</a>
-        <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
-        <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids Museum</a>
-        <a href="../event/event.html" data-i18n="nav.event">Event</a>
-        <div class="nav-dropdown">
-          <button class="nav-link dropdown-trigger">
-            <span data-i18n="nav.ai_experience">AI Experience</span>
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
-            <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
-            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice
-              Storytelling (3D)</a>
-            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
-              Laboratory</a>
-          </div>
+        <div class="scroll-progress-container">
+            <div class="scroll-progress-bar" id="scrollProgress"></div>
         </div>
-        <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
-        <a href="../about/About.html" data-i18n="nav.about">About</a>
-        <div class="nav-dropdown">
-          <button class="nav-link dropdown-trigger">
-            <span data-i18n="nav.collection">Collection</span>
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
-            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
-          </div>
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
+                    <h2 class="logo-text">Tutora</h2>
+                </a>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html" class="active" data-i18n="nav.home">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids Museum</a>
+                <a href="../event/event.html" data-i18n="nav.event">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        <span data-i18n="nav.ai_experience">AI Experience</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour
+                            Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link"
+                            data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link"
+                            data-i18n="nav.ai_voice">AI Voice
+                            Storytelling (3D)</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
+                            Laboratory</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
+                <a href="../about/About.html" data-i18n="nav.about">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        <span data-i18n="nav.collection">Collection</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main
+                            Gallery</a>
+                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link"
+                            data-i18n="nav.exhibition">Exhibition Halls</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="header-right">
+                <button class="theme-btn" id="themeBtn" title="Toggle Theme">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
+                    <span class="material-symbols-outlined">language</span>
+                </button>
+                <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text"
+                        data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon"
+                        style="display: none;">confirmation_number</span></a>
+
+                <a href="../card/card.html" class="icon-btn-link" title="Cart">
+                    <button class="icon-btn cart-btn" style="position: relative;">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        <span class="cart-badge" style="display: none;">0</span>
+                    </button>
+                </a>
+
+
+
+                <div class="nav-dropdown profile-dropdown" id="navProfileLink"
+                    style="display: none; margin-right: 15px;" title="Profile">
+                    <button class="nav-link dropdown-trigger profile-trigger"
+                        style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                        <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
+                        <img src="./unnamed.png" alt="Profile" class="profile-img"
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
+                    </button>
+                    <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
+
+                        <a href="../Profile/profile.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+                        <a href="../fav/favourite.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
+                        <a href="../setting/setting.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+                        <a href="#" class="dropdown-link" onclick="handleLogout(); return false;"
+                            style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"
+                            data-i18n-html="nav.logout"><span class="material-symbols-outlined"
+                                style="font-size: 18px;">logout</span> Logout</a>
+                    </div>
+                </div>
+
+                <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;"
+                    title="Login">
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined">login</span>
+                    </button>
+                </a>
+            </div>
         </div>
-      </nav>
+    </header>
 
-      <div class="header-right">
-        <button class="theme-btn" id="themeBtn" title="Toggle Theme">
-          <span class="material-symbols-outlined">dark_mode</span>
-        </button>
-        <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
-          <span class="material-symbols-outlined">language</span>
-        </button>
-        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
 
-        <a href="../card/card.html" class="icon-btn-link" title="Cart">
-          <button class="icon-btn cart-btn" style="position: relative;">
-            <span class="material-symbols-outlined">shopping_cart</span>
-            <span class="cart-badge" style="display: none;">0</span>
-          </button>
-        </a>
-        
-        
-        
-        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-          <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
-            <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-            <img src="./unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
-          </button>
-          <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-          
-          <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title" data-i18n="about.hero_title">About the Grand Egyptian Museum</h1>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- History Section -->
+        <section id="history" class="section">
+
+            <div class="container">
+                <h2 class="section-title">
+                    <span data-i18n="about.history_title_1">A Journey Through Time: The </span><span
+                        class="gold-text-span" data-i18n="about.history_title_2">Story of the GEM</span>
+                </h2>
+
+                <p class="section-description drop-cap" data-i18n="about.history_desc">The Grand Egyptian Museum (GEM)
+                    is the culmination of a vision to create a world-class institution dedicated to the preservation and
+                    display of Egypt's rich Pharaonic heritage.</p>
+
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">visibility</span></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl1_title">The Vision</h3>
+                            <p class="timeline-year" data-i18n="about.tl1_year">Early 2000s</p>
+                            <p class="timeline-text" data-i18n="about.tl1_text">The idea for a new, modern museum to
+                                house Egypt's vast collection of ancient artifacts was born, aiming to provide a worthy
+                                home for treasures like those of Tutankhamun.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">account_balance</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl2_title">Foundation Stone</h3>
+                            <p class="timeline-year" data-i18n="about.tl2_year">2002</p>
+                            <p class="timeline-text" data-i18n="about.tl2_text">The foundation stone of the Grand
+                                Egyptian Museum was officially laid by President Hosni Mubarak, marking the dawn of the
+                                most ambitious cultural project of the 21st century.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">architecture</span></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl3_title">International Design Competition</h3>
+                            <p class="timeline-year" data-i18n="about.tl3_year">2003</p>
+                            <p class="timeline-text" data-i18n="about.tl3_text_1">An international competition was held
+                                in <span class="highlight-date">2003</span> to select an architectural design. The
+                                winning entry by <span class="gold-text-span">Heneghan Peng Architects</span> was chosen
+                                for its modern interpretation of ancient Egyptian themes.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">settings</span></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl4_title">Construction Begins</h3>
+                            <p class="timeline-year" data-i18n="about.tl4_year">2005</p>
+                            <p class="timeline-text" data-i18n="about.tl4_text">The monumental task of building the
+                                world's largest archaeological museum began in <span class="highlight-date">2005</span>
+                                on the Giza plateau, overlooking the majestic pyramids.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">science</span></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl5_title">Conservation Excellence</h3>
+                            <p class="timeline-year" data-i18n="about.tl5_year">2010</p>
+                            <p class="timeline-text" data-i18n="about.tl5_text">The <span class="gold-text-span">GEM
+                                    Conservation Center</span> officially opened in <span
+                                    class="highlight-date">2010</span>. It is one of the largest and most advanced in
+                                the world, preserving over <span class="highlight-date">50,000</span> artifacts.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">workspace_premium</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl6_title">Ramses II's Arrival</h3>
+                            <p class="timeline-year" data-i18n="about.tl6_year">2018</p>
+                            <p class="timeline-text" data-i18n="about.tl6_text">The 3,200-year-old colossus of Ramses II
+                                was moved to its permanent home in the museum's grand entrance hall in a spectacular
+                                engineering feat.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">directions_boat</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl7_title">The Solar Boat's Journey</h3>
+                            <p class="timeline-year" data-i18n="about.tl7_year">2021</p>
+                            <p class="timeline-text" data-i18n="about.tl7_text">The ancient Khufu Solar Boat was
+                                painstakingly transported from its site near the Great Pyramid to its dedicated hall
+                                within the GEM.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">inventory_2</span></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl8_title">Tutankhamun's Treasures Arrive</h3>
+                            <p class="timeline-year" data-i18n="about.tl8_year">2022</p>
+                            <p class="timeline-text" data-i18n="about.tl8_text">The meticulous transfer of over <span
+                                    class="highlight-date">5,000</span> artifacts from the tomb of the Golden King
+                                Tutankhamun was completed, preparing them for their first-ever unified display.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">key</span></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl9_title">Trial Operations</h3>
+                            <p class="timeline-year" data-i18n="about.tl9_year">2024</p>
+                            <p class="timeline-text" data-i18n="about.tl9_text">The museum launched limited trial tours,
+                                inviting the world to experience the majestic Grand Staircase and the commercial
+                                district for the first time.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"><span class="material-symbols-outlined">auto_awesome</span></div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title" data-i18n="about.tl10_title">The Grand Opening</h3>
+                            <p class="timeline-year" data-i18n="about.tl10_year">2026</p>
+                            <p class="timeline-text" data-i18n="about.tl10_text">A historic celebration marks the
+                                official inauguration of the world's largest archaeological museum, housing the full
+                                collection of King Tutankhamun.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Section -->
+        <section id="architecture" class="section section-alt reveal">
+            <div class="container">
+                <h2 class="section-title">
+                    <span data-i18n="about.arch_title_1">A Modern Marvel: The </span><span class="gold-text-span"
+                        data-i18n="about.arch_title_2">Architectural Splendor</span><span
+                        data-i18n="about.arch_title_3"> of the GEM</span>
+                </h2>
+
+                <p class="section-description" data-i18n="about.arch_desc">The museum's design is a testament to
+                    architectural innovation, blending seamlessly with its historic surroundings while making a bold
+                    contemporary statement.</p>
+
+                <div class="gallery-grid">
+                    <img src="../The-Grand-Egyptian-Museum.webp"
+                        alt="Interior view of the Grand Egyptian Museum's grand staircase" class="gallery-image">
+                    <img src="../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg"
+                        alt="Architectural detail of the museum's geometric ceiling patterns" class="gallery-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: The Grand Staircase -->
+        <section id="staircase" class="section staircase-feature reveal">
+            <div class="container staircase-container">
+                <div class="staircase-content">
+                    <h2 class="section-title"><span data-i18n="about.stair_title_1">The </span><span
+                            class="gold-text-span" data-i18n="about.stair_title_2">Grand Staircase</span></h2>
+
+                    <p class="section-description" data-i18n="about.stair_desc">Ascend through the history of ancient
+                        Egypt on our monumental Grand Staircase. Spanning four levels, this architectural centerpiece
+                        showcases the chronological progression of Pharaonic art, leading you towards the breathtaking
+                        view of the Pyramids.</p>
+                    <ul class="staircase-specs">
+                        <li data-i18n="about.stair_spec1"><strong>64 meters</strong> of panoramic history</li>
+                        <li data-i18n="about.stair_spec2"><strong>87 statues</strong> and architectural fragments</li>
+                        <li data-i18n="about.stair_spec3"><strong>4 distinct eras</strong> from Old Kingdom to Late
+                            Period</li>
+                    </ul>
+                </div>
+                <div class="staircase-visual">
+                    <img src="../stairs.avif" alt="The Grand Staircase at the GEM" class="feature-img">
+                    <div class="visual-overlay"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Meet the Curators -->
+        <section id="team" class="section reveal">
+            <div class="container">
+                <h2 class="section-title text-center"><span data-i18n="about.team_title_1">The Guardians of </span><span
+                        class="gold-text-span" data-i18n="about.team_title_2">Heritage</span></h2>
+
+                <p class="section-description text-center" data-i18n="about.team_desc">Meet the experts dedicated to
+                    preserving Egypt's legacy.</p>
+
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="./download.jfif" alt="Dr. Hussein Kamal" class="team-img">
+                        </div>
+                        <h3 class="team-name">Dr. Hussein Kamal</h3>
+                        <p class="team-role" data-i18n="about.team_r1">Head of Conservation</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="./download (1).jfif" alt="Zahi Hawass" class="team-img">
+                        </div>
+                        <h3 class="team-name"> Dr. Zahi Hawass</h3>
+                        <p class="team-role" data-i18n="about.team_r2">Lead Archaeologist</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="./download (2).jfif" alt="Dr. Ahmed Ghoneim" class="team-img">
+                        </div>
+                        <h3 class="team-name">Dr. Ahmed Ghoneim</h3>
+                        <p class="team-role" data-i18n="about.team_r3"> CEO</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Future Vision (AI) -->
+        <section id="future" class="section section-alt ai-vision reveal">
+            <div class="container">
+                <div class="ai-header">
+                    <h2 class="section-title"><span data-i18n="about.future_title_1">The Future is </span><span
+                            class="gold-text-span" data-i18n="about.future_title_2">Tutora</span></h2>
+
+                    <p class="section-description" data-i18n="about.future_desc">We are redefining the museum experience
+                        through digital innovation. Our AI-driven ecosystem bridges the gap between ancient history and
+                        modern audiences.</p>
+                </div>
+
+                <div class="ai-features">
+                    <a href="../chat bot/chat.html" style="text-decoration: none; color: inherit;">
+                        <div class="ai-feature-card">
+                            <span class="material-symbols-outlined icon">smart_toy</span>
+                            <h3 data-i18n="about.future_ai1_title">AI Chatbot</h3>
+                            <p data-i18n="about.future_ai1_desc">A 24/7 personal guide that answers any historical
+                                question in real-time.</p>
+                        </div>
+                    </a>
+                    <a href="../artifact_identifier/artifact-identifier.html"
+                        style="text-decoration: none; color: inherit;">
+                        <div class="ai-feature-card">
+                            <span class="material-symbols-outlined icon">center_focus_strong</span>
+                            <h3 data-i18n="about.future_ai2_title">Artifact Identifier</h3>
+                            <p data-i18n="about.future_ai2_desc">Scan any artifact with your phone to unlock deep-dive
+                                historical context.</p>
+                        </div>
+                    </a>
+                    <a href="../advanced 3D model/advanced-3D.html" style="text-decoration: none; color: inherit;">
+                        <div class="ai-feature-card">
+                            <span class="material-symbols-outlined icon">view_in_ar</span>
+                            <h3 data-i18n="about.future_ai3_title">3D Voice Storytelling</h3>
+                            <p data-i18n="about.future_ai3_desc">Immersive audio-visual journeys through photorealistic
+                                ancient reconstructions.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainability Section -->
+        <section id="sustainability" class="section sustainability-section reveal">
+            <div class="container">
+                <div class="sustainability-grid">
+                    <div class="sust-content">
+                        <h2 class="section-title"><span data-i18n="about.sust_title_1">Sustainability &amp; </span><span
+                                class="gold-text-span" data-i18n="about.sust_title_2">Future-Proofing</span></h2>
+
+                        <p data-i18n="about.sust_desc">The Grand Egyptian Museum is built to last centuries, not just
+                            for its monumental architecture, but through our commitment to environmental stewardship and
+                            digital preservation.</p>
+                        <div class="sust-features">
+                            <div class="sust-item">
+                                <div class="sust-icon"><span class="material-symbols-outlined">eco</span></div>
+                                <div>
+                                    <h4 data-i18n="about.sust_f1_title">Solar Energy Integration</h4>
+                                    <p data-i18n="about.sust_f1_desc">The museum utilizes state-of-the-art photovoltaic
+                                        panels to power its climate-controlled galleries.</p>
+                                </div>
+                            </div>
+                            <div class="sust-item">
+                                <div class="sust-icon"><span class="material-symbols-outlined">water_drop</span></div>
+                                <div>
+                                    <h4 data-i18n="about.sust_f2_title">Water Conservation</h4>
+                                    <p data-i18n="about.sust_f2_desc">Innovative desert landscaping and recycling
+                                        systems reduce our ecological footprint.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sust-visual">
+                        <img src="../11.jpg" alt="Sustainability"
+                            style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Partners Section -->
+        <section id="partners" class="section partners-section reveal">
+            <div class="container">
+                <h2 class="section-title"><span data-i18n="about.part_title_1">Our Global </span><span
+                        class="gold-text-span" data-i18n="about.part_title_2">Partners</span></h2>
+
+                <p class="section-description" data-i18n="about.part_desc">Collaborating with the world's leading
+                    institutions to bring history to life.</p>
+
+                <div class="partners-slider">
+                    <div class="partners-track">
+                        <div class="partner-logo">UNESCO</div>
+                        <div class="partner-logo">British Museum</div>
+                        <div class="partner-logo">Louvre</div>
+                        <div class="partner-logo">Met Museum</div>
+                        <div class="partner-logo">Cairo University</div>
+                        <!-- Repeated for smooth scroll -->
+                        <div class="partner-logo">UNESCO</div>
+                        <div class="partner-logo">British Museum</div>
+                        <div class="partner-logo">Louvre</div>
+                        <div class="partner-logo">Met Museum</div>
+                        <div class="partner-logo">Cairo University</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="contact-cta">
+            <div class="container">
+                <h2 class="section-title"><span data-i18n="about.cta_title_1">Ready to </span><span
+                        class="gold-text-span" data-i18n="about.cta_title_2">Journey Through Time?</span></h2>
+
+                <a href="../booking/booking.html" class="btn btn-primary"
+                    style="padding: 1.5rem 3rem; font-size: 1.2rem;" data-i18n="about.cta_btn">Book Your Experience
+                    Now</a>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="section reveal">
+            <div class="container">
+                <h2 class="section-title"><span data-i18n="about.miss_title_1">Our Commitment to </span><span
+                        class="gold-text-span" data-i18n="about.miss_title_2">Heritage and Humanity</span></h2>
+
+                <p class="section-description" data-i18n="about.miss_desc">The GEM's mission extends beyond exhibition.
+                    It is a global hub for conservation, research, and education, dedicated to safeguarding Egypt's
+                    legacy for future generations.</p>
+
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="mission-icon"><span class="material-symbols-outlined">biotech</span></div>
+                        <h3 class="mission-title" data-i18n="about.miss_r1_title">Research</h3>
+                        <p class="mission-text" data-i18n="about.miss_r1_desc">Fostering new discoveries and
+                            understanding of ancient Egyptian civilization through state-of-the-art labs and
+                            international collaboration.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon"><span class="material-symbols-outlined">school</span></div>
+                        <h3 class="mission-title" data-i18n="about.miss_r2_title">Education</h3>
+                        <p class="mission-text" data-i18n="about.miss_r2_desc">Inspiring a global audience by making
+                            Egypt's history accessible and engaging through innovative exhibitions and educational
+                            programs.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-icon"><span class="material-symbols-outlined">rebase_edit</span></div>
+                        <h3 class="mission-title" data-i18n="about.miss_r3_title">Conservation</h3>
+                        <p class="mission-text" data-i18n="about.miss_r3_desc">Employing cutting-edge techniques to
+                            restore and preserve priceless artifacts, ensuring their survival for millennia to come.</p>
+                    </div>
+                </div>
+
+                <div class="button-center">
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="btn btn-primary"
+                        data-i18n="about.miss_btn">Explore the Collections</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Footer Header -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 data-i18n="footer.explore">Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition
+                                Halls</a></li>
+                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="footer.about">About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
+                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="footer.support">Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3 data-i18n="footer.connect">Connect</h3>
+                    <div class="social-links">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <!-- Twitter (X ) -->
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+
+                    <p>
+                        Follow us on social media for updates and behind-the-scenes content.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="language-toggle">
+                    <button class="active" data-lang="en">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;"
+                            data-i18n="footer.privacy">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html"
+                            style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;"
+                            data-i18n="footer.cookies">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">
+                        © 2026 Tutora. All rights reserved.
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
+    </footer>
 
-        <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
-          <button class="icon-btn">
-            <span class="material-symbols-outlined">login</span>
-          </button>
-        </a>
-      </div>
-    </div>
-  </header>
 
-                            
-                                <!-- Hero Section -->
-                                <section class="hero">
-                                    <h1 class="hero-title" data-i18n="about.hero_title">About the Grand Egyptian Museum</h1>
-                                </section>
-                            
-                                <!-- Main Content -->
-                                <main class="main-content">
-                                    <!-- History Section -->
-                                    <section id="history" class="section">
 
-                                        <div class="container">
-                                            <h2 class="section-title">
-                                                <span data-i18n="about.history_title_1">A Journey Through Time: The </span><span class="gold-text-span" data-i18n="about.history_title_2">Story of the GEM</span>
-                                            </h2>
+    <script src="script.js"></script>
+    <script src="../global-core.js"></script>
+    <script src="../global-lang.js?v=1780353971499"></script>
+    <script src="../animate.js"></script>
 
-                                            <p class="section-description drop-cap" data-i18n="about.history_desc">The Grand Egyptian Museum (GEM) is the culmination of a vision to create a world-class institution dedicated to the preservation and display of Egypt's rich Pharaonic heritage.</p>
 
-                            
-                                            <div class="timeline">
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">visibility</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl1_title">The Vision</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl1_year">Early 2000s</p>
-                                                        <p class="timeline-text" data-i18n="about.tl1_text">The idea for a new, modern museum to house Egypt's vast collection of ancient artifacts was born, aiming to provide a worthy home for treasures like those of Tutankhamun.</p>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">account_balance</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl2_title">Foundation Stone</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl2_year">2002</p>
-                                                        <p class="timeline-text" data-i18n="about.tl2_text">The foundation stone of the Grand Egyptian Museum was officially laid by President Hosni Mubarak, marking the dawn of the most ambitious cultural project of the 21st century.</p>
-                                                    </div>
-                                                </div>
 
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">architecture</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl3_title">International Design Competition</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl3_year">2003</p>
-                                                        <p class="timeline-text" data-i18n="about.tl3_text_1">An international competition was held in <span class="highlight-date">2003</span> to select an architectural design. The winning entry by <span class="gold-text-span">Heneghan Peng Architects</span> was chosen for its modern interpretation of ancient Egyptian themes.</p>
+</body>
 
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">settings</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl4_title">Construction Begins</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl4_year">2005</p>
-                                                        <p class="timeline-text" data-i18n="about.tl4_text">The monumental task of building the world's largest archaeological museum began in <span class="highlight-date">2005</span> on the Giza plateau, overlooking the majestic pyramids.</p>
-
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">science</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl5_title">Conservation Excellence</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl5_year">2010</p>
-                                                        <p class="timeline-text" data-i18n="about.tl5_text">The <span class="gold-text-span">GEM Conservation Center</span> officially opened in <span class="highlight-date">2010</span>. It is one of the largest and most advanced in the world, preserving over <span class="highlight-date">50,000</span> artifacts.</p>
-
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">workspace_premium</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl6_title">Ramses II's Arrival</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl6_year">2018</p>
-                                                        <p class="timeline-text" data-i18n="about.tl6_text">The 3,200-year-old colossus of Ramses II was moved to its permanent home in the museum's grand entrance hall in a spectacular engineering feat.</p>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">directions_boat</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl7_title">The Solar Boat's Journey</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl7_year">2021</p>
-                                                        <p class="timeline-text" data-i18n="about.tl7_text">The ancient Khufu Solar Boat was painstakingly transported from its site near the Great Pyramid to its dedicated hall within the GEM.</p>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">inventory_2</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl8_title">Tutankhamun's Treasures Arrive</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl8_year">2022</p>
-                                                        <p class="timeline-text" data-i18n="about.tl8_text">The meticulous transfer of over <span class="highlight-date">5,000</span> artifacts from the tomb of the Golden King Tutankhamun was completed, preparing them for their first-ever unified display.</p>
-                                                    </div>
-                                                </div>
-
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">key</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl9_title">Trial Operations</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl9_year">2024</p>
-                                                        <p class="timeline-text" data-i18n="about.tl9_text">The museum launched limited trial tours, inviting the world to experience the majestic Grand Staircase and the commercial district for the first time.</p>
-                                                    </div>
-                                                </div>
-                            
-                                                <div class="timeline-item">
-                                                    <div class="timeline-marker"><span class="material-symbols-outlined">auto_awesome</span></div>
-                                                    <div class="timeline-content">
-                                                        <h3 class="timeline-title" data-i18n="about.tl10_title">The Grand Opening</h3>
-                                                        <p class="timeline-year" data-i18n="about.tl10_year">2026</p>
-                                                        <p class="timeline-text" data-i18n="about.tl10_text">A historic celebration marks the official inauguration of the world's largest archaeological museum, housing the full collection of King Tutankhamun.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Architecture Section -->
-                                    <section id="architecture" class="section section-alt reveal">
-                                        <div class="container">
-                                            <h2 class="section-title">
-                                                <span data-i18n="about.arch_title_1">A Modern Marvel: The </span><span class="gold-text-span" data-i18n="about.arch_title_2">Architectural Splendor</span><span data-i18n="about.arch_title_3"> of the GEM</span>
-                                            </h2>
-
-                                            <p class="section-description" data-i18n="about.arch_desc">The museum's design is a testament to architectural innovation, blending seamlessly with its historic surroundings while making a bold contemporary statement.</p>
-                            
-                                            <div class="gallery-grid">
-                                                <img src="../The-Grand-Egyptian-Museum.webp" alt="Interior view of the Grand Egyptian Museum's grand staircase" class="gallery-image">
-                                                <img src="../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_8.jpg" alt="Architectural detail of the museum's geometric ceiling patterns" class="gallery-image">
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Section: The Grand Staircase -->
-                                    <section id="staircase" class="section staircase-feature reveal">
-                                        <div class="container staircase-container">
-                                            <div class="staircase-content">
-                                                <h2 class="section-title"><span data-i18n="about.stair_title_1">The </span><span class="gold-text-span" data-i18n="about.stair_title_2">Grand Staircase</span></h2>
-
-                                                <p class="section-description" data-i18n="about.stair_desc">Ascend through the history of ancient Egypt on our monumental Grand Staircase. Spanning four levels, this architectural centerpiece showcases the chronological progression of Pharaonic art, leading you towards the breathtaking view of the Pyramids.</p>
-                                                <ul class="staircase-specs">
-                                                    <li data-i18n="about.stair_spec1"><strong>64 meters</strong> of panoramic history</li>
-                                                    <li data-i18n="about.stair_spec2"><strong>87 statues</strong> and architectural fragments</li>
-                                                    <li data-i18n="about.stair_spec3"><strong>4 distinct eras</strong> from Old Kingdom to Late Period</li>
-                                                </ul>
-                                            </div>
-                                            <div class="staircase-visual">
-                                                <img src="../stairs.avif" alt="The Grand Staircase at the GEM" class="feature-img">
-                                                <div class="visual-overlay"></div>
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Section: Meet the Curators -->
-                                    <section id="team" class="section reveal">
-                                        <div class="container">
-                                            <h2 class="section-title text-center"><span data-i18n="about.team_title_1">The Guardians of </span><span class="gold-text-span" data-i18n="about.team_title_2">Heritage</span></h2>
-
-                                            <p class="section-description text-center" data-i18n="about.team_desc">Meet the experts dedicated to preserving Egypt's legacy.</p>
-                                            
-                                            <div class="team-grid">
-                                                <div class="team-card">
-                                                    <div class="team-img-wrapper">
-                                                        <img src="./download.jfif" alt="Dr. Hussein Kamal" class="team-img">
-                                                    </div>
-                                                    <h3 class="team-name">Dr. Hussein Kamal</h3>
-                                                    <p class="team-role" data-i18n="about.team_r1">Head of Conservation</p>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="team-img-wrapper">
-                                                        <img src="./download (1).jfif" alt="Zahi Hawass" class="team-img">
-                                                    </div>
-                                                    <h3 class="team-name"> Dr. Zahi Hawass</h3>
-                                                    <p class="team-role" data-i18n="about.team_r2">Lead Archaeologist</p>
-                                                </div>
-                                                <div class="team-card">
-                                                    <div class="team-img-wrapper">
-                                                        <img src="./download (2).jfif" alt="Dr. Ahmed Ghoneim" class="team-img">
-                                                    </div>
-                                                    <h3 class="team-name">Dr. Ahmed Ghoneim</h3>
-                                                    <p class="team-role" data-i18n="about.team_r3"> CEO</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Section: Future Vision (AI) -->
-                                    <section id="future" class="section section-alt ai-vision reveal">
-                                        <div class="container">
-                                            <div class="ai-header">
-                                                <h2 class="section-title"><span data-i18n="about.future_title_1">The Future is </span><span class="gold-text-span" data-i18n="about.future_title_2">Tutora</span></h2>
-
-                                                <p class="section-description" data-i18n="about.future_desc">We are redefining the museum experience through digital innovation. Our AI-driven ecosystem bridges the gap between ancient history and modern audiences.</p>
-                                            </div>
-                                            
-                                            <div class="ai-features">
-                                                <a href="../chat bot/chat.html" style="text-decoration: none; color: inherit;">
-                                                    <div class="ai-feature-card">
-                                                        <span class="material-symbols-outlined icon">smart_toy</span>
-                                                        <h3 data-i18n="about.future_ai1_title">AI Chatbot</h3>
-                                                        <p data-i18n="about.future_ai1_desc">A 24/7 personal guide that answers any historical question in real-time.</p>
-                                                    </div>
-                                                </a>
-                                                <a href="../artifact_identifier/artifact-identifier.html" style="text-decoration: none; color: inherit;">
-                                                    <div class="ai-feature-card">
-                                                        <span class="material-symbols-outlined icon">center_focus_strong</span>
-                                                        <h3 data-i18n="about.future_ai2_title">Artifact Identifier</h3>
-                                                        <p data-i18n="about.future_ai2_desc">Scan any artifact with your phone to unlock deep-dive historical context.</p>
-                                                    </div>
-                                                </a>
-                                                <a href="../advanced 3D model/advanced-3D.html" style="text-decoration: none; color: inherit;">
-                                                    <div class="ai-feature-card">
-                                                        <span class="material-symbols-outlined icon">view_in_ar</span>
-                                                        <h3 data-i18n="about.future_ai3_title">3D Voice Storytelling</h3>
-                                                        <p data-i18n="about.future_ai3_desc">Immersive audio-visual journeys through photorealistic ancient reconstructions.</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Sustainability Section -->
-                                    <section id="sustainability" class="section sustainability-section reveal">
-                                        <div class="container">
-                                            <div class="sustainability-grid">
-                                                <div class="sust-content">
-                                                    <h2 class="section-title"><span data-i18n="about.sust_title_1">Sustainability &amp; </span><span class="gold-text-span" data-i18n="about.sust_title_2">Future-Proofing</span></h2>
-
-                                                    <p data-i18n="about.sust_desc">The Grand Egyptian Museum is built to last centuries, not just for its monumental architecture, but through our commitment to environmental stewardship and digital preservation.</p>
-                                                    <div class="sust-features">
-                                                        <div class="sust-item">
-                                                            <div class="sust-icon"><span class="material-symbols-outlined">eco</span></div>
-                                                            <div>
-                                                                <h4 data-i18n="about.sust_f1_title">Solar Energy Integration</h4>
-                                                                <p data-i18n="about.sust_f1_desc">The museum utilizes state-of-the-art photovoltaic panels to power its climate-controlled galleries.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="sust-item">
-                                                            <div class="sust-icon"><span class="material-symbols-outlined">water_drop</span></div>
-                                                            <div>
-                                                                <h4 data-i18n="about.sust_f2_title">Water Conservation</h4>
-                                                                <p data-i18n="about.sust_f2_desc">Innovative desert landscaping and recycling systems reduce our ecological footprint.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="sust-visual">
-                                                    <img src="../11.jpg" alt="Sustainability" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Global Partners Section -->
-                                    <section id="partners" class="section partners-section reveal">
-                                        <div class="container">
-                                            <h2 class="section-title"><span data-i18n="about.part_title_1">Our Global </span><span class="gold-text-span" data-i18n="about.part_title_2">Partners</span></h2>
-
-                                            <p class="section-description" data-i18n="about.part_desc">Collaborating with the world's leading institutions to bring history to life.</p>
-                                            
-                                            <div class="partners-slider">
-                                                <div class="partners-track">
-                                                    <div class="partner-logo">UNESCO</div>
-                                                    <div class="partner-logo">British Museum</div>
-                                                    <div class="partner-logo">Louvre</div>
-                                                    <div class="partner-logo">Met Museum</div>
-                                                    <div class="partner-logo">Cairo University</div>
-                                                    <!-- Repeated for smooth scroll -->
-                                                    <div class="partner-logo">UNESCO</div>
-                                                    <div class="partner-logo">British Museum</div>
-                                                    <div class="partner-logo">Louvre</div>
-                                                    <div class="partner-logo">Met Museum</div>
-                                                    <div class="partner-logo">Cairo University</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Contact CTA -->
-                                    <section class="contact-cta">
-                                        <div class="container">
-                                            <h2 class="section-title"><span data-i18n="about.cta_title_1">Ready to </span><span class="gold-text-span" data-i18n="about.cta_title_2">Journey Through Time?</span></h2>
-
-                                            <a href="../booking/booking.html" class="btn btn-primary" style="padding: 1.5rem 3rem; font-size: 1.2rem;" data-i18n="about.cta_btn">Book Your Experience Now</a>
-                                        </div>
-                                    </section>
-                            
-                                    <!-- Mission Section -->
-                                    <section id="mission" class="section reveal">
-                                        <div class="container">
-                                            <h2 class="section-title"><span data-i18n="about.miss_title_1">Our Commitment to </span><span class="gold-text-span" data-i18n="about.miss_title_2">Heritage and Humanity</span></h2>
-
-                                            <p class="section-description" data-i18n="about.miss_desc">The GEM's mission extends beyond exhibition. It is a global hub for conservation, research, and education, dedicated to safeguarding Egypt's legacy for future generations.</p>
-                            
-                                            <div class="mission-grid">
-                                                <div class="mission-card">
-                                                    <div class="mission-icon"><span class="material-symbols-outlined">biotech</span></div>
-                                                    <h3 class="mission-title" data-i18n="about.miss_r1_title">Research</h3>
-                                                    <p class="mission-text" data-i18n="about.miss_r1_desc">Fostering new discoveries and understanding of ancient Egyptian civilization through state-of-the-art labs and international collaboration.</p>
-                                                </div>
-                                                <div class="mission-card">
-                                                    <div class="mission-icon"><span class="material-symbols-outlined">school</span></div>
-                                                    <h3 class="mission-title" data-i18n="about.miss_r2_title">Education</h3>
-                                                    <p class="mission-text" data-i18n="about.miss_r2_desc">Inspiring a global audience by making Egypt's history accessible and engaging through innovative exhibitions and educational programs.</p>
-                                                </div>
-                                                <div class="mission-card">
-                                                    <div class="mission-icon"><span class="material-symbols-outlined">rebase_edit</span></div>
-                                                    <h3 class="mission-title" data-i18n="about.miss_r3_title">Conservation</h3>
-                                                    <p class="mission-text" data-i18n="about.miss_r3_desc">Employing cutting-edge techniques to restore and preserve priceless artifacts, ensuring their survival for millennia to come.</p>
-                                                </div>
-                                            </div>
-                            
-                                            <div class="button-center">
-                                                <a href="../Exhibition-Halls/exhibition-halls.html" class="btn btn-primary" data-i18n="about.miss_btn">Explore the Collections</a>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </main>
-                            
-                                <footer class="site-footer">
-                                        <div class="footer-container">
-                                            <!-- Footer Header -->
-                                            <div class="footer-header">
-                                                <div class="footer-logo">
-                                                    <span class="material-symbols-outlined">account_balance</span>
-                                                </div>
-                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
-                                                <div class="footer-divider"></div>
-                                            </div>
-                            
-                                            <!-- Footer Grid -->
-                                            <div class="footer-grid">
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
-                                                    <ul>
-                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
-                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.about">About</h3>
-                                                    <ul>
-                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
-                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
-                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.support">Support</h3>
-                                                    <ul>
-                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column connect-column">
-                                                    <h3 data-i18n="footer.connect">Connect</h3>
-                                                    <div class="social-links">
-                                                        <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                            <i class="fa-brands fa-facebook"></i>
-                                                        </a>
-                            
-                                                        <!-- Twitter (X ) -->
-                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                                            <i class="fa-brands fa-x-twitter"></i>
-                                                        </a>
-                            
-                                                        <!-- Instagram -->
-                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                            <i class="fa-brands fa-instagram"></i>
-                                                        </a>
-                            
-                                                        <!-- YouTube -->
-                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                            <i class="fa-brands fa-youtube"></i>
-                                                        </a>
-                                                    </div>
-                            
-                                                    <p>
-                                                        Follow us on social media for updates and behind-the-scenes content.
-                                                    </p>
-                                                </div>
-                                            </div>
-                             
-                                                   <!-- Footer Bottom -->
-                                             <div class="footer-bottom">
-                                                 <div class="language-toggle">
-                                                     <button class="active" data-lang="en">English</button>
-                                                     <button data-lang="ar">العربية</button>
-                                                 </div>
-                                                 <div class="legal-section">
-                                                    <div class="legal-links">
-                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
-                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
-                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
-                                                 </div>
-                                         <div class="copyright">
-                                           © 2026 Tutora. All rights reserved.
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                     </footer>
-
-                            
-                            
-                                <script src="script.js"></script>
-                                <script src="../global-core.js"></script>
-                                <script src="../global-lang.js?v=1780353971499"></script>
-                                <script src="../animate.js"></script>
-                            
-                            
-                            
-                            </body></html>
+</html>

@@ -1,10 +1,15 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="description" content="GEM Admin Dashboard — Manage artifacts, events, bookings, and videos.">
     <title>Tutora | Admin Dashboard</title>
     <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Cinzel:wght@400;700;900&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Cinzel:wght@400;700;900&amp;display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -14,7 +19,9 @@
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="../animate.css">
     <link rel="stylesheet" href="../global-theme.css">
-  <link rel="stylesheet" href="../global-lang.css">
+    <link rel="stylesheet" href="../global-lang.css">
+    <link rel="stylesheet" href="../responsive-core.css">
+
 </head>
 
 <body class="dark">
@@ -22,176 +29,213 @@
     <!-- Mobile Menu Sidebar -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="menu-header">
-      <div class="menu-logo">
-        <div class="logo-circle">
-          <img src="../logo.png" alt="Tutora Logo">
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
         </div>
 
-        <h3 class="menu-logo-text">Tutora</h3>
-      </div>
-      <button class="close-btn" id="closeBtn">
-        <span class="material-symbols-outlined">close</span>
-      </button>
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
+
+            <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="nav.ai_experience">AI Experience</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"
+                        data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI
+                        Voice
+                        Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora
+                        laboratory</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
+            <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="nav.collection">Collection</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main
+                        Gallery</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item"
+                        data-i18n="nav.exhibition">Exhibition Halls</a>
+                </div>
+            </div>
+            <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
+
+            <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="profile menu">Profile Menu</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="#" class="dropdown-item" id="menuLangBtn"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
+
+                    <a href="../Profile/profile.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+                    <a href="../fav/favourite.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
+                    <a href="../setting/setting.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+                    <a href="#" class="dropdown-item" onclick="handleLogout(); return false;"
+                        style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"
+                        data-i18n-html="nav.logout"><span class="material-symbols-outlined"
+                            style="font-size: 18px;">logout</span> Logout</a>
+                </div>
+            </div>
+
+            <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn"
+                style="display: none; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined">login</span>
+                <span data-i18n="nav.login">Login</span>
+            </a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
+
+
+        </div>
     </div>
-
-    <nav class="menu-nav">
-      <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
-      <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a>
-      <a href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
-
-      <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
-
-      <div class="menu-dropdown">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="nav.ai_experience">AI Experience</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
-          <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
-          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice
-            Storytelling (3D)</a>
-          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
-        </div>
-      </div>
-
-      <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
-      <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
-      <div class="menu-dropdown">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="nav.collection">Collection</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
-          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
-        </div>
-      </div>
-      <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
-
-      <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="profile menu">Profile Menu</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
-          
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
-      </div>
-
-      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
-        <span class="material-symbols-outlined">login</span>
-        <span data-i18n="nav.login">Login</span>
-      </a>
-    </nav>
-
-    <div class="menu-footer">
-      <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
-
-      
-    </div>
-  </div>
 
     <!-- Header -->
     <header class="header">
-    <div class="scroll-progress-container">
-      <div class="scroll-progress-bar" id="scrollProgress"></div>
-    </div>
-    <div class="header-container">
-      <div class="header-left">
-        <button class="menu-btn" id="menuBtn">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
-        <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
-          <div class="logo-circle">
-            <img src="../logo.png" alt="Tutora Logo">
-          </div>
-          <h2 class="logo-text">Tutora</h2>
-        </a>
-      </div>
-
-      <nav class="desktop-nav">
-        <a href="../4.home/code.html" class="active" data-i18n="nav.home">Home</a>
-        <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
-        <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids Museum</a>
-        <a href="../event/event.html" data-i18n="nav.event">Event</a>
-        <div class="nav-dropdown">
-          <button class="nav-link dropdown-trigger">
-            <span data-i18n="nav.ai_experience">AI Experience</span>
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
-            <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
-            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice
-              Storytelling (3D)</a>
-            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
-              Laboratory</a>
-          </div>
+        <div class="scroll-progress-container">
+            <div class="scroll-progress-bar" id="scrollProgress"></div>
         </div>
-        <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
-        <a href="../about/About.html" data-i18n="nav.about">About</a>
-        <div class="nav-dropdown">
-          <button class="nav-link dropdown-trigger">
-            <span data-i18n="nav.collection">Collection</span>
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
-            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
-          </div>
-        </div>
-      </nav>
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
+                    <h2 class="logo-text">Tutora</h2>
+                </a>
+            </div>
 
-      <div class="header-right">
-        <button class="theme-btn" id="themeBtn" title="Toggle Theme">
-          <span class="material-symbols-outlined">dark_mode</span>
-        </button>
-        <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
-          <span class="material-symbols-outlined">language</span>
-        </button>
-        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html" class="active" data-i18n="nav.home">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids Museum</a>
+                <a href="../event/event.html" data-i18n="nav.event">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        <span data-i18n="nav.ai_experience">AI Experience</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour
+                            Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link"
+                            data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link"
+                            data-i18n="nav.ai_voice">AI Voice
+                            Storytelling (3D)</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
+                            Laboratory</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
+                <a href="../about/About.html" data-i18n="nav.about">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        <span data-i18n="nav.collection">Collection</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main
+                            Gallery</a>
+                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link"
+                            data-i18n="nav.exhibition">Exhibition Halls</a>
+                    </div>
+                </div>
+            </nav>
 
-        <a href="../card/card.html" class="icon-btn-link" title="Cart">
-          <button class="icon-btn cart-btn" style="position: relative;">
-            <span class="material-symbols-outlined">shopping_cart</span>
-            <span class="cart-badge" style="display: none;">0</span>
-          </button>
-        </a>
-        
-        
-        
-        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-          <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
-            <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-            <img src="./unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
-          </button>
-          <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-          
-          <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
-        </div>
+            <div class="header-right">
+                <button class="theme-btn" id="themeBtn" title="Toggle Theme">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
+                    <span class="material-symbols-outlined">language</span>
+                </button>
+                <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text"
+                        data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon"
+                        style="display: none;">confirmation_number</span></a>
 
-        <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
-          <button class="icon-btn">
-            <span class="material-symbols-outlined">login</span>
-          </button>
-        </a>
-      </div>
-    </div>
-  </header>
+                <a href="../card/card.html" class="icon-btn-link" title="Cart">
+                    <button class="icon-btn cart-btn" style="position: relative;">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        <span class="cart-badge" style="display: none;">0</span>
+                    </button>
+                </a>
+
+
+
+                <div class="nav-dropdown profile-dropdown" id="navProfileLink"
+                    style="display: none; margin-right: 15px;" title="Profile">
+                    <button class="nav-link dropdown-trigger profile-trigger"
+                        style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                        <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
+                        <img src="./unnamed.png" alt="Profile" class="profile-img"
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
+                    </button>
+                    <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
+
+                        <a href="../Profile/profile.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+                        <a href="../fav/favourite.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
+                        <a href="../setting/setting.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+                        <a href="#" class="dropdown-link" onclick="handleLogout(); return false;"
+                            style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"
+                            data-i18n-html="nav.logout"><span class="material-symbols-outlined"
+                                style="font-size: 18px;">logout</span> Logout</a>
+                    </div>
+                </div>
+
+                <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;"
+                    title="Login">
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined">login</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </header>
 
     <main class="main-container">
         <!-- Hero Section -->
@@ -202,7 +246,8 @@
                     <span>Management Console</span>
                 </div>
                 <h1 class="hero-title">Admin <span class="gold-text">Dashboard</span></h1>
-                <h2 class="hero-subtitle">Manage artifacts, events, bookings, and video content for the Grand Egyptian Museum.</h2>
+                <h2 class="hero-subtitle">Manage artifacts, events, bookings, and video content for the Grand Egyptian
+                    Museum.</h2>
             </div>
         </section>
 
@@ -216,7 +261,8 @@
                     <small class="stat-sub" id="statUsersGrowth"></small>
                 </div>
                 <div class="admin-stat-item">
-                    <span class="material-symbols-outlined" style="color: #10b981; font-size: 28px;">confirmation_number</span>
+                    <span class="material-symbols-outlined"
+                        style="color: #10b981; font-size: 28px;">confirmation_number</span>
                     <span class="admin-stat-number" id="statBookings">—</span>
                     <span class="admin-stat-label">Bookings</span>
                     <small class="stat-sub" id="statBookingsPaid"></small>
@@ -244,7 +290,8 @@
                     <span class="admin-stat-label">Events</span>
                 </div>
                 <div class="admin-stat-item">
-                    <span class="material-symbols-outlined" style="color: #ef4444; font-size: 28px;">video_library</span>
+                    <span class="material-symbols-outlined"
+                        style="color: #ef4444; font-size: 28px;">video_library</span>
                     <span class="admin-stat-number" id="statVideos">—</span>
                     <span class="admin-stat-label">Videos</span>
                 </div>
@@ -299,10 +346,18 @@
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>Name</th><th>Era</th><th>Target Section</th><th>Description</th><th>Actions</th></tr>
+                            <tr>
+                                <th>Name</th>
+                                <th>Era</th>
+                                <th>Target Section</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody id="artifactsTable">
-                            <tr><td colspan="4" class="table-empty">Loading artifacts...</td></tr>
+                            <tr>
+                                <td colspan="4" class="table-empty">Loading artifacts...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -319,10 +374,17 @@
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>Title</th><th>Date</th><th>Description</th><th>Actions</th></tr>
+                            <tr>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody id="eventsTable">
-                            <tr><td colspan="4" class="table-empty">Loading events...</td></tr>
+                            <tr>
+                                <td colspan="4" class="table-empty">Loading events...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -351,10 +413,19 @@
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>User</th><th>Date</th><th>Nationality</th><th>Total</th><th>Status</th><th>Actions</th></tr>
+                            <tr>
+                                <th>User</th>
+                                <th>Date</th>
+                                <th>Nationality</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody id="bookingsTable">
-                            <tr><td colspan="6" class="table-empty">Loading bookings...</td></tr>
+                            <tr>
+                                <td colspan="6" class="table-empty">Loading bookings...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -372,10 +443,17 @@
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>Title</th><th>Duration</th><th>URL</th><th>Actions</th></tr>
+                            <tr>
+                                <th>Title</th>
+                                <th>Duration</th>
+                                <th>URL</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody id="videosTable">
-                            <tr><td colspan="4" class="table-empty">Loading videos...</td></tr>
+                            <tr>
+                                <td colspan="4" class="table-empty">Loading videos...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -386,7 +464,8 @@
                 <div class="tab-header">
                     <h2 class="ai-section-title">Manage <span class="gold-text">Users</span></h2>
                     <div class="tab-header-actions">
-                        <input type="text" id="userSearchInput" class="admin-filter-input" placeholder="Search users...">
+                        <input type="text" id="userSearchInput" class="admin-filter-input"
+                            placeholder="Search users...">
                         <select id="userRoleFilter" class="admin-filter-select">
                             <option value="">All Roles</option>
                             <option value="user">User</option>
@@ -402,10 +481,19 @@
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>User</th><th>Email</th><th>Role</th><th>Status</th><th>Joined</th><th>Actions</th></tr>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody id="usersTable">
-                            <tr><td colspan="6" class="table-empty">Loading users...</td></tr>
+                            <tr>
+                                <td colspan="6" class="table-empty">Loading users...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -426,20 +514,36 @@
                 <div class="admin-table-wrap" id="aiChatsSection">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>User</th><th>Question</th><th>Answer</th><th>Date</th><th>Actions</th></tr>
+                            <tr>
+                                <th>User</th>
+                                <th>Question</th>
+                                <th>Answer</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
                         </thead>
                         <tbody id="aiChatsTable">
-                            <tr><td colspan="5" class="table-empty">Loading chats...</td></tr>
+                            <tr>
+                                <td colspan="5" class="table-empty">Loading chats...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="admin-table-wrap" id="aiDetectionsSection" style="display:none;">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>User</th><th>Image</th><th>Detected Artifact</th><th>Confidence</th><th>Date</th></tr>
+                            <tr>
+                                <th>User</th>
+                                <th>Image</th>
+                                <th>Detected Artifact</th>
+                                <th>Confidence</th>
+                                <th>Date</th>
+                            </tr>
                         </thead>
                         <tbody id="aiDetectionsTable">
-                            <tr><td colspan="5" class="table-empty">Loading detections...</td></tr>
+                            <tr>
+                                <td colspan="5" class="table-empty">Loading detections...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -455,55 +559,79 @@
                     <div class="settings-section">
                         <h3><span class="material-symbols-outlined">payments</span> Ticket Prices (General)</h3>
                         <div class="settings-grid">
-                            <div class="form-group"><label>Intl Adult ($)</label><input type="number" id="priceGenIntlAdult"></div>
-                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number" id="priceGenIntlStudent"></div>
-                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number" id="priceGenLocalAdult"></div>
-                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number" id="priceGenLocalStudent"></div>
+                            <div class="form-group"><label>Intl Adult ($)</label><input type="number"
+                                    id="priceGenIntlAdult"></div>
+                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number"
+                                    id="priceGenIntlStudent"></div>
+                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number"
+                                    id="priceGenLocalAdult"></div>
+                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number"
+                                    id="priceGenLocalStudent"></div>
                         </div>
                     </div>
                     <div class="settings-section">
                         <h3><span class="material-symbols-outlined">interpreter_mode</span> Ticket Prices (Guided)</h3>
                         <div class="settings-grid">
-                            <div class="form-group"><label>Intl Adult ($)</label><input type="number" id="priceGuideIntlAdult"></div>
-                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number" id="priceGuideIntlStudent"></div>
-                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number" id="priceGuideLocalAdult"></div>
-                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number" id="priceGuideLocalStudent"></div>
+                            <div class="form-group"><label>Intl Adult ($)</label><input type="number"
+                                    id="priceGuideIntlAdult"></div>
+                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number"
+                                    id="priceGuideIntlStudent"></div>
+                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number"
+                                    id="priceGuideLocalAdult"></div>
+                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number"
+                                    id="priceGuideLocalStudent"></div>
                         </div>
                     </div>
                     <div class="settings-section">
                         <h3><span class="material-symbols-outlined">diamond</span> Ticket Prices (Tut Pass)</h3>
                         <div class="settings-grid">
-                            <div class="form-group"><label>Intl Adult ($)</label><input type="number" id="priceTutIntlAdult"></div>
-                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number" id="priceTutIntlStudent"></div>
-                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number" id="priceTutLocalAdult"></div>
-                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number" id="priceTutLocalStudent"></div>
+                            <div class="form-group"><label>Intl Adult ($)</label><input type="number"
+                                    id="priceTutIntlAdult"></div>
+                            <div class="form-group"><label>Intl Student/Child ($)</label><input type="number"
+                                    id="priceTutIntlStudent"></div>
+                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number"
+                                    id="priceTutLocalAdult"></div>
+                            <div class="form-group"><label>Local Student/Child (EGP)</label><input type="number"
+                                    id="priceTutLocalStudent"></div>
                         </div>
                     </div>
                     <div class="settings-section">
                         <h3><span class="material-symbols-outlined">child_care</span> Ticket Prices (Kids Museum)</h3>
                         <div class="settings-grid">
-                            <div class="form-group"><label>Intl Child ($)</label><input type="number" id="priceKidsIntlChild"></div>
-                            <div class="form-group"><label>Intl Adult ($)</label><input type="number" id="priceKidsIntlAdult"></div>
-                            <div class="form-group"><label>Local Child (EGP)</label><input type="number" id="priceKidsLocalChild"></div>
-                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number" id="priceKidsLocalAdult"></div>
+                            <div class="form-group"><label>Intl Child ($)</label><input type="number"
+                                    id="priceKidsIntlChild"></div>
+                            <div class="form-group"><label>Intl Adult ($)</label><input type="number"
+                                    id="priceKidsIntlAdult"></div>
+                            <div class="form-group"><label>Local Child (EGP)</label><input type="number"
+                                    id="priceKidsLocalChild"></div>
+                            <div class="form-group"><label>Local Adult (EGP)</label><input type="number"
+                                    id="priceKidsLocalAdult"></div>
                         </div>
                     </div>
                     <div class="settings-section">
                         <h3><span class="material-symbols-outlined">auto_awesome</span> Add-ons ($/EGP combined)</h3>
                         <div class="settings-grid">
-                            <div class="form-group"><label>Audio Guide</label><input type="number" id="priceAddonAudio"></div>
-                            <div class="form-group"><label>Ramses Exhibition</label><input type="number" id="priceAddonRamses"></div>
-                            <div class="form-group"><label>Photography Pass</label><input type="number" id="priceAddonPhoto"></div>
-                            <div class="form-group"><label>VIP Fast-Track</label><input type="number" id="priceAddonVip"></div>
+                            <div class="form-group"><label>Audio Guide</label><input type="number" id="priceAddonAudio">
+                            </div>
+                            <div class="form-group"><label>Ramses Exhibition</label><input type="number"
+                                    id="priceAddonRamses"></div>
+                            <div class="form-group"><label>Photography Pass</label><input type="number"
+                                    id="priceAddonPhoto"></div>
+                            <div class="form-group"><label>VIP Fast-Track</label><input type="number"
+                                    id="priceAddonVip"></div>
                         </div>
                     </div>
                     <div class="settings-section">
                         <h3><span class="material-symbols-outlined">tune</span> General Settings</h3>
                         <div class="settings-grid">
-                            <div class="form-group"><label>Tax Rate</label><input type="number" step="0.01" id="settingTaxRate"></div>
-                            <div class="form-group"><label>Max Bookings/Day</label><input type="number" id="settingMaxBookings"></div>
-                            <div class="form-group"><label>Museum Open Time</label><input type="time" id="settingOpenTime"></div>
-                            <div class="form-group"><label>Museum Close Time</label><input type="time" id="settingCloseTime"></div>
+                            <div class="form-group"><label>Tax Rate</label><input type="number" step="0.01"
+                                    id="settingTaxRate"></div>
+                            <div class="form-group"><label>Max Bookings/Day</label><input type="number"
+                                    id="settingMaxBookings"></div>
+                            <div class="form-group"><label>Museum Open Time</label><input type="time"
+                                    id="settingOpenTime"></div>
+                            <div class="form-group"><label>Museum Close Time</label><input type="time"
+                                    id="settingCloseTime"></div>
                             <div class="form-group">
                                 <label>Maintenance Mode</label>
                                 <select id="settingMaintenance">
@@ -543,10 +671,18 @@
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>Admin</th><th>Action</th><th>Target</th><th>Details</th><th>Date</th></tr>
+                            <tr>
+                                <th>Admin</th>
+                                <th>Action</th>
+                                <th>Target</th>
+                                <th>Details</th>
+                                <th>Date</th>
+                            </tr>
                         </thead>
                         <tbody id="logsTable">
-                            <tr><td colspan="5" class="table-empty">Loading logs...</td></tr>
+                            <tr>
+                                <td colspan="5" class="table-empty">Loading logs...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -577,20 +713,31 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group"><label>Title *</label><input type="text" id="notifTitle" required="" placeholder="Notification title"></div>
-                    <div class="form-group"><label>Message *</label><textarea id="notifMessage" required="" placeholder="Notification message..."></textarea></div>
+                    <div class="form-group"><label>Title *</label><input type="text" id="notifTitle" required=""
+                            placeholder="Notification title"></div>
+                    <div class="form-group"><label>Message *</label><textarea id="notifMessage" required=""
+                            placeholder="Notification message..."></textarea></div>
                     <div class="form-actions">
-                        <button type="submit" class="btn-primary"><span class="material-symbols-outlined">send</span> Send</button>
+                        <button type="submit" class="btn-primary"><span class="material-symbols-outlined">send</span>
+                            Send</button>
                     </div>
                 </form>
                 <h3 style="margin-bottom:10px; color: var(--primary);">Sent Notifications</h3>
                 <div class="admin-table-wrap">
                     <table class="admin-table">
                         <thead>
-                            <tr><th>Title</th><th>Message</th><th>Type</th><th>Recipient</th><th>Date</th></tr>
+                            <tr>
+                                <th>Title</th>
+                                <th>Message</th>
+                                <th>Type</th>
+                                <th>Recipient</th>
+                                <th>Date</th>
+                            </tr>
                         </thead>
                         <tbody id="notificationsTable">
-                            <tr><td colspan="5" class="table-empty">Loading notifications...</td></tr>
+                            <tr>
+                                <td colspan="5" class="table-empty">Loading notifications...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -605,14 +752,15 @@
     <div class="admin-modal-overlay" id="artifactModal">
         <div class="admin-modal">
             <div class="admin-modal-header">
-                <h3><span class="material-symbols-outlined" style="color:#ecb613">museum</span> <span id="artifactModalTitle">Add Artifact</span></h3>
+                <h3><span class="material-symbols-outlined" style="color:#ecb613">museum</span> <span
+                        id="artifactModalTitle">Add Artifact</span></h3>
                 <button class="modal-close-btn" onclick="closeModal('artifactModal')">
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
             <form id="artifactForm">
                 <input type="hidden" id="artifactEditId">
-                
+
                 <div class="image-preview-container" id="artifactPreview">
                     <div class="placeholder">
                         <span class="material-symbols-outlined" style="font-size: 48px;">image</span>
@@ -621,8 +769,10 @@
                     <img src="" alt="Preview">
                 </div>
 
-                <div class="form-group"><label>Name *</label><input type="text" id="artifactName" required="" placeholder="Golden Mask of Tutankhamun"></div>
-                <div class="form-group"><label>Description *</label><textarea id="artifactDesc" required="" placeholder="Description of the artifact..."></textarea></div>
+                <div class="form-group"><label>Name *</label><input type="text" id="artifactName" required=""
+                        placeholder="Golden Mask of Tutankhamun"></div>
+                <div class="form-group"><label>Description *</label><textarea id="artifactDesc" required=""
+                        placeholder="Description of the artifact..."></textarea></div>
                 <div class="form-grid-2">
                     <div class="form-group">
                         <label>Target Section *</label>
@@ -632,16 +782,21 @@
                             <option value="both">Both Sections</option>
                         </select>
                     </div>
-                    <div class="form-group"><label>Era</label><input type="text" id="artifactEra" placeholder="18th Dynasty — New Kingdom"></div>
+                    <div class="form-group"><label>Era</label><input type="text" id="artifactEra"
+                            placeholder="18th Dynasty — New Kingdom"></div>
                 </div>
-                <div class="form-group"><label>Image URL</label><input type="text" id="artifactImageUrl" placeholder="https://..."></div>
-                
+                <div class="form-group"><label>Image URL</label><input type="text" id="artifactImageUrl"
+                        placeholder="https://..."></div>
+
                 <div class="form-grid-2">
-                    <div class="form-group"><label>3D Model URL</label><input type="text" id="artifactModel3DUrl" placeholder="https://..."></div>
-                    <div class="form-group"><label>Audio URL</label><input type="text" id="artifactAudioUrl" placeholder="https://..."></div>
+                    <div class="form-group"><label>3D Model URL</label><input type="text" id="artifactModel3DUrl"
+                            placeholder="https://..."></div>
+                    <div class="form-group"><label>Audio URL</label><input type="text" id="artifactAudioUrl"
+                            placeholder="https://..."></div>
                 </div>
-                <div class="form-group"><label>Video URL</label><input type="text" id="artifactVideoUrl" placeholder="https://..."></div>
-                
+                <div class="form-group"><label>Video URL</label><input type="text" id="artifactVideoUrl"
+                        placeholder="https://..."></div>
+
                 <div class="form-actions">
                     <button type="button" class="btn-secondary" onclick="closeModal('artifactModal')">Cancel</button>
                     <button type="submit" class="btn-primary" id="artifactSubmitBtn">Save Artifact</button>
@@ -669,7 +824,8 @@
                     <img src="" alt="Preview">
                 </div>
 
-                <div class="form-group"><label>Title *</label><input type="text" id="eventTitle" required="" placeholder="Exhibition Opening"></div>
+                <div class="form-group"><label>Title *</label><input type="text" id="eventTitle" required=""
+                        placeholder="Exhibition Opening"></div>
                 <div class="form-group">
                     <label>Category *</label>
                     <select id="eventCategory" required="">
@@ -678,12 +834,16 @@
                         <option value="Cultural Nights">Cultural Nights</option>
                     </select>
                 </div>
-                <div class="form-group"><label>Description *</label><textarea id="eventDesc" required="" placeholder="Event details..."></textarea></div>
+                <div class="form-group"><label>Description *</label><textarea id="eventDesc" required=""
+                        placeholder="Event details..."></textarea></div>
                 <div class="form-grid-2">
-                    <div class="form-group"><label>Date *</label><input type="datetime-local" id="eventDate" required=""></div>
-                    <div class="form-group"><label>Location</label><input type="text" id="eventLocation" placeholder="Main Hall"></div>
+                    <div class="form-group"><label>Date *</label><input type="datetime-local" id="eventDate"
+                            required=""></div>
+                    <div class="form-group"><label>Location</label><input type="text" id="eventLocation"
+                            placeholder="Main Hall"></div>
                 </div>
-                <div class="form-group"><label>Image URL</label><input type="text" id="eventImageUrl" placeholder="https://..."></div>
+                <div class="form-group"><label>Image URL</label><input type="text" id="eventImageUrl"
+                        placeholder="https://..."></div>
                 <div class="form-actions">
                     <button type="button" class="btn-secondary" onclick="closeModal('eventModal')">Cancel</button>
                     <button type="submit" class="btn-primary" id="eventSubmitBtn">Create Event</button>
@@ -703,24 +863,30 @@
             </div>
             <form id="videoForm">
                 <div class="upload-drop-zone" id="videoDropZone">
-                    <span class="material-symbols-outlined" style="font-size: 48px; color: var(--primary);">cloud_upload</span>
+                    <span class="material-symbols-outlined"
+                        style="font-size: 48px; color: var(--primary);">cloud_upload</span>
                     <p>Drag &amp; Drop video file here or click to browse</p>
                     <span style="font-size: 11px; opacity: 0.5;">MP4, WebM up to 100MB</span>
                     <input type="file" id="videoFile" accept="video/*" required="" style="display: none;">
                 </div>
 
-                <div id="selectedFileInfo" style="display: none; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 13px;">
+                <div id="selectedFileInfo"
+                    style="display: none; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 13px;">
                     <div style="display: flex; align-items: center; gap: 10px;">
                         <span class="material-symbols-outlined" style="color: #10b981;">check_circle</span>
                         <span id="fileNameDisplay">filename.mp4</span>
                     </div>
                 </div>
 
-                <div class="form-group"><label>Title</label><input type="text" id="videoTitle" placeholder="Artifact Story Video"></div>
-                
+                <div class="form-group"><label>Title</label><input type="text" id="videoTitle"
+                        placeholder="Artifact Story Video"></div>
+
                 <div id="uploadProgress" style="display:none; margin-top:12px;">
-                    <div style="background: rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; height: 10px; margin-bottom: 8px;">
-                        <div id="uploadBar" style="height:100%; background: linear-gradient(90deg, #ecb613, #fff); width:0%; transition: width 0.3s; box-shadow: 0 0 10px rgba(236,182,19,0.5);"></div>
+                    <div
+                        style="background: rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; height: 10px; margin-bottom: 8px;">
+                        <div id="uploadBar"
+                            style="height:100%; background: linear-gradient(90deg, #ecb613, #fff); width:0%; transition: width 0.3s; box-shadow: 0 0 10px rgba(236,182,19,0.5);">
+                        </div>
                     </div>
                     <div style="display: flex; justify-content: space-between; font-size: 12px; opacity: 0.8;">
                         <span id="uploadStatus">Uploading...</span>
@@ -738,100 +904,107 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-                                        <div class="footer-container">
-                                            <!-- Footer Header -->
-                                            <div class="footer-header">
-                                                <div class="footer-logo">
-                                                    <span class="material-symbols-outlined">account_balance</span>
-                                                </div>
-                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
-                                                <div class="footer-divider"></div>
-                                            </div>
-                            
-                                            <!-- Footer Grid -->
-                                            <div class="footer-grid">
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
-                                                    <ul>
-                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
-                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.about">About</h3>
-                                                    <ul>
-                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
-                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
-                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.support">Support</h3>
-                                                    <ul>
-                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column connect-column">
-                                                    <h3 data-i18n="footer.connect">Connect</h3>
-                                                    <div class="social-links">
-                                                        <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                            <i class="fa-brands fa-facebook"></i>
-                                                        </a>
-                            
-                                                        <!-- Twitter (X ) -->
-                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                                            <i class="fa-brands fa-x-twitter"></i>
-                                                        </a>
-                            
-                                                        <!-- Instagram -->
-                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                            <i class="fa-brands fa-instagram"></i>
-                                                        </a>
-                            
-                                                        <!-- YouTube -->
-                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                            <i class="fa-brands fa-youtube"></i>
-                                                        </a>
-                                                    </div>
-                            
-                                                    <p>
-                                                        Follow us on social media for updates and behind-the-scenes content.
-                                                    </p>
-                                                </div>
-                                            </div>
-                             
-                                                   <!-- Footer Bottom -->
-                                             <div class="footer-bottom">
-                                                 <div class="language-toggle">
-                                                     <button class="active" data-lang="en">English</button>
-                                                     <button data-lang="ar">العربية</button>
-                                                 </div>
-                                                 <div class="legal-section">
-                                                    <div class="legal-links">
-                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
-                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
-                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
-                                                 </div>
-                                         <div class="copyright">
-                                           © 2026 Tutora. All rights reserved.
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                     </footer>
+        <div class="footer-container">
+            <!-- Footer Header -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 data-i18n="footer.explore">Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition
+                                Halls</a></li>
+                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="footer.about">About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
+                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="footer.support">Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3 data-i18n="footer.connect">Connect</h3>
+                    <div class="social-links">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <!-- Twitter (X ) -->
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+
+                    <p>
+                        Follow us on social media for updates and behind-the-scenes content.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="language-toggle">
+                    <button class="active" data-lang="en">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;"
+                            data-i18n="footer.privacy">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html"
+                            style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;"
+                            data-i18n="footer.cookies">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">
+                        © 2026 Tutora. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
     <script src="admin.js?v=1.1"></script>
-<script src="../global-lang.js?v=1780353971499"></script>
+    <script src="../global-lang.js?v=1780353971499"></script>
 
 
-</body></html>
+</body>
+
+</html>

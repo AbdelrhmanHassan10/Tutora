@@ -1,24 +1,34 @@
-<!DOCTYPE html><html lang="en"><head>
-                                <meta name="description" content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts.">
-                                <meta charset="utf-8">
-                                <meta content="width=device-width, initial-scale=1.0" name="viewport">
-                                <title>TUTORA Event | Discover Upcoming Events</title>
-                                <link rel="icon" type="image/png" href="../museum.png">
-                                <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&amp;family=Cinzel:wght@400;700;900&amp;display=swap" rel="stylesheet">
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-                                <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-                                <link rel="stylesheet" href="style.css">
-                                <link rel="stylesheet" href="../animate.css">
-                            	<link rel="stylesheet" href="../global-theme.css">
-                                <link rel="stylesheet" href="../global-lang.css">
-                            </head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description"
+    content="Tutora - Your interactive gateway to the Grand Egyptian Museum. Explore pharaonic history, book tickets, and manage your artifacts.">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>TUTORA Event | Discover Upcoming Events</title>
+  <link rel="icon" type="image/png" href="../museum.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&amp;family=Cinzel:wght@400;700;900&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../animate.css">
+  <link rel="stylesheet" href="../global-theme.css">
+  <link rel="stylesheet" href="../global-lang.css">
+  <link rel="stylesheet" href="../responsive-core.css">
+
+</head>
 
 <body class="dark">
-    <!-- Royal Superstar Atmosphere -->
-    <div id="scrollProgress"></div>
-                             
-                                <!-- Overlay for Mobile Menu -->
-                                <div class="menu-overlay" id="menuOverlay"></div>
+  <!-- Royal Superstar Atmosphere -->
+  <div id="scrollProgress"></div>
+
+  <!-- Overlay for Mobile Menu -->
+  <div class="menu-overlay" id="menuOverlay"></div>
 
   <div class="mobile-menu" id="mobileMenu">
     <div class="menu-header">
@@ -49,7 +59,8 @@
         <div class="dropdown-items">
           <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
           <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"
+            data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
           <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice
             Storytelling (3D)</a>
           <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
@@ -65,7 +76,8 @@
         </button>
         <div class="dropdown-items">
           <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
-          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
+          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item"
+            data-i18n="nav.exhibition">Exhibition Halls</a>
         </div>
       </div>
       <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
@@ -76,16 +88,27 @@
           <span class="material-symbols-outlined">expand_more</span>
         </button>
         <div class="dropdown-items">
-          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
-          
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.language"><span class="material-symbols-outlined"
+              style="font-size: 18px;">language</span> Language</a>
+
+          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+            Profile</a>
+          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.favorites"><span class="material-symbols-outlined"
+              style="font-size: 18px;">favorite</span> Favorites</a>
+          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;"
+            data-i18n-html="nav.settings"><span class="material-symbols-outlined"
+              style="font-size: 18px;">settings</span> Settings</a>
+          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;"
+            style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span
+              class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
         </div>
       </div>
 
-      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
+      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn"
+        style="display: none; align-items: center; gap: 8px;">
         <span class="material-symbols-outlined">login</span>
         <span data-i18n="nav.login">Login</span>
       </a>
@@ -94,12 +117,12 @@
     <div class="menu-footer">
       <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
 
-      
+
     </div>
   </div>
-                            
-                                    <!-- Header -->
-                                    <header class="header">
+
+  <!-- Header -->
+  <header class="header">
     <div class="scroll-progress-container">
       <div class="scroll-progress-bar" id="scrollProgress"></div>
     </div>
@@ -129,7 +152,8 @@
           <div class="dropdown-menu">
             <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
             <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link"
+              data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
             <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice
               Storytelling (3D)</a>
             <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
@@ -145,7 +169,8 @@
           </button>
           <div class="dropdown-menu">
             <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
-            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
+            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link"
+              data-i18n="nav.exhibition">Exhibition Halls</a>
           </div>
         </div>
       </nav>
@@ -157,7 +182,9 @@
         <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
           <span class="material-symbols-outlined">language</span>
         </button>
-        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
+        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text"
+            data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon"
+            style="display: none;">confirmation_number</span></a>
 
         <a href="../card/card.html" class="icon-btn-link" title="Cart">
           <button class="icon-btn cart-btn" style="position: relative;">
@@ -165,21 +192,32 @@
             <span class="cart-badge" style="display: none;">0</span>
           </button>
         </a>
-        
-        
-        
-        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-          <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+
+
+
+        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;"
+          title="Profile">
+          <button class="nav-link dropdown-trigger profile-trigger"
+            style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
             <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-            <img src="./unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
+            <img src="./unnamed.png" alt="Profile" class="profile-img"
+              style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
           </button>
           <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-          
-          <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
+
+            <a href="../Profile/profile.html" class="dropdown-link"
+              style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+            <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;"
+              data-i18n-html="nav.favorites"><span class="material-symbols-outlined"
+                style="font-size: 18px;">favorite</span> Favorites</a>
+            <a href="../setting/setting.html" class="dropdown-link"
+              style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+            <a href="#" class="dropdown-link" onclick="handleLogout(); return false;"
+              style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span
+                class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
+          </div>
         </div>
 
         <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
@@ -190,404 +228,455 @@
       </div>
     </div>
   </header>
-                                     <main class="main-content">
-                                         <!-- Hero Section -->
-                                         <section class="hero-card">
-                                             <div class="hero-bg" style="background-image: url('../69.jpg')"></div>
-                                             <div class="hero-overlay"></div>
-                                             <div class="hero-content">
-                                                 <span class="featured-badge" data-i18n="evt.hero_badge">Featured Exhibition</span>
-                                                 <h2 class="hero-title" data-i18n="evt.hero_title">The Majesty of <span>Tutankhamun</span></h2>
-                                                 <p class="hero-desc" data-i18n="evt.hero_desc">Experience the golden age of the pharaohs in our newest immersive exhibition. Discover over 5,000 treasures from the Boy King's tomb.</p>
-                                                 <div class="hero-actions">
-                                                     <a href="../booking/booking.html" class="btn-primary">
-                                                         <span class="material-symbols-outlined">confirmation_number</span>Book Tickets Now</a>
-                                                     <a href="#" class="btn-outline" data-i18n="evt.hero_btn_learn">Learn More</a>
-                                                 </div>
-                                             </div>
-                                         </section>
-                            
-                                         <!-- Filters -->
-                                         <div class="filter-bar">
-                                             <div class="filter-tabs">
-                                                 <a href="#" class="filter-tab active" data-filter="All Events" data-i18n="evt.filter_all">All Events</a>
-                                                 <a href="#" class="filter-tab" data-filter="Exhibitions" data-i18n="evt.filter_exhibitions">Exhibitions</a>
-                                                 <a href="#" class="filter-tab" data-filter="Workshops" data-i18n="evt.filter_workshops">Workshops</a>
-                                                 <a href="#" class="filter-tab" data-filter="Cultural Nights" data-i18n="evt.filter_cultural">Cultural Nights</a>
-                                             </div>
-                                             <div class="nav-actions" style="padding: 1rem 0"></div>
-                                         </div>
-                            
-                                         <!-- Event Grid -->
-                                         <div class="event-grid" style="padding-top: 50px;">
-                                             <!-- Card 1 -->
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
-                                                     <button class="btn-favorite">
-                                           <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
-                                         </button>
-                                                     <div class="card-image" style="background-image: url('../gettyimages-2177866414-612x612.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Oct 12 - Dec 20, 2023</div>
-                                         <h3 class="event-title" data-i18n="evt.c1_title">The Golden King: Artifacts of a Legend</h3>
-                                         <p class="event-desc">
-                                           A rare collection of personal jewelry and protective amulets
-                                           recovered from the royal valley.
-                                         </p>
-                                         <div class="card-footer">
-                                           <span class="event-location">
-                                             <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Gallery 4 • Premium</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
-                                           </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
-                                                     <button class="btn-favorite">
-                                           <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
-                                         </button>
-                                                     <div class="card-image" style="background-image: url('../gettyimages-2245643012-594x594.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Every Saturday</div>
-                                         <h3 class="event-title" data-i18n="evt.c2_title">Papyrus Making Workshop</h3>
-                                         <p class="event-desc">
-                                           Learn the ancient art of paper production using Nile River reeds
-                                           under expert guidance.
-                                         </p>
-                                         <div class="card-footer">
-                                           <span class="event-location">
-                                             <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Education Center</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
-                                           </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
-                                                     <button class="btn-favorite">
-                                           <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
-                                         </button>
-                                                     <div class="card-image" style="background-image: url('../10.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Nightly • 8:00 PM</div>
-                                         <h3 class="event-title" data-i18n="evt.c3_title">Sphinx Sound &amp; Light Show</h3>
-                                         <p class="event-desc">
-                                           A spectacular journey through 5,000 years of history projected
-                                           onto the ancient monuments.
-                                         </p>
-                                         <div class="card-footer">
-                                           <span class="event-location">
-                                             <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Main Plaza • Outdoor</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
-                                           </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
-                                                     <button class="btn-favorite">
-                                           <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
-                                         </button>
-                                                     <div class="card-image" style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Permanent Collection</div>
-                                         <h3 class="event-title" data-i18n="evt.c4_title">Ramses the Great: Life &amp; Legacy</h3>
-                                         <p class="event-desc">
-                                           Dedicated to Egypt's longest-reigning pharaoh, featuring the
-                                           colossal statue from Memphis.
-                                         </p>
-                                         <div class="card-footer">
-                                           <span class="event-location">
-                                             <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Atrium • Historic</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
-                                           </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
-                                                     <button class="btn-favorite">
-                                           <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
-                                         </button>
-                                                     <div class="card-image" style="background-image: url('../pexels-meryemmeva-35270037.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Nov 05 • 2:00 PM</div>
-                                         <h3 class="event-title" data-i18n="evt.c5_title">Egyptian Hieroglyphs 101</h3>
-                                         <p class="event-desc">
-                                           An introductory lecture on deciphering the sacred carvings of the
-                                           Old Kingdom.
-                                         </p>
-                                         <div class="card-footer">
-                                           <span class="event-location">
-                                             <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Library Wing</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
-                                           </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
-                                                     <button class="btn-favorite">
-                                           <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
-                                         </button>
-                                                     <div class="card-image" style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_7.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Nov 10 • 6:30 PM</div>
-                                         <h3 class="event-title" data-i18n="evt.c6_title">Nile Sunset Jazz Sessions</h3>
-                                         <p class="event-desc">
-                                           Enjoy contemporary jazz fusion as the sun sets over the pyramids
-                                           from our garden terrace.
-                                         </p>
-                                         <div class="card-footer">
-                                           <span class="event-location">
-                                             <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Museum Gardens</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
-                                           </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="badge-selling" style="background: linear-gradient(45deg, #8b5cf6, #6d28d9); box-shadow: 0 4px 10px rgba(139,92,246,0.4);" data-i18n="evt.c7_badge">Exclusive</div>
-                                                     <button class="btn-favorite">
-                                                       <span class="material-symbols-outlined">favorite</span>
-                                                     </button>
-                                                     <div class="card-image" style="background-image: url('../8.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined">calendar_month</span>Every Friday</div>
-                                                     <h3 class="event-title" data-i18n="evt.c7_title">The Grand Discovery Tour</h3>
-                                                     <p class="event-desc" data-i18n="evt.c7_desc">Join our expert archaeologists on an exclusive behind-the-scenes look at newly excavated pharaonic treasures.</p>
-                                                     <div class="card-footer">
-                                                         <span class="event-location">
-                                                             <span class="material-symbols-outlined">location_on</span>The Grand Hall</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined">arrow_forward</span>
-                                                         </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                            
-                                             <!-- Event Card 8 -->
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="card-image" style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1.1rem">calendar_month</span>Dec 01 • 9:00 AM</div>
-                                                     <h3 class="event-title" data-i18n="evt.c8_title">Ancient Board Games Tournament</h3>
-                                                     <p class="event-desc" data-i18n="evt.c8_desc">Challenge yourself and learn the rules of Senet and Mehen in this interactive historical gaming event.</p>
-                                                     <div class="card-footer">
-                                                         <span class="event-location" style="display: flex; align-items: center; gap: 4px; color: #b3b3b3; font-size: 0.9rem;">
-                                                             <span class="material-symbols-outlined" style="font-size: 1.1rem">location_on</span>Children's Museum</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined" style="font-size: 1.1rem">arrow_forward</span>
-                                                         </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                            
-                                             <!-- Event Card 9 -->
-                                             <div class="event-card">
-                                                 <div class="card-image-wrapper">
-                                                     <div class="badge-selling" style="background: linear-gradient(45deg, #f59e0b, #d97706); animation: none; box-shadow: 0 4px 10px rgba(245,158,11,0.4);" data-i18n="evt.c9_badge">Limited Sizes</div>
-                                                     <div class="card-image" style="background-image: url('../10.jpg')"></div>
-                                                 </div>
-                                                 <div class="card-body">
-                                                     <div class="event-date">
-                                                         <span class="material-symbols-outlined" style="font-size: 1.1rem">calendar_month</span>Sunday • 5:30 AM</div>
-                                                     <h3 class="event-title" data-i18n="evt.c9_title">Sunrise Yoga by the Pyramids</h3>
-                                                     <p class="event-desc" data-i18n="evt.c9_desc">Find inner peace with a guided yoga session facing the Great Pyramids at dawn.</p>
-                                                     <div class="card-footer">
-                                                         <span class="event-location" style="display: flex; align-items: center; gap: 4px; color: #b3b3b3; font-size: 0.9rem;">
-                                                             <span class="material-symbols-outlined" style="font-size: 1.1rem">location_on</span>Outdoor Terrace</span>
-                                                         <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span class="material-symbols-outlined" style="font-size: 1.1rem">arrow_forward</span>
-                                                         </button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                            
-                                         </div>
-                            
-                                         <!-- Featured Speakers Section -->
-                                         <section class="container section-padding">
-                                             <div class="section-header">
-                                                 <div class="header-info">
-                                                     <span class="section-tag" data-i18n="evt.exp_tag">Expert Voices</span>
-                                                     <h2 class="section-title" data-i18n="evt.exp_title">Meet Our Curators &amp; Speakers</h2>
-                                                 </div>
-                                             </div>
-                                             <div class="speakers-grid">
-                                                 <div class="speaker-card">
-                                                     <div class="speaker-img-wrapper">
-                                                         <img src="../about/download (1).jfif" alt="Dr. Zahi Hawass" class="speaker-img">
-                                                     </div>
-                                                     <div class="speaker-info">
-                                                         <h4 data-i18n="evt.dr1_name">Dr. Zahi Hawass</h4>
-                                                         <p data-i18n="evt.dr1_role">Lead Archaeologist</p>
-                                                         <div class="speaker-bio" data-i18n="evt.dr1_desc">Renowned archaeologist and the former Minister of State for Antiquities Affairs.</div>
-                                                         <blockquote class="speaker-quote" data-i18n="evt.dr1_quote">The Grand Egyptian Museum is the most important cultural project in the world in the 21st century. It is Egypt's gift to humanity.</blockquote>
-                                                     </div>
-                                                 </div>
-                                                 <div class="speaker-card">
-                                                     <div class="speaker-img-wrapper">
-                                                         <img src="../about/download.jfif" alt="Dr. Hussein Kamal" class="speaker-img">
-                                                     </div>
-                                                     <div class="speaker-info">
-                                                         <h4 data-i18n="evt.dr2_name">Dr. Hussein Kamal</h4>
-                                                         <p data-i18n="evt.dr2_role">Head of Conservation</p>
-                                                         <div class="speaker-bio" data-i18n="evt.dr2_desc">Directing the world's most advanced archaeological conservation center at GEM.</div>
-                                                         <blockquote class="speaker-quote" data-i18n="evt.dr2_quote">Our conservation center is a lighthouse of science, ensuring that every artifact is preserved with the highest standards known to man.</blockquote>
-                                                     </div>
-                                                 </div>
-                                                 <div class="speaker-card">
-                                                     <div class="speaker-img-wrapper">
-                                                         <img src="../about/download (2).jfif" alt="Dr. Ahmed Ghoneim" class="speaker-img">
-                                                     </div>
-                                                     <div class="speaker-info">
-                                                         <h4 data-i18n="evt.dr3_name">Dr. Ahmed Ghoneim</h4>
-                                                         <p data-i18n="evt.dr3_role">CEO of GEM</p>
-                                                         <div class="speaker-bio" data-i18n="evt.dr3_desc">Leading the GEM's mission as a global cultural hub and educational institution.</div>
-                                                         <blockquote class="speaker-quote" data-i18n="evt.dr3_quote">"We are not just a museum; we are a symbol of global cooperation and a bridge between ancient legacy and future innovation."</blockquote>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </section>
-                            
-                                         <!-- Newsletter Section -->
-                                         <section class="newsletter-section">
-                                             <div class="container">
-                                                 <div class="newsletter-card">
-                                                     <div class="newsletter-content">
-                                                         <span class="material-symbols-outlined newsletter-icon">mail</span>
-                                                         <h2 class="cta-title" data-i18n="evt.news_title">Join Our Community</h2>
-                                                         <p class="cta-desc" data-i18n="evt.news_desc">Stay updated with the latest event announcements, exclusive curator talks, and exhibition openings delivered directly to your inbox.</p>
-                                                         <form class="newsletter-form">
-                                                             <input type="email" placeholder="Enter your email address" required="">
-                                                             <button type="submit" class="btn-primary-large" data-i18n="evt.news_btn">Subscribe Now</button>
-                                                         </form>
-                                                         <p class="newsletter-privacy" data-i18n="evt.news_policy">By subscribing, you agree to our Privacy Policy and Terms of Service.</p>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </section>
-                                     </main>
-                                     <hr>
-                  <!-- Footer -->
-                                <footer class="site-footer">
-                                        <div class="footer-container">
-                                            <!-- Footer Header -->
-                                            <div class="footer-header">
-                                                <div class="footer-logo">
-                                                    <span class="material-symbols-outlined">account_balance</span>
-                                                </div>
-                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
-                                                <div class="footer-divider"></div>
-                                            </div>
-                            
-                                            <!-- Footer Grid -->
-                                            <div class="footer-grid">
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
-                                                    <ul>
-                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
-                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.about">About</h3>
-                                                    <ul>
-                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
-                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
-                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.support">Support</h3>
-                                                    <ul>
-                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column connect-column">
-                                                    <h3 data-i18n="footer.connect">Connect</h3>
-                                                    <div class="social-links">
-                                                        <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                            <i class="fa-brands fa-facebook"></i>
-                                                        </a>
-                            
-                                                        <!-- Twitter (X ) -->
-                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                                            <i class="fa-brands fa-x-twitter"></i>
-                                                        </a>
-                            
-                                                        <!-- Instagram -->
-                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                            <i class="fa-brands fa-instagram"></i>
-                                                        </a>
-                            
-                                                        <!-- YouTube -->
-                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                            <i class="fa-brands fa-youtube"></i>
-                                                        </a>
-                                                    </div>
-                            
-                                                    <p>
-                                                        Follow us on social media for updates and behind-the-scenes content.
-                                                    </p>
-                                                </div>
-                                            </div>
-                             
-                                                   <!-- Footer Bottom -->
-                                             <div class="footer-bottom">
-                                                 <div class="language-toggle">
-                                                     <button class="active" data-lang="en">English</button>
-                                                     <button data-lang="ar">العربية</button>
-                                                 </div>
-                                                 <div class="legal-section">
-                                                    <div class="legal-links">
-                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
-                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
-                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
-                                                 </div>
-                                         <div class="copyright">
-                                           © 2026 Tutora. All rights reserved.
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                     </footer>
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-card">
+      <div class="hero-bg" style="background-image: url('../69.jpg')"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="featured-badge" data-i18n="evt.hero_badge">Featured Exhibition</span>
+        <h2 class="hero-title" data-i18n="evt.hero_title">The Majesty of <span>Tutankhamun</span></h2>
+        <p class="hero-desc" data-i18n="evt.hero_desc">Experience the golden age of the pharaohs in our newest immersive
+          exhibition. Discover over 5,000 treasures from the Boy King's tomb.</p>
+        <div class="hero-actions">
+          <a href="../booking/booking.html" class="btn-primary">
+            <span class="material-symbols-outlined">confirmation_number</span>Book Tickets Now</a>
+          <a href="#" class="btn-outline" data-i18n="evt.hero_btn_learn">Learn More</a>
+        </div>
+      </div>
+    </section>
 
-                            
-                                 <script src="main.js "></script>
-                                 <script src="../global-core.js"></script>
-                                 <script src="../animate.js"></script>
-                             <script src="../global-lang.js?v=1780353971499"></script>
+    <!-- Filters -->
+    <div class="filter-bar">
+      <div class="filter-tabs">
+        <a href="#" class="filter-tab active" data-filter="All Events" data-i18n="evt.filter_all">All Events</a>
+        <a href="#" class="filter-tab" data-filter="Exhibitions" data-i18n="evt.filter_exhibitions">Exhibitions</a>
+        <a href="#" class="filter-tab" data-filter="Workshops" data-i18n="evt.filter_workshops">Workshops</a>
+        <a href="#" class="filter-tab" data-filter="Cultural Nights" data-i18n="evt.filter_cultural">Cultural Nights</a>
+      </div>
+      <div class="nav-actions" style="padding: 1rem 0"></div>
+    </div>
 
-                             </body></html>
+    <!-- Event Grid -->
+    <div class="event-grid" style="padding-top: 50px;">
+      <!-- Card 1 -->
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
+          <button class="btn-favorite">
+            <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
+          </button>
+          <div class="card-image" style="background-image: url('../gettyimages-2177866414-612x612.jpg')"></div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Oct 12 - Dec 20, 2023
+          </div>
+          <h3 class="event-title" data-i18n="evt.c1_title">The Golden King: Artifacts of a Legend</h3>
+          <p class="event-desc">
+            A rare collection of personal jewelry and protective amulets
+            recovered from the royal valley.
+          </p>
+          <div class="card-footer">
+            <span class="event-location">
+              <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Gallery 4 •
+              Premium</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
+          <button class="btn-favorite">
+            <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
+          </button>
+          <div class="card-image" style="background-image: url('../gettyimages-2245643012-594x594.jpg')"></div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Every Saturday
+          </div>
+          <h3 class="event-title" data-i18n="evt.c2_title">Papyrus Making Workshop</h3>
+          <p class="event-desc">
+            Learn the ancient art of paper production using Nile River reeds
+            under expert guidance.
+          </p>
+          <div class="card-footer">
+            <span class="event-location">
+              <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Education Center</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
+          <button class="btn-favorite">
+            <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
+          </button>
+          <div class="card-image" style="background-image: url('../10.jpg')"></div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Nightly • 8:00 PM
+          </div>
+          <h3 class="event-title" data-i18n="evt.c3_title">Sphinx Sound &amp; Light Show</h3>
+          <p class="event-desc">
+            A spectacular journey through 5,000 years of history projected
+            onto the ancient monuments.
+          </p>
+          <div class="card-footer">
+            <span class="event-location">
+              <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Main Plaza •
+              Outdoor</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
+          <button class="btn-favorite">
+            <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
+          </button>
+          <div class="card-image"
+            style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg')">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Permanent Collection
+          </div>
+          <h3 class="event-title" data-i18n="evt.c4_title">Ramses the Great: Life &amp; Legacy</h3>
+          <p class="event-desc">
+            Dedicated to Egypt's longest-reigning pharaoh, featuring the
+            colossal statue from Memphis.
+          </p>
+          <div class="card-footer">
+            <span class="event-location">
+              <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Atrium • Historic</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
+          <button class="btn-favorite">
+            <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
+          </button>
+          <div class="card-image" style="background-image: url('../pexels-meryemmeva-35270037.jpg')"></div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Nov 05 • 2:00 PM
+          </div>
+          <h3 class="event-title" data-i18n="evt.c5_title">Egyptian Hieroglyphs 101</h3>
+          <p class="event-desc">
+            An introductory lecture on deciphering the sacred carvings of the
+            Old Kingdom.
+          </p>
+          <div class="card-footer">
+            <span class="event-location">
+              <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Library Wing</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="badge-selling" data-i18n="evt.c1_badge">Selling Fast</div>
+          <button class="btn-favorite">
+            <span class="material-symbols-outlined" style="font-size: 1.25rem">favorite</span>
+          </button>
+          <div class="card-image"
+            style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_7.jpg')">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined" style="font-size: 1rem">calendar_month</span>Nov 10 • 6:30 PM
+          </div>
+          <h3 class="event-title" data-i18n="evt.c6_title">Nile Sunset Jazz Sessions</h3>
+          <p class="event-desc">
+            Enjoy contemporary jazz fusion as the sun sets over the pyramids
+            from our garden terrace.
+          </p>
+          <div class="card-footer">
+            <span class="event-location">
+              <span class="material-symbols-outlined" style="font-size: 1rem">location_on</span>Museum Gardens</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined" style="font-size: 1rem">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="badge-selling"
+            style="background: linear-gradient(45deg, #8b5cf6, #6d28d9); box-shadow: 0 4px 10px rgba(139,92,246,0.4);"
+            data-i18n="evt.c7_badge">Exclusive</div>
+          <button class="btn-favorite">
+            <span class="material-symbols-outlined">favorite</span>
+          </button>
+          <div class="card-image" style="background-image: url('../8.jpg')"></div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined">calendar_month</span>Every Friday
+          </div>
+          <h3 class="event-title" data-i18n="evt.c7_title">The Grand Discovery Tour</h3>
+          <p class="event-desc" data-i18n="evt.c7_desc">Join our expert archaeologists on an exclusive behind-the-scenes
+            look at newly excavated pharaonic treasures.</p>
+          <div class="card-footer">
+            <span class="event-location">
+              <span class="material-symbols-outlined">location_on</span>The Grand Hall</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Card 8 -->
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="card-image"
+            style="background-image: url('../the-grand-egyptian-museum-fully-opens-completing-gizas-new-cultural-landmark_4.jpg')">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined" style="font-size: 1.1rem">calendar_month</span>Dec 01 • 9:00 AM
+          </div>
+          <h3 class="event-title" data-i18n="evt.c8_title">Ancient Board Games Tournament</h3>
+          <p class="event-desc" data-i18n="evt.c8_desc">Challenge yourself and learn the rules of Senet and Mehen in
+            this interactive historical gaming event.</p>
+          <div class="card-footer">
+            <span class="event-location"
+              style="display: flex; align-items: center; gap: 4px; color: #b3b3b3; font-size: 0.9rem;">
+              <span class="material-symbols-outlined" style="font-size: 1.1rem">location_on</span>Children's
+              Museum</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined" style="font-size: 1.1rem">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Card 9 -->
+      <div class="event-card">
+        <div class="card-image-wrapper">
+          <div class="badge-selling"
+            style="background: linear-gradient(45deg, #f59e0b, #d97706); animation: none; box-shadow: 0 4px 10px rgba(245,158,11,0.4);"
+            data-i18n="evt.c9_badge">Limited Sizes</div>
+          <div class="card-image" style="background-image: url('../10.jpg')"></div>
+        </div>
+        <div class="card-body">
+          <div class="event-date">
+            <span class="material-symbols-outlined" style="font-size: 1.1rem">calendar_month</span>Sunday • 5:30 AM
+          </div>
+          <h3 class="event-title" data-i18n="evt.c9_title">Sunrise Yoga by the Pyramids</h3>
+          <p class="event-desc" data-i18n="evt.c9_desc">Find inner peace with a guided yoga session facing the Great
+            Pyramids at dawn.</p>
+          <div class="card-footer">
+            <span class="event-location"
+              style="display: flex; align-items: center; gap: 4px; color: #b3b3b3; font-size: 0.9rem;">
+              <span class="material-symbols-outlined" style="font-size: 1.1rem">location_on</span>Outdoor Terrace</span>
+            <button class="btn-details" data-i18n="evt.btn_view_details">View Details<span
+                class="material-symbols-outlined" style="font-size: 1.1rem">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Featured Speakers Section -->
+    <section class="container section-padding">
+      <div class="section-header">
+        <div class="header-info">
+          <span class="section-tag" data-i18n="evt.exp_tag">Expert Voices</span>
+          <h2 class="section-title" data-i18n="evt.exp_title">Meet Our Curators &amp; Speakers</h2>
+        </div>
+      </div>
+      <div class="speakers-grid">
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="../about/download (1).jfif" alt="Dr. Zahi Hawass" class="speaker-img">
+          </div>
+          <div class="speaker-info">
+            <h4 data-i18n="evt.dr1_name">Dr. Zahi Hawass</h4>
+            <p data-i18n="evt.dr1_role">Lead Archaeologist</p>
+            <div class="speaker-bio" data-i18n="evt.dr1_desc">Renowned archaeologist and the former Minister of State
+              for Antiquities Affairs.</div>
+            <blockquote class="speaker-quote" data-i18n="evt.dr1_quote">The Grand Egyptian Museum is the most important
+              cultural project in the world in the 21st century. It is Egypt's gift to humanity.</blockquote>
+          </div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="../about/download.jfif" alt="Dr. Hussein Kamal" class="speaker-img">
+          </div>
+          <div class="speaker-info">
+            <h4 data-i18n="evt.dr2_name">Dr. Hussein Kamal</h4>
+            <p data-i18n="evt.dr2_role">Head of Conservation</p>
+            <div class="speaker-bio" data-i18n="evt.dr2_desc">Directing the world's most advanced archaeological
+              conservation center at GEM.</div>
+            <blockquote class="speaker-quote" data-i18n="evt.dr2_quote">Our conservation center is a lighthouse of
+              science, ensuring that every artifact is preserved with the highest standards known to man.</blockquote>
+          </div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-img-wrapper">
+            <img src="../about/download (2).jfif" alt="Dr. Ahmed Ghoneim" class="speaker-img">
+          </div>
+          <div class="speaker-info">
+            <h4 data-i18n="evt.dr3_name">Dr. Ahmed Ghoneim</h4>
+            <p data-i18n="evt.dr3_role">CEO of GEM</p>
+            <div class="speaker-bio" data-i18n="evt.dr3_desc">Leading the GEM's mission as a global cultural hub and
+              educational institution.</div>
+            <blockquote class="speaker-quote" data-i18n="evt.dr3_quote">"We are not just a museum; we are a symbol of
+              global cooperation and a bridge between ancient legacy and future innovation."</blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-card">
+          <div class="newsletter-content">
+            <span class="material-symbols-outlined newsletter-icon">mail</span>
+            <h2 class="cta-title" data-i18n="evt.news_title">Join Our Community</h2>
+            <p class="cta-desc" data-i18n="evt.news_desc">Stay updated with the latest event announcements, exclusive
+              curator talks, and exhibition openings delivered directly to your inbox.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Enter your email address" required="">
+              <button type="submit" class="btn-primary-large" data-i18n="evt.news_btn">Subscribe Now</button>
+            </form>
+            <p class="newsletter-privacy" data-i18n="evt.news_policy">By subscribing, you agree to our Privacy Policy
+              and Terms of Service.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <hr>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- Footer Header -->
+      <div class="footer-header">
+        <div class="footer-logo">
+          <span class="material-symbols-outlined">account_balance</span>
+        </div>
+        <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
+        <div class="footer-divider"></div>
+      </div>
+
+      <!-- Footer Grid -->
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+            <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
+            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a>
+            </li>
+            <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+            <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer.about">About</h3>
+          <ul>
+            <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+            <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+            <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
+            <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3 data-i18n="footer.support">Support</h3>
+          <ul>
+            <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+            <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
+            <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+            <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="footer-column connect-column">
+          <h3 data-i18n="footer.connect">Connect</h3>
+          <div class="social-links">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+
+            <!-- Twitter (X ) -->
+            <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+
+          <p>
+            Follow us on social media for updates and behind-the-scenes content.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="language-toggle">
+          <button class="active" data-lang="en">English</button>
+          <button data-lang="ar">العربية</button>
+        </div>
+        <div class="legal-section">
+          <div class="legal-links">
+            <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.terms">Terms of Service</a>
+            <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;"
+              data-i18n="footer.cookies">Cookie Settings</a>
+          </div>
+          <div class="copyright">
+            © 2026 Tutora. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="main.js "></script>
+  <script src="../global-core.js"></script>
+  <script src="../animate.js"></script>
+  <script src="../global-lang.js?v=1780353971499"></script>
+
+</body>
+
+</html>

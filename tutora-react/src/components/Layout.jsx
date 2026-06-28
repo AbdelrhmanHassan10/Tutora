@@ -1,37 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useThemeLang } from '../context/ThemeLangContext';
 import Header from './Header';
 import Footer from './Footer';
 
 const Layout = ({ children }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isDarkTheme, setIsDarkTheme] = useState(true);
     const [mobileDropdown, setMobileDropdown] = useState({ ai: false, collection: false });
     const location = useLocation();
+    const { isDarkTheme, language, toggleLanguage } = useThemeLang();
 
-    // 1. Theme Management (Matches global-core.js)
-    useEffect(() => {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        setIsDarkTheme(savedTheme === 'dark');
-        applyThemeClass(savedTheme);
-    }, []);
 
-    const applyThemeClass = (themeName) => {
-        if (themeName === 'light') {
-            document.body.classList.remove('dark');
-            document.body.classList.add('light');
-        } else {
-            document.body.classList.remove('light');
-            document.body.classList.add('dark');
-        }
-    };
-
-    const toggleTheme = () => {
-        const newTheme = isDarkTheme ? 'light' : 'dark';
-        setIsDarkTheme(!isDarkTheme);
-        localStorage.setItem('theme', newTheme);
-        applyThemeClass(newTheme);
-    };
 
     // 2. Mobile Menu Management
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -106,14 +85,14 @@ const Layout = ({ children }) => {
                         <span className="material-symbols-outlined">favorite</span> Favorites
                     </Link>
 
-                    <button className="menu-icon-link" id="menuLangBtn">
+                    <button className="menu-icon-link" id="menuLangBtn" onClick={toggleLanguage}>
                         <span className="material-symbols-outlined">language</span>
-                        Language
+                        {language === 'en' ? 'العربية' : 'English'}
                     </button>
                 </div>
             </div>
 
-            <Header onMenuClick={toggleMenu} onThemeToggle={toggleTheme} isDarkTheme={isDarkTheme} />
+            <Header onMenuClick={toggleMenu} />
             <main>
                 {children}
             </main>

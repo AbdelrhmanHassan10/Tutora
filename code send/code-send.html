@@ -7,11 +7,15 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Verify Identity | Tutora</title>
     <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cinzel:wght@400;700;900&display=swap"
+        rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="../3.register/style.css">
     <link rel="stylesheet" href="../animate.css" />
     <link rel="stylesheet" href="../global-theme.css" />
+    <link rel="stylesheet" href="../responsive-core.css">
+
     <style>
         .cursor-glow {
             position: fixed;
@@ -23,12 +27,14 @@
             z-index: 0;
             transform: translate(-50%, -50%);
         }
+
         .otp-container {
             display: flex;
             gap: 12px;
             justify-content: center;
             margin: 2rem 0;
         }
+
         .otp-input {
             width: 50px;
             height: 65px;
@@ -43,24 +49,27 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: var(--font-serif);
         }
+
         .otp-input:focus {
             border-color: var(--primary);
             background: rgba(212, 175, 55, 0.05);
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
             transform: translateY(-5px);
         }
+
         @media (max-width: 480px) {
             .otp-input {
                 width: 40px;
                 height: 55px;
                 font-size: 1.4rem;
             }
+
             .otp-container {
                 gap: 8px;
             }
         }
     </style>
-  <link rel="stylesheet" href="../global-lang.css" />
+    <link rel="stylesheet" href="../global-lang.css" />
 </head>
 
 <body>
@@ -87,7 +96,8 @@
                     <div class="hero-overlay"></div>
                     <div class="hero-content">
                         <h1 class="hero-title">Confirm Your<br>Spirit</h1>
-                        <p class="hero-subtitle" style="color: rgb(191, 194, 196);">The ancients demand a sign of truth. Check your sanctuary for the 6-digit key.</p>
+                        <p class="hero-subtitle" style="color: rgb(191, 194, 196);">The ancients demand a sign of truth.
+                            Check your sanctuary for the 6-digit key.</p>
                     </div>
                 </div>
 
@@ -101,19 +111,26 @@
                                 </div>
 
                                 <div class="form-header">
-                                    <span class="material-symbols-outlined" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem; filter: drop-shadow(0 0 10px var(--primary-glow));">mark_email_read</span>
+                                    <span class="material-symbols-outlined"
+                                        style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem; filter: drop-shadow(0 0 10px var(--primary-glow));">mark_email_read</span>
                                     <h1 class="form-title">Enter Code</h1>
                                     <p class="form-subtitle">We've sent a secret transmission to your email.</p>
                                 </div>
 
                                 <form class="registration-form" id="verifyForm">
                                     <div class="otp-container">
-                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
-                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" required />
+                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*"
+                                            inputmode="numeric" required />
+                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*"
+                                            inputmode="numeric" required />
+                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*"
+                                            inputmode="numeric" required />
+                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*"
+                                            inputmode="numeric" required />
+                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*"
+                                            inputmode="numeric" required />
+                                        <input type="text" class="otp-input" maxlength="1" pattern="[0-9]*"
+                                            inputmode="numeric" required />
                                     </div>
 
                                     <button type="submit" class="submit-btn" id="verifyBtn">
@@ -137,6 +154,7 @@
     <script src="script.js"></script>
     <script src="../global-core.js"></script>
     <script src="../animate.js"></script>
-<script src="../global-lang.js?v=1780353971499"></script>
+    <script src="../global-lang.js?v=1780353971499"></script>
 </body>
+
 </html>

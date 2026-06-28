@@ -1,11 +1,14 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <!-- AUTH GUARD -->
     <script>
         if (!localStorage.getItem('token')) {
             document.addEventListener('DOMContentLoaded', () => {
                 const overlay = document.createElement('div');
                 overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 999999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(10px); animation: fadeIn 0.3s ease;';
-                
+
                 const style = document.createElement('style');
                 style.textContent = `
                     @keyframes fadeIn { from { opacity: 0; backdrop-filter: blur(0px); } to { opacity: 1; backdrop-filter: blur(10px); } }
@@ -16,34 +19,34 @@
 
                 const modal = document.createElement('div');
                 modal.style.cssText = 'background: linear-gradient(145deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98)); border: 1px solid rgba(236, 182, 19, 0.15); padding: 40px; border-radius: 20px; text-align: center; max-width: 420px; width: 90%; box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1); font-family: "Plus Jakarta Sans", "Inter", sans-serif; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative; overflow: hidden;';
-                
+
                 const glowTop = document.createElement('div');
                 glowTop.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, transparent, #ECB613, transparent); opacity: 0.8;';
-                
+
                 const icon = document.createElement('span');
                 icon.className = 'material-symbols-outlined';
                 icon.textContent = 'lock';
                 icon.style.cssText = 'font-size: 48px; color: #ECB613; margin-bottom: 20px; display: inline-block; padding: 15px; background: rgba(236, 182, 19, 0.1); border-radius: 50%; animation: pulseGlow 2s infinite;';
-                
+
                 const title = document.createElement('h2');
                 title.textContent = 'Authentication Required';
                 title.style.cssText = 'color: #ffffff; margin-bottom: 12px; font-size: 1.5rem; font-weight: 700; margin-top: 0; letter-spacing: -0.02em;';
-                
+
                 const message = document.createElement('p');
                 message.textContent = 'Please log in to your account to unlock this feature and enjoy the full experience.';
                 message.style.cssText = 'color: #a0a0a0; margin-bottom: 32px; font-size: 1.05rem; line-height: 1.5; font-weight: 400;';
-                
+
                 const btnContainer = document.createElement('div');
                 btnContainer.style.cssText = 'display: flex; gap: 12px; justify-content: center;';
-                
+
                 const cancelBtn = document.createElement('button');
                 cancelBtn.textContent = 'Cancel';
                 cancelBtn.style.cssText = 'background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 600; flex: 1; font-size: 1rem; transition: all 0.2s ease;';
-                
+
                 const loginBtn = document.createElement('button');
                 loginBtn.textContent = 'Log In';
                 loginBtn.style.cssText = 'background: #ECB613; color: #000; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: 700; flex: 1.5; font-size: 1rem; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(236, 182, 19, 0.3);';
-                
+
                 loginBtn.onclick = () => window.location.href = '../2.login/code.html';
                 cancelBtn.onclick = () => {
                     if (document.referrer && document.referrer.includes(window.location.host)) {
@@ -52,22 +55,22 @@
                         window.location.href = '../4.home/code.html';
                     }
                 };
-                
+
                 loginBtn.onmouseover = () => { loginBtn.style.transform = 'translateY(-2px)'; loginBtn.style.boxShadow = '0 6px 20px rgba(236, 182, 19, 0.4)'; loginBtn.style.background = '#fcd030'; };
                 loginBtn.onmouseout = () => { loginBtn.style.transform = 'translateY(0)'; loginBtn.style.boxShadow = '0 4px 15px rgba(236, 182, 19, 0.3)'; loginBtn.style.background = '#ECB613'; };
-                
+
                 cancelBtn.onmouseover = () => { cancelBtn.style.background = 'rgba(255, 255, 255, 0.1)'; };
                 cancelBtn.onmouseout = () => { cancelBtn.style.background = 'rgba(255, 255, 255, 0.05)'; };
 
                 btnContainer.appendChild(cancelBtn);
                 btnContainer.appendChild(loginBtn);
-                
+
                 modal.appendChild(glowTop);
                 modal.appendChild(icon);
                 modal.appendChild(title);
                 modal.appendChild(message);
                 modal.appendChild(btnContainer);
-                
+
                 overlay.appendChild(modal);
                 document.body.appendChild(overlay);
                 document.body.style.overflow = 'hidden';
@@ -77,10 +80,13 @@
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description" content="Use Tutora AI to identify ancient Egyptian artifacts instantly. Upload a photo or use your camera to uncover the history behind any relic.">
+    <meta name="description"
+        content="Use Tutora AI to identify ancient Egyptian artifacts instantly. Upload a photo or use your camera to uncover the history behind any relic.">
     <title>Tutora | AI Artifact Scanner</title>
     <link rel="icon" type="image/png" href="../museum.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Cinzel:wght@400;700;900&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Cinzel:wght@400;700;900&amp;display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -90,7 +96,9 @@
     <link rel="stylesheet" href="../animate.css">
     <link rel="stylesheet" href="../global-theme.css">
     <link rel="stylesheet" href="../smooth-experience.css">
-  <link rel="stylesheet" href="../global-lang.css">
+    <link rel="stylesheet" href="../global-lang.css">
+    <link rel="stylesheet" href="../responsive-core.css">
+
 </head>
 
 
@@ -101,176 +109,213 @@
     <!-- Mobile Menu Sidebar -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="menu-header">
-      <div class="menu-logo">
-        <div class="logo-circle">
-          <img src="../logo.png" alt="Tutora Logo">
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <div class="logo-circle">
+                    <img src="../logo.png" alt="Tutora Logo">
+                </div>
+
+                <h3 class="menu-logo-text">Tutora</h3>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
         </div>
 
-        <h3 class="menu-logo-text">Tutora</h3>
-      </div>
-      <button class="close-btn" id="closeBtn">
-        <span class="material-symbols-outlined">close</span>
-      </button>
+        <nav class="menu-nav">
+            <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
+            <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a>
+            <a href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
+
+            <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
+
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="nav.ai_experience">AI Experience</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
+                    <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+                    <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item"
+                        data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+                    <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI
+                        Voice
+                        Storytelling (3D)</a>
+                    <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora
+                        laboratory</a>
+                </div>
+            </div>
+
+            <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
+            <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
+            <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="nav.collection">Collection</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main
+                        Gallery</a>
+                    <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item"
+                        data-i18n="nav.exhibition">Exhibition Halls</a>
+                </div>
+            </div>
+            <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
+
+            <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
+                <button class="menu-link dropdown-toggle">
+                    <span data-i18n="profile menu">Profile Menu</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                </button>
+                <div class="dropdown-items">
+                    <a href="#" class="dropdown-item" id="menuLangBtn"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
+
+                    <a href="../Profile/profile.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+                    <a href="../fav/favourite.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
+                    <a href="../setting/setting.html" class="dropdown-item"
+                        style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                            class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+                    <a href="#" class="dropdown-item" onclick="handleLogout(); return false;"
+                        style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"
+                        data-i18n-html="nav.logout"><span class="material-symbols-outlined"
+                            style="font-size: 18px;">logout</span> Logout</a>
+                </div>
+            </div>
+
+            <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn"
+                style="display: none; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined">login</span>
+                <span data-i18n="nav.login">Login</span>
+            </a>
+        </nav>
+
+        <div class="menu-footer">
+            <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
+
+
+        </div>
     </div>
-
-    <nav class="menu-nav">
-      <a href="../4.home/code.html" class="menu-link" data-i18n="nav.home">Home</a>
-      <a href="../plan-your-visit/plan-your-visit.html" class="menu-link" data-i18n="nav.plan">Plan Your Visit</a>
-      <a href="../Kids-Museum/kids-museum.html" class="menu-link" data-i18n="nav.kids">Kids-Museum</a>
-
-      <a href="../event/event.html" class="menu-link" data-i18n="nav.event">Event</a>
-
-      <div class="menu-dropdown">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="nav.ai_experience">AI Experience</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="../AI Guide/guide.html" class="dropdown-item" data-i18n="nav.ai_guide">AI Tour Guide</a>
-          <a href="../chat bot/chat.html" class="dropdown-item" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-          <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-item" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
-          <a href="../advanced 3D model/advanced-3D.html" class="dropdown-item" data-i18n="nav.ai_voice">AI Voice
-            Storytelling (3D)</a>
-          <a href="../Ancient-arts/Ancient-art.html" class="dropdown-item" data-i18n="nav.ai_lab">Tutora laboratory</a>
-        </div>
-      </div>
-
-      <a href="../shop/shop.html" class="menu-link" data-i18n="nav.shop">Shop</a>
-      <a href="../about/About.html" class="menu-link" data-i18n="nav.about">About</a>
-      <div class="menu-dropdown">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="nav.collection">Collection</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="../collection/collection.html" class="dropdown-item" data-i18n="nav.main_gallery">Main Gallery</a>
-          <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-item" data-i18n="nav.exhibition">Exhibition Halls</a>
-        </div>
-      </div>
-      <a href="../card/card.html" class="menu-link" data-i18n="cart-badge">cart-badge</a>
-
-      <div class="menu-dropdown" id="menuProfileLink" style="display: none;">
-        <button class="menu-link dropdown-toggle">
-          <span data-i18n="profile menu">Profile Menu</span>
-          <span class="material-symbols-outlined">expand_more</span>
-        </button>
-        <div class="dropdown-items">
-          <a href="#" class="dropdown-item" id="menuLangBtn" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.language"><span class="material-symbols-outlined" style="font-size: 18px;">language</span> Language</a>
-          
-          <a href="../Profile/profile.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-item" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
-      </div>
-
-      <a href="../2.login/code.html" class="menu-link" id="menuLoginBtn" style="display: none; align-items: center; gap: 8px;">
-        <span class="material-symbols-outlined">login</span>
-        <span data-i18n="nav.login">Login</span>
-      </a>
-    </nav>
-
-    <div class="menu-footer">
-      <a href="../booking/booking.html" class="menu-booking-btn" data-i18n="nav.booking">Booking</a>
-
-      
-    </div>
-  </div>
 
     <!-- Header -->
     <header class="header">
-    <div class="scroll-progress-container">
-      <div class="scroll-progress-bar" id="scrollProgress"></div>
-    </div>
-    <div class="header-container">
-      <div class="header-left">
-        <button class="menu-btn" id="menuBtn">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
-        <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
-          <div class="logo-circle">
-            <img src="../logo.png" alt="Tutora Logo">
-          </div>
-          <h2 class="logo-text">Tutora</h2>
-        </a>
-      </div>
-
-      <nav class="desktop-nav">
-        <a href="../4.home/code.html" class="active" data-i18n="nav.home">Home</a>
-        <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
-        <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids Museum</a>
-        <a href="../event/event.html" data-i18n="nav.event">Event</a>
-        <div class="nav-dropdown">
-          <button class="nav-link dropdown-trigger">
-            <span data-i18n="nav.ai_experience">AI Experience</span>
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour Guide</a>
-            <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
-            <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link" data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
-            <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link" data-i18n="nav.ai_voice">AI Voice
-              Storytelling (3D)</a>
-            <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
-              Laboratory</a>
-          </div>
+        <div class="scroll-progress-container">
+            <div class="scroll-progress-bar" id="scrollProgress"></div>
         </div>
-        <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
-        <a href="../about/About.html" data-i18n="nav.about">About</a>
-        <div class="nav-dropdown">
-          <button class="nav-link dropdown-trigger">
-            <span data-i18n="nav.collection">Collection</span>
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="dropdown-menu">
-            <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main Gallery</a>
-            <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link" data-i18n="nav.exhibition">Exhibition Halls</a>
-          </div>
-        </div>
-      </nav>
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <a href="../4.home/code.html" class="logo-section" style="text-decoration: none;">
+                    <div class="logo-circle">
+                        <img src="../logo.png" alt="Tutora Logo">
+                    </div>
+                    <h2 class="logo-text">Tutora</h2>
+                </a>
+            </div>
 
-      <div class="header-right">
-        <button class="theme-btn" id="themeBtn" title="Toggle Theme">
-          <span class="material-symbols-outlined">dark_mode</span>
-        </button>
-        <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
-          <span class="material-symbols-outlined">language</span>
-        </button>
-        <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text" data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon" style="display: none;">confirmation_number</span></a>
+            <nav class="desktop-nav">
+                <a href="../4.home/code.html" class="active" data-i18n="nav.home">Home</a>
+                <a href="../plan-your-visit/plan-your-visit.html" data-i18n="nav.plan">Plan Your Visit</a>
+                <a href="../Kids-Museum/kids-museum.html" data-i18n="nav.kids">Kids Museum</a>
+                <a href="../event/event.html" data-i18n="nav.event">Event</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        <span data-i18n="nav.ai_experience">AI Experience</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../AI Guide/guide.html" class="dropdown-link" data-i18n="nav.ai_guide">AI Tour
+                            Guide</a>
+                        <a href="../chat bot/chat.html" class="dropdown-link" data-i18n="nav.ai_chatbot">AI Chatbot</a>
+                        <a href="../artifact_identifier/artifact-identifier.html" class="dropdown-link"
+                            data-i18n="nav.ai_identifier">AI Artifact Identifier</a>
+                        <a href="../advanced 3D model/advanced-3D.html" class="dropdown-link"
+                            data-i18n="nav.ai_voice">AI Voice
+                            Storytelling (3D)</a>
+                        <a href="../Ancient-arts/Ancient-art.html" class="dropdown-link" data-i18n="nav.ai_lab">Tutora
+                            Laboratory</a>
+                    </div>
+                </div>
+                <a href="../shop/shop.html" data-i18n="nav.shop">Shop</a>
+                <a href="../about/About.html" data-i18n="nav.about">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        <span data-i18n="nav.collection">Collection</span>
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="../collection/collection.html" class="dropdown-link" data-i18n="nav.main_gallery">Main
+                            Gallery</a>
+                        <a href="../Exhibition-Halls/exhibition-halls.html" class="dropdown-link"
+                            data-i18n="nav.exhibition">Exhibition Halls</a>
+                    </div>
+                </div>
+            </nav>
 
-        <a href="../card/card.html" class="icon-btn-link" title="Cart">
-          <button class="icon-btn cart-btn" style="position: relative;">
-            <span class="material-symbols-outlined">shopping_cart</span>
-            <span class="cart-badge" style="display: none;">0</span>
-          </button>
-        </a>
-        
-        
-        
-        <div class="nav-dropdown profile-dropdown" id="navProfileLink" style="display: none; margin-right: 15px;" title="Profile">
-          <button class="nav-link dropdown-trigger profile-trigger" style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
-            <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
-            <img src="./unnamed.png" alt="Profile" class="profile-img" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
-          </button>
-          <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
-          
-          <a href="../Profile/profile.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
-          <a href="../fav/favourite.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
-          <a href="../setting/setting.html" class="dropdown-link" style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
-          <a href="#" class="dropdown-link" onclick="handleLogout(); return false;" style="display: flex; align-items: center; gap: 8px; color: #e74c3c;" data-i18n-html="nav.logout"><span class="material-symbols-outlined" style="font-size: 18px;">logout</span> Logout</a>
-        </div>
-        </div>
+            <div class="header-right">
+                <button class="theme-btn" id="themeBtn" title="Toggle Theme">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <button class="icon-btn lang-btn-responsive" id="langBtn" title="Toggle Language">
+                    <span class="material-symbols-outlined">language</span>
+                </button>
+                <a href="../booking/booking.html" class="btn-booking" title="Book Tickets"><span class="booking-text"
+                        data-i18n="nav.booking">Booking</span><span class="material-symbols-outlined booking-icon"
+                        style="display: none;">confirmation_number</span></a>
 
-        <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;" title="Login">
-          <button class="icon-btn">
-            <span class="material-symbols-outlined">login</span>
-          </button>
-        </a>
-      </div>
-    </div>
-  </header>
+                <a href="../card/card.html" class="icon-btn-link" title="Cart">
+                    <button class="icon-btn cart-btn" style="position: relative;">
+                        <span class="material-symbols-outlined">shopping_cart</span>
+                        <span class="cart-badge" style="display: none;">0</span>
+                    </button>
+                </a>
+
+
+
+                <div class="nav-dropdown profile-dropdown" id="navProfileLink"
+                    style="display: none; margin-right: 15px;" title="Profile">
+                    <button class="nav-link dropdown-trigger profile-trigger"
+                        style="padding: 0; background: transparent; border: none; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                        <span class="material-symbols-outlined" style="color: #fff;">expand_more</span>
+                        <img src="./unnamed.png" alt="Profile" class="profile-img"
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary-gold);">
+                    </button>
+                    <div class="dropdown-menu" style="right: 0; left: auto; min-width: 150px;">
+
+                        <a href="../Profile/profile.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.profile"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">person</span> Profile</a>
+                        <a href="../fav/favourite.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.favorites"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">favorite</span> Favorites</a>
+                        <a href="../setting/setting.html" class="dropdown-link"
+                            style="display: flex; align-items: center; gap: 8px;" data-i18n-html="nav.settings"><span
+                                class="material-symbols-outlined" style="font-size: 18px;">settings</span> Settings</a>
+                        <a href="#" class="dropdown-link" onclick="handleLogout(); return false;"
+                            style="display: flex; align-items: center; gap: 8px; color: #e74c3c;"
+                            data-i18n-html="nav.logout"><span class="material-symbols-outlined"
+                                style="font-size: 18px;">logout</span> Logout</a>
+                    </div>
+                </div>
+
+                <a href="../2.login/code.html" class="icon-btn-link" id="navLoginBtn" style="display: none;"
+                    title="Login">
+                    <button class="icon-btn">
+                        <span class="material-symbols-outlined">login</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </header>
 
     <main class="main-container">
         <!-- Hero Section -->
@@ -280,8 +325,11 @@
                     <span class="material-symbols-outlined">center_focus_strong</span>
                     <span data-i18n="ident.badge">Neural Recognition Protocol</span>
                 </div>
-                <h1 class="hero-title"><span data-i18n="ident.hero_title">Tutora AI:</span> <span class="gold-text" data-i18n="ident.hero_title_span">The Living Scanner</span></h1>
-                <h2 class="hero-subtitle" data-i18n="ident.hero_subtitle">Experience the future of archaeology. Instantly identify and decode the stories of ancient treasures with our state-of-the-art neural recognition engine.</h2>
+                <h1 class="hero-title"><span data-i18n="ident.hero_title">Tutora AI:</span> <span class="gold-text"
+                        data-i18n="ident.hero_title_span">The Living Scanner</span></h1>
+                <h2 class="hero-subtitle" data-i18n="ident.hero_subtitle">Experience the future of archaeology.
+                    Instantly identify and decode the stories of ancient treasures with our state-of-the-art neural
+                    recognition engine.</h2>
                 <div class="hero-buttons">
                     <button id="upload-photo-btn" class="btn-primary">
                         <span class="material-symbols-outlined">upload_file</span>
@@ -305,13 +353,16 @@
         </section>
 
         <!-- Related Statues (Historical Siblings) - Moved out of Hero -->
-        <section id="related-statues-section" style="display:none; margin: 4rem auto; max-width: 1400px; padding: 0 2rem;">
+        <section id="related-statues-section"
+            style="display:none; margin: 4rem auto; max-width: 1400px; padding: 0 2rem;">
             <div class="related-header">
                 <div class="related-line"></div>
-                <h2 class="related-title"><span data-i18n="ident.related_title">Historical</span> <span class="gold-text" data-i18n="ident.related_title_span">Siblings</span></h2>
+                <h2 class="related-title"><span data-i18n="ident.related_title">Historical</span> <span
+                        class="gold-text" data-i18n="ident.related_title_span">Siblings</span></h2>
                 <div class="related-line"></div>
             </div>
-            <p class="related-subtitle" data-i18n="ident.related_subtitle">Neural patterns suggest these historically related treasures may also interest you.</p>
+            <p class="related-subtitle" data-i18n="ident.related_subtitle">Neural patterns suggest these historically
+                related treasures may also interest you.</p>
             <div id="related-statues-grid" class="related-grid">
                 <!-- Dynamically populated -->
             </div>
@@ -320,7 +371,8 @@
 
         <!-- How It Works Section -->
         <section class="how-it-works anim-on-scroll">
-            <h2 class="ai-section-title"><span data-i18n="ident.hiw_title">How It</span> <span class="gold-text" data-i18n="ident.hiw_title_span">Works</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.hiw_title">How It</span> <span class="gold-text"
+                    data-i18n="ident.hiw_title_span">Works</span></h2>
             <div class="cards-grid">
                 <!-- Step 1 -->
                 <div class="card">
@@ -329,7 +381,8 @@
                     </div>
                     <div class="card-info">
                         <h3 data-i18n="ident.hiw_step1_title">1. Capture</h3>
-                        <p data-i18n="ident.hiw_step1_desc">Select a clear photo of the artifact from your device or use your live camera.</p>
+                        <p data-i18n="ident.hiw_step1_desc">Select a clear photo of the artifact from your device or use
+                            your live camera.</p>
                     </div>
                 </div>
 
@@ -340,7 +393,8 @@
                     </div>
                     <div class="card-info">
                         <h3 data-i18n="ident.hiw_step2_title">2. Analyze</h3>
-                        <p data-i18n="ident.hiw_step2_desc">Our neural network identifies historical markers, materials, and hieroglyphic patterns.</p>
+                        <p data-i18n="ident.hiw_step2_desc">Our neural network identifies historical markers, materials,
+                            and hieroglyphic patterns.</p>
                     </div>
                 </div>
 
@@ -351,7 +405,8 @@
                     </div>
                     <div class="card-info">
                         <h3 data-i18n="ident.hiw_step3_title">3. Discover</h3>
-                        <p data-i18n="ident.hiw_step3_desc">Receive a comprehensive report on the artifact's dynasty, usage, and cultural significance.</p>
+                        <p data-i18n="ident.hiw_step3_desc">Receive a comprehensive report on the artifact's dynasty,
+                            usage, and cultural significance.</p>
                     </div>
                 </div>
             </div>
@@ -361,7 +416,8 @@
 
         <!-- Powered by AI -->
         <section class="ident-tech anim-on-scroll">
-            <h2 class="ai-section-title"><span data-i18n="ident.tech_title">Powered by</span> <span class="gold-text" data-i18n="ident.tech_title_span">Advanced AI</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.tech_title">Powered by</span> <span class="gold-text"
+                    data-i18n="ident.tech_title_span">Advanced AI</span></h2>
             <div class="ident-tech-grid">
                 <div class="ident-tech-card">
                     <div class="tech-icon-box">
@@ -369,7 +425,8 @@
                     </div>
                     <div class="tech-info">
                         <h3 data-i18n="ident.tech_1_title">Computer Vision</h3>
-                        <p data-i18n="ident.tech_1_desc">Our model is trained on 100,000+ images of Egyptian artifacts across museums worldwide, achieving 97% accuracy.</p>
+                        <p data-i18n="ident.tech_1_desc">Our model is trained on 100,000+ images of Egyptian artifacts
+                            across museums worldwide, achieving 97% accuracy.</p>
                     </div>
                 </div>
                 <div class="ident-tech-card">
@@ -378,7 +435,8 @@
                     </div>
                     <div class="tech-info">
                         <h3 data-i18n="ident.tech_2_title">GEM Knowledge Base</h3>
-                        <p data-i18n="ident.tech_2_desc">Connected to the museum's full digital catalogue — including unpublished conservation notes and research.</p>
+                        <p data-i18n="ident.tech_2_desc">Connected to the museum's full digital catalogue — including
+                            unpublished conservation notes and research.</p>
                     </div>
                 </div>
                 <div class="ident-tech-card">
@@ -387,7 +445,8 @@
                     </div>
                     <div class="tech-info">
                         <h3 data-i18n="ident.tech_3_title">Real-Time Processing</h3>
-                        <p data-i18n="ident.tech_3_desc">Identification takes under 2 seconds using edge computing — providing instant historical context as you walk.</p>
+                        <p data-i18n="ident.tech_3_desc">Identification takes under 2 seconds using edge computing —
+                            providing instant historical context as you walk.</p>
                     </div>
                 </div>
             </div>
@@ -397,16 +456,21 @@
         <!-- Stats -->
         <section class="ident-stats anim-on-scroll">
             <div class="ident-stats-grid">
-                <div class="ident-stat-item"><span class="ident-stat-number">97%</span><span class="ident-stat-label" data-i18n="ident.stat_1_label">Accuracy</span></div>
-                <div class="ident-stat-item"><span class="ident-stat-number">100K+</span><span class="ident-stat-label" data-i18n="ident.stat_2_label">Training Data</span></div>
-                <div class="ident-stat-item"><span class="ident-stat-number">&lt;2s</span><span class="ident-stat-label" data-i18n="ident.stat_3_label">Response Time</span></div>
-                <div class="ident-stat-item"><span class="ident-stat-number">35K+</span><span class="ident-stat-label" data-i18n="ident.stat_4_label">Scans Today</span></div>
+                <div class="ident-stat-item"><span class="ident-stat-number">97%</span><span class="ident-stat-label"
+                        data-i18n="ident.stat_1_label">Accuracy</span></div>
+                <div class="ident-stat-item"><span class="ident-stat-number">100K+</span><span class="ident-stat-label"
+                        data-i18n="ident.stat_2_label">Training Data</span></div>
+                <div class="ident-stat-item"><span class="ident-stat-number">&lt;2s</span><span class="ident-stat-label"
+                        data-i18n="ident.stat_3_label">Response Time</span></div>
+                <div class="ident-stat-item"><span class="ident-stat-number">35K+</span><span class="ident-stat-label"
+                        data-i18n="ident.stat_4_label">Scans Today</span></div>
             </div>
         </section>
 
         <!-- Recently Identified -->
         <section class="ident-recent anim-on-scroll">
-            <h2 class="ai-section-title"><span data-i18n="ident.recent_title">Recently</span> <span class="gold-text" data-i18n="ident.recent_title_span">Identified</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.recent_title">Recently</span> <span class="gold-text"
+                    data-i18n="ident.recent_title_span">Identified</span></h2>
             <div class="ident-recent-grid">
                 <div class="ident-recent-card">
                     <img src="./unnamed (1).png" alt="Tutankhamun Mask">
@@ -437,7 +501,8 @@
 
         <!-- Live Scan Demo -->
         <section class="ident-scan-demo anim-on-scroll">
-            <h2 class="ai-section-title"><span data-i18n="ident.demo_title">Visual</span> <span class="gold-text" data-i18n="ident.demo_title_span">Recognition</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.demo_title">Visual</span> <span class="gold-text"
+                    data-i18n="ident.demo_title_span">Recognition</span></h2>
             <div class="scan-demo-container">
                 <div class="scan-demo-visual">
                     <div class="scan-demo-frame">
@@ -458,21 +523,24 @@
                         <span class="scan-step-num">01</span>
                         <div>
                             <h4 data-i18n="ident.demo_step1_title">Point &amp; Capture</h4>
-                            <p data-i18n="ident.demo_step1_desc">Aim your camera at any artifact inside or outside the museum galleries.</p>
+                            <p data-i18n="ident.demo_step1_desc">Aim your camera at any artifact inside or outside the
+                                museum galleries.</p>
                         </div>
                     </div>
                     <div class="scan-info-step">
                         <span class="scan-step-num">02</span>
                         <div>
                             <h4 data-i18n="ident.demo_step2_title">AI Processing</h4>
-                            <p data-i18n="ident.demo_step2_desc">Neural network analyzes shape, texture, and historical markers in real-time.</p>
+                            <p data-i18n="ident.demo_step2_desc">Neural network analyzes shape, texture, and historical
+                                markers in real-time.</p>
                         </div>
                     </div>
                     <div class="scan-info-step">
                         <span class="scan-step-num">03</span>
                         <div>
                             <h4 data-i18n="ident.demo_step3_title">Full Report</h4>
-                            <p data-i18n="ident.demo_step3_desc">Receive dynasty, materials, symbolism, and conservation status instantly.</p>
+                            <p data-i18n="ident.demo_step3_desc">Receive dynasty, materials, symbolism, and conservation
+                                status instantly.</p>
                         </div>
                     </div>
                 </div>
@@ -481,8 +549,10 @@
 
         <!-- Previous Scans History (from API) -->
         <section class="ident-recent anim-on-scroll" style="margin-top: 40px;">
-            <h2 class="ai-section-title"><span data-i18n="ident.history_title">Your Previous</span> <span class="gold-text" data-i18n="ident.history_title_span">Scans</span></h2>
-            <div id="detection-history" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; padding: 0 20px;">
+            <h2 class="ai-section-title"><span data-i18n="ident.history_title">Your Previous</span> <span
+                    class="gold-text" data-i18n="ident.history_title_span">Scans</span></h2>
+            <div id="detection-history"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; padding: 0 20px;">
                 <p style="color: rgba(255,255,255,0.5); text-align: center; padding: 20px; grid-column: 1 / -1;">
                     <span data-i18n="ident.history_loading">Loading scan history...</span>
                 </p>
@@ -491,28 +561,33 @@
 
         <!-- FAQ Section -->
         <section class="faq-section anim-on-scroll">
-            <h2 class="ai-section-title"><span data-i18n="ident.faq_title">Scanner</span> <span class="gold-text" data-i18n="ident.faq_title_span">FAQ</span></h2>
+            <h2 class="ai-section-title"><span data-i18n="ident.faq_title">Scanner</span> <span class="gold-text"
+                    data-i18n="ident.faq_title_span">FAQ</span></h2>
             <div class="faq-container">
                 <details class="faq-item">
                     <summary class="faq-summary">
                         <span data-i18n="ident.faq_1_q">What kind of image quality is required?</span>
                         <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </summary>
-                    <p class="faq-answer" data-i18n="ident.faq_1_a">For best results, please use a clear, well-lit photo where the artifact is the main subject. Avoid heavy shadows, reflections, or obstructions.</p>
+                    <p class="faq-answer" data-i18n="ident.faq_1_a">For best results, please use a clear, well-lit photo
+                        where the artifact is the main subject. Avoid heavy shadows, reflections, or obstructions.</p>
                 </details>
                 <details class="faq-item">
                     <summary class="faq-summary">
                         <span data-i18n="ident.faq_2_q">Is my data and photo kept private?</span>
                         <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </summary>
-                    <p class="faq-answer" data-i18n="ident.faq_2_a">Yes. We are committed to your privacy. Images are processed anonymously and are not stored on our servers after the analysis is complete.</p>
+                    <p class="faq-answer" data-i18n="ident.faq_2_a">Yes. We are committed to your privacy. Images are
+                        processed anonymously and are not stored on our servers after the analysis is complete.</p>
                 </details>
                 <details class="faq-item">
                     <summary class="faq-summary">
                         <span data-i18n="ident.faq_3_q">How accurate is the AI?</span>
                         <span class="material-symbols-outlined faq-icon">expand_more</span>
                     </summary>
-                    <p class="faq-answer" data-i18n="ident.faq_3_a">Tutora AI has a 97% accuracy rate for artifacts within our database. We are constantly updating our model with new archaeological discoveries.</p>
+                    <p class="faq-answer" data-i18n="ident.faq_3_a">Tutora AI has a 97% accuracy rate for artifacts
+                        within our database. We are constantly updating our model with new archaeological discoveries.
+                    </p>
                 </details>
             </div>
         </section>
@@ -520,100 +595,107 @@
 
     <!-- Footer -->
     <footer class="site-footer">
-                                        <div class="footer-container">
-                                            <!-- Footer Header -->
-                                            <div class="footer-header">
-                                                <div class="footer-logo">
-                                                    <span class="material-symbols-outlined">account_balance</span>
-                                                </div>
-                                                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
-                                                <div class="footer-divider"></div>
-                                            </div>
-                            
-                                            <!-- Footer Grid -->
-                                            <div class="footer-grid">
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.explore">Explore</h3>
-                                                    <ul>
-                                                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
-                                                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
-                            <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition Halls</a></li>
-                                                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
-                                                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.about">About</h3>
-                                                    <ul>
-                                                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
-                                                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
-                                                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
-                                                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column">
-                                                    <h3 data-i18n="footer.support">Support</h3>
-                                                    <ul>
-                                                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
-                                                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
-                                                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
-                                                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="footer-column connect-column">
-                                                    <h3 data-i18n="footer.connect">Connect</h3>
-                                                    <div class="social-links">
-                                                        <!-- Facebook -->
-                                                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
-                                                            <i class="fa-brands fa-facebook"></i>
-                                                        </a>
-                            
-                                                        <!-- Twitter (X ) -->
-                                                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
-                                                            <i class="fa-brands fa-x-twitter"></i>
-                                                        </a>
-                            
-                                                        <!-- Instagram -->
-                                                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
-                                                            <i class="fa-brands fa-instagram"></i>
-                                                        </a>
-                            
-                                                        <!-- YouTube -->
-                                                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
-                                                            <i class="fa-brands fa-youtube"></i>
-                                                        </a>
-                                                    </div>
-                            
-                                                    <p>
-                                                        Follow us on social media for updates and behind-the-scenes content.
-                                                    </p>
-                                                </div>
-                                            </div>
-                             
-                                                   <!-- Footer Bottom -->
-                                             <div class="footer-bottom">
-                                                 <div class="language-toggle">
-                                                     <button class="active" data-lang="en">English</button>
-                                                     <button data-lang="ar">العربية</button>
-                                                 </div>
-                                                 <div class="legal-section">
-                                                    <div class="legal-links">
-                                                     <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.privacy">Privacy Policy</a>
-                                                     <a href="../Terms-of-Service/term-of-service.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
-                                                     <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;" data-i18n="footer.cookies">Cookie Settings</a>
-                                                 </div>
-                                         <div class="copyright">
-                                           © 2026 Tutora. All rights reserved.
-                                         </div>
-                                       </div>
-                                     </div>
-                                   </div>
-                                     </footer>
+        <div class="footer-container">
+            <!-- Footer Header -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <span class="material-symbols-outlined">account_balance</span>
+                </div>
+                <h2 class="footer-title" data-i18n="footer.title">Grand Egyptian Museum</h2>
+                <div class="footer-divider"></div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 data-i18n="footer.explore">Explore</h3>
+                    <ul>
+                        <li><a href="../booking/booking.html" data-i18n="footer.tickets">Tickets</a></li>
+                        <li><a href="../collection/collection.html" data-i18n="footer.collection">Collection</a></li>
+                        <li><a href="../Exhibition-Halls/exhibition-halls.html" data-i18n="footer.exhibition">Exhibition
+                                Halls</a></li>
+                        <li><a href="../-membership/code.html" data-i18n="footer.membership">Membership</a></li>
+                        <li><a href="../-museum_dining/code.html" data-i18n="footer.dining">Museum Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="footer.about">About</h3>
+                    <ul>
+                        <li><a href="../About us/About-us.html" data-i18n="footer.history">History</a></li>
+                        <li><a href="../event/event.html" data-i18n="footer.events">Events</a></li>
+                        <li><a href="../-news_press/code.html" data-i18n="footer.news">News &amp; Press</a></li>
+                        <li><a href="../-branding/code.html" data-i18n="footer.branding">Branding</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-i18n="footer.support">Support</h3>
+                    <ul>
+                        <li><a href="../visitor help/help.html" data-i18n="footer.help">Help</a></li>
+                        <li><a href="../get in touch/get-in-touch.html" data-i18n="footer.contact">Get In Touch</a></li>
+                        <li><a href="../Feedback/Feedback.html" data-i18n="footer.feedback">Feedback</a></li>
+                        <li><a href="../-accessibility/code.html" data-i18n="footer.accessibility">Accessibility</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-column connect-column">
+                    <h3 data-i18n="footer.connect">Connect</h3>
+                    <div class="social-links">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/GrandEgyptianMuseum/" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <!-- Twitter (X ) -->
+                        <a href="https://x.com/GrandEGMuseum?s=20" title="X (Twitter )">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/grandegyptianmuseum" title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://www.youtube.com/@GrandEgyptianMuseum" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+
+                    <p>
+                        Follow us on social media for updates and behind-the-scenes content.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="language-toggle">
+                    <button class="active" data-lang="en">English</button>
+                    <button data-lang="ar">العربية</button>
+                </div>
+                <div class="legal-section">
+                    <div class="legal-links">
+                        <a href="../Privacy-policy/Privacy-Policy.html" style="text-decoration: none; color: #ecb613;"
+                            data-i18n="footer.privacy">Privacy Policy</a>
+                        <a href="../Terms-of-Service/term-of-service.html"
+                            style="text-decoration: none; color: #ecb613;" data-i18n="footer.terms">Terms of Service</a>
+                        <a href="../Cookie-Settings/Cookie-Settings.html" style="text-decoration: none; color: #ecb613;"
+                            data-i18n="footer.cookies">Cookie Settings</a>
+                    </div>
+                    <div class="copyright">
+                        © 2026 Tutora. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="main.js"></script>
     <script src="../global-core.js"></script>
     <script src="../smooth-reveal.js"></script>
     <script src="../animate.js"></script>
-<script src="../global-lang.js?v=1780353971499"></script>
+    <script src="../global-lang.js?v=1780353971499"></script>
 
 
-</body></html>
+</body>
+
+</html>
