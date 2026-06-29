@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSelectedHall = hall;
         const isAr = document.documentElement.lang === 'ar';
         document.getElementById('popupName').textContent = isAr && hall.nameAr ? hall.nameAr : hall.name;
-        document.getElementById('popupDesc').textContent = isAr && hall.descriptionAr ? hall.descriptionAr : (hall.description || 'Exhibition area within the Grand Egyptian Museum.');
+        document.getElementById('popupDesc').innerHTML = isAr && hall.descriptionAr ? hall.descriptionAr : (hall.description || 'Exhibition area within the Grand Egyptian Museum.');
         const lvlStr = hall.level ? (isAr ? (hall.level === 'L1' ? 'الدور 1' : hall.level === 'L2' ? 'الدور 2' : 'الدور 3') : 'LEVEL ' + hall.level) : (isAr ? 'الخارج' : 'EXTERIOR');
         document.getElementById('popupLevel').textContent = lvlStr;
         document.getElementById('popupTime').textContent = isAr && hall.timeAr ? hall.timeAr : (hall.time || '20 MINS');
