@@ -719,12 +719,9 @@ body {
 [dir="rtl"] .map-controls,
 [dir="rtl"] .level-switcher,
 [dir="rtl"] .mini-map,
-[dir="rtl"] .hall-popup,
 [dir="rtl"] .search-panel,
 [dir="rtl"] .complex-overlay,
 [dir="rtl"] .view-mode-tabs,
-[dir="rtl"] .popup-content,
-[dir="rtl"] .popup-close,
 [dir="rtl"] .legend-header h2,
 [dir="rtl"] .compass-widget,
 [dir="rtl"] .pyramid-indicator,
@@ -740,64 +737,77 @@ body {
     text-align: left;
 }
 
-[dir="rtl"] .complex-title {
-    right: 4rem;
-    left: auto;
+@media (min-width: 769px) {
+    [dir="rtl"] .complex-title {
+        right: 4rem;
+        left: auto;
+        text-align: right;
+    }
+
+    [dir="rtl"] .map-legend {
+        left: 3rem;
+        right: auto;
+    }
+
+    [dir="rtl"] .camera-controls,
+    [dir="rtl"] .map-controls {
+        right: 2rem;
+        left: auto;
+    }
+
+    [dir="rtl"] .hall-popup {
+        right: 6rem;
+        left: auto;
+    }
+
+    [dir="rtl"] .popup-close {
+        right: 1rem;
+        left: auto;
+    }
+
+    [dir="rtl"] .level-switcher {
+        left: 1rem;
+        right: auto;
+    }
+
+    [dir="rtl"] .mini-map {
+        left: 2rem;
+        right: auto;
+    }
+
+    [dir="rtl"] .compass-widget {
+        left: 26rem;
+        right: auto;
+    }
+
+    [dir="rtl"] .pyramid-indicator {
+        left: 3rem;
+        right: auto;
+    }
+
+    [dir="rtl"] .cairo-road-left {
+        left: 10%;
+        right: auto;
+    }
+
+    [dir="rtl"] .cairo-road-center {
+        left: 42%;
+        right: auto;
+    }
+
+    [dir="rtl"] .ring-road {
+        right: 4rem;
+        left: auto;
+    }
+}
+
+/* Ensure popup Arabic text is right-aligned */
+[dir="rtl"] .popup-body h2,
+[dir="rtl"] .popup-body p {
     text-align: right;
+    direction: rtl;
 }
 
-[dir="rtl"] .map-legend {
-    left: 3rem;
-    right: auto;
-}
-
-[dir="rtl"] .camera-controls,
-[dir="rtl"] .map-controls {
-    right: 2rem;
-    left: auto;
-}
-
-[dir="rtl"] .hall-popup {
-    right: 6rem;
-    left: auto;
-}
-
-[dir="rtl"] .popup-close {
-    right: 1rem;
-    left: auto;
-}
-
-[dir="rtl"] .level-switcher {
-    left: 1rem;
-    right: auto;
-}
-
-[dir="rtl"] .mini-map {
-    left: 2rem;
-    right: auto;
-}
-
-[dir="rtl"] .compass-widget {
-    left: 26rem;
-    right: auto;
-}
-
-[dir="rtl"] .pyramid-indicator {
-    left: 3rem;
-    right: auto;
-}
-
-[dir="rtl"] .cairo-road-left {
-    left: 10%;
-    right: auto;
-}
-
-[dir="rtl"] .cairo-road-center {
-    left: 42%;
-    right: auto;
-}
-
-[dir="rtl"] .ring-road {
-    right: 4rem;
-    left: auto;
+[dir="rtl"] #vrTourBtn {
+    direction: ltr; /* keep VR button LTR for English "VIRTUAL TOUR 360°" */
 }
