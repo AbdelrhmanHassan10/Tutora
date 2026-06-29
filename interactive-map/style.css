@@ -701,15 +701,18 @@ body {
     .landmark-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
     .utility-icons { 
         display: flex; 
-        justify-content: space-around; 
-        gap: 5px; 
+        flex-wrap: wrap;
+        justify-content: center; 
+        gap: 15px 10px; 
         padding-bottom: 2rem; 
     }
     .u-item { 
+        flex: 0 0 45%;
+        display: flex;
         flex-direction: column; 
+        align-items: center;
         text-align: center; 
         gap: 6px; 
-        flex: 1; 
     }
     .u-item .u-box, .u-item .u-icon { 
         display: none; 
