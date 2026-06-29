@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pos = new Float32Array(count * 3);
         for (let i = 0; i < count * 3; i += 3) {
             pos[i] = (Math.random() - 0.5) * 100;
-            pos[i + 1] = Math.random() * 18;
+            pos[i + 1   ] = Math.random() * 18;
             pos[i + 2] = (Math.random() - 0.5) * 70;
         }
         geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
@@ -593,6 +593,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         hallPopup.classList.remove('hidden');
 
+        // Snap legend to collapsed and adjust popup bottom on mobile
+        if (window.innerWidth <= 768) {
+            const legendPanel = document.getElementById('legendPanel');
+            if (legendPanel) {
+                const maxTranslate = window.innerHeight * 0.85 - window.innerHeight * 0.12;
+                legendPanel.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                legendPanel.style.transform = `translateY(${maxTranslate}px)`;
+                hallPopup.style.transition = 'bottom 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                hallPopup.style.bottom = '14vh';
+            }
+        }
+
         // Reset any existing path
         const existingPath = document.getElementById('nav-route-path');
         if (existingPath) existingPath.remove();
@@ -751,8 +763,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!isDragging) return;
                 const deltaY = e.clientY - startY;
                 let newTranslate = currentTranslate + deltaY;
-                newTranslate = Math.max(0, Math.min(newTranslate, window.innerHeight * 0.75));
+                const maxTranslate = window.innerHeight * 0.85 - window.innerHeight * 0.12;
+                newTranslate = Math.max(0, Math.min(newTranslate, maxTranslate));
                 legendPanel.style.transform = `translateY(${newTranslate}px)`;
+                
+                if (!hallPopup.classList.contains('hidden')) {
+                    const legendVisibleHeight = window.innerHeight * 0.85 - newTranslate;
+                    hallPopup.style.bottom = `${legendVisibleHeight + 15}px`;
+                }
             };
 
             const onPointerUp = e => {
@@ -760,6 +778,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDragging = false;
                 dragHandle.releasePointerCapture(e.pointerId);
                 legendPanel.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                
+                const currentY = getTranslateY();
+                const maxTranslate = window.innerHeight * 0.85 - window.innerHeight * 0.12;
+                const threshold = maxTranslate / 2;
+                
+                let targetTranslate = 0;
+                let popupBottom = '86vh';
+                
+                if (currentY > threshold) {
+                    targetTranslate = maxTranslate;
+                    popupBottom = '14vh';
+                }
+                
+                legendPanel.style.transform = `translateY(${targetTranslate}px)`;
+                
+                if (!hallPopup.classList.contains('hidden')) {
+                    hallPopup.style.transition = 'bottom 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                    hallPopup.style.bottom = popupBottom;
+                }
             };
 
             dragHandle.addEventListener('pointerdown', onPointerDown);
