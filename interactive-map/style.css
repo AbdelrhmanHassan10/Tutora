@@ -739,65 +739,67 @@ body {
 
 @media (min-width: 769px) {
     [dir="rtl"] .complex-title {
-        right: 4rem;
+        right: 28rem; /* Mirrored from left: 30rem default, adjusted for legend */
         left: auto;
         text-align: right;
     }
 
     [dir="rtl"] .map-legend {
-        left: 3rem;
-        right: auto;
+        right: 3rem; /* Mirrored from left: 3rem */
+        left: auto;
+        border-left: none;
+        border-right: 3px solid var(--gold);
     }
 
     [dir="rtl"] .camera-controls,
     [dir="rtl"] .map-controls {
-        right: 2rem;
-        left: auto;
+        left: 2rem; /* Mirrored from right: 2rem */
+        right: auto;
     }
 
     [dir="rtl"] .hall-popup {
-        right: 6rem;
-        left: auto;
+        left: 3rem; /* Mirrored from right: 3rem */
+        right: auto;
     }
 
     [dir="rtl"] .popup-close {
-        right: 1rem;
-        left: auto;
+        left: 1rem; /* Mirrored from right: 1rem */
+        right: auto;
     }
 
     [dir="rtl"] .level-switcher {
-        left: 1rem;
+        left: 2rem; /* Mirrored from right: 2rem */
         right: auto;
     }
 
     [dir="rtl"] .mini-map {
-        left: 2rem;
+        left: 3rem; /* Mirrored from right: 3rem */
         right: auto;
     }
 
     [dir="rtl"] .compass-widget {
-        left: 26rem;
+        left: 27rem; /* Mirrored from right: 27rem */
         right: auto;
     }
 
     [dir="rtl"] .pyramid-indicator {
-        left: 3rem;
+        left: 4rem; /* Mirrored from right: 4rem */
         right: auto;
     }
 
     [dir="rtl"] .cairo-road-left {
-        left: 10%;
-        right: auto;
+        right: 10%;
+        left: auto;
     }
 
     [dir="rtl"] .cairo-road-center {
-        left: 42%;
-        right: auto;
+        right: 42%;
+        left: auto;
     }
 
     [dir="rtl"] .ring-road {
-        right: 4rem;
-        left: auto;
+        left: 4rem;
+        right: auto;
     }
 }
 
