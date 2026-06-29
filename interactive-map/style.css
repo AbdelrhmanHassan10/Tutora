@@ -441,12 +441,30 @@ body {
 
 .popup-body { padding: 0 1.8rem 1.8rem; position: relative; z-index: 2; margin-top: -20px; }
 .popup-body h2 { font-family: 'Cinzel', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.6rem; font-size: 1.6rem; font-weight: 900; letter-spacing: 1px; }
-.popup-body p { font-size: 0.9rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 1.2rem; font-weight: 300; }
+.popup-body p { font-size: 0.8rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 1.2rem; font-weight: 400; letter-spacing: 0.2px; }
 
 .popup-meta {
     display: flex; gap: 1.5rem; margin-bottom: 1.2rem;
     font-size: 0.75rem; font-weight: 800; color: var(--gold);
     letter-spacing: 2px;
+}
+
+#vrTourBtn {
+    background: var(--gold-gradient);
+    color: #0b101a;
+    border: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transition: 0.3s;
+    border-radius: 50px;
+    padding: 10px 0;
+}
+#vrTourBtn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    color: #0b101a;
 }
 
 .popup-artifacts {
