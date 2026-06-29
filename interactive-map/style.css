@@ -439,7 +439,20 @@ body {
 
 .popup-close:hover { background: #fff; color: var(--dark); transform: rotate(90deg); border-color: #fff; }
 
-.popup-body { padding: 0 1.8rem 1.8rem; position: relative; z-index: 2; margin-top: -20px; }
+.popup-body { 
+    padding: 0 1.8rem 1.8rem; 
+    position: relative; 
+    z-index: 2; 
+    margin-top: -20px; 
+    max-height: 45vh;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for popup body */
+.popup-body::-webkit-scrollbar { width: 4px; }
+.popup-body::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 4px; }
+.popup-body::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.4); border-radius: 4px; }
+.popup-body::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.8); }
 .popup-body h2 { font-family: 'Cinzel', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.6rem; font-size: 1.6rem; font-weight: 900; letter-spacing: 1px; }
 .popup-body p { font-size: 0.8rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 1.2rem; font-weight: 400; letter-spacing: 0.2px; }
 
@@ -677,7 +690,9 @@ body {
     .compass-widget { left: 1rem; top: 5rem; transform: scale(0.6); }
     .pyramid-indicator, .road-label { display: none; }
 
-    .hall-popup { width: 92%; right: 4%; left: 4%; bottom: 36vh; }
+    .hall-popup { width: 92%; right: 4%; left: 4%; bottom: 38vh; }
+    .popup-body { max-height: 35vh; }
+    .popup-image-container { height: 160px; }
     .camera-controls { bottom: 38vh; right: 0.5rem; }
 
     .mini-map { display: none; }
