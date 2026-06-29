@@ -108,13 +108,15 @@ document.addEventListener('DOMContentLoaded', () => {
         isThreeReady = true;
     };
 
+    let currentCamTarget = new THREE.Vector3(0, 5, 0); // Global target for camera
+
     // === MATERIALS ===
     const mat = {
         floor: () => new THREE.MeshStandardMaterial({ color: 0xf5f0e8, roughness: 0.2, metalness: 0.1 }),
         wall: () => new THREE.MeshStandardMaterial({ color: 0xd4c9b0, roughness: 0.6, metalness: 0.0 }),
         ceiling: () => new THREE.MeshStandardMaterial({ color: 0x1a1a2e, roughness: 0.8, metalness: 0.0 }),
         gold: () => new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.3, metalness: 0.8, emissive: 0x3a2a00, emissiveIntensity: 0.2 }),
-        glass: () => new THREE.MeshPhysicalMaterial({ color: 0x88ccff, roughness: 0.05, metalness: 0.0, transmission: 0.8, thickness: 0.2, transparent: true, opacity: 0.3 }),
+        glass: () => new THREE.MeshPhysicalMaterial({ color: 0x88ccff, roughness: 0.05, metalness: 0.0, transmission: 0.8, transparent: true, opacity: 0.3 }),
         column: () => new THREE.MeshStandardMaterial({ color: 0x8d7b68, roughness: 0.4, metalness: 0.05 }),
         hallBox: (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.5, metalness: 0.1, emissive: c, emissiveIntensity: 0.05 }),
     };
@@ -134,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // --- OUTER WALLS (huge museum shell) ---
         const wallMat = mat.wall();
-        const addWall = (w,h,x,y,z,ry=0) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,0.8), wallMat); m.position.set(x,y,z); m.rotation.y=ry; m.castShadow=true; m.receiveShadow=true; scene.add(m); };
+        const addWall = (w,h,x,y,z,ry=0) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,0.8), wallMat); m.position.set(x,y,z); m.rotation.y=ry; m.castShadow = true; m.receiveShadow = true; scene.add(m); };
         addWall(200,20,0,10,-80); addWall(200,20,0,10,80); addWall(160,20,-100,10,0,Math.PI/2); addWall(160,20,100,10,0,Math.PI/2);
 
         // --- CEILING with skylights ---
@@ -257,12 +259,17 @@ document.addEventListener('DOMContentLoaded', () => {
             clickMesh.userData.hall = hall; scene.add(clickMesh); hallMeshes.push(clickMesh);
 
             // Floating label
+            const isAr = document.documentElement.lang === 'ar';
+            const hName = isAr && hall.nameAr ? hall.nameAr : hall.name;
+            const hLevel = isAr ? (hall.level === 'L1' ? 'الدور 1' : hall.level === 'L2' ? 'الدور 2' : 'الدور 3') : hall.level;
+            const hTime = isAr && hall.timeAr ? hall.timeAr : hall.time;
+            
             const cvs = document.createElement('canvas'); cvs.width = 512; cvs.height = 96;
             const ctx = cvs.getContext('2d');
             ctx.fillStyle = 'rgba(6,10,15,0.75)'; roundRect(ctx, 0, 0, 512, 96, 16); ctx.fill();
             ctx.strokeStyle = '#' + color.toString(16).padStart(6, '0'); ctx.lineWidth = 2; roundRect(ctx, 0, 0, 512, 96, 16); ctx.stroke();
-            ctx.font = 'bold 28px Inter'; ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText(hall.name, 256, 42);
-            ctx.font = '18px Inter'; ctx.fillStyle = '#' + color.toString(16).padStart(6, '0'); ctx.fillText(hall.level + ' • ' + (hall.time || ''), 256, 72);
+            ctx.font = 'bold 28px Inter'; ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.fillText(hName, 256, 42);
+            ctx.font = '18px Inter'; ctx.fillStyle = '#' + color.toString(16).padStart(6, '0'); ctx.fillText(hLevel + ' • ' + (hTime || ''), 256, 72);
             const tex = new THREE.CanvasTexture(cvs);
             const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true }));
             spr.scale.set(14, 2.7, 1); spr.position.set(lay.x, 9, lay.z); scene.add(spr);
@@ -276,20 +283,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // === LIGHTING ===
+    let aLight, dLight;
+    let sceneRef = scene; // Global ref
+
+    // Fly-to setup
+    let isFlying = false;
+    let targetCamPos = new THREE.Vector3();
+    let targetTarget = new THREE.Vector3();
+
     const addLighting = () => {
-        const ambient = new THREE.AmbientLight(0x1a1a3e, 0.6);
-        scene.add(ambient);
+        aLight = new THREE.AmbientLight(0x1a1a3e, 2.5); // Global ambient
+        scene.add(aLight);
 
         const hemi = new THREE.HemisphereLight(0xffecd2, 0x080820, 0.5);
         scene.add(hemi);
 
-        const sun = new THREE.DirectionalLight(0xffecd2, 1.5);
-        sun.position.set(50, 80, 40);
-        sun.castShadow = true;
-        sun.shadow.mapSize.set(2048, 2048);
-        sun.shadow.camera.left = -100; sun.shadow.camera.right = 100;
-        sun.shadow.camera.top = 80; sun.shadow.camera.bottom = -80;
-        scene.add(sun);
+        dLight = new THREE.DirectionalLight(0xffecd2, 1.0);
+        dLight.position.set(50, 80, 40);
+        dLight.castShadow = true;
+        dLight.shadow.mapSize.set(2048, 2048);
+        dLight.shadow.camera.left = -100; dLight.shadow.camera.right = 100;
+        dLight.shadow.camera.top = 80; dLight.shadow.camera.bottom = -80;
+        scene.add(dLight);
 
         // Gold accent lights
         const goldLight1 = new THREE.PointLight(0xd4af37, 1.2, 60);
@@ -327,6 +342,8 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.add(dustParticles);
     };
 
+
+
     // === ANIMATION ===
     const animate = () => {
         animId = requestAnimationFrame(animate);
@@ -343,8 +360,17 @@ document.addEventListener('DOMContentLoaded', () => {
             dustParticles.geometry.attributes.position.needsUpdate = true;
         }
 
-        // Gentle hall label float
-        // (hall meshes are invisible click targets, no visual animation needed)
+        // Fly-to animation
+        if (isFlying) {
+            camera.position.lerp(targetCamPos, 0.05);
+            currentCamTarget.lerp(targetTarget, 0.05);
+            camera.lookAt(currentCamTarget);
+            if (camera.position.distanceTo(targetCamPos) < 1) {
+                isFlying = false;
+            }
+        } else {
+            camera.lookAt(currentCamTarget);
+        }
 
         if (viewMode === 'interior') renderer.render(scene, camera);
     };
@@ -352,6 +378,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // === COMPLEX MAP (SVG) ===
     const renderComplex = () => {
         gemMap.innerHTML = '';
+        const defs = svgEl('defs');
+        defs.innerHTML = `
+            <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1e3c72" />
+                <stop offset="100%" stop-color="#2a5298" />
+            </linearGradient>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f3e5ab" />
+                <stop offset="50%" stop-color="#d4af37" />
+                <stop offset="100%" stop-color="#b8860b" />
+            </linearGradient>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        `;
+        gemMap.appendChild(defs);
+
         const ext = createSvgGroup('EXT');
 
         // Roads
@@ -379,12 +426,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Landmarks
-        [{ d: 'M 280 720 L 410 820 L 450 720 L 320 650 Z', c: '#455a64', n: '1', x: 400, y: 750 },
-         { d: 'M 650 350 L 750 380 L 730 450 L 630 420 Z', c: '#78909c', n: '3', x: 680, y: 400 },
-         { d: 'M 320 350 L 380 400 L 350 450 L 280 400 Z', c: '#90a4ae', n: '4', x: 350, y: 420 },
-         { d: 'M 450 100 L 600 120 L 580 200 L 430 180 Z', c: '#b0bec5', n: '5', x: 500, y: 150 }]
+        [{ d: 'M 280 720 L 410 820 L 450 720 L 320 650 Z', c: '#0b101a', s: '#d4af37', n: '1', x: 400, y: 750 },
+         { d: 'M 650 350 L 750 380 L 730 450 L 630 420 Z', c: '#0b101a', s: '#d4af37', n: '3', x: 680, y: 400 },
+         { d: 'M 320 350 L 380 400 L 350 450 L 280 400 Z', c: '#0b101a', s: '#d4af37', n: '4', x: 350, y: 420 },
+         { d: 'M 450 100 L 600 120 L 580 200 L 430 180 Z', c: '#0b101a', s: '#d4af37', n: '5', x: 500, y: 150 }]
         .forEach(l => {
-            const p = svgEl('path'); p.setAttribute('d', l.d); p.style.fill = l.c; p.style.stroke = '#fff';
+            const p = svgEl('path'); p.setAttribute('d', l.d); p.style.fill = l.c; p.style.stroke = l.s; p.style.strokeWidth = '2'; p.setAttribute('class', 'ext-landmark');
             ext.appendChild(p);
             const t = svgEl('text'); t.setAttribute('x', l.x); t.setAttribute('y', l.y);
             t.setAttribute('class', 'ext-number'); t.textContent = l.n; ext.appendChild(t);
@@ -392,22 +439,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // P icons
         [{x:150,y:800},{x:700,y:300},{x:720,y:330},{x:740,y:360},{x:780,y:550}].forEach(ic => {
-            const g = svgEl('g');
-            const r = svgEl('rect'); r.setAttribute('x', ic.x-12); r.setAttribute('y', ic.y-12);
-            r.setAttribute('width', 24); r.setAttribute('height', 24); r.setAttribute('fill', '#333'); g.appendChild(r);
-            const t = svgEl('text'); t.setAttribute('x', ic.x); t.setAttribute('y', ic.y+4);
+            const g = svgEl('g'); g.setAttribute('class', 'svg-icon-group');
+            const r = svgEl('rect'); r.setAttribute('x', ic.x-14); r.setAttribute('y', ic.y-14);
+            r.setAttribute('width', 28); r.setAttribute('height', 28); r.setAttribute('fill', 'url(#blueGradient)'); r.setAttribute('rx', 6); g.appendChild(r);
+            const t = svgEl('text'); t.setAttribute('x', ic.x); t.setAttribute('y', ic.y+5);
             t.setAttribute('text-anchor', 'middle'); t.setAttribute('fill', '#fff');
-            t.setAttribute('style', 'font-weight:900;font-size:12px;'); t.textContent = 'P'; g.appendChild(t);
+            t.setAttribute('style', 'font-weight:900;font-size:14px;font-family:Inter'); t.textContent = 'P'; g.appendChild(t);
             ext.appendChild(g);
         });
 
         // T icon
-        const tg = svgEl('g');
+        const tg = svgEl('g'); tg.setAttribute('class', 'svg-icon-group');
         const tc = svgEl('circle'); tc.setAttribute('cx', 260); tc.setAttribute('cy', 780);
-        tc.setAttribute('r', 12); tc.setAttribute('fill', '#0288d1'); tg.appendChild(tc);
-        const tt = svgEl('text'); tt.setAttribute('x', 260); tt.setAttribute('y', 784);
-        tt.setAttribute('text-anchor', 'middle'); tt.setAttribute('fill', '#fff');
-        tt.setAttribute('style', 'font-weight:900;font-size:12px;'); tt.textContent = 'T'; tg.appendChild(tt);
+        tc.setAttribute('r', 16); tc.setAttribute('fill', 'url(#goldGradient)'); tg.appendChild(tc);
+        const tt = svgEl('text'); tt.setAttribute('x', 260); tt.setAttribute('y', 785);
+        tt.setAttribute('text-anchor', 'middle'); tt.setAttribute('fill', '#070a0f');
+        tt.setAttribute('style', 'font-weight:900;font-size:14px;font-family:Inter'); tt.textContent = 'T'; tg.appendChild(tt);
         ext.appendChild(tg);
 
         // Clickable areas
@@ -433,32 +480,88 @@ document.addEventListener('DOMContentLoaded', () => {
     const switchView = mode => {
         viewMode = mode;
         viewTabs.forEach(t => t.classList.toggle('active', t.dataset.view === mode));
+        const aiContainer = document.getElementById('ai-floorplan-container');
+        
         if (mode === 'complex') {
             complexMap.classList.remove('hidden');
             container.style.display = 'none';
+            if (aiContainer) aiContainer.classList.add('hidden');
             floorSwitcher.classList.add('hidden');
             document.getElementById('miniMap').classList.add('hidden');
             legendItems.classList.add('hidden');
             complexLegend.classList.remove('hidden');
-            document.getElementById('legendTitle').textContent = 'MUSEUM COMPLEX';
-        } else {
+            document.getElementById('cameraControls').classList.add('hidden');
+            document.getElementById('mapControls').classList.remove('hidden');
+            document.getElementById('legendTitle').textContent = document.documentElement.lang === 'ar' ? 'مجمع المتحف' : 'MUSEUM COMPLEX';
+        } else if (mode === 'interior') {
             complexMap.classList.add('hidden');
+            if (aiContainer) aiContainer.classList.add('hidden');
             container.style.display = 'block';
             floorSwitcher.classList.remove('hidden');
             document.getElementById('miniMap').classList.remove('hidden');
             legendItems.classList.remove('hidden');
             complexLegend.classList.add('hidden');
-            document.getElementById('legendTitle').textContent = 'FLOOR ' + currentLevel;
+            document.getElementById('cameraControls').classList.remove('hidden');
+            document.getElementById('mapControls').classList.add('hidden');
+            document.getElementById('legendTitle').textContent = (document.documentElement.lang === 'ar' ? 'الدور ' : 'FLOOR ') + currentLevel;
+        } else if (mode === 'ai-floorplan') {
+            complexMap.classList.add('hidden');
+            container.style.display = 'none';
+            if (aiContainer) aiContainer.classList.remove('hidden');
+            floorSwitcher.classList.add('hidden');
+            document.getElementById('miniMap').classList.add('hidden');
+            legendItems.classList.add('hidden');
+            complexLegend.classList.add('hidden');
+            document.getElementById('cameraControls').classList.add('hidden');
+            document.getElementById('mapControls').classList.add('hidden');
+            document.getElementById('legendTitle').textContent = document.documentElement.lang === 'ar' ? 'الخريطة الذكية' : 'AI MAP';
         }
         updateLegend();
     };
 
+    // === WEB AUDIO API SWOOSH ===
+    const playSwoosh = () => {
+        if (isMuted) return;
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            const ctx = new AudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(400, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(50, ctx.currentTime + 0.3);
+            
+            gain.gain.setValueAtTime(0.1, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+            
+            osc.start();
+            osc.stop(ctx.currentTime + 0.3);
+        } catch(e) {}
+    };
+
+    let isMuted = false;
+    const mapAudioBtn = document.getElementById('mapAudio');
+    if (mapAudioBtn) {
+        mapAudioBtn.onclick = (e) => {
+            isMuted = !isMuted;
+            e.currentTarget.innerHTML = isMuted ? '<span class="material-symbols-outlined">volume_off</span>' : '<span class="material-symbols-outlined">volume_up</span>';
+        };
+    }
+
     // === OPEN HALL ===
+    let currentSelectedHall = null;
     const openHall = hall => {
-        document.getElementById('popupName').textContent = hall.name;
-        document.getElementById('popupDesc').textContent = hall.description || 'Exhibition area within the Grand Egyptian Museum.';
-        document.getElementById('popupLevel').textContent = hall.level ? 'LEVEL ' + hall.level : 'EXTERIOR';
-        document.getElementById('popupTime').textContent = hall.time || '20 MINS';
+        playSwoosh();
+        currentSelectedHall = hall;
+        const isAr = document.documentElement.lang === 'ar';
+        document.getElementById('popupName').textContent = isAr && hall.nameAr ? hall.nameAr : hall.name;
+        document.getElementById('popupDesc').textContent = isAr && hall.descriptionAr ? hall.descriptionAr : (hall.description || 'Exhibition area within the Grand Egyptian Museum.');
+        const lvlStr = hall.level ? (isAr ? (hall.level === 'L1' ? 'الدور 1' : hall.level === 'L2' ? 'الدور 2' : 'الدور 3') : 'LEVEL ' + hall.level) : (isAr ? 'الخارج' : 'EXTERIOR');
+        document.getElementById('popupLevel').textContent = lvlStr;
+        document.getElementById('popupTime').textContent = isAr && hall.timeAr ? hall.timeAr : (hall.time || '20 MINS');
         document.getElementById('popupImage').src = hall.image || '../hall.jpg';
         const artDiv = document.getElementById('popupArtifacts');
         artDiv.innerHTML = '';
@@ -467,6 +570,39 @@ document.addEventListener('DOMContentLoaded', () => {
             artDiv.appendChild(tag);
         });
         hallPopup.classList.remove('hidden');
+
+        // Reset any existing path
+        const existingPath = document.getElementById('nav-route-path');
+        if (existingPath) existingPath.remove();
+    };
+
+    document.getElementById('startNavBtn').onclick = () => {
+        if (!currentSelectedHall || !currentSelectedHall.coordinates) return;
+        
+        const existingPath = document.getElementById('nav-route-path');
+        if (existingPath) existingPath.remove();
+
+        const extGroup = document.getElementById('ext-buildings');
+        if (!extGroup) return;
+
+        // Draw path from Ticketing area (approx x: 100, y: 750) to the hall
+        const startX = 100, startY = 750;
+        const endX = currentSelectedHall.coordinates.x;
+        const endY = currentSelectedHall.coordinates.y;
+        
+        // Create a curved path
+        const midX = startX + (endX - startX) / 2;
+        const midY = startY - 100;
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('id', 'nav-route-path');
+        path.setAttribute('class', 'nav-route');
+        path.setAttribute('d', `M ${startX} ${startY} Q ${midX} ${midY} ${endX} ${endY}`);
+        
+        extGroup.appendChild(path);
+        
+        // Hide popup after starting navigation
+        hallPopup.classList.add('hidden');
     };
 
     // === LEGEND ===
@@ -474,12 +610,40 @@ document.addEventListener('DOMContentLoaded', () => {
         legendItems.innerHTML = '';
         if (viewMode === 'complex') return;
         const items = MAP_DATA.halls.filter(h => h.level === currentLevel);
+        const isAr = document.documentElement.lang === 'ar';
         items.forEach(item => {
             const div = document.createElement('div'); div.className = 'legend-item';
-            div.innerHTML = `<span class="icon">𓉐</span><span>${item.name}</span>`;
+            div.innerHTML = `<span class="icon">𓉐</span><span>${isAr && item.nameAr ? item.nameAr : item.name}</span>`;
             div.onclick = () => openHall(item);
             legendItems.appendChild(div);
         });
+    };
+
+    // === LANGUAGE TOGGLE ===
+    const langBtn = document.getElementById('langToggleBtn');
+    if (langBtn) {
+        langBtn.onclick = () => {
+            const html = document.documentElement;
+            if (html.lang === 'en') {
+                html.lang = 'ar';
+                html.dir = 'rtl';
+                document.getElementById('langToggleText').textContent = 'AR';
+            } else {
+                html.lang = 'en';
+                html.dir = 'ltr';
+                document.getElementById('langToggleText').textContent = 'EN';
+            }
+            updateLegend();
+            if (currentSelectedHall) openHall(currentSelectedHall);
+        };
+    }
+
+    // === VR OVERLAY ===
+    document.getElementById('vrTourBtn').onclick = () => {
+        document.getElementById('vrOverlay').classList.remove('hidden');
+    };
+    document.getElementById('closeVrBtn').onclick = () => {
+        document.getElementById('vrOverlay').classList.add('hidden');
     };
 
     // === SEARCH ===
@@ -487,16 +651,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const panel = document.getElementById('searchPanel');
         const input = document.getElementById('searchInput');
         const results = document.getElementById('searchResults');
-        document.getElementById('searchToggle').onclick = () => { panel.classList.toggle('hidden'); input.focus(); };
+        const searchToggleBtn = document.getElementById('searchToggle');
+        if (searchToggleBtn && panel && input) {
+            searchToggleBtn.onclick = () => { panel.classList.toggle('hidden'); input.focus(); };
+        }
+        if (!input) return;
         input.oninput = () => {
             const q = input.value.toLowerCase();
             results.innerHTML = '';
             if (q.length < 2) return;
             const all = [...MAP_DATA.halls, ...MAP_DATA.complex];
-            all.filter(h => h.name.toLowerCase().includes(q) || (h.description || '').toLowerCase().includes(q))
+            const isAr = document.documentElement.lang === 'ar';
+            all.filter(h => {
+                const n = isAr && h.nameAr ? h.nameAr : h.name;
+                const d = isAr && h.descriptionAr ? h.descriptionAr : (h.description || '');
+                return n.toLowerCase().includes(q) || d.toLowerCase().includes(q);
+            })
                .slice(0, 8).forEach(h => {
                 const d = document.createElement('div'); d.className = 'search-result-item';
-                d.innerHTML = `<div><div class="sr-name">${h.name}</div><div class="sr-level">${h.level || 'Exterior'}</div></div>`;
+                const hName = isAr && h.nameAr ? h.nameAr : h.name;
+                const lvlStr = h.level ? (isAr ? (h.level === 'L1' ? 'الدور 1' : h.level === 'L2' ? 'الدور 2' : 'الدور 3') : 'Level ' + h.level) : (isAr ? 'الخارج' : 'Exterior');
+                d.innerHTML = `<div><div class="sr-name">${hName}</div><div class="sr-level">${lvlStr}</div></div>`;
                 d.onclick = () => { openHall(h); panel.classList.add('hidden'); input.value = ''; };
                 results.appendChild(d);
             });
@@ -509,7 +684,7 @@ document.addEventListener('DOMContentLoaded', () => {
         levelBtns.forEach(b => b.onclick = () => {
             currentLevel = b.dataset.level;
             levelBtns.forEach(x => x.classList.toggle('active', x.dataset.level === currentLevel));
-            document.getElementById('legendTitle').textContent = 'FLOOR ' + currentLevel;
+            document.getElementById('legendTitle').textContent = (document.documentElement.lang === 'ar' ? 'الدور ' : 'FLOOR ') + currentLevel;
             updateLegend();
         });
 
@@ -530,11 +705,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Tour
-        document.getElementById('tourBtn').onclick = async () => {
-            const halls = viewMode === 'complex' ? MAP_DATA.complex : MAP_DATA.halls.filter(h => h.level === currentLevel);
-            for (const h of halls) { openHall(h); await new Promise(r => setTimeout(r, 3500)); }
-            hallPopup.classList.add('hidden');
-        };
+        const tourBtnBtn = document.getElementById('tourBtn');
+        if (tourBtnBtn) {
+            tourBtnBtn.onclick = async () => {
+                const halls = viewMode === 'complex' ? MAP_DATA.complex : MAP_DATA.halls.filter(h => h.level === currentLevel);
+                for (const h of halls) { openHall(h); await new Promise(r => setTimeout(r, 3500)); }
+                hallPopup.classList.add('hidden');
+            };
+        }
 
         setupSearch();
 
@@ -545,9 +723,179 @@ document.addEventListener('DOMContentLoaded', () => {
             miniCtx.strokeStyle = '#d4af3744'; miniCtx.lineWidth = 1;
             miniCtx.strokeRect(30, 20, 140, 110);
             miniCtx.fillStyle = '#d4af37'; miniCtx.font = 'bold 8px Inter';
-            miniCtx.fillText('GEM FLOOR PLAN', 60, 80);
+            miniCtx.fillText(document.documentElement.lang === 'ar' ? 'مخطط الدور' : 'GEM FLOOR PLAN', 60, 80);
+        }
+        
+        // Listen for language changes from global-lang.js
+        document.addEventListener('languageChanged', () => {
+            switchView(viewMode); // re-trigger to update texts
+        });
+
+        // === MOBILE BOTTOM SHEET LOGIC ===
+        const dragHandle = document.getElementById('drag-handle');
+        const legendPanel = document.getElementById('legendPanel');
+        if (dragHandle && legendPanel) {
+            let startY = 0, currentTranslate = 0, isDragging = false;
+
+            const getTranslateY = () => {
+                const style = window.getComputedStyle(legendPanel);
+                const matrix = new WebKitCSSMatrix(style.transform);
+                return matrix.m42;
+            };
+
+            const onPointerDown = e => {
+                if (window.innerWidth > 768) return;
+                isDragging = true;
+                startY = e.clientY;
+                currentTranslate = getTranslateY();
+                legendPanel.style.transition = 'none';
+                dragHandle.setPointerCapture(e.pointerId);
+            };
+
+            const onPointerMove = e => {
+                if (!isDragging) return;
+                const deltaY = e.clientY - startY;
+                let newTranslate = currentTranslate + deltaY;
+                newTranslate = Math.max(0, Math.min(newTranslate, window.innerHeight * 0.75));
+                legendPanel.style.transform = `translateY(${newTranslate}px)`;
+            };
+
+            const onPointerUp = e => {
+                if (!isDragging) return;
+                isDragging = false;
+                dragHandle.releasePointerCapture(e.pointerId);
+                legendPanel.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
+            };
+
+            dragHandle.addEventListener('pointerdown', onPointerDown);
+            dragHandle.addEventListener('pointermove', onPointerMove);
+            dragHandle.addEventListener('pointerup', onPointerUp);
+            dragHandle.addEventListener('pointercancel', onPointerUp);
+        }
+
+        // === 2D MAP CONTROLS (ZOOM & LANDSCAPE) ===
+        let currentMapScale = window.innerWidth <= 768 ? 1.5 : 1;
+        let isLandscape = false;
+        const svgMap = document.getElementById('gem-map');
+        
+        const applyMapTransform = () => {
+            let translateX = window.innerWidth <= 768 ? '10%' : '0%';
+            let rotate = isLandscape ? '90deg' : '0deg';
+            svgMap.style.transform = `scale(${currentMapScale}) translateX(${translateX}) rotate(${rotate})`;
+        };
+
+        const mapZoomInBtn = document.getElementById('mapZoomIn');
+        if(mapZoomInBtn) {
+            mapZoomInBtn.onclick = () => {
+                currentMapScale += 0.3;
+                applyMapTransform();
+            };
+        }
+
+        const mapZoomOutBtn = document.getElementById('mapZoomOut');
+        if(mapZoomOutBtn) {
+            mapZoomOutBtn.onclick = () => {
+                currentMapScale = Math.max(0.5, currentMapScale - 0.3);
+                applyMapTransform();
+            };
+        }
+
+        const mapRotateBtn = document.getElementById('mapRotate');
+        if (mapRotateBtn) {
+            mapRotateBtn.onclick = () => {
+                if (screen.orientation && screen.orientation.lock) {
+                    try {
+                        if (screen.orientation.type.includes('portrait')) {
+                            document.documentElement.requestFullscreen().then(() => {
+                                screen.orientation.lock('landscape').catch(() => {
+                                    isLandscape = !isLandscape; applyMapTransform();
+                                });
+                            }).catch(() => {
+                                isLandscape = !isLandscape; applyMapTransform();
+                            });
+                        } else {
+                            document.exitFullscreen();
+                            screen.orientation.unlock();
+                        }
+                    } catch(e) {
+                        isLandscape = !isLandscape; applyMapTransform();
+                    }
+                } else {
+                    isLandscape = !isLandscape;
+                    applyMapTransform();
+                }
+            };
+        }
+
+        // === PREMIUM: GPS MY LOCATION ===
+        const mapGpsBtn = document.getElementById('mapGps');
+        if (mapGpsBtn) {
+            mapGpsBtn.onclick = () => {
+                let gpsDot = document.getElementById('user-gps-dot');
+                if (!gpsDot) {
+                    gpsDot = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                    gpsDot.setAttribute('id', 'user-gps-dot');
+                    
+                    const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    pulse.setAttribute('class', 'user-location-dot');
+                    pulse.setAttribute('cx', '0'); pulse.setAttribute('cy', '0'); pulse.setAttribute('r', '15');
+                    
+                    const core = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    core.setAttribute('class', 'user-location-core');
+                    core.setAttribute('cx', '0'); core.setAttribute('cy', '0'); core.setAttribute('r', '8');
+                    
+                    gpsDot.appendChild(pulse);
+                    gpsDot.appendChild(core);
+                    document.getElementById('gem-map').appendChild(gpsDot);
+                }
+                
+                // Random position near the entrance/ticketing area
+                const randomX = 100 + (Math.random() * 50 - 25);
+                const randomY = 750 + (Math.random() * 50 - 25);
+                gpsDot.setAttribute('transform', `translate(${randomX}, ${randomY})`);
+                
+                // Zoom
+                if (viewMode === 'complex') {
+                    currentMapScale = window.innerWidth <= 768 ? 1.8 : 1.3;
+                    applyMapTransform();
+                }
+            };
+        }
+
+        // === PREMIUM: NIGHT MODE ===
+        const mapThemeBtn = document.getElementById('mapTheme');
+        let isNightMode = false;
+        if (mapThemeBtn) {
+            mapThemeBtn.onclick = () => {
+                isNightMode = !isNightMode;
+                if (isNightMode) {
+                    document.body.classList.add('night-mode');
+                    if (aLight) aLight.intensity = 0.2; // Dim ambient
+                    if (dLight) dLight.intensity = 0.1; // Dim sun
+                    if (scene) {
+                        scene.background = new THREE.Color(0x050a12);
+                        scene.fog = new THREE.FogExp2(0x050a12, 0.003);
+                    }
+                } else {
+                    document.body.classList.remove('night-mode');
+                    if (aLight) aLight.intensity = 2.5; // Restore ambient
+                    if (dLight) dLight.intensity = 1.0; // Restore sun
+                    if (scene) {
+                        scene.background = new THREE.Color(0xe5e1d8);
+                        scene.fog = new THREE.FogExp2(0xe5e1d8, 0.002);
+                    }
+                }
+            };
         }
     };
+
+    window.addEventListener('resize', () => {
+        if (camera && renderer) {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+    });
 
     init();
 });

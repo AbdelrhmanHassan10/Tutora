@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutora | GEM Digital Twin</title>
+    <link rel="icon" type="image/png" href="../museum.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../global-theme.css" />
+    <link rel="stylesheet" href="../global-lang.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../responsive-core.css">
+
+</head>
+
+<body class="dark">
+    <!-- Standard Global Header -->
+    <header class="glass-header"
+        style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; padding: 15px 30px; background: rgba(10, 15, 25, 0.6); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="header-inner"
+            style="display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto;">
+            <div class="logo-section" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo-container">
+                    <img src="../logo.png" alt="Tutora Logo" style="height: 45px; width: 45px; object-fit: cover; border-radius: 50%; border: 2px solid var(--gold, #d4af37); box-shadow: 0 0 10px rgba(212,175,55,0.3);" />
+                </div>
+                <h2 class="brand-name"
+                    style="margin: 0; font-family: 'Cinzel', serif; font-size: 1.6rem; font-weight: 800; color: #d4af37; letter-spacing: 4px; text-transform: uppercase;">
+                    TUTORA</h2>
+            </div>
+            <div class="header-actions" style="display: flex; align-items: center;">
+                <button id="langBtn" class="lang-switch-btn" title="Change Language"
+                    style="background: none; border: none; color: white; cursor: pointer; display: flex; align-items: center; margin-right: 15px; font-size: 1.5rem; transition: color 0.3s;">
+                    <span class="material-symbols-outlined">language</span>
+                </button>
+                <a href="../4.home/code.html" class="nav-login-btn"
+                    style="text-decoration: none; padding: 8px 20px; border-radius: 30px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; background: linear-gradient(135deg, #d4af37, #f3e5ab); color: #0a0f19; transition: transform 0.3s, box-shadow 0.3s;">
+                    <span data-i18n="nav.home">Home</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen" class="loading-overlay">
+        <div class="loader-content">
+            <span class="material-symbols-outlined loader-eye">visibility</span>
+            <div class="loader-title">GEM</div>
+            <div class="loader-subtitle">Digital Twin Engine</div>
+            <div class="loader-bar-container">
+                <div id="loadBar" class="loader-bar"></div>
+            </div>
+            <div id="loadText" class="loader-text">INITIALIZING...</div>
+        </div>
+    </div>
+
+    <!-- VR 360 OVERLAY -->
+    <div id="vrOverlay" class="hidden"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <button id="closeVrBtn" class="pill-btn glassmorphism"
+            style="position: absolute; top: 20px; right: 20px; z-index: 2001;">
+            <span class="material-symbols-outlined">close</span>
+            <span id="closeVrText">Close VR</span>
+        </button>
+        <div style="text-align: center; color: white;">
+            <span class="material-symbols-outlined"
+                style="font-size: 80px; color: var(--gold); margin-bottom: 20px; animation: pulseGps 2s infinite;">360</span>
+            <h2 id="vrTitle" style="font-family: Cinzel, serif; color: var(--gold); margin-bottom: 10px;">Virtual Tour
+                Demo</h2>
+            <p id="vrDesc" style="color: #aaa;">This is a placeholder for a 360° panorama viewer (e.g. Pannellum or
+                Three.js panorama).</p>
+        </div>
+    </div>
+
+    <!-- 3D CANVAS -->
+    <div id="canvas-container"></div>
+
+    <!-- HEADER HUD -->
+    <header class="hud-header" style="top: 80px; display: flex; align-items: center; justify-content: flex-end;">
+        <nav class="view-mode-tabs glassmorphism" id="viewTabs">
+            <button class="view-tab active" data-view="complex">
+                <span class="material-symbols-outlined">landscape</span>
+                <span data-i18n="map.complex">COMPLEX</span>
+            </button>
+            <button class="view-tab" data-view="interior">
+                <span class="material-symbols-outlined">museum</span>
+                <span data-i18n="map.interior">INTERIOR 3D</span>
+            </button>
+            <button class="view-tab" data-view="ai-floorplan">
+                <span class="material-symbols-outlined">map</span>
+                <span id="aiPlanText" data-i18n="map.ai_floorplan">AI MAP</span>
+            </button>
+        </nav>
+
+
+    </header>
+
+    <!-- SEARCH PANEL -->
+    <!-- AI FLOOR PLAN OVERLAY -->
+    <div id="ai-floorplan-container" class="hidden"
+        style="position: absolute; top: 120px; left: 0; width: 100vw; height: calc(100vh - 120px); background: transparent; z-index: 10; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+        <img src="../assets/images/gem_interior_map_ai.png"
+            style="max-width: 90%; max-height: 85vh; border-radius: 20px; box-shadow: 0 0 50px rgba(212, 175, 55, 0.4); border: 2px solid rgba(212, 175, 55, 0.5); pointer-events: auto;"
+            alt="GEM Floor Plan AI">
+    </div>
+
+
+    </div>
+
+    <!-- LEFT LEGEND -->
+    <aside class="map-legend glassmorphism" id="legendPanel">
+        <div id="drag-handle" class="drag-handle"></div>
+        <div class="legend-header">
+            <h2 id="legendTitle">MUSEUM COMPLEX</h2>
+        </div>
+        <!-- Interior Legend -->
+        <div class="legend-items" id="legend-items"></div>
+        <div class="complex-sidebar-legend" id="complex-sidebar-legend">
+            <ol class="landmark-list">
+                <li><span>1.</span> <span data-i18n="complex.hanging_obelisk">Hanging Obelisk</span></li>
+                <li><span>2.</span> <span data-i18n="complex.events_area">Events Area</span></li>
+                <li><span>3.</span> <span data-i18n="complex.khufu_boats">Khufu's Boats Museum</span></li>
+                <li><span>4.</span> <span data-i18n="complex.pyramid_steps">Pyramids Steps</span></li>
+                <li><span>5.</span> <span data-i18n="complex.conservation_centre">Conservation Centre</span></li>
+            </ol>
+            <div class="utility-icons">
+                <div class="u-item"><span class="u-box p-box">P</span> <span data-i18n="complex.parking">Parking</span>
+                </div>
+                <div class="u-item"><span class="u-box t-box">T</span> <span data-i18n="complex.ticketing">Ticketing &
+                        Entrance</span></div>
+                <div class="u-item"><span class="u-icon">🌴</span> <span data-i18n="complex.garden">Garden</span></div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- COMPLEX MAP OVERLAY (SVG) -->
+    <div id="complex-map-container" class="complex-map-container">
+        <svg id="gem-map" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid meet"></svg>
+        <div id="complex-overlay" class="complex-overlay">
+            <div class="compass-widget">
+                <span class="compass-icon">🧭</span>
+                <div class="compass-labels"><span data-i18n="compass.n">N</span><span
+                        data-i18n="compass.e">E</span><span data-i18n="compass.s">S</span><span
+                        data-i18n="compass.w">W</span></div>
+            </div>
+            <div class="pyramid-indicator"><span class="pyramid-icon">▲</span><span class="indicator-arrow">←</span>
+            </div>
+            <div class="road-label cairo-road-left" data-i18n="complex.road_cairo_alex">Cairo - Alexandria Desert Road
+            </div>
+            <div class="road-label cairo-road-center" data-i18n="complex.road_cairo_alex">Cairo - Alexandria Desert Road
+            </div>
+            <div class="road-label ring-road" data-i18n="complex.road_ring">Ring Road</div>
+        </div>
+    </div>
+
+    <!-- CAMERA CONTROLS (3D) -->
+    <div class="camera-controls glassmorphism hidden" id="cameraControls">
+        <button id="camTopView" title="Top View"><span class="material-symbols-outlined">visibility</span></button>
+        <button id="camFirstPerson" title="First Person"><span class="material-symbols-outlined">person</span></button>
+        <button id="camOrbit" title="Orbit"><span class="material-symbols-outlined">3d_rotation</span></button>
+        <button id="camReset" title="Reset"><span class="material-symbols-outlined">restart_alt</span></button>
+    </div>
+
+    <!-- MAP CONTROLS (2D) -->
+    <div class="map-controls glassmorphism" id="mapControls">
+        <button id="mapZoomIn" title="Zoom In"><span class="material-symbols-outlined">zoom_in</span></button>
+        <button id="mapZoomOut" title="Zoom Out"><span class="material-symbols-outlined">zoom_out</span></button>
+        <button id="mapRotate" title="Landscape View"><span
+                class="material-symbols-outlined">screen_rotation</span></button>
+
+    </div>
+
+    <!-- FLOOR SWITCHER -->
+    <div class="level-switcher hidden" id="floor-switcher">
+        <button class="level-btn" data-level="L3">L3</button>
+        <button class="level-btn active" data-level="L2">L2</button>
+        <button class="level-btn" data-level="L1">L1</button>
+    </div>
+
+    <!-- MINI MAP -->
+    <div class="mini-map glassmorphism hidden" id="miniMap">
+        <div class="mini-map-header">MINI MAP</div>
+        <canvas id="miniMapCanvas" width="200" height="150"></canvas>
+        <div class="mini-map-indicator" id="miniMapIndicator"></div>
+    </div>
+
+    <!-- HALL POPUP -->
+    <div id="hall-popup" class="hall-popup hidden">
+        <div class="popup-content glassmorphism">
+            <button class="popup-close">&times;</button>
+            <div class="popup-image-container">
+                <img id="popupImage" src="" alt="Hall">
+            </div>
+            <div class="popup-body">
+                <h2 id="popupName">---</h2>
+                <p id="popupDesc">---</p>
+                <div class="popup-meta">
+                    <span id="popupLevel">LEVEL L2</span>
+                    <span id="popupTime">20 MINS</span>
+                </div>
+                <div class="popup-artifacts" id="popupArtifacts"></div>
+                <div class="popup-actions" style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button id="startNavBtn" class="primary-btn" style="flex: 1;">
+                        <span class="material-symbols-outlined">navigation</span>
+                        <span data-i18n="map.navigateBtn">NAVIGATE HERE</span>
+                    </button>
+                    <a id="learnMoreBtn" href="../collection/collection.html" class="primary-btn"
+                        style="flex: 1; text-decoration: none; text-align: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(212, 175, 55, 0.5);">
+                        <span class="material-symbols-outlined">auto_stories</span>
+                        <span data-i18n="map.learnMoreBtn">LEARN MORE</span>
+                    </a>
+                </div>
+                <button class="pill-btn glassmorphism" id="vrTourBtn"
+                    style="width: 100%; margin-top: 10px; justify-content: center; gap: 8px;">
+                    <span class="material-symbols-outlined">360</span>
+                    <span id="vrTourText">Virtual Tour 360°</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline-bar hidden" id="timelineBar">
+        <div class="timeline-track" id="timelineTrack"></div>
+    </div>
+
+    <!-- VR 360 OVERLAY -->
+    <div id="vrOverlay" class="hidden"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 2000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <button id="closeVrBtn" class="pill-btn glassmorphism"
+            style="position: absolute; top: 20px; right: 20px; z-index: 2001;">
+            <span class="material-symbols-outlined">close</span>
+            <span id="closeVrText">Close VR</span>
+        </button>
+        <div style="text-align: center; color: white;">
+            <span class="material-symbols-outlined"
+                style="font-size: 80px; color: var(--gold); margin-bottom: 20px; animation: pulseGps 2s infinite;">360</span>
+            <h2 id="vrTitle" style="font-family: Cinzel, serif; color: var(--gold); margin-bottom: 10px;">Virtual Tour
+                Demo</h2>
+            <p id="vrDesc" style="color: #aaa;">This is a placeholder for a 360° panorama viewer (e.g. Pannellum or
+                Three.js panorama).</p>
+        </div>
+    </div>
+
+    <!-- FPS Counter -->
+    <div class="fps-counter" id="fpsCounter">60 FPS</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="map-data.js"></script>
+    <script src="script.js"></script>
+    <script src="../global-lang.js"></script>
+</body>
+
+</html>

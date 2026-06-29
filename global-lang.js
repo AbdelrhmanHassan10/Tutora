@@ -1000,6 +1000,9 @@
         "exhibition.master_title": "Tutankhamun & <br><span style=\"color: var(--hall-gold);\">Royal Treasures</span>",
         "exhibition.master_desc": "Over 5,000 artifacts from the boy king's tomb are displayed in one immersive space for the first time in history.",
         "exhibition.no_results": "No treasures found matching your search. Please try a different period or keyword.",
+        "exhibition.plan_label": "Exhibition Layout",
+        "exhibition.plan_title": "Main Galleries <span style=\"color: var(--hall-gold);\">Plan</span>",
+        "exhibition.plan_desc": "An overview of the thematic and chronological arrangement of the 12 main exhibition halls.",
         "exhibition.seq_label": "Sequential Discovery",
         "exhibition.seq_title": "The Main <span style=\"color: var(--hall-gold);\">Galleries</span>",
         "exhibition.hall1_title": "Dawn & Old Kingdom",
@@ -1844,6 +1847,9 @@
             "section.dine_shop": "Dine & Shop",
             "section.dine_subtitle": "Complete your experience with world-class facilities",
             "section.curators_choice": "Curator's Choice",
+            "section.interactive_map_title": "GEM Digital Twin",
+            "section.interactive_map_desc": "Explore the Grand Egyptian Museum through our state-of-the-art interactive 3D map. Navigate the museum complex, explore interior floors, and use the smart AI Map to find your way effortlessly.",
+            "section.explore_map": "Explore Interactive Map",
             
             // ── Events ──
             "event.month_oct": "Oct",
@@ -4241,6 +4247,9 @@
             "section.dine_shop": "تناول الطعام وتسوّق",
             "section.dine_subtitle": "أكمل تجربتك مع مرافق عالمية المستوى",
             "section.curators_choice": "اختيار القيّم",
+            "section.interactive_map_title": "التوأم الرقمي للمتحف",
+            "section.interactive_map_desc": "استكشف المتحف المصري الكبير من خلال خريطتنا التفاعلية ثلاثية الأبعاد الحديثة. تجول في مجمع المتحف، واستكشف الطوابق الداخلية، واستخدم الخريطة الذكية للعثور على طريقك بكل سهولة.",
+            "section.explore_map": "استكشف الخريطة التفاعلية",
 
             // ── الفعاليات ──
             "event.month_oct": "أكتوبر",
@@ -5020,6 +5029,59 @@
 
         console.log(`✓ Language System initialized: ${currentLang}`);
     }
+
+    // ─── MAP TRANSLATIONS ───────────────────────────────────────
+    Object.assign(LOCAL_TRANSLATIONS.en, {
+        "nav.home": "Home",
+        "map.complex": "COMPLEX",
+        "map.interior": "INTERIOR 3D",
+        "map.ai_floorplan": "AI MAP",
+        "map.searchPlaceholder": "Search halls, artifacts...",
+        "map.navigateBtn": "NAVIGATE HERE",
+        "map.learnMoreBtn": "LEARN MORE",
+        "complex.hanging_obelisk": "Hanging Obelisk",
+        "complex.events_area": "Events Area",
+        "complex.khufu_boats": "Khufu's Boats Museum",
+        "complex.pyramid_steps": "Pyramids Steps",
+        "complex.conservation_centre": "Conservation Centre",
+        "complex.parking": "Parking",
+        "complex.ticketing": "Ticketing & Entrance",
+        "complex.garden": "Garden",
+        "complex.title_gem": "GEM",
+        "complex.title_complex": "Complex",
+        "complex.road_cairo_alex": "Cairo - Alexandria Desert Road",
+        "complex.road_ring": "Ring Road",
+        "compass.n": "N",
+        "compass.e": "E",
+        "compass.s": "S",
+        "compass.w": "W"
+    });
+    
+    Object.assign(LOCAL_TRANSLATIONS.ar, {
+        "nav.home": "الرئيسية",
+        "map.complex": "المجمع",
+        "map.interior": "ثلاثي الأبعاد",
+        "map.ai_floorplan": "الخريطة الذكية",
+        "map.searchPlaceholder": "ابحث عن القاعات، الآثار...",
+        "map.navigateBtn": "اذهب إلى هنا",
+        "map.learnMoreBtn": "اكتشف المزيد",
+        "complex.hanging_obelisk": "المسلة المعلقة",
+        "complex.events_area": "منطقة الفعاليات",
+        "complex.khufu_boats": "متحف مراكب خوفو",
+        "complex.pyramid_steps": "سلالم الأهرامات",
+        "complex.conservation_centre": "مركز الترميم",
+        "complex.parking": "موقف السيارات",
+        "complex.ticketing": "التذاكر والمدخل",
+        "complex.garden": "الحديقة",
+        "complex.title_gem": "المتحف",
+        "complex.title_complex": "المصري الكبير",
+        "complex.road_cairo_alex": "طريق القاهرة - الإسكندرية الصحراوي",
+        "complex.road_ring": "الطريق الدائري",
+        "compass.n": "ش",
+        "compass.e": "ق",
+        "compass.s": "ج",
+        "compass.w": "غ"
+    });
 
     // ─── EXPOSE GLOBALLY ───────────────────────────────────────
     window.TutoraLang = {
