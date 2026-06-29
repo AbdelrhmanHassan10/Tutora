@@ -698,8 +698,22 @@ body {
     .mini-map { display: none; }
     .search-panel { width: calc(100% - 4rem); right: 2rem; left: 2rem; }
 
-    .landmark-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-    .utility-icons { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .landmark-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+    .utility-icons { 
+        display: flex; 
+        justify-content: space-around; 
+        gap: 5px; 
+        padding-bottom: 2rem; 
+    }
+    .u-item { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 6px; 
+        flex: 1; 
+    }
+    .u-item .u-box, .u-item .u-icon { 
+        display: none; 
+    }
 
     .complex-map-container svg {
         transform: scale(1.5) translateX(10%);
