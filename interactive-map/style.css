@@ -729,16 +729,13 @@ body {
    RTL OVERRIDE — Keep layout fixed regardless of language
    ═══════════════════════════════════════════════════════════════ */
 [dir="rtl"] body,
-[dir="rtl"] .hud-header,
 [dir="rtl"] .map-legend,
-[dir="rtl"] .complex-title,
 [dir="rtl"] .camera-controls,
 [dir="rtl"] .map-controls,
 [dir="rtl"] .level-switcher,
 [dir="rtl"] .mini-map,
 [dir="rtl"] .search-panel,
 [dir="rtl"] .complex-overlay,
-[dir="rtl"] .view-mode-tabs,
 [dir="rtl"] .legend-header h2,
 [dir="rtl"] .compass-widget,
 [dir="rtl"] .pyramid-indicator,
