@@ -598,34 +598,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (existingPath) existingPath.remove();
     };
 
-    document.getElementById('startNavBtn').onclick = () => {
-        if (!currentSelectedHall || !currentSelectedHall.coordinates) return;
-        
-        const existingPath = document.getElementById('nav-route-path');
-        if (existingPath) existingPath.remove();
-
-        const extGroup = document.getElementById('ext-buildings');
-        if (!extGroup) return;
-
-        // Draw path from Ticketing area (approx x: 100, y: 750) to the hall
-        const startX = 100, startY = 750;
-        const endX = currentSelectedHall.coordinates.x;
-        const endY = currentSelectedHall.coordinates.y;
-        
-        // Create a curved path
-        const midX = startX + (endX - startX) / 2;
-        const midY = startY - 100;
-
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('id', 'nav-route-path');
-        path.setAttribute('class', 'nav-route');
-        path.setAttribute('d', `M ${startX} ${startY} Q ${midX} ${midY} ${endX} ${endY}`);
-        
-        extGroup.appendChild(path);
-        
-        // Hide popup after starting navigation
-        hallPopup.classList.add('hidden');
-    };
+    // Navigation button was removed from HTML
 
     // === LEGEND ===
     const updateLegend = () => {
