@@ -525,13 +525,14 @@ body {
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.8));
+    transform-origin: center;
+    transform-box: fill-box;
 }
 
 .ext-building-main:hover {
     fill: #101824;
     filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.6));
     transform: scale(1.02) translateY(-5px);
-    transform-origin: center;
 }
 
 .ext-garden {
@@ -545,6 +546,8 @@ body {
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
+    transform-origin: center;
+    transform-box: fill-box;
 }
 
 .ext-landmark:hover {
@@ -578,6 +581,8 @@ body {
 .svg-icon-group {
     transition: all 0.4s;
     cursor: pointer;
+    transform-origin: center;
+    transform-box: fill-box;
 }
 
 .svg-icon-group:hover {
