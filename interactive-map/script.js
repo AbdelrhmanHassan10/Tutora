@@ -777,25 +777,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!isDragging) return;
                 isDragging = false;
                 dragHandle.releasePointerCapture(e.pointerId);
-                legendPanel.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
                 
+                // Allow the panel to stay exactly where the user drops it freely
                 const currentY = getTranslateY();
-                const maxTranslate = window.innerHeight * 0.85 - window.innerHeight * 0.12;
-                const threshold = maxTranslate / 2;
                 
-                let targetTranslate = 0;
-                let popupBottom = '86vh';
-                
-                if (currentY > threshold) {
-                    targetTranslate = maxTranslate;
-                    popupBottom = '14vh';
-                }
-                
-                legendPanel.style.transform = `translateY(${targetTranslate}px)`;
+                legendPanel.style.transform = `translateY(${currentY}px)`;
                 
                 if (!hallPopup.classList.contains('hidden')) {
+                    const legendVisibleHeight = window.innerHeight * 0.85 - currentY;
                     hallPopup.style.transition = 'bottom 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
-                    hallPopup.style.bottom = popupBottom;
+                    hallPopup.style.bottom = `${legendVisibleHeight + 15}px`;
                 }
             };
 
