@@ -36,6 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
         setLoad(100, 'SYSTEM READY');
         setTimeout(() => loadScreen.classList.add('fade-out'), 800);
         setupEvents();
+        
+        // Attach Legend Clicks
+        document.querySelectorAll('.landmark-list li, .utility-icons .u-item').forEach(el => {
+            el.addEventListener('click', () => {
+                const id = el.getAttribute('data-complex-id');
+                if (id) {
+                    const hall = MAP_DATA.complex.find(c => c.id === id);
+                    if (hall) openHall(hall);
+                }
+            });
+        });
+        
         updateLegend();
         animate();
     };
@@ -412,26 +424,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const bldg = svgEl('path');
         bldg.setAttribute('d', 'M 280 500 L 320 600 L 680 750 L 580 450 L 380 320 L 300 350 L 350 450 Z');
         bldg.setAttribute('class', 'ext-building-main');
-        bldg.onclick = () => openHall(MAP_DATA.complex[0]);
+        const mainBldgData = MAP_DATA.complex.find(c => c.id === 'main-building');
+        if (mainBldgData) bldg.onclick = (e) => { e.stopPropagation(); openHall(mainBldgData); };
         ext.appendChild(bldg);
         addSvgText(ext, 480, 580, 'Main\nBuilding');
 
         // Gardens
-        [{ d: 'M 240 550 L 310 600 L 260 760 L 200 700 Z', n: 'Sculpture\nGarden', x: 260, y: 680 },
-         { d: 'M 390 280 L 520 230 L 560 360 L 440 420 Z', n: 'Terraced\nGardens', x: 480, y: 310 },
-         { d: 'M 680 750 L 880 780 L 830 850 L 630 830 Z', n: 'Palm\nGarden', x: 750, y: 780 }]
+        [{ d: 'M 240 550 L 310 600 L 260 760 L 200 700 Z', n: 'Sculpture\nGarden', x: 260, y: 680, id: 'sculpture-garden' },
+         { d: 'M 390 280 L 520 230 L 560 360 L 440 420 Z', n: 'Terraced\nGardens', x: 480, y: 310, id: 'terraced-garden' },
+         { d: 'M 680 750 L 880 780 L 830 850 L 630 830 Z', n: 'Palm\nGarden', x: 750, y: 780, id: 'palm-garden' }]
         .forEach(g => {
             const p = svgEl('path'); p.setAttribute('d', g.d); p.setAttribute('class', 'ext-garden');
+            p.style.cursor = 'pointer';
+            const gData = MAP_DATA.complex.find(c => c.id === g.id);
+            if(gData) p.onclick = (e) => { e.stopPropagation(); openHall(gData); };
             ext.appendChild(p); addSvgText(ext, g.x, g.y, g.n);
         });
 
         // Landmarks
-        [{ d: 'M 280 720 L 410 820 L 450 720 L 320 650 Z', c: '#0b101a', s: '#d4af37', n: '1', x: 400, y: 750 },
-         { d: 'M 650 350 L 750 380 L 730 450 L 630 420 Z', c: '#0b101a', s: '#d4af37', n: '3', x: 680, y: 400 },
-         { d: 'M 320 350 L 380 400 L 350 450 L 280 400 Z', c: '#0b101a', s: '#d4af37', n: '4', x: 350, y: 420 },
-         { d: 'M 450 100 L 600 120 L 580 200 L 430 180 Z', c: '#0b101a', s: '#d4af37', n: '5', x: 500, y: 150 }]
+        [{ d: 'M 280 720 L 410 820 L 450 720 L 320 650 Z', c: '#0b101a', s: '#d4af37', n: '1', x: 400, y: 750, id: 'hanging-obelisk-ext' },
+         { d: 'M 650 350 L 750 380 L 730 450 L 630 420 Z', c: '#0b101a', s: '#d4af37', n: '3', x: 680, y: 400, id: 'khufu-boats-ext' },
+         { d: 'M 320 350 L 380 400 L 350 450 L 280 400 Z', c: '#0b101a', s: '#d4af37', n: '4', x: 350, y: 420, id: 'pyramid-steps' },
+         { d: 'M 450 100 L 600 120 L 580 200 L 430 180 Z', c: '#0b101a', s: '#d4af37', n: '5', x: 500, y: 150, id: 'conservation-centre-ext' },
+         { d: 'M 650 600 L 820 640 L 800 720 L 630 680 Z', c: '#0b101a', s: '#d4af37', n: '2', x: 730, y: 660, id: 'events-area' }]
         .forEach(l => {
             const p = svgEl('path'); p.setAttribute('d', l.d); p.style.fill = l.c; p.style.stroke = l.s; p.style.strokeWidth = '2'; p.setAttribute('class', 'ext-landmark');
+            p.style.cursor = 'pointer';
+            const lData = MAP_DATA.complex.find(c => c.id === l.id);
+            if(lData) p.onclick = (e) => { e.stopPropagation(); openHall(lData); };
             ext.appendChild(p);
             const t = svgEl('text'); t.setAttribute('x', l.x); t.setAttribute('y', l.y);
             t.setAttribute('class', 'ext-number'); t.textContent = l.n; ext.appendChild(t);
@@ -445,6 +465,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const t = svgEl('text'); t.setAttribute('x', ic.x); t.setAttribute('y', ic.y+5);
             t.setAttribute('text-anchor', 'middle'); t.setAttribute('fill', '#fff');
             t.setAttribute('style', 'font-weight:900;font-size:14px;font-family:Inter'); t.textContent = 'P'; g.appendChild(t);
+            g.style.cursor = 'pointer';
+            const pData = MAP_DATA.complex.find(c => c.id === 'parking-main');
+            if(pData) g.onclick = (e) => { e.stopPropagation(); openHall(pData); };
             ext.appendChild(g);
         });
 
@@ -455,14 +478,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const tt = svgEl('text'); tt.setAttribute('x', 260); tt.setAttribute('y', 785);
         tt.setAttribute('text-anchor', 'middle'); tt.setAttribute('fill', '#070a0f');
         tt.setAttribute('style', 'font-weight:900;font-size:14px;font-family:Inter'); tt.textContent = 'T'; tg.appendChild(tt);
+        tg.style.cursor = 'pointer';
+        const tData = MAP_DATA.complex.find(c => c.id === 'ticketing-entrance');
+        if(tData) tg.onclick = (e) => { e.stopPropagation(); openHall(tData); };
         ext.appendChild(tg);
 
-        // Clickable areas
-        MAP_DATA.complex.forEach(item => {
-            const c = svgEl('circle'); c.setAttribute('cx', item.coordinates.x); c.setAttribute('cy', item.coordinates.y);
-            c.setAttribute('r', 35); c.setAttribute('fill', 'transparent'); c.style.cursor = 'pointer';
-            c.onclick = e => { e.stopPropagation(); openHall(item); }; ext.appendChild(c);
-        });
+        // Removed overlapping transparent circles logic
+        // Clickable areas are now directly bound to the exact SVG visual paths!
     };
 
     const svgEl = tag => document.createElementNS('http://www.w3.org/2000/svg', tag);
