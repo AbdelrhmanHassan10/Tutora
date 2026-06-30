@@ -142,11 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ============================================
     
-    // ============================================
-    
-
-        // Create 15 royal shapes (Hieroglyphs)
-        const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
+    const shapesContainer = document.querySelector('.ambient-glow') || document.body;
+    // Create 15 royal shapes (Hieroglyphs)
+    const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
         for (let i = 0; i < 15; i++) {
             const shape = document.createElement('div');
             shape.className = 'royal-shape';
