@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!dustContainer) {
             dustContainer = document.createElement('div');
             dustContainer.id = 'dust-container';
-            dustContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; overflow: hidden;';
+            dustContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden;';
             document.body.appendChild(dustContainer);
         }
 
@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!shapesContainer) {
             shapesContainer = document.createElement('div');
             shapesContainer.id = 'shapes-container';
-            shapesContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; overflow: hidden;';
+            shapesContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden;';
             document.body.appendChild(shapesContainer);
         }
 

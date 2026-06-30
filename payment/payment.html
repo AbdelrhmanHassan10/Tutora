@@ -48,51 +48,51 @@
         <div class="container">
             <div class="checkout-header">
                 <h2 class="page-title">Secure Checkout</h2>
-                <nav class="breadcrumb">
-                    <a href="../booking/booking.html">BOOKING</a>
+                <nav class="breadcrumb" id="checkoutBreadcrumb">
+                    <a href="../booking/booking.html" id="breadFirst">BOOKING</a>
                     <span>/</span>
                     <a href="../payment/payment.html"> <span class="breadcrumb-active">Payment</span>
-                    </a> <span>/</span>
-                    <a href="../Profile/profile.html">My Tickets</a>
+                    </a> <span id="breadLastSep">/</span>
+                    <a href="../Profile/profile.html" id="breadLast">My Tickets</a>
                 </nav>
             </div>
 
             <!-- Progress Steps Indicator for consistency -->
-            <div class="progress-bar"
+            <div class="progress-bar" id="dynamicProgressBar"
                 style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; position: relative;">
-                <div class="progress-step" style="text-align: center; color: #94A3B8;">
+                <div class="progress-step" id="step1" style="text-align: center; color: #94A3B8;">
                     <div class="step-circle"
                         style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); display: flex; justify-content: center; align-items: center; margin: 0 auto 0.5rem;">
-                        <span class="material-symbols-outlined">calendar_month</span>
+                        <span class="material-symbols-outlined" id="step1Icon">calendar_month</span>
                     </div>
-                    <span class="step-label" style="font-size: 0.875rem;">Date & Time</span>
+                    <span class="step-label" id="step1Label" style="font-size: 0.875rem;">Date & Time</span>
                 </div>
-                <div class="progress-line"
+                <div class="progress-line" id="line1"
                     style="flex-grow: 1; height: 2px; background-color: var(--border-color); margin: 0 1rem;"></div>
-                <div class="progress-step" style="text-align: center; color: #94A3B8;">
+                <div class="progress-step" id="step2" style="text-align: center; color: #94A3B8;">
                     <div class="step-circle"
                         style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); display: flex; justify-content: center; align-items: center; margin: 0 auto 0.5rem;">
-                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <span class="material-symbols-outlined" id="step2Icon">confirmation_number</span>
                     </div>
-                    <span class="step-label" style="font-size: 0.875rem;">Tickets</span>
+                    <span class="step-label" id="step2Label" style="font-size: 0.875rem;">Tickets</span>
                 </div>
-                <div class="progress-line"
+                <div class="progress-line" id="line2"
                     style="flex-grow: 1; height: 2px; background-color: var(--border-color); margin: 0 1rem;"></div>
-                <div class="progress-step" style="text-align: center; color: #94A3B8;">
+                <div class="progress-step" id="step3" style="text-align: center; color: #94A3B8;">
                     <div class="step-circle"
                         style="width: 40px; height: 40px; border-radius: 50%; background-color: var(--border-color); display: flex; justify-content: center; align-items: center; margin: 0 auto 0.5rem;">
-                        <span class="material-symbols-outlined">add_circle</span>
+                        <span class="material-symbols-outlined" id="step3Icon">add_circle</span>
                     </div>
-                    <span class="step-label" style="font-size: 0.875rem;">Add-ons</span>
+                    <span class="step-label" id="step3Label" style="font-size: 0.875rem;">Add-ons</span>
                 </div>
-                <div class="progress-line"
+                <div class="progress-line" id="line3"
                     style="flex-grow: 1; height: 2px; background-color: var(--border-color); margin: 0 1rem;"></div>
-                <div class="progress-step active" style="text-align: center; color: #D4AF37;">
+                <div class="progress-step active" id="stepCheckout" style="text-align: center; color: #D4AF37;">
                     <div class="step-circle"
                         style="width: 40px; height: 40px; border-radius: 50%; background-color: #D4AF37; color: #1a1a1a; display: flex; justify-content: center; align-items: center; margin: 0 auto 0.5rem;">
-                        <span class="material-symbols-outlined">payments</span>
+                        <span class="material-symbols-outlined" id="stepCheckoutIcon">payments</span>
                     </div>
-                    <span class="step-label" style="font-size: 0.875rem; font-weight: bold;">Checkout</span>
+                    <span class="step-label" id="stepCheckoutLabel" style="font-size: 0.875rem; font-weight: bold;">Checkout</span>
                 </div>
             </div>
 

@@ -5631,7 +5631,7 @@ body.light .artifact-badge {
         height: 14px !important;
     }
 }      
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .header {
         padding: 0.5rem 0.75rem !important;
         background: #000 !important;
@@ -5752,7 +5752,8 @@ body.light .artifact-badge {
     }
 
     /* Light Mode Menu Fix */
-    body:not(.dark) .mobile-menu {
+    body:not(.dark) .mobile-menu,
+    body:not(.dark) .menu-nav {
         background-color: #ffffff !important;
         color: #333 !important;
     }
@@ -5763,7 +5764,8 @@ body.light .artifact-badge {
     }
 
     body:not(.dark) .menu-link, 
-    body:not(.dark) .dropdown-toggle {
+    body:not(.dark) .dropdown-toggle,
+    body:not(.dark) .dropdown-item {
         color: #333 !important;
     }
 
@@ -5964,4 +5966,172 @@ body.light .artifact-badge {
     font-size: 1.15rem !important;
     line-height: 1.4 !important;
     margin-top: 0.5rem !important;
+}
+
+/* =========================================================
+   👑 RESPONSIVE FIXES FOR ALL 3 SCREENS (Kids Museum) 👑
+   ========================================================= */
+
+/* Prevent Horizontal Overflow Globally */
+body {
+    overflow-x: hidden !important;
+    width: 100%;
+}
+main {
+    overflow-x: hidden !important;
+}
+
+/* Fix Chat Bubble Overflow */
+@media (max-width: 1024px) {
+    .welcome-chat-bubble {
+        right: -20px !important;
+        top: -40px !important;
+        max-width: 180px !important;
+        padding: 0.8rem 1rem !important;
+    }
+    .bubble-text {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* TABLET / SMALL DESKTOP (Max 1024px) */
+@media (max-width: 1024px) {
+    .hero-card {
+        padding: 2rem !important;
+    }
+    .hero-title {
+        font-size: 2.8rem !important;
+    }
+    .sandpit-wrapper, .board-container {
+        padding: 2rem !important;
+    }
+    .flip-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .board-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* MOBILE (Max 768px) */
+@media (max-width: 768px) {
+    .hero-card {
+        padding: 1.5rem !important;
+        flex-direction: column !important;
+    }
+    .hero-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+    .hero-text {
+        text-align: center !important;
+        max-width: 100% !important;
+    }
+    .hero-btns {
+        justify-content: center !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    .btn-primary-large {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    .hero-visual {
+        max-width: 20rem !important;
+        margin-top: 2rem !important;
+    }
+    .welcome-chat-bubble {
+        right: 0 !important;
+        left: 0 !important;
+        margin: 0 auto !important;
+        top: -30px !important;
+        max-width: 200px !important;
+        text-align: center !important;
+    }
+    .bubble-tail {
+        left: 50% !important;
+        transform: translateX(-50%) rotate(45deg) !important;
+    }
+    
+    .section-padding {
+        padding: 2.5rem 0 !important;
+    }
+    .section-title {
+        font-size: 2rem !important;
+    }
+    
+    .missions-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .flip-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .sandpit-wrapper {
+        padding: 1.25rem !important;
+        border-radius: 1rem !important;
+    }
+    .sandpit-layer {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .board-container {
+        padding: 1.5rem !important;
+        border-width: 4px !important;
+    }
+    .board-title {
+        font-size: 1.8rem !important;
+        margin-bottom: 2rem !important;
+    }
+    .board-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    .board-note {
+        min-height: 200px !important;
+        padding: 1.5rem !important;
+    }
+    
+    .cta-inner {
+        padding: 2rem 1rem !important;
+    }
+    .cta-title {
+        font-size: 1.8rem !important;
+    }
+    .cta-deco {
+        display: none !important;
+    }
+}
+
+/* SMALL MOBILE (Max 480px) */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem !important;
+    }
+    .hero-visual {
+        max-width: 16rem !important;
+    }
+    .section-title {
+        font-size: 1.6rem !important;
+    }
+    .welcome-chat-bubble {
+        display: none !important; /* Hide on very small screens to save space */
+    }
+    .flip-card {
+        height: 300px !important;
+    }
+    .dig-spot {
+        height: 250px !important;
+    }
+    .assistant-btn {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    .floating-assistant-wrap {
+        bottom: 20px !important;
+        right: 20px !important;
+    }
 }

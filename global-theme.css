@@ -92,8 +92,15 @@ body.light ::-webkit-scrollbar-thumb:hover {
     border-bottom: 1px solid var(--border-color) !important;
 }
 
-.theme-icon, .theme-text, .nav-item-link, .nav-link, .dropdown-trigger, .search-box input {
+.theme-icon, .theme-text, .nav-item-link, .nav-link, .dropdown-trigger, .search-box input, .icon-btn, .theme-btn, .profile-trigger .material-symbols-outlined {
     color: var(--text-primary) !important;
+}
+
+body.light .icon-btn .material-symbols-outlined,
+body.light .cart-btn .material-symbols-outlined,
+body.light .theme-btn .material-symbols-outlined,
+body.light .profile-trigger .material-symbols-outlined {
+    color: #0F172A !important;
 }
 
 .search-box {
@@ -1052,6 +1059,10 @@ body.light .shape-ring {
         background: #000 !important;
         border-bottom: 1px solid rgba(236, 182, 19, 0.2) !important;
     }
+    body.light .header {
+        background: #ffffff !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
     .header-container {
         width: 100% !important;
         padding: 0 !important;
@@ -1311,3 +1322,14 @@ body.light .footer-divider {
 @media (max-width: 768px) { #langBtn { display: none !important; } }
 
 @media (min-width: 769px) { .mobile-lang-item { display: none !important; } }
+
+/* ============================================
+   GLOBAL MOBILE MENU Z-INDEX FIX
+   Ensures the mobile menu and close button always appear ABOVE the header 
+   ============================================ */
+.mobile-menu {
+    z-index: 99999 !important;
+}
+.menu-overlay {
+    z-index: 99998 !important;
+}

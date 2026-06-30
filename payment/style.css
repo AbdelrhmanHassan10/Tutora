@@ -600,7 +600,7 @@ body.dark .form-input {
     margin-bottom: 6rem;
 }
 
-.footer-logo-ring {
+.footer-logo {
     margin-bottom: 2rem;
     position: relative;
     display: inline-flex;
@@ -612,7 +612,7 @@ body.dark .form-input {
     margin: 0 auto;
 }
 
-.footer-logo-ring::before {
+.footer-logo::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -623,7 +623,7 @@ body.dark .form-input {
     animation: rotateSeal 10s linear infinite;
 }
 
-.footer-logo-ring::after {
+.footer-logo::after {
     content: '';
     position: absolute;
     inset: 10px;
@@ -633,7 +633,7 @@ body.dark .form-input {
     animation: rotateSeal 15s linear infinite reverse;
 }
 
-.footer-logo-ring span {
+.footer-logo span {
     font-size: 3.5rem !important;
     color: #d4af37 !important;
     filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));

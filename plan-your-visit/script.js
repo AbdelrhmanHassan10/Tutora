@@ -85,29 +85,7 @@ const menuLinks = document.querySelectorAll('.menu-link');
 menuLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
 });
-// 3. Scroll Reveal Animation
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.ticket-card, .itinerary-card, .ai-planner, .info-card, .hero-content').forEach(el => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-});
-
-// 4. Parallax Effect handled by CSS background-attachment: fixed
-
-
+// Scroll Reveal and Parallax logic are now handled exclusively by global-core.js to avoid performance conflicts.
 // 5. AI Route Planner Logic (Enhanced)
 const plannerBtn = document.getElementById('generateRouteBtn');
 const plannerInput = document.querySelector('.planner-input');
@@ -226,82 +204,8 @@ faqQuestions.forEach(question => {
     });
 });
 
-// ============================================
-// ROYAL SUPERSTAR - ATMOSPHERIC SCRIPTS
-// ============================================
-function initRoyalAtmosphere() {
-    const dustContainer = document.getElementById('dust-container');
-    const shapesContainer = document.getElementById('shapes-container');
-    
-    if (!dustContainer || !shapesContainer) return;
-
-    // Create 150 dust particles
-    for (let i = 0; i < 150; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'dust-particle';
-        
-        const size = Math.random() * 3 + 1;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        
-        const left = Math.random() * 100;
-        const top = Math.random() * 100;
-        particle.style.left = `${left}%`;
-        particle.style.top = `${top}%`;
-        
-        const duration = Math.random() * 10 + 10;
-        const delay = Math.random() * 5;
-        particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
-        
-        dustContainer.appendChild(particle);
-    }
-
-    // Create 15 royal shapes (Hieroglyphs)
-    const hieroglyphs = ['𓂀', '𓋹', '𓅓', '𓇳', '𓇿', '𓆎', '𓃻', '𓂋', '𓏏', '𓈖'];
-    for (let i = 0; i < 15; i++) {
-        const shape = document.createElement('div');
-        shape.className = 'royal-shape';
-        shape.textContent = hieroglyphs[Math.floor(Math.random() * hieroglyphs.length)];
-        
-        const size = Math.random() * 20 + 20;
-        shape.style.fontSize = `${size}px`;
-        
-        const left = Math.random() * 100;
-        const top = Math.random() * 100;
-        shape.style.left = `${left}%`;
-        shape.style.top = `${top}%`;
-        
-        const duration = Math.random() * 20 + 20;
-        const delay = Math.random() * 10;
-        shape.style.animation = `rotateFloat ${duration}s infinite ease-in-out ${delay}s`;
-        
-        shapesContainer.appendChild(shape);
-    }
-}
-
-
-// 4. Hero Content Parallax Tilt
-const hero = document.querySelector('.hero');
-const heroContent = document.querySelector('.hero-content');
-
-if (hero && heroContent) {
-    hero.addEventListener('mousemove', (e) => {
-        const { width, height } = hero.getBoundingClientRect();
-        const mouseX = (e.clientX / width) - 0.5;
-        const mouseY = (e.clientY / height) - 0.5;
-        
-        heroContent.style.transform = `perspective(1000px) rotateY(${mouseX * 20}deg) rotateX(${mouseY * -20}deg) translateZ(50px)`;
-    });
-    
-    hero.addEventListener('mouseleave', () => {
-        heroContent.style.transform = `perspective(1000px) rotateY(0) rotateX(0) translateZ(0)`;
-    });
-}
-
-// Initialize Royal Atmosphere
-document.addEventListener('DOMContentLoaded', () => {
-    initRoyalAtmosphere();
-});
+// Royal Atmosphere and Cinematic Parallax are handled globally by global-core.js
+// Removed duplicate local execution to massively improve performance and reduce DOM overhead.
 
 // ============================================
 // THE DIVINE JOURNEY - EXTRA PREMIUM FEATURES

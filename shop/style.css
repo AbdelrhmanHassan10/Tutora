@@ -758,7 +758,8 @@ html.dark .dropdown-menu {
 }
 
 html:not(.dark) .dropdown-menu {
-    background-color: var(--text-primary);
+    background-color: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 .nav-dropdown:hover .dropdown-menu {
@@ -793,10 +794,14 @@ html.dark .dropdown-link:hover {
     padding-left: 1.5rem;
 }
 
+html:not(.dark) .dropdown-link {
+    color: #1a1a1a;
+}
+
 html:not(.dark) .dropdown-link:hover {
-    background-color: rgba(26, 26, 26, 0.1);
-    border-left-color: var(--text-dark);
-    color: var(--text-dark);
+    background-color: rgba(0, 0, 0, 0.05);
+    border-left-color: var(--primary-color);
+    color: var(--primary-color);
     padding-left: 1.5rem;
 }
 

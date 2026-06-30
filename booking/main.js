@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('currentBooking', JSON.stringify(bookingState));
 
                     setTimeout(() => {
-                        window.location.href = "../payment/payment.html"; // Assuming payment page exists
+                        window.location.href = "../payment/payment.html?source=booking";
                     }, 1000);
                 }
             }, stage.time);

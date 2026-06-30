@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Link to booking/payment
-        window.location.href = '../booking/booking.html';
+        // Link to payment directly, bypassing ticket booking
+        window.location.href = '../payment/payment.html?source=shop';
     };
 
     // Initial render

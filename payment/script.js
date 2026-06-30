@@ -46,20 +46,44 @@
     // ============================================
 
     function initializeOrderSummary() {
-        // Retrieve the booking data saved by the previous page
-        const bookingDataString = localStorage.getItem('currentBooking');
+        const source = new URLSearchParams(window.location.search).get('source') || 'booking';
 
-        if (!bookingDataString) {
-            console.error("No booking data found in localStorage.");
-            // Display an error message if no data is found
-            const orderCard = document.querySelector('.order-card');
-            if (orderCard) {
-                orderCard.innerHTML = '<p style="color: red; padding: 1rem;">Booking details not found. Please go back and try again.</p>';
-            }
-            return;
+        // Setup UI based on source
+        const breadFirst = document.getElementById('breadFirst');
+        const breadLast = document.getElementById('breadLast');
+        
+        const step1 = document.getElementById('step1');
+        const step1Icon = document.getElementById('step1Icon');
+        const step1Label = document.getElementById('step1Label');
+        const line1 = document.getElementById('line1');
+        const step2 = document.getElementById('step2');
+        const step2Icon = document.getElementById('step2Icon');
+        const step2Label = document.getElementById('step2Label');
+        const line2 = document.getElementById('line2');
+        const step3 = document.getElementById('step3');
+        const line3 = document.getElementById('line3');
+        
+        if (source === 'shop') {
+            if(breadFirst) { breadFirst.textContent = 'SHOP'; breadFirst.href = '../shop/shop.html'; }
+            if(breadLast) { breadLast.textContent = 'My Orders'; breadLast.href = '../Profile/profile.html'; }
+            
+            if(step1Icon) step1Icon.textContent = 'shopping_bag';
+            if(step1Label) step1Label.textContent = 'Cart';
+            if(step2) step2.style.display = 'none';
+            if(line2) line2.style.display = 'none';
+            if(step3) step3.style.display = 'none';
+            if(line3) line3.style.display = 'none';
+        } else if (source === 'dining') {
+            if(breadFirst) { breadFirst.textContent = 'DINING'; breadFirst.href = '../-museum_dining/code.html'; }
+            if(breadLast) { breadLast.textContent = 'Reservations'; breadLast.href = '../Profile/profile.html'; }
+            
+            if(step1Icon) step1Icon.textContent = 'restaurant';
+            if(step1Label) step1Label.textContent = 'Table';
+            if(step2Icon) step2Icon.textContent = 'restaurant_menu';
+            if(step2Label) step2Label.textContent = 'Menu';
+            if(step3) step3.style.display = 'none';
+            if(line3) line3.style.display = 'none';
         }
-
-        const bookingState = JSON.parse(bookingDataString);
 
         // --- UI Elements to Update ---
         const orderItemsContainer = document.querySelector('.order-items');
@@ -71,80 +95,89 @@
         // --- Calculation Logic ---
         let subtotal = 0;
         let itemsHTML = '';
-        const isIntl = bookingState.visitorType === 'international';
-        const currencySymbol = isIntl ? '$' : 'EGP ';
+        let isIntl = true;
+        let currencySymbol = '$';
 
-        // Calculate subtotal from tickets
-        Object.values(bookingState.tickets).forEach(ticket => {
-            if (ticket.quantity > 0) {
-                const price = isIntl ? ticket.price.intl : ticket.price.local;
-                const itemTotal = ticket.quantity * price;
-                subtotal += itemTotal;
-                itemsHTML += `
-                    <div class="order-item">
-                        <img class="item-img" src="./unnamed (5).png" alt="Ticket">
-                        <div class="item-info">
-                            <p class="item-name">${ticket.name}</p>
-                            <p class="item-details">Qty: ${ticket.quantity} | ${currencySymbol}${price.toLocaleString()}</p>
-                        </div>
-                    </div>
-                `;
+        if (source === 'booking') {
+            const bookingDataString = localStorage.getItem('currentBooking');
+            if (!bookingDataString) {
+                if (orderItemsContainer) orderItemsContainer.innerHTML = '<p style="color: red; padding: 1rem;">Booking details not found. Please go back and try again.</p>';
+                return;
             }
-        });
+            const bookingState = JSON.parse(bookingDataString);
+            isIntl = bookingState.visitorType === 'international';
+            currencySymbol = isIntl ? '$' : 'EGP ';
 
-        // Calculate subtotal from addons
-        Object.values(bookingState.addons).forEach(addon => {
-            if (addon.selected) {
-                const price = isIntl ? addon.price : addon.price * 50; // Simple conversion for addons
-                subtotal += price;
-                itemsHTML += `
-                    <div class="order-item">
-                        <img class="item-img" src="./unnamed (5).png" alt="Add-on">
-                        <div class="item-info">
-                            <p class="item-name">${addon.name}</p>
-                            <p class="item-details">Qty: 1 | ${currencySymbol}${price.toLocaleString()}</p>
+            Object.values(bookingState.tickets || {}).forEach(ticket => {
+                if (ticket.quantity > 0) {
+                    const price = isIntl ? ticket.price.intl : ticket.price.local;
+                    const itemTotal = ticket.quantity * price;
+                    subtotal += itemTotal;
+                    itemsHTML += `
+                        <div class="order-item">
+                            <img class="item-img" src="./unnamed (5).png" alt="Ticket">
+                            <div class="item-info">
+                                <p class="item-name">${ticket.name}</p>
+                                <p class="item-details">Qty: ${ticket.quantity} | ${currencySymbol}${price.toLocaleString()}</p>
+                            </div>
                         </div>
-                    </div>
-                `;
-            }
-        });
+                    `;
+                }
+            });
 
-        // Add Dining Logic if present
-        if (bookingState.dining) {
-            const deposit = isIntl ? 5.00 : 5.00 * 50; // Use $5.00 as previously set
+            Object.values(bookingState.addons || {}).forEach(addon => {
+                if (addon.selected) {
+                    const price = isIntl ? addon.price : addon.price * 50;
+                    subtotal += price;
+                    itemsHTML += `
+                        <div class="order-item">
+                            <img class="item-img" src="./unnamed (5).png" alt="Add-on">
+                            <div class="item-info">
+                                <p class="item-name">${addon.name}</p>
+                                <p class="item-details">Qty: 1 | ${currencySymbol}${price.toLocaleString()}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+        } else if (source === 'dining') {
+            const diningDataString = localStorage.getItem('diningBooking');
+            if (!diningDataString) {
+                if (orderItemsContainer) orderItemsContainer.innerHTML = '<p style="color: red; padding: 1rem;">Reservation details not found.</p>';
+                return;
+            }
+            const diningState = JSON.parse(diningDataString);
+            const deposit = 5.00;
             subtotal += deposit;
             itemsHTML += `
                 <div class="order-item">
                     <div class="item-info">
-                        <p class="item-name">${bookingState.dining.venue} Reservation</p>
+                        <p class="item-name">${diningState.venue} Reservation</p>
                         <p class="item-details">Deposit: ${currencySymbol}${deposit.toLocaleString()}</p>
                     </div>
                 </div>
             `;
-        }
-
-        // Add Shop Items (from cart)
-        const cartData = localStorage.getItem('tutora_cart');
-        if (cartData) {
+        } else if (source === 'shop') {
+            const cartData = localStorage.getItem('tutora_cart');
+            if (!cartData) {
+                if (orderItemsContainer) orderItemsContainer.innerHTML = '<p style="color: red; padding: 1rem;">Cart is empty.</p>';
+                return;
+            }
             try {
                 const cartItems = JSON.parse(cartData);
-                if (cartItems && cartItems.length > 0) {
-                    cartItems.forEach(item => {
-                        const itemTotal = item.price * item.quantity;
-                        // Shop items are typically priced in $, convert if local
-                        const price = isIntl ? itemTotal : itemTotal * 50; 
-                        subtotal += price;
-                        itemsHTML += `
-                            <div class="order-item">
-                                <img class="item-img" src="${item.image}" alt="Shop Item" onerror="this.src='./unnamed (5).png'">
-                                <div class="item-info">
-                                    <p class="item-name">${item.name}</p>
-                                    <p class="item-details">Qty: ${item.quantity} | ${currencySymbol}${price.toLocaleString()}</p>
-                                </div>
+                cartItems.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    itemsHTML += `
+                        <div class="order-item">
+                            <img class="item-img" src="${item.image}" alt="Shop Item" onerror="this.src='./unnamed (5).png'">
+                            <div class="item-info">
+                                <p class="item-name">${item.name}</p>
+                                <p class="item-details">Qty: ${item.quantity} | ${currencySymbol}${itemTotal.toLocaleString()}</p>
                             </div>
-                        `;
-                    });
-                }
+                        </div>
+                    `;
+                });
             } catch (e) {
                 console.error("Failed to parse cart items in payment page:", e);
             }

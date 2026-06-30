@@ -992,6 +992,21 @@ body.light .dropdown-link:hover {
         color: #fff !important;
     }
     
+    /* Light Mode Mobile Overrides */
+    body.light .header {
+        background: #ffffff !important;
+        border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+    }
+    body.light .menu-btn,
+    body.light .logo-text,
+    body.light .theme-btn,
+    body.light .icon-btn {
+        color: #1a1a1a !important;
+    }
+    body.light .logo-circle {
+        border-color: #1a1a1a !important;
+    }
+    
     .theme-btn span, .icon-btn span {
         font-size: 1.4rem !important;
     }
