@@ -130,7 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateBookingsUI(bookings) {
         const listContainer = document.getElementById('bookingsList');
-        if (!listContainer || bookings.length === 0) return;
+        if (!listContainer) return;
+        if (bookings.length === 0) {
+            listContainer.innerHTML = '<p class="empty-state" style="padding: 1rem; color: #a0a0a0;">No bookings yet.</p>';
+            return;
+        }
         
         let html = '';
         bookings.forEach(b => {
@@ -202,7 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateFavoritesUI(favorites) {
         const carousel = document.querySelector('.carousel-container');
-        if (!carousel || favorites.length === 0) return;
+        if (!carousel) return;
+        if (favorites.length === 0) {
+            carousel.innerHTML = '<p class="empty-state" style="padding: 1rem; color: #a0a0a0;">No saved treasures yet.</p>';
+            return;
+        }
         
         carousel.innerHTML = '';
         favorites.forEach(fav => {

@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
             artCard.innerHTML = `
                 <div class="artifact-img-box">
                     <img src="${art.image}" alt="${art.name}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=2070&auto=format&fit=crop';">
-                    <button class="favorite-btn" onclick="toggleFavorite(this, event)">
+                    <button class="favorite-btn" onclick="toggleFavorite(this, event, '${artId}', '${art.name.replace(/'/g, "\\'")}', '../Exhibition-Halls/${art.image}', '${periodText}', '${art.desc.replace(/'/g, "\\'")}')">
                         <span class="material-symbols-outlined">favorite_border</span>
                     </button>
                 </div>
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
             observer.observe(el);
         });
 
-        // Update Breadcrumb
+        // Update Breadcrumb
         breadcrumbCurrent.innerText = hall.name;
         
         // Toggle Sections
@@ -398,12 +398,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         returnToHalls();
     });
-
-    // Interaction Handlers
-    window.toggleFavorite = (btn, event) => {
-        event.stopPropagation();
-        btn.classList.toggle('active');
-    };
 
     window.playAudio = (name, event) => {
         event.stopPropagation();

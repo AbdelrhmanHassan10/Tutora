@@ -241,7 +241,7 @@
         <div class="hero-actions">
           <a href="../booking/booking.html" class="btn-primary">
             <span class="material-symbols-outlined">confirmation_number</span>Book Tickets Now</a>
-          <a href="#" class="btn-outline" data-i18n="evt.hero_btn_learn">Learn More</a>
+          <a href="../About us/About-us.html" class="btn-outline" data-i18n="evt.hero_btn_learn">Learn More</a>
         </div>
       </div>
     </section>
@@ -573,6 +573,30 @@
         </div>
       </div>
     </section>
+
+    <!-- Event Details Modal -->
+    <div class="event-modal-overlay" id="eventModal">
+      <div class="event-modal-content">
+        <button class="event-modal-close" id="closeEventModal">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="event-modal-image" id="modalEventImage"></div>
+        <div class="event-modal-body">
+          <div class="event-modal-header">
+            <span class="badge-selling" id="modalEventBadge" style="position: static; animation: none; display: none;"></span>
+            <div class="event-date" id="modalEventDate" style="margin-bottom: 0;"></div>
+          </div>
+          <h3 class="event-title" id="modalEventTitle" style="font-size: 2rem; margin-top: 1rem;"></h3>
+          <p class="event-desc" id="modalEventDesc" style="font-size: 1.1rem; margin-bottom: 2rem;"></p>
+          <div class="card-footer" style="padding-top: 1.5rem; justify-content: space-between;">
+            <span class="event-location" id="modalEventLocation" style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;"></span>
+            <a href="../booking/booking.html" class="btn-primary" id="modalBookBtn" style="border-radius: 8px; padding: 0.8rem 1.5rem; font-size: 1rem;">
+              <span class="material-symbols-outlined">confirmation_number</span> <span data-i18n="evt.book_now">Book Tickets</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <hr>
   <!-- Footer -->

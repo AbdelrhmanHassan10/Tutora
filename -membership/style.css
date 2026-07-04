@@ -3276,3 +3276,205 @@ body { overflow-x: hidden; width: 100%; position: relative; }
     text-transform: uppercase !important;
     margin-bottom: 1.5rem !important;
 }
+
+/* --- Payment Modal Styles --- */
+.payment-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.payment-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.payment-modal-content {
+    background: var(--bg-card, #1a1a1a);
+    border: 1px solid rgba(236, 182, 19, 0.2);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    padding: 2.5rem;
+    position: relative;
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.payment-modal-overlay.active .payment-modal-content {
+    transform: translateY(0);
+}
+
+.close-payment-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary, #aaa);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-payment-btn:hover {
+    color: var(--primary-gold, #ecb613);
+}
+
+.payment-modal-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.payment-modal-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-gold, #ecb613);
+}
+
+.payment-price {
+    font-size: 1.2rem;
+    color: var(--text-secondary, #aaa);
+}
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #aaa);
+}
+
+.payment-form input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary, #fff);
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.payment-form input:focus {
+    outline: none;
+    border-color: var(--primary-gold, #ecb613);
+    background: rgba(236, 182, 19, 0.05);
+}
+
+.form-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-secondary, #aaa);
+    font-size: 0.85rem;
+    margin: 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-divider::before, .form-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-divider::before { margin-right: .5em; }
+.form-divider::after { margin-left: .5em; }
+
+.card-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.card-input-wrapper input {
+    width: 100%;
+    padding-left: 2.8rem;
+    box-sizing: border-box;
+}
+
+.card-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-secondary, #aaa);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.half-width {
+    flex: 1;
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.btn-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.payment-success-msg {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #4cd137;
+    margin-bottom: 1rem;
+}
+
+.payment-success-msg h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-gold, #ecb613);
+}
+
+.payment-success-msg p {
+    color: var(--text-secondary, #aaa);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+    .payment-modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}

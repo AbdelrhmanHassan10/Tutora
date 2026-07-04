@@ -729,18 +729,20 @@ body.dark .dropdown-items {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
+    background-color: #000;
+    overflow: hidden;
 }
 
 .loader-icon img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(236, 182, 19, 0.5));
+    object-fit: cover;
 }
 
 @keyframes spin-loader { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }

@@ -1,30 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Theme Management (Standardized)
-    const body = document.body;
-    const themeBtn = document.getElementById('themeBtn');
-    
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    body.classList.remove('dark', 'light');
-    body.classList.add(savedTheme);
-    updateThemeIcon(savedTheme);
-
-    function updateThemeIcon(theme) {
-        const icon = themeBtn?.querySelector('.material-symbols-outlined');
-        if (icon) {
-            icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
-        }
-    }
-
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            const isDark = body.classList.contains('dark');
-            const newTheme = isDark ? 'light' : 'dark';
-            body.classList.remove('dark', 'light');
-            body.classList.add(newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-    }
+    // 1. Theme Management is handled globally by global-core.js
 
     // 2. Profile Image Synchronization
     function syncProfile() {

@@ -151,6 +151,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let lastAnalyzedFile = null;
 
+    // ============================================
+    // AUDIO HELPER: Safe stop for any playing audio
+    // ============================================
+    function stopCurrentAudio() {
+        if (window.currentAudioInstance) {
+            try {
+                window.currentAudioInstance.pause();
+                window.currentAudioInstance.currentTime = 0;
+                window.currentAudioInstance.removeAttribute('src');
+                window.currentAudioInstance.load();
+            } catch (e) { /* ignore */ }
+            window.currentAudioInstance = null;
+        }
+    }
+
     // Show Related Statues
     function showRelatedStatues(detectedName) {
         const relatedSection = document.getElementById('related-statues-section');
@@ -185,16 +200,206 @@ document.addEventListener('DOMContentLoaded', () => {
         relatedSection.classList.add('visible');
     }
 
+    // ============================================
+    // HELPER: Show scan results in the UI
+    // ============================================
+    function showScanResults(data, file, audioUrlField) {
+        let detected = data.artifact_name || data.class_name || data.detected || data.name || (data.predictions && data.predictions[0]?.className) || "Mysterious Artifact";
+        let confidenceValue = data.confidence || data.probability || (data.predictions && data.predictions[0]?.probability ? (data.predictions[0].probability * 100).toFixed(1) : null);
+        
+        // Format confidence properly
+        let confidence = 'High';
+        if (confidenceValue !== null) {
+            confidence = typeof confidenceValue === 'number' ? confidenceValue.toFixed(1) + '%' : confidenceValue + (String(confidenceValue).includes('%') ? '' : '%');
+        }
+
+        const storyText = data.story || data.description || data.text || 'This artifact appears to be from the ancient Egyptian archives. Its specific details are being cross-referenced with our digital library.';
+
+        resultTitle.textContent = `Match Found: ${detected}`;
+        resultDesc.innerHTML = `
+            <div class="result-details">
+                <div class="match-meta">
+                    <span class="confidence-tag"><span class="material-symbols-outlined">verified</span> ${confidence} Confidence</span>
+                </div>
+                <p class="artifact-info-text">${storyText}</p>
+                <div class="result-actions" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+                     <button class="btn-primary" id="listenStoryBtn" style="padding: 1rem 2.5rem;"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
+                     <button class="btn-secondary" onclick="window.location.href='../collection/collection.html'" style="padding: 1rem 2.5rem; background: rgba(255,255,255,0.05);"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
+                     <button class="btn-primary" id="generate3dBtn" style="padding: 1rem 2.5rem; background: #8b5cf6; border-color: #8b5cf6;"><span class="material-symbols-outlined">view_in_ar</span> Generate 3D Model</button>
+                </div>
+            </div>
+        `;
+        
+        console.log("Audio URL from prediction:", audioUrlField);
+        
+        // Listen to Story button — uses audio URL if available, otherwise generates TTS from the story text
+        document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
+            if (audioUrlField) {
+                generateStoryAudio(null, audioUrlField);
+            } else {
+                // No audio URL — try generating TTS from the story text using browser TTS as fallback
+                console.warn("No audio URL provided by server, trying TTS fallback...");
+                generateStoryAudioWithTextFallback(storyText, lastAnalyzedFile);
+            }
+        });
+
+        // 3D Model button
+        document.getElementById('generate3dBtn')?.addEventListener('click', async (e) => {
+            const btn = e.target.closest('button');
+            btn.disabled = true;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px; margin-right: 8px;"></div> Generating 3D...`;
+            
+            try {
+                const token = localStorage.getItem('token');
+                const formData3d = new FormData();
+                formData3d.append('image', file);
+                
+                const response3d = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/ai/image-to-3d', {
+                    method: 'POST',
+                    headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+                    body: formData3d
+                });
+                
+                const data3d = await response3d.json();
+                const modelUrl = data3d.model_3d_url || data3d.model3dUrl || data3d.model_url || data3d.model3d_url || data3d['3d_model_url'] || data3d['3d_url'] || data3d.model || (data3d.model_3d && data3d.model_3d.url);
+                
+                if (response3d.ok && modelUrl) {
+                    window.open(modelUrl, '_blank');
+                    btn.innerHTML = `<span class="material-symbols-outlined">check_circle</span> 3D Ready`;
+                    setTimeout(() => { btn.disabled = false; btn.innerHTML = originalText; }, 3000);
+                } else {
+                    throw new Error(data3d.message || data3d.error || 'No 3D model URL returned by the server');
+                }
+            } catch (err) {
+                console.error('3D generation error:', err);
+                alert('Could not generate 3D model: ' + err.message);
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        });
+        
+        showRelatedStatues(detected);
+        loadDetectionHistory();
+    }
+
+    // ============================================
+    // TTS Fallback: Try API TTS with text, then browser TTS
+    // ============================================
+    async function generateStoryAudioWithTextFallback(storyText, file) {
+        const listenBtn = document.getElementById('listenStoryBtn');
+        if (listenBtn) {
+            listenBtn.disabled = true;
+            listenBtn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px;"></div> Generating Audio...`;
+        }
+
+        try {
+            // Attempt 1: Send text to TTS API (like AI Guide does)
+            const token = localStorage.getItem('token');
+            const lang = localStorage.getItem('language') || 'en';
+            
+            const ttsResponse = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/text-to-speech`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ text: storyText, language: lang })
+            });
+
+            if (ttsResponse.ok) {
+                const contentType = ttsResponse.headers.get('content-type') || '';
+                
+                if (contentType.includes('audio') || contentType.includes('octet-stream')) {
+                    // Server returned audio blob directly (like AI Guide)
+                    const blob = await ttsResponse.blob();
+                    const audioUrl = URL.createObjectURL(blob);
+                    if (listenBtn) listenBtn.dataset.cachedUrl = audioUrl;
+                    generateStoryAudio(null, audioUrl);
+                    return;
+                } else {
+                    // Server returned JSON with audio URL
+                    const ttsData = await ttsResponse.json();
+                    const audioUrl = ttsData.audio_url || ttsData.audioUrl || ttsData.audio || ttsData.url;
+                    if (audioUrl) {
+                        generateStoryAudio(null, audioUrl);
+                        return;
+                    }
+                }
+            }
+            
+            // Attempt 2: If API TTS failed, try re-sending image
+            if (file) {
+                console.log("Text TTS failed, retrying with image...");
+                generateStoryAudio(file, null);
+                return;
+            }
+
+            // Attempt 3: Browser TTS fallback
+            throw new Error('API TTS unavailable');
+
+        } catch (error) {
+            console.warn('API TTS failed, using browser speech synthesis fallback:', error.message);
+            
+            if (listenBtn) {
+                listenBtn.disabled = false;
+            }
+
+            // Use browser's built-in speech synthesis
+            if (window.speechSynthesis && storyText) {
+                stopCurrentAudio();
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(storyText);
+                const lang = localStorage.getItem('language') || 'en';
+                utterance.lang = lang === 'ar' ? 'ar-EG' : 'en-US';
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                
+                utterance.onstart = () => {
+                    if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+                };
+                utterance.onend = () => {
+                    if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">replay</span> Replay Story`;
+                };
+                utterance.onerror = () => {
+                    if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
+                };
+
+                // Store reference for pause/resume
+                window.currentBrowserUtterance = utterance;
+                
+                if (listenBtn) {
+                    // Override click for pause/resume of browser TTS
+                    listenBtn.onclick = () => {
+                        if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+                            window.speechSynthesis.pause();
+                            listenBtn.innerHTML = `<span class="material-symbols-outlined">play_arrow</span> Resume Story`;
+                        } else if (window.speechSynthesis.paused) {
+                            window.speechSynthesis.resume();
+                            listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+                        } else {
+                            window.speechSynthesis.speak(utterance);
+                        }
+                    };
+                }
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_off</span> Audio Unavailable`;
+                alert('⚠️ Audio is not available. Your browser does not support speech synthesis.');
+            }
+        }
+    }
+
     // AI Analysis Integration
     async function analyzeImage(file) {
         const token = localStorage.getItem('token');
         lastAnalyzedFile = file;
 
         // Stop any currently playing audio
-        if (window.currentAudioInstance && !window.currentAudioInstance.paused) {
-            window.currentAudioInstance.pause();
-            window.currentAudioInstance = null;
-        }
+        stopCurrentAudio();
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
 
         if (!token) {
             alert('🔐 Please login to use the AI Scanner.');
@@ -220,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('language', lang);
 
         try {
-            // Call the text-to-speech AI API to get detection, story, and audio
+            // ── STEP 1: Try text-to-speech endpoint (combined detection + TTS) ──
             const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/text-to-speech`, {
                 method: 'POST',
                 headers: token ? { 'Authorization': `Bearer ${token}` } : {},
@@ -228,120 +433,167 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const data = await response.json();
+            console.log("TTS API response:", { status: response.status, ok: response.ok, data });
             
-            // Extract data using the new API format
-            let detected = data.artifact_name || data.class_name || data.detected || data.name || (data.predictions && data.predictions[0]?.className) || "Mysterious Artifact";
-            let confidenceValue = data.confidence || data.probability || (data.predictions && data.predictions[0]?.probability ? (data.predictions[0].probability * 100).toFixed(1) : null);
+            // Check if we got detection data even if response is not ok
+            const hasDetectionData = data.artifact_name || data.class_name || data.detected || data.name || 
+                                     (data.predictions && data.predictions.length > 0);
             
-            // Format confidence properly
-            let confidence = 'High';
-            if (confidenceValue !== null) {
-                confidence = typeof confidenceValue === 'number' ? confidenceValue.toFixed(1) + '%' : confidenceValue + (String(confidenceValue).includes('%') ? '' : '%');
-            }
+            const audioUrlField = data.audio_url || data.audioUrl || data.audio;
 
-            if (response.ok) {
-                resultTitle.textContent = `Match Found: ${detected}`;
-                resultDesc.innerHTML = `
-                    <div class="result-details">
-                        <div class="match-meta">
-                            <span class="confidence-tag"><span class="material-symbols-outlined">verified</span> ${confidence} Confidence</span>
-                        </div>
-                        <p class="artifact-info-text">${data.story || data.description || data.text || 'This artifact appears to be from the ancient Egyptian archives. Its specific details are being cross-referenced with our digital library.'}</p>
-                        <div class="result-actions" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-                             <button class="btn-primary" id="listenStoryBtn" style="padding: 1rem 2.5rem;"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
-                             <button class="btn-secondary" onclick="window.location.href='../collection/collection.html'" style="padding: 1rem 2.5rem; background: rgba(255,255,255,0.05);"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
-                             <button class="btn-primary" id="generate3dBtn" style="padding: 1rem 2.5rem; background: #8b5cf6; border-color: #8b5cf6;"><span class="material-symbols-outlined">view_in_ar</span> Generate 3D Model</button>
-                        </div>
-                    </div>
-                `;
-                
-                const audioUrlField = data.audio_url || data.audioUrl || data.audio || data.url;
-                console.log("Audio URL from prediction:", audioUrlField);
-                document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
-                    if (audioUrlField) {
-                        // We already have the audio URL from text-to-speech, don't pass the file so it doesn't regenerate
-                        generateStoryAudio(null, audioUrlField);
-                    } else {
-                        console.warn("No audio URL provided by server");
-                        // Fallback
-                        generateStoryAudio(lastAnalyzedFile, null);
-                    }
-                });
-
-                document.getElementById('generate3dBtn')?.addEventListener('click', async (e) => {
-                    const btn = e.target.closest('button');
-                    btn.disabled = true;
-                    const originalText = btn.innerHTML;
-                    btn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px; margin-right: 8px;"></div> Generating 3D...`;
-                    
-                    try {
-                        const token = localStorage.getItem('token');
-                        const formData3d = new FormData();
-                        formData3d.append('image', file);
-                        
-                        const response3d = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/ai/image-to-3d', {
-                            method: 'POST',
-                            headers: token ? { 'Authorization': `Bearer ${token}` } : {},
-                            body: formData3d
-                        });
-                        
-                        const data3d = await response3d.json();
-                        const modelUrl = data3d.model_3d_url || data3d.model3dUrl || data3d.model_url || data3d.model3d_url || data3d['3d_model_url'] || data3d['3d_url'] || data3d.model || (data3d.model_3d && data3d.model_3d.url);
-                        
-                        if (response3d.ok && modelUrl) {
-                            window.open(modelUrl, '_blank');
-                            btn.innerHTML = `<span class="material-symbols-outlined">check_circle</span> 3D Ready`;
-                            setTimeout(() => { btn.disabled = false; btn.innerHTML = originalText; }, 3000);
-                        } else {
-                            throw new Error(data3d.message || data3d.error || 'No 3D model URL returned by the server');
-                        }
-                    } catch (err) {
-                        console.error('3D generation error:', err);
-                        alert('Could not generate 3D model: ' + err.message);
-                        btn.innerHTML = originalText;
-                        btn.disabled = false;
-                    }
-                });
-                showRelatedStatues(detected);
-                loadDetectionHistory();
+            if (response.ok && hasDetectionData) {
+                // ✅ Full success — both detection and TTS worked
+                showScanResults(data, file, audioUrlField);
+            } else if (hasDetectionData) {
+                // ⚠️ Partial success — detection worked but TTS may have failed
+                console.warn("TTS failed but detection data found. Showing results without audio URL.");
+                showScanResults(data, file, audioUrlField || null);
             } else {
-                resultTitle.textContent = 'Identification Unsuccessful';
-                resultDesc.textContent = data.message || 'Could not find a match. Please try a clearer photo.';
+                // ❌ TTS endpoint completely failed — try fallback detection
+                console.warn("TTS endpoint failed completely, trying fallback...", data.message || data.error);
+                await fallbackDetection(file, token, lang);
             }
         } catch (error) {
             console.error('AI Detection Error:', error);
-            resultTitle.textContent = 'Neural Link Interrupted';
-            resultDesc.textContent = 'Connection issue. Please check your network.';
+            // Network error on TTS — try fallback detection
+            try {
+                const token2 = localStorage.getItem('token');
+                const lang2 = localStorage.getItem('language') || 'en';
+                await fallbackDetection(file, token2, lang2);
+            } catch (fallbackError) {
+                console.error('Fallback also failed:', fallbackError);
+                resultTitle.textContent = 'Neural Link Interrupted';
+                resultDesc.textContent = 'Connection issue. Please check your network and try again.';
+            }
         }
     }
 
-    async function generateStoryAudio(file, audioUrl) {
-        const listenBtn = document.getElementById('listenStoryBtn');
+    // ============================================
+    // FALLBACK: Try alternative detection endpoints
+    // ============================================
+    async function fallbackDetection(file, token, lang) {
+        console.log("Attempting fallback detection endpoints...");
         
-        // Handle play/pause if audio is already active
-        if (window.currentAudioInstance && !window.currentAudioInstance.ended && listenBtn && listenBtn.dataset.cachedUrl) {
-            if (!window.currentAudioInstance.paused) {
-                window.currentAudioInstance.pause();
-                listenBtn.innerHTML = `<span class="material-symbols-outlined">play_arrow</span> Resume Story`;
-                return;
-            } else {
-                window.currentAudioInstance.play();
-                listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
-                return;
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('language', lang);
+
+        // Try multiple possible detection endpoints
+        const endpoints = [
+            `https://gem-backend-production-1ea2.up.railway.app/api/ai/detect`,
+            `https://gem-backend-production-1ea2.up.railway.app/api/ai/identify`,
+            `https://gem-backend-production-1ea2.up.railway.app/api/ai/scan`,
+            `https://gem-backend-production-1ea2.up.railway.app/api/ai/predict`
+        ];
+
+        for (const endpoint of endpoints) {
+            try {
+                console.log(`Trying fallback: ${endpoint}`);
+                const fallbackForm = new FormData();
+                fallbackForm.append('image', file);
+                fallbackForm.append('language', lang);
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+                    body: fallbackForm
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const hasData = data.artifact_name || data.class_name || data.detected || data.name || 
+                                    (data.predictions && data.predictions.length > 0);
+                    if (hasData) {
+                        console.log(`Fallback success on: ${endpoint}`);
+                        const audioUrl = data.audio_url || data.audioUrl || data.audio;
+                        showScanResults(data, file, audioUrl || null);
+                        return;
+                    }
+                }
+            } catch (e) {
+                console.warn(`Fallback ${endpoint} failed:`, e.message);
+                continue;
             }
         }
 
-        // Replay using cached URL if already generated for this artifact
-        if (listenBtn && listenBtn.dataset.cachedUrl) {
-            window.currentAudioInstance = new Audio(listenBtn.dataset.cachedUrl);
-            window.currentAudioInstance.onended = () => {
-                if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">replay</span> Replay Story`;
-            };
-            listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
-            window.currentAudioInstance.play().catch(e => console.error("Replay error", e));
+        // All fallbacks failed
+        resultTitle.textContent = 'Identification Unsuccessful';
+        resultTitle.style.color = '#ef4444';
+        resultDesc.innerHTML = `
+            <div style="text-align: center; padding: 20px;">
+                <span class="material-symbols-outlined" style="font-size: 48px; color: #ef4444; margin-bottom: 12px; display: block;">error_outline</span>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 16px;">The AI could not process this image. This may be due to a temporary server issue.</p>
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn-primary" onclick="document.getElementById('scan-upload').click()" style="padding: 0.8rem 2rem;">
+                        <span class="material-symbols-outlined">refresh</span> Try Another Photo
+                    </button>
+                    <button class="btn-secondary" onclick="location.reload()" style="padding: 0.8rem 2rem; background: rgba(255,255,255,0.05);">
+                        <span class="material-symbols-outlined">restart_alt</span> Reload Page
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    // ============================================
+    // AUDIO PLAYBACK - FULLY FIXED
+    // ============================================
+    async function generateStoryAudio(file, audioUrl) {
+        const listenBtn = document.getElementById('listenStoryBtn');
+        
+        // ---- STATE 1: Audio exists and is currently playing → Pause it ----
+        if (window.currentAudioInstance && !window.currentAudioInstance.paused && !window.currentAudioInstance.ended) {
+            window.currentAudioInstance.pause();
+            if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">play_arrow</span> Resume Story`;
             return;
         }
 
+        // ---- STATE 2: Audio exists but is paused (not ended) → Resume it ----
+        if (window.currentAudioInstance && window.currentAudioInstance.paused && !window.currentAudioInstance.ended && window.currentAudioInstance.currentTime > 0) {
+            try {
+                await window.currentAudioInstance.play();
+                if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+            } catch (e) {
+                console.error("Resume playback error:", e);
+                if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">error</span> Playback Error`;
+                setTimeout(() => {
+                    if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
+                }, 2000);
+            }
+            return;
+        }
+
+        // ---- STATE 3: Audio ended → Replay from cached URL ----
+        if (listenBtn && listenBtn.dataset.cachedUrl && (!window.currentAudioInstance || window.currentAudioInstance.ended)) {
+            stopCurrentAudio();
+            try {
+                window.currentAudioInstance = new Audio(listenBtn.dataset.cachedUrl);
+                window.currentAudioInstance.onended = () => {
+                    if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">replay</span> Replay Story`;
+                };
+                window.currentAudioInstance.onerror = (e) => {
+                    console.error('Replay audio load error:', e);
+                    if (listenBtn) {
+                        listenBtn.innerHTML = `<span class="material-symbols-outlined">error</span> Error`;
+                        setTimeout(() => {
+                            listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
+                            listenBtn.dataset.cachedUrl = '';
+                        }, 2000);
+                    }
+                };
+                await window.currentAudioInstance.play();
+                if (listenBtn) listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+            } catch (e) {
+                console.error("Replay error:", e);
+                if (listenBtn) {
+                    listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
+                    listenBtn.dataset.cachedUrl = '';
+                }
+            }
+            return;
+        }
+
+        // ---- STATE 4: First time playing — resolve the audio URL ----
         if (listenBtn) {
             listenBtn.disabled = true;
             listenBtn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px;"></div> Preparing Audio...`;
@@ -351,6 +603,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let finalAudioUrl = "";
 
             if (audioUrl) {
+                // We have an audio URL from the API response
                 if (audioUrl.startsWith('http') || audioUrl.startsWith('data:')) {
                     finalAudioUrl = audioUrl;
                 } else if (audioUrl.length > 500) {
@@ -361,37 +614,137 @@ document.addEventListener('DOMContentLoaded', () => {
                     const cleanPath = audioUrl.startsWith('/') ? audioUrl : `/${audioUrl}`;
                     finalAudioUrl = `https://gem-backend-production-1ea2.up.railway.app${cleanPath}`;
                 }
+            } else if (file) {
+                // No audio URL — re-send image to text-to-speech endpoint to get one
+                console.log("No audio URL available, re-requesting from text-to-speech...");
+                const token = localStorage.getItem('token');
+                const lang = localStorage.getItem('language') || 'en';
+                const formData = new FormData();
+                formData.append('image', file);
+                formData.append('language', lang);
+
+                const ttsResponse = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/text-to-speech`, {
+                    method: 'POST',
+                    headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+                    body: formData
+                });
+
+                if (!ttsResponse.ok) {
+                    throw new Error(`Server error: ${ttsResponse.status}`);
+                }
+
+                const ttsData = await ttsResponse.json();
+                const newAudioUrl = ttsData.audio_url || ttsData.audioUrl || ttsData.audio || ttsData.url;
+
+                if (!newAudioUrl) {
+                    throw new Error("Server did not return an audio URL. The story could not be generated.");
+                }
+
+                if (newAudioUrl.startsWith('http') || newAudioUrl.startsWith('data:')) {
+                    finalAudioUrl = newAudioUrl;
+                } else if (newAudioUrl.length > 500) {
+                    finalAudioUrl = `data:audio/mp3;base64,${newAudioUrl}`;
+                } else {
+                    const cleanPath = newAudioUrl.startsWith('/') ? newAudioUrl : `/${newAudioUrl}`;
+                    finalAudioUrl = `https://gem-backend-production-1ea2.up.railway.app${cleanPath}`;
+                }
             } else {
-                throw new Error("No audio provided by the server. Please try scanning again.");
+                throw new Error("No audio source available. Please try scanning again.");
             }
 
             if (finalAudioUrl) {
-                console.log("Initializing audio playback...");
+                console.log("Initializing audio playback with URL:", finalAudioUrl.substring(0, 80) + '...');
+                
+                // Cache the URL on the button for replay
                 if (listenBtn) {
-                    listenBtn.dataset.cachedUrl = finalAudioUrl; // Cache it!
+                    listenBtn.dataset.cachedUrl = finalAudioUrl;
                 }
                 
+                // Stop any old audio first
+                stopCurrentAudio();
+
                 window.currentAudioInstance = new Audio(finalAudioUrl);
                 
+                // Set up event handlers BEFORE calling play()
                 window.currentAudioInstance.onended = () => {
                     if (listenBtn) {
                         listenBtn.innerHTML = `<span class="material-symbols-outlined">replay</span> Replay Story`;
+                        listenBtn.disabled = false;
                     }
                 };
 
-                window.currentAudioInstance.onerror = () => {
+                window.currentAudioInstance.onerror = (e) => {
+                    console.error('Audio playback error:', e);
                     if (listenBtn) {
                         listenBtn.disabled = false;
-                        listenBtn.innerHTML = `<span class="material-symbols-outlined">error</span> Error playing`;
+                        listenBtn.innerHTML = `<span class="material-symbols-outlined">error</span> Audio Error`;
+                        setTimeout(() => {
+                            listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
+                            listenBtn.dataset.cachedUrl = '';
+                        }, 2500);
                     }
-                    console.error('Playback failed');
                 };
 
-                await window.currentAudioInstance.play();
-                
-                if (listenBtn) {
-                    listenBtn.disabled = false;
-                    listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+                // Wait for audio to be ready before playing
+                await new Promise((resolve, reject) => {
+                    window.currentAudioInstance.oncanplaythrough = resolve;
+                    window.currentAudioInstance.onerror = (e) => {
+                        reject(new Error('Failed to load audio file. The URL may be invalid or expired.'));
+                    };
+                    // Set a timeout in case the audio takes too long to load
+                    setTimeout(() => {
+                        // If still loading, try playing anyway
+                        resolve();
+                    }, 10000);
+                    window.currentAudioInstance.load();
+                });
+
+                // Re-attach onerror for actual playback errors (not load errors)
+                window.currentAudioInstance.onerror = (e) => {
+                    console.error('Playback error after load:', e);
+                    if (listenBtn) {
+                        listenBtn.disabled = false;
+                        listenBtn.innerHTML = `<span class="material-symbols-outlined">error</span> Playback Failed`;
+                        setTimeout(() => {
+                            listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
+                        }, 2500);
+                    }
+                };
+
+                window.currentAudioInstance.onended = () => {
+                    if (listenBtn) {
+                        listenBtn.innerHTML = `<span class="material-symbols-outlined">replay</span> Replay Story`;
+                        listenBtn.disabled = false;
+                    }
+                };
+
+                try {
+                    await window.currentAudioInstance.play();
+                    if (listenBtn) {
+                        listenBtn.disabled = false;
+                        listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+                    }
+                } catch (playError) {
+                    console.error('Play() rejected:', playError);
+                    // This often happens due to autoplay policy — but since user clicked a button, it should work
+                    // If it still fails, show a message
+                    if (listenBtn) {
+                        listenBtn.disabled = false;
+                        listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Tap to Play`;
+                        // Allow one more manual attempt
+                        listenBtn.addEventListener('click', async function retryPlay() {
+                            try {
+                                if (window.currentAudioInstance) {
+                                    await window.currentAudioInstance.play();
+                                    listenBtn.innerHTML = `<span class="material-symbols-outlined">pause</span> Listening...`;
+                                }
+                            } catch (e2) {
+                                console.error('Retry play failed:', e2);
+                                alert('⚠️ Your browser is blocking audio playback. Please check your browser settings.');
+                            }
+                            listenBtn.removeEventListener('click', retryPlay);
+                        }, { once: true });
+                    }
                 }
             }
         } catch (error) {
@@ -408,10 +761,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!resultContainer) return;
         
         // Stop any currently playing audio
-        if (window.currentAudioInstance && !window.currentAudioInstance.paused) {
-            window.currentAudioInstance.pause();
-            window.currentAudioInstance = null;
-        }
+        stopCurrentAudio();
 
         resultContainer.style.display = 'block';
         resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -443,19 +793,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             
-                document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
-                const audioUrl = item.audio_url || item.audioUrl;
+            document.getElementById('listenStoryBtn')?.addEventListener('click', () => {
+                const audioUrl = item.audio_url || item.audioUrl || item.audio;
                 if (audioUrl) {
                     console.log("Playing audio from history:", audioUrl);
                     generateStoryAudio(null, audioUrl);
                 } else {
-                    console.warn("No audio URL found for item:", item);
-                    alert("⚠️ Audio story is not available for this artifact. Please try another one.");
+                    // No audio URL in history — use text fallback with the story text
+                    console.warn("No audio URL found for history item, using text fallback...");
+                    const storyText = item.story || item.description || item.text || 'This artifact appears to be from the ancient Egyptian archives.';
+                    generateStoryAudioWithTextFallback(storyText, null);
                 }
             });
         }
         
         showRelatedStatues(detected);
+    }
+
+    // Helper: Re-generate audio for a history item that has no audio_url
+    async function regenerateAudioFromImageUrl(imageUrl) {
+        const listenBtn = document.getElementById('listenStoryBtn');
+        if (listenBtn) {
+            listenBtn.disabled = true;
+            listenBtn.innerHTML = `<div class="ai-loader" style="width:16px;height:16px;border-width:2px;"></div> Generating Audio...`;
+        }
+
+        try {
+            // Fetch the image as a blob
+            const imgResponse = await fetch(imageUrl);
+            if (!imgResponse.ok) throw new Error('Could not load the artifact image.');
+            const imgBlob = await imgResponse.blob();
+            const file = new File([imgBlob], "history-artifact.jpg", { type: imgBlob.type || "image/jpeg" });
+
+            // Now call generateStoryAudio with the file
+            await generateStoryAudio(file, null);
+        } catch (err) {
+            console.error("Regenerate audio error:", err);
+            if (listenBtn) {
+                listenBtn.disabled = false;
+                listenBtn.innerHTML = `<span class="material-symbols-outlined">volume_up</span> Listen to Story`;
+            }
+            alert("⚠️ Could not generate audio: " + err.message);
+        }
     }
 
     async function loadDetectionHistory() {

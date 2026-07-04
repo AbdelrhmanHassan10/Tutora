@@ -4224,4 +4224,22 @@ body.light .hero-title, body.light .section-title {
     -webkit-text-fill-color: transparent !important;
     text-shadow: none !important;
 }
+
+/* Custom Selection Pulse Highlight */
+.ticket-card.highlight-pulse {
+    animation: highlightPulse 2s ease-in-out;
+}
+
+@keyframes highlightPulse {
+    0%, 100% {
+        transform: scale(1);
+        border-color: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    30%, 70% {
+        transform: scale(1.05);
+        border-color: #ECB613;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 30px rgba(242, 208, 13, 0.6);
+    }
+}
 

@@ -310,10 +310,19 @@ body.light .menu-link:hover {
 .news-card h3 {
     font-family: 'Cinzel', serif;
     font-size: 1.8rem;
-    line-height: 1.3;
-    margin: 0;
+    line-height: 1.4;
+    margin: 0 0 0.5rem 0;
     color: var(--news-text-primary);
     transition: color 0.3s;
+}
+
+.news-card p {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--news-text-secondary);
+    margin: 0;
+    font-weight: 400;
 }
 
 .news-read-more { 

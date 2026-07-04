@@ -111,11 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = favoriteItem._itemData || favoriteItem.artifact || favoriteItem.event || favoriteItem.item || favoriteItem;
         if (!item || !item._id && !item.id) return '';
 
-        const title = item.name || item.title || '\${tFav("untitled", "Untitled")}';
+        const title = item.name || item.title || tFav("untitled", "Untitled");
         const image = item.image || item.imageUrl || '../collection/unnamed (1).png';
         const subtitle = isEvent 
             ? (item.date ? new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : 'Upcoming Event')
-            : (item.material || '\${tFav("artifact_detail", "Artifact Detail")}');
+            : (item.material || tFav("artifact_detail", "Artifact Detail"));
         const badge = isEvent ? 'Event' : (item.dynasty || 'New Kingdom');
 
         return `
@@ -365,49 +365,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ============================================
-    // 4. THEME & NAVIGATION
+    // 4. THEME & NAVIGATION (Handled by global-core.js)
     // ============================================
 
-    const themeBtn = document.getElementById('themeBtn');
-    if (themeBtn) {
-        const icon = themeBtn.querySelector('.material-symbols-outlined');
-        const updateThemeUI = () => {
-            const isDark = document.body.classList.contains('dark');
-            if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
-        };
-
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            document.body.classList.toggle('light');
-            const isDarkNow = document.body.classList.contains('dark');
-            localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
-            updateThemeUI();
-        });
-        updateThemeUI();
-    }
-
-    // Mobile Menu
-    const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuOverlay = document.getElementById('menuOverlay');
-
-    const openMenu = () => {
-        if (mobileMenu) mobileMenu.classList.add('active');
-        if (menuOverlay) menuOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    };
-
-    const closeMenu = () => {
-        if (mobileMenu) mobileMenu.classList.remove('active');
-        if (menuOverlay) menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    };
-
-    if (menuBtn) menuBtn.addEventListener('click', openMenu);
-    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
-    document.querySelectorAll('.menu-link, .dropdown-item').forEach(link => link.addEventListener('click', closeMenu));
+    // Mobile menu logic handled by global-core.js
 
     // ============================================
     // 5. INITIALIZATION
@@ -415,10 +376,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function init() {
         try {
-            const [userResponse, artifactFavs, eventFavs] = await Promise.all([
+            const [userResponse, artifactFavs, eventFavs, allArtifactsRes, allEventsRes] = await Promise.all([
                 api.getMe().catch(() => null),
                 api.getMyFavorites('Artifact').catch(() => null),
-                api.getMyFavorites('Event').catch(() => null)
+                api.getMyFavorites('Event').catch(() => null),
+                fetch('https://gem-backend-production-1ea2.up.railway.app/api/artifacts').then(r=>r.json()).catch(()=>null),
+                fetch('https://gem-backend-production-1ea2.up.railway.app/api/events').then(r=>r.json()).catch(()=>null)
             ]);
 
             let userObj = userResponse ? (userResponse.user || userResponse) : null;
@@ -433,19 +396,92 @@ document.addEventListener('DOMContentLoaded', () => {
                 userNameDisplay.textContent = firstName;
             }
 
+            const globalArtifacts = allArtifactsRes ? (Array.isArray(allArtifactsRes) ? allArtifactsRes : (allArtifactsRes.artifacts || allArtifactsRes.data || [])) : [];
+            const globalEvents = allEventsRes ? (Array.isArray(allEventsRes) ? allEventsRes : (allEventsRes.events || allEventsRes.data || [])) : [];
+
+            // Add HALLS_DATA if available
+            if (typeof HALLS_DATA !== 'undefined') {
+                HALLS_DATA.forEach(ha => {
+                    if (!globalArtifacts.find(ga => ga._id === ha.id || ga.id === ha.id)) {
+                        globalArtifacts.push({ ...ha, _id: ha.id });
+                    }
+                });
+            }
+
             const allFavs = [];
             const arts = Array.isArray(artifactFavs) ? artifactFavs : (artifactFavs ? artifactFavs.data || [] : []);
             arts.forEach(f => {
-                const itemData = f.artifact || f.item || f;
+                let itemData = f.artifact || f.item || f;
+                let idToFind = typeof itemData === 'string' ? itemData : (itemData._id || itemData.id);
+                if (typeof itemData === 'string') itemData = { _id: idToFind, id: idToFind };
+                
+                if (!itemData.name && !itemData.title) {
+                    const found = globalArtifacts.find(a => String(a._id) === String(idToFind) || String(a.id) === String(idToFind));
+                    if (found) {
+                        itemData = { ...itemData, ...found };
+                    } else {
+                        // Skip orphaned entries that have no data and cannot be found
+                        return;
+                    }
+                }
                 if (itemData) allFavs.push({ ...f, _type: 'Artifact', _itemData: itemData });
             });
-            
             const evts = Array.isArray(eventFavs) ? eventFavs : (eventFavs ? eventFavs.data || [] : []);
             evts.forEach(f => {
-                const itemData = f.event || f.item || f;
+                let itemData = f.event || f.item || f;
+                let idToFind = typeof itemData === 'string' ? itemData : (itemData._id || itemData.id);
+                if (typeof itemData === 'string') itemData = { _id: idToFind, id: idToFind };
+                
+                if (!itemData.name && !itemData.title) {
+                    const found = globalEvents.find(a => String(a._id) === String(idToFind) || String(a.id) === String(idToFind));
+                    if (found) {
+                        itemData = { ...itemData, ...found };
+                    } else {
+                        // Skip orphaned entries
+                        return;
+                    }
+                }
                 if (itemData) allFavs.push({ ...f, _type: 'Event', _itemData: itemData });
             });
-
+            
+            // --- Merge Exhibition Halls Favorites ---
+            try {
+                const exhibitionFavs = JSON.parse(localStorage.getItem('tutora_exhibition_favs') || '[]');
+                exhibitionFavs.forEach(f => {
+                    allFavs.push({
+                        _id: f.id,
+                        _type: 'Exhibition',
+                        _itemData: {
+                            _id: f.id,
+                            name: f.name,
+                            image: f.image,
+                            period: f.period,
+                            desc: f.desc
+                        }
+                    });
+                });
+            } catch (e) {
+                console.error('Error loading exhibition favs', e);
+            }
+            
+            // --- Merge Collection Favorites ---
+            try {
+                const collectionFavs = JSON.parse(localStorage.getItem('tutora_collection_favs') || '[]');
+                collectionFavs.forEach(f => {
+                    const favId = f.id || f._id;
+                    if (!allFavs.find(af => String(af._id) === String(favId) || (af.artifact && String(af.artifact._id) === String(favId)))) {
+                        allFavs.push({
+                            _id: favId,
+                            _type: 'Artifact',
+                            _itemData: f
+                        });
+                    }
+                });
+            } catch (e) {
+                console.error('Error loading collection favs', e);
+            }
+            
+            // --- Render ---
             renderFavorites(allFavs);
             renderJourney();
         } catch (error) {
@@ -475,66 +511,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Add this to your existing script.js, after the theme toggle script
-
-// ============================================
-// THEME-SPECIFIC BROWSER SYNC
-// ============================================
-
-const ThemeKey = 'egyptTheme'; // Unique key for localStorage
-
-// Function to sync theme to all windows/tabs
-function syncThemeToWindows(theme) {
-    try {
-        localStorage.setItem(ThemeKey, theme);
-    } catch (e) {
-        console.warn('LocalStorage not available, theme sync may be limited');
-    }
-}
-
-// Initialize theme from localStorage
-function initializeTheme() {
-    try {
-        const savedTheme = localStorage.getItem(ThemeKey);
-        if (savedTheme) {
-            // Remove existing theme classes
-            document.body.classList.remove('dark', 'light');
-            // Apply saved theme
-            document.body.classList.add(savedTheme);
-        }
-    } catch (e) {
-        console.warn('LocalStorage not available during initialization');
-    }
-}
-
-// Listen for theme changes in other tabs
-window.addEventListener('storage', (event) => {
-    if (event.key === ThemeKey) {
-        document.body.classList.remove('dark', 'light');
-        document.body.classList.add(event.newValue);
-        
-        // Optional: Update theme-specific variables if needed
-        // const htmlElement = document.documentElement;
-        // if (event.newValue === 'light') {
-        //     htmlElement.style.setProperty('--primary', '#F2D00D');
-        // } else {
-        //     htmlElement.style.setProperty('--primary', '#ecb613');
-        // }
-    }
-});
-
-// Make function globally accessible for theme toggle in nav.html
-window.toggleTheme = function() {
-    const isDark = document.body.classList.contains('dark');
-    const newTheme = isDark ? 'light' : 'dark';
-    
-    document.body.classList.remove('dark', 'light');
-    document.body.classList.add(newTheme);
-    
-    syncThemeToWindows(newTheme);
-};
-
-// Initialize theme on page load
-initializeTheme();
+// Handled by global-core.js
 
 window.addEventListener('languageChanged', () => { if(typeof renderArtifacts === 'function') renderArtifacts(); if(typeof updateDashboardStats === 'function') updateDashboardStats(); });

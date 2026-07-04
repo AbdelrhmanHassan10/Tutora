@@ -909,6 +909,7 @@ body.light .card-desc {
     padding-top: 4rem;
     padding-bottom: 2rem;
     transition: background-color 0.3s;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
 }
 
 body.dark-mode .site-footer {
@@ -1522,26 +1523,6 @@ body.light .ai-section-title {
     50% { transform: translateY(-5px) scale(1.05); }
 }
 
-.footer-title {
-    font-family: 'Cinzel', serif !important;
-    font-size: 2.5rem !important;
-    font-weight: 900 !important;
-    letter-spacing: 10px !important;
-    text-transform: uppercase !important;
-    background: linear-gradient(135deg, #fff 0%, #d4af37 50%, #fff 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    text-align: center;
-    margin-bottom: 1.5rem !important;
-}
-
-.footer-divider {
-    height: 1px;
-    width: 300px;
-    background: linear-gradient(90deg, transparent, #d4af37, transparent);
-    margin: 2rem auto;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-}
 
 /* ============================================
    LIGHT MODE FIXES FOR ANCIENT ARTS
@@ -1570,4 +1551,32 @@ body.light .card-title {
 
 body.light .card-desc {
     color: var(--text-secondary) !important;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+body {
+    animation: fadeIn 0.6s ease-out;
 }

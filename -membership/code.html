@@ -418,6 +418,60 @@
         </details>
       </div>
     </section>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal-overlay">
+      <div class="payment-modal-content">
+        <button id="closePaymentModal" class="close-payment-btn">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="payment-modal-header">
+          <h2 id="paymentTierTitle" class="gold-text">Membership Tier</h2>
+          <p id="paymentTierPrice" class="payment-price">$0 / Year</p>
+        </div>
+        <form id="paymentForm" class="payment-form">
+          <div class="form-group">
+            <label for="pmtName" data-i18n="membership.payment_name">Full Name</label>
+            <input type="text" id="pmtName" required placeholder="Cardholder Name">
+          </div>
+          <div class="form-group">
+            <label for="pmtEmail" data-i18n="membership.payment_email">Email Address</label>
+            <input type="email" id="pmtEmail" required placeholder="you@example.com">
+          </div>
+          
+          <div class="form-divider" data-i18n="membership.payment_details">Payment Details</div>
+          
+          <div class="form-group">
+            <label for="pmtCard" data-i18n="membership.card_number">Card Number</label>
+            <div class="card-input-wrapper">
+              <span class="material-symbols-outlined card-icon">credit_card</span>
+              <input type="text" id="pmtCard" required placeholder="0000 0000 0000 0000" maxlength="19">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group half-width">
+              <label for="pmtExp" data-i18n="membership.expiry_date">Expiry Date</label>
+              <input type="text" id="pmtExp" required placeholder="MM/YY" maxlength="5">
+            </div>
+            <div class="form-group half-width">
+              <label for="pmtCvc" data-i18n="membership.cvc">CVC</label>
+              <input type="text" id="pmtCvc" required placeholder="123" maxlength="4">
+            </div>
+          </div>
+          
+          <button type="submit" class="mem-btn mem-btn-gold full-width" id="submitPaymentBtn">
+            <span class="btn-text" data-i18n="membership.complete_payment">Complete Payment</span>
+            <span class="material-symbols-outlined btn-spinner" style="display: none;">progress_activity</span>
+          </button>
+        </form>
+        <div id="paymentSuccess" class="payment-success-msg" style="display: none;">
+          <span class="material-symbols-outlined success-icon">check_circle</span>
+          <h3 class="gold-text" data-i18n="membership.payment_successful">Welcome to the Circle!</h3>
+          <p data-i18n="membership.payment_success_desc">Your membership has been activated successfully. Check your email for your digital card.</p>
+          <button class="mem-btn mem-btn-outline" id="finishPaymentBtn" data-i18n="membership.continue">Continue</button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->

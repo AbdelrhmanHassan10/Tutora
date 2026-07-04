@@ -49,11 +49,7 @@
 
         loginBtn.onclick = () => window.location.href = '../2.login/code.html';
         cancelBtn.onclick = () => {
-          if (document.referrer && document.referrer.includes(window.location.host)) {
-            window.history.back();
-          } else {
             window.location.href = '../4.home/code.html';
-          }
         };
 
         loginBtn.onmouseover = () => { loginBtn.style.transform = 'translateY(-2px)'; loginBtn.style.boxShadow = '0 6px 20px rgba(236, 182, 19, 0.4)'; loginBtn.style.background = '#fcd030'; };

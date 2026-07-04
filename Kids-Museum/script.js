@@ -3,11 +3,11 @@
  * Combined Atmosphere, 3D Effects, and Interactions
  */
 
-const DIVINE_MESSAGES = [
-    "Welcome, young protector of history!",
-    "Are you ready to solve the Pharaoh's puzzles?",
-    "Every artifact has a story. Let's find yours!",
-    "The Oracle watches over your explorer journey."
+const DIVINE_MESSAGES_KEYS = [
+    "kids.divine_msg1",
+    "kids.divine_msg2",
+    "kids.divine_msg3",
+    "kids.divine_msg4"
 ];
 
 class RoyalKidsAtmosphere {
@@ -122,7 +122,8 @@ class RoyalKidsAtmosphere {
         if (!this.divineGreeting) return;
         let index = 0;
         while (true) {
-            const msg = DIVINE_MESSAGES[index];
+            const key = DIVINE_MESSAGES_KEYS[index];
+            const msg = window.TutoraLang ? window.TutoraLang.translate(key) : key;
             this.divineGreeting.textContent = "";
             for (let char of msg) {
                 this.divineGreeting.textContent += char;
@@ -133,7 +134,7 @@ class RoyalKidsAtmosphere {
                 this.divineGreeting.textContent = this.divineGreeting.textContent.slice(0, -1);
                 await new Promise(r => setTimeout(r, 30));
             }
-            index = (index + 1) % DIVINE_MESSAGES.length;
+            index = (index + 1) % DIVINE_MESSAGES_KEYS.length;
         }
     }
 

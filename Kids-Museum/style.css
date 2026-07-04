@@ -2265,8 +2265,9 @@ body.light .badge-new {
 
 /* ========== PHARAOH'S QUIZ (FLIP CARDS) ========== */
 .flip-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1.5rem;
     padding: 2rem 0;
 }
@@ -2274,6 +2275,8 @@ body.light .badge-new {
 .flip-card {
     background-color: transparent;
     width: 100%;
+    max-width: 250px;
+    flex: 0 0 auto;
     height: 350px;
     perspective: 1000px;
 }

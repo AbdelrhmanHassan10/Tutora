@@ -6,8 +6,8 @@
 @import url('../event/style.css');
 
 :root {
-    --gold: #ecb613;
-    --gold-rgb: 236, 182, 19;
+    --gold: #F2D00D;
+    --gold-rgb: 242, 208, 13;
 }
 .logo-section {
     display: flex;
@@ -733,6 +733,28 @@ text-decoration: none;}
     letter-spacing: -2px;
 }
 
+.fusion-text {
+    font-family: 'Cinzel', serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 8px !important;
+    font-size: 1.5rem !important;
+    color: var(--gold) !important;
+    margin-top: 2rem !important;
+    font-weight: 900 !important;
+    position: relative !important;
+    display: inline-block !important;
+}
+
+body.dark .fusion-text {
+    text-shadow: 0 0 25px rgba(242, 208, 13, 1), 0 2px 5px rgba(0,0,0,0.8) !important;
+}
+
+body.light .fusion-text {
+    color: #8E7341 !important;
+    text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    font-weight: 900 !important;
+}
+
 /* --- THE ORIGIN SECTION --- */
 .brand-origin {
     padding: 12rem 4rem;
@@ -939,8 +961,41 @@ text-decoration: none;}
     border: 1px solid var(--brand-border);
 }
 
-.color-card h4 { font-family: 'Cinzel', serif; margin-bottom: 0.5rem; }
-.color-card code { color: var(--gold); font-size: 0.9rem; }
+.brand-visual-assets p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.color-card h4 { 
+    font-family: 'Cinzel', serif; 
+    margin-bottom: 0.8rem; 
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: var(--brand-text-primary);
+    transition: color 0.3s;
+}
+
+.color-card code { 
+    color: var(--gold); 
+    font-size: 1.1rem; 
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.color-card p {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem !important;
+    line-height: 1.7;
+    color: var(--brand-text-secondary);
+    margin: 0;
+}
+
+.color-card:hover h4 {
+    color: var(--gold);
+}
 
 /* --- ANIMATIONS --- */
 .anim-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
@@ -2353,7 +2408,7 @@ body.light .newsletter-banner {
 }
 
 /* Interactive Particles (Fixed for full page coverage) */
-body.light @keyframes float {
+@keyframes float {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 1; }
     90% { opacity: 1; }

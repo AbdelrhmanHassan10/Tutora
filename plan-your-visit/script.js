@@ -159,10 +159,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetElement = document.querySelector(href);
-        if (targetElement) {
+        
+        let scrollTarget = document.querySelector(href);
+        
+        if (href === '#ticket-general' || href === '#ticket-guided' || href === '#ticket-special') {
+            const purchaseSection = document.getElementById('purchase-tickets');
+            if (purchaseSection) {
+                scrollTarget = purchaseSection;
+            }
+            
+            // Highlight target card
+            const card = document.querySelector(href);
+            if (card) {
+                card.classList.add('highlight-pulse');
+                setTimeout(() => {
+                    card.classList.remove('highlight-pulse');
+                }, 2000);
+            }
+        }
+        
+        if (scrollTarget) {
             window.scrollTo({
-                top: targetElement.offsetTop - 80,
+                top: scrollTarget.offsetTop - 80,
                 behavior: 'smooth'
             });
         }

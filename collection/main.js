@@ -102,33 +102,39 @@
         const button = event.currentTarget;
         const card = button.closest('.artifact-card');
         const artifactId = card.dataset.id;
-
-        if (!localStorage.getItem('token')) {
-            showNotification('Please log in to save favorites.', 'info');
-            return;
-        }
-
         const isCurrentlyFavorite = button.classList.contains('active');
+        let localFavs = JSON.parse(localStorage.getItem('tutora_collection_favs') || '[]');
 
-        try {
-            if (isCurrentlyFavorite) {
-                await api.removeFavorite(artifactId);
-                button.classList.remove('active');
-                STATE.favorites.delete(artifactId);
-                showNotification('Removed from favorites.', 'info');
-            } else {
-                await api.addFavorite(artifactId);
-                button.classList.add('active');
-                STATE.favorites.add(artifactId);
-                showNotification('Added to favorites!', 'success');
+        if (isCurrentlyFavorite) {
+            button.classList.remove('active');
+            STATE.favorites.delete(artifactId);
+            localFavs = localFavs.filter(f => f.id !== artifactId && f._id !== artifactId);
+            showNotification('Removed from favorites.', 'info');
+            if (localStorage.getItem('token')) {
+                api.removeFavorite(artifactId).catch(e => console.error('API fav remove failed', e));
             }
-        } catch (error) {
-            console.error('Favorite operation failed:', error);
-            showNotification('Failed to update favorites', 'error');
+        } else {
+            button.classList.add('active');
+            STATE.favorites.add(artifactId);
+            const itemData = STATE.allArtifacts.find(a => String(a.id || a._id) === String(artifactId));
+            if (itemData && !localFavs.find(f => String(f.id || f._id) === String(artifactId))) {
+                localFavs.push(itemData);
+            }
+            showNotification('Added to favorites!', 'success');
+            if (localStorage.getItem('token')) {
+                api.addFavorite(artifactId).catch(e => console.error('API fav add failed', e));
+            }
         }
+        localStorage.setItem('tutora_collection_favs', JSON.stringify(localFavs));
     }
 
     async function initializeFavoriteStates() {
+        let localFavs = JSON.parse(localStorage.getItem('tutora_collection_favs') || '[]');
+        localFavs.forEach(fav => {
+            const id = fav.id || fav._id;
+            if (id) STATE.favorites.add(id);
+        });
+
         if (localStorage.getItem('token')) {
             try {
                 const favoritesResponse = await api.getMyFavorites();
@@ -145,6 +151,18 @@
             }
         }
     }
+
+    // Auto-re-render when global language changes
+    const langObserver = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'lang' || mutation.attributeName === 'dir') {
+                if (typeof renderArtifacts === 'function') {
+                    renderArtifacts();
+                }
+            }
+        });
+    });
+    langObserver.observe(document.documentElement, { attributes: true });
 
     // ============================================
     // FILTER MODAL MANAGEMENT
@@ -351,9 +369,11 @@
         
         const totalCount = sourceList.length;
         const displayCount = displayArtifacts.length;
+        
+        const currentLang = (typeof TutoraLang !== 'undefined' && TutoraLang.getCurrentLang) ? TutoraLang.getCurrentLang() : 'en';
 
-        if (countLabel) countLabel.textContent = `Showing ${displayCount} of ${totalCount} results`;
-        if (heroCountLabel) heroCountLabel.textContent = `Showing ${displayCount} of ${totalCount} artifacts`;
+        if (countLabel) countLabel.textContent = currentLang === 'ar' ? `عرض ${displayCount} من إجمالي ${totalCount} نتيجة` : `Showing ${displayCount} of ${totalCount} results`;
+        if (heroCountLabel) heroCountLabel.textContent = currentLang === 'ar' ? `عرض ${displayCount} من إجمالي ${totalCount} قطعة أثرية` : `Showing ${displayCount} of ${totalCount} artifacts`;
 
         grid.className = `artifact-grid ${STATE.viewMode}`;
         grid.innerHTML = ''; 
@@ -376,10 +396,14 @@
             card.className = 'artifact-card';
             card.dataset.id = artifact.id;
             const isFavorite = STATE.favorites.has(artifact.id);
+            
+            // Language-aware rendering
+            const displayTitle = currentLang === 'ar' && artifact.originalArabicTitle ? artifact.originalArabicTitle : artifact.title;
+            const displayDesc = currentLang === 'ar' && artifact.originalArabicDescription ? artifact.originalArabicDescription : (artifact.description || '');
 
             card.innerHTML = `
                       <div class="image-container">
-                          <img alt="${escapeHTML(artifact.title)}" class="artifact-image" src="${escapeHTML(artifact.image)}" />
+                          <img alt="${escapeHTML(displayTitle)}" class="artifact-image" src="${escapeHTML(artifact.image)}" />
                           <div class="image-overlay"></div>
                           <button class="favorite-btn ${isFavorite ? 'active' : ''}">
                               <span class="material-symbols-outlined">favorite</span>
@@ -387,8 +411,8 @@
                       </div>
                       <div class="card-content">
                           <p class="dynasty-label">${escapeHTML(artifact.dynasty)}</p>
-                          <h3 class="artifact-title">${escapeHTML(artifact.title)}</h3>
-                          <p class="card-description">${escapeHTML(artifact.description || '')}</p>
+                          <h3 class="artifact-title">${escapeHTML(displayTitle)}</h3>
+                          <p class="card-description">${escapeHTML(displayDesc)}</p>
                           <div class="card-footer">
                               <span class="location-text">
                                   <span class="material-symbols-outlined" style="font-size:14px">location_on</span> 
@@ -603,86 +627,272 @@
                     "fayum mummy portrait": "../Halls Gallery/images/fayum_portrait.png",
                     "statue of sarapis": "../Halls Gallery/images/sarapis_statue.png",
                     "bust of alexander the great": "../Halls Gallery/images/alexander_bust.png",
-                    "تمثال حجرى ضخم للملك رمسيس الثاني": "../Halls Gallery/images/ramses_colossal.png",
-                    "تمثال على هيئة أبي الهول للملك تحتمس الثالث": "../Halls Gallery/images/thutmose_sphinx.png",
-                    "مسلة الملك رمسيس الثاني": "../Halls Gallery/images/obelisk_ramses.png",
-                    "عمود الملك مرنبتاح": "../Halls Gallery/images/merenptah_column.png",
-                    "تمثال لملك بطلمي": "../Halls Gallery/images/ptolemaic_king.png",
-                    "تمثال لملكة بطلمية": "../Halls Gallery/images/ptolemaic_queen.png",
-                    "تمثال المعبود بتاح والملك رمسيس الثاني مع المعبودة سخمت": "../Halls Gallery/images/ptah_ramses_sekhmet.png",
-                    "تمثال للمعبودة سخمت علي هيئة اللبؤة": "../Halls Gallery/images/seated_sekhmet.png",
-                    "تاج عمود حتحوري": "../Halls Gallery/images/hathor_capital.png",
-                    "قمة مسلة للملكة حتشبسوت": "../Halls Gallery/images/hatshepsut_pyramidion.png",
-                    "تمثال صقر": "../Halls Gallery/images/falcon_statuette.png",
-                    "تمثال صغير لصقر (كنز دندرة)": "../Halls Gallery/images/gilt_hawk.png",
-                    "قلادة ذهبية": "../Halls Gallery/images/gold_necklace.png",
-                    "قلادة ذهبية ": "../Halls Gallery/images/gold_necklace.png",
-                    "قلادة ذهبية (كنز دندرة)": "../Halls Gallery/images/gold_necklace.png",
-                    "مرآة برونزية لمسحتي": "../Halls Gallery/images/mesehti_mirror.png",
-                    "مومياء لطفلة مغطاة بطبقة من الكارتوناج المذهب": "../Halls Gallery/images/child_cartonnage.png",
-                    "التابوت الخارجي لمسحتي": "../Halls Gallery/images/mesehti_coffin.png",
-                    "أنوبيس رابض فوق صندوق طقسي": "../Halls Gallery/images/anubis_chest.png",
-                    "صندوق الأواني الكانوبية": "../Halls Gallery/images/canopic_chest.png",
-                    "صندوق كانوبي للملكة حتب - حرس الأولى": "../Halls Gallery/images/canopic_chest.png",
-                    "تابوت كانوبي": "../Halls Gallery/images/canopic_coffinette_1.png",
-                    "المقصورة الكانوبية": "../Halls Gallery/images/canopic_shrine.png",
-                    "رأس بقرة": "../Halls Gallery/images/cow_head.png",
-                    "إناء عطري على هيئة أسد": "../Halls Gallery/images/lion_perfume_jar.png",
-                    "مسند رأس للملك توت عنخ آمون": "../Halls Gallery/images/lions_headrest.png",
-                    "كأس على هيئة زهرة اللوتس": "../Halls Gallery/images/lotus_cup.png",
-                    "نموذج للملك توت عنخ آمون على سرير جنائزي": "../Halls Gallery/images/tut_funerary_bed.png",
-                    "مروحة من ريش النعام": "../Halls Gallery/images/ostrich_hunt_fan.png",
-                    "التابوت الخارجي": "../Halls Gallery/images/outer_coffin.png",
-                    "صندوق طقسي": "../Halls Gallery/images/ritual_carrying_box.png",
-                    "الإكليل الملكي": "../Halls Gallery/images/royal_diadem.png"
+                    "colossal statue of ramses ii": "../Halls Gallery/images/ramses_colossal.png",
+                    "sphinx statue of thutmose iii": "../Halls Gallery/images/thutmose_sphinx.png",
+                    "obelisk of ramses ii": "../Halls Gallery/images/obelisk_ramses.png",
+                    "column of merneptah": "../Halls Gallery/images/merenptah_column.png",
+                    "statue of a ptolemaic king": "../Halls Gallery/images/ptolemaic_king.png",
+                    "statue of a ptolemaic queen": "../Halls Gallery/images/ptolemaic_queen.png",
+                    "statue of ptah, ramses ii and sekhmet": "../Halls Gallery/images/ptah_ramses_sekhmet.png",
+                    "statue of sekhmet as a lioness": "../Halls Gallery/images/seated_sekhmet.png",
+                    "hathoric column capital": "../Halls Gallery/images/hathor_capital.png",
+                    "pyramidion of hatshepsut's obelisk": "../Halls Gallery/images/hatshepsut_pyramidion.png",
+                    "falcon statue": "../Halls Gallery/images/falcon_statuette.png",
+                    "small falcon statuette": "../Halls Gallery/images/gilt_hawk.png",
+                    "golden necklace": "../Halls Gallery/images/gold_necklace.png",
+                    "golden necklace ": "../Halls Gallery/images/gold_necklace.png",
+                    "golden necklace (dendera)": "../Halls Gallery/images/gold_necklace.png",
+                    "bronze mirror of mesehti": "../Halls Gallery/images/mesehti_mirror.png",
+                    "mummy of a child in gilded cartonnage": "../Halls Gallery/images/child_cartonnage.png",
+                    "outer coffin of mesehti": "../Halls Gallery/images/mesehti_coffin.png",
+                    "anubis on a ritual chest": "../Halls Gallery/images/anubis_chest.png",
+                    "canopic jars chest": "../Halls Gallery/images/canopic_chest.png",
+                    "canopic chest of hetepheres i": "../Halls Gallery/images/canopic_chest.png",
+                    "canopic coffinette": "../Halls Gallery/images/canopic_coffinette_1.png",
+                    "canopic shrine": "../Halls Gallery/images/canopic_shrine.png",
+                    "cow head": "../Halls Gallery/images/cow_head.png",
+                    "lion-shaped perfume jar": "../Halls Gallery/images/lion_perfume_jar.png",
+                    "headrest of tutankhamun": "../Halls Gallery/images/lions_headrest.png",
+                    "lotus-shaped cup": "../Halls Gallery/images/lotus_cup.png",
+                    "tutankhamun on funerary bed": "../Halls Gallery/images/tut_funerary_bed.png",
+                    "ostrich feather fan": "../Halls Gallery/images/ostrich_hunt_fan.png",
+                    "outer coffin": "../Halls Gallery/images/outer_coffin.png",
+                    "ritual box": "../Halls Gallery/images/ritual_carrying_box.png",
+                    "royal diadem": "../Halls Gallery/images/royal_diadem.png"
                 };
 
-                const mappedAPI = fetchedData.map(art => {
-                    let artImage = art.image || art.imageUrl || '../suzi-kim-AVUvVdVKcSg-unsplash.jpg';
-                    const artTitle = art.title || art.name || 'Unknown';
-                    const lowerTitle = artTitle.toLowerCase();
+                const ARABIC_TRANSLATIONS = {
+                    "تمثال حجرى ضخم للملك رمسيس الثاني": "Colossal Statue of Ramses II",
+                    "تمثال على هيئة أبي الهول للملك تحتمس الثالث": "Sphinx Statue of Thutmose III",
+                    "مسلة الملك رمسيس الثاني": "Obelisk of Ramses II",
+                    "عمود الملك مرنبتاح": "Column of Merneptah",
+                    "تمثال لملك بطلمي": "Statue of a Ptolemaic King",
+                    "تمثال لملكة بطلمية": "Statue of a Ptolemaic Queen",
+                    "تمثال المعبود بتاح والملك رمسيس الثاني مع المعبودة سخمت": "Statue of Ptah, Ramses II and Sekhmet",
+                    "تمثال للمعبودة سخمت علي هيئة اللبؤة": "Statue of Sekhmet as a Lioness",
+                    "تاج عمود حتحوري": "Hathoric Column Capital",
+                    "قمة مسلة للملكة حتشبسوت": "Pyramidion of Hatshepsut's Obelisk",
+                    "تمثال صقر": "Falcon Statue",
+                    "تمثال صغير لصقر (كنز دندرة)": "Small Falcon Statuette",
+                    "قلادة ذهبية": "Golden Necklace",
+                    "قلادة ذهبية ": "Golden Necklace",
+                    "قلادة ذهبية (كنز دندرة)": "Golden Necklace (Dendera)",
+                    "مرآة برونزية لمسحتي": "Bronze Mirror of Mesehti",
+                    "مومياء لطفلة مغطاة بطبقة من الكارتوناج المذهب": "Mummy of a Child in Gilded Cartonnage",
+                    "التابوت الخارجي لمسحتي": "Outer Coffin of Mesehti",
+                    "أنوبيس رابض فوق صندوق طقسي": "Anubis on a Ritual Chest",
+                    "صندوق الأواني الكانوبية": "Canopic Jars Chest",
+                    "صندوق كانوبي للملكة حتب - حرس الأولى": "Canopic Chest of Hetepheres I",
+                    "تابوت كانوبي": "Canopic Coffinette",
+                    "المقصورة الكانوبية": "Canopic Shrine",
+                    "رأس بقرة": "Cow Head",
+                    "إناء عطري على هيئة أسد": "Lion-shaped Perfume Jar",
+                    "مسند رأس للملك توت عنخ آمون": "Headrest of Tutankhamun",
+                    "كأس على هيئة زهرة اللوتس": "Lotus-shaped Cup",
+                    "نموذج للملك توت عنخ آمون على سرير جنائزي": "Tutankhamun on Funerary Bed",
+                    "مروحة من ريش النعام": "Ostrich Feather Fan",
+                    "التابوت الخارجي": "Outer Coffin",
+                    "صندوق طقسي": "Ritual Box",
+                    "الإكليل الملكي": "Royal Diadem"
+                };
+
+                // Helper to translate and cache with delay to prevent rate limiting
+                async function translateText(text, sl, tl) {
+                    if (!text) return text;
+                    const cacheKey = `gem_trans_${sl}_${tl}_` + text;
+                    if (localStorage.getItem(cacheKey)) return localStorage.getItem(cacheKey);
                     
-                    // Override images for specific statues from the Halls Gallery
-                    if (HALL_IMAGES[lowerTitle]) {
-                        artImage = HALL_IMAGES[lowerTitle];
-                    } else {
-                        // Fallback partial matching just in case names differ slightly
-                        for (const [key, value] of Object.entries(HALL_IMAGES)) {
-                            if (lowerTitle.includes(key) || key.includes(lowerTitle)) {
-                                artImage = value;
-                                break;
+                    try {
+                        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&q=${encodeURIComponent(text)}`;
+                        const res = await fetch(url);
+                        const data = await res.json();
+                        let translated = '';
+                        if (data && data[0]) {
+                            translated = data[0].map(item => item[0]).join('');
+                        } else {
+                            translated = text;
+                        }
+                        localStorage.setItem(cacheKey, translated);
+                        
+                        // Small delay to prevent API blocking when processing many items
+                        await new Promise(r => setTimeout(r, 150));
+                        return translated;
+                    } catch(e) {
+                        console.warn("Translation failed for", text, e);
+                        return text;
+                    }
+                }
+
+                try {
+                    // Gather unique untranslated Arabic strings (to English) and English strings (to Arabic)
+                    const arToEnStrings = [];
+                    fetchedData.forEach(art => {
+                        const t = String(art.title || art.name || '');
+                        if (t && /[\u0600-\u06FF]/.test(t) && !ARABIC_TRANSLATIONS[t]) arToEnStrings.push(t);
+                        
+                        const d = String(art.description || '');
+                        if (d && /[\u0600-\u06FF]/.test(d)) arToEnStrings.push(d);
+                    });
+                    const uniqueArToEn = [...new Set(arToEnStrings)];
+
+                    const enToArStrings = [];
+                    if (typeof HALLS_DATA !== 'undefined') {
+                        HALLS_DATA.forEach(art => {
+                            if (art.title && !/[\u0600-\u06FF]/.test(art.title)) enToArStrings.push(art.title);
+                            if (art.description && !/[\u0600-\u06FF]/.test(art.description)) enToArStrings.push(art.description);
+                        });
+                    }
+                    const uniqueEnToAr = [...new Set(enToArStrings)];
+                    
+                    // Translate in background so it doesn't block UI loading!
+                    (async () => {
+                        let updated = false;
+
+                        if (uniqueArToEn.length > 0) {
+                            console.log(`Translating ${uniqueArToEn.length} Arabic strings to English in background...`);
+                            for (const text of uniqueArToEn) {
+                                await translateText(text, 'ar', 'en');
+                            }
+                            
+                            STATE.allArtifacts.forEach(art => {
+                                if (art.originalArabicTitle && /[\u0600-\u06FF]/.test(String(art.title))) {
+                                    const cached = localStorage.getItem('gem_trans_ar_en_' + art.originalArabicTitle) || localStorage.getItem('gem_trans_' + art.originalArabicTitle);
+                                    if (cached) { art.title = cached; updated = true; }
+                                }
+                                if (art.originalArabicDescription && /[\u0600-\u06FF]/.test(String(art.description))) {
+                                    const cached = localStorage.getItem('gem_trans_ar_en_' + art.originalArabicDescription) || localStorage.getItem('gem_trans_' + art.originalArabicDescription);
+                                    if (cached) { art.description = cached; updated = true; }
+                                }
+                            });
+                        }
+
+                        if (uniqueEnToAr.length > 0) {
+                            console.log(`Translating ${uniqueEnToAr.length} English strings to Arabic in background...`);
+                            
+                            const toTranslate = uniqueEnToAr.filter(text => !localStorage.getItem('gem_trans_en_ar_' + text));
+                            if (toTranslate.length > 0) {
+                                // Batch in chunks of 20 items using a delimiter
+                                const chunks = [];
+                                for (let i = 0; i < toTranslate.length; i += 20) {
+                                    chunks.push(toTranslate.slice(i, i + 20));
+                                }
+                                
+                                for (const chunk of chunks) {
+                                    const joinedText = chunk.join(' \n||\n ');
+                                    const translatedJoined = await translateText(joinedText, 'en', 'ar');
+                                    if (translatedJoined && translatedJoined !== joinedText) {
+                                        const translatedParts = translatedJoined.split(/\s*\|\|\s*/);
+                                        chunk.forEach((original, idx) => {
+                                            if (translatedParts[idx]) {
+                                                localStorage.setItem('gem_trans_en_ar_' + original, translatedParts[idx].trim());
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                            
+                            STATE.allArtifacts.forEach(art => {
+                                if (!art.originalArabicTitle && !/[\u0600-\u06FF]/.test(String(art.title))) {
+                                    const cachedTitle = localStorage.getItem('gem_trans_en_ar_' + art.title);
+                                    if (cachedTitle) { art.originalArabicTitle = cachedTitle; updated = true; }
+                                    
+                                    const cachedDesc = localStorage.getItem('gem_trans_en_ar_' + art.description);
+                                    if (cachedDesc) { art.originalArabicDescription = cachedDesc; updated = true; }
+                                }
+                            });
+                        }
+
+                        if (updated && typeof applyAllFilters === 'function') {
+                            console.log('Translations applied. Re-rendering UI...');
+                            applyAllFilters();
+                        }
+                    })();
+
+                    const mappedAPI = fetchedData.map(art => {
+                        let artImage = art.image || art.imageUrl || '../suzi-kim-AVUvVdVKcSg-unsplash.jpg';
+                        let originalArabicTitle = String(art.title || art.name || 'Unknown');
+                        let originalArabicDescription = String(art.description || '');
+                        
+                        let artTitle = originalArabicTitle;
+                        let artDescription = originalArabicDescription;
+                        
+                        if (ARABIC_TRANSLATIONS[artTitle]) {
+                            artTitle = ARABIC_TRANSLATIONS[artTitle];
+                        } else if (/[\u0600-\u06FF]/.test(artTitle)) {
+                            let cached = localStorage.getItem('gem_trans_ar_en_' + artTitle) || localStorage.getItem('gem_trans_' + artTitle);
+                            if (cached) artTitle = cached;
+                        }
+                        
+                        if (/[\u0600-\u06FF]/.test(artDescription)) {
+                            let cached = localStorage.getItem('gem_trans_ar_en_' + artDescription) || localStorage.getItem('gem_trans_' + artDescription);
+                            if (cached) artDescription = cached;
+                        }
+                        
+                        const lowerTitle = String(artTitle).toLowerCase();
+                        
+                        // Override images for specific statues from the Halls Gallery
+                        if (HALL_IMAGES[lowerTitle]) {
+                            artImage = HALL_IMAGES[lowerTitle];
+                        } else {
+                            // Fallback partial matching just in case names differ slightly
+                            for (const [key, value] of Object.entries(HALL_IMAGES)) {
+                                if (lowerTitle.includes(key) || key.includes(lowerTitle)) {
+                                    artImage = value;
+                                    break;
+                                }
                             }
                         }
-                    }
 
-                    return {
-                        ...art,
-                        id: art._id || art.id,
-                        title: artTitle,
-                        image: artImage,
-                        dynasty: art.dynasty || art.era || 'Unknown',
-                        material: art.material || 'Unknown',
-                        site: art.site || 'Unknown',
-                        gallery: art.gallery || 'Unknown',
-                        description: art.description || '',
-                        date: art.date || ''
-                    };
-                });
+                        return {
+                            ...art,
+                            id: art._id || art.id,
+                            title: artTitle,
+                            originalArabicTitle: originalArabicTitle,
+                            originalArabicDescription: originalArabicDescription,
+                            image: artImage,
+                            dynasty: String(art.dynasty || art.era || 'Unknown'),
+                            material: String(art.material || 'Unknown'),
+                            site: String(art.site || 'Unknown'),
+                            gallery: String(art.gallery || 'Unknown'),
+                            description: artDescription,
+                            date: String(art.date || '')
+                        };
+                    });
 
-                // Get array of names from HALLS_DATA (ignoring case)
-                const hallNames = (typeof HALLS_DATA !== 'undefined' ? HALLS_DATA : []).map(h => h.title.toLowerCase());
-                
-                // Filter out any API items that share a name with our injected Halls items to avoid duplicates
-                const uniqueMappedAPI = mappedAPI.filter(art => !hallNames.includes(art.title.toLowerCase()));
+                    // Get array of names from HALLS_DATA (ignoring case)
+                    const hallsList = typeof HALLS_DATA !== 'undefined' ? HALLS_DATA : [];
+                    const mappedHalls = hallsList.map(art => {
+                        const newArt = { ...art };
+                        if (!newArt.originalArabicTitle && !/[\u0600-\u06FF]/.test(String(newArt.title))) {
+                            const cachedTitle = localStorage.getItem('gem_trans_en_ar_' + newArt.title);
+                            if (cachedTitle) newArt.originalArabicTitle = cachedTitle;
+                            
+                            const cachedDesc = localStorage.getItem('gem_trans_en_ar_' + newArt.description);
+                            if (cachedDesc) newArt.originalArabicDescription = cachedDesc;
+                        }
+                        return newArt;
+                    });
+                    
+                    const hallNames = mappedHalls.map(h => String(h.title).toLowerCase());
+                    
+                    // Filter out any API items that share a name with our injected Halls items to avoid duplicates
+                    const uniqueMappedAPI = mappedAPI.filter(art => !hallNames.includes(String(art.title).toLowerCase()));
 
-                // Prepend Halls artifacts to the beginning of the list
-                STATE.allArtifacts = [...(typeof HALLS_DATA !== 'undefined' ? HALLS_DATA : []), ...uniqueMappedAPI];
-                
-                populateFilterOptions();
-                applyAllFilters();
+                    // Prepend Halls artifacts to the beginning of the list
+                    STATE.allArtifacts = [...mappedHalls, ...uniqueMappedAPI];
+                    
+                    populateFilterOptions();
+                    applyAllFilters();
+                } catch (innerError) {
+                    console.error("Inner parsing error:", innerError);
+                    alert("Developer Error: " + innerError.message + "\n" + innerError.stack);
+                }
+            } else {
+                console.warn("API returned non-array data:", fetchedData);
             }
         } catch(e) {
             console.error("API artifacts unavailable", e);
+            alert("API artifacts unavailable: " + e.message);
             showNotification("Failed to load artifacts from the server", "error");
         }
         

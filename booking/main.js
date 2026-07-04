@@ -274,30 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Shop Items (from cart)
-        const cartData = localStorage.getItem('tutora_cart');
-        if (cartData) {
-            try {
-                const cartItems = JSON.parse(cartData);
-                if (cartItems && cartItems.length > 0) {
-                    cartItems.forEach(item => {
-                        const itemTotal = item.price * item.quantity;
-                        subtotal += itemTotal;
-                        html += `
-                            <div class="summary-item">
-                                <div class="item-info">
-                                    <span class="item-name" style="color: #ecb613;"><span class="material-symbols-outlined" style="font-size: 14px; vertical-align: middle; margin-right: 4px;">shopping_bag</span>${item.name}</span>
-                                    <span class="item-qty">x${item.quantity}</span>
-                                </div>
-                                <span class="item-price">${currency}${itemTotal.toFixed(2)}</span>
-                            </div>
-                        `;
-                    });
-                }
-            } catch (e) {
-                console.error("Failed to parse cart items:", e);
-            }
-        }
+
 
         // Dining Reservation
         if (bookingState.dining) {
@@ -622,20 +599,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (settings.ticketPrices) {
                     const tp = settings.ticketPrices;
                     if (tp.general) {
-                        bookingState.tickets.general_adult.price = { intl: tp.general.intl.adult, local: tp.general.local.adult };
-                        bookingState.tickets.general_student.price = { intl: tp.general.intl.student, local: tp.general.local.student };
+                        bookingState.tickets.general_adult.price = { intl: tp.general.intl.adult ?? 25.00, local: tp.general.local.adult ?? 200 };
+                        bookingState.tickets.general_student.price = { intl: tp.general.intl.student ?? 15.00, local: tp.general.local.student ?? 100 };
                     }
                     if (tp.guided) {
-                        bookingState.tickets.guided_adult.price = { intl: tp.guided.intl.adult, local: tp.guided.local.adult };
-                        bookingState.tickets.guided_student.price = { intl: tp.guided.intl.student, local: tp.guided.local.student };
+                        bookingState.tickets.guided_adult.price = { intl: tp.guided.intl.adult ?? 38.00, local: tp.guided.local.adult ?? 350 };
+                        bookingState.tickets.guided_student.price = { intl: tp.guided.intl.student ?? 20.00, local: tp.guided.local.student ?? 175 };
                     }
                     if (tp.tut) {
-                        bookingState.tickets.tut_adult.price = { intl: tp.tut.intl.adult, local: tp.tut.local.adult };
-                        bookingState.tickets.tut_student.price = { intl: tp.tut.intl.student, local: tp.tut.local.student };
+                        bookingState.tickets.tut_adult.price = { intl: tp.tut.intl.adult ?? 42.00, local: tp.tut.local.adult ?? 450 };
+                        bookingState.tickets.tut_student.price = { intl: tp.tut.intl.student ?? 22.00, local: tp.tut.local.student ?? 225 };
                     }
                     if (tp.kids) {
-                        bookingState.tickets.kids_adult.price = { intl: tp.kids.intl.adult, local: tp.kids.local.adult };
-                        bookingState.tickets.kids_child.price = { intl: tp.kids.intl.child, local: tp.kids.local.child };
+                        bookingState.tickets.kids_adult.price = { intl: tp.kids.intl.adult ?? 10.00, local: tp.kids.local.adult ?? 75 };
+                        bookingState.tickets.kids_child.price = { intl: tp.kids.intl.child ?? 15.00, local: tp.kids.local.child ?? 100 };
                     }
                 }
                 if (settings.addons) {
