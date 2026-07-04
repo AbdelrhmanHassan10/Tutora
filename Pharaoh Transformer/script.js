@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData();
             formData.append('image', selectedFile);
 
-            const response = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/ai/photo-to-pharaoh', {
+            const response = await fetch('https://gem-backend-production-40ae.up.railway.app/api/ai/photo-to-pharaoh', {
                 method: 'POST',
                 headers: { 'Authorization': `Bearer ${token}` },
                 body: formData

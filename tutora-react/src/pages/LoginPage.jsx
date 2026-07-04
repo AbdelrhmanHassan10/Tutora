@@ -11,7 +11,7 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+            const API_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
             const res = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

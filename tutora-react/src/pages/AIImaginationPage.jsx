@@ -3,7 +3,7 @@ import '../styles/AI-common.css';
 import '../styles/AIImagination.css';
 
 const AIImaginationPage = () => {
-    const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
     const [prompt, setPrompt] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
     

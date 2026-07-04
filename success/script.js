@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. DYNAMIC CONTENT & DATA HANDLING
     // ============================================
 
-    const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_BASE_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
 
     async function verifyPayment() {
         const urlParams = new URLSearchParams(window.location.search);

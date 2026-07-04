@@ -234,7 +234,7 @@
         }
 
         // --- Pay Button Interaction (With API integration) ---
-        const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+        const API_BASE_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
         const payBtn = document.querySelector('.btn-pay');
         if (payBtn) {
             payBtn.addEventListener('click', async (e) => {

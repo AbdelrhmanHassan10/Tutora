@@ -43,7 +43,7 @@ window.FAV_AR = {
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_BASE_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
     const artifactGrid = document.querySelector('.saved-section .artifact-grid') || document.querySelector('.artifact-grid');
     const userNameDisplay = document.getElementById('userNameDisplay');
 
@@ -380,8 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 api.getMe().catch(() => null),
                 api.getMyFavorites('Artifact').catch(() => null),
                 api.getMyFavorites('Event').catch(() => null),
-                fetch('https://gem-backend-production-1ea2.up.railway.app/api/artifacts').then(r=>r.json()).catch(()=>null),
-                fetch('https://gem-backend-production-1ea2.up.railway.app/api/events').then(r=>r.json()).catch(()=>null)
+                fetch('https://gem-backend-production-40ae.up.railway.app/api/artifacts').then(r=>r.json()).catch(()=>null),
+                fetch('https://gem-backend-production-40ae.up.railway.app/api/events').then(r=>r.json()).catch(()=>null)
             ]);
 
             let userObj = userResponse ? (userResponse.user || userResponse) : null;

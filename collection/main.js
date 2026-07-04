@@ -3,7 +3,7 @@
     // CONFIGURATION & STATE
     // ============================================
     const CONFIG = {
-        API_BASE_URL: 'https://gem-backend-production-1ea2.up.railway.app/api',
+        API_BASE_URL: 'https://gem-backend-production-40ae.up.railway.app/api',
         ITEMS_PER_PAGE: 50,
         DEFAULT_GRID_VIEW: 'grid-3'
     };

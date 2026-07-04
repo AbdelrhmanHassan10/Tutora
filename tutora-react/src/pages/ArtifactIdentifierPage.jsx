@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/ArtifactIdentifier.css';
 
 const ArtifactIdentifierPage = () => {
-    const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
     const [scanState, setScanState] = useState({ state: 'idle', title: '', desc: '' });
     const fileInputRef = useRef(null);
     const cameraInputRef = useRef(null);

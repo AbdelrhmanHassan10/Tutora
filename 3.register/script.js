@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_BASE_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
     const GOOGLE_CLIENT_ID = '322457229349-1riijja3taalo0kbd4i6ulaotscujif5.apps.googleusercontent.com';
 
     // Google Sign-In Callback

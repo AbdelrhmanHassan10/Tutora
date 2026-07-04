@@ -238,7 +238,7 @@ class RoyalKidsAtmosphere {
         ];
 
         try {
-            const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+            const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-40ae.up.railway.app/api';
             const res = await fetch(`${API_URL}/artifacts`);
             let selection = [];
             

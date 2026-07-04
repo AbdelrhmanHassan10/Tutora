@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
     const eventGrid = document.querySelector('.event-grid');
     const filterTabs = document.querySelectorAll('.filter-tab');
     

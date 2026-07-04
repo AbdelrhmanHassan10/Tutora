@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchDynamicPrices() {
         try {
-            const res = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/settings');
+            const res = await fetch('https://gem-backend-production-40ae.up.railway.app/api/settings');
             if (res.ok) {
                 const settings = await res.json();
                 

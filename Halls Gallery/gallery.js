@@ -563,7 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/favorites/toggle/${artifactId}`, {
+            const response = await fetch(`https://gem-backend-production-40ae.up.railway.app/api/favorites/toggle/${artifactId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

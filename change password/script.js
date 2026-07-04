@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_BASE_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
     
     const form = document.getElementById('changePasswordForm');
     const passwordInput = document.getElementById('password');

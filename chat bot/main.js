@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     // PROFESSIONAL CHAT SYSTEM WITH HISTORY
     // ============================================
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-40ae.up.railway.app/api';
     
     // UI Elements
     const chatInput = document.getElementById('chatInput');
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/ask`, {
+            const response = await fetch(`https://gem-backend-production-40ae.up.railway.app/api/ai/ask`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify({ question: text })

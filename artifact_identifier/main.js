@@ -3,7 +3,7 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-40ae.up.railway.app/api';
     const uploadBtn = document.getElementById('upload-photo-btn');
     const cameraBtn = document.getElementById('use-camera-btn');
     const fileInput = document.getElementById('scan-upload');
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formData3d = new FormData();
                 formData3d.append('image', file);
                 
-                const response3d = await fetch('https://gem-backend-production-1ea2.up.railway.app/api/ai/image-to-3d', {
+                const response3d = await fetch('https://gem-backend-production-40ae.up.railway.app/api/ai/image-to-3d', {
                     method: 'POST',
                     headers: token ? { 'Authorization': `Bearer ${token}` } : {},
                     body: formData3d
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const token = localStorage.getItem('token');
             const lang = localStorage.getItem('language') || 'en';
             
-            const ttsResponse = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/text-to-speech`, {
+            const ttsResponse = await fetch(`https://gem-backend-production-40ae.up.railway.app/api/ai/text-to-speech`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // ── STEP 1: Try text-to-speech endpoint (combined detection + TTS) ──
-            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/text-to-speech`, {
+            const response = await fetch(`https://gem-backend-production-40ae.up.railway.app/api/ai/text-to-speech`, {
                 method: 'POST',
                 headers: token ? { 'Authorization': `Bearer ${token}` } : {},
                 body: formData
@@ -480,10 +480,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Try multiple possible detection endpoints
         const endpoints = [
-            `https://gem-backend-production-1ea2.up.railway.app/api/ai/detect`,
-            `https://gem-backend-production-1ea2.up.railway.app/api/ai/identify`,
-            `https://gem-backend-production-1ea2.up.railway.app/api/ai/scan`,
-            `https://gem-backend-production-1ea2.up.railway.app/api/ai/predict`
+            `https://gem-backend-production-40ae.up.railway.app/api/ai/detect`,
+            `https://gem-backend-production-40ae.up.railway.app/api/ai/identify`,
+            `https://gem-backend-production-40ae.up.railway.app/api/ai/scan`,
+            `https://gem-backend-production-40ae.up.railway.app/api/ai/predict`
         ];
 
         for (const endpoint of endpoints) {
@@ -612,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     // Relative path from backend
                     const cleanPath = audioUrl.startsWith('/') ? audioUrl : `/${audioUrl}`;
-                    finalAudioUrl = `https://gem-backend-production-1ea2.up.railway.app${cleanPath}`;
+                    finalAudioUrl = `https://gem-backend-production-40ae.up.railway.app${cleanPath}`;
                 }
             } else if (file) {
                 // No audio URL — re-send image to text-to-speech endpoint to get one
@@ -623,7 +623,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 formData.append('image', file);
                 formData.append('language', lang);
 
-                const ttsResponse = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/text-to-speech`, {
+                const ttsResponse = await fetch(`https://gem-backend-production-40ae.up.railway.app/api/ai/text-to-speech`, {
                     method: 'POST',
                     headers: token ? { 'Authorization': `Bearer ${token}` } : {},
                     body: formData
@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     finalAudioUrl = `data:audio/mp3;base64,${newAudioUrl}`;
                 } else {
                     const cleanPath = newAudioUrl.startsWith('/') ? newAudioUrl : `/${newAudioUrl}`;
-                    finalAudioUrl = `https://gem-backend-production-1ea2.up.railway.app${cleanPath}`;
+                    finalAudioUrl = `https://gem-backend-production-40ae.up.railway.app${cleanPath}`;
                 }
             } else {
                 throw new Error("No audio source available. Please try scanning again.");
@@ -848,7 +848,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/detections`, {
+            const response = await fetch(`https://gem-backend-production-40ae.up.railway.app/api/ai/detections`, {
                 method: 'GET',
                 headers: { 
                     'Authorization': `Bearer ${token}`,

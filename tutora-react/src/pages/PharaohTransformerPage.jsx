@@ -3,7 +3,7 @@ import '../styles/AI-common.css';
 import '../styles/PharaohTransformer.css';
 
 const PharaohTransformerPage = () => {
-    const API_URL = 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_URL = 'https://gem-backend-production-40ae.up.railway.app/api';
     const [selectedFile, setSelectedFile] = useState(null);
     const [previewSrc, setPreviewSrc] = useState('https://lh3.googleusercontent.com/aida-public/AB6AXuDlbA4vB5ISLrkmAv30oW9jwq9oVJRchtZGWGHtmf-aAYB_rtHScYnhRFnEOiM8DQpL6Ps52fKmZu4lI74O1T74smdefEv5AHEAmm34qnwxMmqOErSqKMXuRYRd_e7UIjxuFZrkmQYmVHK7g91OFXXkjFxjcie4I3BIItTO6PZ2dEo9yJjCHyTC2mu99eNwihZCXsucUsDmRvs4wFRCW8HQuKPfmIEfuEJD-5vAYnbR8DKwGhtzvvKkaLfygqMEHmXKTArz7baJ4HqZ');
     const [statusText, setStatusText] = useState('High-resolution front-facing photography yields the most divine results.');

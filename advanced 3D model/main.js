@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateArtifactUI(currentArtifactId);
 
     // 10. Generate 3D Model — POST /api/ai/image-to-3d
-    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-1ea2.up.railway.app/api';
+    const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-40ae.up.railway.app/api';
     const generate3dBtn = document.getElementById('generate3dBtn');
     const generate3dStatus = document.getElementById('generate3d-status');
 
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formData = new FormData();
                 formData.append('image', file);
 
-                const response = await fetch(`https://gem-backend-production-1ea2.up.railway.app/api/ai/image-to-3d`, {
+                const response = await fetch(`https://gem-backend-production-40ae.up.railway.app/api/ai/image-to-3d`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`
