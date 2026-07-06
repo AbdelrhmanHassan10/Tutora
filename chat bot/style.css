@@ -23,6 +23,7 @@
     
     --primary: #d4af37;
     --primary-glow: rgba(212, 175, 55, 0.4);
+    --gold-gradient: linear-gradient(135deg, #d4af37 0%, #b5952f 100%);
     
     --font-main: 'Outfit', sans-serif;
     --font-serif: 'Cinzel', serif;
@@ -51,6 +52,7 @@ body.light {
     
     --primary: #8e7341;
     --primary-glow: rgba(142, 115, 65, 0.2);
+    --gold-gradient: linear-gradient(135deg, #8e7341 0%, #685430 100%);
     --hero-overlay: linear-gradient(rgba(252, 250, 245, 0.4), rgba(252, 250, 245, 0.7));
 }
 
@@ -1088,7 +1090,7 @@ body.light .chat-suggestion-btn:hover span:not(.material-symbols-outlined) {
     background: transparent;
     border: none;
     padding: 1rem 1.5rem;
-    color: #fff;
+    color: var(--text-main);
     font-size: 1rem;
     outline: none;
 }
@@ -3930,4 +3932,19 @@ body.light .msg-content {
     width: 98%;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Light mode text color fix for chatbot messages */
+body.light .ai-msg .chat-msg-bubble,
+body.light .ai-msg .chat-msg-bubble .msg-content,
+body.light .ai-msg .chat-msg-bubble p,
+body.light .ai-msg .chat-msg-bubble span {
+    color: #1a1a1a !important;
+}
+
+body.light .user-msg .chat-msg-bubble,
+body.light .user-msg .chat-msg-bubble .msg-content,
+body.light .user-msg .chat-msg-bubble p,
+body.light .user-msg .chat-msg-bubble span {
+    color: #f8f8f2 !important;
 }

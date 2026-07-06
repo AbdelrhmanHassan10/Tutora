@@ -43,8 +43,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const transformBtn = document.getElementById('transform-btn');
     const previewImg = document.getElementById('pharaoh-preview');
     const statusText = document.getElementById('upload-status');
+    const faceStrengthInput = document.getElementById('face-strength');
+    const qualityInput = document.getElementById('quality');
+    const strengthVal = document.getElementById('strength-val');
+    const qualityVal = document.getElementById('quality-val');
     
     let selectedFile = null;
+
+    if (faceStrengthInput && strengthVal) {
+        faceStrengthInput.addEventListener('input', (e) => {
+            strengthVal.textContent = e.target.value;
+        });
+    }
+
+    if (qualityInput && qualityVal) {
+        qualityInput.addEventListener('input', (e) => {
+            qualityVal.textContent = e.target.value;
+        });
+    }
 
     uploadZone?.addEventListener('click', () => fileInput?.click());
     
@@ -84,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const formData = new FormData();
             formData.append('image', selectedFile);
+            if (faceStrengthInput) formData.append('strength', faceStrengthInput.value);
+            if (qualityInput) formData.append('quality', qualityInput.value);
 
             const response = await fetch('https://gem-backend-production-40ae.up.railway.app/api/ai/photo-to-pharaoh', {
                 method: 'POST',

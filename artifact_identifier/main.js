@@ -1,9 +1,31 @@
 // ============================================
 // ARTIFACT IDENTIFIER SCRIPT - TUTORA AI
 // ============================================
+// ============================================
+
+    window.showARModal = function(url) {
+        const modal = document.getElementById('ar-modal');
+        const viewer = document.getElementById('ar-viewer');
+        if (modal && viewer) {
+            viewer.src = url;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // prevent scrolling behind
+        }
+    };
 
 document.addEventListener('DOMContentLoaded', () => {
     const API_URL = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : 'https://gem-backend-production-40ae.up.railway.app/api';
+    
+    // Close AR Modal logic
+    const closeARModal = document.getElementById('close-ar-modal');
+    if (closeARModal) {
+        closeARModal.addEventListener('click', () => {
+            document.getElementById('ar-modal').style.display = 'none';
+            document.getElementById('ar-viewer').src = '';
+            document.body.style.overflow = '';
+        });
+    }
+
     const uploadBtn = document.getElementById('upload-photo-btn');
     const cameraBtn = document.getElementById('use-camera-btn');
     const fileInput = document.getElementById('scan-upload');
@@ -265,7 +287,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const modelUrl = data3d.model_3d_url || data3d.model3dUrl || data3d.model_url || data3d.model3d_url || data3d['3d_model_url'] || data3d['3d_url'] || data3d.model || (data3d.model_3d && data3d.model_3d.url);
                 
                 if (response3d.ok && modelUrl) {
-                    window.open(modelUrl, '_blank');
+                    if(window.showARModal) {
+                        window.showARModal(modelUrl);
+                    } else {
+                        window.open(modelUrl, '_blank');
+                    }
                     btn.innerHTML = `<span class="material-symbols-outlined">check_circle</span> 3D Ready`;
                     setTimeout(() => { btn.disabled = false; btn.innerHTML = originalText; }, 3000);
                 } else {
@@ -788,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="result-actions" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
                          <button class="btn-primary" id="listenStoryBtn" style="padding: 1rem 2.5rem;"><span class="material-symbols-outlined">volume_up</span> Listen to Story</button>
                          <button class="btn-secondary" onclick="window.location.href='../collection/collection.html'" style="padding: 1rem 2.5rem; background: rgba(255,255,255,0.05);"><span class="material-symbols-outlined">explore</span> View in Gallery</button>
-                         ${item.model_3d_url || item.model3dUrl || item.model_url || item.model3d_url ? `<button class="btn-primary" onclick="window.open('${item.model_3d_url || item.model3dUrl || item.model_url || item.model3d_url}', '_blank')" style="padding: 1rem 2.5rem; background: #8b5cf6; border-color: #8b5cf6;"><span class="material-symbols-outlined">view_in_ar</span> View 3D Model</button>` : ''}
+                         ${item.model_3d_url || item.model3dUrl || item.model_url || item.model3d_url ? `<button class="btn-primary" onclick="if(window.showARModal){window.showARModal('${item.model_3d_url || item.model3dUrl || item.model_url || item.model3d_url}')}else{window.open('${item.model_3d_url || item.model3dUrl || item.model_url || item.model3d_url}', '_blank')}" style="padding: 1rem 2.5rem; background: #8b5cf6; border-color: #8b5cf6;"><span class="material-symbols-outlined">view_in_ar</span> View 3D Model</button>` : ''}
                     </div>
                 </div>
             `;
