@@ -341,13 +341,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="material-symbols-outlined">location_on</span>
                         <span>${hall.name}</span>
                     </div>
-                    <div style="display: flex; gap: 0.5rem; width: 100%; margin-top: 1rem;">
-                        <button class="details-btn" style="flex: 1;" onclick="viewArtifact('${hall.id}', '${art.name.replace(/'/g, "\\'")}')">
+                    <div style="width: 100%; margin-top: 1rem;">
+                        <button class="details-btn" style="width: 100%;" onclick="viewArtifact('${hall.id}', '${art.name.replace(/'/g, "\\'")}')">
                             <span>DETAILS</span>
-                        </button>
-                        <button class="details-btn ar-btn" style="flex: 1; background: linear-gradient(135deg, #40e0d0 0%, #d4af37 100%); color: #000; border: none;" onclick="window.location.href='../advanced 3D model/advanced-3D.html?id=${art.id || art.name.toLowerCase().replace(/\s+/g, '-')}'">
-                            <span class="material-symbols-outlined" style="font-size: 1.2rem;">view_in_ar</span>
-                            <span>AR</span>
                         </button>
                     </div>
                 </div>
